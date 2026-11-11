@@ -43,6 +43,8 @@ jobs:
               || { echo "::warning::Archiv nicht lesbar (Passwort geändert?) - starte mit leerem Archiv"; rm -f data/news.json; }
           fi
       - name: Meldungen abrufen
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}     # nur als Schalter: mit Claude dürfen weite Suchen ungefiltert durch
         run: python fetch_news.py
       - name: Kennzahlen abrufen (Destatis)
         env:
