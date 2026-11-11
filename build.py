@@ -72,7 +72,7 @@ def chart(spec, series):
     prev = pts[-2]["v"]
     yoy = pts[-1 - lag]["v"] if len(pts) > lag else None
     pct = lambda a, b: (a / b - 1) * 100
-    return dict(id=spec["id"], title=spec["title"], sub=spec["sub"], url=spec["url"],
+    return dict(id=spec["id"], title=spec["title"], sub=spec["sub"], url=spec["url"].rsplit("/",1)[0] + "/" + series.get("table", spec["table"]),
                 latest=num(last), period=per_label(pts[-1]["p"], freq, False),
                 d1=pct(last, prev), d1_label="Vormonat" if freq == "monthly" else "Vorquartal",
                 d12=pct(last, yoy) if yoy else None, svg="".join(s), fetched=series.get("fetched", ""))
