@@ -63,7 +63,7 @@ rubrics:
     must: 'kran(e|en)?(?!\w)|crane|grue|kraan|kranen|vinç|(liebherr|tadano|manitowoc|terex|potain)[^.]{0,60}(kran|crane|grue|vinç|kraan)|(kran|crane|grue|vinç|kraan)[^.]{0,60}(liebherr|tadano|manitowoc|terex|potain)|raupenkran|crawler crane|رافعة|رافعات|עגורן|מנוף'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
       de: [Turmdrehkran, Mobilkran, Raupenkran, Kranflotte, Autokran, "Liebherr Mobilkran"]
-      en: ["tower crane", "mobile crane", "crawler crane", "crane fleet", "Tadano", "Manitowoc"]
+      en: ["tower crane", "mobile crane", "crawler crane", "crane fleet", "Tadano", "Manitowoc crane"]
       fr: ["grue à tour", "grue mobile", "grue sur chenilles", "parc de grues"]
       nl: [torenkraan, "mobiele kraan", rupskraan, kraanverhuur]
       tr: ["kule vinç", "mobil vinç", "paletli vinç", "vinç filosu"]
@@ -202,6 +202,11 @@ trade_sources:
 
 # Ausschluss per Regex (Titel + Quelle + Textauszug): gleiche Namen / Wörter mit anderer Bedeutung
 exclude_regex:
+  # Markennamen nur mit Kran-/Seil-Zusammenhang: ohne ein Hebezeug-Wort im Titel/Text fliegt die Meldung raus
+  - '^(?!.*(crane|kran|grue|kraan|vinç|lift|hoist|hebe|wire rope|seil)).*(manitowoc|potain|tadano|terex|liebherr|grove\b)'
+  # Namensvettern, Lokales, Börsen-Tipps
+  - 'sheboygan|two rivers|herald times|lakeshore|stop sign|family market|football season|\bbulls\b|\bbears\b|99% rally'
+  - '\b(stock|stocks|shares|bullish|bearish|rally|price target|nyse|nasdaq)\b|aktie|kursziel|dividende'
   # Namensvettern von Kran- und Seilfirmen
   - 'manitowoc[ ,]+(county|wis|wi\b|wisconsin|public|police|sheriff)'
   - 'liebherr[- ]?(kühl|gefrier|hausger|fridge|freezer|refriger)|kühlschr|kühl-? ?gefrier'
