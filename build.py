@@ -4,6 +4,7 @@ import datetime as dt
 import json
 import math
 import re
+import sys
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -84,71 +85,137 @@ def tokens(t):
     return {w for w in re.findall(r"\w+", t.lower()) if len(w) > 3}
 
 
+def similar(a, b):
+    if not a or not b:
+        return False
+    inter = len(a & b)
+    small = min(len(a), len(b))
+    return inter / len(a | b) >= 0.6 or (small >= 4 and inter / small >= 0.85)
+
+
 def cluster(items):
-    """Bündelt gleiche/ähnliche Meldungen verschiedener Quellen zu einer Karte."""
+    """Bündelt gleiche/ähnliche Meldungen (auch aus anderen Quellen und Sprachen) zu einer Karte."""
     items = sorted(items, key=lambda i: i["published"], reverse=True)
     groups = []
     for it in items:
-        tk = tokens(it.get("title_de") or it["title_orig"])
+        tk = tokens((it.get("title_de") or "") + " " + it["title_orig"])
         for g in groups:
-            inter = len(tk & g["tk"])
-            if tk and g["tk"] and inter / len(tk | g["tk"]) >= 0.6:
+            if similar(tk, g["tk"]):
                 g["members"].append(it)
+                g["tk"] |= tk
                 break
         else:
-            groups.append(dict(tk=tk, members=[it]))
+            groups.append(dict(tk=set(tk), members=[it]))
     return [g["members"] for g in groups]
+
+
+def country_matchers():
+    out = {}
+    for c in CFG["countries"]:
+        parts = []
+        for n in c["names"]:
+            e = re.escape(n)
+            if not re.match(r"[A-Za-zÀ-ÿİ]", n):       # arabisch/hebräisch: Vorsilben (ب, ב …) erlauben
+                parts.append(e)
+            elif len(n) <= 4:
+                parts.append(rf"(?<!\w){e}(?!\w)")
+            else:
+                parts.append(rf"(?<!\w){e}")
+        out[c["id"]] = re.compile("|".join(parts), re.I)
+    return out
+
+
+def compute(all_items, now):
+    """Wählt aus: Top-News (nach Brisanz) und je Rubrik die neuesten Meldungen (höchstens per_section)."""
+    win = now - dt.timedelta(days=SITE["window_days"])
+    rub = {r["id"]: r for r in CFG["rubrics"]}
+    rorder = {r["id"]: k for k, r in enumerate(CFG["rubrics"])}
+    cname = {c["id"]: c["name"] for c in CFG["countries"]}
+    cmatch = country_matchers()
+    cap = SITE["per_section"]
+
+    items = [i for i in all_items if dt.datetime.fromisoformat(i["published"]) >= win]
+    cards = []
+    for members in cluster(items):
+        lead = members[0]
+        rubrics = sorted({r for m in members for r in (m.get("rubrics") or [m["rubric"]])}, key=lambda r: rorder.get(r, 99))
+        rubric = rubrics[0]
+        # Land = Land, um das es inhaltlich geht: Namen in Titel/Textauszug oder Land in der Suche selbst – nicht das Quellland
+        text_all = " ".join((m.get("title_de") or "") + " " + m["title_orig"] + " " + m.get("snippet", "") for m in members)
+        countries = sorted({c for c in cname if cmatch[c].search(text_all)}
+                           | {c for m in members for c in m.get("countries", []) if c in cname}, key=list(cname).index)
+        if rubrics == ["laender"] and not countries:
+            continue
+        pub = dt.datetime.fromisoformat(lead["published"])
+        title = next((m["title_de"] for m in members if m.get("title_de")), lead["title_orig"])
+        text = title + " " + lead["title_orig"]
+        srcs = sorted({m["source"] for m in members})
+        age = max(0.0, (now - pub).total_seconds() / 86400)
+        # Brisanz: Gewicht der Rubrik, Zahl der Quellen, Reizwörter (Zuschlag, Zoll …); Aktualität zählt kaum,
+        # damit die Top-News über die Woche stabil bleiben
+        score = (rub[rubric]["weight"] * 2 + 1.6 * min(len(srcs) - 1, 3) + (2.5 if BOOST.search(text) else 0)
+                 + 0.8 * max(0, 1 - age / SITE["window_days"]) + (0.4 if countries else 0))
+        cards.append(dict(
+            rubric=rubric, rubrics=rubrics, rubric_short=rub[rubric]["short"], title=title, lead=lead,
+            orig=lead["title_orig"] if lead["lang"] != "de" and title != lead["title_orig"] else None,
+            translated=any(m.get("title_de") for m in members) or lead["lang"] == "de",
+            lang=LANG.get(lead["lang"], lead["lang"].upper()), source=srcs[0], n=len(srcs), url=lead["url"],
+            when=pub.astimezone(TZ).strftime("%d.%m. %H:%M"), ts=pub, is_new=age < 1,
+            countries=[dict(id=c, name=cname[c]) for c in countries], score=score))
+
+    top = sorted(cards, key=lambda c: (c["score"], c["ts"]), reverse=True)[:SITE.get("top_n", 5)]
+
+    def member(c, rid):                 # Rubrik "Länder" = alles mit erkennbarem Länderbezug
+        return bool(c["countries"]) if rid == "laender" else rid in c["rubrics"]
+
+    sections = []
+    for k, r in enumerate(CFG["rubrics"], 1):
+        lst = sorted([c for c in cards if member(c, r["id"])], key=lambda c: c["ts"], reverse=True)
+        if r["id"] == "laender":        # je Land die neuesten 10, damit der Länderfilter genug Auswahl hat
+            pool, seen = [], set()
+            for c in cname:
+                for x in [x for x in lst if any(cc["id"] == c for cc in x["countries"])][:cap]:
+                    if id(x) not in seen:
+                        seen.add(id(x))
+                        pool.append(x)
+            pool.sort(key=lambda c: c["ts"], reverse=True)
+            sections.append(dict(id=r["id"], num=f"{k:02d}", title=r["title"], short=r["short"], shown=pool, limit=cap))
+        else:
+            sections.append(dict(id=r["id"], num=f"{k:02d}", title=r["title"], short=r["short"], shown=lst[:cap], limit=cap))
+
+    radar_c = []
+    for c in CFG["countries"]:
+        mine = [x for x in cards if any(cc["id"] == c["id"] for cc in x["countries"])]
+        radar_c.append(dict(id=c["id"], name=c["name"], count=len(mine)))
+    return cards, top, sections, radar_c, items
 
 
 def main():
     news, idx = load("news.json"), load("indices.json")
     sample = news["meta"].get("sample") or idx["meta"].get("sample")
     now = dt.datetime.now(dt.timezone.utc)
-    win = now - dt.timedelta(days=SITE["window_days"])
-    rub = {r["id"]: r for r in CFG["rubrics"]}
-    cname = {c["id"]: c["name"] for c in CFG["countries"]}
+    rub_items = news["items"]
 
-    items = [i for i in news["items"] if dt.datetime.fromisoformat(i["published"]) >= win]
-    cards = []
-    for members in cluster(items):
-        # Lead-Meldung: bevorzugt deutsche/übersetzte, sonst neueste
-        lead = members[0]
-        pub = dt.datetime.fromisoformat(lead["published"])
-        title = lead.get("title_de") or lead["title_orig"]
-        text = title + " " + lead["title_orig"]
-        srcs = sorted({m["source"] for m in members})
-        age = max(0.0, (now - pub).total_seconds() / 86400)
-        score = (rub[lead["rubric"]]["weight"] * 2 + 1.6 * min(len(srcs) - 1, 3)
-                 + (2.5 if BOOST.search(text) else 0) + 2.5 * max(0, 1 - age / SITE["window_days"])
-                 + (0.4 if lead["countries"] else 0))
-        cards.append(dict(
-            rubric=lead["rubric"], rubric_short=rub[lead["rubric"]]["short"], title=title,
-            orig=lead["title_orig"] if lead["lang"] != "de" and lead.get("title_de") else None,
-            lang=LANG.get(lead["lang"], lead["lang"].upper()), source=srcs[0], n=len(srcs),
-            others=", ".join(srcs[1:4]), url=lead["url"],
-            when=pub.astimezone(TZ).strftime("%d.%m., %H:%M"), ts=pub, is_new=age < 1,
-            countries=[dict(id=c, name=cname[c]) for c in lead["countries"] if c in cname],
-            score=score, radar=bool(RADAR.search(text))))
+    cards, top, sections, radar_c, items = compute(rub_items, now)
 
-    # Top-News der Woche: höchste Punktzahl, höchstens 2 je Rubrik
-    top, per = [], {}
-    for c in sorted(cards, key=lambda c: c["score"], reverse=True):
-        if per.get(c["rubric"], 0) < 2:
-            top.append(c)
-            per[c["rubric"]] = per.get(c["rubric"], 0) + 1
-        if len(top) == 5:
-            break
-
-    sections = []
-    for k, r in enumerate(CFG["rubrics"], 1):
-        lst = sorted([c for c in cards if c["rubric"] == r["id"]], key=lambda c: c["ts"], reverse=True)
-        sections.append(dict(id=r["id"], num=f"{k:02d}", title=r["title"], short=r["short"],
-                             shown=lst[:SITE["per_section"]], more=lst[SITE["per_section"]:SITE["per_section"] + SITE.get("more_max", 24)], total=len(lst)))
-
-    radar_c = []
-    for c in CFG["countries"]:
-        mine = sorted([x for x in cards if any(cc["id"] == c["id"] for cc in x["countries"])], key=lambda x: x["ts"], reverse=True)
-        radar_c.append(dict(id=c["id"], name=c["name"], count=len(mine), latest=mine[0]["title"] if mine else None))
+    # Nur was auf der Seite steht wird übersetzt (Titel), danach neu auswählen: gebündelt über Sprachen hinweg
+    if not news["meta"].get("sample") and "--no-translate" not in sys.argv:
+        for _ in range(2):
+            visible = {id(c["lead"]): c for c in top + [x for s in sections for x in s["shown"]] if not c["translated"]}
+            need = [c["lead"] for c in visible.values()][: SITE.get("translate_max", 150)]
+            if not need:
+                break
+            try:
+                import translate
+                done = translate.translate_titles(need)
+            except Exception as ex:
+                print("Übersetzung übersprungen:", ex, file=sys.stderr)
+                break
+            print(f"{done} von {len(need)} Titeln übersetzt")
+            if not done:
+                break
+            (ROOT / "data" / "news.json").write_text(json.dumps(news, ensure_ascii=False, indent=1), encoding="utf-8")
+            cards, top, sections, radar_c, items = compute(rub_items, now)
 
     charts = []
     for spec in CFG["indices"]:
@@ -156,19 +223,18 @@ def main():
         if s and len(s["points"]) > 4:
             charts.append(chart(spec, s))
 
-    zus = sorted([c for c in cards if c["radar"]], key=lambda c: c["ts"], reverse=True)[:6]
     local = now.astimezone(TZ)
     env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape())
     env.filters["arrow"] = arrow
     html = env.get_template("index.html.j2").render(
-        site=SITE, sample=sample, charts=charts, top=top, sections=sections, radar_c=radar_c, zus=zus,
+        site=SITE, sample=sample, charts=charts, top=top, sections=sections, radar_c=radar_c,
         countries=CFG["countries"], date=f"{WDAYS[local.weekday()]}, {local.day}. {MONTHS[local.month - 1]} {local.year}",
         updated=local.strftime("%d.%m.%Y, %H:%M Uhr"), edition=local.timetuple().tm_yday,
         n_week=len(cards), n_today=sum(c["is_new"] for c in cards), n_src=len({i["source"] for i in items}),
         errors=idx["meta"].get("errors", []))
     (ROOT / "docs").mkdir(exist_ok=True)
     (ROOT / "docs" / "index.html").write_text(html, encoding="utf-8")
-    print(f"docs/index.html: {len(cards)} Meldungen, {len(charts)} Diagramme")
+    print(f"docs/index.html: {len(cards)} Meldungen im Fenster, {len(charts)} Diagramme")
 
 
 if __name__ == "__main__":

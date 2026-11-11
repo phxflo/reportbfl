@@ -8,9 +8,10 @@ site:
   retention_days: 21        # so lange bleiben Meldungen im Archiv
   window_days: 7            # Zeitraum der Anzeige ("Woche")
   fetch_days: 7             # pro Lauf: Meldungen der letzten n Tage abfragen
-  per_section: 6            # sichtbare Meldungen je Rubrik (Rest klappt auf)
-  more_max: 24              # höchstens so viele weitere Meldungen je Rubrik im Aufklapper
+  per_section: 10           # höchstens so viele Meldungen je Rubrik (neueste zuerst, ältere fallen weg)
+  top_n: 5                  # Top-News der Woche
   timezone: "Europe/Berlin"
+  translate_max: 150        # höchstens so viele Titel pro Lauf übersetzen (nur sichtbare)
 
 # Meldungen mit diesen Wörtern im Titel werden verworfen
 exclude:
@@ -126,54 +127,55 @@ rubrics:
       he: ["כבלי פלדה", "חבל פלדה"]
 
 # Länder: je Ausgabe eine Suche in der Landessprache (nur Handel, Zoll, Stahl, Häfen, Logistik).
-# names = Schreibweisen, anhand derer das Land in beliebigen Meldungen erkannt wird.
+# names = Länder-, Städte- und Hafennamen. Ein Land wird einer Meldung nur zugeordnet, wenn einer dieser
+# Namen in der Überschrift steht (also das Land, um das es geht – nicht das Land der Quelle).
 countries:
   - id: BE
     name: Belgien
-    names: [Belgien, Belgium, België, Belgique, بلجيكا]
+    names: ["Belgi", "بلجيك", "Antwerp", "Anvers", "Zeebrugge", "Gent", "Ghent", "Brüssel", "Brussel", "Bruxelles", "Liège", "Charleroi", "أنتويرب", "بروكسل", "Brugge", "Bruges"]
     editions:
       - {lang: nl, hl: nl, gl: BE, ceid: "BE:nl", q: "België (haven OR staal OR invoerrechten OR douane OR logistiek)"}
       - {lang: fr, hl: fr, gl: BE, ceid: "BE:fr", q: "Belgique (port OR acier OR douane OR logistique OR grève)"}
       - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Belgien (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik)"}
   - id: NL
     name: Niederlande
-    names: [Niederlande, Netherlands, Nederland, Pays-Bas, هولندا, Rotterdam]
+    names: ["Niederlande", "Niederländ", "Netherlands", "Nederland", "Pays-Bas", "Dutch", "Holland", "هولندا", "Rotterdam", "Amsterdam", "روتردام", "أمستردام", "Pays Bas"]
     editions:
       - {lang: nl, hl: nl, gl: NL, ceid: "NL:nl", q: "Nederland (haven OR staal OR invoerrechten OR douane OR logistiek)"}
       - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Niederlande (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik)"}
   - id: MA
     name: Marokko
-    names: [Marokko, Morocco, Maroc, المغرب, Fas]
+    names: ["Marokk", "Morocc", "Maroc", "Fas", "المغرب", "Tanger", "Tangier", "Casablanca", "Agadir", "Nador", "طنجة", "الدار البيضاء", "أغادير", "الناظور", "Marocain"]
     editions:
       - {lang: fr, hl: fr, gl: MA, ceid: "MA:fr", q: "Maroc (port OR acier OR douane OR importation OR logistique)"}
       - {lang: ar, hl: ar, gl: MA, ceid: "MA:ar", q: "المغرب (ميناء OR صلب OR جمارك OR استيراد OR لوجستيك)"}
       - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Marokko (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik)"}
   - id: DZ
     name: Algerien
-    names: [Algerien, Algeria, Algérie, الجزائر]
+    names: ["Alger", "Algier", "Algér", "الجزائر", "وهران", "Oran", "Annaba", "Bejaia", "Béjaïa", "Djen Djen", "Skikda", "عنابة", "بجاية", "سكيكدة"]
     editions:
       - {lang: fr, hl: fr, gl: DZ, ceid: "DZ:fr", q: "Algérie (port OR acier OR douane OR importation OR logistique)"}
       - {lang: ar, hl: ar, gl: DZ, ceid: "DZ:ar", q: "الجزائر (ميناء OR صلب OR جمارك OR استيراد OR لوجستيك)"}
       - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Algerien (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik)"}
   - id: TN
     name: Tunesien
-    names: [Tunesien, Tunisia, Tunisie, تونس]
+    names: ["Tunesi", "Tunis", "تونس", "Sfax", "Radès", "Bizerte", "Sousse", "Gabès", "صفاقس", "سوسة", "بنزرت", "رادس"]
     editions:
       - {lang: fr, hl: fr, gl: TN, ceid: "TN:fr", q: "Tunisie (port OR acier OR douane OR importation OR logistique)"}
       - {lang: ar, hl: ar, gl: TN, ceid: "TN:ar", q: "تونس (ميناء OR صلب OR جمارك OR استيراد OR لوجستيك)"}
       - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Tunesien (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik)"}
   - id: IL
     name: Israel
-    names: [Israel, ישראל, إسرائيل, Haifa, Aschdod, Ashdod]
+    names: ["Israel", "ישראל", "إسرائيل", "Haifa", "Ashdod", "Aschdod", "Eilat", "Tel Aviv", "אשדוד", "חיפה", "אילת", "תל אביב", "حيفا", "أشدود", "إيلات", "Israeli"]
     editions:
-      - {lang: he, hl: he, gl: IL, ceid: "IL:he", q: "נמל OR פלדה OR מכס OR יבוא OR לוגיסטיקה"}
+      - {lang: he, hl: he, gl: IL, ceid: "IL:he", q: "ישראל (נמל OR פלדה OR מכס OR יבוא OR לוגיסטיקה)"}
       - {lang: en, hl: en, gl: IL, ceid: "IL:en", q: "Israel (port OR steel OR customs OR import OR sanctions)"}
       - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Israel (Zoll OR Handelsbeschränkungen OR Sanktionen OR Hafen OR Stahl OR Logistik)"}
   - id: TR
     name: Türkei
-    names: [Türkei, Turkey, Türkiye, Turquie, تركيا, Istanbul]
+    names: ["Türkei", "Türkiye", "Türkisch", "Turkey", "Turkish", "Türk Hava", "Turquie", "تركيا", "Istanbul", "İstanbul", "Izmir", "İzmir", "Mersin", "Ankara", "Kocaeli", "Iskenderun", "İskenderun", "Gebze", "إسطنبول", "إزمير", "مرسين", "أنقرة"]
     editions:
-      - {lang: tr, hl: tr, gl: TR, ceid: "TR:tr", q: "liman OR çelik OR gümrük OR ihracat OR vinç"}
+      - {lang: tr, hl: tr, gl: TR, ceid: "TR:tr", q: "Türkiye (liman OR çelik OR gümrük OR ihracat OR vinç)"}
       - {lang: en, hl: en, gl: TR, ceid: "TR:en", q: "Turkey (steel OR port OR tariffs OR customs OR lira)"}
       - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Türkei (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik OR Lira)"}
 

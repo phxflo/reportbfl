@@ -3,6 +3,7 @@
 übersetzt Titel ins Deutsche und pflegt das Archiv data/news.json."""
 import datetime as dt
 import hashlib
+import html
 import json
 import re
 import sys
@@ -49,8 +50,9 @@ def build_jobs(days):
                                      rubric=r["id"], lang=lang, country=None))
     for c in CFG["countries"]:
         for e in c["editions"]:
+            named = any(n.lower() in e["q"].lower() for n in c["names"])
             jobs.append(dict(url=feed_url(e["q"], e["hl"], e["gl"], e["ceid"], days),
-                             rubric="laender", lang=e["lang"], country=c["id"]))
+                             rubric="laender", lang=e["lang"], country=c["id"] if named else None))
     for f in CFG.get("feeds") or []:
         jobs.append(dict(url=f["url"], rubric=f["rubric"], lang=f.get("lang", "de"),
                          country=None, source=f["name"]))
@@ -79,72 +81,6 @@ def detect_countries(text):
     low = text.lower()
     return [c["id"] for c in CFG["countries"] if any(n.lower() in low for n in c["names"])]
 
-
-def _translator(lang):
-    from deep_translator import GoogleTranslator
-    try:
-        return GoogleTranslator(source=LANGMAP.get(lang, lang), target="de")
-    except Exception:
-        return GoogleTranslator(source="auto", target="de")
-
-
-def _chunks_by_chars(items, limit=4200):
-    cur, size = [], 0
-    for i in items:
-        n = len(i["title_orig"]) + 1
-        if cur and size + n > limit:
-            yield cur
-            cur, size = [], 0
-        cur.append(i)
-        size += n
-    if cur:
-        yield cur
-
-
-def translate_all(todo):
-    """Titel je Sprache gebündelt (viele Titel pro Anfrage) ins Deutsche übersetzen."""
-    groups = {}
-    for i in todo:
-        groups.setdefault(i["lang"], []).append(i)
-    done = fails = 0
-    for lang, items in groups.items():
-        tr = _translator(lang)
-        for chunk in _chunks_by_chars(items):
-            ok = False
-            for attempt in range(3):
-                try:
-                    text = "\n".join(re.sub(r"\s+", " ", i["title_orig"]) for i in chunk)
-                    lines = (tr.translate(text) or "").split("\n")
-                    if len(lines) != len(chunk):
-                        raise ValueError(f"Zeilenzahl {len(lines)} != {len(chunk)}")
-                    for i, l in zip(chunk, lines):
-                        if l.strip():
-                            i["title_de"] = l.strip()
-                            done += 1
-                    ok = True
-                    break
-                except Exception as ex:
-                    print(f"  Übersetzung {lang} Versuch {attempt + 1}/3: {ex}", file=sys.stderr)
-                    time.sleep(3 * (attempt + 1))
-            if not ok:  # Ersatz: Titel einzeln
-                for i in chunk[:40]:
-                    try:
-                        out = tr.translate(i["title_orig"])
-                        if out:
-                            i["title_de"] = out
-                            done += 1
-                    except Exception:
-                        break
-                    time.sleep(0.3)
-                fails += 1
-                if fails >= 4:
-                    print("  Übersetzung abgebrochen (zu viele Fehler)", file=sys.stderr)
-                    print(f"{done} von {len(todo)} Titeln übersetzt")
-                    return
-            else:
-                fails = 0
-            time.sleep(1.0)
-    print(f"{done} von {len(todo)} Titeln übersetzt")
 
 
 def main():
@@ -180,34 +116,34 @@ def main():
                 continue
             if any(x in f"{title} {src}".lower() for x in excl):
                 continue
+            snip = html.unescape(e.get("summary", ""))
+            snip = re.sub(r"<font[^>]*>.*?</font>", " ", snip, flags=re.S)
+            snip = re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", snip))).strip()[:500]
             rx = must.get(job["rubric"])
-            if rx and not rx.search(title):
+            if rx and not rx.search(f"{title} {snip}"):
                 dropped[job["rubric"]] = dropped.get(job["rubric"], 0) + 1
                 continue
             pub = dt.datetime(*e.published_parsed[:6], tzinfo=dt.timezone.utc)
             if pub < cutoff:
                 continue
             iid = hashlib.sha1(f"{job['lang']}|{norm(title)}".encode()).hexdigest()[:12]
-            countries = set(detect_countries(title))
+            countries = set()
             if job["country"]:
                 countries.add(job["country"])
             if iid in db:
                 it = db[iid]
                 it["countries"] = sorted(set(it["countries"]) | countries)
+                it["rubrics"] = sorted(set(it.get("rubrics") or [it["rubric"]]) | {job["rubric"]})
+                it.setdefault("snippet", snip)
                 if order.get(job["rubric"], 99) < order.get(it["rubric"], 99):
                     it["rubric"] = job["rubric"]
             else:
                 db[iid] = dict(id=iid, title_orig=title, title_de=title if job["lang"] == "de" else None,
                                lang=job["lang"], source=src or "?", url=e.get("link", ""),
-                               published=pub.isoformat(), rubric=job["rubric"],
-                               countries=sorted(countries))
+                               published=pub.isoformat(), rubric=job["rubric"], rubrics=[job["rubric"]],
+                               countries=sorted(countries), snippet=snip)
     print(f"{ok}/{len(jobs)} Abfragen lieferten Treffer, Archiv: {len(db)} Meldungen")
     print("Durch Titel-Filter verworfen:", dropped or "nichts")
-
-    todo = sorted([i for i in db.values() if not i.get("title_de")],
-                  key=lambda i: i["published"], reverse=True)[:MAX_TRANSLATE]
-    if todo:
-        translate_all(todo)
 
     items = [i for i in db.values() if dt.datetime.fromisoformat(i["published"]) >= cutoff]
     items.sort(key=lambda i: i["published"], reverse=True)
