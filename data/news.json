@@ -1,0 +1,579 @@
+{
+ "meta": {
+  "updated": "2026-11-10T16:27:24.074284+00:00",
+  "sample": true
+ },
+ "items": [
+  {
+   "id": "s0_0",
+   "title_orig": "Example: Terminal operator orders additional ship-to-shore cranes",
+   "title_de": "Beispiel: Terminalbetreiber bestellt weitere Containerbrücken für Kaierweiterung",
+   "lang": "en",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-10T13:27:24.074284+00:00",
+   "rubric": "haefen",
+   "countries": [
+    "NL"
+   ]
+  },
+  {
+   "id": "s0_1",
+   "title_orig": "Example: Terminal operator orders additional ship-to-shore cranes",
+   "title_de": "Beispiel: Terminalbetreiber bestellt weitere Containerbrücken für Kaierweiterung",
+   "lang": "en",
+   "source": "Beispielquelle B",
+   "url": "#",
+   "published": "2026-11-10T13:20:24.074284+00:00",
+   "rubric": "haefen",
+   "countries": [
+    "NL"
+   ]
+  },
+  {
+   "id": "s0_2",
+   "title_orig": "Example: Terminal operator orders additional ship-to-shore cranes",
+   "title_de": "Beispiel: Terminalbetreiber bestellt weitere Containerbrücken für Kaierweiterung",
+   "lang": "en",
+   "source": "Beispielquelle C",
+   "url": "#",
+   "published": "2026-11-10T13:13:24.074284+00:00",
+   "rubric": "haefen",
+   "countries": [
+    "NL"
+   ]
+  },
+  {
+   "id": "s1_0",
+   "title_orig": "Exemple : l'extension du port entre dans sa phase suivante",
+   "title_de": "Beispiel: Hafenausbau am Mittelmeer geht in die nächste Bauphase",
+   "lang": "fr",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-10T07:27:24.074284+00:00",
+   "rubric": "haefen",
+   "countries": [
+    "MA"
+   ]
+  },
+  {
+   "id": "s1_1",
+   "title_orig": "Exemple : l'extension du port entre dans sa phase suivante",
+   "title_de": "Beispiel: Hafenausbau am Mittelmeer geht in die nächste Bauphase",
+   "lang": "fr",
+   "source": "Beispielquelle B",
+   "url": "#",
+   "published": "2026-11-10T07:20:24.074284+00:00",
+   "rubric": "haefen",
+   "countries": [
+    "MA"
+   ]
+  },
+  {
+   "id": "s2_0",
+   "title_orig": "Voorbeeld: containeroverslag stijgt in het kwartaal",
+   "title_de": "Beispiel: Umschlagsvolumen im Containerverkehr steigt im Quartal",
+   "lang": "nl",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-09T10:27:24.074284+00:00",
+   "rubric": "haefen",
+   "countries": [
+    "BE"
+   ]
+  },
+  {
+   "id": "s3_0",
+   "title_orig": "Örnek: yeni RTG vinçleri duyuruldu",
+   "title_de": "Beispiel: Neue RTG-Krane für Terminal am Bosporus angekündigt",
+   "lang": "tr",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-08T09:27:24.074284+00:00",
+   "rubric": "haefen",
+   "countries": [
+    "TR"
+   ]
+  },
+  {
+   "id": "s4_0",
+   "title_orig": "Beispiel: Hafen erhält Fördermittel für Elektrifizierung der Kaikrane",
+   "title_de": "Beispiel: Hafen erhält Fördermittel für Elektrifizierung der Kaikrane",
+   "lang": "de",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-07T08:27:24.074284+00:00",
+   "rubric": "haefen",
+   "countries": []
+  },
+  {
+   "id": "s5_0",
+   "title_orig": "Example: Crane rental firm adds 750-tonne crawler cranes",
+   "title_de": "Beispiel: Kranvermieter erweitert Flotte um Raupenkrane der 750-Tonnen-Klasse",
+   "lang": "en",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-10T11:27:24.074284+00:00",
+   "rubric": "kraene",
+   "countries": []
+  },
+  {
+   "id": "s5_1",
+   "title_orig": "Example: Crane rental firm adds 750-tonne crawler cranes",
+   "title_de": "Beispiel: Kranvermieter erweitert Flotte um Raupenkrane der 750-Tonnen-Klasse",
+   "lang": "en",
+   "source": "Beispielquelle B",
+   "url": "#",
+   "published": "2026-11-10T11:20:24.074284+00:00",
+   "rubric": "kraene",
+   "countries": []
+  },
+  {
+   "id": "s6_0",
+   "title_orig": "Beispiel: Turmdrehkran-Hersteller meldet Auftragsplus im Bausektor",
+   "title_de": "Beispiel: Turmdrehkran-Hersteller meldet Auftragsplus im Bausektor",
+   "lang": "de",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-09T18:27:24.074284+00:00",
+   "rubric": "kraene",
+   "countries": []
+  },
+  {
+   "id": "s7_0",
+   "title_orig": "Example: Mobile crane market sees shorter lead times",
+   "title_de": "Beispiel: Mobilkran-Markt: Lieferzeiten verkürzen sich spürbar",
+   "lang": "en",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-08T15:27:24.074284+00:00",
+   "rubric": "kraene",
+   "countries": []
+  },
+  {
+   "id": "s8_0",
+   "title_orig": "Örnek: vinç filosunu büyüten şirket yeni siparişler",
+   "title_de": "Beispiel: Vinç filosunu büyüten şirket yeni siparişleri açıkladı",
+   "lang": "tr",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-06T11:27:24.074284+00:00",
+   "rubric": "kraene",
+   "countries": [
+    "TR"
+   ]
+  },
+  {
+   "id": "s9_0",
+   "title_orig": "Beispiel: Stahlwerk fährt Hochofen nach Wartung wieder an",
+   "title_de": "Beispiel: Stahlwerk fährt Hochofen nach Wartung wieder an",
+   "lang": "de",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-10T02:27:24.074284+00:00",
+   "rubric": "industrie",
+   "countries": []
+  },
+  {
+   "id": "s9_1",
+   "title_orig": "Beispiel: Stahlwerk fährt Hochofen nach Wartung wieder an",
+   "title_de": "Beispiel: Stahlwerk fährt Hochofen nach Wartung wieder an",
+   "lang": "de",
+   "source": "Beispielquelle B",
+   "url": "#",
+   "published": "2026-11-10T02:20:24.074284+00:00",
+   "rubric": "industrie",
+   "countries": []
+  },
+  {
+   "id": "s10_0",
+   "title_orig": "Exemple : l'industrie lourde investit dans les ponts roulants",
+   "title_de": "Beispiel: Schwerindustrie meldet höhere Investitionen in Prozesskrane",
+   "lang": "fr",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-08T23:27:24.074284+00:00",
+   "rubric": "industrie",
+   "countries": [
+    "DZ"
+   ]
+  },
+  {
+   "id": "s11_0",
+   "title_orig": "Exemple : modernisation du parc de levage",
+   "title_de": "Beispiel: Aciérie : modernisation du parc de levage prévue",
+   "lang": "fr",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-06T17:27:24.074284+00:00",
+   "rubric": "industrie",
+   "countries": [
+    "TN"
+   ]
+  },
+  {
+   "id": "s12_0",
+   "title_orig": "Beispiel: Großprojekt im Spezialtiefbau: Schlitzwand für Tunnelbaustelle",
+   "title_de": "Beispiel: Großprojekt im Spezialtiefbau: Schlitzwand für Tunnelbaustelle",
+   "lang": "de",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-09T13:27:24.074284+00:00",
+   "rubric": "tiefbau",
+   "countries": [
+    "BE"
+   ]
+  },
+  {
+   "id": "s12_1",
+   "title_orig": "Beispiel: Großprojekt im Spezialtiefbau: Schlitzwand für Tunnelbaustelle",
+   "title_de": "Beispiel: Großprojekt im Spezialtiefbau: Schlitzwand für Tunnelbaustelle",
+   "lang": "de",
+   "source": "Beispielquelle B",
+   "url": "#",
+   "published": "2026-11-09T13:20:24.074284+00:00",
+   "rubric": "tiefbau",
+   "countries": [
+    "BE"
+   ]
+  },
+  {
+   "id": "s13_0",
+   "title_orig": "Example: Drilling-rig maker presents new cable-excavator generation",
+   "title_de": "Beispiel: Bohrgerätehersteller präsentiert neue Seilbagger-Generation",
+   "lang": "en",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-07T22:27:24.074284+00:00",
+   "rubric": "tiefbau",
+   "countries": []
+  },
+  {
+   "id": "s14_0",
+   "title_orig": "Voorbeeld: diepwandproject in havengebied gegund",
+   "title_de": "Beispiel: Diepwand-project in havenomgeving gegund",
+   "lang": "nl",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-05T16:27:24.074284+00:00",
+   "rubric": "tiefbau",
+   "countries": [
+    "NL"
+   ]
+  },
+  {
+   "id": "s15_0",
+   "title_orig": "Example: EU and Turkey negotiate steel import quotas",
+   "title_de": "Beispiel: EU und Türkei verhandeln über Stahl-Einfuhrquoten",
+   "lang": "en",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-10T10:27:24.074284+00:00",
+   "rubric": "laender",
+   "countries": [
+    "TR"
+   ]
+  },
+  {
+   "id": "s15_1",
+   "title_orig": "Example: EU and Turkey negotiate steel import quotas",
+   "title_de": "Beispiel: EU und Türkei verhandeln über Stahl-Einfuhrquoten",
+   "lang": "en",
+   "source": "Beispielquelle B",
+   "url": "#",
+   "published": "2026-11-10T10:20:24.074284+00:00",
+   "rubric": "laender",
+   "countries": [
+    "TR"
+   ]
+  },
+  {
+   "id": "s15_2",
+   "title_orig": "Example: EU and Turkey negotiate steel import quotas",
+   "title_de": "Beispiel: EU und Türkei verhandeln über Stahl-Einfuhrquoten",
+   "lang": "en",
+   "source": "Beispielquelle C",
+   "url": "#",
+   "published": "2026-11-10T10:13:24.074284+00:00",
+   "rubric": "laender",
+   "countries": [
+    "TR"
+   ]
+  },
+  {
+   "id": "s15_3",
+   "title_orig": "Example: EU and Turkey negotiate steel import quotas",
+   "title_de": "Beispiel: EU und Türkei verhandeln über Stahl-Einfuhrquoten",
+   "lang": "en",
+   "source": "Beispielquelle D",
+   "url": "#",
+   "published": "2026-11-10T10:06:24.074284+00:00",
+   "rubric": "laender",
+   "countries": [
+    "TR"
+   ]
+  },
+  {
+   "id": "s16_0",
+   "title_orig": "Exemple : le Maroc abaisse les droits de douane sur les équipements",
+   "title_de": "Beispiel: Marokko senkt Einfuhrzölle auf Industrieausrüstung",
+   "lang": "fr",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-09T22:27:24.074284+00:00",
+   "rubric": "laender",
+   "countries": [
+    "MA"
+   ]
+  },
+  {
+   "id": "s16_1",
+   "title_orig": "Exemple : le Maroc abaisse les droits de douane sur les équipements",
+   "title_de": "Beispiel: Marokko senkt Einfuhrzölle auf Industrieausrüstung",
+   "lang": "fr",
+   "source": "Beispielquelle B",
+   "url": "#",
+   "published": "2026-11-09T22:20:24.074284+00:00",
+   "rubric": "laender",
+   "countries": [
+    "MA"
+   ]
+  },
+  {
+   "id": "s17_0",
+   "title_orig": "Exemple : l'Algérie assouplit les règles d'importation",
+   "title_de": "Beispiel: Algerien lockert Importregeln für Maschinen",
+   "lang": "fr",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-09T04:27:24.074284+00:00",
+   "rubric": "laender",
+   "countries": [
+    "DZ"
+   ]
+  },
+  {
+   "id": "s18_0",
+   "title_orig": "Exemple : Tunisie, devise et conjoncture",
+   "title_de": "Beispiel: Tunesien: Währung und Konjunktur im Überblick",
+   "lang": "fr",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-08T12:27:24.074284+00:00",
+   "rubric": "laender",
+   "countries": [
+    "TN"
+   ]
+  },
+  {
+   "id": "s19_0",
+   "title_orig": "Example: Israel port logistics back to normal",
+   "title_de": "Beispiel: Israel: Hafenlogistik nach Störungen wieder im Normalbetrieb",
+   "lang": "en",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-08T04:27:24.074284+00:00",
+   "rubric": "laender",
+   "countries": [
+    "IL"
+   ]
+  },
+  {
+   "id": "s19_1",
+   "title_orig": "Example: Israel port logistics back to normal",
+   "title_de": "Beispiel: Israel: Hafenlogistik nach Störungen wieder im Normalbetrieb",
+   "lang": "en",
+   "source": "Beispielquelle B",
+   "url": "#",
+   "published": "2026-11-08T04:20:24.074284+00:00",
+   "rubric": "laender",
+   "countries": [
+    "IL"
+   ]
+  },
+  {
+   "id": "s20_0",
+   "title_orig": "Voorbeeld: staking in de haven aangekondigd",
+   "title_de": "Beispiel: Belgien: Streik im Hafenbetrieb angekündigt",
+   "lang": "nl",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-07T13:27:24.074284+00:00",
+   "rubric": "laender",
+   "countries": [
+    "BE"
+   ]
+  },
+  {
+   "id": "s20_1",
+   "title_orig": "Voorbeeld: staking in de haven aangekondigd",
+   "title_de": "Beispiel: Belgien: Streik im Hafenbetrieb angekündigt",
+   "lang": "nl",
+   "source": "Beispielquelle B",
+   "url": "#",
+   "published": "2026-11-07T13:20:24.074284+00:00",
+   "rubric": "laender",
+   "countries": [
+    "BE"
+   ]
+  },
+  {
+   "id": "s21_0",
+   "title_orig": "Beispiel: Niederlande: Konjunkturprognose für die Industrie angehoben",
+   "title_de": "Beispiel: Niederlande: Konjunkturprognose für die Industrie angehoben",
+   "lang": "de",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-07T00:27:24.074284+00:00",
+   "rubric": "laender",
+   "countries": [
+    "NL"
+   ]
+  },
+  {
+   "id": "s22_0",
+   "title_orig": "Beispiel: Stahlwerk kündigt neuen Legierungszuschlag für Walzdraht an",
+   "title_de": "Beispiel: Stahlwerk kündigt neuen Legierungszuschlag für Walzdraht an",
+   "lang": "de",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-10T12:27:24.074284+00:00",
+   "rubric": "rohstoffe",
+   "countries": []
+  },
+  {
+   "id": "s22_1",
+   "title_orig": "Beispiel: Stahlwerk kündigt neuen Legierungszuschlag für Walzdraht an",
+   "title_de": "Beispiel: Stahlwerk kündigt neuen Legierungszuschlag für Walzdraht an",
+   "lang": "de",
+   "source": "Beispielquelle B",
+   "url": "#",
+   "published": "2026-11-10T12:20:24.074284+00:00",
+   "rubric": "rohstoffe",
+   "countries": []
+  },
+  {
+   "id": "s22_2",
+   "title_orig": "Beispiel: Stahlwerk kündigt neuen Legierungszuschlag für Walzdraht an",
+   "title_de": "Beispiel: Stahlwerk kündigt neuen Legierungszuschlag für Walzdraht an",
+   "lang": "de",
+   "source": "Beispielquelle C",
+   "url": "#",
+   "published": "2026-11-10T12:13:24.074284+00:00",
+   "rubric": "rohstoffe",
+   "countries": []
+  },
+  {
+   "id": "s23_0",
+   "title_orig": "Example: Zinc price climbs, galvanizers expect surcharges",
+   "title_de": "Beispiel: Zinkpreis zieht an – Verzinkereien rechnen mit Aufschlägen",
+   "lang": "en",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-09T20:27:24.074284+00:00",
+   "rubric": "rohstoffe",
+   "countries": []
+  },
+  {
+   "id": "s23_1",
+   "title_orig": "Example: Zinc price climbs, galvanizers expect surcharges",
+   "title_de": "Beispiel: Zinkpreis zieht an – Verzinkereien rechnen mit Aufschlägen",
+   "lang": "en",
+   "source": "Beispielquelle B",
+   "url": "#",
+   "published": "2026-11-09T20:20:24.074284+00:00",
+   "rubric": "rohstoffe",
+   "countries": []
+  },
+  {
+   "id": "s24_0",
+   "title_orig": "Example: EU weighs extension of steel safeguard",
+   "title_de": "Beispiel: EU berät über Verlängerung der Stahl-Schutzmaßnahmen",
+   "lang": "en",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-08T20:27:24.074284+00:00",
+   "rubric": "rohstoffe",
+   "countries": []
+  },
+  {
+   "id": "s24_1",
+   "title_orig": "Example: EU weighs extension of steel safeguard",
+   "title_de": "Beispiel: EU berät über Verlängerung der Stahl-Schutzmaßnahmen",
+   "lang": "en",
+   "source": "Beispielquelle B",
+   "url": "#",
+   "published": "2026-11-08T20:20:24.074284+00:00",
+   "rubric": "rohstoffe",
+   "countries": []
+  },
+  {
+   "id": "s24_2",
+   "title_orig": "Example: EU weighs extension of steel safeguard",
+   "title_de": "Beispiel: EU berät über Verlängerung der Stahl-Schutzmaßnahmen",
+   "lang": "en",
+   "source": "Beispielquelle C",
+   "url": "#",
+   "published": "2026-11-08T20:13:24.074284+00:00",
+   "rubric": "rohstoffe",
+   "countries": []
+  },
+  {
+   "id": "s25_0",
+   "title_orig": "Beispiel: Schrottpreise geben nach – Marktteilnehmer abwartend",
+   "title_de": "Beispiel: Schrottpreise geben nach – Marktteilnehmer abwartend",
+   "lang": "de",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-07T18:27:24.074284+00:00",
+   "rubric": "rohstoffe",
+   "countries": []
+  },
+  {
+   "id": "s26_0",
+   "title_orig": "Example: Rope maker opens new plant for crane ropes",
+   "title_de": "Beispiel: Seilhersteller eröffnet neues Werk für Kranseile",
+   "lang": "en",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-10T05:27:24.074284+00:00",
+   "rubric": "markt",
+   "countries": []
+  },
+  {
+   "id": "s26_1",
+   "title_orig": "Example: Rope maker opens new plant for crane ropes",
+   "title_de": "Beispiel: Seilhersteller eröffnet neues Werk für Kranseile",
+   "lang": "en",
+   "source": "Beispielquelle B",
+   "url": "#",
+   "published": "2026-11-10T05:20:24.074284+00:00",
+   "rubric": "markt",
+   "countries": []
+  },
+  {
+   "id": "s27_0",
+   "title_orig": "Example: Wire rope market: demand for high-performance ropes grows",
+   "title_de": "Beispiel: Wire-rope-Markt: Nachfrage nach Hochleistungsseilen wächst",
+   "lang": "en",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-08T06:27:24.074284+00:00",
+   "rubric": "markt",
+   "countries": []
+  },
+  {
+   "id": "s28_0",
+   "title_orig": "Örnek: çelik halat üreticisi ihracatını artırdı",
+   "title_de": "Beispiel: Çelik halat üreticisi ihracatını artırdı",
+   "lang": "tr",
+   "source": "Beispielquelle A",
+   "url": "#",
+   "published": "2026-11-06T02:27:24.074284+00:00",
+   "rubric": "markt",
+   "countries": [
+    "TR"
+   ]
+  }
+ ]
+}

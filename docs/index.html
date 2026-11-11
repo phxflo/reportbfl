@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Der Seil-Report</title>
+<meta name="description" content="Marktbeobachtung für Industrie-Stahlseile · Export & Regionalvertrieb">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23c2410c'/%3E%3Cpath d='M8 24 L24 8 M8 18 L18 8 M14 24 L24 14' stroke='%23fff' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f5f1e8; --card:#fbf9f4; --ink:#17181a; --muted:#5f6368; --rule:#d8d2c3; --rule-strong:#17181a;
+  --accent:#c2410c; --accent-soft:rgba(194,65,12,.12); --chip:#ebe5d6;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif; --display:"Playfair Display","Didot",Georgia,serif; --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --paper:#121417; --card:#1a1d21; --ink:#ecebe6; --muted:#a2a6ad; --rule:#2c3138; --rule-strong:#ecebe6;
+  --accent:#f08a4b; --accent-soft:rgba(240,138,75,.16); --chip:#242830;
+}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:56px}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.5 var(--serif);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:hover .h,a.h:hover{text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px;text-decoration-thickness:2px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+.sans{font-family:var(--sans)}
+
+/* Vorschau-Hinweis */
+.sample{background:var(--accent);color:#fff;font:600 13px/1.4 var(--sans);text-align:center;padding:8px 16px}
+.errors{background:var(--chip);border-left:4px solid var(--accent);font:13px var(--sans);padding:8px 14px;margin:12px 0}
+
+/* Kopfzeile */
+.topbar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding:10px 0;font:500 12px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.mast{text-align:center;padding:26px 0 14px;border-bottom:3px double var(--rule-strong)}
+.mast h1{margin:0;font:900 clamp(40px,8vw,84px)/1 var(--display);letter-spacing:-.015em}
+.mast h1 span{color:var(--accent)}
+.mast p{margin:10px 0 0;font:italic 400 clamp(14px,2vw,18px) var(--serif);color:var(--muted)}
+
+/* Navigation */
+nav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--rule-strong);margin-bottom:26px}
+nav .wrap{display:flex;gap:4px;align-items:center;overflow-x:auto;scrollbar-width:none}
+nav a{font:600 12px var(--sans);letter-spacing:.07em;text-transform:uppercase;padding:14px 10px;white-space:nowrap;color:var(--ink)}
+nav a:hover{color:var(--accent)}
+nav input{margin-left:auto;font:14px var(--sans);padding:7px 12px;border:1px solid var(--rule);border-radius:99px;background:var(--card);color:var(--ink);min-width:150px}
+
+/* Rubrikenkopf */
+.kicker{display:flex;align-items:baseline;gap:14px;border-top:3px solid var(--rule-strong);padding-top:10px;margin:0 0 18px}
+.kicker b{font:900 14px var(--display);color:var(--accent);letter-spacing:.05em}
+.kicker h2{margin:0;font:700 clamp(22px,3vw,30px)/1.15 var(--display)}
+.kicker small{margin-left:auto;font:500 12px var(--sans);color:var(--muted);white-space:nowrap}
+section{margin-bottom:46px}
+
+/* Kennzahlen */
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px}
+.chart{background:var(--card);border:1px solid var(--rule);padding:16px 18px 10px}
+.chart header{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.chart h3{margin:0;font:700 19px/1.2 var(--display)}
+.chart .sub{font:12px var(--sans);color:var(--muted);margin-top:3px}
+.chart .val{text-align:right;flex:none}
+.chart .big{font:900 34px/1 var(--display);letter-spacing:-.01em}
+.chart .per{font:500 11px var(--sans);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.deltas{display:flex;gap:16px;font:600 12.5px var(--sans);margin:10px 0 2px;flex-wrap:wrap}
+.deltas span em{font-style:normal;font-weight:400;color:var(--muted)}
+.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.chart text{font:10.5px var(--sans);fill:var(--muted)}
+.chart .grid{stroke:var(--rule);stroke-width:1}
+.chart .line{fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+.chart .area{fill:var(--accent);opacity:.1}
+.chart .dot{fill:var(--accent);stroke:var(--card);stroke-width:2}
+.chart .hit{fill:transparent}
+.chart .hit:hover{fill:var(--accent-soft)}
+.chart footer{font:11px var(--sans);color:var(--muted);padding:2px 0 4px}
+.chart footer a{text-decoration:underline}
+
+/* Top-News */
+.front{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:34px}
+.lead .tag,.card .tag{font:600 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.lead h3{font:900 clamp(28px,4.2vw,46px)/1.08 var(--display);margin:8px 0 12px;letter-spacing:-.01em}
+.lead .orig{font:italic 15px/1.4 var(--serif);color:var(--muted);margin:0 0 10px}
+.meta{font:12.5px var(--sans);color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+.pill{font:600 10px var(--sans);letter-spacing:.06em;padding:2px 6px;border-radius:3px;background:var(--chip);color:var(--ink)}
+.pill.new{background:var(--accent);color:#fff}
+.pill.c{background:transparent;border:1px solid var(--rule)}
+.side{display:flex;flex-direction:column}
+.side article{padding:14px 0;border-top:1px solid var(--rule)}
+.side article:first-child{border-top:0;padding-top:0}
+.side h4{margin:4px 0 6px;font:700 19px/1.25 var(--display)}
+.numbered{counter-reset:n}
+.numbered article{position:relative;padding-left:38px;counter-increment:n}
+.numbered article::before{content:counter(n);position:absolute;left:0;top:11px;font:900 28px/1 var(--display);color:var(--accent)}
+.numbered article:first-child::before{top:-3px}
+.leadwrap{border-right:1px solid var(--rule);padding-right:34px}
+.rail{display:grid;gap:22px;align-content:start}
+.box{background:var(--card);border:1px solid var(--rule);border-top:3px solid var(--rule-strong);padding:14px 16px}
+.box h3{margin:0 0 10px;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.box ul{list-style:none;margin:0;padding:0}
+.box li{padding:8px 0;border-top:1px solid var(--rule);font:600 14.5px/1.3 var(--serif)}
+.box li:first-child{border-top:0}
+.box li .meta{margin-top:3px;font-weight:400}
+.radar{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px}
+.radar a{display:block;background:var(--chip);padding:8px 10px;border-radius:4px;font:600 12px var(--sans)}
+.radar a b{display:block;font:900 24px/1.1 var(--display);color:var(--accent)}
+.radar a.zero b{color:var(--muted)}
+.radar a:hover{outline:2px solid var(--accent)}
+
+/* Rubriken-Raster */
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 28px}
+.card{padding:14px 0 16px;border-top:1px solid var(--rule)}
+.card h4{margin:5px 0 8px;font:700 19px/1.27 var(--display)}
+.card .others{font:12px var(--sans);color:var(--muted);margin-top:4px}
+.sec{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:0 28px}
+.sec .rest{border-left:1px solid var(--rule);padding-left:28px}
+.sec .rest .card:first-child{border-top:0;padding-top:0}
+.card.feat{border-top:0;padding-top:0}
+.card.feat h4{font:900 clamp(24px,3vw,36px)/1.1 var(--display)}
+.card.feat .orig{display:block}
+.grid3{margin-top:4px}
+.card .orig{display:none;font:italic 14.5px/1.4 var(--serif);color:var(--muted);margin:0 0 8px}
+details.more{margin-top:8px}
+details.more summary{cursor:pointer;font:600 12px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--accent);padding:6px 0;list-style:none}
+details.more summary::before{content:"+ "}
+details.more[open] summary::before{content:"− "}
+.empty{font:italic 15px var(--serif);color:var(--muted);padding:6px 0 14px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:-4px 0 14px}
+.chips button{font:600 12px var(--sans);padding:6px 12px;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:99px;cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.hidden{display:none!important}
+
+footer.site{border-top:3px double var(--rule-strong);padding:22px 0 50px;font:13px/1.6 var(--sans);color:var(--muted)}
+footer.site strong{color:var(--ink)}
+
+@media (max-width:980px){
+  .front{grid-template-columns:1fr}.leadwrap{border-right:0;padding-right:0}
+  .grid3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sec{grid-template-columns:1fr}.sec .rest{border-left:0;padding-left:0}
+}
+@media (max-width:600px){
+  body{font-size:16px}.wrap{padding:0 16px}
+  .grid3{grid-template-columns:1fr}
+  nav input{display:none}.kicker small{display:none}
+  .chart .big{font-size:28px}
+}
+@media print{nav,.chips,nav input{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+<div class="sample">VORSCHAU MIT BEISPIELDATEN – Überschriften, Quellen und Zahlen sind erfunden. Echte Meldungen erscheinen nach dem ersten automatischen Lauf.</div>
+
+
+
+<div class="wrap">
+  <div class="topbar"><span>Dienstag, 10. Nov 2026</span><span>Ausgabe Nr. 314</span><span>Stand 10.11.2026, 17:28 Uhr</span></div>
+  <header class="mast">
+    <h1>Der <span>Seil-Report</span></h1>
+    <p>Marktbeobachtung für Industrie-Stahlseile · Export & Regionalvertrieb</p>
+  </header>
+</div>
+
+<nav aria-label="Rubriken"><div class="wrap">
+  <a href="#kennzahlen">Kennzahlen</a><a href="#top">Top-News</a>
+  <a href="#haefen">Häfen</a><a href="#kraene">Krane</a><a href="#industrie">Industrie</a><a href="#tiefbau">Spezialtiefbau</a><a href="#laender">Länder</a><a href="#rohstoffe">Rohstoffe</a><a href="#markt">Markt</a>
+  <input id="q" type="search" placeholder="Suchen …" aria-label="Meldungen durchsuchen">
+</div></nav>
+
+<main class="wrap">
+  
+
+  
+  <section id="kennzahlen">
+    <div class="kicker"><b>★</b><h2>Kennzahlen</h2><small>Quelle: Statistisches Bundesamt (Destatis)</small></div>
+    <div class="charts">
+      
+      <div class="chart">
+        <header>
+          <div><h3>Erzeugerpreisindex – kaltgezogener Draht</h3><div class="sub">GP19-2434 · Destatis · monatlich</div></div>
+          <div class="val"><div class="big">137,7</div><div class="per">Sep 2026</div></div>
+        </header>
+        <div class="deltas">
+          <span>▲ +0,6 % <em>ggü. Vormonat</em></span>
+          <span>▲ +9,7 % <em>ggü. Vorjahr</em></span>
+        </div>
+        <svg viewBox="0 0 560 200" role="img" aria-label="Erzeugerpreisindex – kaltgezogener Draht, Verlauf von Okt 2023 bis Sep 2026"><line class="grid" x1="44" x2="546" y1="172.0" y2="172.0"/><text x="38" y="176.0" text-anchor="end">122</text><line class="grid" x1="44" x2="546" y1="119.3" y2="119.3"/><text x="38" y="123.3" text-anchor="end">131</text><line class="grid" x1="44" x2="546" y1="66.7" y2="66.7"/><text x="38" y="70.7" text-anchor="end">140</text><line class="grid" x1="44" x2="546" y1="14.0" y2="14.0"/><text x="38" y="18.0" text-anchor="end">149</text><text x="44.0" y="192" text-anchor="start">Okt 23</text><text x="173.1" y="192" text-anchor="middle">Jul 24</text><text x="302.2" y="192" text-anchor="middle">Apr 25</text><text x="431.3" y="192" text-anchor="middle">Jan 26</text><text x="546.0" y="192" text-anchor="end">Sep 26</text><path class="area" d="M44.0,76.6 L58.3,63.8 L72.7,59.1 L87.0,53.3 L101.4,41.6 L115.7,34.6 L130.1,36.3 L144.4,34.6 L158.7,29.3 L173.1,33.4 L187.4,42.7 L201.8,46.2 L216.1,50.3 L230.5,63.8 L244.8,77.2 L259.1,83.6 L273.5,93.6 L287.8,110.0 L302.2,121.6 L316.5,126.3 L330.9,135.7 L345.2,147.9 L359.5,150.9 L373.9,149.7 L388.2,154.4 L402.6,156.7 L416.9,149.7 L431.3,142.7 L445.6,140.9 L459.9,134.5 L474.3,120.5 L488.6,111.1 L503.0,107.0 L517.3,96.5 L531.7,83.1 L546.0,78.4 L546.0,172 L44.0,172 Z"/><path class="line" d="M44.0,76.6 L58.3,63.8 L72.7,59.1 L87.0,53.3 L101.4,41.6 L115.7,34.6 L130.1,36.3 L144.4,34.6 L158.7,29.3 L173.1,33.4 L187.4,42.7 L201.8,46.2 L216.1,50.3 L230.5,63.8 L244.8,77.2 L259.1,83.6 L273.5,93.6 L287.8,110.0 L302.2,121.6 L316.5,126.3 L330.9,135.7 L345.2,147.9 L359.5,150.9 L373.9,149.7 L388.2,154.4 L402.6,156.7 L416.9,149.7 L431.3,142.7 L445.6,140.9 L459.9,134.5 L474.3,120.5 L488.6,111.1 L503.0,107.0 L517.3,96.5 L531.7,83.1 L546.0,78.4"/><circle class="hit" cx="44.0" cy="76.6" r="7"><title>Okt 2023: 138,0</title></circle><circle class="hit" cx="58.3" cy="63.8" r="7"><title>Nov 2023: 140,2</title></circle><circle class="hit" cx="72.7" cy="59.1" r="7"><title>Dez 2023: 141,0</title></circle><circle class="hit" cx="87.0" cy="53.3" r="7"><title>Jan 2024: 142,0</title></circle><circle class="hit" cx="101.4" cy="41.6" r="7"><title>Feb 2024: 144,0</title></circle><circle class="hit" cx="115.7" cy="34.6" r="7"><title>Mär 2024: 145,2</title></circle><circle class="hit" cx="130.1" cy="36.3" r="7"><title>Apr 2024: 144,9</title></circle><circle class="hit" cx="144.4" cy="34.6" r="7"><title>Mai 2024: 145,2</title></circle><circle class="hit" cx="158.7" cy="29.3" r="7"><title>Jun 2024: 146,1</title></circle><circle class="hit" cx="173.1" cy="33.4" r="7"><title>Jul 2024: 145,4</title></circle><circle class="hit" cx="187.4" cy="42.7" r="7"><title>Aug 2024: 143,8</title></circle><circle class="hit" cx="201.8" cy="46.2" r="7"><title>Sep 2024: 143,2</title></circle><circle class="hit" cx="216.1" cy="50.3" r="7"><title>Okt 2024: 142,5</title></circle><circle class="hit" cx="230.5" cy="63.8" r="7"><title>Nov 2024: 140,2</title></circle><circle class="hit" cx="244.8" cy="77.2" r="7"><title>Dez 2024: 137,9</title></circle><circle class="hit" cx="259.1" cy="83.6" r="7"><title>Jan 2025: 136,8</title></circle><circle class="hit" cx="273.5" cy="93.6" r="7"><title>Feb 2025: 135,1</title></circle><circle class="hit" cx="287.8" cy="110.0" r="7"><title>Mär 2025: 132,3</title></circle><circle class="hit" cx="302.2" cy="121.6" r="7"><title>Apr 2025: 130,3</title></circle><circle class="hit" cx="316.5" cy="126.3" r="7"><title>Mai 2025: 129,5</title></circle><circle class="hit" cx="330.9" cy="135.7" r="7"><title>Jun 2025: 127,9</title></circle><circle class="hit" cx="345.2" cy="147.9" r="7"><title>Jul 2025: 125,8</title></circle><circle class="hit" cx="359.5" cy="150.9" r="7"><title>Aug 2025: 125,3</title></circle><circle class="hit" cx="373.9" cy="149.7" r="7"><title>Sep 2025: 125,5</title></circle><circle class="hit" cx="388.2" cy="154.4" r="7"><title>Okt 2025: 124,7</title></circle><circle class="hit" cx="402.6" cy="156.7" r="7"><title>Nov 2025: 124,3</title></circle><circle class="hit" cx="416.9" cy="149.7" r="7"><title>Dez 2025: 125,5</title></circle><circle class="hit" cx="431.3" cy="142.7" r="7"><title>Jan 2026: 126,7</title></circle><circle class="hit" cx="445.6" cy="140.9" r="7"><title>Feb 2026: 127,0</title></circle><circle class="hit" cx="459.9" cy="134.5" r="7"><title>Mär 2026: 128,1</title></circle><circle class="hit" cx="474.3" cy="120.5" r="7"><title>Apr 2026: 130,5</title></circle><circle class="hit" cx="488.6" cy="111.1" r="7"><title>Mai 2026: 132,1</title></circle><circle class="hit" cx="503.0" cy="107.0" r="7"><title>Jun 2026: 132,8</title></circle><circle class="hit" cx="517.3" cy="96.5" r="7"><title>Jul 2026: 134,6</title></circle><circle class="hit" cx="531.7" cy="83.1" r="7"><title>Aug 2026: 136,9</title></circle><circle class="hit" cx="546.0" cy="78.4" r="7"><title>Sep 2026: 137,7</title></circle><circle class="dot" cx="546.0" cy="78.4" r="4.5"/></svg>
+        <footer>Tabelle <a href="https://www-genesis.destatis.de/datenbank/online/table/61241-0004" target="_blank" rel="noopener">61241-0004</a> · abgerufen Beispiel</footer>
+      </div>
+      
+      <div class="chart">
+        <header>
+          <div><h3>Arbeitskostenindex – Verarbeitendes Gewerbe</h3><div class="sub">Destatis · quartalsweise</div></div>
+          <div class="val"><div class="big">122,0</div><div class="per">Q2 2026</div></div>
+        </header>
+        <div class="deltas">
+          <span>▲ +1,6 % <em>ggü. Vorquartal</em></span>
+          <span>▲ +3,6 % <em>ggü. Vorjahr</em></span>
+        </div>
+        <svg viewBox="0 0 560 200" role="img" aria-label="Arbeitskostenindex – Verarbeitendes Gewerbe, Verlauf von Q3 2021 bis Q2 2026"><line class="grid" x1="44" x2="546" y1="172.0" y2="172.0"/><text x="38" y="176.0" text-anchor="end">97</text><line class="grid" x1="44" x2="546" y1="119.3" y2="119.3"/><text x="38" y="123.3" text-anchor="end">106</text><line class="grid" x1="44" x2="546" y1="66.7" y2="66.7"/><text x="38" y="70.7" text-anchor="end">116</text><line class="grid" x1="44" x2="546" y1="14.0" y2="14.0"/><text x="38" y="18.0" text-anchor="end">125</text><text x="44.0" y="192" text-anchor="start">Q3 21</text><text x="176.1" y="192" text-anchor="middle">Q4 22</text><text x="308.2" y="192" text-anchor="middle">Q1 24</text><text x="440.3" y="192" text-anchor="middle">Q2 25</text><text x="546.0" y="192" text-anchor="end">Q2 26</text><path class="area" d="M44.0,156.7 L70.4,146.3 L96.8,139.3 L123.3,135.9 L149.7,133.5 L176.1,127.8 L202.5,117.9 L228.9,106.9 L255.4,98.8 L281.8,94.7 L308.2,92.4 L334.6,87.8 L361.1,79.1 L387.5,68.1 L413.9,58.8 L440.3,53.6 L466.7,51.3 L493.2,47.8 L519.6,40.3 L546.0,29.3 L546.0,172 L44.0,172 Z"/><path class="line" d="M44.0,156.7 L70.4,146.3 L96.8,139.3 L123.3,135.9 L149.7,133.5 L176.1,127.8 L202.5,117.9 L228.9,106.9 L255.4,98.8 L281.8,94.7 L308.2,92.4 L334.6,87.8 L361.1,79.1 L387.5,68.1 L413.9,58.8 L440.3,53.6 L466.7,51.3 L493.2,47.8 L519.6,40.3 L546.0,29.3"/><circle class="hit" cx="44.0" cy="156.7" r="7"><title>Q3 2021: 100,0</title></circle><circle class="hit" cx="70.4" cy="146.3" r="7"><title>Q4 2021: 101,8</title></circle><circle class="hit" cx="96.8" cy="139.3" r="7"><title>Q1 2022: 103,0</title></circle><circle class="hit" cx="123.3" cy="135.9" r="7"><title>Q2 2022: 103,6</title></circle><circle class="hit" cx="149.7" cy="133.5" r="7"><title>Q3 2022: 104,0</title></circle><circle class="hit" cx="176.1" cy="127.8" r="7"><title>Q4 2022: 105,0</title></circle><circle class="hit" cx="202.5" cy="117.9" r="7"><title>Q1 2023: 106,7</title></circle><circle class="hit" cx="228.9" cy="106.9" r="7"><title>Q2 2023: 108,6</title></circle><circle class="hit" cx="255.4" cy="98.8" r="7"><title>Q3 2023: 110,0</title></circle><circle class="hit" cx="281.8" cy="94.7" r="7"><title>Q4 2023: 110,7</title></circle><circle class="hit" cx="308.2" cy="92.4" r="7"><title>Q1 2024: 111,1</title></circle><circle class="hit" cx="334.6" cy="87.8" r="7"><title>Q2 2024: 111,9</title></circle><circle class="hit" cx="361.1" cy="79.1" r="7"><title>Q3 2024: 113,4</title></circle><circle class="hit" cx="387.5" cy="68.1" r="7"><title>Q4 2024: 115,3</title></circle><circle class="hit" cx="413.9" cy="58.8" r="7"><title>Q1 2025: 116,9</title></circle><circle class="hit" cx="440.3" cy="53.6" r="7"><title>Q2 2025: 117,8</title></circle><circle class="hit" cx="466.7" cy="51.3" r="7"><title>Q3 2025: 118,2</title></circle><circle class="hit" cx="493.2" cy="47.8" r="7"><title>Q4 2025: 118,8</title></circle><circle class="hit" cx="519.6" cy="40.3" r="7"><title>Q1 2026: 120,1</title></circle><circle class="hit" cx="546.0" cy="29.3" r="7"><title>Q2 2026: 122,0</title></circle><circle class="dot" cx="546.0" cy="29.3" r="4.5"/></svg>
+        <footer>Tabelle <a href="https://www-genesis.destatis.de/datenbank/online/table/62421-0001" target="_blank" rel="noopener">62421-0001</a> · abgerufen Beispiel</footer>
+      </div>
+      
+    </div>
+  </section>
+  
+
+  <section id="top">
+    <div class="kicker"><b>★</b><h2>Top-News der Woche</h2><small>29 Meldungen · 10 neu in 24 h · 4 Quellen</small></div>
+    
+    <div class="front">
+      <div class="leadwrap lead">
+        
+        <div class="meta"><span class="tag">Rohstoffe</span><span class="pill new">NEU</span></div>
+        <h3><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Stahlwerk kündigt neuen Legierungszuschlag für Walzdraht an</a></h3>
+        
+        <div class="meta"><span>Beispielquelle A</span><span>·</span><span>10.11., 13:27</span>
+          <span class="pill">3 Quellen</span>
+          </div>
+        <div class="side numbered" style="margin-top:26px;border-top:3px solid var(--rule-strong);padding-top:16px">
+          
+          <article>
+            <div class="meta"><span class="tag">Rohstoffe</span></div>
+            <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: EU berät über Verlängerung der Stahl-Schutzmaßnahmen</a></h4>
+            <div class="meta"><span>Beispielquelle A</span><span>·</span><span>08.11., 21:27</span><span class="pill">3 Quellen</span></div>
+          </article>
+          
+          <article>
+            <div class="meta"><span class="tag">Länder</span><span class="pill new">NEU</span></div>
+            <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: EU und Türkei verhandeln über Stahl-Einfuhrquoten</a></h4>
+            <div class="meta"><span>Beispielquelle A</span><span>·</span><span>10.11., 11:27</span><span class="pill">4 Quellen</span></div>
+          </article>
+          
+          <article>
+            <div class="meta"><span class="tag">Länder</span><span class="pill new">NEU</span></div>
+            <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Marokko senkt Einfuhrzölle auf Industrieausrüstung</a></h4>
+            <div class="meta"><span>Beispielquelle A</span><span>·</span><span>09.11., 23:27</span><span class="pill">2 Quellen</span></div>
+          </article>
+          
+          <article>
+            <div class="meta"><span class="tag">Häfen</span><span class="pill new">NEU</span></div>
+            <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Terminalbetreiber bestellt weitere Containerbrücken für Kaierweiterung</a></h4>
+            <div class="meta"><span>Beispielquelle A</span><span>·</span><span>10.11., 14:27</span><span class="pill">3 Quellen</span></div>
+          </article>
+          
+        </div>
+      </div>
+      <aside class="rail">
+        <div class="box">
+          <h3>Länder-Radar · 7 Tage</h3>
+          <div class="radar">
+            <a href="#laender" class="" data-jump="BE" title="Beispiel: Großprojekt im Spezialtiefbau: Schlitzwand für Tunnelbaustelle"><b>3</b>Belgien</a><a href="#laender" class="" data-jump="NL" title="Beispiel: Terminalbetreiber bestellt weitere Containerbrücken für Kaierweiterung"><b>3</b>Niederlande</a><a href="#laender" class="" data-jump="MA" title="Beispiel: Hafenausbau am Mittelmeer geht in die nächste Bauphase"><b>2</b>Marokko</a><a href="#laender" class="" data-jump="DZ" title="Beispiel: Algerien lockert Importregeln für Maschinen"><b>2</b>Algerien</a><a href="#laender" class="" data-jump="TN" title="Beispiel: Tunesien: Währung und Konjunktur im Überblick"><b>2</b>Tunesien</a><a href="#laender" class="" data-jump="IL" title="Beispiel: Israel: Hafenlogistik nach Störungen wieder im Normalbetrieb"><b>1</b>Israel</a><a href="#laender" class="" data-jump="TR" title="Beispiel: EU und Türkei verhandeln über Stahl-Einfuhrquoten"><b>4</b>Türkei</a>
+          </div>
+        </div>
+        <div class="box">
+          <h3>Zuschlags-Radar</h3>
+          <ul>
+            <li><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Stahlwerk kündigt neuen Legierungszuschlag für Walzdraht an</a>
+              <div class="meta"><span>Beispielquelle A</span><span>·</span><span>10.11., 13:27</span></div></li>
+          
+            <li><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Zinkpreis zieht an – Verzinkereien rechnen mit Aufschlägen</a>
+              <div class="meta"><span>Beispielquelle A</span><span>·</span><span>09.11., 21:27</span></div></li>
+          
+            <li><a class="h" href="#" target="_blank" rel="noopener">Beispiel: EU berät über Verlängerung der Stahl-Schutzmaßnahmen</a>
+              <div class="meta"><span>Beispielquelle A</span><span>·</span><span>08.11., 21:27</span></div></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+    
+  </section>
+
+  
+  <section id="haefen" data-section>
+    <div class="kicker"><b>01</b><h2>Häfen, Terminals & Güterumschlag</h2><small>5 in 7 Tagen</small></div>
+    
+    
+    <div class="sec">
+      <div>
+<article class="card feat" data-rubric="haefen" data-countries="NL">
+  <div class="meta"><span class="tag">Häfen</span><span class="pill new">NEU</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Terminalbetreiber bestellt weitere Containerbrücken für Kaierweiterung</a></h4>
+  <p class="orig">Original (EN): Example: Terminal operator orders additional ship-to-shore cranes</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>10.11., 14:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">EN→DE</span>
+    <span class="pill c">NL</span>
+  </div>
+  <div class="others">3 Quellen berichten: auch Beispielquelle B, Beispielquelle C</div>
+</article>
+</div>
+      <div class="rest">
+<article class="card " data-rubric="haefen" data-countries="MA">
+  <div class="meta"><span class="tag">Häfen</span><span class="pill new">NEU</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Hafenausbau am Mittelmeer geht in die nächste Bauphase</a></h4>
+  <p class="orig">Original (FR): Exemple : l'extension du port entre dans sa phase suivante</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>10.11., 08:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">FR→DE</span>
+    <span class="pill c">MA</span>
+  </div>
+  <div class="others">2 Quellen berichten: auch Beispielquelle B</div>
+</article>
+
+<article class="card " data-rubric="haefen" data-countries="BE">
+  <div class="meta"><span class="tag">Häfen</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Umschlagsvolumen im Containerverkehr steigt im Quartal</a></h4>
+  <p class="orig">Original (NL): Voorbeeld: containeroverslag stijgt in het kwartaal</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>09.11., 11:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">NL→DE</span>
+    <span class="pill c">BE</span>
+  </div>
+  
+</article>
+</div>
+    </div>
+    
+    <div class="grid3">
+<article class="card " data-rubric="haefen" data-countries="TR">
+  <div class="meta"><span class="tag">Häfen</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Neue RTG-Krane für Terminal am Bosporus angekündigt</a></h4>
+  <p class="orig">Original (TR): Örnek: yeni RTG vinçleri duyuruldu</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>08.11., 10:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">TR→DE</span>
+    <span class="pill c">TR</span>
+  </div>
+  
+</article>
+
+<article class="card " data-rubric="haefen" data-countries="">
+  <div class="meta"><span class="tag">Häfen</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Hafen erhält Fördermittel für Elektrifizierung der Kaikrane</a></h4>
+  
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>07.11., 09:27</span>
+    
+    
+  </div>
+  
+</article>
+</div>
+    
+    
+    
+  </section>
+  
+  <section id="kraene" data-section>
+    <div class="kicker"><b>02</b><h2>Kranflotten – Turmdreh-, Mobil- & Raupenkrane</h2><small>4 in 7 Tagen</small></div>
+    
+    
+    <div class="sec">
+      <div>
+<article class="card feat" data-rubric="kraene" data-countries="">
+  <div class="meta"><span class="tag">Krane</span><span class="pill new">NEU</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Kranvermieter erweitert Flotte um Raupenkrane der 750-Tonnen-Klasse</a></h4>
+  <p class="orig">Original (EN): Example: Crane rental firm adds 750-tonne crawler cranes</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>10.11., 12:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">EN→DE</span>
+    
+  </div>
+  <div class="others">2 Quellen berichten: auch Beispielquelle B</div>
+</article>
+</div>
+      <div class="rest">
+<article class="card " data-rubric="kraene" data-countries="">
+  <div class="meta"><span class="tag">Krane</span><span class="pill new">NEU</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Turmdrehkran-Hersteller meldet Auftragsplus im Bausektor</a></h4>
+  
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>09.11., 19:27</span>
+    
+    
+  </div>
+  
+</article>
+
+<article class="card " data-rubric="kraene" data-countries="">
+  <div class="meta"><span class="tag">Krane</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Mobilkran-Markt: Lieferzeiten verkürzen sich spürbar</a></h4>
+  <p class="orig">Original (EN): Example: Mobile crane market sees shorter lead times</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>08.11., 16:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">EN→DE</span>
+    
+  </div>
+  
+</article>
+</div>
+    </div>
+    
+    <div class="grid3">
+<article class="card " data-rubric="kraene" data-countries="TR">
+  <div class="meta"><span class="tag">Krane</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Vinç filosunu büyüten şirket yeni siparişleri açıkladı</a></h4>
+  <p class="orig">Original (TR): Örnek: vinç filosunu büyüten şirket yeni siparişler</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>06.11., 12:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">TR→DE</span>
+    <span class="pill c">TR</span>
+  </div>
+  
+</article>
+</div>
+    
+    
+    
+  </section>
+  
+  <section id="industrie" data-section>
+    <div class="kicker"><b>03</b><h2>Industrie – Stahlwerke, Schwerindustrie & Prozesskrane</h2><small>3 in 7 Tagen</small></div>
+    
+    
+    <div class="sec">
+      <div>
+<article class="card feat" data-rubric="industrie" data-countries="">
+  <div class="meta"><span class="tag">Industrie</span><span class="pill new">NEU</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Stahlwerk fährt Hochofen nach Wartung wieder an</a></h4>
+  
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>10.11., 03:27</span>
+    
+    
+  </div>
+  <div class="others">2 Quellen berichten: auch Beispielquelle B</div>
+</article>
+</div>
+      <div class="rest">
+<article class="card " data-rubric="industrie" data-countries="DZ">
+  <div class="meta"><span class="tag">Industrie</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Schwerindustrie meldet höhere Investitionen in Prozesskrane</a></h4>
+  <p class="orig">Original (FR): Exemple : l'industrie lourde investit dans les ponts roulants</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>09.11., 00:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">FR→DE</span>
+    <span class="pill c">DZ</span>
+  </div>
+  
+</article>
+
+<article class="card " data-rubric="industrie" data-countries="TN">
+  <div class="meta"><span class="tag">Industrie</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Aciérie : modernisation du parc de levage prévue</a></h4>
+  <p class="orig">Original (FR): Exemple : modernisation du parc de levage</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>06.11., 18:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">FR→DE</span>
+    <span class="pill c">TN</span>
+  </div>
+  
+</article>
+</div>
+    </div>
+    
+    
+  </section>
+  
+  <section id="tiefbau" data-section>
+    <div class="kicker"><b>04</b><h2>Spezialtiefbau – Bohrgeräte, Seilbagger & Schlitzwandgreifer</h2><small>3 in 7 Tagen</small></div>
+    
+    
+    <div class="sec">
+      <div>
+<article class="card feat" data-rubric="tiefbau" data-countries="BE">
+  <div class="meta"><span class="tag">Spezialtiefbau</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Großprojekt im Spezialtiefbau: Schlitzwand für Tunnelbaustelle</a></h4>
+  
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>09.11., 14:27</span>
+    
+    <span class="pill c">BE</span>
+  </div>
+  <div class="others">2 Quellen berichten: auch Beispielquelle B</div>
+</article>
+</div>
+      <div class="rest">
+<article class="card " data-rubric="tiefbau" data-countries="">
+  <div class="meta"><span class="tag">Spezialtiefbau</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Bohrgerätehersteller präsentiert neue Seilbagger-Generation</a></h4>
+  <p class="orig">Original (EN): Example: Drilling-rig maker presents new cable-excavator generation</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>07.11., 23:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">EN→DE</span>
+    
+  </div>
+  
+</article>
+
+<article class="card " data-rubric="tiefbau" data-countries="NL">
+  <div class="meta"><span class="tag">Spezialtiefbau</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Diepwand-project in havenomgeving gegund</a></h4>
+  <p class="orig">Original (NL): Voorbeeld: diepwandproject in havengebied gegund</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>05.11., 17:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">NL→DE</span>
+    <span class="pill c">NL</span>
+  </div>
+  
+</article>
+</div>
+    </div>
+    
+    
+  </section>
+  
+  <section id="laender" data-section>
+    <div class="kicker"><b>05</b><h2>Länder – Zölle, Handel, Konjunktur & Logistik</h2><small>7 in 7 Tagen</small></div>
+    
+    <div class="chips" role="group" aria-label="Land filtern">
+      <button type="button" aria-pressed="true" data-c="">Alle</button>
+      <button type="button" aria-pressed="false" data-c="BE">Belgien</button><button type="button" aria-pressed="false" data-c="NL">Niederlande</button><button type="button" aria-pressed="false" data-c="MA">Marokko</button><button type="button" aria-pressed="false" data-c="DZ">Algerien</button><button type="button" aria-pressed="false" data-c="TN">Tunesien</button><button type="button" aria-pressed="false" data-c="IL">Israel</button><button type="button" aria-pressed="false" data-c="TR">Türkei</button>
+    </div>
+    
+    
+    <div class="sec">
+      <div>
+<article class="card feat" data-rubric="laender" data-countries="TR">
+  <div class="meta"><span class="tag">Länder</span><span class="pill new">NEU</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: EU und Türkei verhandeln über Stahl-Einfuhrquoten</a></h4>
+  <p class="orig">Original (EN): Example: EU and Turkey negotiate steel import quotas</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>10.11., 11:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">EN→DE</span>
+    <span class="pill c">TR</span>
+  </div>
+  <div class="others">4 Quellen berichten: auch Beispielquelle B, Beispielquelle C, Beispielquelle D</div>
+</article>
+</div>
+      <div class="rest">
+<article class="card " data-rubric="laender" data-countries="MA">
+  <div class="meta"><span class="tag">Länder</span><span class="pill new">NEU</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Marokko senkt Einfuhrzölle auf Industrieausrüstung</a></h4>
+  <p class="orig">Original (FR): Exemple : le Maroc abaisse les droits de douane sur les équipements</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>09.11., 23:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">FR→DE</span>
+    <span class="pill c">MA</span>
+  </div>
+  <div class="others">2 Quellen berichten: auch Beispielquelle B</div>
+</article>
+
+<article class="card " data-rubric="laender" data-countries="DZ">
+  <div class="meta"><span class="tag">Länder</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Algerien lockert Importregeln für Maschinen</a></h4>
+  <p class="orig">Original (FR): Exemple : l'Algérie assouplit les règles d'importation</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>09.11., 05:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">FR→DE</span>
+    <span class="pill c">DZ</span>
+  </div>
+  
+</article>
+</div>
+    </div>
+    
+    <div class="grid3">
+<article class="card " data-rubric="laender" data-countries="TN">
+  <div class="meta"><span class="tag">Länder</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Tunesien: Währung und Konjunktur im Überblick</a></h4>
+  <p class="orig">Original (FR): Exemple : Tunisie, devise et conjoncture</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>08.11., 13:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">FR→DE</span>
+    <span class="pill c">TN</span>
+  </div>
+  
+</article>
+
+<article class="card " data-rubric="laender" data-countries="IL">
+  <div class="meta"><span class="tag">Länder</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Israel: Hafenlogistik nach Störungen wieder im Normalbetrieb</a></h4>
+  <p class="orig">Original (EN): Example: Israel port logistics back to normal</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>08.11., 05:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">EN→DE</span>
+    <span class="pill c">IL</span>
+  </div>
+  <div class="others">2 Quellen berichten: auch Beispielquelle B</div>
+</article>
+
+<article class="card " data-rubric="laender" data-countries="BE">
+  <div class="meta"><span class="tag">Länder</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Belgien: Streik im Hafenbetrieb angekündigt</a></h4>
+  <p class="orig">Original (NL): Voorbeeld: staking in de haven aangekondigd</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>07.11., 14:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">NL→DE</span>
+    <span class="pill c">BE</span>
+  </div>
+  <div class="others">2 Quellen berichten: auch Beispielquelle B</div>
+</article>
+</div>
+    <details class="more"><summary>1 weitere Meldungen</summary>
+      <div class="grid3">
+<article class="card " data-rubric="laender" data-countries="NL">
+  <div class="meta"><span class="tag">Länder</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Niederlande: Konjunkturprognose für die Industrie angehoben</a></h4>
+  
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>07.11., 01:27</span>
+    
+    <span class="pill c">NL</span>
+  </div>
+  
+</article>
+</div></details>
+    
+    
+  </section>
+  
+  <section id="rohstoffe" data-section>
+    <div class="kicker"><b>06</b><h2>Rohstoffe & Zuschläge</h2><small>4 in 7 Tagen</small></div>
+    
+    
+    <div class="sec">
+      <div>
+<article class="card feat" data-rubric="rohstoffe" data-countries="">
+  <div class="meta"><span class="tag">Rohstoffe</span><span class="pill new">NEU</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Stahlwerk kündigt neuen Legierungszuschlag für Walzdraht an</a></h4>
+  
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>10.11., 13:27</span>
+    
+    
+  </div>
+  <div class="others">3 Quellen berichten: auch Beispielquelle B, Beispielquelle C</div>
+</article>
+</div>
+      <div class="rest">
+<article class="card " data-rubric="rohstoffe" data-countries="">
+  <div class="meta"><span class="tag">Rohstoffe</span><span class="pill new">NEU</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Zinkpreis zieht an – Verzinkereien rechnen mit Aufschlägen</a></h4>
+  <p class="orig">Original (EN): Example: Zinc price climbs, galvanizers expect surcharges</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>09.11., 21:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">EN→DE</span>
+    
+  </div>
+  <div class="others">2 Quellen berichten: auch Beispielquelle B</div>
+</article>
+
+<article class="card " data-rubric="rohstoffe" data-countries="">
+  <div class="meta"><span class="tag">Rohstoffe</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: EU berät über Verlängerung der Stahl-Schutzmaßnahmen</a></h4>
+  <p class="orig">Original (EN): Example: EU weighs extension of steel safeguard</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>08.11., 21:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">EN→DE</span>
+    
+  </div>
+  <div class="others">3 Quellen berichten: auch Beispielquelle B, Beispielquelle C</div>
+</article>
+</div>
+    </div>
+    
+    <div class="grid3">
+<article class="card " data-rubric="rohstoffe" data-countries="">
+  <div class="meta"><span class="tag">Rohstoffe</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Schrottpreise geben nach – Marktteilnehmer abwartend</a></h4>
+  
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>07.11., 19:27</span>
+    
+    
+  </div>
+  
+</article>
+</div>
+    
+    
+    
+  </section>
+  
+  <section id="markt" data-section>
+    <div class="kicker"><b>07</b><h2>Markt & Wettbewerb – Stahlseile</h2><small>3 in 7 Tagen</small></div>
+    
+    
+    <div class="sec">
+      <div>
+<article class="card feat" data-rubric="markt" data-countries="">
+  <div class="meta"><span class="tag">Markt</span><span class="pill new">NEU</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Seilhersteller eröffnet neues Werk für Kranseile</a></h4>
+  <p class="orig">Original (EN): Example: Rope maker opens new plant for crane ropes</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>10.11., 06:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">EN→DE</span>
+    
+  </div>
+  <div class="others">2 Quellen berichten: auch Beispielquelle B</div>
+</article>
+</div>
+      <div class="rest">
+<article class="card " data-rubric="markt" data-countries="">
+  <div class="meta"><span class="tag">Markt</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Wire-rope-Markt: Nachfrage nach Hochleistungsseilen wächst</a></h4>
+  <p class="orig">Original (EN): Example: Wire rope market: demand for high-performance ropes grows</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>08.11., 07:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">EN→DE</span>
+    
+  </div>
+  
+</article>
+
+<article class="card " data-rubric="markt" data-countries="TR">
+  <div class="meta"><span class="tag">Markt</span></div>
+  <h4><a class="h" href="#" target="_blank" rel="noopener">Beispiel: Çelik halat üreticisi ihracatını artırdı</a></h4>
+  <p class="orig">Original (TR): Örnek: çelik halat üreticisi ihracatını artırdı</p>
+  <div class="meta">
+    <span>Beispielquelle A</span><span>·</span><span>06.11., 03:27</span>
+    <span class="pill" title="Originalsprache, automatisch übersetzt">TR→DE</span>
+    <span class="pill c">TR</span>
+  </div>
+  
+</article>
+</div>
+    </div>
+    
+    
+  </section>
+  
+</main>
+
+<div class="wrap"><footer class="site">
+  <strong>So entsteht der Seil-Report.</strong> Täglich frühmorgens werden Suchanfragen in Deutsch, Englisch, Französisch, Niederländisch, Türkisch, Arabisch und Hebräisch an Google News gestellt, nach Rubriken und Ländern sortiert, doppelte Meldungen gebündelt und die Titel maschinell ins Deutsche übersetzt. Maschinelle Übersetzungen können Fehler enthalten – im Zweifel gilt der Originaltitel.
+  Kennzahlen: Statistisches Bundesamt (Destatis), GENESIS-Online. Themen, Suchbegriffe und Länder lassen sich in <code>config.yaml</code> anpassen.
+</footer></div>
+
+<script>
+(function(){
+  var $=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+  var q=document.getElementById('q'), country='';
+  function apply(){
+    var t=(q.value||'').trim().toLowerCase();
+    $('.card').forEach(function(c){
+      var okT=!t||c.textContent.toLowerCase().indexOf(t)>-1;
+      var inL=c.closest('#laender');
+      var okC=!country||!inL||(' '+c.dataset.countries+' ').indexOf(' '+country+' ')>-1;
+      c.classList.toggle('hidden',!(okT&&okC));
+    });
+    if(t){$('details.more').forEach(function(d){d.open=true})}
+  }
+  q.addEventListener('input',apply);
+  function setCountry(c){country=c;$('.chips button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.c===c)});apply()}
+  $('.chips button').forEach(function(b){b.addEventListener('click',function(){setCountry(b.dataset.c)})});
+  $('[data-jump]').forEach(function(a){a.addEventListener('click',function(){setCountry(a.dataset.jump)})});
+})();
+</script>
+</body>
+</html>

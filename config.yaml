@@ -1,0 +1,198 @@
+# ─────────────────────────────────────────────────────────────
+#  Der Seil-Report – Konfiguration
+#  Hier änderst du Themen, Suchbegriffe und Länder. Kein Code nötig.
+# ─────────────────────────────────────────────────────────────
+site:
+  title: "Der Seil-Report"
+  tagline: "Marktbeobachtung für Industrie-Stahlseile · Export & Regionalvertrieb"
+  retention_days: 21        # so lange bleiben Meldungen im Archiv
+  window_days: 7            # Zeitraum der Anzeige ("Woche")
+  fetch_days: 3             # pro Lauf: Meldungen der letzten n Tage abfragen
+  per_section: 6            # sichtbare Meldungen je Rubrik (Rest klappt auf)
+  timezone: "Europe/Berlin"
+
+# Meldungen mit diesen Wörtern im Titel werden verworfen
+exclude:
+  - Horoskop
+  - Gewinnspiel
+  - Klettersteig
+  - Seilbahn
+  - Hängebrücke
+  - Fußball
+  - cable car
+  - zipline
+
+# Treffer mit diesen Wörtern rutschen in "Top-News" weiter nach oben (Regex, ohne Groß/Klein)
+boost: "zuschlag|surcharge|toeslag|supplément|ek ücret|zoll|zölle|tariff|tarif|droits de douane|gümrük|safeguard|cbam|sanktion|sanction|embargo|insolvenz|bankrupt|übernahme|acquisition|acquires|liebherr|bauer|tadano|manitowoc|terex|potain|casar|teufelberger|bridon|wireco|pfeifer|drahtseil|wire rope|stahlseil|çelik halat|câble"
+
+# Diese Wörter füllen den Kasten "Zuschlags-Radar"
+radar: "zuschlag|surcharge|toeslag|legierung|alloy|rohstoff|safeguard|cbam|walzdraht|wire rod|filmaşin|fil machine|walsdraad|stahlpreis|steel price|çelik fiyat"
+
+# Gewicht je Rubrik für die Top-News (1.0 = normal)
+rubrics:
+  - id: haefen
+    title: "Häfen, Terminals & Güterumschlag"
+    short: "Häfen"
+    weight: 1.0
+    terms:
+      de: [Hafenkran, Containerterminal, Hafenausbau, Kaianlage, Terminal Umschlag, Hafen Investition]
+      en: ["container terminal", "port expansion", "ship-to-shore crane", "quay crane", "port investment", "RTG crane"]
+      fr: ["terminal à conteneurs", "extension du port", "grue de quai", "port investissement"]
+      nl: [containerterminal, havenuitbreiding, kadekraan, haven investering]
+      tr: ["konteyner terminali", "liman yatırımı", "liman vinci", "liman genişletme"]
+      ar: ["محطة حاويات", "توسعة ميناء", "رافعة ميناء"]
+      he: ["מסוף מכולות", "הרחבת נמל", "מנוף נמל"]
+
+  - id: kraene
+    title: "Kranflotten – Turmdreh-, Mobil- & Raupenkrane"
+    short: "Krane"
+    weight: 0.9
+    terms:
+      de: [Turmdrehkran, Mobilkran, Raupenkran, Kranflotte, Autokran, Liebherr Kran]
+      en: ["tower crane", "mobile crane", "crawler crane", "crane fleet", "Tadano", "Manitowoc"]
+      fr: ["grue à tour", "grue mobile", "grue sur chenilles", "parc de grues"]
+      nl: [torenkraan, "mobiele kraan", rupskraan, kraanverhuur]
+      tr: ["kule vinç", "mobil vinç", "paletli vinç", "vinç filosu"]
+      ar: ["رافعة برجية", "رافعة متحركة", "رافعة زاحفة"]
+      he: ["עגורן צריח", "מנוף נייד", "מנוף זחלי"]
+
+  - id: industrie
+    title: "Industrie – Stahlwerke, Schwerindustrie & Prozesskrane"
+    short: "Industrie"
+    weight: 0.8
+    terms:
+      de: [Stahlwerk, Schwerindustrie, Brückenkran, Hüttenwerk, "Stahlindustrie Investition"]
+      en: ["steel mill", "heavy industry", "overhead crane", "steelworks investment", "process crane"]
+      fr: [aciérie, "industrie lourde", "pont roulant", sidérurgie]
+      nl: [staalfabriek, "zware industrie", brugkraan]
+      tr: ["çelik fabrikası", "ağır sanayi", "köprülü vinç", "demir çelik"]
+      ar: ["مصنع صلب", "صناعة ثقيلة", "رافعة جسرية"]
+      he: ["מפעל פלדה", "תעשייה כבדה", "עגורן גשר"]
+
+  - id: tiefbau
+    title: "Spezialtiefbau – Bohrgeräte, Seilbagger & Schlitzwandgreifer"
+    short: "Spezialtiefbau"
+    weight: 0.7
+    terms:
+      de: [Spezialtiefbau, Schlitzwandgreifer, Bohrgerät, Seilbagger, "Tiefbau Großprojekt"]
+      en: ["diaphragm wall", "deep foundation", "piling rig", "cable excavator", "Bauer Group", "Soilmec"]
+      fr: ["paroi moulée", "fondations spéciales", foreuse, "pelle à câble"]
+      nl: [diepwand, funderingstechniek, boormachine]
+      tr: ["diyafram duvar", "özel temel", "sondaj makinesi", "fore kazık"]
+      ar: ["جدار ساتر", "أساسات عميقة", "حفارة"]
+      he: ["כלונסאות", "יסודות עמוקים"]
+
+  - id: laender
+    title: "Länder – Zölle, Handel, Konjunktur & Logistik"
+    short: "Länder"
+    weight: 0.8
+    terms: {}                # Länder-Suchen stehen unten unter "countries"
+
+  - id: rohstoffe
+    title: "Rohstoffe & Zuschläge"
+    short: "Rohstoffe"
+    weight: 1.0
+    terms:
+      de: [Legierungszuschlag, Rohstoffzuschlag, Walzdraht, Stahlpreise, Schrottpreis, "CBAM Stahl", Zinkpreis]
+      en: ["wire rod price", "steel price", "scrap price", "CBAM steel", "EU steel safeguard", "zinc price", "nickel price"]
+      fr: ["prix du fil machine", "prix de l'acier", "CBAM acier"]
+      nl: [staalprijs, walsdraad, schrootprijs]
+      tr: ["filmaşin fiyat", "çelik fiyatları", "hurda fiyatları"]
+      ar: ["أسعار الصلب", "أسعار الحديد"]
+      he: ["מחירי פלדה", "מחיר ברזל"]
+
+  - id: markt
+    title: "Markt & Wettbewerb – Stahlseile"
+    short: "Markt"
+    weight: 0.9
+    terms:
+      de: [Drahtseil, Stahlseil, Seilhersteller, Teufelberger, Casar, "PFEIFER Seil"]
+      en: ["wire rope", "steel wire rope", "Bridon-Bekaert", WireCo, Teufelberger, Casar]
+      fr: ["câble en acier", "câble métallique", "câbles d'acier"]
+      nl: [staalkabel, staaldraadkabel]
+      tr: ["çelik halat", "halat üreticisi"]
+      ar: ["حبال فولاذية", "كابلات فولاذية"]
+      he: ["כבלי פלדה", "חבל פלדה"]
+
+# Länder: je Ausgabe eine Suche in der Landessprache.
+# names = Schreibweisen, anhand derer das Land in beliebigen Meldungen erkannt wird.
+countries:
+  - id: BE
+    name: Belgien
+    names: [Belgien, Belgium, België, Belgique, بلجيكا]
+    editions:
+      - {lang: nl, hl: nl, gl: BE, ceid: "BE:nl", q: "België (haven OR staal OR economie OR invoerrechten OR logistiek)"}
+      - {lang: fr, hl: fr, gl: BE, ceid: "BE:fr", q: "Belgique (port OR acier OR économie OR douane OR logistique)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Belgien (Zoll OR Hafen OR Stahl OR Wirtschaft OR Logistik)"}
+  - id: NL
+    name: Niederlande
+    names: [Niederlande, Netherlands, Nederland, Pays-Bas, هولندا, Rotterdam]
+    editions:
+      - {lang: nl, hl: nl, gl: NL, ceid: "NL:nl", q: "Nederland (haven OR staal OR handel OR logistiek OR industrie)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Niederlande (Zoll OR Hafen OR Stahl OR Wirtschaft OR Logistik)"}
+  - id: MA
+    name: Marokko
+    names: [Marokko, Morocco, Maroc, المغرب, Fas]
+    editions:
+      - {lang: fr, hl: fr, gl: MA, ceid: "MA:fr", q: "Maroc (port OR acier OR douane OR investissement OR industrie)"}
+      - {lang: ar, hl: ar, gl: MA, ceid: "MA:ar", q: "المغرب (ميناء OR صلب OR جمارك OR استثمار OR صناعة)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Marokko (Zoll OR Hafen OR Stahl OR Wirtschaft OR Logistik)"}
+  - id: DZ
+    name: Algerien
+    names: [Algerien, Algeria, Algérie, الجزائر]
+    editions:
+      - {lang: fr, hl: fr, gl: DZ, ceid: "DZ:fr", q: "Algérie (port OR acier OR douane OR importation OR industrie)"}
+      - {lang: ar, hl: ar, gl: DZ, ceid: "DZ:ar", q: "الجزائر (ميناء OR صلب OR جمارك OR استيراد OR صناعة)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Algerien (Zoll OR Hafen OR Stahl OR Wirtschaft OR Import)"}
+  - id: TN
+    name: Tunesien
+    names: [Tunesien, Tunisia, Tunisie, تونس]
+    editions:
+      - {lang: fr, hl: fr, gl: TN, ceid: "TN:fr", q: "Tunisie (port OR acier OR douane OR investissement OR industrie)"}
+      - {lang: ar, hl: ar, gl: TN, ceid: "TN:ar", q: "تونس (ميناء OR صلب OR جمارك OR استثمار OR صناعة)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Tunesien (Zoll OR Hafen OR Stahl OR Wirtschaft OR Import)"}
+  - id: IL
+    name: Israel
+    names: [Israel, ישראל, إسرائيل, Haifa, Aschdod, Ashdod]
+    editions:
+      - {lang: he, hl: he, gl: IL, ceid: "IL:he", q: "נמל OR פלדה OR מכס OR יבוא OR תעשייה"}
+      - {lang: en, hl: en, gl: IL, ceid: "IL:en", q: "Israel (port OR steel OR customs OR import OR economy)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Israel (Zoll OR Hafen OR Stahl OR Wirtschaft OR Import)"}
+  - id: TR
+    name: Türkei
+    names: [Türkei, Turkey, Türkiye, Turquie, تركيا, Istanbul]
+    editions:
+      - {lang: tr, hl: tr, gl: TR, ceid: "TR:tr", q: "liman OR çelik OR gümrük OR ihracat OR sanayi"}
+      - {lang: en, hl: en, gl: TR, ceid: "TR:en", q: "Turkey (steel OR port OR tariffs OR export OR lira)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Türkei (Zoll OR Hafen OR Stahl OR Wirtschaft OR Lira)"}
+
+# Google-News-Ausgabe für die Rubrik-Suchen je Sprache
+editions:
+  de: {hl: de, gl: DE, ceid: "DE:de"}
+  en: {hl: en-US, gl: US, ceid: "US:en"}
+  fr: {hl: fr, gl: FR, ceid: "FR:fr"}
+  nl: {hl: nl, gl: NL, ceid: "NL:nl"}
+  tr: {hl: tr, gl: TR, ceid: "TR:tr"}
+  ar: {hl: ar, gl: EG, ceid: "EG:ar"}
+  he: {hl: he, gl: IL, ceid: "IL:he"}
+
+# Zusätzliche feste RSS-Feeds (Fachportale). Format: {name, url, rubric, lang}
+feeds: []
+#  - {name: "Beispiel Fachportal", url: "https://example.com/rss.xml", rubric: kraene, lang: de}
+
+# Kennzahlen (Destatis GENESIS-Online)
+indices:
+  - id: draht
+    table: "61241-0004"
+    title: "Erzeugerpreisindex – kaltgezogener Draht"
+    sub: "GP19-2434 · Destatis · monatlich"
+    freq: monthly
+    require: ["GP19-2434"]
+    url: "https://www-genesis.destatis.de/datenbank/online/table/61241-0004"
+  - id: aki
+    table: "62421-0001"
+    title: "Arbeitskostenindex – Verarbeitendes Gewerbe"
+    sub: "Destatis · quartalsweise"
+    freq: quarterly
+    require: ["WZ08-C", "WERTORG", "QMU"]
+    url: "https://www-genesis.destatis.de/datenbank/online/table/62421-0001"
