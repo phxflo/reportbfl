@@ -239,7 +239,7 @@ def compute(all_items, now):
             if not rubrics:
                 continue
             rubric = rubrics[0]
-        if rubrics == ["laender"] and not countries:
+        if rubrics == ["laender"] and not countries and not ai:      # Zölle/Tarife dürfen auch ohne Land stehen (EU-/Weltmarkt), wenn Claude sie so einordnet
             continue
         pub = dt.datetime.fromisoformat(lead["published"])
         title = next((m["title_de"] for m in members if m.get("title_de")), lead["title_orig"])
@@ -317,7 +317,7 @@ def compute(all_items, now):
         if id(c) in top_ids or c["rubric"] != rid:
             return False
         if rid == "laender":            # "Länder" = allgemeine Meldungen zum Land
-            return bool(c["countries"]) and (c["ai_used"] or not (c["sig"] & DISASTER))
+            return c["ai_used"] or (bool(c["countries"]) and not (c["sig"] & DISASTER))
         return True
 
     sections = []
@@ -330,10 +330,14 @@ def compute(all_items, now):
                     if id(x) not in seen:
                         seen.add(id(x))
                         pool.append(x)
+            for x in [x for x in lst if not x["countries"]][:cap]:      # Meldungen ohne bestimmtes Land (EU, Weltmarkt)
+                if id(x) not in seen:
+                    seen.add(id(x))
+                    pool.append(x)
             pool.sort(key=lambda c: c["ts"], reverse=True)
-            sections.append(dict(id=r["id"], num=f"{k:02d}", title=r["title"], short=r["short"], shown=pool, limit=cap))
+            sections.append(dict(id=r["id"], group=r.get("group"), num=f"{k:02d}", title=r["title"], short=r["short"], shown=pool, limit=cap))
         else:
-            sections.append(dict(id=r["id"], num=f"{k:02d}", title=r["title"], short=r["short"], shown=lst[:cap], limit=cap))
+            sections.append(dict(id=r["id"], group=r.get("group"), num=f"{k:02d}", title=r["title"], short=r["short"], shown=lst[:cap], limit=cap))
 
     return cards, top, sections, items
 

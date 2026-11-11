@@ -18,7 +18,7 @@ CFG = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
 NEWS = ROOT / "data" / "news.json"
 AI = CFG.get("ai", {})
 MODEL = AI.get("model", "claude-sonnet-5-5")
-RULES = 4                                     # Regelstand der Auswahl; betroffene Rubriken werden bei Erhöhung neu beurteilt
+RULES = 5                                     # Regelstand der Auswahl; betroffene Rubriken werden bei Erhöhung neu beurteilt
 FORCE = True   # erzwungener Tool-Aufruf; wird bei Ablehnung des Modells automatisch abgeschaltet
 VERSION = 2                                   # Prompt-Stand: bei Änderung werden alle Meldungen neu beurteilt
 BATCH = AI.get("batch", 25)
@@ -33,17 +33,23 @@ Seine Kunden: (1) Häfen und Terminals, (2) Kranflotten (Hafen-, Mobil-, Raupen-
 inkl. Prozesskrane in Stahlwerken, (4) Spezialtiefbau (Seilbagger, Schlitzwandgreifer, Bohrgeräte).
 Seine Kundenländer sind GENAU diese 8: BE Belgien, NL Niederlande, MA Marokko, DZ Algerien, TN Tunesien, IL Israel, TR Türkei, GH Ghana.
 
-Rubriken:
-- haefen: Häfen/Terminals (Umschlag, Ausbau, Krane im Hafen, Streiks, Unfälle, Investitionen) – nur in den Kundenländern.
-- kraene: Krane (Kranflotten, Bestellungen, Unfälle, Einsätze, Seilthemen) – nur in den Kundenländern.
-- industrie: Stahl-/Schwerindustrie, Werke, Produktion, Unfälle/Explosionen in Werken – nur in den Kundenländern.
-- tiefbau: Spezialtiefbau, Großbaustellen mit Seilbaggern/Gründungen – nur in den Kundenländern.
-- laender: ALLGEMEINE Wirtschafts-, Handels-, Zoll-, Sanktions-, Embargo- und Strafzoll-Meldungen, die Exportgeschäft in/mit einem Kundenland betreffen. Keine einzelnen Unfälle, Verbrechen, Sport, Promis, Wahlkampf oder Lokalpolitik.
-- rohstoffe: Stahl-, Walzdraht-, Draht-, Legierungs-/Zink-/Energiepreise, Zuschläge, Handelsmaßnahmen auf Stahl – weltweit.
-- markt: Seil-/Drahthersteller und Wettbewerber – weltweit. Wettbewerbsinformationen sind wichtig: Wechsel in Geschäftsführung/Vorstand,
+Rubriken (jede Meldung bekommt genau eine):
+- haefen: laufender Betrieb von Häfen/Terminals (Umschlag, Streik, Unfall, Störung, Hafenkrane im Einsatz) – nur in den Kundenländern.
+- kraene: Kranflotten und Kranbetrieb (Betreiber, Ausfälle, Seilthemen) – nur in den Kundenländern.
+- industrie: Stahl-/Schwerindustrie, Werke, Produktion, Unfälle/Explosionen/Stillstand in Werken, Prozess-/Hüttenwerkskrane – nur in den Kundenländern.
+- tiefbau: Spezialtiefbau (Seilbagger, Schlitzwandgreifer, Bohrgeräte, Gründungen, Tunnel) – nur in den Kundenländern.
+- projekte: Projekte und Ausschreibungen = künftiger Seilbedarf: Ausschreibungen, Vergaben, Großaufträge, Kranbestellungen, Ausbau-/Neubauprojekte
+  von Häfen, Terminals, Stahlwerken und Infrastruktur – nur in den Kundenländern.
+- markt: Wettbewerb und Seil-/Drahthersteller – weltweit. Wettbewerbsinformationen sind wichtig: Wechsel in Geschäftsführung/Vorstand,
   Finanzzahlen, Gewinnwarnung, Insolvenz/Restrukturierung, Werksschließung/-eröffnung/-erweiterung, Übernahmen, Produktionsprobleme,
   Reklamationen, Rückrufe, Schadensfälle oder Seilbruch bei Wettbewerberprodukten, Preis-/Kapazitätsänderungen; außerdem Marktdaten, Normen.
   Nicht relevant: Werbung, Messeauftritte ohne Neuigkeit, Sponsoring, Preise/Auszeichnungen, Jobanzeigen.
+- laender (Anzeige: „Zölle, Tarife & Sanktionen“): Handelsmaßnahmen, die Stahl/Draht-Geschäft oder die Kundenländer betreffen: Zölle, Strafzölle,
+  Antidumping, CBAM, Importverbote/-quoten, Exportverbote, Sanktionen, Embargo, Devisen-/Kapitalverkehrsregeln. Auch EU-/weltweite Maßnahmen
+  ohne bestimmtes Land (countries dann leer), sofern sie Stahl, Draht, Häfen oder die Kundenländer betreffen.
+- rohstoffe: Preise und Zuschläge: Stahl-, Walzdraht-, Draht-, Legierungs-/Zink-, Schrott-, Energiepreise – weltweit (keine Zollmeldungen).
+Regel: haefen/kraene/industrie/tiefbau/projekte nur wenn Ort oder Beteiligte eindeutig in einem der 8 Länder liegen; sonst nicht relevant.
+{COMP}
 Typische Fehlgriffe, die NICHT relevant sind:
 - Passagierfähren, Fahrplanänderungen, Kreuzfahrt, Tourismus, Yachthäfen (z. B. „Fährverbindung Tunis–Genua, Fahrplanänderung“).
 - Wohnungsbau, Arbeitsmarkt, Fachkräftemangel, Sozial-/Innenpolitik, Kultur, Gesundheit (z. B. „900.000 Wohnungen zu bauen, Belgien fehlt es an Händen“) –
@@ -52,19 +58,9 @@ Typische Fehlgriffe, die NICHT relevant sind:
 - Relevant sind dagegen Prozess-/Hüttenwerkskrane (Gießkran, Chargierkran, Stahlwerks-/Walzwerks-/Industriekrane), Hafenkrane (STS, RTG, RMG),
   Seilbruch/Seilversagen bei Industrie- oder Hafenkranen, Stillstand oder Ausfall solcher Krane und große Kranflotten-Aufträge.
   Ein defekter Prozesskran in einem Stahlwerk ist wichtig (brisanz 4-5).
-- laender nur für: Handel, Zoll, Strafzölle, Sanktionen, Embargo, Importverbote, Wechselkurs-/Devisenregeln, Stahlnachfrage, große
-  Infrastruktur- und Hafeninvestitionen. Alles andere zur Wirtschaftslage (Wohnungen, Löhne, Arbeitsmarkt) ist nicht relevant.
+- Allgemeine Wirtschaftslage eines Landes ohne Handelsmaßnahme (Konjunktur, Löhne, Wohnungen) ist nicht relevant.
 Titel können maschinell schlecht übersetzt sein; beurteile nach dem wahrscheinlichen Sinn, nicht nach Wortlaut.
-
-Zuordnung: Jede Meldung bekommt GENAU EINE Rubrik – die, die den Kern der Meldung trifft:
-- Einzelereignis an Hafen/Terminal (Umschlag, Streik, Ausbau, Auftrag) → haefen
-- Kran-Unfall, Kran-Bestellung, Kranfirma → kraene
-- Unfall, Explosion, Stilllegung, Investition in einem Stahl-/Industriewerk → industrie
-- Baustelle, Gründung, Tunnel-/Tiefbauprojekt → tiefbau
-- allgemeine Lage eines Landes (Wirtschaft, Zölle, Sanktionen, Embargo) ohne konkretes Einzelereignis → laender
-- Preise, Zuschläge, Rohstoffe, Handelsmaßnahmen auf Stahl/Draht → rohstoffe
-- Seilhersteller, Wettbewerber, Branchenmarkt → markt
-{COMP}Regel: haefen/kraene/industrie/tiefbau nur wenn Ort oder Beteiligte eindeutig in einem der 8 Länder liegen; sonst nicht relevant.
+Zuordnung bei Zweifel: laufender Betrieb → haefen/kraene/industrie/tiefbau; geplante, vergebene oder ausgeschriebene Vorhaben → projekte.
 
 Relevant = die Meldung könnte sein Geschäft beeinflussen oder ist für ein Kundengespräch nützlich. Nicht relevant: Namensverwechslungen
 (z. B. Manitowoc County, Politiker Casar, Vogel „Kran“), Sport, Lifestyle, Kriminalität, Börsentipps/Kursmeldungen, Rezepte,
@@ -132,7 +128,7 @@ def stale(i):
     ai = i.get("ai") or {}
     if ai.get("v") != VERSION:
         return True
-    return bool(ai.get("relevant")) and ai.get("rubric") in ("laender", "kraene", "haefen") and ai.get("rv", 0) < RULES
+    return bool(ai.get("relevant")) and ai.get("rv", 0) < RULES
 
 
 def describe(i):

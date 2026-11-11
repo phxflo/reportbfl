@@ -42,6 +42,7 @@ radar: "zuschlag|surcharge|toeslag|legierung|alloy|rohstoff|safeguard|cbam|walzd
 rubrics:
   - id: haefen
     title: "Häfen, Terminals & Güterumschlag"
+    group: "Zielmärkte"
     short: "Häfen"
     weight: 1.2
     core: 'ship-to-shore|sts[- ]crane|(?<!\w)(rtg|rmg)(?!\w)|kaikran|hafenkran|quay crane|containerbrücke|container ?terminal|terminal à conteneurs|konteyner terminal|havenkraan|kadekraan|محطة حاويات|מסוף מכולות'   # Treffer hier zählen auch ohne Ereigniswort
@@ -54,9 +55,9 @@ rubrics:
       tr: ["konteyner terminali", "liman yatırımı", "liman vinci", "liman genişletme"]
       ar: ["محطة حاويات", "توسعة ميناء", "رافعة ميناء"]
       he: ["מסוף מכולות", "הרחבת נמל", "מנוף נמל"]
-
   - id: kraene
-    title: "Kranflotten – Turmdreh-, Mobil- & Raupenkrane"
+    title: "Kranflotten & Kranbetrieb"
+    group: "Zielmärkte"
     short: "Krane"
     weight: 0.9
     core: 'crane (collapse|accident|fire|topples?|overturn\w*)|kraneinsturz|kranunfall|kran (stürzt|kippt|umgestürzt)|grue (tombe|effondr\w*)|vinç (devril\w*|kaza\w*)|kraan (omgevallen|ongeval)|tadano|(manitowoc|terex|liebherr|potain)[^.]{0,40}(kran|crane|grue|vinç|kraan)|crane (fleet|rental)|kranvermiet|kranflotte|parc de grues|vinç filosu|kraanverhuur'   # Treffer hier zählen auch ohne Ereigniswort
@@ -69,9 +70,9 @@ rubrics:
       tr: ["kule vinç", "mobil vinç", "paletli vinç", "vinç filosu"]
       ar: ["رافعة برجية", "رافعة متحركة", "رافعة زاحفة"]
       he: ["עגורן צריח", "מנוף נייד", "מנוף זחלי"]
-
   - id: industrie
     title: "Industrie – Stahlwerke, Schwerindustrie & Prozesskrane"
+    group: "Zielmärkte"
     short: "Industrie"
     weight: 0.8
     core: 'stahlwerk|steel ?(mill|works|plant)|aci[eé]rie|hochofen|blast furnace|lichtbogenofen|electric arc furnace|staalfabriek|çelik fabrikası|demir çelik (fabrika|tesis)\w*|brückenkran|overhead crane|prozesskran|pont roulant|brugkraan'   # Treffer hier zählen auch ohne Ereigniswort
@@ -84,9 +85,9 @@ rubrics:
       tr: ["çelik fabrikası", "ağır sanayi", "köprülü vinç", "demir çelik"]
       ar: ["مصنع صلب", "صناعة ثقيلة", "رافعة جسرية"]
       he: ["מפעל פלדה", "תעשייה כבדה", "עגורן גשר"]
-
   - id: tiefbau
     title: "Spezialtiefbau – Bohrgeräte, Seilbagger & Schlitzwandgreifer"
+    group: "Zielmärkte"
     short: "Spezialtiefbau"
     weight: 0.7
     core: 'cutter[- ]soil|soil mixing|jet grouting|schlitzwand|diaphragm wall|bohrgerät|seilbagger|drilling rig|piling rig|paroi moulée|diepwand|spezialtiefbau|deep foundation|bauer (maschinen|spezialtiefbau|group)|soilmec'   # Treffer hier zählen auch ohne Ereigniswort
@@ -99,14 +100,37 @@ rubrics:
       tr: ["diyafram duvar", "özel temel", "sondaj makinesi", "fore kazık"]
       ar: ["جدار ساتر", "أساسات عميقة", "حفارة"]
       he: ["כלונסאות", "יסודות עמוקים"]
-
+  - id: projekte
+    title: "Projekte & Ausschreibungen – künftiger Seilbedarf"
+    group: "Zielmärkte"
+    short: "Projekte"
+    weight: 0.9
+    must: 'ausschreibung|vergabe|auftrag|bestellung|projekt|ausbau|erweiterung|neubau|investition|tender|contract|order|project|expansion|investment|development|appel d.offres|marché|commande|projet|extension|investissement|aanbesteding|opdracht|bestelling|uitbreiding|ihale|sipariş|proje|yatırım|genişlet'
+    terms:
+      de: ["Ausschreibung Hafen", "Hafen Ausbau", Kranbestellung, "Stahlwerk Neubau", "Terminal Erweiterung"]
+      en: ["port tender", "terminal expansion", "crane order", "steel plant investment", "port development contract", "ship-to-shore cranes order"]
+      fr: ["appel d'offres port", "extension terminal", "commande grues"]
+      nl: [aanbesteding haven, terminaluitbreiding, kraanbestelling]
+      tr: ["liman ihalesi", "liman genişletme", "vinç siparişi"]
+  - id: markt
+    title: "Markt & Wettbewerb – Stahlseile"
+    short: "Wettbewerb"
+    weight: 0.9
+    must: 'seilhersteller|drahtseil|stahlseil|wire rope|steel wire|câbles? en acier|câbles? métalliques?|câbles? d.acier|staalkabel|staaldraad|çelik halat|halat|حبال فولاذية|كابلات فولاذية|כבלי פלדה|חבל פלדה|bridon|wireco|teufelberger|pfeifer|casar[^.]{0,50}(seil|wire|rope|cable|câble|cables|kabel|halat|حبال|كابلات|כבל|חבל)|(seil|wire|rope|cable|câble|cables|kabel|halat|حبال|كابلات|כבל|חבל)[^.]{0,50}casar'   # Titel muss eines dieser Stichwörter enthalten (Regex)
+    terms:
+      de: [Drahtseil, Stahlseil, Seilhersteller, Teufelberger, "Casar Drahtseilwerk", "PFEIFER Seil", "Seilhersteller Insolvenz", "Drahtseil Reklamation", Seilbruch]
+      en: ["wire rope", "steel wire rope", "Bridon-Bekaert", WireCo, Teufelberger, "Casar wire rope", "wire rope manufacturer insolvency", "wire rope recall", "wire rope failure"]
+      fr: ["câble en acier", "câble métallique", "câbles d'acier"]
+      nl: [staalkabel, staaldraadkabel]
+      tr: ["çelik halat", "halat üreticisi"]
+      ar: ["حبال فولاذية", "كابلات فولاذية"]
+      he: ["כבלי פלדה", "חבל פלדה"]
   - id: laender
-    title: "Länder – Zölle, Handel, Konjunktur & Logistik"
-    short: "Länder"
+    title: "Zölle, Tarife & Sanktionen – Handelsmaßnahmen"
+    short: "Zölle & Tarife"
     weight: 0.8
     must: 'zoll|zölle|strafzoll|tarif|customs|(?<!\w)dut(y|ies)(?!\w)|douane|gümrük|sanktion|sanction|yaptırım|embargo|antidumping|anti-dumping|quota|kontingent|importverbot|import ban|export ban|exportverbot|einfuhr\w*|invoerrechten|safeguard|schutzmaßnahme\w*|cbam|devisen|currency|capital control|hafenstreik|port strike|dockers? strike|blockade|handelsabkommen|trade (deal|agreement|war|policy|deficit|surplus)|wirtschaft\w*|konjunktur|bruttoinlandsprodukt|\bbip\b|\bgdp\b|inflation\w*|leitzins|zinsen|währung|haushalt|investition\w*|infrastruktur|industrie\w*|economy|economic|interest rate|budget|investment|infrastructure|industry|exports?\b|imports?\b|économi\w*|\bpib\b|taux d|devise|budget|investissement|infrastructure|industrie|commerce|exportation\w*|importation\w*|economie|economisch|\bbbp\b|inflatie|begroting|investering|handel|export|import|ekonomi|enflasyon|büyüme|faiz|döviz|bütçe|yatırım|altyapı|sanayi|ihracat|ithalat|dış ticaret|جمارك|عقوبات|حظر|اقتصاد|תעשייה|כלכלה|מכס|סנקציות|אמברגו'   # Länder: Handels-/Sanktions-/Zollthemen und allgemeine Wirtschaftslage
     terms: {}                # Länder-Suchen stehen unten unter "countries"
-
   - id: rohstoffe
     title: "Rohstoffe & Zuschläge"
     short: "Rohstoffe"
@@ -121,19 +145,6 @@ rubrics:
       tr: ["filmaşin fiyat", "çelik fiyatları", "hurda fiyatları"]
       he: ["מחירי פלדה", "מחיר ברזל"]
 
-  - id: markt
-    title: "Markt & Wettbewerb – Stahlseile"
-    short: "Markt"
-    weight: 0.9
-    must: 'seilhersteller|drahtseil|stahlseil|wire rope|steel wire|câbles? en acier|câbles? métalliques?|câbles? d.acier|staalkabel|staaldraad|çelik halat|halat|حبال فولاذية|كابلات فولاذية|כבלי פלדה|חבל פלדה|bridon|wireco|teufelberger|pfeifer|casar[^.]{0,50}(seil|wire|rope|cable|câble|cables|kabel|halat|حبال|كابلات|כבל|חבל)|(seil|wire|rope|cable|câble|cables|kabel|halat|حبال|كابلات|כבל|חבל)[^.]{0,50}casar'   # Titel muss eines dieser Stichwörter enthalten (Regex)
-    terms:
-      de: [Drahtseil, Stahlseil, Seilhersteller, Teufelberger, "Casar Drahtseilwerk", "PFEIFER Seil", "Seilhersteller Insolvenz", "Drahtseil Reklamation", Seilbruch]
-      en: ["wire rope", "steel wire rope", "Bridon-Bekaert", WireCo, Teufelberger, "Casar wire rope", "wire rope manufacturer insolvency", "wire rope recall", "wire rope failure"]
-      fr: ["câble en acier", "câble métallique", "câbles d'acier"]
-      nl: [staalkabel, staaldraadkabel]
-      tr: ["çelik halat", "halat üreticisi"]
-      ar: ["حبال فولاذية", "كابلات فولاذية"]
-      he: ["כבלי פלדה", "חבל פלדה"]
 
 # Länder: je Ausgabe eine Suche in der Landessprache (nur Handel, Zoll, Stahl, Häfen, Logistik).
 # names = Länder-, Städte- und Hafennamen. Ein Land wird einer Meldung nur zugeordnet, wenn einer dieser
@@ -193,7 +204,7 @@ countries:
 # Regionale Eingrenzung: In diesen Rubriken bleiben nur Meldungen, in denen eines deiner Länder (siehe "countries")
 # oder einer der Begriffe unten vorkommt. Türkischsprachige Meldungen zählen automatisch als Türkei.
 region:
-  rubrics: [haefen, kraene, industrie, tiefbau]
+  rubrics: [haefen, kraene, industrie, tiefbau, projekte]
   extra_names: []     # zusätzliche Begriffe (z. B. Deutschland), die ebenfalls als "relevante Region" zählen
 
 # Ereigniswörter: Umfeld-Begriffe (Stahlwerk, Hafen, Kran …) zählen nur zusammen mit einem Ereignis
@@ -294,8 +305,8 @@ ai:                       # Auswertung durch Claude (nur mit Secret ANTHROPIC_AP
   max_items: 600          # Obergrenze neuer Meldungen je Lauf (Kostenbremse)
 
 industry_terms:           # Zusatzsuche je Land: Branchenmeldungen (Claude sortiert aus, was nicht passt)
-  en: [port, terminal, crane, steel, mining, construction, infrastructure]
-  de: [Hafen, Terminal, Kran, Stahl, Stahlwerk, Bergbau, Baustelle, Infrastruktur]
-  fr: [port, terminal, grue, acier, sidérurgie, mine, chantier, infrastructure]
-  nl: [haven, terminal, kraan, staal, staalfabriek, bouw, infrastructuur]
-  tr: [liman, terminal, vinç, çelik, "demir çelik", maden, inşaat, altyapı]
+  en: [port, terminal, crane, steel, mining, construction, infrastructure, tender, contract]
+  de: [Hafen, Terminal, Kran, Stahl, Stahlwerk, Bergbau, Baustelle, Infrastruktur, Ausschreibung, Auftrag]
+  fr: [port, terminal, grue, acier, sidérurgie, mine, chantier, infrastructure, "appel d'offres", marché]
+  nl: [haven, terminal, kraan, staal, staalfabriek, bouw, infrastructuur, aanbesteding, opdracht]
+  tr: [liman, terminal, vinç, çelik, "demir çelik", maden, inşaat, altyapı, ihale, sipariş]
