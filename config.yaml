@@ -261,12 +261,15 @@ indices:
     title: "Erzeugerpreisindex – kaltgezogener Draht"
     sub: "GP19-2434 · Destatis · monatlich"
     freq: monthly
-    require: ["GP19-2434"]
+    tables: ["61241-0004", "61241-0002", "61241-0003", "61241-0005", "61241-0006"]
+    require: ["GP19-2434;"]
+    fallback_require: ["GP19-24;"]
+    fallback_note: "Ersatzreihe: Metalle (GP19-24), 2-Steller"
     url: "https://www-genesis.destatis.de/datenbank/online/table/61241-0004"
   - id: aki
     table: "62421-0001"
     title: "Arbeitskostenindex – Verarbeitendes Gewerbe"
     sub: "Destatis · quartalsweise"
     freq: quarterly
-    require: ["WZ08-C", "WERTORG", "QMU"]
+    require: ["WZ08-C;", "Originalwerte"]
     url: "https://www-genesis.destatis.de/datenbank/online/table/62421-0001"

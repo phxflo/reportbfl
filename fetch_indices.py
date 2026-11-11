@@ -110,7 +110,13 @@ def parse(text, spec):
 def save_raw(name, text):
     """Legt die ersten Zeilen der Destatis-Antwort ab (öffentliche Statistikdaten), damit das Format prüfbar ist."""
     lines = text.replace("\r\n", "\n").replace("\r", "\n").split("\n")
-    (ROOT / "data" / f"raw_{name}.txt").write_text(f"{len(lines)} Zeilen insgesamt\n" + "\n".join(lines[:60]) + "\n",
+    seen = []
+    for ln in lines[1:]:
+        for c in ln.split(";"):
+            if re.fullmatch(r"(GP19-\d+|WZ08-[A-Z0-9]+|WERT\w*)", c) and c not in seen:
+                seen.append(c)
+    codes = " ".join(seen[:80])
+    (ROOT / "data" / f"raw_{name}.txt").write_text(f"{len(lines)} Zeilen insgesamt\n" + "\n".join(lines[:25]) + "\n" + "CODES: " + codes + "\n",
                                                   encoding="utf-8")
 
 
@@ -122,17 +128,28 @@ def main():
             old = data.get("series", {})
     series, errors = dict(old), []
     for spec in CFG["indices"]:
-        try:
-            text = fetch_table(spec["table"])
-            save_raw(spec["id"], text)
-            pts = parse(text, spec)
-            if len(pts) < 4:
-                raise RuntimeError(f"nur {len(pts)} Datenpunkte erkannt – Parser/Filter prüfen (--debug)")
-            series[spec["id"]] = dict(points=pts, fetched=dt.date.today().isoformat())
-            print(f"{spec['id']}: {len(pts)} Punkte, zuletzt {pts[-1]}")
-        except Exception as ex:
-            errors.append(f"{spec['id']}: {ex}")
-            print(f"FEHLER {spec['id']}: {ex}", file=sys.stderr)
+        tried, ok = [], False
+        for table in spec.get("tables") or [spec["table"]]:
+            for req in [spec["require"]] + ([spec["fallback_require"]] if spec.get("fallback_require") else []):
+                try:
+                    text = fetch_table(table)
+                    save_raw(f"{spec['id']}_{table}", text)
+                    pts = parse(text, dict(spec, require=req))
+                except Exception as ex:
+                    tried.append(f"{table}: {str(ex)[:80]}")
+                    break
+                if len(pts) >= 4:
+                    series[spec["id"]] = dict(points=pts, fetched=dt.date.today().isoformat(), table=table,
+                                              note=spec.get("fallback_note", "") if req is not spec["require"] else "")
+                    print(f"{spec['id']}: {table} {req} → {len(pts)} Punkte, zuletzt {pts[-1]}")
+                    ok = True
+                    break
+                tried.append(f"{table} {req}: {len(pts)} Punkte")
+            if ok:
+                break
+        if not ok:
+            errors.append(f"{spec['id']}: keine Daten ({'; '.join(tried)})")
+            print(f"FEHLER {spec['id']}: {tried}", file=sys.stderr)
     OUT.write_text(json.dumps(dict(meta=dict(sample=False, errors=errors), series=series),
                               ensure_ascii=False, indent=1), encoding="utf-8")
     # Nicht abbrechen: Dashboard soll auch ohne Kennzahlen-Update erscheinen.
