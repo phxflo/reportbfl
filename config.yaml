@@ -271,3 +271,8 @@ indices:
     freq: quarterly
     require: ["WZ08-C;", "Originalwerte"]
     url: "https://www-genesis.destatis.de/datenbank/online/table/62421-0001"
+
+ai:                       # Auswertung durch Claude (nur mit Secret ANTHROPIC_API_KEY); ohne Schlüssel gelten die Regeln oben
+  model: claude-haiku-5-5
+  batch: 25               # Meldungen je Anfrage
+  max_items: 400          # Obergrenze neuer Meldungen je Lauf (Kostenbremse)
