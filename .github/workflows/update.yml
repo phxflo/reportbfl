@@ -16,13 +16,32 @@ jobs:
   update:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      PAGE_PASSWORD: ${{ secrets.PAGE_PASSWORD }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Passwort prüfen
+        run: |
+          if [ "${#PAGE_PASSWORD}" -lt 12 ]; then
+            echo "::error::Secret PAGE_PASSWORD fehlt oder ist kürzer als 12 Zeichen. Es wird nichts veröffentlicht."
+            exit 1
+          fi
       - run: pip install -r requirements.txt
+      - name: Archiv entschlüsseln
+        run: |
+          if [ -f data/news.enc ]; then
+            openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -in data/news.enc -out data/news.json -pass env:PAGE_PASSWORD 2>/dev/null || true
+            # Bei falschem Passwort entsteht Datenmüll: dann mit leerem Archiv neu beginnen
+            python -c "import json; json.load(open('data/news.json', encoding='utf-8'))" 2>/dev/null \
+              || { echo "::warning::Archiv nicht lesbar (Passwort geändert?) - starte mit leerem Archiv"; rm -f data/news.json; }
+          fi
       - name: Meldungen abrufen
         run: python fetch_news.py
       - name: Kennzahlen abrufen (Destatis)
@@ -32,10 +51,17 @@ jobs:
         run: python fetch_indices.py
       - name: Seite bauen
         run: python build.py
+      - name: Seite verschlüsseln
+        run: python protect.py
+      - name: Archiv verschlüsseln
+        run: |
+          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -in data/news.json -out data/news.enc -pass env:PAGE_PASSWORD
+          rm -f data/news.json
       - name: Änderungen speichern
         run: |
           git config user.name "seil-report-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add data docs
+          git rm -q --cached data/news.json 2>/dev/null || true
+          git add .gitignore data docs
           git diff --staged --quiet || git commit -m "Update $(date -u +%F)"
           git push
