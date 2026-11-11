@@ -288,9 +288,9 @@ indices:
     url: "https://www-genesis.destatis.de/datenbank/online/table/62421-0001"
 
 ai:                       # Auswertung durch Claude (nur mit Secret ANTHROPIC_API_KEY); ohne Schlüssel gelten die Regeln oben
-  model: claude-haiku-5-5
+  model: claude-sonnet-5-5   # genauer als Haiku; Mehrkosten nur beim ersten Durchlauf, danach wenige Cent pro Tag
   batch: 25               # Meldungen je Anfrage
-  max_items: 400          # Obergrenze neuer Meldungen je Lauf (Kostenbremse)
+  max_items: 600          # Obergrenze neuer Meldungen je Lauf (Kostenbremse)
 
 industry_terms:           # Zusatzsuche je Land: Branchenmeldungen (Claude sortiert aus, was nicht passt)
   en: [port, terminal, crane, steel, mining, construction, infrastructure]
