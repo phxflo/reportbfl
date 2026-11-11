@@ -2,8 +2,8 @@
  "meta": {
   "sample": false,
   "errors": [
-   "draht: new-line character seen in unquoted field - do you need to open the file with newline=''?",
-   "aki: new-line character seen in unquoted field - do you need to open the file with newline=''?"
+   "draht: nur 0 Datenpunkte erkannt – Parser/Filter prüfen (--debug)",
+   "aki: nur 0 Datenpunkte erkannt – Parser/Filter prüfen (--debug)"
   ]
  },
  "series": {}
