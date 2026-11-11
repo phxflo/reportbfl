@@ -25,12 +25,14 @@ API = "https://genesis.destatis.de/genesisWS/rest/2020/data/tablefile"
 DEBUG = "--debug" in sys.argv
 
 
-def fetch_table(name):
+def fetch_table(name, years=None):
     user, pw = os.environ.get("DESTATIS_USER", ""), os.environ.get("DESTATIS_PASSWORD", "")
     if not user:
         raise RuntimeError("DESTATIS_USER nicht gesetzt")
     headers = {"Content-Type": "application/x-www-form-urlencoded", "username": user, "password": pw}
-    data = dict(name=name, area="all", format="ffcsv", language="de", startyear=str(dt.date.today().year - 4))
+    data = dict(name=name, area="all", format="ffcsv", language="de")
+    if years:
+        data["startyear"] = str(dt.date.today().year - int(years))
     url = API
     for _ in range(4):                      # Weiterleitungen selbst folgen, damit es bei POST bleibt
         r = requests.post(url, headers=headers, data=data, timeout=(30, 300), allow_redirects=False)
@@ -138,7 +140,7 @@ def main():
         for table in spec.get("tables") or [spec["table"]]:
             for req in [spec["require"]] + ([spec["fallback_require"]] if spec.get("fallback_require") else []):
                 try:
-                    text = fetch_table(table)
+                    text = fetch_table(table, spec.get("years"))
                     save_raw(f"{spec['id']}_{table}", text)
                     pts = parse(text, dict(spec, require=req))
                 except Exception as ex:

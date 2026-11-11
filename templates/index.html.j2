@@ -181,7 +181,8 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
           <div class="val"><div class="big">{{ c.latest }}</div><div class="per">{{ c.period }}</div></div>
         </header>
         <div class="deltas">
-          <span>{{ c.d1|arrow }} <em>ggü. {{ c.d1_label }}</em></span>
+          {% if c.d1 is not none %}<span>{{ c.d1|arrow }} <em>ggü. {{ c.d1_label }}</em></span>{% endif %}
+          {% if c.note %}<span>{{ c.note }}</span>{% endif %}
           {% if c.d12 is not none %}<span>{{ c.d12|arrow }} <em>ggü. Vorjahr</em></span>{% endif %}
         </div>
         {{ c.svg|safe }}
