@@ -44,6 +44,7 @@ jobs:
           fi
       - name: Meldungen abrufen
         env:
+          COMPETITORS: ${{ secrets.COMPETITORS }}                # optional: Wettbewerber, durch Komma getrennt
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}     # nur als Schalter: mit Claude dürfen weite Suchen ungefiltert durch
         run: python fetch_news.py
       - name: Kennzahlen abrufen (Destatis)
@@ -55,6 +56,7 @@ jobs:
         continue-on-error: true       # ohne Schlüssel oder bei API-Fehlern läuft der Report mit den Regeln weiter
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          COMPETITORS: ${{ secrets.COMPETITORS }}
         run: python ai.py
       - name: Seite bauen
         run: python build.py

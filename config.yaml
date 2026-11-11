@@ -127,8 +127,8 @@ rubrics:
     weight: 0.9
     must: 'seilhersteller|drahtseil|stahlseil|wire rope|steel wire|câbles? en acier|câbles? métalliques?|câbles? d.acier|staalkabel|staaldraad|çelik halat|halat|حبال فولاذية|كابلات فولاذية|כבלי פלדה|חבל פלדה|bridon|wireco|teufelberger|pfeifer|casar[^.]{0,50}(seil|wire|rope|cable|câble|cables|kabel|halat|حبال|كابلات|כבל|חבל)|(seil|wire|rope|cable|câble|cables|kabel|halat|حبال|كابلات|כבל|חבל)[^.]{0,50}casar'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
-      de: [Drahtseil, Stahlseil, Seilhersteller, Teufelberger, "Casar Drahtseilwerk", "PFEIFER Seil"]
-      en: ["wire rope", "steel wire rope", "Bridon-Bekaert", WireCo, Teufelberger, "Casar wire rope"]
+      de: [Drahtseil, Stahlseil, Seilhersteller, Teufelberger, "Casar Drahtseilwerk", "PFEIFER Seil", "Seilhersteller Insolvenz", "Drahtseil Reklamation", Seilbruch]
+      en: ["wire rope", "steel wire rope", "Bridon-Bekaert", WireCo, Teufelberger, "Casar wire rope", "wire rope manufacturer insolvency", "wire rope recall", "wire rope failure"]
       fr: ["câble en acier", "câble métallique", "câbles d'acier"]
       nl: [staalkabel, staaldraadkabel]
       tr: ["çelik halat", "halat üreticisi"]
