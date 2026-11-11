@@ -49,6 +49,11 @@ jobs:
           DESTATIS_USER: ${{ secrets.DESTATIS_USER }}
           DESTATIS_PASSWORD: ${{ secrets.DESTATIS_PASSWORD }}
         run: python fetch_indices.py
+      - name: Meldungen von Claude beurteilen lassen
+        continue-on-error: true       # ohne Schlüssel oder bei API-Fehlern läuft der Report mit den Regeln weiter
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python ai.py
       - name: Seite bauen
         run: python build.py
       - name: Seite verschlüsseln

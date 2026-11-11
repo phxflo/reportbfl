@@ -200,15 +200,20 @@ def compute(all_items, now):
     cap = SITE["per_section"]
 
     allowed = set(CFG["editions"]) | {"de", "en"}
-    items = [i for i in all_items if dt.datetime.fromisoformat(i["published"]) >= win and (i["lang"] in allowed or i["id"].startswith("s"))]
+    items = [i for i in all_items if dt.datetime.fromisoformat(i["published"]) >= win and (i["lang"] in allowed or i["id"].startswith("s")) and (i.get("ai") or {}).get("relevant", True)]
     cards = []
     for members in cluster(items):
         lead = members[0]
         rubrics = sorted({r for m in members for r in (m.get("rubrics") or [m["rubric"]])}, key=lambda r: rorder.get(r, 99))
+        ai = [m["ai"] for m in members if m.get("ai")]
+        if ai:                                   # Claude hat entschieden: Rubrik(en) und Länder kommen von dort
+            rubrics = sorted({a["rubric"] for a in ai if a.get("rubric")}, key=lambda r: rorder.get(r, 99)) or rubrics
         rubric = rubrics[0]
         # Land = Land, um das es inhaltlich geht: Namen in Titel/Textauszug oder Land in der Suche selbst – nicht das Quellland
         text_all = " ".join((m.get("title_de") or "") + " " + m["title_orig"] + " " + m.get("snippet", "") for m in members)
         countries = sorted({c for c in cname if cmatch[c].search(text_all)}, key=list(cname).index)
+        if ai:
+            countries = sorted({c for a in ai for c in a.get("countries", []) if c in cname}, key=list(cname).index)
         # regionale Eingrenzung (strenge Rubriken nur mit Bezug zu deinen Ländern oder Deutschland)
         reg = CFG.get("region") or {}
         if reg:
@@ -235,7 +240,8 @@ def compute(all_items, now):
             needs_tr=not (any(m.get("title_de") for m in members) or lead["lang"] in ("de", "en")),
             lang=LANG.get(lead["lang"], lead["lang"].upper()), source=srcs[0], n=len(srcs), url=lead["url"],
             when=pub.astimezone(TZ).strftime("%d.%m. %H:%M"), ts=pub, is_new=age < 1,
-            countries=[dict(id=c, name=cname[c]) for c in countries], tk=tk, sig=signature(tk),
+            countries=[dict(id=c, name=cname[c]) for c in countries], tk=tk, sig=signature(tk), grp={m["grp"] for m in members if m.get("grp")},
+            bris=max([m["ai"]["brisanz"] for m in members if m.get("ai")] or [0]),
             readable=lead["lang"] in ("de", "en") or any(m.get("title_de") for m in members)))
 
     # Gleiche Vorfälle (auch in anderen Sprachen, z. B. die Explosion in Izmir) zu einer Meldung bündeln.
@@ -244,7 +250,9 @@ def compute(all_items, now):
     merged = []
     for c in cards:
         for m in merged:
-            if same_incident(c, m):
+            if same_incident(c, m) or (c["grp"] & m["grp"]):
+                m["grp"] |= c["grp"]
+                m["bris"] = max(m["bris"], c["bris"])
                 m["srcs"] |= c["srcs"]
                 m["sig"] = m["sig"] | c["sig"]          # Vorfall wird mit jeder Meldung "bekannter"
                 m["rubrics"] = sorted(set(m["rubrics"]) | set(c["rubrics"]), key=lambda r: rorder.get(r, 99))
@@ -267,7 +275,7 @@ def compute(all_items, now):
         # damit die Top-News über die Woche stabil bleiben
         c["score"] = (rub[c["rubric"]]["weight"] * 2 + 1.2 * min(c["n"] - 1, 8) + (2.5 if BOOST.search(c["text"]) else 0)
                       + 0.8 * max(0, 1 - age / SITE["window_days"]) + (0.4 if c["countries"] else 0)
-                      + (1.5 if c["trusted"] else 0))
+                      + (1.5 if c["trusted"] else 0) + (1.5 * (c["bris"] - 3) if c["bris"] else 0))
 
     # Top-News: nach Brisanz; höchstens eine Meldung je Rubrik. (Gleiche Vorfälle sind oben schon gebündelt;
     # zwei verschiedene Themen aus demselben Land dürfen beide erscheinen.)
@@ -275,7 +283,7 @@ def compute(all_items, now):
     for c in sorted(cards, key=lambda c: (c["score"], c["ts"]), reverse=True):
         if len(top) >= SITE.get("top_n", 5):
             break
-        if c["rubric"] in used_r or any(same_incident(c, t) for t in top):
+        if c["rubric"] in used_r or any(same_incident(c, t) or (c["grp"] & t["grp"]) for t in top):
             continue
         top.append(c)
         used_r.add(c["rubric"])
