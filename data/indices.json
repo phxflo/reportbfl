@@ -2,8 +2,8 @@
  "meta": {
   "sample": false,
   "errors": [
-   "draht: 405 Client Error: Method Not Allowed for url: https://genesis.destatis.de/genesisWS/rest/2020/data/tablefile?name=61241-0004&area=all&format=ffcsv&language=de",
-   "aki: 405 Client Error: Method Not Allowed for url: https://genesis.destatis.de/genesisWS/rest/2020/data/tablefile?name=62421-0001&area=all&format=ffcsv&language=de"
+   "draht: new-line character seen in unquoted field - do you need to open the file with newline=''?",
+   "aki: new-line character seen in unquoted field - do you need to open the file with newline=''?"
   ]
  },
  "series": {}
