@@ -161,6 +161,14 @@ def same_incident(a, b):
     return len(shared) >= 2 and bool(specific)
 
 
+def _home():
+    names = (CFG.get("region") or {}).get("extra_names") or []
+    return re.compile("|".join(rf"(?<!\w){re.escape(n)}" for n in names) or "(?!x)x", re.I)
+
+
+HOME = _home()
+
+
 def country_matchers():
     out = {}
     for c in CFG["countries"]:
@@ -196,6 +204,16 @@ def compute(all_items, now):
         # Land = Land, um das es inhaltlich geht: Namen in Titel/Textauszug oder Land in der Suche selbst – nicht das Quellland
         text_all = " ".join((m.get("title_de") or "") + " " + m["title_orig"] + " " + m.get("snippet", "") for m in members)
         countries = sorted({c for c in cname if cmatch[c].search(text_all)}, key=list(cname).index)
+        # regionale Eingrenzung (strenge Rubriken nur mit Bezug zu deinen Ländern oder Deutschland)
+        reg = CFG.get("region") or {}
+        if reg:
+            if any(m["lang"] == "tr" for m in members) and "TR" in cname and "TR" not in countries:
+                countries = sorted(countries + ["TR"], key=list(cname).index)
+            geo = bool(countries) or bool(HOME.search(text_all))
+            rubrics = [r for r in rubrics if r not in reg.get("rubrics", []) or geo]
+            if not rubrics:
+                continue
+            rubric = rubrics[0]
         if rubrics == ["laender"] and not countries:
             continue
         pub = dt.datetime.fromisoformat(lead["published"])

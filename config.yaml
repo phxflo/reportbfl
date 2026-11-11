@@ -184,6 +184,12 @@ countries:
       - {lang: en, hl: en, gl: TR, ceid: "TR:en", q: "Turkey (steel OR port OR tariffs OR customs OR lira)"}
       - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Türkei (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik OR Lira)"}
 
+# Regionale Eingrenzung: In diesen Rubriken bleiben nur Meldungen, in denen eines deiner Länder (siehe "countries")
+# oder einer der Begriffe unten vorkommt. Türkischsprachige Meldungen zählen automatisch als Türkei.
+region:
+  rubrics: [haefen, kraene, industrie, tiefbau]
+  extra_names: ["Deutschland", "Germany", "German", "deutsch", "Hamburg", "Bremerhaven", "Bremen", "Duisburg", "Rostock", "Wilhelmshaven", "Lübeck", "Salzgitter", "Dillingen", "Saarbrücken", "Ruhrgebiet", "thyssenkrupp", "Bundesregierung", "NRW", "Bayern", "Sachsen", "Hessen", "Baden-Württemberg", "Niedersachsen", "Schleswig", "Berlin", "Hannover", "Frankfurt", "Köln", "München", "Stuttgart"]
+
 # Ereigniswörter: Umfeld-Begriffe (Stahlwerk, Hafen, Kran …) zählen nur zusammen mit einem Ereignis
 events: 'auftrag|bestell\w*|liefer\w*|invest\w*|erweiter\w*|ausbau|neubau|eröffn\w*|übernahme|insolvenz|unfall|einsturz|explosion|brand|feuer|streik|stilllegung|schließung|zuschlag|preis\w*|zoll\w*|sanktion\w*|embargo|vorstell\w*|rekord|kapazität\w*|vertrag|ausschreibung|fördermittel|werk (eröffn|schließ)|order(s|ed)?|contract|invest\w*|expan\w*|acquir\w*|acquisition|bankrupt\w*|accident|collapse|explo\w*|fire|strike|shutdown|closure|surcharge|price\w*|tariff\w*|sanction\w*|unveil\w*|launch\w*|record|capacity|tender|grant|opens?|delivers?|delivery|commande\w*|investissement|inauguration|grève|accident|incendie|faillite|extension|rachat|acquisition|prix|bestelling|investering|staking|ongeval|brand|faillissement|uitbreiding|overname|prijs|patlama|yangın|grev|kaza|sipariş|yatırım|iflas|fiyat\w*|yaptırım|kapan\w*|ihale'
 
