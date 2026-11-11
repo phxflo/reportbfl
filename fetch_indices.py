@@ -12,6 +12,7 @@ import json
 import os
 import re
 import sys
+import zipfile
 from pathlib import Path
 
 import requests
@@ -38,7 +39,15 @@ def fetch_table(name):
             continue
         break
     r.raise_for_status()
-    text = r.content.decode("utf-8-sig", errors="replace")
+    raw = r.content
+    if raw[:2] == b"PK":                    # ffcsv kommt als ZIP mit einer CSV-Datei darin
+        with zipfile.ZipFile(io.BytesIO(raw)) as z:
+            member = next((n for n in z.namelist() if n.lower().endswith((".csv", ".txt"))), z.namelist()[0])
+            raw = z.read(member)
+    try:
+        text = raw.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        text = raw.decode("latin-1")
     if text.lstrip().startswith("{"):       # Fehlermeldung von Destatis (JSON) statt Tabelle
         try:
             st = json.loads(text).get("Status", {})
