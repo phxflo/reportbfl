@@ -271,10 +271,14 @@ indices:
     require: ["GP19-2434;"]
     url: "https://www-genesis.destatis.de/datenbank/online/table/61241-0004"
   - id: vpi
-    probe: true            # Testlauf: legt nur data/raw_vpi_*.txt ab, damit ich das Tabellenformat sehe
     table: "61111-0002"
+    title: "Inflationsrate – Verbraucherpreise"
+    sub: "VPI (2020=100), Veränderung ggü. Vorjahresmonat · Destatis · monatlich"
     freq: monthly
-    require: []
+    headline: yoy          # Anzeige = Jahresveränderung in %, berechnet aus dem Index
+    years: 4               # Destatis-Abruf ab (aktuelles Jahr − 4)
+    require: ["2020=100"]
+    url: "https://www-genesis.destatis.de/datenbank/online/table/61111-0002"
   - id: aki
     table: "62421-0001"
     title: "Arbeitskostenindex – Verarbeitendes Gewerbe"

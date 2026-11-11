@@ -45,6 +45,10 @@ def chart(spec, series):
     pts = series["points"]
     freq = spec["freq"]
     lag = 12 if freq == "monthly" else 4
+    yoy_mode = spec.get("headline") == "yoy"
+    if yoy_mode:                            # Inflationsrate = Jahresveränderung des Index (Destatis rechnet ebenso aus dem gerundeten Index)
+        pts = [dict(p=pts[i]["p"], v=round((pts[i]["v"] / pts[i - lag]["v"] - 1) * 100, 1)) for i in range(lag, len(pts))]
+    dec = 1 if yoy_mode else 0
     W, H, L, R, T, B = 560, 200, 44, 14, 14, 28
     vals = [p["v"] for p in pts]
     lo, hi = min(vals), max(vals)
@@ -58,7 +62,7 @@ def chart(spec, series):
     for k in range(4):
         v = lo + (hi - lo) * k / 3
         y = Y(v)
-        s.append(f'<line class="grid" x1="{L}" x2="{W - R}" y1="{y:.1f}" y2="{y:.1f}"/><text x="{L - 6}" y="{y + 4:.1f}" text-anchor="end">{num(v, 0)}</text>')
+        s.append(f'<line class="grid" x1="{L}" x2="{W - R}" y1="{y:.1f}" y2="{y:.1f}"/><text x="{L - 6}" y="{y + 4:.1f}" text-anchor="end">{num(v, dec)}</text>')
     idx = sorted({0, len(pts) // 4, len(pts) // 2, 3 * len(pts) // 4, len(pts) - 1})
     for i in idx:
         anchor = "start" if i == 0 else "end" if i == len(pts) - 1 else "middle"
@@ -72,6 +76,13 @@ def chart(spec, series):
     prev = pts[-2]["v"]
     yoy = pts[-1 - lag]["v"] if len(pts) > lag else None
     pct = lambda a, b: (a / b - 1) * 100
+    if yoy_mode:
+        diff = pts[-1]["v"] - pts[-2]["v"]
+        return dict(id=spec["id"], title=spec["title"], sub=spec["sub"],
+                    url=spec["url"].rsplit("/", 1)[0] + "/" + series.get("table", spec["table"]),
+                    latest=num(last) + " %", period=per_label(pts[-1]["p"], freq, False), d1=None, d12=None,
+                    note=("▲ +" if diff >= 0 else "▼ −") + num(abs(diff)) + " Prozentpunkte ggü. Vormonat",
+                    svg="".join(s), fetched=series.get("fetched", ""))
     return dict(id=spec["id"], title=spec["title"], sub=spec["sub"], url=spec["url"].rsplit("/",1)[0] + "/" + series.get("table", spec["table"]),
                 latest=num(last), period=per_label(pts[-1]["p"], freq, False),
                 d1=pct(last, prev), d1_label="Vormonat" if freq == "monthly" else "Vorquartal",
