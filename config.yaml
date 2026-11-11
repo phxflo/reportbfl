@@ -183,6 +183,13 @@ countries:
       - {lang: tr, hl: tr, gl: TR, ceid: "TR:tr", q: "Türkiye (ekonomi OR ihracat OR gümrük OR yaptırım OR çelik OR liman OR grev)"}
       - {lang: en, hl: en, gl: TR, ceid: "TR:en", q: "Turkey (economy OR trade OR tariffs OR sanctions OR embargo OR steel OR port OR customs OR strike)"}
       - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Türkei (Wirtschaft OR Konjunktur OR Zoll OR Handel OR Sanktionen OR Embargo OR Stahl OR Hafen OR Streik)"}
+  - id: GH
+    name: Ghana
+    names: [Ghana, Ghanaian, Ghanaer, Accra, Takoradi, Kumasi, "Tema Port", "Port of Tema", "Tema Harbour", "Tema Harbor", "Tema Hafen", "Port de Tema"]
+    editions:
+      - {lang: en, hl: en-GH, gl: GH, ceid: "GH:en", q: "Ghana (economy OR trade OR tariffs OR sanctions OR embargo OR customs OR steel OR import OR export OR port OR strike)"}
+      - {lang: en, hl: en-GH, gl: GH, ceid: "GH:en", q: "Ghana (port OR Tema OR Takoradi OR terminal OR crane OR steel OR mining OR construction OR infrastructure)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Ghana (Wirtschaft OR Konjunktur OR Zoll OR Handel OR Sanktionen OR Embargo OR Stahl OR Hafen OR Streik)"}
 
 # Regionale Eingrenzung: In diesen Rubriken bleiben nur Meldungen, in denen eines deiner Länder (siehe "countries")
 # oder einer der Begriffe unten vorkommt. Türkischsprachige Meldungen zählen automatisch als Türkei.
