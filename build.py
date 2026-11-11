@@ -173,22 +173,31 @@ def compute(all_items, now):
             countries=[dict(id=c, name=cname[c]) for c in countries], score=score,
             tk=tokens(title + " " + lead["title_orig"])))
 
-    # Top-News: nach Brisanz, aber abwechslungsreich – höchstens 2 je Rubrik und je Land, und keine zweite
-    # Meldung zur selben Geschichte (gleicher seltener Name, z. B. "Izmir", innerhalb von 36 Stunden, auch in anderer Sprache)
+    # Top-News: nach Brisanz; höchstens eine Meldung je Rubrik und je Vorfall. Gleicher Vorfall = innerhalb von
+    # 48 Stunden gemeinsamer Eigenname/seltenes Wort (z. B. "Izmir"), auch sprachübergreifend, oder ähnliche Titel.
+    # Zwei verschiedene Themen aus demselben Land dürfen dagegen beide erscheinen.
+    GENERIC = {"hafen", "haefen", "stahl", "stahlwerk", "kran", "krane", "kranen", "crane", "cranes", "port", "ports", "steel",
+               "container", "terminal", "terminals", "industrie", "markt", "market", "zoll", "tariff", "tariffs", "neue", "neuen",
+               "wegen", "nach", "durch", "ueber", "ihre", "sind", "wurde", "turkey", "tuerkei", "turkiye", "israel", "marokko",
+               "morocco", "maroc", "algerien", "algerie", "tunesien", "tunisie", "belgien", "belgique", "niederlande", "nederland"}
     df = Counter(w for c in cards for w in c["tk"])
-    top, per_r, per_c = [], Counter(), Counter()
+
+    def same_incident(a, b):
+        if abs((a["ts"] - b["ts"]).total_seconds()) > 48 * 3600:
+            return False
+        shared = a["tk"] & b["tk"]
+        if len(shared) >= 3:
+            return True
+        return any(len(w) >= 5 and w not in GENERIC and df[w] <= 25 for w in shared)
+
+    top, used_r = [], set()
     for c in sorted(cards, key=lambda c: (c["score"], c["ts"]), reverse=True):
         if len(top) >= SITE.get("top_n", 5):
             break
-        if per_r[c["rubric"]] >= 2 or any(per_c[k["id"]] >= 2 for k in c["countries"]):
-            continue
-        if any(abs((c["ts"] - t["ts"]).total_seconds()) < 36 * 3600
-               and any(len(w) >= 5 and df[w] <= 8 for w in c["tk"] & t["tk"]) for t in top):
+        if c["rubric"] in used_r or any(same_incident(c, t) for t in top):
             continue
         top.append(c)
-        per_r[c["rubric"]] += 1
-        for k in c["countries"]:
-            per_c[k["id"]] += 1
+        used_r.add(c["rubric"])
 
     def member(c, rid):                 # Rubrik "Länder" = alles mit erkennbarem Länderbezug
         return bool(c["countries"]) if rid == "laender" else rid in c["rubrics"]

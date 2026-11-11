@@ -92,12 +92,17 @@ def main():
     order = {r["id"]: i for i, r in enumerate(CFG["rubrics"])}
     must = {r["id"]: re.compile(r["must"], re.I) for r in CFG["rubrics"] if r.get("must")}
     dropped = {}
+    xrx = [re.compile(x, re.I) for x in CFG.get("exclude_regex", [])]
+
+    def bad(title, src, snip=""):
+        return any(r.search(f"{title} {src} {snip}") for r in xrx)
 
     db = {}
     if NEWS.exists():
         old = json.loads(NEWS.read_text(encoding="utf-8"))
         if not old.get("meta", {}).get("sample"):
-            db = {i["id"]: i for i in old.get("items", [])}
+            db = {i["id"]: i for i in old.get("items", [])
+                  if not bad(i["title_orig"], i["source"], i.get("snippet", ""))}   # neue Ausschlüsse gelten auch fürs Archiv
 
     jobs = build_jobs(days)
     print(f"{len(jobs)} Abfragen …")
@@ -119,6 +124,9 @@ def main():
             snip = html.unescape(e.get("summary", ""))
             snip = re.sub(r"<font[^>]*>.*?</font>", " ", snip, flags=re.S)
             snip = re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", snip))).strip()[:500]
+            if bad(title, src, snip):
+                dropped["ausgeschlossen"] = dropped.get("ausgeschlossen", 0) + 1
+                continue
             rx = must.get(job["rubric"])
             if rx and not rx.search(f"{title} {snip}"):
                 dropped[job["rubric"]] = dropped.get(job["rubric"], 0) + 1

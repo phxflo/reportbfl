@@ -15,6 +15,10 @@ site:
 
 # Meldungen mit diesen Wörtern im Titel werden verworfen
 exclude:
+  - Manitowoc County
+  - Manitowoc, Wis
+  - Sheriff
+  - Meth
   - Horoskop
   - Gewinnspiel
   - Klettersteig
@@ -148,36 +152,51 @@ countries:
     names: ["Marokk", "Morocc", "Maroc", "Fas", "المغرب", "Tanger", "Tangier", "Casablanca", "Agadir", "Nador", "طنجة", "الدار البيضاء", "أغادير", "الناظور", "Marocain"]
     editions:
       - {lang: fr, hl: fr, gl: MA, ceid: "MA:fr", q: "Maroc (port OR acier OR douane OR importation OR logistique)"}
-      - {lang: ar, hl: ar, gl: MA, ceid: "MA:ar", q: "المغرب (ميناء OR صلب OR جمارك OR استيراد OR لوجستيك)"}
       - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Marokko (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik)"}
   - id: DZ
     name: Algerien
     names: ["Alger", "Algier", "Algér", "الجزائر", "وهران", "Oran", "Annaba", "Bejaia", "Béjaïa", "Djen Djen", "Skikda", "عنابة", "بجاية", "سكيكدة"]
     editions:
       - {lang: fr, hl: fr, gl: DZ, ceid: "DZ:fr", q: "Algérie (port OR acier OR douane OR importation OR logistique)"}
-      - {lang: ar, hl: ar, gl: DZ, ceid: "DZ:ar", q: "الجزائر (ميناء OR صلب OR جمارك OR استيراد OR لوجستيك)"}
       - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Algerien (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik)"}
   - id: TN
     name: Tunesien
     names: ["Tunesi", "Tunis", "تونس", "Sfax", "Radès", "Bizerte", "Sousse", "Gabès", "صفاقس", "سوسة", "بنزرت", "رادس"]
     editions:
       - {lang: fr, hl: fr, gl: TN, ceid: "TN:fr", q: "Tunisie (port OR acier OR douane OR importation OR logistique)"}
-      - {lang: ar, hl: ar, gl: TN, ceid: "TN:ar", q: "تونس (ميناء OR صلب OR جمارك OR استيراد OR لوجستيك)"}
       - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Tunesien (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik)"}
   - id: IL
     name: Israel
     names: ["Israel", "ישראל", "إسرائيل", "Haifa", "Ashdod", "Aschdod", "Eilat", "Tel Aviv", "אשדוד", "חיפה", "אילת", "תל אביב", "حيفا", "أشدود", "إيلات", "Israeli"]
     editions:
-      - {lang: he, hl: he, gl: IL, ceid: "IL:he", q: "ישראל (נמל OR פלדה OR מכס OR יבוא OR לוגיסטיקה)"}
       - {lang: en, hl: en, gl: IL, ceid: "IL:en", q: "Israel (port OR steel OR customs OR import OR sanctions)"}
       - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Israel (Zoll OR Handelsbeschränkungen OR Sanktionen OR Hafen OR Stahl OR Logistik)"}
   - id: TR
     name: Türkei
     names: ["Türkei", "Türkiye", "Türkisch", "Turkey", "Turkish", "Türk Hava", "Turquie", "تركيا", "Istanbul", "İstanbul", "Izmir", "İzmir", "Mersin", "Ankara", "Kocaeli", "Iskenderun", "İskenderun", "Gebze", "إسطنبول", "إزمير", "مرسين", "أنقرة"]
     editions:
-      - {lang: tr, hl: tr, gl: TR, ceid: "TR:tr", q: "Türkiye (liman OR çelik OR gümrük OR ihracat OR vinç)"}
       - {lang: en, hl: en, gl: TR, ceid: "TR:en", q: "Turkey (steel OR port OR tariffs OR customs OR lira)"}
       - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Türkei (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik OR Lira)"}
+
+# Ausschluss per Regex (Titel + Quelle + Textauszug): gleiche Namen / Wörter mit anderer Bedeutung
+exclude_regex:
+  # Namensvettern von Kran- und Seilfirmen
+  - 'manitowoc[ ,]+(county|wis|wi\b|wisconsin|public|police|sheriff)'
+  - 'liebherr[- ]?(kühl|gefrier|hausger|fridge|freezer|refriger)|kühlschr|kühl-? ?gefrier'
+  - 'casar de |ana casar|casar (de )?cáceres|cáceres|casar de palomero'
+  - 'bauer (media|verlag|sucht|radio|digital)|bauer sucht frau|landwirt|\bernte\b|bauernverband|\bbauern\b'
+  - 'terex (cup|the cat)'
+  # "Kran/crane" im Sinne von Vogel, Namen, Kultur
+  - 'whooping crane|sandhill crane|crane fly|crane kick|karate kid|origami|kranich|kraniche|grue cendr|kraanvogel|vogelzug|bird flu|vogelgrippe'
+  - '\b(tom|jane|ian|ben|bob|stephen|david|jim|rob|sam) crane\b|crane (county|township|elementary|high school|hotel|nxt|currency)|stephen crane'
+  # "Hafen/port/haven" im Sinne von Flughafen, Anschluss, Zuflucht, Steuer
+  - 'flughafen|airport|aéroport|aeroport|luchthaven|vliegveld|havalimanı|airline|fluglinie|fluggast'
+  - 'safe haven|tax haven|steueroase|steuerparadies|havenwood|\busb\b|\bhdmi\b|ethernet|port forward|port scan|passport|portfolio|port-au-prince|port said|port sudan|port harcourt|portland'
+  - 'port(ugal|o\b)|quay(s)? (road|street|hotel)|key west|kade (grup|bahçe)'
+  # Lifestyle, Sport, Kriminalität, Boulevard
+  - 'sheriff|obituar|nachruf|killed in crash|shooting|schießerei|\bmeth\b|methamphet|dui\b|arrested for|verhaftet nach|festgenommen nach|mordprozess|murder trial'
+  - '\b(nfl|nba|nhl|mlb|premier league|bundesliga|champions league|ligue 1|tennis|formel 1|formula 1|fußball|football match|rezept|recipe|horoskop|promis?|celebrity|netflix|spotify|iphone|android|playstation|xbox|bitcoin|krypto\w*)\b'
+  - 'hochzeit|wedding|babyshower|gewinnspiel|giveaway|lottery|lotto'
 
 # Google-News-Ausgaben für die Rubrik-Suchen je Sprache. Nur Ausgaben deiner Länder,
 # damit z. B. arabische Suchen nicht Ägypten statt Marokko/Algerien/Tunesien liefern.
@@ -186,9 +205,6 @@ editions:
   en: [{hl: en-US, gl: US, ceid: "US:en"}]
   fr: [{hl: fr, gl: MA, ceid: "MA:fr"}, {hl: fr, gl: DZ, ceid: "DZ:fr"}, {hl: fr, gl: TN, ceid: "TN:fr"}, {hl: fr, gl: BE, ceid: "BE:fr"}]
   nl: [{hl: nl, gl: NL, ceid: "NL:nl"}, {hl: nl, gl: BE, ceid: "BE:nl"}]
-  tr: [{hl: tr, gl: TR, ceid: "TR:tr"}]
-  ar: [{hl: ar, gl: MA, ceid: "MA:ar"}, {hl: ar, gl: DZ, ceid: "DZ:ar"}, {hl: ar, gl: TN, ceid: "TN:ar"}]
-  he: [{hl: he, gl: IL, ceid: "IL:he"}]
 
 # Zusätzliche feste RSS-Feeds (Fachportale). Format: {name, url, rubric, lang}
 feeds: []
