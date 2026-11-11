@@ -1,0 +1,5 @@
+# Klartext-Daten gehören nie ins öffentliche Repository (nur verschlüsselt als data/news.enc)
+data/news.json
+docs/plain.tmp
+.cache/
+__pycache__/
