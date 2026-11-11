@@ -44,6 +44,7 @@ rubrics:
     title: "Häfen, Terminals & Güterumschlag"
     short: "Häfen"
     weight: 1.0
+    core: 'ship-to-shore|sts[- ]crane|(?<!\w)(rtg|rmg)(?!\w)|kaikran|hafenkran|quay crane|containerbrücke|container ?terminal|terminal à conteneurs|konteyner terminal|havenkraan|kadekraan|محطة حاويات|מסוף מכולות'   # Treffer hier zählen auch ohne Ereigniswort
     must: 'hafen|häfen|kaianlage|kaikran|umschlag|container ?terminal|konteyner terminal|terminal à conteneurs|quay|(?<!\w)ports?(?!\w)|ship-to-shore|(?<!\w)(rtg|rmg|sts)(?!\w)|haven|(?<!\w)kade|liman|ميناء|موانئ|محطة حاويات|נמל|מסוף מכולות'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
       de: [Hafenkran, Containerterminal, Hafenausbau, Kaianlage, Terminal Umschlag, Hafen Investition]
@@ -58,6 +59,7 @@ rubrics:
     title: "Kranflotten – Turmdreh-, Mobil- & Raupenkrane"
     short: "Krane"
     weight: 0.9
+    core: 'crane (collapse|accident|fire|topples?|overturn\w*)|kraneinsturz|kranunfall|kran (stürzt|kippt|umgestürzt)|grue (tombe|effondr\w*)|vinç (devril\w*|kaza\w*)|kraan (omgevallen|ongeval)|tadano|(manitowoc|terex|liebherr|potain)[^.]{0,40}(kran|crane|grue|vinç|kraan)|crane (fleet|rental)|kranvermiet|kranflotte|parc de grues|vinç filosu|kraanverhuur'   # Treffer hier zählen auch ohne Ereigniswort
     must: 'kran(e|en)?(?!\w)|crane|grue|kraan|kranen|vinç|(liebherr|tadano|manitowoc|terex|potain)[^.]{0,60}(kran|crane|grue|vinç|kraan)|(kran|crane|grue|vinç|kraan)[^.]{0,60}(liebherr|tadano|manitowoc|terex|potain)|raupenkran|crawler crane|رافعة|رافعات|עגורן|מנוף'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
       de: [Turmdrehkran, Mobilkran, Raupenkran, Kranflotte, Autokran, "Liebherr Mobilkran"]
@@ -72,6 +74,7 @@ rubrics:
     title: "Industrie – Stahlwerke, Schwerindustrie & Prozesskrane"
     short: "Industrie"
     weight: 0.8
+    core: 'stahlwerk|steel ?(mill|works|plant)|aci[eé]rie|hochofen|blast furnace|lichtbogenofen|electric arc furnace|staalfabriek|çelik fabrikası|demir çelik (fabrika|tesis)\w*|brückenkran|overhead crane|prozesskran|pont roulant|brugkraan'   # Treffer hier zählen auch ohne Ereigniswort
     must: 'stahl|steel|hütte|schwerindustrie|heavy industry|aci[eé]rie|sid[eé]rurgie|industrie lourde|staal|zware industrie|çelik|demir|صلب|فولاذ|صناعة ثقيلة|פלדה|תעשייה כבדה|pont roulant|brückenkran|overhead crane|prozesskran'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
       de: [Stahlwerk, Schwerindustrie, Brückenkran, Hüttenwerk, "Stahlindustrie Investition"]
@@ -86,6 +89,7 @@ rubrics:
     title: "Spezialtiefbau – Bohrgeräte, Seilbagger & Schlitzwandgreifer"
     short: "Spezialtiefbau"
     weight: 0.7
+    core: 'schlitzwand|diaphragm wall|bohrgerät|seilbagger|drilling rig|piling rig|paroi moulée|diepwand|spezialtiefbau|deep foundation|bauer (maschinen|spezialtiefbau|group)|soilmec'   # Treffer hier zählen auch ohne Ereigniswort
     must: 'tiefbau|schlitzwand|bohrgerät|bohrpfahl|bohranlage|bohrtechnik|seilbagger|diaphragm wall|deep foundation|foundation (work|engineering|piling)|piling|(?<!\w)piles?(?!\w)|drilling rig|excavator|soilmec|bauer (group|maschinen|spezialtiefbau)|paroi moulée|fondations? spécial|foreuse|diepwand|funderingstechniek|boormachine|diyafram duvar|özel temel|kazık|sondaj|حفار|أساسات|جدار ساتر|כלונס|יסודות עמוקים'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
       de: [Spezialtiefbau, Schlitzwandgreifer, Bohrgerät, Seilbagger, "Tiefbau Großprojekt"]
@@ -100,13 +104,14 @@ rubrics:
     title: "Länder – Zölle, Handel, Konjunktur & Logistik"
     short: "Länder"
     weight: 0.8
-    must: 'zoll|zölle|handel|tarif|customs|(?<!\w)dut(y|ies)(?!\w)|douane|gümrük|sanktion|sanction|embargo|import|export|ihracat|ithalat|hafen|häfen|(?<!\w)ports?(?!\w)|haven|liman|logist|lojistik|stahl|steel|staal|acier|çelik|lira|dirham|dinar|währung|currency|devise|جمارك|استيراد|تصدير|ميناء|موانئ|صلب|فولاذ|لوجست|מכס|יבוא|יצוא|נמל|פלדה|לוגיסטיקה|invoerrechten|grève|streik|strike'   # Titel muss eines dieser Stichwörter enthalten (Regex)
+    must: 'zoll|zölle|strafzoll|tarif|customs|(?<!\w)dut(y|ies)(?!\w)|douane|gümrük|sanktion|sanction|yaptırım|embargo|antidumping|anti-dumping|quota|kontingent|importverbot|import ban|export ban|exportverbot|einfuhr(verbot|beschränk\w*|quote)|invoerrechten|safeguard|schutzmaßnahme\w*|cbam|devisen|currency control|capital control|hafenstreik|port strike|dockers? strike|port closure|blockade|handelsabkommen|trade (deal|agreement|war)|importbeschränk\w*|restrictions? on (steel|imports?)|ihracat yasağı|ithalat|جمارك|عقوبات|حظر|מכס|סנקציות|אמברגו'   # Länder: nur Handels-/Sanktions-/Zollthemen
     terms: {}                # Länder-Suchen stehen unten unter "countries"
 
   - id: rohstoffe
     title: "Rohstoffe & Zuschläge"
     short: "Rohstoffe"
     weight: 1.0
+    core: 'zuschlag|surcharge|toeslag|supplément|walzdraht|wire rod|walsdraad|filmaşin|fil machine|cbam|safeguard|schutzmaßnahmen|stahlpreis|steel price|prix de l.acier|staalprijs|çelik fiyat'   # Treffer hier zählen auch ohne Ereigniswort
     must: 'zuschlag|surcharge|toeslag|legierung|alloy|walzdraht|wire rod|fil machine|walsdraad|filmaşin|stahlpreis|steel price|scrap|schrott|schroot|hurda|zink|zinc|nickel|cbam|safeguard|schutzmaßnahmen|prix de l.acier|prix du fil|staalprijs|çelik fiyat|ek ücret|supplément|מחירי פלדה|מחיר ברזל'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
       de: [Legierungszuschlag, Rohstoffzuschlag, Walzdraht, Stahlpreise, Schrottpreis, "CBAM Stahl", Zinkpreis]
@@ -175,8 +180,25 @@ countries:
     name: Türkei
     names: ["Türkei", "Türkiye", "Türkisch", "Turkey", "Turkish", "Türk Hava", "Turquie", "تركيا", "Istanbul", "İstanbul", "Izmir", "İzmir", "Mersin", "Ankara", "Kocaeli", "Iskenderun", "İskenderun", "Gebze", "إسطنبول", "إزمير", "مرسين", "أنقرة"]
     editions:
+      - {lang: tr, hl: tr, gl: TR, ceid: "TR:tr", q: "Türkiye (liman OR çelik OR gümrük OR ihracat OR yaptırım)"}
       - {lang: en, hl: en, gl: TR, ceid: "TR:en", q: "Turkey (steel OR port OR tariffs OR customs OR lira)"}
       - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Türkei (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik OR Lira)"}
+
+# Ereigniswörter: Umfeld-Begriffe (Stahlwerk, Hafen, Kran …) zählen nur zusammen mit einem Ereignis
+events: 'auftrag|bestell\w*|liefer\w*|invest\w*|erweiter\w*|ausbau|neubau|eröffn\w*|übernahme|insolvenz|unfall|einsturz|explosion|brand|feuer|streik|stilllegung|schließung|zuschlag|preis\w*|zoll\w*|sanktion\w*|embargo|vorstell\w*|rekord|kapazität\w*|vertrag|ausschreibung|fördermittel|werk (eröffn|schließ)|order(s|ed)?|contract|invest\w*|expan\w*|acquir\w*|acquisition|bankrupt\w*|accident|collapse|explo\w*|fire|strike|shutdown|closure|surcharge|price\w*|tariff\w*|sanction\w*|unveil\w*|launch\w*|record|capacity|tender|grant|opens?|delivers?|delivery|commande\w*|investissement|inauguration|grève|accident|incendie|faillite|extension|rachat|acquisition|prix|bestelling|investering|staking|ongeval|brand|faillissement|uitbreiding|overname|prijs|patlama|yangın|grev|kaza|sipariş|yatırım|iflas|fiyat\w*|yaptırım|kapan\w*|ihale'
+
+# Fachmedien: Suche auf deren Seiten (Google News "site:"). Treffer gelten als vertrauenswürdig und brauchen kein Ereigniswort.
+trade_sources:
+  - {name: "World Cargo News", site: "worldcargonews.com", lang: en, rubric: haefen, q: "(terminal OR port OR crane OR RTG OR quay OR automation)"}
+  - {name: "World Cargo News", site: "worldcargonews.com", lang: en, rubric: kraene, q: "(crane OR heavy lift OR crawler OR mobile crane OR tower crane)"}
+  - {name: "Port Technology", site: "porttechnology.org", lang: en, rubric: haefen, q: "(crane OR terminal OR equipment OR automation)"}
+  - {name: "Splash247", site: "splash247.com", lang: en, rubric: haefen, q: "(port OR terminal OR crane OR strike OR tariff)"}
+  - {name: "Cranes Today", site: "cranestodaymagazine.com", lang: en, rubric: kraene, q: "(crane OR rope OR order OR fleet)"}
+  - {name: "Vertikal", site: "vertikal.net", lang: en, rubric: kraene, q: "(crane OR order OR fleet OR accident)"}
+  - {name: "Steel Times", site: "steeltimesint.com", lang: en, rubric: industrie, q: "(steel OR mill OR plant OR investment)"}
+  - {name: "Kallanish", site: "kallanish.com", lang: en, rubric: rohstoffe, q: "(wire rod OR steel OR surcharge OR scrap OR safeguard)"}
+  - {name: "Eurometal", site: "eurometal.net", lang: en, rubric: rohstoffe, q: "(steel OR wire rod OR price OR safeguard)"}
+  - {name: "Hebezeuge Fördermittel", site: "hebezeuge-foerdermittel.de", lang: de, rubric: kraene, q: "(Kran OR Seil OR Hebezeug)"}
 
 # Ausschluss per Regex (Titel + Quelle + Textauszug): gleiche Namen / Wörter mit anderer Bedeutung
 exclude_regex:
@@ -205,6 +227,7 @@ editions:
   en: [{hl: en-US, gl: US, ceid: "US:en"}]
   fr: [{hl: fr, gl: MA, ceid: "MA:fr"}, {hl: fr, gl: DZ, ceid: "DZ:fr"}, {hl: fr, gl: TN, ceid: "TN:fr"}, {hl: fr, gl: BE, ceid: "BE:fr"}]
   nl: [{hl: nl, gl: NL, ceid: "NL:nl"}, {hl: nl, gl: BE, ceid: "BE:nl"}]
+  tr: [{hl: tr, gl: TR, ceid: "TR:tr"}]
 
 # Zusätzliche feste RSS-Feeds (Fachportale). Format: {name, url, rubric, lang}
 feeds: []

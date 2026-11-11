@@ -162,12 +162,14 @@ def compute(all_items, now):
         # Brisanz: Gewicht der Rubrik, Zahl der Quellen, Reizwörter (Zuschlag, Zoll …); Aktualität zählt kaum,
         # damit die Top-News über die Woche stabil bleiben
         score = (rub[rubric]["weight"] * 2 + 1.6 * min(len(srcs) - 1, 3) + (2.5 if BOOST.search(text) else 0)
-                 + 0.8 * max(0, 1 - age / SITE["window_days"]) + (0.4 if countries else 0))
+                 + 0.8 * max(0, 1 - age / SITE["window_days"]) + (0.4 if countries else 0)
+                 + (1.5 if any(m.get("trusted") for m in members) else 0))
         cards.append(dict(
+            id=lead["id"], trusted=any(m.get("trusted") for m in members),
             rubric=rubric, rubrics=rubrics, rubric_short=rub[rubric]["short"], title=title, lead=lead,
             orig=lead["title_orig"] if lead["lang"] != "de" and title != lead["title_orig"] else None,
-            translated=any(m.get("title_de") for m in members) or lead["lang"] == "de",
-            needs_tr=not (any(m.get("title_de") for m in members) or lead["lang"] == "de"),
+            translated=any(m.get("title_de") for m in members) or lead["lang"] in ("de", "en"),
+            needs_tr=not (any(m.get("title_de") for m in members) or lead["lang"] in ("de", "en")),
             lang=LANG.get(lead["lang"], lead["lang"].upper()), source=srcs[0], n=len(srcs), url=lead["url"],
             when=pub.astimezone(TZ).strftime("%d.%m. %H:%M"), ts=pub, is_new=age < 1,
             countries=[dict(id=c, name=cname[c]) for c in countries], score=score,

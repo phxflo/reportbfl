@@ -43,7 +43,7 @@ def build_jobs(days):
     jobs = []
     for r in CFG["rubrics"]:
         for lang, terms in (r.get("terms") or {}).items():
-            for ed in CFG["editions"][lang]:
+            for ed in CFG["editions"].get(lang, []):
                 for grp in chunks(terms, 7):
                     q = "(" + " OR ".join(quote_term(t) for t in grp) + ")"
                     jobs.append(dict(url=feed_url(q, ed["hl"], ed["gl"], ed["ceid"], days),
@@ -53,6 +53,11 @@ def build_jobs(days):
             named = any(n.lower() in e["q"].lower() for n in c["names"])
             jobs.append(dict(url=feed_url(e["q"], e["hl"], e["gl"], e["ceid"], days),
                              rubric="laender", lang=e["lang"], country=c["id"] if named else None))
+    for t in CFG.get("trade_sources") or []:
+        q = f"site:{t['site']} {t['q']}"
+        jobs.append(dict(url=feed_url(q, "de" if t["lang"] == "de" else "en", "DE" if t["lang"] == "de" else "US",
+                                      "DE:de" if t["lang"] == "de" else "US:en", CFG["site"]["fetch_days"]),
+                         rubric=t["rubric"], lang=t["lang"], country=None, trusted=True))
     for f in CFG.get("feeds") or []:
         jobs.append(dict(url=f["url"], rubric=f["rubric"], lang=f.get("lang", "de"),
                          country=None, source=f["name"]))
@@ -91,6 +96,8 @@ def main():
     excl = [e.lower() for e in CFG.get("exclude", [])]
     order = {r["id"]: i for i, r in enumerate(CFG["rubrics"])}
     must = {r["id"]: re.compile(r["must"], re.I) for r in CFG["rubrics"] if r.get("must")}
+    core = {r["id"]: re.compile(r["core"], re.I) for r in CFG["rubrics"] if r.get("core")}
+    events = re.compile(CFG["events"], re.I) if CFG.get("events") else None
     dropped = {}
     xrx = [re.compile(x, re.I) for x in CFG.get("exclude_regex", [])]
 
@@ -128,8 +135,14 @@ def main():
                 dropped["ausgeschlossen"] = dropped.get("ausgeschlossen", 0) + 1
                 continue
             rx = must.get(job["rubric"])
-            if rx and not rx.search(f"{title} {snip}"):
+            txt = f"{title} {snip}"
+            if rx and not rx.search(txt):
                 dropped[job["rubric"]] = dropped.get(job["rubric"], 0) + 1
+                continue
+            # Umfeld-Begriffe zählen nur mit Ereignis; Kernbegriffe und Fachmedien immer
+            cr = core.get(job["rubric"])
+            if cr and not (job.get("trusted") or cr.search(txt) or (events and events.search(title))):
+                dropped["ohne Ereignis"] = dropped.get("ohne Ereignis", 0) + 1
                 continue
             pub = dt.datetime(*e.published_parsed[:6], tzinfo=dt.timezone.utc)
             if pub < cutoff:
@@ -143,13 +156,15 @@ def main():
                 it["countries"] = sorted(set(it["countries"]) | countries)
                 it["rubrics"] = sorted(set(it.get("rubrics") or [it["rubric"]]) | {job["rubric"]})
                 it.setdefault("snippet", snip)
+                if job.get("trusted"):
+                    it["trusted"] = True
                 if order.get(job["rubric"], 99) < order.get(it["rubric"], 99):
                     it["rubric"] = job["rubric"]
             else:
                 db[iid] = dict(id=iid, title_orig=title, title_de=title if job["lang"] == "de" else None,
                                lang=job["lang"], source=src or "?", url=e.get("link", ""),
                                published=pub.isoformat(), rubric=job["rubric"], rubrics=[job["rubric"]],
-                               countries=sorted(countries), snippet=snip)
+                               countries=sorted(countries), snippet=snip, trusted=bool(job.get("trusted")))
     print(f"{ok}/{len(jobs)} Abfragen lieferten Treffer, Archiv: {len(db)} Meldungen")
     print("Durch Titel-Filter verworfen:", dropped or "nichts")
 
