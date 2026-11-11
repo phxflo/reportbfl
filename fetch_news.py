@@ -10,6 +10,7 @@ import re
 import sys
 import time
 import urllib.parse
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import feedparser
@@ -159,9 +160,14 @@ def main():
     jobs = build_jobs(days)
     print(f"{len(jobs)} Abfragen …")
     ok = 0
-    for n, job in enumerate(jobs, 1):
+    def _get(job):
         feed = fetch(job["url"])
-        time.sleep(1.0)
+        time.sleep(0.5)                        # kleine Pause je Abruf, damit Google nicht drosselt
+        return feed
+
+    with ThreadPoolExecutor(max_workers=int(os.environ.get("FETCH_WORKERS", "3"))) as pool:   # mehrere Abfragen gleichzeitig
+        feeds = list(pool.map(_get, jobs))
+    for job, feed in zip(jobs, feeds):
         if not feed or not feed.entries:
             continue
         ok += 1
