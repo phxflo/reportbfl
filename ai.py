@@ -18,7 +18,7 @@ CFG = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
 NEWS = ROOT / "data" / "news.json"
 AI = CFG.get("ai", {})
 MODEL = AI.get("model", "claude-sonnet-5-5")
-RULES = 3                                     # Regelstand der Auswahl; betroffene Rubriken werden bei Erhöhung neu beurteilt
+RULES = 4                                     # Regelstand der Auswahl; betroffene Rubriken werden bei Erhöhung neu beurteilt
 FORCE = True   # erzwungener Tool-Aufruf; wird bei Ablehnung des Modells automatisch abgeschaltet
 VERSION = 2                                   # Prompt-Stand: bei Änderung werden alle Meldungen neu beurteilt
 BATCH = AI.get("batch", 25)
@@ -48,8 +48,10 @@ Typische Fehlgriffe, die NICHT relevant sind:
 - Passagierfähren, Fahrplanänderungen, Kreuzfahrt, Tourismus, Yachthäfen (z. B. „Fährverbindung Tunis–Genua, Fahrplanänderung“).
 - Wohnungsbau, Arbeitsmarkt, Fachkräftemangel, Sozial-/Innenpolitik, Kultur, Gesundheit (z. B. „900.000 Wohnungen zu bauen, Belgien fehlt es an Händen“) –
   außer es geht klar um Stahl, Häfen, Zölle oder Handel.
-- Kran-Unfälle nur dann relevant, wenn es ein Hafen-, Turm-, Raupen- oder Großkran ist UND (Tote/Schwerverletzte ODER Seilbruch/Seilversagen
-  ODER Einsturz mit größeren Folgen). Ein umgestürzter Kran mit Straßensperrung ohne Seilbezug ist eine Lokalmeldung → nicht relevant.
+- Unfälle mobiler Krane und Baukrane (Mobil-, Autokran, Turmdreh-, Raupenkran), Umstürze, Straßensperrungen: Lokalmeldungen → NICHT relevant.
+- Relevant sind dagegen Prozess-/Hüttenwerkskrane (Gießkran, Chargierkran, Stahlwerks-/Walzwerks-/Industriekrane), Hafenkrane (STS, RTG, RMG),
+  Seilbruch/Seilversagen bei Industrie- oder Hafenkranen, Stillstand oder Ausfall solcher Krane und große Kranflotten-Aufträge.
+  Ein defekter Prozesskran in einem Stahlwerk ist wichtig (brisanz 4-5).
 - laender nur für: Handel, Zoll, Strafzölle, Sanktionen, Embargo, Importverbote, Wechselkurs-/Devisenregeln, Stahlnachfrage, große
   Infrastruktur- und Hafeninvestitionen. Alles andere zur Wirtschaftslage (Wohnungen, Löhne, Arbeitsmarkt) ist nicht relevant.
 Titel können maschinell schlecht übersetzt sein; beurteile nach dem wahrscheinlichen Sinn, nicht nach Wortlaut.
