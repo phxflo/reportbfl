@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Baut docs/index.html aus config.yaml, data/news.json und data/indices.json."""
+import collections
 import datetime as dt
 import json
 import math
@@ -253,6 +254,7 @@ def compute(all_items, now):
             when=pub.astimezone(TZ).strftime("%d.%m. %H:%M"), ts=pub, is_new=age < 1,
             countries=[dict(id=c, name=cname[c]) for c in countries], tk=tk, sig=signature(tk), grp={m["grp"] for m in members if m.get("grp")},
             bris=max([m["ai"]["brisanz"] for m in members if m.get("ai")] or [0]),
+            ai_used=bool(ai), rc=collections.Counter(a["rubric"] for a in ai if a.get("rubric")) or collections.Counter([rubric]),
             readable=lead["lang"] in ("de", "en") or any(m.get("title_de") for m in members)))
 
     # Gleiche Vorfälle (auch in anderen Sprachen, z. B. die Explosion in Izmir) zu einer Meldung bündeln.
@@ -263,6 +265,8 @@ def compute(all_items, now):
         for m in merged:
             if same_incident(c, m) or (c["grp"] & m["grp"]):
                 m["grp"] |= c["grp"]
+                m["rc"] = m["rc"] + c["rc"]
+                m["ai_used"] |= c["ai_used"]
                 m["bris"] = max(m["bris"], c["bris"])
                 m["srcs"] |= c["srcs"]
                 m["sig"] = m["sig"] | c["sig"]          # Vorfall wird mit jeder Meldung "bekannter"
@@ -278,7 +282,11 @@ def compute(all_items, now):
             merged.append(c)
     cards = merged
     for c in cards:
-        c["rubric"] = c["rubrics"][0]
+        if c["ai_used"]:                    # Claude hat zugeordnet: genau eine Rubrik – die, die die meisten Meldungen des Vorfalls bekamen
+            c["rubric"] = max(c["rc"], key=lambda r: (c["rc"][r], -rorder.get(r, 99)))
+            c["rubrics"] = [c["rubric"]]
+        else:
+            c["rubric"] = c["rubrics"][0]
         c["rubric_short"] = rub[c["rubric"]]["short"]
         c["n"] = len(c["srcs"])
         age = max(0.0, (now - c["ts"]).total_seconds() / 86400)
@@ -301,10 +309,12 @@ def compute(all_items, now):
 
     top_ids = {id(c) for c in top}
 
-    def member(c, rid):                 # Rubrik "Länder" = allgemeine Meldungen zum Land (+ Top-News mit Landbezug)
-        if rid == "laender":
-            return bool(c["countries"]) and (id(c) in top_ids or ("laender" in c["rubrics"] and not (c["sig"] & DISASTER)))
-        return rid in c["rubrics"]
+    def member(c, rid):                 # jede Meldung steht genau einmal auf der Seite: Top-News ODER in ihrer Rubrik
+        if id(c) in top_ids or c["rubric"] != rid:
+            return False
+        if rid == "laender":            # "Länder" = allgemeine Meldungen zum Land
+            return bool(c["countries"]) and (c["ai_used"] or not (c["sig"] & DISASTER))
+        return True
 
     sections = []
     for k, r in enumerate(CFG["rubrics"], 1):

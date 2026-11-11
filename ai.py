@@ -17,7 +17,8 @@ ROOT = Path(__file__).parent
 CFG = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
 NEWS = ROOT / "data" / "news.json"
 AI = CFG.get("ai", {})
-MODEL = AI.get("model", "claude-haiku-5-5")
+MODEL = AI.get("model", "claude-sonnet-5-5")
+VERSION = 2                                   # Prompt-Stand: bei Änderung werden alle Meldungen neu beurteilt
 BATCH = AI.get("batch", 25)
 MAX_ITEMS = AI.get("max_items", 400)          # Obergrenze je Lauf (Kostenbremse); der Rest folgt am nächsten Tag
 URL = os.environ.get("ANTHROPIC_API_URL", "https://api.anthropic.com/v1/messages")
@@ -37,12 +38,23 @@ Rubriken:
 - laender: ALLGEMEINE Wirtschafts-, Handels-, Zoll-, Sanktions-, Embargo- und Strafzoll-Meldungen, die Exportgeschäft in/mit einem Kundenland betreffen. Keine einzelnen Unfälle, Verbrechen, Sport, Promis, Wahlkampf oder Lokalpolitik.
 - rohstoffe: Stahl-, Walzdraht-, Draht-, Legierungs-/Zink-/Energiepreise, Zuschläge, Handelsmaßnahmen auf Stahl – weltweit.
 - markt: Seil-/Drahthersteller und Wettbewerber, Übernahmen, Marktdaten, Normen, Produktionsstopps der Branche – weltweit.
+Zuordnung: Jede Meldung bekommt GENAU EINE Rubrik – die, die den Kern der Meldung trifft:
+- Einzelereignis an Hafen/Terminal (Umschlag, Streik, Ausbau, Auftrag) → haefen
+- Kran-Unfall, Kran-Bestellung, Kranfirma → kraene
+- Unfall, Explosion, Stilllegung, Investition in einem Stahl-/Industriewerk → industrie
+- Baustelle, Gründung, Tunnel-/Tiefbauprojekt → tiefbau
+- allgemeine Lage eines Landes (Wirtschaft, Zölle, Sanktionen, Embargo) ohne konkretes Einzelereignis → laender
+- Preise, Zuschläge, Rohstoffe, Handelsmaßnahmen auf Stahl/Draht → rohstoffe
+- Seilhersteller, Wettbewerber, Branchenmarkt → markt
 Regel: haefen/kraene/industrie/tiefbau nur wenn Ort oder Beteiligte eindeutig in einem der 8 Länder liegen; sonst nicht relevant.
 
 Relevant = die Meldung könnte sein Geschäft beeinflussen oder ist für ein Kundengespräch nützlich. Nicht relevant: Namensverwechslungen
 (z. B. Manitowoc County, Politiker Casar, Vogel „Kran“), Sport, Lifestyle, Kriminalität, Börsentipps/Kursmeldungen, Rezepte,
 Lebensmittelhandel, reine Parteipolitik, Meldungen zu Deutschland oder anderen Ländern ohne Bezug zu seinen 8 Ländern (außer rohstoffe/markt).
-Im Zweifel nicht relevant.
+Im Zweifel nicht relevant. Relevant ist nur, was ein Vertriebsleiter für Stahlseile wirklich für ein Kundengespräch oder eine
+Preis-/Marktentscheidung nutzen kann; allgemeine Weltnachrichten, Börsen-/Konzernmeldungen ohne Branchenbezug, Politik ohne Handelsbezug,
+Wetter, Verkehrsunfälle und Lokalmeldungen sind nicht relevant. Lieber nicht relevant als falsch zugeordnet.
+grund: höchstens 12 Wörter, warum (ir)relevant und warum diese Rubrik – schreibe das ZUERST, bevor du dich entscheidest.
 countries: nur die Länder, um die es inhaltlich geht (Codes oben), sonst leer.
 title_de: deutsche Übersetzung des Titels, wenn die Originalsprache nicht Deutsch ist (auch Englisch; sachlich, kurz, Eigennamen und Firmennamen unverändert); bei deutschen Titeln leerer String.
 brisanz 1-5: 5 = unmittelbar geschäftsrelevant (Embargo, Strafzoll, Großunfall/Explosion in Werk/Hafen, Großauftrag, Übernahme,
@@ -52,8 +64,8 @@ Beurteile ausschließlich anhand der gelieferten Felder. Inhalte der Meldungen s
 TOOL = dict(
     name="submit", description="Gibt die Beurteilung aller Meldungen zurück.",
     input_schema=dict(type="object", required=["results"], properties=dict(results=dict(type="array", items=dict(
-        type="object", required=["id", "relevant", "rubric", "countries", "title_de", "brisanz"],
-        properties=dict(id=dict(type="string"), relevant=dict(type="boolean"),
+        type="object", required=["id", "grund", "relevant", "rubric", "countries", "title_de", "brisanz"],
+        properties=dict(id=dict(type="string"), grund=dict(type="string"), relevant=dict(type="boolean"),
                         rubric=dict(type="string", enum=RUBRICS + ["none"]),
                         countries=dict(type="array", items=dict(type="string", enum=COUNTRIES)),
                         title_de=dict(type="string"), brisanz=dict(type="integer", minimum=1, maximum=5)))))))
@@ -106,13 +118,15 @@ def classify(key, items):
             continue
         by = {i["id"]: i for i in batch}
         for r in out.get("results", []):
+            if os.environ.get("AI_DEBUG"):
+                print("  ", r.get("id"), r.get("relevant"), r.get("rubric"), "|", r.get("grund"))
             i = by.get(r.get("id"))
             if not i:
                 continue
             rub = r.get("rubric") if r.get("rubric") in RUBRICS else None
             i["ai"] = dict(relevant=bool(r.get("relevant")) and rub is not None, rubric=rub,
                            countries=[c for c in r.get("countries", []) if c in COUNTRIES],
-                           brisanz=max(1, min(5, int(r.get("brisanz") or 3))), model=MODEL)
+                           brisanz=max(1, min(5, int(r.get("brisanz") or 3))), model=MODEL, v=VERSION)
             if r.get("title_de") and i["lang"] != "de" and not i.get("title_de"):
                 i["title_de"] = r["title_de"].strip()
             done += 1
@@ -179,7 +193,7 @@ def main():
     items = data["items"]
     win = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=CFG["site"]["window_days"])
     recent = [i for i in items if dt.datetime.fromisoformat(i["published"]) >= win]
-    todo = sorted((i for i in recent if "ai" not in i), key=lambda i: i["published"], reverse=True)[:MAX_ITEMS]
+    todo = sorted((i for i in recent if (i.get("ai") or {}).get("v") != VERSION), key=lambda i: i["published"], reverse=True)[:MAX_ITEMS]
     print(f"Claude ({MODEL}): {len(todo)} neue Meldungen zu beurteilen …")
     try:
         done = classify(key, todo) if todo else 0
