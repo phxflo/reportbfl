@@ -99,18 +99,38 @@ def main():
     core = {r["id"]: re.compile(r["core"], re.I) for r in CFG["rubrics"] if r.get("core")}
     events = re.compile(CFG["events"], re.I) if CFG.get("events") else None
     dropped = {}
-    xrx = [re.compile(x, re.I) for x in CFG.get("exclude_regex", [])]
+    xrx = [re.compile(x, re.I | re.S) for x in CFG.get("exclude_regex", [])]
 
     def bad(title, src, snip=""):
-        return any(r.search(f"{title} {src} {snip}") for r in xrx)
+        low = f"{title} {src}".lower()
+        return any(x in low for x in excl) or any(r.search(f"{title} {src} {snip}") for r in xrx)
+
+    def passes(rubric, title, snip, trusted=False):
+        """Rubrik-Prüfung: Pflichtwort, danach Kernbegriff oder Ereigniswort (Fachmedien immer)."""
+        txt = f"{title} {snip}"
+        rx = must.get(rubric)
+        if rx and not rx.search(txt):
+            return False
+        cr = core.get(rubric)
+        return not cr or bool(trusted or cr.search(txt) or (events and events.search(title)))
 
     db = {}
     if NEWS.exists():
         old = json.loads(NEWS.read_text(encoding="utf-8"))
         if not old.get("meta", {}).get("sample"):
             allowed = set(CFG["editions"]) | {"de", "en"}      # Sprachen, die wir suchen; alles andere fliegt aus dem Archiv
-            db = {i["id"]: i for i in old.get("items", [])
-                  if i["lang"] in allowed and not bad(i["title_orig"], i["source"], i.get("snippet", ""))}   # neue Ausschlüsse gelten auch fürs Archiv
+            for i in old.get("items", []):
+                # Archiv mit den aktuellen Regeln neu prüfen: Ausschlüsse, Sprache, Rubrik-Gating
+                if i["lang"] not in allowed or bad(i["title_orig"], i["source"], i.get("snippet", "")):
+                    continue
+                ok = [r for r in (i.get("rubrics") or [i["rubric"]])
+                      if passes(r, i["title_orig"], i.get("snippet", ""), i.get("trusted"))]
+                if not ok:
+                    dropped["Archiv"] = dropped.get("Archiv", 0) + 1
+                    continue
+                i["rubrics"] = ok
+                i["rubric"] = min(ok, key=lambda r: order.get(r, 99))
+                db[i["id"]] = i
 
     jobs = build_jobs(days)
     print(f"{len(jobs)} Abfragen …")
@@ -135,15 +155,8 @@ def main():
             if bad(title, src, snip):
                 dropped["ausgeschlossen"] = dropped.get("ausgeschlossen", 0) + 1
                 continue
-            rx = must.get(job["rubric"])
-            txt = f"{title} {snip}"
-            if rx and not rx.search(txt):
+            if not passes(job["rubric"], title, snip, job.get("trusted")):
                 dropped[job["rubric"]] = dropped.get(job["rubric"], 0) + 1
-                continue
-            # Umfeld-Begriffe zählen nur mit Ereignis; Kernbegriffe und Fachmedien immer
-            cr = core.get(job["rubric"])
-            if cr and not (job.get("trusted") or cr.search(txt) or (events and events.search(title))):
-                dropped["ohne Ereignis"] = dropped.get("ohne Ereignis", 0) + 1
                 continue
             pub = dt.datetime(*e.published_parsed[:6], tzinfo=dt.timezone.utc)
             if pub < cutoff:

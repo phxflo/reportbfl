@@ -117,6 +117,50 @@ def cluster(items):
     return [g["members"] for g in groups]
 
 
+
+ALIAS = [("explos", "EXPLOSION"), ("patlama", "EXPLOSION"), ("blast", "EXPLOSION"), ("detonat", "EXPLOSION"),
+         ("stahl", "STEEL"), ("steel", "STEEL"), ("celik", "STEEL"), ("demir", "STEEL"), ("staal", "STEEL"), ("acier", "STEEL"),
+         ("siderurg", "STEEL"), ("fabrik", "PLANT"), ("factory", "PLANT"), ("plant", "PLANT"), ("usine", "PLANT"),
+         ("werk", "PLANT"), ("sanction", "SANCTION"), ("sanktion", "SANCTION"), ("yaptirim", "SANCTION"),
+         ("tariff", "TARIFF"), ("strafzoll", "TARIFF"), ("zolle", "TARIFF"), ("gumruk", "TARIFF"), ("douane", "TARIFF"),
+         ("customs", "TARIFF"), ("strike", "STRIKE"), ("streik", "STRIKE"), ("greve", "STRIKE"), ("staking", "STRIKE"),
+         ("crane", "CRANE"), ("kran", "CRANE"), ("grue", "CRANE"), ("kraan", "CRANE"), ("vinc", "CRANE"),
+         ("unfall", "ACCIDENT"), ("accident", "ACCIDENT"), ("collapse", "COLLAPSE"), ("einsturz", "COLLAPSE"), ("effondr", "COLLAPSE"), ("hafen", "PORT"), ("haven", "PORT"),
+         ("liman", "PORT"), ("ports", "PORT")]
+GENERIC = {"neue", "neuen", "wegen", "nach", "durch", "ueber", "ihre", "sind", "wurde", "video", "mindestens", "after", "least",
+           "killed", "kills", "dead", "deadly", "massive", "people", "menschen", "tonnen", "tonnes", "einem", "einer", "einen",
+           "turkey", "turkei", "turkiye", "turquie", "turkije", "turkish", "turkse", "israel", "marokko", "morocco", "maroc",
+           "algerien", "algerie", "tunesien", "tunisie", "belgien", "belgique", "niederlande", "nederland", "dakika", "market",
+           "industry", "industrie", "price", "prices", "project", "international", "european", "heavy", "workers", "arbeiter",
+           "president", "business", "company", "group", "year", "years", "week", "report", "new", "says", "said", "mehr", "unter"}
+
+
+EXACT = {"mill": "PLANT", "mills": "PLANT", "works": "PLANT", "ports": "PORT", "port": "PORT"}
+
+
+def signature(tk):
+    out = set()
+    for w in tk:
+        if w in GENERIC:
+            continue
+        labs = {l for k, l in ALIAS if k in w} | ({EXACT[w]} if w in EXACT else set())
+        out |= labs or {w}
+    return out
+
+
+def same_incident(a, b):
+    """Gleicher Vorfall: innerhalb von 48 h mindestens 3 gemeinsame Begriffe (Konzepte zählen sprachübergreifend),
+    oder 2 gemeinsame, darunter ein konkreter Name (z. B. "Izmir")."""
+    if abs((a["ts"] - b["ts"]).total_seconds()) > 48 * 3600:
+        return False
+    shared = a["sig"] & b["sig"]
+    if len(shared) >= 3:
+        return True
+    labels = {l for _, l in ALIAS}
+    specific = [w for w in shared if w not in labels and len(w) >= 5]
+    return len(shared) >= 2 and bool(specific)
+
+
 def country_matchers():
     out = {}
     for c in CFG["countries"]:
@@ -151,8 +195,7 @@ def compute(all_items, now):
         rubric = rubrics[0]
         # Land = Land, um das es inhaltlich geht: Namen in Titel/Textauszug oder Land in der Suche selbst – nicht das Quellland
         text_all = " ".join((m.get("title_de") or "") + " " + m["title_orig"] + " " + m.get("snippet", "") for m in members)
-        countries = sorted({c for c in cname if cmatch[c].search(text_all)}
-                           | {c for m in members for c in m.get("countries", []) if c in cname}, key=list(cname).index)
+        countries = sorted({c for c in cname if cmatch[c].search(text_all)}, key=list(cname).index)
         if rubrics == ["laender"] and not countries:
             continue
         pub = dt.datetime.fromisoformat(lead["published"])
@@ -160,39 +203,51 @@ def compute(all_items, now):
         text = title + " " + lead["title_orig"]
         srcs = sorted({m["source"] for m in members})
         age = max(0.0, (now - pub).total_seconds() / 86400)
-        # Brisanz: Gewicht der Rubrik, Zahl der Quellen, Reizwörter (Zuschlag, Zoll …); Aktualität zählt kaum,
-        # damit die Top-News über die Woche stabil bleiben
-        score = (rub[rubric]["weight"] * 2 + 1.6 * min(len(srcs) - 1, 3) + (2.5 if BOOST.search(text) else 0)
-                 + 0.8 * max(0, 1 - age / SITE["window_days"]) + (0.4 if countries else 0)
-                 + (1.5 if any(m.get("trusted") for m in members) else 0))
+        tk = tokens(title + " " + lead["title_orig"])
         cards.append(dict(
-            id=lead["id"], trusted=any(m.get("trusted") for m in members),
-            rubric=rubric, rubrics=rubrics, rubric_short=rub[rubric]["short"], title=title, lead=lead,
+            id=lead["id"], trusted=any(m.get("trusted") for m in members), srcs=set(srcs),
+            rubric=rubric, rubrics=rubrics, rubric_short=rub[rubric]["short"], title=title, lead=lead, text=text,
             orig=lead["title_orig"] if lead["lang"] != "de" and title != lead["title_orig"] else None,
             translated=any(m.get("title_de") for m in members) or lead["lang"] in ("de", "en"),
             needs_tr=not (any(m.get("title_de") for m in members) or lead["lang"] in ("de", "en")),
             lang=LANG.get(lead["lang"], lead["lang"].upper()), source=srcs[0], n=len(srcs), url=lead["url"],
             when=pub.astimezone(TZ).strftime("%d.%m. %H:%M"), ts=pub, is_new=age < 1,
-            countries=[dict(id=c, name=cname[c]) for c in countries], score=score,
-            tk=tokens(title + " " + lead["title_orig"])))
+            countries=[dict(id=c, name=cname[c]) for c in countries], tk=tk, sig=signature(tk),
+            readable=lead["lang"] in ("de", "en") or any(m.get("title_de") for m in members)))
 
-    # Top-News: nach Brisanz; höchstens eine Meldung je Rubrik und je Vorfall. Gleicher Vorfall = innerhalb von
-    # 48 Stunden gemeinsamer Eigenname/seltenes Wort (z. B. "Izmir"), auch sprachübergreifend, oder ähnliche Titel.
-    # Zwei verschiedene Themen aus demselben Land dürfen dagegen beide erscheinen.
-    GENERIC = {"hafen", "haefen", "stahl", "stahlwerk", "kran", "krane", "kranen", "crane", "cranes", "port", "ports", "steel",
-               "container", "terminal", "terminals", "industrie", "markt", "market", "zoll", "tariff", "tariffs", "neue", "neuen",
-               "wegen", "nach", "durch", "ueber", "ihre", "sind", "wurde", "turkey", "tuerkei", "turkiye", "israel", "marokko",
-               "morocco", "maroc", "algerien", "algerie", "tunesien", "tunisie", "belgien", "belgique", "niederlande", "nederland"}
-    df = Counter(w for c in cards for w in c["tk"])
+    # Gleiche Vorfälle (auch in anderen Sprachen, z. B. die Explosion in Izmir) zu einer Meldung bündeln.
+    # Als Hauptmeldung dient die lesbarste: Fachmedium, dann deutsch/übersetzt, dann neueste.
+    cards.sort(key=lambda c: (c["trusted"], c["readable"], c["ts"]), reverse=True)
+    merged = []
+    for c in cards:
+        for m in merged:
+            if same_incident(c, m):
+                m["srcs"] |= c["srcs"]
+                m["sig"] = m["sig"] | c["sig"]          # Vorfall wird mit jeder Meldung "bekannter"
+                m["rubrics"] = sorted(set(m["rubrics"]) | set(c["rubrics"]), key=lambda r: rorder.get(r, 99))
+                have = {k["id"] for k in m["countries"]}
+                m["countries"] += [k for k in c["countries"] if k["id"] not in have]
+                m["trusted"] |= c["trusted"]
+                m["is_new"] |= c["is_new"]
+                if c["ts"] > m["ts"]:
+                    m["ts"], m["when"] = c["ts"], c["when"]
+                break
+        else:
+            merged.append(c)
+    cards = merged
+    for c in cards:
+        c["rubric"] = c["rubrics"][0]
+        c["rubric_short"] = rub[c["rubric"]]["short"]
+        c["n"] = len(c["srcs"])
+        age = max(0.0, (now - c["ts"]).total_seconds() / 86400)
+        # Brisanz: Gewicht der Rubrik, Zahl der Quellen, Reizwörter (Zuschlag, Zoll …); Aktualität zählt kaum,
+        # damit die Top-News über die Woche stabil bleiben
+        c["score"] = (rub[c["rubric"]]["weight"] * 2 + 1.2 * min(c["n"] - 1, 8) + (2.5 if BOOST.search(c["text"]) else 0)
+                      + 0.8 * max(0, 1 - age / SITE["window_days"]) + (0.4 if c["countries"] else 0)
+                      + (1.5 if c["trusted"] else 0))
 
-    def same_incident(a, b):
-        if abs((a["ts"] - b["ts"]).total_seconds()) > 48 * 3600:
-            return False
-        shared = a["tk"] & b["tk"]
-        if len(shared) >= 3:
-            return True
-        return any(len(w) >= 5 and w not in GENERIC and df[w] <= 25 for w in shared)
-
+    # Top-News: nach Brisanz; höchstens eine Meldung je Rubrik. (Gleiche Vorfälle sind oben schon gebündelt;
+    # zwei verschiedene Themen aus demselben Land dürfen beide erscheinen.)
     top, used_r = [], set()
     for c in sorted(cards, key=lambda c: (c["score"], c["ts"]), reverse=True):
         if len(top) >= SITE.get("top_n", 5):

@@ -33,7 +33,7 @@ exclude:
   - Égypte
 
 # Treffer mit diesen Wörtern rutschen in "Top-News" weiter nach oben (Regex, ohne Groß/Klein)
-boost: "zuschlag|surcharge|toeslag|supplément|ek ücret|zoll|zölle|tariff|tarif|droits de douane|gümrük|safeguard|cbam|sanktion|sanction|embargo|insolvenz|bankrupt|übernahme|acquisition|acquires|tadano|manitowoc|terex|potain|teufelberger|bridon|wireco|pfeifer|drahtseil|casar (drahtseil|wire)|liebherr (kran|crane|mobil)|wire rope|stahlseil|çelik halat|câble"
+boost: "explosion|explosie|patlama|einsturz|effondrement|collapse|crane (accident|collapse)|kranunfall|stahlwerk.{0,30}(brand|tote)|zuschlag|surcharge|toeslag|supplément|ek ücret|zoll|zölle|tariff|tarif|droits de douane|gümrük|safeguard|cbam|sanktion|sanction|embargo|insolvenz|bankrupt|übernahme|acquisition|acquires|tadano|manitowoc|terex|potain|teufelberger|bridon|wireco|pfeifer|drahtseil|casar (drahtseil|wire)|liebherr (kran|crane|mobil)|wire rope|stahlseil|çelik halat|câble"
 
 # Diese Wörter füllen den Kasten "Zuschlags-Radar"
 radar: "zuschlag|surcharge|toeslag|legierung|alloy|rohstoff|safeguard|cbam|walzdraht|wire rod|filmaşin|fil machine|walsdraad|stahlpreis|steel price|çelik fiyat"
@@ -89,8 +89,8 @@ rubrics:
     title: "Spezialtiefbau – Bohrgeräte, Seilbagger & Schlitzwandgreifer"
     short: "Spezialtiefbau"
     weight: 0.7
-    core: 'schlitzwand|diaphragm wall|bohrgerät|seilbagger|drilling rig|piling rig|paroi moulée|diepwand|spezialtiefbau|deep foundation|bauer (maschinen|spezialtiefbau|group)|soilmec'   # Treffer hier zählen auch ohne Ereigniswort
-    must: 'tiefbau|schlitzwand|bohrgerät|bohrpfahl|bohranlage|bohrtechnik|seilbagger|diaphragm wall|deep foundation|foundation (work|engineering|piling)|piling|(?<!\w)piles?(?!\w)|drilling rig|excavator|soilmec|bauer (group|maschinen|spezialtiefbau)|paroi moulée|fondations? spécial|foreuse|diepwand|funderingstechniek|boormachine|diyafram duvar|özel temel|kazık|sondaj|حفار|أساسات|جدار ساتر|כלונס|יסודות עמוקים'   # Titel muss eines dieser Stichwörter enthalten (Regex)
+    core: 'cutter[- ]soil|soil mixing|jet grouting|schlitzwand|diaphragm wall|bohrgerät|seilbagger|drilling rig|piling rig|paroi moulée|diepwand|spezialtiefbau|deep foundation|bauer (maschinen|spezialtiefbau|group)|soilmec'   # Treffer hier zählen auch ohne Ereigniswort
+    must: 'tiefbau|schlitzwand|bohrgerät|bohrpfahl|bohranlage|bohrtechnik|seilbagger|diaphragm wall|deep foundation|foundation (work|engineering|piling)|piling rig|pile driving|cutter[- ]soil|soil mixing|jet grouting|drilling rig|soilmec|bauer (group|maschinen|spezialtiefbau)|bauer[’]s|paroi moulée|fondations? spécial|diepwand|funderingstechniek|diyafram duvar|özel temel|fore kazık|حفار|جدار ساتر|כלונס|יסודות עמוקים'
     terms:
       de: [Spezialtiefbau, Schlitzwandgreifer, Bohrgerät, Seilbagger, "Tiefbau Großprojekt"]
       en: ["diaphragm wall", "deep foundation", "piling rig", "cable excavator", "Bauer Maschinen", "Soilmec"]
@@ -202,6 +202,13 @@ trade_sources:
 
 # Ausschluss per Regex (Titel + Quelle + Textauszug): gleiche Namen / Wörter mit anderer Bedeutung
 exclude_regex:
+  - 'tupolev|sonderflüge|sanktionierte[rn]? (jet|flug)|sanktionierter jet'
+  # weitere Fehltreffer (zweiter Lauf)
+  - 'genocide|apartheid|corbyn|burnham|miliband|israeli communities|settlements?\b|palestin|gaza flooding|attorneys? general|attorney generals|generalstaatsanw|\bAGs\b|raz-de-marée|midterm'
+  - 'vision ai|bioengineer|coingecko|live price chart|market cap|\btsxv?\b|kalkine|marketscreener|earnings (results|call)|jagdpächter|jagd\b|wilddieb'
+  # Fehltreffer aus echten Läufen
+  - 'greg casar|rep\.? casar|casar[^.]{0,80}(congress|democrat|ice agent|texas|austin|progressive)|congress(man|woman)?\b|data breach|claim depot|class action|lawsuit investigation'
+  - 'cranes? (trophies|trophy)|atatürk|ataturk|zinkmine|zinc mine|erkundungsbohr|explorationsbohr|akkuschrauber|batteriebohrer|schlagbohrer|bohrmaschine (test|angebot)|offshore|ölbohr|oil rig|oil and gas|beach soccer|hijab|kopftuch|tabak|tobacco'
   # Markennamen nur mit Kran-/Seil-Zusammenhang: ohne ein Hebezeug-Wort im Titel/Text fliegt die Meldung raus
   - '^(?!.*(crane|kran|grue|kraan|vinç|lift|hoist|hebe|wire rope|seil)).*(manitowoc|potain|tadano|terex|liebherr|grove\b)'
   # Namensvettern, Lokales, Börsen-Tipps
