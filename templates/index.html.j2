@@ -56,6 +56,7 @@ nav input{margin-left:auto;font:14px var(--sans);padding:7px 14px;border:1px sol
 
 /* Rubrikköpfe im Zeitungsstil */
 h2.kicker{display:flex;align-items:baseline;gap:12px;margin:0;padding:12px 22px 10px;font:700 26px/1.2 var(--serif);letter-spacing:-.005em;border-top:5px solid var(--steel);border-bottom:1px solid var(--rule);background:var(--card)}
+.grouphead{font:700 13px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);margin:44px 0 -14px}
 h2.kicker small{font:500 13px var(--sans);color:var(--muted);margin-left:auto;white-space:nowrap}
 h2.kicker i{font:700 13px var(--sans);font-style:normal;color:var(--accent-ink);letter-spacing:.06em;border-bottom:3px solid var(--accent);padding-bottom:1px}
 section{margin-bottom:38px}
@@ -221,6 +222,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
   </section>
 
   {% for s in sections %}
+  {% if s.group and (loop.first or sections[loop.index0 - 1].group != s.group) %}<div class="grouphead">{{ s.group }}</div>{% endif %}
   <section id="{{ s.id }}" data-section>
     <h2 class="kicker"><i>{{ s.num }}</i>{{ s.title }}<small>die neuesten {{ s.limit }}</small></h2>
     <div class="box">
