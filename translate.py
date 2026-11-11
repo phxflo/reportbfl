@@ -11,6 +11,8 @@ import re
 import sys
 import urllib.request
 import zipfile
+
+import requests
 from pathlib import Path
 
 CACHE = Path(__file__).parent / ".cache" / "argos"
@@ -44,6 +46,36 @@ def _links():
     return _index
 
 
+AGENTS = [None,   # Standardkennung von requests
+          "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
+          "argos-translate/1.9 (+https://github.com/argosopentech/argos-translate)"]
+
+
+MIRRORS = ["https://argos-net.com/v1/",
+           "https://pub-dbae765fb25a4114aac1c88b90e94178.r2.dev/v1/",
+           "https://data.argosopentech.com/v1/"]
+
+
+def _download(url, dest):
+    """Lädt ein Modell; probiert mehrere Server und Browser-Kennungen (manche sperren Python-Standardkennungen)."""
+    name = url.rsplit("/", 1)[-1]
+    urls = [url] + [m + name for m in MIRRORS if m + name != url]
+    errors = []
+    for u in urls:
+        for ua in AGENTS:
+            try:
+                r = requests.get(u, headers={"User-Agent": ua} if ua else {}, timeout=300, stream=True)
+                if r.status_code == 200:
+                    with open(dest, "wb") as f:
+                        for chunk in r.iter_content(1 << 20):
+                            f.write(chunk)
+                    return
+                errors.append(f"{u.split('/')[2]} → HTTP {r.status_code}")
+            except Exception as ex:
+                errors.append(f"{u.split('/')[2]} → {type(ex).__name__}")
+    raise RuntimeError("Download fehlgeschlagen: " + "; ".join(dict.fromkeys(errors)))
+
+
 def _load(pair):
     """Gibt (Translator, SentencePiece) für ein Sprachpaar zurück; lädt das Modell bei Bedarf."""
     if pair in _models:
@@ -56,7 +88,7 @@ def _load(pair):
         url = _links()[pair]
         print(f"  lade Übersetzungsmodell {pair} …", file=sys.stderr)
         tmp = folder / "m.zip"
-        urllib.request.urlretrieve(url, tmp)
+        _download(url, tmp)
         with zipfile.ZipFile(tmp) as z:
             z.extractall(folder)
         tmp.unlink()
