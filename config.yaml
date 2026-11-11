@@ -246,6 +246,7 @@ exclude_regex:
   - 'sheriff|obituar|nachruf|killed in crash|shooting|schießerei|\bmeth\b|methamphet|dui\b|arrested for|verhaftet nach|festgenommen nach|mordprozess|murder trial'
   - '\b(nfl|nba|nhl|mlb|premier league|bundesliga|champions league|ligue 1|tennis|formel 1|formula 1|fußball|football match|rezept|recipe|horoskop|promis?|celebrity|netflix|spotify|iphone|android|playstation|xbox|bitcoin|krypto\w*)\b'
   - 'hochzeit|wedding|babyshower|gewinnspiel|giveaway|lottery|lotto'
+  - '(fahrplan\w*|schedule|horaires?|timetable|dienstregeling)[^.]{0,50}(fähr\w*|ferry|ferries|traversée|veer\w*)|(fähr\w*|ferry|ferries|traversée|veer\w*)[^.]{0,50}(fahrplan\w*|schedule|horaires?|timetable|passagier\w*|passenger|tourist\w*|kreuzfahrt|cruise)'   # Passagierfähren
 
 # Google-News-Ausgaben für die Rubrik-Suchen je Sprache. Nur Ausgaben deiner Länder,
 # damit z. B. arabische Suchen nicht Ägypten statt Marokko/Algerien/Tunesien liefern.

@@ -18,6 +18,7 @@ CFG = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
 NEWS = ROOT / "data" / "news.json"
 AI = CFG.get("ai", {})
 MODEL = AI.get("model", "claude-sonnet-5-5")
+RULES = 3                                     # Regelstand der Auswahl; betroffene Rubriken werden bei Erhöhung neu beurteilt
 FORCE = True   # erzwungener Tool-Aufruf; wird bei Ablehnung des Modells automatisch abgeschaltet
 VERSION = 2                                   # Prompt-Stand: bei Änderung werden alle Meldungen neu beurteilt
 BATCH = AI.get("batch", 25)
@@ -43,6 +44,16 @@ Rubriken:
   Finanzzahlen, Gewinnwarnung, Insolvenz/Restrukturierung, Werksschließung/-eröffnung/-erweiterung, Übernahmen, Produktionsprobleme,
   Reklamationen, Rückrufe, Schadensfälle oder Seilbruch bei Wettbewerberprodukten, Preis-/Kapazitätsänderungen; außerdem Marktdaten, Normen.
   Nicht relevant: Werbung, Messeauftritte ohne Neuigkeit, Sponsoring, Preise/Auszeichnungen, Jobanzeigen.
+Typische Fehlgriffe, die NICHT relevant sind:
+- Passagierfähren, Fahrplanänderungen, Kreuzfahrt, Tourismus, Yachthäfen (z. B. „Fährverbindung Tunis–Genua, Fahrplanänderung“).
+- Wohnungsbau, Arbeitsmarkt, Fachkräftemangel, Sozial-/Innenpolitik, Kultur, Gesundheit (z. B. „900.000 Wohnungen zu bauen, Belgien fehlt es an Händen“) –
+  außer es geht klar um Stahl, Häfen, Zölle oder Handel.
+- Kran-Unfälle nur dann relevant, wenn es ein Hafen-, Turm-, Raupen- oder Großkran ist UND (Tote/Schwerverletzte ODER Seilbruch/Seilversagen
+  ODER Einsturz mit größeren Folgen). Ein umgestürzter Kran mit Straßensperrung ohne Seilbezug ist eine Lokalmeldung → nicht relevant.
+- laender nur für: Handel, Zoll, Strafzölle, Sanktionen, Embargo, Importverbote, Wechselkurs-/Devisenregeln, Stahlnachfrage, große
+  Infrastruktur- und Hafeninvestitionen. Alles andere zur Wirtschaftslage (Wohnungen, Löhne, Arbeitsmarkt) ist nicht relevant.
+Titel können maschinell schlecht übersetzt sein; beurteile nach dem wahrscheinlichen Sinn, nicht nach Wortlaut.
+
 Zuordnung: Jede Meldung bekommt GENAU EINE Rubrik – die, die den Kern der Meldung trifft:
 - Einzelereignis an Hafen/Terminal (Umschlag, Streik, Ausbau, Auftrag) → haefen
 - Kran-Unfall, Kran-Bestellung, Kranfirma → kraene
@@ -114,6 +125,14 @@ def call(key, system, user, tool, max_tokens=8000):
     raise RuntimeError(err)
 
 
+def stale(i):
+    """Neu beurteilen: noch nie beurteilt, alter Prompt-Stand – oder relevant in einer Rubrik, deren Regeln verschärft wurden."""
+    ai = i.get("ai") or {}
+    if ai.get("v") != VERSION:
+        return True
+    return bool(ai.get("relevant")) and ai.get("rubric") in ("laender", "kraene", "haefen") and ai.get("rv", 0) < RULES
+
+
 def describe(i):
     return dict(id=i["id"], sprache=i["lang"], quelle=i["source"], titel=i["title_orig"], text=(i.get("snippet") or "")[:300],
                 suche_rubrik=i.get("rubric"))
@@ -141,7 +160,7 @@ def classify(key, items):
             rub = r.get("rubric") if r.get("rubric") in RUBRICS else None
             i["ai"] = dict(relevant=bool(r.get("relevant")) and rub is not None, rubric=rub,
                            countries=[c for c in r.get("countries", []) if c in COUNTRIES],
-                           brisanz=max(1, min(5, int(r.get("brisanz") or 3))), model=MODEL, v=VERSION)
+                           brisanz=max(1, min(5, int(r.get("brisanz") or 3))), model=MODEL, v=VERSION, rv=RULES)
             if r.get("title_de") and i["lang"] != "de" and not i.get("title_de"):
                 i["title_de"] = r["title_de"].strip()
             done += 1
@@ -214,7 +233,7 @@ def main():
     items = data["items"]
     win = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=CFG["site"]["window_days"])
     recent = [i for i in items if dt.datetime.fromisoformat(i["published"]) >= win]
-    todo = sorted((i for i in recent if (i.get("ai") or {}).get("v") != VERSION), key=lambda i: i["published"], reverse=True)[:MAX_ITEMS]
+    todo = sorted((i for i in recent if stale(i)), key=lambda i: i["published"], reverse=True)[:MAX_ITEMS]
     print(f"Claude ({MODEL}): {len(todo)} neue Meldungen zu beurteilen …")
     try:
         done = classify(key, todo) if todo else 0
