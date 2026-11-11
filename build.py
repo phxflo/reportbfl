@@ -135,6 +135,7 @@ GENERIC = {"neue", "neuen", "wegen", "nach", "durch", "ueber", "ihre", "sind", "
            "president", "business", "company", "group", "year", "years", "week", "report", "new", "says", "said", "mehr", "unter"}
 
 
+DISASTER = {"EXPLOSION", "COLLAPSE", "ACCIDENT"}
 EXACT = {"mill": "PLANT", "mills": "PLANT", "works": "PLANT", "ports": "PORT", "port": "PORT"}
 
 
@@ -155,6 +156,10 @@ def same_incident(a, b):
         return False
     shared = a["sig"] & b["sig"]
     if len(shared) >= 3:
+        return True
+    # zwei Unglücksmeldungen (Explosion, Einsturz, Unfall) im selben Land innerhalb von 36 h = derselbe Vorfall
+    if (a["sig"] & DISASTER) and (b["sig"] & DISASTER) and abs((a["ts"] - b["ts"]).total_seconds()) <= 36 * 3600 \
+            and {k["id"] for k in a["countries"]} & {k["id"] for k in b["countries"]}:
         return True
     labels = {l for _, l in ALIAS}
     specific = [w for w in shared if w not in labels and len(w) >= 5]
@@ -275,8 +280,12 @@ def compute(all_items, now):
         top.append(c)
         used_r.add(c["rubric"])
 
-    def member(c, rid):                 # Rubrik "Länder" = alles mit erkennbarem Länderbezug
-        return bool(c["countries"]) if rid == "laender" else rid in c["rubrics"]
+    top_ids = {id(c) for c in top}
+
+    def member(c, rid):                 # Rubrik "Länder" = allgemeine Meldungen zum Land (+ Top-News mit Landbezug)
+        if rid == "laender":
+            return bool(c["countries"]) and (id(c) in top_ids or ("laender" in c["rubrics"] and not (c["sig"] & DISASTER)))
+        return rid in c["rubrics"]
 
     sections = []
     for k, r in enumerate(CFG["rubrics"], 1):

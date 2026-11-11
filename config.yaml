@@ -104,7 +104,7 @@ rubrics:
     title: "Länder – Zölle, Handel, Konjunktur & Logistik"
     short: "Länder"
     weight: 0.8
-    must: 'zoll|zölle|strafzoll|tarif|customs|(?<!\w)dut(y|ies)(?!\w)|douane|gümrük|sanktion|sanction|yaptırım|embargo|antidumping|anti-dumping|quota|kontingent|importverbot|import ban|export ban|exportverbot|einfuhr(verbot|beschränk\w*|quote)|invoerrechten|safeguard|schutzmaßnahme\w*|cbam|devisen|currency control|capital control|hafenstreik|port strike|dockers? strike|port closure|blockade|handelsabkommen|trade (deal|agreement|war)|importbeschränk\w*|restrictions? on (steel|imports?)|ihracat yasağı|ithalat|جمارك|عقوبات|حظر|מכס|סנקציות|אמברגו'   # Länder: nur Handels-/Sanktions-/Zollthemen
+    must: 'zoll|zölle|strafzoll|tarif|customs|(?<!\w)dut(y|ies)(?!\w)|douane|gümrük|sanktion|sanction|yaptırım|embargo|antidumping|anti-dumping|quota|kontingent|importverbot|import ban|export ban|exportverbot|einfuhr\w*|invoerrechten|safeguard|schutzmaßnahme\w*|cbam|devisen|currency|capital control|hafenstreik|port strike|dockers? strike|blockade|handelsabkommen|trade (deal|agreement|war|policy|deficit|surplus)|wirtschaft\w*|konjunktur|bruttoinlandsprodukt|\bbip\b|\bgdp\b|inflation\w*|leitzins|zinsen|währung|haushalt|investition\w*|infrastruktur|industrie\w*|economy|economic|interest rate|budget|investment|infrastructure|industry|exports?\b|imports?\b|économi\w*|\bpib\b|taux d|devise|budget|investissement|infrastructure|industrie|commerce|exportation\w*|importation\w*|economie|economisch|\bbbp\b|inflatie|begroting|investering|handel|export|import|ekonomi|enflasyon|büyüme|faiz|döviz|bütçe|yatırım|altyapı|sanayi|ihracat|ithalat|dış ticaret|جمارك|عقوبات|حظر|اقتصاد|תעשייה|כלכלה|מכס|סנקציות|אמברגו'   # Länder: Handels-/Sanktions-/Zollthemen und allgemeine Wirtschaftslage
     terms: {}                # Länder-Suchen stehen unten unter "countries"
 
   - id: rohstoffe
@@ -143,46 +143,46 @@ countries:
     name: Belgien
     names: ["Belgi", "بلجيك", "Antwerp", "Anvers", "Zeebrugge", "Gent", "Ghent", "Brüssel", "Brussel", "Bruxelles", "Liège", "Charleroi", "أنتويرب", "بروكسل", "Brugge", "Bruges"]
     editions:
-      - {lang: nl, hl: nl, gl: BE, ceid: "BE:nl", q: "België (haven OR staal OR invoerrechten OR douane OR logistiek)"}
-      - {lang: fr, hl: fr, gl: BE, ceid: "BE:fr", q: "Belgique (port OR acier OR douane OR logistique OR grève)"}
-      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Belgien (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik)"}
+      - {lang: nl, hl: nl, gl: BE, ceid: "BE:nl", q: "België (economie OR handel OR douane OR invoerrechten OR sancties OR staal OR haven OR staking)"}
+      - {lang: fr, hl: fr, gl: BE, ceid: "BE:fr", q: "Belgique (économie OR commerce OR douane OR importation OR sanctions OR acier OR port OR grève)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Belgien (Wirtschaft OR Konjunktur OR Zoll OR Handel OR Sanktionen OR Embargo OR Stahl OR Hafen OR Streik)"}
   - id: NL
     name: Niederlande
     names: ["Niederlande", "Niederländ", "Netherlands", "Nederland", "Pays-Bas", "Dutch", "Holland", "هولندا", "Rotterdam", "Amsterdam", "روتردام", "أمستردام", "Pays Bas"]
     editions:
-      - {lang: nl, hl: nl, gl: NL, ceid: "NL:nl", q: "Nederland (haven OR staal OR invoerrechten OR douane OR logistiek)"}
-      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Niederlande (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik)"}
+      - {lang: nl, hl: nl, gl: NL, ceid: "NL:nl", q: "Nederland (economie OR handel OR douane OR invoerrechten OR sancties OR staal OR haven OR staking)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Niederlande (Wirtschaft OR Konjunktur OR Zoll OR Handel OR Sanktionen OR Embargo OR Stahl OR Hafen OR Streik)"}
   - id: MA
     name: Marokko
     names: ["Marokk", "Morocc", "Maroc", "Fas", "المغرب", "Tanger", "Tangier", "Casablanca", "Agadir", "Nador", "طنجة", "الدار البيضاء", "أغادير", "الناظور", "Marocain"]
     editions:
-      - {lang: fr, hl: fr, gl: MA, ceid: "MA:fr", q: "Maroc (port OR acier OR douane OR importation OR logistique)"}
-      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Marokko (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik)"}
+      - {lang: fr, hl: fr, gl: MA, ceid: "MA:fr", q: "Maroc (économie OR commerce OR douane OR importation OR sanctions OR acier OR port OR grève)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Marokko (Wirtschaft OR Konjunktur OR Zoll OR Handel OR Sanktionen OR Embargo OR Stahl OR Hafen OR Streik)"}
   - id: DZ
     name: Algerien
     names: ["Alger", "Algier", "Algér", "الجزائر", "وهران", "Oran", "Annaba", "Bejaia", "Béjaïa", "Djen Djen", "Skikda", "عنابة", "بجاية", "سكيكدة"]
     editions:
-      - {lang: fr, hl: fr, gl: DZ, ceid: "DZ:fr", q: "Algérie (port OR acier OR douane OR importation OR logistique)"}
-      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Algerien (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik)"}
+      - {lang: fr, hl: fr, gl: DZ, ceid: "DZ:fr", q: "Algérie (économie OR commerce OR douane OR importation OR sanctions OR acier OR port OR grève)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Algerien (Wirtschaft OR Konjunktur OR Zoll OR Handel OR Sanktionen OR Embargo OR Stahl OR Hafen OR Streik)"}
   - id: TN
     name: Tunesien
     names: ["Tunesi", "Tunis", "تونس", "Sfax", "Radès", "Bizerte", "Sousse", "Gabès", "صفاقس", "سوسة", "بنزرت", "رادس"]
     editions:
-      - {lang: fr, hl: fr, gl: TN, ceid: "TN:fr", q: "Tunisie (port OR acier OR douane OR importation OR logistique)"}
-      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Tunesien (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik)"}
+      - {lang: fr, hl: fr, gl: TN, ceid: "TN:fr", q: "Tunisie (économie OR commerce OR douane OR importation OR sanctions OR acier OR port OR grève)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Tunesien (Wirtschaft OR Konjunktur OR Zoll OR Handel OR Sanktionen OR Embargo OR Stahl OR Hafen OR Streik)"}
   - id: IL
     name: Israel
     names: ["Israel", "ישראל", "إسرائيل", "Haifa", "Ashdod", "Aschdod", "Eilat", "Tel Aviv", "אשדוד", "חיפה", "אילת", "תל אביב", "حيفا", "أشدود", "إيلات", "Israeli"]
     editions:
-      - {lang: en, hl: en, gl: IL, ceid: "IL:en", q: "Israel (port OR steel OR customs OR import OR sanctions)"}
-      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Israel (Zoll OR Handelsbeschränkungen OR Sanktionen OR Hafen OR Stahl OR Logistik)"}
+      - {lang: en, hl: en, gl: IL, ceid: "IL:en", q: "Israel (economy OR trade OR tariffs OR sanctions OR embargo OR steel OR port OR customs OR strike)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Israel (Wirtschaft OR Konjunktur OR Zoll OR Handel OR Sanktionen OR Embargo OR Stahl OR Hafen OR Streik)"}
   - id: TR
     name: Türkei
     names: ["Türkei", "Türkiye", "Türkisch", "Turkey", "Turkish", "Türk Hava", "Turquie", "تركيا", "Istanbul", "İstanbul", "Izmir", "İzmir", "Mersin", "Ankara", "Kocaeli", "Iskenderun", "İskenderun", "Gebze", "إسطنبول", "إزمير", "مرسين", "أنقرة"]
     editions:
-      - {lang: tr, hl: tr, gl: TR, ceid: "TR:tr", q: "Türkiye (liman OR çelik OR gümrük OR ihracat OR yaptırım)"}
-      - {lang: en, hl: en, gl: TR, ceid: "TR:en", q: "Turkey (steel OR port OR tariffs OR customs OR lira)"}
-      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Türkei (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik OR Lira)"}
+      - {lang: tr, hl: tr, gl: TR, ceid: "TR:tr", q: "Türkiye (ekonomi OR ihracat OR gümrük OR yaptırım OR çelik OR liman OR grev)"}
+      - {lang: en, hl: en, gl: TR, ceid: "TR:en", q: "Turkey (economy OR trade OR tariffs OR sanctions OR embargo OR steel OR port OR customs OR strike)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Türkei (Wirtschaft OR Konjunktur OR Zoll OR Handel OR Sanktionen OR Embargo OR Stahl OR Hafen OR Streik)"}
 
 # Regionale Eingrenzung: In diesen Rubriken bleiben nur Meldungen, in denen eines deiner Länder (siehe "countries")
 # oder einer der Begriffe unten vorkommt. Türkischsprachige Meldungen zählen automatisch als Türkei.
@@ -208,6 +208,9 @@ trade_sources:
 
 # Ausschluss per Regex (Titel + Quelle + Textauszug): gleiche Namen / Wörter mit anderer Bedeutung
 exclude_regex:
+  # Länder: kein Lebensmittel-/Folklore-/Protest-Rauschen, keine Israel-Boykottpolitik
+  - 'rinder|tomat|datteln|dattes|weichweizen|weizen|\bblé\b|wheat|fleisch|viande|\bmiel\b|honig|fromage|käse|schafe|moutons|zigarett|cigarettes|slimming|afslank|schlank|traditions|folklore|haredim|activist|protesters|marchen|demonstrat'
+  - 'sanctions? (on|against) israel|israel must face sanctions|israel sanctions|sanktionen (gegen|wegen) israel|israel-sanktionen|measures against israel|sanctions (on|against) (israeli|ben-gvir)|aims sanctions at israel|blindés|military aircraft|armored vehicles?'
   - 'tupolev|sonderflüge|sanktionierte[rn]? (jet|flug)|sanktionierter jet'
   # weitere Fehltreffer (zweiter Lauf)
   - 'genocide|apartheid|corbyn|burnham|miliband|israeli communities|settlements?\b|palestin|gaza flooding|attorneys? general|attorney generals|generalstaatsanw|\bAGs\b|raz-de-marée|midterm'
