@@ -1,0 +1,41 @@
+name: Seil-Report aktualisieren
+
+on:
+  schedule:
+    - cron: "30 5 * * *"      # täglich 05:30 UTC = 06:30 (Winter) / 07:30 (Sommer) deutscher Zeit
+  workflow_dispatch:           # manueller Start über den Reiter "Actions"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Meldungen abrufen
+        run: python fetch_news.py
+      - name: Kennzahlen abrufen (Destatis)
+        env:
+          DESTATIS_USER: ${{ secrets.DESTATIS_USER }}
+          DESTATIS_PASSWORD: ${{ secrets.DESTATIS_PASSWORD }}
+        run: python fetch_indices.py
+      - name: Seite bauen
+        run: python build.py
+      - name: Änderungen speichern
+        run: |
+          git config user.name "seil-report-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data docs
+          git diff --staged --quiet || git commit -m "Update $(date -u +%F)"
+          git push
