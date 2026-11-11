@@ -148,6 +148,8 @@ def main():
             if ok:
                 break
         if not ok:
+            if series.get(spec["id"], {}).get("note"):
+                series.pop(spec["id"])          # keine falsche Ersatzreihe stehen lassen
             errors.append(f"{spec['id']}: keine Daten ({'; '.join(tried)})")
             print(f"FEHLER {spec['id']}: {tried}", file=sys.stderr)
     OUT.write_text(json.dumps(dict(meta=dict(sample=False, errors=errors), series=series),
