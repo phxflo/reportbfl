@@ -108,8 +108,9 @@ def main():
     if NEWS.exists():
         old = json.loads(NEWS.read_text(encoding="utf-8"))
         if not old.get("meta", {}).get("sample"):
+            allowed = set(CFG["editions"]) | {"de", "en"}      # Sprachen, die wir suchen; alles andere fliegt aus dem Archiv
             db = {i["id"]: i for i in old.get("items", [])
-                  if not bad(i["title_orig"], i["source"], i.get("snippet", ""))}   # neue Ausschlüsse gelten auch fürs Archiv
+                  if i["lang"] in allowed and not bad(i["title_orig"], i["source"], i.get("snippet", ""))}   # neue Ausschlüsse gelten auch fürs Archiv
 
     jobs = build_jobs(days)
     print(f"{len(jobs)} Abfragen …")

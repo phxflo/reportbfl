@@ -142,7 +142,8 @@ def compute(all_items, now):
     cmatch = country_matchers()
     cap = SITE["per_section"]
 
-    items = [i for i in all_items if dt.datetime.fromisoformat(i["published"]) >= win]
+    allowed = set(CFG["editions"]) | {"de", "en"}
+    items = [i for i in all_items if dt.datetime.fromisoformat(i["published"]) >= win and (i["lang"] in allowed or i["id"].startswith("s"))]
     cards = []
     for members in cluster(items):
         lead = members[0]
