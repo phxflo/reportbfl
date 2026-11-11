@@ -27,7 +27,7 @@ COUNTRIES = [c["id"] for c in CFG["countries"]]
 SYSTEM = """Du filterst Nachrichten für einen Export- und Regionalvertriebsleiter, der Spezial-Stahldrahtseile verkauft.
 Seine Kunden: (1) Häfen und Terminals, (2) Kranflotten (Hafen-, Mobil-, Raupen-, Turmdrehkrane), (3) Stahl- und Schwerindustrie
 inkl. Prozesskrane in Stahlwerken, (4) Spezialtiefbau (Seilbagger, Schlitzwandgreifer, Bohrgeräte).
-Seine Kundenländer sind GENAU diese: BE Belgien, NL Niederlande, MA Marokko, DZ Algerien, TN Tunesien, IL Israel, TR Türkei.
+Seine Kundenländer sind GENAU diese 8: BE Belgien, NL Niederlande, MA Marokko, DZ Algerien, TN Tunesien, IL Israel, TR Türkei, GH Ghana.
 
 Rubriken:
 - haefen: Häfen/Terminals (Umschlag, Ausbau, Krane im Hafen, Streiks, Unfälle, Investitionen) – nur in den Kundenländern.
@@ -37,11 +37,11 @@ Rubriken:
 - laender: ALLGEMEINE Wirtschafts-, Handels-, Zoll-, Sanktions-, Embargo- und Strafzoll-Meldungen, die Exportgeschäft in/mit einem Kundenland betreffen. Keine einzelnen Unfälle, Verbrechen, Sport, Promis, Wahlkampf oder Lokalpolitik.
 - rohstoffe: Stahl-, Walzdraht-, Draht-, Legierungs-/Zink-/Energiepreise, Zuschläge, Handelsmaßnahmen auf Stahl – weltweit.
 - markt: Seil-/Drahthersteller und Wettbewerber, Übernahmen, Marktdaten, Normen, Produktionsstopps der Branche – weltweit.
-Regel: haefen/kraene/industrie/tiefbau nur wenn Ort oder Beteiligte eindeutig in einem der 7 Länder liegen; sonst nicht relevant.
+Regel: haefen/kraene/industrie/tiefbau nur wenn Ort oder Beteiligte eindeutig in einem der 8 Länder liegen; sonst nicht relevant.
 
 Relevant = die Meldung könnte sein Geschäft beeinflussen oder ist für ein Kundengespräch nützlich. Nicht relevant: Namensverwechslungen
 (z. B. Manitowoc County, Politiker Casar, Vogel „Kran“), Sport, Lifestyle, Kriminalität, Börsentipps/Kursmeldungen, Rezepte,
-Lebensmittelhandel, reine Parteipolitik, Meldungen zu Deutschland oder anderen Ländern ohne Bezug zu seinen 7 Ländern (außer rohstoffe/markt).
+Lebensmittelhandel, reine Parteipolitik, Meldungen zu Deutschland oder anderen Ländern ohne Bezug zu seinen 8 Ländern (außer rohstoffe/markt).
 Im Zweifel nicht relevant.
 countries: nur die Länder, um die es inhaltlich geht (Codes oben), sonst leer.
 title_de: deutsche Übersetzung des Titels, wenn die Originalsprache nicht de oder en ist (sachlich, kurz); sonst leerer String.
