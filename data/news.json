@@ -1,9 +1,56 @@
 {
  "meta": {
-  "updated": "2026-11-11T11:44:42.000312+00:00",
+  "updated": "2026-11-11T12:00:40.216065+00:00",
   "sample": false
  },
  "items": [
+  {
+   "id": "99195cd7e918",
+   "title_orig": "עיסקה בין חברה הפועלת במסגרת ההאב הטכנולוגי הימי של נמל אשדוד לבין נמל בסינגפור",
+   "title_de": null,
+   "lang": "he",
+   "source": "PORT2PORT",
+   "url": "https://news.google.com/rss/articles/CBMipgZBVV95cUxPM0VBUVhaR1VpSm50QjRBVjhRN3lNek5mOG02a3BlRGtsTmJwa0VRVkNCTFhlZVdjeHRBcW5fUjZ1b1pmTDVmc2pnSnhGdHVUOHdUSXp4ZmhBRDdXamZMQVU1eEVIamNYRGFZZC1GeVVjQ1ZXR1JMc3lFRE1IdENzaFp2Zm5LcTJDd0V6OEVSQTN1VFJiNnBKRzB0cXB2SjFvU3VPc2puaklsUUI5T3owWFdfZS1yRjIyc1ZPNDFGSFhoZ1Fvc29FZ1habldBelFrd3p0ZUg5UTRMa05XSjNJRDVVbjBvV2k2eVpqSUx6Zlh4MFpoMXZSYURFVVdmYUREVUdUaFJ3dEExUDA2a3FpRWxpRkV4S2ozX2p0TWdLd1pwTS1nNVBVN0ZhMlRORTlGd1NDcUNzOFQ1YS1keUl1U2c5NG1YT0hRTzFjWGIyUTFSY1MzbFdSWDBZVTBfdnladTdhWnVfWjZ6Y1U3YTMzOEkyN3dRaE44Z09DN1VEdUNFbEd3eERtS0hIbW1BTjdnX29sOWZVRHdkVF9NaVp3OHNlNlVJaVhGWWxZaVZENDQ3Qks0NkR2dE5zcHNndWJZWk5rT2dlMTZmODgwRUJHVTdXR0liMGh5TmJQZjdDUFV1ZExrSzJMN2ktSVdscE11N3hQUWd6ZTNFQlFnVDYzbmxSR29hS3c0dzk1cnk4cXB5RkNkR3B3TzNfZ29tT19CVkdFOEFIQWtpR1AyQ3huZUNxX3VGeUd0X0VEbTVOQjhiOE0yaHFvR0xxb1FrdkV6a1Vrc0J6dGNVc0FVcnlRM3A1NmRGUnk1dTFJZ1p1QXgxUFZUREZQaFFVLUdBTDUxNHBVaTNsY0lvY1dGZDFoRWtnejl6ZDBrX2QzRHhrOWV3SjN3dEc1S3c3Z25rTzc4bUhkMUcyVC13RlhTWWFhck1aVERnTzBzY1ZULWYzVnZkdU1URC1sUDFsTE9BV2ZHQ1o4WlRmSU80UmthTjlKanl4WjdzU3NnV08xZlR3VkhvdFdsajZ3NnFmTUtzQ1VRLTFRWmh5VDBNaDZPX0paVHp3RW56Zw?oc=5",
+   "published": "2026-11-11T11:51:48+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "IL"
+   ],
+   "snippet": "עיסקה בין חברה הפועלת במסגרת ההאב הטכנולוגי הימי של נמל אשדוד לבין נמל בסינגפור"
+  },
+  {
+   "id": "dd56125f66fc",
+   "title_orig": "Ümraniye’de vinç devrildi, Şile yolu kapatıldı",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Hey Haber",
+   "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPTkI1OHJDa3JXMWFqWF9rNmtJVFZiTzNFSjRxZkhETzRSV0hlaVFvUFJ1cEVUc1ItbWdMOERpWnpqOXV4QWNPX2dhQW9uWE5HZktSSGM4aEVsNFlwNDJTRzd0R1F4aFVjY3ZlaDBJZHpSVHpoNWtheHdxYUlGbDVySUZvbV9HS0VRZTZlR2RvRzNxdw?oc=5",
+   "published": "2026-11-11T11:48:12+00:00",
+   "rubric": "kraene",
+   "rubrics": [
+    "kraene"
+   ],
+   "countries": [],
+   "snippet": "Ümraniye’de vinç devrildi, Şile yolu kapatıldı"
+  },
+  {
+   "id": "b801c6616c21",
+   "title_orig": "Klaipėda launches billion-euro port expansion",
+   "title_de": null,
+   "lang": "en",
+   "source": "Port Strategy",
+   "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPRzRYb1ZDTEtSaUZ1QnhXdG9TS2pIYXlvTEdhaXBabDJMdmpvcVMySE82N0N5RXBET3FlQXhJOWVHTnZNVjJSaEMzZEV6S0VRQk82V1lnSjJPZUVWOC1oQjlqeFlxR0pERDl6d2tEWGVzdGN5elQxOG1lOGFENnZZc0x2YWhjazZZRG9sSUo2bWZKUm1WMWhxWGtJaXBEWEo4eExKTg?oc=5",
+   "published": "2026-11-11T11:47:49+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Klaipėda launches billion-euro port expansion"
+  },
   {
    "id": "71050586dcb4",
    "title_orig": "מבצע ענק בנמל אשדוד: נעצרו חשודים בהברחת סיגריות ב-200 מיליון ש\"ח",
@@ -185,6 +232,21 @@
     "DZ"
    ],
    "snippet": "حصيلة أسبوعية ثقيلة للجمارك الجزائرية"
+  },
+  {
+   "id": "3fd03ebd1eea",
+   "title_orig": "Getuigen doen verslag van de enorme explosie in een staalfabriek in Turkije.",
+   "title_de": null,
+   "lang": "nl",
+   "source": "Vietnam.vn",
+   "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQNEJjcUdndjZ0V2E1bmlCa1EzVVlZbFVPNTNCZFIwcG9qS0I3N2dQRXpaaElzcXpVQXEzNVVsNkZONEhYQ0FoNHdOM3U3dmNuLUFyYllEMC1sSWlWSHYzSVJmQmJManpSd0huZkVIa3lfVnE3eUI1eE02NnBUcTBvdnYybjRTNDZFZTFB?oc=5",
+   "published": "2026-11-11T10:21:55+00:00",
+   "rubric": "industrie",
+   "rubrics": [
+    "industrie"
+   ],
+   "countries": [],
+   "snippet": "Getuigen doen verslag van de enorme explosie in een staalfabriek in Turkije."
   },
   {
    "id": "73211f9d64b6",
@@ -432,6 +494,23 @@
    "snippet": "Kardemir Çelik dokuz aylık finansal sonuçlarını açıkladı"
   },
   {
+   "id": "3a49223469c8",
+   "title_orig": "Amerikaans bedrijf wilde met drones olietanks bespieden in Nederlandse havens",
+   "title_de": null,
+   "lang": "nl",
+   "source": "Nieuwsblad Transport",
+   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPalRnX00tM2hDNUlaMlZCTWZjZ0czYUNHYy1pakFCTXpVaG1KOWc4Z1BkbTh4LWVmVUlxY1l3Zy12UmNIMzg1MW5XMElOOFR5aWlaQm5zZ05uM0xTUVAyeXdpTkNXSDNaRDZFclh0VkRtemQyd2xwcnJfRG1nNFhIWmRwMGVYN29aSnRUZUtIQmFpOUM3alcwX19rMEM5RGc0NU8tYlNzSWs3UUVacFFER1h0SEQ?oc=5",
+   "published": "2026-11-11T09:16:04+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "NL"
+   ],
+   "snippet": "Amerikaans bedrijf wilde met drones olietanks bespieden in Nederlandse havens"
+  },
+  {
    "id": "e0e7539587f8",
    "title_orig": "Russlands Sonderflüge: Sanktionierter Jet landet in Israel",
    "title_de": "Russlands Sonderflüge: Sanktionierter Jet landet in Israel",
@@ -481,6 +560,23 @@
     "TR"
    ],
    "snippet": "Mikro ihracat 10 yılda yüzde bin 460 büyüdü"
+  },
+  {
+   "id": "5b75ef04230b",
+   "title_orig": "13 US attorney generals oppose European sanctions",
+   "title_de": null,
+   "lang": "en",
+   "source": "Israel National News",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFByYzFJcFlaNkg1NVJHeUVMN042V3lOWFJkQ2R6RHc1MDVDdl9NOHM2Ry15dW9hZEtsUGtvZXN4RHRheGRGS3Ffd2R4ZU9oWTFrMnVjY05QaUNKZw?oc=5",
+   "published": "2026-11-11T09:03:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "IL"
+   ],
+   "snippet": "13 US attorney generals oppose European sanctions"
   },
   {
    "id": "ef898f904d7c",
@@ -596,6 +692,21 @@
    "snippet": "Adani Ports-Aktie: Adani-Gruppe plant 120 Mrd. Dollar Investitionen"
   },
   {
+   "id": "edba67b885a2",
+   "title_orig": "International Container Terminal Services Posts Qtrly Gross Revenue Of $984.1 Million",
+   "title_de": null,
+   "lang": "en",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNNHk2emJQYjJpRjFkb1BKTGhqTWJDb1haZTgzN196SmJFVE9UT0VvRF9oR29TYW5lQkxUVXBpMWRTVEtWOG52bl9vRkFDdDkwRU83ZnFyenRTaEt3ZDY5ZzdybWpBS0xJaTJYZmtkeEktNUNyRzVMQmpOS1ZUNnhzcW1zYUV4ejhzWXZ3c1ZaOXFOd1o2TENCRnA1eFRxOFR6alBqMkhCQ3dqdDEzYWJHVXdhMVdOZ2ZFV1ZNQTVQRFhyeUxwZTVQMmdLM0M3dnVMM05zR1ZJdWdRaEZ1SU9rdjk5TXdfMkxIUnc?oc=5",
+   "published": "2026-11-11T08:31:23+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "International Container Terminal Services Posts Qtrly Gross Revenue Of $984.1 Million"
+  },
+  {
    "id": "52650625728b",
    "title_orig": "Türkiye ve Özbekistan arasında gümrük işbirliği anlaşmaları imzalandı - Türkistan'dan - Haber",
    "title_de": null,
@@ -677,6 +788,21 @@
    ],
    "countries": [],
    "snippet": "International Container Terminal Services : ICTSI 9M2026 Net Income grew 20% to US$898.89M; Recurring Ne..."
+  },
+  {
+   "id": "7855b85c0ad8",
+   "title_orig": "Habaş Demir Çelik Fabrikası'nda 18 işçinin hayatını kaybettiği patlamadan önceki 20 günde iki işçinin ölmesi sonrası neler yapıldı?",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Patronlar Dünyası",
+   "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxNVXhFWlR3eS1aZFN0YjFxSTEteWpTb2RKOTEyLWM2SmQ0LWpFMHBoekVhbE44bHl0VktURWVoUVFrUG1pSG1CSDhUOWlYdnFsVXNiSDY1U1dIOFU4a3FyZnk5Mi1YWk8wdmMyWmUwVWFHOEt3MlVSSHRlT2I2RFNGMFRDTkhjYXdkR2VRb2NQa2dUQmpEZV9PTUluYWRxVnVESXIwME9IcmJDZS1HZnFxTldRUlVqeElNNFNfSDBKR0U3VFVFSGZFUWRtVWh0Qi03eklfSklScU1GLW5tRlV4MTAzWXgtUV9ZUF9idU9BRVBaOXZI?oc=5",
+   "published": "2026-11-11T07:48:09+00:00",
+   "rubric": "industrie",
+   "rubrics": [
+    "industrie"
+   ],
+   "countries": [],
+   "snippet": "Habaş Demir Çelik Fabrikası'nda 18 işçinin hayatını kaybettiği patlamadan önceki 20 günde iki işçinin ölmesi sonrası neler yapıldı?"
   },
   {
    "id": "e690c9c8f5db",
@@ -2004,6 +2130,21 @@
    "snippet": "MEPS Details Assumptions Behind Five-Year Steel Price Forecasts - News and Statistics"
   },
   {
+   "id": "00e3a3db2973",
+   "title_orig": "MEPS détaille les hypothèses de ses prévisions de prix de l'acier à cinq ans - Actualités et statistiques",
+   "title_de": null,
+   "lang": "fr",
+   "source": "IndexBox",
+   "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQdjNIaDVIM1l3b05fVmg0VWVZbFRqUi12d1N0MDlQZkJoLWxqMlBlNGlIanJ5akZfQjFiSG1BdEFNYUd2b0NVMEwwbXpXdnBNcjBGblV1SkNEQlVUaU9NcUpQSFZralpSUmpZMXlXWno3d3NVbFFIS1pteUdkeGtETVFlT2xfUXBSZkJxMlpnOTg5ekdfVDgxZmRMbkVXRmtRYUF6Z1hn?oc=5",
+   "published": "2026-11-10T17:00:51+00:00",
+   "rubric": "rohstoffe",
+   "rubrics": [
+    "rohstoffe"
+   ],
+   "countries": [],
+   "snippet": "MEPS détaille les hypothèses de ses prévisions de prix de l'acier à cinq ans - Actualités et statistiques"
+  },
+  {
    "id": "50eda05c4f26",
    "title_orig": "ثالث كارثة خلال أسابيع.. 16 قتيلاً و13 مصابًا بانفجار مصنع للصلب في إزمير غرب تركيا",
    "title_de": null,
@@ -3204,6 +3345,21 @@
    "snippet": "Turkey steel factory blast kills 17, 12 injured"
   },
   {
+   "id": "a04ac9cc4117",
+   "title_orig": "HABAŞ Demir Çelik Fabrikası'nda hayatını kaybeden 17 kişinin isimleri belli oldu!",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Şırnak Haber 73",
+   "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNS0dCWW5LSEdmTHVUUEsydjZuc3JxeTY3N3F0STNkTzV3b25VOUo4VDFlRXFrb0hPbUZseTZYT1NOcVFzM0dGR2Q5cnNrS0x5OVJmUHVrVnlXdGY2X1g2QTdnSHBsZ19yaHRkU2p5WXFwZGNuMEtnRkJ5eVdQbTBfZHlqZzFVTTNselZWSUNkT3d1MkVaTGo0SXdZdDJ5c1RHejNwRktKb3hYUlRydGpmRDZWbjhoTmPSAccBQVVfeXFMTmtENkROYktwcUdHVzVCc0thOTd3X21JekhSRE1zZ3FiRlFnYUZ4Z2xXeXdCN0piT3BGTFltVkRvemFNc2ZiLVYxMjVHdkxWamdxZXVBVnBodFR1RjQyOWJjc1g0a3ZnZW4zdjFXWmRLdG00UjZDcVp6RmJaVXF1Q20xUE93M2xqWl9XcEk1R0xtQ3poRlByV25pZEt2cllCWDRrWjdEbmpIc3FvcHJSclQySTB1OU5GMmxTT0I3M3JTeHl1dndBQQ?oc=5",
+   "published": "2026-11-10T10:30:31+00:00",
+   "rubric": "industrie",
+   "rubrics": [
+    "industrie"
+   ],
+   "countries": [],
+   "snippet": "HABAŞ Demir Çelik Fabrikası'nda hayatını kaybeden 17 kişinin isimleri belli oldu!"
+  },
+  {
    "id": "a01a6ff08bf3",
    "title_orig": "Habaş Demir Çelik Fabrikası'ndaki patlamada yakınlarını kaybedenler: Kimsenin yanına kâr kalmasın",
    "title_de": null,
@@ -4258,6 +4414,21 @@
    "snippet": "İzmir'de demir çelik fabrikasında patlama: 17 ölü, 14 yaralı! Yaralıların son durumu ne?"
   },
   {
+   "id": "5465298e9a1f",
+   "title_orig": "İzmir'de demir çelik fabrikasında patlama: 17 ölü, 12 yaralı! Yaralıların son durumu ne?",
+   "title_de": null,
+   "lang": "tr",
+   "source": "A Haber",
+   "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQakxIMWRJYmVLSWVJNlM5azFfWmh6S1Uzd0dMeGN4VmFpNDg1VmZrejBNS2IxWENvd0RWTmt2eV90NTZRdnRWOFVsZ0Y1bmRVbUZRTkNIODFTLUZRMXZRVGJ0MjFuRXRMVXJrSko0QnBQMjNKUmR0VDBnZ1ROTEZORURnSmZGX3hpLTZNN1VlT2duUHRqLThZRmMxeUsxT2FPYmJJYkhENHI2X0FhSEVURXJNWlJqd3Q1aEFQQlZLekh3TjgwSmJuZktvYUg?oc=5",
+   "published": "2026-11-10T05:22:16+00:00",
+   "rubric": "industrie",
+   "rubrics": [
+    "industrie"
+   ],
+   "countries": [],
+   "snippet": "İzmir'de demir çelik fabrikasında patlama: 17 ölü, 12 yaralı! Yaralıların son durumu ne?"
+  },
+  {
    "id": "8c82b11c2d35",
    "title_orig": "Israel to allow cement, steel into Gaza under US pressure",
    "title_de": null,
@@ -4560,6 +4731,23 @@
    ],
    "countries": [],
    "snippet": "Family business in Manitowoc to close after 22 years"
+  },
+  {
+   "id": "4db18e5197b0",
+   "title_orig": "Turkey steel plant blast: Explosion kills 17 workers at Habaş factory; probe and rescues continue",
+   "title_de": null,
+   "lang": "en",
+   "source": "inkl",
+   "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQYWV1SVcwcmprQ2ZRa0FwS2dnZzliZHZDMVJjbFZ6RjA3WkVxSDdlejdTRmVhd2JucWRmcDlfbHFEN01pdzZ1el91QjVyUE02cnFRYUxoNXFfVE9mUHozRW83U19SSG9IaVJNTGRjWDBhd1pSLVRBOHV2YmllSll6RWY0Q0xadUdkTG5LUXk2WnotaFFRaktvRkZhM0g2dXRsNExFT1kwcThHTGpWMjdoNkJ4c0JxYUM4QW1UcmFB?oc=5",
+   "published": "2026-11-10T01:45:22+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Turkey steel plant blast: Explosion kills 17 workers at Habaş factory; probe and rescues continue"
   },
   {
    "id": "c06bddfbf6df",
@@ -8557,6 +8745,21 @@
    "snippet": "İzmir'de demir çelik fabrikasında patlama sonrası yangın: 3 ölü, 14 yaralı- Yeniden"
   },
   {
+   "id": "5bd4e7d9736d",
+   "title_orig": "İzmir'de demir çelik fabrikasında patlama sonrası yangın: 3 ölü, 14 yaralı",
+   "title_de": null,
+   "lang": "tr",
+   "source": "DHA | Demirören Haber Ajansı",
+   "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNcGt3NEV2UEtqZ3ROa1FSRVZaQWpnRk1oSmxiQWVoZlZXY0dPa210R3R1aTFpaXFKeDVlU0pRVWxEYzM4dWFkNE8xOG5Hc0daVTVTZU1Ya19nQkF2TkVuaE9sWU1jUVFvTHNZUk44YURibUtfM3BVeGRVTjdNSExkMzdqOTJrSktTUFdSSExDQUxiWW9wOUcyaVdvUVZxRTNYd1QzZmV3Sy0?oc=5",
+   "published": "2026-11-09T11:18:00+00:00",
+   "rubric": "industrie",
+   "rubrics": [
+    "industrie"
+   ],
+   "countries": [],
+   "snippet": "İzmir'de demir çelik fabrikasında patlama sonrası yangın: 3 ölü, 14 yaralı"
+  },
+  {
    "id": "184b4e1fac07",
    "title_orig": "İzmir'de demir çelik fabrikasında patlama. 17 kişi hayatını kaybetti",
    "title_de": null,
@@ -9191,6 +9394,21 @@
    "snippet": "Une explosion dans une aciérie en Turquie a fait au moins 16 morts."
   },
   {
+   "id": "9605558cf3a6",
+   "title_orig": "Bij een explosie in een staalfabriek in Turkije zijn minstens 16 mensen omgekomen.",
+   "title_de": null,
+   "lang": "nl",
+   "source": "Vietnam.vn",
+   "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPZXNfNTBDcFVBQ1d5dzF5NGloYV9oRGFXU04zaktWVU5TbjN3aUJhS1Z3MkdaV2hwdTgzVzdpd0Z0eWk4NTZCM21sakIwRWU3WHFjbUFJdHV3dksxM2FyU0xCbkw4UXlMTWV3bkl2QkJXS3lKaGtUY3cwNDdLeDkwQjlIZkNFUUtON1pILQ?oc=5",
+   "published": "2026-11-09T08:00:00+00:00",
+   "rubric": "industrie",
+   "rubrics": [
+    "industrie"
+   ],
+   "countries": [],
+   "snippet": "Bij een explosie in een staalfabriek in Turkije zijn minstens 16 mensen omgekomen."
+  },
+  {
    "id": "ffe1facd6022",
    "title_orig": "İSO ihracat iklimi endeksi ekimde 52,5’e geriledi",
    "title_de": null,
@@ -9626,6 +9844,21 @@
    ],
    "countries": [],
    "snippet": "LTM 1400-6.1 Une première réussie à Paris | Liebherr"
+  },
+  {
+   "id": "ccb2a21c0054",
+   "title_orig": "Le Secrétaire général exprime sa pleine solidarité avec la République de Turquie suite à l'explosion de l'aciérie d'Izmir",
+   "title_de": null,
+   "lang": "fr",
+   "source": "Organisation of Islamic Cooperation — OIC",
+   "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE01UGNXalBnQ003SzdwZnhjVGg3SmVFSlp2dXpCWmFNdUlQd29rblQtN1Z1clZRMmExNThPYWZxc20xSXdCOFFoVUNsbG4?oc=5",
+   "published": "2026-11-08T21:11:00+00:00",
+   "rubric": "industrie",
+   "rubrics": [
+    "industrie"
+   ],
+   "countries": [],
+   "snippet": "Le Secrétaire général exprime sa pleine solidarité avec la République de Turquie suite à l'explosion de l'aciérie d'Izmir"
   },
   {
    "id": "cbf225ed8be1",
@@ -10312,6 +10545,21 @@
     "TR"
    ],
    "snippet": "Türkiye'den 9,9 milyar dolarlık ihracat! En çok bu ürün kazandırdı"
+  },
+  {
+   "id": "7fee3a05e582",
+   "title_orig": "Dalian Huarui Heavy Industry Group Co., LTD. (002204.SZ) Seasonal returns chart",
+   "title_de": null,
+   "lang": "en",
+   "source": "Yahoo Finance UK",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE40Z0dlSGZhT1FLM2J2ZVFTRWlEc2lxSjRscXhxU0t6X295emlTT3VvejlGLTM2RUZJX0VSTzh6YktxckUwTXVNMTN2Wk1yQ1NFUG9OaUlWQmJEMUdoV1lwanQwMHJLbmY1?oc=5",
+   "published": "2026-11-08T07:28:13+00:00",
+   "rubric": "industrie",
+   "rubrics": [
+    "industrie"
+   ],
+   "countries": [],
+   "snippet": "Dalian Huarui Heavy Industry Group Co., LTD. (002204.SZ) Seasonal returns chart"
   },
   {
    "id": "9242712fc409",
@@ -11391,6 +11639,21 @@
    "snippet": "Brandende rupskraan veroorzaakt enorme rookpluim in Merchtem: “Tot kilometers ver zichtbaar”"
   },
   {
+   "id": "a3ee2655dbfc",
+   "title_orig": "ArcelorMittal will keep the Kryvyi Rih steel mill by selling off its metal inventories",
+   "title_de": null,
+   "lang": "en",
+   "source": "Комерсант Український",
+   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQQ0h5bzRfWk9XMTdaQUFoWGJOVjJwa1ByRldfOEZQWmhhMVFZajQ4WmV4ZHM0SnpiYUVHN0R3UllFTU9SNUxlamtNRFE2dEpmUTBpdE9uZUliZ1FXbF8waFFoU3lUcGRsWDFTYXFOV1YzQmQ3dkU2QXlmRi1xUXF1cmFtTkRaci1JMlJ2RXViVkJCRG5Xb1JfdEpSV01oOEpCZk5ndW4yUjZhNDQ?oc=5",
+   "published": "2026-11-06T20:56:00+00:00",
+   "rubric": "industrie",
+   "rubrics": [
+    "industrie"
+   ],
+   "countries": [],
+   "snippet": "ArcelorMittal will keep the Kryvyi Rih steel mill by selling off its metal inventories"
+  },
+  {
    "id": "82c7f97d57c4",
    "title_orig": "Two arrested in Manitowoc for drug distribution after meth found in car",
    "title_de": null,
@@ -11752,6 +12015,23 @@
     "MA"
    ],
    "snippet": "Le Maroc ouvre des usines, mais sa facture d'importation s'alourdit de 103 milliards de dirhams"
+  },
+  {
+   "id": "25bb22732f17",
+   "title_orig": "رسو باخرة سياحية قادمة من تونس بميناء سكيكدة",
+   "title_de": null,
+   "lang": "ar",
+   "source": "يومية الاتحاد الجزائرية",
+   "url": "https://news.google.com/rss/articles/CBMiywJBVV95cUxOYVpOR05nb0QzSGZLTWZuUGg0ZHl3ckpkZ1h2VGhjdDNCdmNFb3ZFX1FneXFicVZDd1EwbUJudEFDME1SZXRpT2k3YTFJaFJQczB0TjhmNFlxelcwajNoLUh3NktQT3pyYzZKS0ZIdnN3VHlLX3BSTnJiS0xuQ3o4dnRkbWxnM1doMm1JTTAwQWdJV0lXREtKQ0FzMmJ3M2ZTak4xMVVOM3ZpT2ZCZEd6bzg4ZzJOZVd3VWNXMGZQXzBtc0J6ajdYV1JMR1NuaEJpU2p2SVMtdUdvb0VHeUxFR3luQW1xWXh6UTJmYnBObFVyOHc2bUU4SVoxZ1J5ZUdtaUZWb2o1bmNEdE5zbTdSQjF6dEM2LUJmT1BqOVluQ1lBX2gyV0RNQkFDcDZuQk0yVUpzamdYbk8wQzV3eWRULU8tdDRSZ3I3aHdV?oc=5",
+   "published": "2026-11-06T13:55:01+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TN"
+   ],
+   "snippet": "رسو باخرة سياحية قادمة من تونس بميناء سكيكدة"
   },
   {
    "id": "d606ce3f1c51",
@@ -13263,6 +13543,21 @@
    "snippet": "Manitowoc Co Inc (MTW) (Q3 2026) Earnings Call Highlights: Record Orders and Raised Guidance ..."
   },
   {
+   "id": "cb5ad730176b",
+   "title_orig": "[SMM Nickel Sulphate Daily Review] Nickel Prices Surge on November 5, Nickel Sulphate Prices Rise Slightly",
+   "title_de": null,
+   "lang": "en",
+   "source": "Shanghai Metals Market",
+   "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxORXdOZTkzY1luRnRCMzE2REZWQzA0UGsxWThtZGV3Zm1NTnpyeDdaSUE3S01qX3dJVzQ4UVZIcXBSNElHM3luRXhYcFp1ZDg0d1F2QVQ5dktDa1UtWFUzUXpCVmJxWWZBQWpGSmRwLWV0T1RIeVpzQ3RaQms1czFkLVF2RWRUWEItUlBJZ25LNjdPQXhsbElFMUsxUzRhQk9YV2VOeUdlaG1Cand3VGpqTEtSbUNEN3ZsTkNFUG42a1otcXIzU3plRjNFRW1nZ1VpY2RRbFV6NGl6bjlCY05BdkZB?oc=5",
+   "published": "2026-11-05T03:39:00+00:00",
+   "rubric": "rohstoffe",
+   "rubrics": [
+    "rohstoffe"
+   ],
+   "countries": [],
+   "snippet": "[SMM Nickel Sulphate Daily Review] Nickel Prices Surge on November 5, Nickel Sulphate Prices Rise Slightly"
+  },
+  {
    "id": "e9ca0c05c7fb",
    "title_orig": "Manitowoc taxi service suspends all operations indefinitely",
    "title_de": null,
@@ -13385,6 +13680,21 @@
     "MA"
    ],
    "snippet": "إنتاج الحديد والصلب في المغرب يرتفع 24.7% إلى 3.25 مليون طن"
+  },
+  {
+   "id": "ca1f4148f6d2",
+   "title_orig": "Ein Mobilkran demontiert eine 75 Jahre alte Kanalbrücke in Deutschland.",
+   "title_de": "Ein Mobilkran demontiert eine 75 Jahre alte Kanalbrücke in Deutschland.",
+   "lang": "de",
+   "source": "Crane & Transport Briefing",
+   "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOdnhZNEtfXzJNUlMwSHVxalY3MkdtWGdjVFBNTEUzbFExSzhjWWtFN2lhOUo1ZnFyV01WZ3BBcDBoWXFyNjczOWJuX1Z5YmcybjlYYmlUTHNEaU8wMTFTd1dhajRmRE9aVzh3V2tkMnl4WERDcl9TT3dIbVkxNl8zdE1Jd0NzUTBzWGlGaTZqVmFVV1B3clJIUkRjLTBkYjFCT2RWaHhTU18xeXQwR0hQRHpnQjM5Y3Y5dHRNdHFkS25HQQ?oc=5",
+   "published": "2026-11-04T21:02:31+00:00",
+   "rubric": "kraene",
+   "rubrics": [
+    "kraene"
+   ],
+   "countries": [],
+   "snippet": "Ein Mobilkran demontiert eine 75 Jahre alte Kanalbrücke in Deutschland."
   },
   {
    "id": "607d363d23ce",
