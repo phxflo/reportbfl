@@ -22,6 +22,10 @@ exclude:
   - Fußball
   - cable car
   - zipline
+  - مصر
+  - Egypt
+  - Ägypten
+  - Égypte
 
 # Treffer mit diesen Wörtern rutschen in "Top-News" weiter nach oben (Regex, ohne Groß/Klein)
 boost: "zuschlag|surcharge|toeslag|supplément|ek ücret|zoll|zölle|tariff|tarif|droits de douane|gümrük|safeguard|cbam|sanktion|sanction|embargo|insolvenz|bankrupt|übernahme|acquisition|acquires|liebherr|bauer|tadano|manitowoc|terex|potain|casar|teufelberger|bridon|wireco|pfeifer|drahtseil|wire rope|stahlseil|çelik halat|câble"
@@ -35,6 +39,7 @@ rubrics:
     title: "Häfen, Terminals & Güterumschlag"
     short: "Häfen"
     weight: 1.0
+    must: 'hafen|häfen|terminal|kaianlage|kaikran|umschlag|container|quay|(?<!\w)ports?(?!\w)|ship-to-shore|(?<!\w)(rtg|rmg|sts)(?!\w)|haven|(?<!\w)kade|liman|konteyner|ميناء|موانئ|محطة|حاويات|נמל|מסוף|מכולות'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
       de: [Hafenkran, Containerterminal, Hafenausbau, Kaianlage, Terminal Umschlag, Hafen Investition]
       en: ["container terminal", "port expansion", "ship-to-shore crane", "quay crane", "port investment", "RTG crane"]
@@ -48,6 +53,7 @@ rubrics:
     title: "Kranflotten – Turmdreh-, Mobil- & Raupenkrane"
     short: "Krane"
     weight: 0.9
+    must: 'kran(e|en)?(?!\w)|crane|grue|kraan|kranen|vinç|liebherr|tadano|manitowoc|terex|potain|raupen|crawler|رافعة|رافعات|עגורן|מנוף'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
       de: [Turmdrehkran, Mobilkran, Raupenkran, Kranflotte, Autokran, Liebherr Kran]
       en: ["tower crane", "mobile crane", "crawler crane", "crane fleet", "Tadano", "Manitowoc"]
@@ -61,6 +67,7 @@ rubrics:
     title: "Industrie – Stahlwerke, Schwerindustrie & Prozesskrane"
     short: "Industrie"
     weight: 0.8
+    must: 'stahl|steel|hütte|schwerindustrie|heavy industry|aci[eé]rie|sid[eé]rurgie|industrie lourde|staal|zware industrie|çelik|demir|صلب|فولاذ|صناعة ثقيلة|פלדה|תעשייה כבדה|pont roulant|brückenkran|overhead crane|prozesskran'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
       de: [Stahlwerk, Schwerindustrie, Brückenkran, Hüttenwerk, "Stahlindustrie Investition"]
       en: ["steel mill", "heavy industry", "overhead crane", "steelworks investment", "process crane"]
@@ -74,6 +81,7 @@ rubrics:
     title: "Spezialtiefbau – Bohrgeräte, Seilbagger & Schlitzwandgreifer"
     short: "Spezialtiefbau"
     weight: 0.7
+    must: 'tiefbau|schlitzwand|bohr|seilbagger|diaphragm|foundation|piling|(?<!\w)piles?(?!\w)|drill|excavator|soilmec|bauer|paroi|fondation|foreuse|pelle|diepwand|fundering|boor|diyafram|temel|kazık|sondaj|حفار|أساسات|جدار|כלונס|יסוד'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
       de: [Spezialtiefbau, Schlitzwandgreifer, Bohrgerät, Seilbagger, "Tiefbau Großprojekt"]
       en: ["diaphragm wall", "deep foundation", "piling rig", "cable excavator", "Bauer Group", "Soilmec"]
@@ -87,25 +95,27 @@ rubrics:
     title: "Länder – Zölle, Handel, Konjunktur & Logistik"
     short: "Länder"
     weight: 0.8
+    must: 'zoll|zölle|handel|tarif|customs|(?<!\w)dut(y|ies)(?!\w)|douane|gümrük|sanktion|sanction|embargo|import|export|ihracat|ithalat|hafen|häfen|(?<!\w)ports?(?!\w)|haven|liman|logist|lojistik|stahl|steel|staal|acier|çelik|lira|dirham|dinar|währung|currency|devise|جمارك|استيراد|تصدير|ميناء|موانئ|صلب|فولاذ|لوجست|מכס|יבוא|יצוא|נמל|פלדה|לוגיסטיקה|invoerrechten|grève|streik|strike'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms: {}                # Länder-Suchen stehen unten unter "countries"
 
   - id: rohstoffe
     title: "Rohstoffe & Zuschläge"
     short: "Rohstoffe"
     weight: 1.0
+    must: 'zuschlag|surcharge|toeslag|legierung|alloy|walzdraht|wire rod|fil machine|walsdraad|filmaşin|stahlpreis|steel price|scrap|schrott|schroot|hurda|zink|zinc|nickel|cbam|safeguard|schutzmaßnahmen|prix de l.acier|prix du fil|staalprijs|çelik fiyat|ek ücret|supplément|מחירי פלדה|מחיר ברזל'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
       de: [Legierungszuschlag, Rohstoffzuschlag, Walzdraht, Stahlpreise, Schrottpreis, "CBAM Stahl", Zinkpreis]
       en: ["wire rod price", "steel price", "scrap price", "CBAM steel", "EU steel safeguard", "zinc price", "nickel price"]
       fr: ["prix du fil machine", "prix de l'acier", "CBAM acier"]
       nl: [staalprijs, walsdraad, schrootprijs]
       tr: ["filmaşin fiyat", "çelik fiyatları", "hurda fiyatları"]
-      ar: ["أسعار الصلب", "أسعار الحديد"]
       he: ["מחירי פלדה", "מחיר ברזל"]
 
   - id: markt
     title: "Markt & Wettbewerb – Stahlseile"
     short: "Markt"
     weight: 0.9
+    must: 'seil|wire rope|steel wire|rope|câbles? en acier|câbles? métalliques?|câbles? d.acier|staalkabel|staaldraad|halat|حبال|كابلات فولاذية|כבלי פלדה|חבל|bridon|wireco|teufelberger|casar|pfeifer'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
       de: [Drahtseil, Stahlseil, Seilhersteller, Teufelberger, Casar, "PFEIFER Seil"]
       en: ["wire rope", "steel wire rope", "Bridon-Bekaert", WireCo, Teufelberger, Casar]

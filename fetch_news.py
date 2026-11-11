@@ -17,6 +17,7 @@ import yaml
 ROOT = Path(__file__).parent
 CFG = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
 NEWS = ROOT / "data" / "news.json"
+LANGMAP = {"he": "iw"}
 UA = {"User-Agent": "Mozilla/5.0 (compatible; SeilReport/1.0)"}
 MAX_TRANSLATE = 1500
 
@@ -79,6 +80,73 @@ def detect_countries(text):
     return [c["id"] for c in CFG["countries"] if any(n.lower() in low for n in c["names"])]
 
 
+def _translator(lang):
+    from deep_translator import GoogleTranslator
+    try:
+        return GoogleTranslator(source=LANGMAP.get(lang, lang), target="de")
+    except Exception:
+        return GoogleTranslator(source="auto", target="de")
+
+
+def _chunks_by_chars(items, limit=4200):
+    cur, size = [], 0
+    for i in items:
+        n = len(i["title_orig"]) + 1
+        if cur and size + n > limit:
+            yield cur
+            cur, size = [], 0
+        cur.append(i)
+        size += n
+    if cur:
+        yield cur
+
+
+def translate_all(todo):
+    """Titel je Sprache gebündelt (viele Titel pro Anfrage) ins Deutsche übersetzen."""
+    groups = {}
+    for i in todo:
+        groups.setdefault(i["lang"], []).append(i)
+    done = fails = 0
+    for lang, items in groups.items():
+        tr = _translator(lang)
+        for chunk in _chunks_by_chars(items):
+            ok = False
+            for attempt in range(3):
+                try:
+                    text = "\n".join(re.sub(r"\s+", " ", i["title_orig"]) for i in chunk)
+                    lines = (tr.translate(text) or "").split("\n")
+                    if len(lines) != len(chunk):
+                        raise ValueError(f"Zeilenzahl {len(lines)} != {len(chunk)}")
+                    for i, l in zip(chunk, lines):
+                        if l.strip():
+                            i["title_de"] = l.strip()
+                            done += 1
+                    ok = True
+                    break
+                except Exception as ex:
+                    print(f"  Übersetzung {lang} Versuch {attempt + 1}/3: {ex}", file=sys.stderr)
+                    time.sleep(3 * (attempt + 1))
+            if not ok:  # Ersatz: Titel einzeln
+                for i in chunk[:40]:
+                    try:
+                        out = tr.translate(i["title_orig"])
+                        if out:
+                            i["title_de"] = out
+                            done += 1
+                    except Exception:
+                        break
+                    time.sleep(0.3)
+                fails += 1
+                if fails >= 4:
+                    print("  Übersetzung abgebrochen (zu viele Fehler)", file=sys.stderr)
+                    print(f"{done} von {len(todo)} Titeln übersetzt")
+                    return
+            else:
+                fails = 0
+            time.sleep(1.0)
+    print(f"{done} von {len(todo)} Titeln übersetzt")
+
+
 def main():
     days = CFG["site"]["fetch_days"]
     keep = CFG["site"]["retention_days"]
@@ -86,6 +154,8 @@ def main():
     cutoff = now - dt.timedelta(days=keep)
     excl = [e.lower() for e in CFG.get("exclude", [])]
     order = {r["id"]: i for i, r in enumerate(CFG["rubrics"])}
+    must = {r["id"]: re.compile(r["must"], re.I) for r in CFG["rubrics"] if r.get("must")}
+    dropped = {}
 
     db = {}
     if NEWS.exists():
@@ -108,7 +178,11 @@ def main():
             title = raw[: -len(src) - 3] if src and raw.endswith(f" - {src}") else raw
             if not title or not getattr(e, "published_parsed", None):
                 continue
-            if any(x in title.lower() for x in excl):
+            if any(x in f"{title} {src}".lower() for x in excl):
+                continue
+            rx = must.get(job["rubric"])
+            if rx and not rx.search(title):
+                dropped[job["rubric"]] = dropped.get(job["rubric"], 0) + 1
                 continue
             pub = dt.datetime(*e.published_parsed[:6], tzinfo=dt.timezone.utc)
             if pub < cutoff:
@@ -128,32 +202,12 @@ def main():
                                published=pub.isoformat(), rubric=job["rubric"],
                                countries=sorted(countries))
     print(f"{ok}/{len(jobs)} Abfragen lieferten Treffer, Archiv: {len(db)} Meldungen")
+    print("Durch Titel-Filter verworfen:", dropped or "nichts")
 
-    # Neueste zuerst übersetzen; bei Fehlern wiederholen, erst nach 5 Totalausfällen in Folge abbrechen
     todo = sorted([i for i in db.values() if not i.get("title_de")],
                   key=lambda i: i["published"], reverse=True)[:MAX_TRANSLATE]
     if todo:
-        from deep_translator import GoogleTranslator
-        tr, fails, done = GoogleTranslator(source="auto", target="de"), 0, 0
-        for i in todo:
-            for attempt in range(3):
-                try:
-                    out = tr.translate(i["title_orig"])
-                    if out:
-                        i["title_de"] = out
-                        done += 1
-                    fails = 0
-                    break
-                except Exception as ex:  # Übersetzung ist "nice to have"
-                    print(f"  Übersetzung fehlgeschlagen ({attempt + 1}/3): {ex}", file=sys.stderr)
-                    time.sleep(2 * (attempt + 1))
-            else:
-                fails += 1
-                if fails >= 5:
-                    print("  Übersetzung abgebrochen (5 Fehler in Folge)", file=sys.stderr)
-                    break
-            time.sleep(0.15)
-        print(f"{done} von {len(todo)} Titeln übersetzt")
+        translate_all(todo)
 
     items = [i for i in db.values() if dt.datetime.fromisoformat(i["published"]) >= cutoff]
     items.sort(key=lambda i: i["published"], reverse=True)
