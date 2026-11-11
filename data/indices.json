@@ -1,7 +1,9 @@
 {
  "meta": {
   "sample": false,
-  "errors": []
+  "errors": [
+   "draht: keine Daten (61241-0002 ['GP19-2434;']: 0 Punkte; 61241-0003 ['GP19-2434;']: 0 Punkte; 61241-0005 ['GP19-2434;']: 0 Punkte; 61241-0006: Destatis: Die Tabelle ist zu gross, um im Dialog abgerufen zu werden. Bitte nutz; 61241-0007: Destatis: Es gibt keine Objekte zum angegebenen Selektionskriterium (Code 104); 61241-0004 ['GP19-2434;']: 0 Punkte)"
+  ]
  },
  "series": {
   "draht": {
