@@ -151,8 +151,8 @@ footer.site strong{color:var(--ink)}
 {% macro card(c, cls='') %}
 <article class="card {{ cls }}" data-rubric="{{ c.rubric }}" data-countries="{{ c.countries|map(attribute='id')|join(' ') }}">
   <div class="meta"><span class="tag">{{ c.rubric_short }}</span>{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}</div>
-  <h4><a class="h" href="{{ c.url }}" target="_blank" rel="noopener">{{ c.title }}</a></h4>
-  {% if c.orig %}<p class="orig">Original ({{ c.lang }}): {{ c.orig }}</p>{% endif %}
+  <h4><a dir="auto" class="h" href="{{ c.url }}" target="_blank" rel="noopener">{{ c.title }}</a></h4>
+  {% if c.orig %}<p class="orig" dir="auto">Original ({{ c.lang }}): {{ c.orig }}</p>{% endif %}
   <div class="meta">
     <span>{{ c.source }}</span><span>·</span><span>{{ c.when }}</span>
     {% if c.lang != 'DE' %}<span class="pill" title="Originalsprache, automatisch übersetzt">{{ c.lang }}→DE</span>{% endif %}
@@ -208,8 +208,8 @@ footer.site strong{color:var(--ink)}
       <div class="leadwrap lead">
         {% set l = top[0] %}
         <div class="meta"><span class="tag">{{ l.rubric_short }}</span>{% if l.is_new %}<span class="pill new">NEU</span>{% endif %}</div>
-        <h3><a class="h" href="{{ l.url }}" target="_blank" rel="noopener">{{ l.title }}</a></h3>
-        {% if l.orig %}<p class="orig">Original ({{ l.lang }}): {{ l.orig }}</p>{% endif %}
+        <h3><a dir="auto" class="h" href="{{ l.url }}" target="_blank" rel="noopener">{{ l.title }}</a></h3>
+        {% if l.orig %}<p class="orig" dir="auto">Original ({{ l.lang }}): {{ l.orig }}</p>{% endif %}
         <div class="meta"><span>{{ l.source }}</span><span>·</span><span>{{ l.when }}</span>
           {% if l.n > 1 %}<span class="pill">{{ l.n }} Quellen</span>{% endif %}
           {% for k in l.countries %}<span class="pill c">{{ k.name }}</span>{% endfor %}</div>
@@ -217,7 +217,7 @@ footer.site strong{color:var(--ink)}
           {% for c in top[1:] %}
           <article>
             <div class="meta"><span class="tag">{{ c.rubric_short }}</span>{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}</div>
-            <h4><a class="h" href="{{ c.url }}" target="_blank" rel="noopener">{{ c.title }}</a></h4>
+            <h4><a dir="auto" class="h" href="{{ c.url }}" target="_blank" rel="noopener">{{ c.title }}</a></h4>
             <div class="meta"><span>{{ c.source }}</span><span>·</span><span>{{ c.when }}</span>{% if c.n > 1 %}<span class="pill">{{ c.n }} Quellen</span>{% endif %}</div>
           </article>
           {% endfor %}

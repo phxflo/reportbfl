@@ -7,8 +7,9 @@ site:
   tagline: "Marktbeobachtung für Industrie-Stahlseile · Export & Regionalvertrieb"
   retention_days: 21        # so lange bleiben Meldungen im Archiv
   window_days: 7            # Zeitraum der Anzeige ("Woche")
-  fetch_days: 3             # pro Lauf: Meldungen der letzten n Tage abfragen
+  fetch_days: 7             # pro Lauf: Meldungen der letzten n Tage abfragen
   per_section: 6            # sichtbare Meldungen je Rubrik (Rest klappt auf)
+  more_max: 24              # höchstens so viele weitere Meldungen je Rubrik im Aufklapper
   timezone: "Europe/Berlin"
 
 # Meldungen mit diesen Wörtern im Titel werden verworfen
@@ -114,67 +115,68 @@ rubrics:
       ar: ["حبال فولاذية", "كابلات فولاذية"]
       he: ["כבלי פלדה", "חבל פלדה"]
 
-# Länder: je Ausgabe eine Suche in der Landessprache.
+# Länder: je Ausgabe eine Suche in der Landessprache (nur Handel, Zoll, Stahl, Häfen, Logistik).
 # names = Schreibweisen, anhand derer das Land in beliebigen Meldungen erkannt wird.
 countries:
   - id: BE
     name: Belgien
     names: [Belgien, Belgium, België, Belgique, بلجيكا]
     editions:
-      - {lang: nl, hl: nl, gl: BE, ceid: "BE:nl", q: "België (haven OR staal OR economie OR invoerrechten OR logistiek)"}
-      - {lang: fr, hl: fr, gl: BE, ceid: "BE:fr", q: "Belgique (port OR acier OR économie OR douane OR logistique)"}
-      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Belgien (Zoll OR Hafen OR Stahl OR Wirtschaft OR Logistik)"}
+      - {lang: nl, hl: nl, gl: BE, ceid: "BE:nl", q: "België (haven OR staal OR invoerrechten OR douane OR logistiek)"}
+      - {lang: fr, hl: fr, gl: BE, ceid: "BE:fr", q: "Belgique (port OR acier OR douane OR logistique OR grève)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Belgien (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik)"}
   - id: NL
     name: Niederlande
     names: [Niederlande, Netherlands, Nederland, Pays-Bas, هولندا, Rotterdam]
     editions:
-      - {lang: nl, hl: nl, gl: NL, ceid: "NL:nl", q: "Nederland (haven OR staal OR handel OR logistiek OR industrie)"}
-      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Niederlande (Zoll OR Hafen OR Stahl OR Wirtschaft OR Logistik)"}
+      - {lang: nl, hl: nl, gl: NL, ceid: "NL:nl", q: "Nederland (haven OR staal OR invoerrechten OR douane OR logistiek)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Niederlande (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik)"}
   - id: MA
     name: Marokko
     names: [Marokko, Morocco, Maroc, المغرب, Fas]
     editions:
-      - {lang: fr, hl: fr, gl: MA, ceid: "MA:fr", q: "Maroc (port OR acier OR douane OR investissement OR industrie)"}
-      - {lang: ar, hl: ar, gl: MA, ceid: "MA:ar", q: "المغرب (ميناء OR صلب OR جمارك OR استثمار OR صناعة)"}
-      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Marokko (Zoll OR Hafen OR Stahl OR Wirtschaft OR Logistik)"}
+      - {lang: fr, hl: fr, gl: MA, ceid: "MA:fr", q: "Maroc (port OR acier OR douane OR importation OR logistique)"}
+      - {lang: ar, hl: ar, gl: MA, ceid: "MA:ar", q: "المغرب (ميناء OR صلب OR جمارك OR استيراد OR لوجستيك)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Marokko (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik)"}
   - id: DZ
     name: Algerien
     names: [Algerien, Algeria, Algérie, الجزائر]
     editions:
-      - {lang: fr, hl: fr, gl: DZ, ceid: "DZ:fr", q: "Algérie (port OR acier OR douane OR importation OR industrie)"}
-      - {lang: ar, hl: ar, gl: DZ, ceid: "DZ:ar", q: "الجزائر (ميناء OR صلب OR جمارك OR استيراد OR صناعة)"}
-      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Algerien (Zoll OR Hafen OR Stahl OR Wirtschaft OR Import)"}
+      - {lang: fr, hl: fr, gl: DZ, ceid: "DZ:fr", q: "Algérie (port OR acier OR douane OR importation OR logistique)"}
+      - {lang: ar, hl: ar, gl: DZ, ceid: "DZ:ar", q: "الجزائر (ميناء OR صلب OR جمارك OR استيراد OR لوجستيك)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Algerien (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik)"}
   - id: TN
     name: Tunesien
     names: [Tunesien, Tunisia, Tunisie, تونس]
     editions:
-      - {lang: fr, hl: fr, gl: TN, ceid: "TN:fr", q: "Tunisie (port OR acier OR douane OR investissement OR industrie)"}
-      - {lang: ar, hl: ar, gl: TN, ceid: "TN:ar", q: "تونس (ميناء OR صلب OR جمارك OR استثمار OR صناعة)"}
-      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Tunesien (Zoll OR Hafen OR Stahl OR Wirtschaft OR Import)"}
+      - {lang: fr, hl: fr, gl: TN, ceid: "TN:fr", q: "Tunisie (port OR acier OR douane OR importation OR logistique)"}
+      - {lang: ar, hl: ar, gl: TN, ceid: "TN:ar", q: "تونس (ميناء OR صلب OR جمارك OR استيراد OR لوجستيك)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Tunesien (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik)"}
   - id: IL
     name: Israel
     names: [Israel, ישראל, إسرائيل, Haifa, Aschdod, Ashdod]
     editions:
-      - {lang: he, hl: he, gl: IL, ceid: "IL:he", q: "נמל OR פלדה OR מכס OR יבוא OR תעשייה"}
-      - {lang: en, hl: en, gl: IL, ceid: "IL:en", q: "Israel (port OR steel OR customs OR import OR economy)"}
-      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Israel (Zoll OR Hafen OR Stahl OR Wirtschaft OR Import)"}
+      - {lang: he, hl: he, gl: IL, ceid: "IL:he", q: "נמל OR פלדה OR מכס OR יבוא OR לוגיסטיקה"}
+      - {lang: en, hl: en, gl: IL, ceid: "IL:en", q: "Israel (port OR steel OR customs OR import OR sanctions)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Israel (Zoll OR Handelsbeschränkungen OR Sanktionen OR Hafen OR Stahl OR Logistik)"}
   - id: TR
     name: Türkei
     names: [Türkei, Turkey, Türkiye, Turquie, تركيا, Istanbul]
     editions:
-      - {lang: tr, hl: tr, gl: TR, ceid: "TR:tr", q: "liman OR çelik OR gümrük OR ihracat OR sanayi"}
-      - {lang: en, hl: en, gl: TR, ceid: "TR:en", q: "Turkey (steel OR port OR tariffs OR export OR lira)"}
-      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Türkei (Zoll OR Hafen OR Stahl OR Wirtschaft OR Lira)"}
+      - {lang: tr, hl: tr, gl: TR, ceid: "TR:tr", q: "liman OR çelik OR gümrük OR ihracat OR vinç"}
+      - {lang: en, hl: en, gl: TR, ceid: "TR:en", q: "Turkey (steel OR port OR tariffs OR customs OR lira)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Türkei (Zoll OR Handelsbeschränkungen OR Hafen OR Stahl OR Logistik OR Lira)"}
 
-# Google-News-Ausgabe für die Rubrik-Suchen je Sprache
+# Google-News-Ausgaben für die Rubrik-Suchen je Sprache. Nur Ausgaben deiner Länder,
+# damit z. B. arabische Suchen nicht Ägypten statt Marokko/Algerien/Tunesien liefern.
 editions:
-  de: {hl: de, gl: DE, ceid: "DE:de"}
-  en: {hl: en-US, gl: US, ceid: "US:en"}
-  fr: {hl: fr, gl: FR, ceid: "FR:fr"}
-  nl: {hl: nl, gl: NL, ceid: "NL:nl"}
-  tr: {hl: tr, gl: TR, ceid: "TR:tr"}
-  ar: {hl: ar, gl: EG, ceid: "EG:ar"}
-  he: {hl: he, gl: IL, ceid: "IL:he"}
+  de: [{hl: de, gl: DE, ceid: "DE:de"}]
+  en: [{hl: en-US, gl: US, ceid: "US:en"}]
+  fr: [{hl: fr, gl: MA, ceid: "MA:fr"}, {hl: fr, gl: DZ, ceid: "DZ:fr"}, {hl: fr, gl: TN, ceid: "TN:fr"}, {hl: fr, gl: BE, ceid: "BE:fr"}]
+  nl: [{hl: nl, gl: NL, ceid: "NL:nl"}, {hl: nl, gl: BE, ceid: "BE:nl"}]
+  tr: [{hl: tr, gl: TR, ceid: "TR:tr"}]
+  ar: [{hl: ar, gl: MA, ceid: "MA:ar"}, {hl: ar, gl: DZ, ceid: "DZ:ar"}, {hl: ar, gl: TN, ceid: "TN:ar"}]
+  he: [{hl: he, gl: IL, ceid: "IL:he"}]
 
 # Zusätzliche feste RSS-Feeds (Fachportale). Format: {name, url, rubric, lang}
 feeds: []

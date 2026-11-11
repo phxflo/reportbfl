@@ -118,7 +118,7 @@ def main():
         text = title + " " + lead["title_orig"]
         srcs = sorted({m["source"] for m in members})
         age = max(0.0, (now - pub).total_seconds() / 86400)
-        score = (rub[lead["rubric"]]["weight"] * 2 + 1.6 * (len(srcs) - 1)
+        score = (rub[lead["rubric"]]["weight"] * 2 + 1.6 * min(len(srcs) - 1, 3)
                  + (2.5 if BOOST.search(text) else 0) + 2.5 * max(0, 1 - age / SITE["window_days"])
                  + (0.4 if lead["countries"] else 0))
         cards.append(dict(
@@ -143,7 +143,7 @@ def main():
     for k, r in enumerate(CFG["rubrics"], 1):
         lst = sorted([c for c in cards if c["rubric"] == r["id"]], key=lambda c: c["ts"], reverse=True)
         sections.append(dict(id=r["id"], num=f"{k:02d}", title=r["title"], short=r["short"],
-                             shown=lst[:SITE["per_section"]], more=lst[SITE["per_section"]:], total=len(lst)))
+                             shown=lst[:SITE["per_section"]], more=lst[SITE["per_section"]:SITE["per_section"] + SITE.get("more_max", 24)], total=len(lst)))
 
     radar_c = []
     for c in CFG["countries"]:
