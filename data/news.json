@@ -1,9 +1,45 @@
 {
  "meta": {
-  "updated": "2026-11-11T13:33:09.691911+00:00",
+  "updated": "2026-11-11T13:47:20.147909+00:00",
   "sample": false
  },
  "items": [
+  {
+   "id": "74d583a21d74",
+   "title_orig": "EBRD, Türkiye'ye 6 milyar dolar yatırım planlıyor",
+   "title_de": "EBWE plant, 6 Milliarden Dollar in die Türkei zu investieren",
+   "lang": "tr",
+   "source": "Sabah",
+   "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNSFZBT0RvcTlCbUNIRUsyVHBIRkxXc08xNVNtQlpsSTRuUXJaU1JFbUdGR0FlWEUwOVRVQWxvZlQwMlJmMWtUNUZSWGE0d1JPbDVpMi03SlEtbEZiRlRsUks4M0pxYWd1ZUVsWkRlc0xjVXREeUFpTXRpUFY3V3dvV3M0aFdvcW1RalhNUV8wZmlJd9IBlAFBVV95cUxQdzF4NXZ0TndLcUNPUDhfcXZmVl9ER0luWF9zQVdocTVSSGNGbGU3MGJVMzlmZjZ4OGtZNTdFcUx3U2xhUjFZLW9ud1lLS0NiNmc1WUp3LVQ3cHQ2MFVXc1pDc2RTNEZ2c3ZCN2dkRVhGZUFDNEY5ZWpXMkxENGJqR3ZiYjRCaThpX0NRVVNCdm54ekEx?oc=5",
+   "published": "2026-11-11T13:40:46+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "EBRD, Türkiye'ye 6 milyar dolar yatırım planlıyor",
+   "trusted": false
+  },
+  {
+   "id": "7d336b13c381",
+   "title_orig": "Ankara'da Türkiye-Afrika Sağlık Turizmi ve Ekonomi Zirvesi düzenlenecek",
+   "title_de": "Türkei-Afrika Gesundheitstourismus und Wirtschaft Gipfel wird in Ankara statt",
+   "lang": "tr",
+   "source": "Yorumla",
+   "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNSzFlT25CR3ZHSFp1QTNyUG1RY3hRRUVhLTVrM1hZRHFlQUswOGhiWTNDMkNudHFKVHo4Nk80aV9jRUt5UTVFZGhPdWNnUXhJcTVmbUJUT3ZRTC1oM091TF9uMU1ZMXl3S1VSb3ZmbHlTcG05cTZyMjB5X1FMTkVmZEQtWnN1MmZXV3dFNFVjTUtmQ1VDeDhoN0w0TGZQTFFPdk5vUnJzeWNVd0M4Qi15SWxwYktWc3c?oc=5",
+   "published": "2026-11-11T13:33:29+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Ankara'da Türkiye-Afrika Sağlık Turizmi ve Ekonomi Zirvesi düzenlenecek",
+   "trusted": false
+  },
   {
    "id": "f24804b49d5f",
    "title_orig": "How Latin American ports can make technology deliver",
@@ -36,6 +72,58 @@
     "NL"
    ],
    "snippet": "Vorläufige Festnahme in Rothenbach: Zoll findet 51 Gramm Kokain in der Jacke eines 34-Jährigen",
+   "trusted": false
+  },
+  {
+   "id": "4f0f58bf5a05",
+   "title_orig": "Commerce extérieur | Les échanges entre le Maroc et les États-Unis dépassent 7 milliards de dollars",
+   "title_de": "Außenhandel - Marokkos Handel mit den Vereinigten Staaten übersteigt 7 Milliarden Dollar",
+   "lang": "fr",
+   "source": "Industrie du Maroc",
+   "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQelcyTEJsM2tGOXdHc2cwRXRqYTJwN3B3OTh4bWhQZW5WWmxqb2RabHhDa0xvYVl4Vi1qYjI1aE0zaVcyM3Z0bVp0akl2OGpoZ0dIenBuRUNwZmJaNXY3ZE5wVmUyRWRjUTJ2WTgyeTI3QVE4UGJsV1dMYzRvRXBySTJrd0xuTTVzVG5ZYTRhR2d3WWxQd3NjOUMzdkFvQVFsRjNOaU5oQmxENVBZdlFGYW83b0gyR1JjVWZaUw?oc=5",
+   "published": "2026-11-11T13:22:02+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "MA"
+   ],
+   "snippet": "Commerce extérieur | Les échanges entre le Maroc et les États-Unis dépassent 7 milliards de dollars",
+   "trusted": false
+  },
+  {
+   "id": "f10f8be02819",
+   "title_orig": "Takoradi Port Expansion: Pres Mahama breaks ground for $98.41m project to expand cargo capacity",
+   "title_de": null,
+   "lang": "en",
+   "source": "Modern Ghana",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE94YlFBZDh3MWdoVHg4dG5YTF9TYjVwWHBMVHFaWjU3YlVfblZXdm5OSjY3ZjJfSm4tTW1YQVFMLTFycjMyUE5wUzNPenJMX1RxeUlDWnM0TEMxelpjREh4RjYzTWLSAVxBVV95cUxONTY5QjVLSm1ZLVRXbU1rQXhvaFZsRGtScXhyZlRndkFIQ3lLMG8wSWplSG5saDlJZlE0SUg4czQ2MjJoeHhQbjJ6dDlyUXAtbHBpTUEzQjRSTWFFMg?oc=5",
+   "published": "2026-11-11T13:10:00+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Takoradi Port Expansion: Pres Mahama breaks ground for $98.41m project to expand cargo capacity",
+   "trusted": false
+  },
+  {
+   "id": "f2ad68a346f4",
+   "title_orig": "Infrastructures | Le port Dakhla Atlantique atteint 75 % d’avancement",
+   "title_de": null,
+   "lang": "fr",
+   "source": "Industrie du Maroc",
+   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQRmxSZ21HS25iRHRsd0FFZFFrX25qbURqcUxsYlhoVDNsRHNQdnBFelpfOHlKSE1nTUpkODI2b3Jrakc1NU9ENFVPZTNqZXZJUkRpY0lIMFZvaVJYNTJrSkQtcHU1TkxXbUdvYXFqU29PWnVvcmRwY0I1Y3B1ZHMta2pLUzhZZVhIalNLWWlPd08?oc=5",
+   "published": "2026-11-11T13:02:54+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "MA"
+   ],
+   "snippet": "Infrastructures | Le port Dakhla Atlantique atteint 75 % d’avancement",
    "trusted": false
   },
   {
@@ -73,6 +161,42 @@
    "trusted": true
   },
   {
+   "id": "3b057348811c",
+   "title_orig": "Greece threatens EU sanctions if the maritime dispute with Turkey escalates",
+   "title_de": null,
+   "lang": "en",
+   "source": "Informat.ro",
+   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPM1gwV3JhVkVEeGN4Ql9QcGhTWGEzX28wZ0taOENrVng0UW1jU2d5MkdDRzRWcVQxVnJXWVY1VHBsejFvR1IwR3FhUGlRTThkaVBWcldqbVpzN1JsbmZhdGoxSGxqM1JtM1dKRHRJZzJlemNjWVlRVDlGUnhXSjVkVlMtdmNkaG5paUpsTFFvWWdZYnU2bXI1TGRR?oc=5",
+   "published": "2026-11-11T12:58:14+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Greece threatens EU sanctions if the maritime dispute with Turkey escalates",
+   "trusted": false
+  },
+  {
+   "id": "be5b3ca56595",
+   "title_orig": "Commerce de proximité : un nouveau cadre législatif pour accompagner les petits commerçants",
+   "title_de": null,
+   "lang": "fr",
+   "source": "la vérité",
+   "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5YVnBGR2FsWllzei10aWo0TXdDRWcxUVprZTNacXJhS3R6R2hsZ1ZpZlBNZXMtT0ttYWptc1dTeGZKa2xsUVlxUktJbHIyUzlqaW9OSFktM2ZUaFBOUFZITnNweUFFbmVsTWxCaWJ1SEx6WHBpRDEwQ2lGZmo?oc=5",
+   "published": "2026-11-11T12:57:46+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "MA"
+   ],
+   "snippet": "Commerce de proximité : un nouveau cadre législatif pour accompagner les petits commerçants",
+   "trusted": false
+  },
+  {
    "id": "3d94f3ae9bd3",
    "title_orig": "Kugelbomben auf der A4: Dresdner Zoll stoppt brisante Fracht",
    "title_de": "Kugelbomben auf der A4: Dresdner Zoll stoppt brisante Fracht",
@@ -88,6 +212,24 @@
     "NL"
    ],
    "snippet": "Kugelbomben auf der A4: Dresdner Zoll stoppt brisante Fracht",
+   "trusted": false
+  },
+  {
+   "id": "7125497c6b76",
+   "title_orig": "Économie bleue : des résultats encourageants à mi-parcours",
+   "title_de": null,
+   "lang": "fr",
+   "source": "EcoActu.ma",
+   "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1FTHBMNHJmakR4R3RhSUtiMmVsWFBzRTg0d2tIcWZ1WjFFa0lkZTl0eXNSLWdSa01zQVpZbjNBc1VPUFlocmhDRThJNUtnMXpuaGRRQWpZdGZsX2FlekptVldpU1otSFl4VTdTRE8ycS1qRHZHQ0NScTcxTy0?oc=5",
+   "published": "2026-11-11T12:04:46+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "MA"
+   ],
+   "snippet": "Économie bleue : des résultats encourageants à mi-parcours",
    "trusted": false
   },
   {
@@ -155,6 +297,24 @@
    ],
    "countries": [],
    "snippet": "Klaipėda launches billion-euro port expansion"
+  },
+  {
+   "id": "9bb36320a915",
+   "title_orig": "16 novembre 2026 : lancement du programme de financement de l’économie verte",
+   "title_de": null,
+   "lang": "fr",
+   "source": "Nessma TV",
+   "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQbjBESm1iaGV0dEZxcm9RLU9sWXFaeTB0YjZQTEVkdzJkRUZGQ1pTRVpTd2VBR1VRQWlNM3JUWUhHZUNtbVhmUGtMYkJYLVhYdE9GMkJ4RGlzUk8xQkoxQ0V6WGdLbG9INW9OanJoa01EaXlTVzFkcWhnSXVPeDRkVlN5Zk1yc1ZFUDN1NXZBMDg3bjJiaEFxLUJWTmdZQ2pxQ2pobm1la2syX242bk5TQl9PTmJoQ1M2VXdaVtIBwgFBVV95cUxPTTlXVVc0elFiYjBxYUlQWUx6cjlsSW1VMFdwVk9STDFFTG5pZHdFMlFRWnNDNlp0anRibm9hWERDc0ZMSUp3dXg0WUNZbENTTUctazNzeDYycTlvUm9OVVJkYk12dVRXblNtYzdVcVJweXpUQ2RYOExUZFFldER3ZHZoUlY1OUtZZkM4dTdEVnJwY1hkeV9qU3RCLWZTdUlYVUo4Mm50a2h1aGVBcnotRS1vbHI2T0QwdzB5M1hacEtFZw?oc=5",
+   "published": "2026-11-11T11:39:57+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TN"
+   ],
+   "snippet": "16 novembre 2026 : lancement du programme de financement de l’économie verte",
+   "trusted": false
   },
   {
    "id": "67d65260419f",
@@ -269,6 +429,24 @@
    "trusted": true
   },
   {
+   "id": "9262004b9407",
+   "title_orig": "Nederlandse economie groeit terwijl CO2-uitstoot fors daalt, maar invoer gooit roet in het eten",
+   "title_de": "Die niederländische Wirtschaft wächst, während die CO2-Emissionen stark sinken, aber Importe werfen Ruß in die Lebensmittel.",
+   "lang": "nl",
+   "source": "Scientias.nl",
+   "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPa2VJREYzajE2NnhSSDJjTXVBcGJ0ZDRhMHVhZmRleV9QclQ3SlR3RWZyQ2ZJZi1pdmdwYl9TMU5DUFVDYzdXQkhZQ0U5cC1fV3hEdHR0VnBxb0pXWktGS0RjOFdodGxzc1EzTldySlZCd1hXUFJVc204Y2xtdnk5M1ZTZk9SN1VqVDE3T1dFdS1GR0JSOFZ2QW8tUHBFNzBKaGxSTDAxRm9Fd09uQnNVNV9GOGt6eXM?oc=5",
+   "published": "2026-11-11T10:02:06+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "NL"
+   ],
+   "snippet": "Nederlandse economie groeit terwijl CO2-uitstoot fors daalt, maar invoer gooit roet in het eten",
+   "trusted": false
+  },
+  {
    "id": "83ae71fa5d02",
    "title_orig": "Zoll stellt über 1,2 Tonnen Pyrotechnik auf der Autobahn bei Dresden sicher",
    "title_de": "Zoll stellt über 1,2 Tonnen Pyrotechnik auf der Autobahn bei Dresden sicher",
@@ -300,6 +478,24 @@
    "countries": [],
    "snippet": "Polish rebar, wire rod prices rise amid high production costs, weak demand",
    "trusted": true
+  },
+  {
+   "id": "4cef85c6a5f2",
+   "title_orig": "Nederlandse economie veerkrachtig in 2026, maar groei zwakt af door krapte en inflatie",
+   "title_de": null,
+   "lang": "nl",
+   "source": "Wonen360",
+   "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNYkl2TE50N1RWUDZLU19ON0tWeXZjaEVzeWU1ZUdXcTlsRWRkeHdaZzlTcDRhalJ0YnY1dzkwWXBldTdGdUVmMWpyYWVYM2tOUzJac1ppOWpPc3hadFBlUjRla1ZGdExsRmNJQzV5REwwV1FTZFZ3ZnUzYkJIWFItTlRIMFZiMjBRWG1EZXlnSkhndHlwaDJra2taRGFVT0tPSm1vcktWUkN4Ui1YNm9GTl9SVF9LbnhBSWN1RjEwTzF6UzFQ?oc=5",
+   "published": "2026-11-11T09:50:14+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "NL"
+   ],
+   "snippet": "Nederlandse economie veerkrachtig in 2026, maar groei zwakt af door krapte en inflatie",
+   "trusted": false
   },
   {
    "id": "06867e3d5b2d",
@@ -347,6 +543,24 @@
    "countries": [],
    "snippet": "Port of Virginia receives six RMG cranes at NIT",
    "trusted": true
+  },
+  {
+   "id": "81ab9be2b541",
+   "title_orig": "Bovins importés: les Casablancais redoutent le retour des mauvaises odeurs",
+   "title_de": "Importierte Rinder: Casablancans fürchten die Rückkehr von schlechten Gerüchen",
+   "lang": "fr",
+   "source": "LeSiteinfo.com",
+   "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOY1lCMFZ6Y0hFaWpzVjYzRXhSd0JneVNERG1tVTZkTHh5VUFVelVUd2xZamJTdHNhOGoxazBHNEx3TFZ5c2RIM3pZa0h2Q3pfSXhzeXhMYl9SLUhZdmJRV3dvTVg1cUN0SzMwZEhJUENMdkFETHNuWDNMNWZPakFtR19YTzExSU93X3puY0Q2eUMzNDVJR1pNaENQX19DVV9FV3c5eEtYUjBMQ05EOEZlUWRSNGQ5YnhfbEHSAb8BQVVfeXFMTWNZVUdROV96YmJuQ2ZIR1cwRmFPUzladnJNWV91dUpyVEIxSkQ1YkIxQnpvenlmZWlfVnQwZ3diN2gyckFhX04tWDRyTGlmTlhFbS0xaXd3dHBFSHVBYWJJd3hwbUItaWZtYWJYV0I1Zy11UXZIWjhJS1dVREpZdlh6MEY2Q1UzejZUSVBZN0RTX1NmVE85MWtKMTVPbjltVktwSWRIby1raEg0SkJ6U2Y5dmJuaWR6Z3Z5eWpvZ1U?oc=5",
+   "published": "2026-11-11T09:35:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "MA"
+   ],
+   "snippet": "Bovins importés: les Casablancais redoutent le retour des mauvaises odeurs",
+   "trusted": false
   },
   {
    "id": "211f5382ea74",
@@ -416,6 +630,24 @@
    "snippet": "HZA-DD: Zoll entdeckt über 1,2 Tonnen Pyrotechnik auf der BAB 4 Nettoexplosivmasse: über 760 Kilogramm!"
   },
   {
+   "id": "29cc1c60f140",
+   "title_orig": "Mikro ihracat 10 yılda yüzde bin 460 büyüdü",
+   "title_de": "Mikroexport wuchs von 10 Prozent auf 460 pro Jahr",
+   "lang": "tr",
+   "source": "Türkiye İş Dünyası Haberleri",
+   "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNcDhPQ3hUSmVvZXVKZXRhX3JZeXBYcGR5TU5hSDZDZjdYcUxTNWNINGhHeS1fUkstT1pBUkZJWGVCbHJHc2RjQWluak9ka2h4TlhpRnh3WWZrVDhSWWVmNlFMWXZYSkRZTGk4ZGFOZnNNVG1RbnRjcmRGa0R6RXRXWm84cUFnaHZiSnc?oc=5",
+   "published": "2026-11-11T09:05:16+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Mikro ihracat 10 yılda yüzde bin 460 büyüdü",
+   "trusted": false
+  },
+  {
    "id": "7a4708476bcb",
    "title_orig": "Maersk container ship topples STS crane at Yantian",
    "title_de": null,
@@ -432,6 +664,24 @@
    "trusted": true
   },
   {
+   "id": "ef898f904d7c",
+   "title_orig": "Türkiye Gündeminde İklim Zirvesi ve İhracat Destekleri Öne Çıkıyor",
+   "title_de": "Klimagipfel und Exportunterstützung für Türkei-Agenda",
+   "lang": "tr",
+   "source": "Dosya Haber",
+   "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNUDh3eVVnOEdTRldiV21nazFYcGtWV2FjUmJYamVWZlQwck9SclhRbkFCNzBmdkJEYnNEbGpXNm1UeWs1NlFIVi0zWjNnMFVWOVBFbzlUenExYzk0akpzcTZjRXBVdEUxZ3RmRTRncTYybmFLb2Q4VUdnaWVaX0dwdURYM2todEdXSVdhNkh5ZjgyVXgwQzAwNjVMTy1mT3hidWlrRG5DamY?oc=5",
+   "published": "2026-11-11T08:55:32+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Türkiye Gündeminde İklim Zirvesi ve İhracat Destekleri Öne Çıkıyor",
+   "trusted": false
+  },
+  {
    "id": "2f70b23d35cf",
    "title_orig": "Nordic ports team up on new rail-sea freight corridor",
    "title_de": null,
@@ -446,6 +696,42 @@
    "countries": [],
    "snippet": "Nordic ports team up on new rail-sea freight corridor",
    "trusted": true
+  },
+  {
+   "id": "37c411ad0789",
+   "title_orig": "Paiements en Tunisie : cartes, mobile, e-commerce… tous les indicateurs au vert, sauf le chèque",
+   "title_de": "Zahlungen in Tunesien: Karten, Mobile, E-Commerce ... alle grünen Indikatoren außer Check",
+   "lang": "fr",
+   "source": "Leconomiste Maghrebin",
+   "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOWVlONEhKSmxZREtKMzN2QVBuZ3pVTDZVY2V4WHd4dTZ0YUdYaWhqMFBjbDVtSjVVdTRZQmdGYk5QYk9wbGdna0tzNzBnRG90R3JwcVVwYlo2U2dTemZrZU9GcF8tNkFPaU5QVDVuRFctU3VacDRJdHA0QU9pWW1jWXpyQnlweXFBWnRzWW5FOXQ2SndZa3pZWHpjYzRmQVhaaXdqNW5QTnJFSjFtTERhejZ1RmpWWF9kS0lUZVBuYXpfX0s2S00xSjZENEF4SG5CVngxQg?oc=5",
+   "published": "2026-11-11T08:33:51+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TN"
+   ],
+   "snippet": "Paiements en Tunisie : cartes, mobile, e-commerce… tous les indicateurs au vert, sauf le chèque",
+   "trusted": false
+  },
+  {
+   "id": "fc0bcbb092ab",
+   "title_orig": "İKLİM ZİRVESİ COP31 ANTALYA - COP31, Türkiye'nin yatırım hedeflerini uluslararası yatırımcılarla buluşturuyor",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Son Dakika",
+   "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNbWxXR1FHeWdjcXBUaV95djB2NFFWTnlzZ3hxX2VKSGhNTURfdlVGc1hwUFVqdkdSbnE4QzJmYVNEdnBjR0NpV25HQUpkN1hiVk5wNm1OMTVHR19UZEc5ak4wNHBLVzJ5cDkzTE5TWjVWZ21mTVlENkJac2psX3dyMXpVRFNEYzZZNmRjN0x3RkRCN3ZvWWxmR2kzSE52Z3hocHfSAZwBQVVfeXFMUEJEcEVkLURoSUJGYU8xTHkyOFoydnZObG4wLXRWNXRUbkdWTGtOTGcyWUZXQWQzLW51dDljQTlzZlF4cTNqT2t5NWJ4UkZUVzRkZ1hFam9JbDQ3aGlSOFVzUEdJdGd2OF9yeEYyQ0ZLSS0yckc2OTZRSkRZTHpERVprbG15RU0zRXd1LVBWVVZmdDQ3RW5UOWRHWllE?oc=5",
+   "published": "2026-11-11T08:33:50+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "İKLİM ZİRVESİ COP31 ANTALYA - COP31, Türkiye'nin yatırım hedeflerini uluslararası yatırımcılarla buluşturuyor",
+   "trusted": false
   },
   {
    "id": "edba67b885a2",
@@ -493,6 +779,24 @@
    ],
    "countries": [],
    "snippet": "İzmir Aliağa'daki HABAŞ Demir Çelik fabrikasında patlamada can kaybı 18'e çıktı",
+   "trusted": false
+  },
+  {
+   "id": "338324f5e786",
+   "title_orig": "Vers un boost des exportations des PME belges ?",
+   "title_de": null,
+   "lang": "fr",
+   "source": "Forbes Belgique",
+   "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBTbDFQMnhvd283dEFfUmt1Ry1JbjJZLWMzY0RWV2c4Y245ODcwUFA2aGN6T3ZPdDJCdjdNc1p6eGNzYksxLWlwaGRYOEtPZHdiaFR4UWpUeF9waDlhSk04eTIzZW52NEw5anJRZ2Y2d045dFAwWjd3dUpBOA?oc=5",
+   "published": "2026-11-11T08:14:55+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "BE"
+   ],
+   "snippet": "Vers un boost des exportations des PME belges ?",
    "trusted": false
   },
   {
@@ -575,6 +879,42 @@
    "trusted": true
   },
   {
+   "id": "19e44d8d5e89",
+   "title_orig": "Nederlandse voeding verliest in exportmarkt",
+   "title_de": "Niederländische Lebensmittel verlieren im Exportmarkt",
+   "lang": "nl",
+   "source": "Boerenbusiness",
+   "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNcHNkSlhqWGs3UXRiMHJ2clJzTTZiUzlrNFIwdXE2eVpDcEwzUVZSUG5mREZGd3hETGxGeWhCcm05TzZ3N04zVzktTVZaWDVxRUo0VWJqcmI1djhUc3JQRkxkRVd3NHdINllkaVlBRWVnYnFvX2ZLb2g2dFRMOHRlVlJvSVA4Nm5SaUZrV21BakJfOE9u?oc=5",
+   "published": "2026-11-11T07:02:57+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "NL"
+   ],
+   "snippet": "Nederlandse voeding verliest in exportmarkt",
+   "trusted": false
+  },
+  {
+   "id": "2e6057681718",
+   "title_orig": "NRW-Wirtschaft: Außenhandel mit pharmazeutischen Gütern auf höchstem Stand der letzten 10 Jahre",
+   "title_de": "NRW-Wirtschaft: Außenhandel mit pharmazeutischen Gütern auf höchstem Stand der letzten 10 Jahre",
+   "lang": "de",
+   "source": "IT.NRW",
+   "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPU0JGcER0YVgwVEJ4TjhKd2tPZDdIWHZCSHlVRlptMXNHdWZDYV9aVFUzazVscGgwcjBPYXlrRVVmQlVWYjVNMjkzWHNieFFaMkVZdjVfMkt4aUpVRjhwc2Y3cjQyXzFXZzhWT1FIN29KQmRfR1BqUnNUT2s5cWR3MkRPZjdqd3ZCZE9LUFNmSlZrUGNveS1rejRNM1p1YW1GcnJUMkd4OEFOeldMMV9MZkNLOFkzZFE?oc=5",
+   "published": "2026-11-11T07:02:17+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "BE"
+   ],
+   "snippet": "NRW-Wirtschaft: Außenhandel mit pharmazeutischen Gütern auf höchstem Stand der letzten 10 Jahre",
+   "trusted": false
+  },
+  {
    "id": "2444bdd10f34",
    "title_orig": "Aliağa'da demir çelik fabrikasında patlama: 10 kişi hayatını kaybetti",
    "title_de": null,
@@ -588,6 +928,42 @@
    ],
    "countries": [],
    "snippet": "Aliağa'da demir çelik fabrikasında patlama: 10 kişi hayatını kaybetti"
+  },
+  {
+   "id": "463002ff7c3c",
+   "title_orig": "Algérie : les exportations hors hydrocarbures pourraient dépasser 7 milliards $ en 2026",
+   "title_de": "Algerien: Nicht-Kohlenwasserstoff-Exporte könnten im Jahr 2026 7 Milliarden US-Dollar überschreiten",
+   "lang": "fr",
+   "source": "Africa News Agency",
+   "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPcWdHX1U4d3ZyN0FzQlJJbFlBQnZqeU5EdnhxSHhwR2wwSGdKNVpORk9ETVNBczQ3VDRzdC1HaVpzakhLd3IySWx6ZXl4MUFKRVRkWFdiOXVqenI2TjIyLVBPMTBqWkdxWlE4THZZbzJmUGNLMlJxcjZjZzFzdU5uUGNzc1paR2c3ekFCaVRwT1hEblJhQi13bVJPM3Jlems0Ums0X0VpNzhJbjk0RV9FOGhKUG0xdw?oc=5",
+   "published": "2026-11-11T06:29:43+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "DZ"
+   ],
+   "snippet": "Algérie : les exportations hors hydrocarbures pourraient dépasser 7 milliards $ en 2026",
+   "trusted": false
+  },
+  {
+   "id": "53f797c2f606",
+   "title_orig": "Neue WIFO-Zahlen – Wirtschaft unter Druck: So geht es Österreich wirklich",
+   "title_de": "Neue WIFO-Zahlen – Wirtschaft unter Druck: So geht es Österreich wirklich",
+   "lang": "de",
+   "source": "Heute",
+   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOakZ5NC1VbGZJSEtxMDNHMXQ1aUJkSFJLNE1MLU4xbzZSTXNZMWs3bEpFTWxkOTR3U3hCRmNJTEtNRnVGdlctUGxNdHY2cVN4eDJ4V01FWmN0RUJZelZSRDBwVTF4X2NmZ0RBWE84aXNYMFdlajhLbUoxWS1MSDBMUXpDRmRMVlFkWk1JRHdmWU0?oc=5",
+   "published": "2026-11-11T06:23:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Neue WIFO-Zahlen – Wirtschaft unter Druck: So geht es Österreich wirklich",
+   "trusted": false
   },
   {
    "id": "6d606b1f61a7",
@@ -608,6 +984,24 @@
    "trusted": false
   },
   {
+   "id": "871deac847b0",
+   "title_orig": "Türkiye Gündemi 11 Kasım: COP31, Ekonomi ve Siyaset",
+   "title_de": "Türkei Agenda 11. November: COP31, Wirtschaft und Politik",
+   "lang": "tr",
+   "source": "Ekonomi Dünya",
+   "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOLUUzTVROYjNkbUdsX1IzTlVMRENEaFl2dG5ZYlZXR3hsYjNZeVJ6bnF3MGZKSUpGRElkOWFCd0RXS2lUWnc3ODhNWE8tQkNURzIydHFheVE4aXNKek9xN3BQMnJJRXZJQVNTc0xsRENLSF9tN3FMd1lULW5QSWY1Z292YVZEVnpqc0pORWpn?oc=5",
+   "published": "2026-11-11T06:06:33+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Türkiye Gündemi 11 Kasım: COP31, Ekonomi ve Siyaset",
+   "trusted": false
+  },
+  {
    "id": "302d51756e5c",
    "title_orig": "Supervisors sign off on local agreement to bring $15 billion steel mill to Lee County",
    "title_de": null,
@@ -621,6 +1015,60 @@
    ],
    "countries": [],
    "snippet": "Supervisors sign off on local agreement to bring $15 billion steel mill to Lee County"
+  },
+  {
+   "id": "1153827ee13a",
+   "title_orig": "Le Groupe BCP structure une offre en yuan pour le commerce Afrique-Chine",
+   "title_de": null,
+   "lang": "fr",
+   "source": "Africtelegraph",
+   "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQTzJzMkZRdzItamQ4TTFrVEZpaGY5ZDJIeXNuT1JEN000TUxSVWlsRElOZ0dUeDR6enI0WkFqc21semJjbDVvbzlKVE1YZExWUzFoeWpxbFRqZ2d3c0hGS3ZTajdocUYzaDdCekNGMjlBQUlDaDZuemdoYkZrVGdsZ3NtX19WQm5LN08wNFgwQVhTcDAwRU4zbWxtYm1EN1pFaFl5c3c0OXY?oc=5",
+   "published": "2026-11-11T05:13:01+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "MA"
+   ],
+   "snippet": "Le Groupe BCP structure une offre en yuan pour le commerce Afrique-Chine",
+   "trusted": false
+  },
+  {
+   "id": "8eb04e55cf21",
+   "title_orig": "Türkiye'nin dijital ihracat seferberliği: Üç kıta, yeni pazarlar",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Notbir",
+   "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxObVZvTC1pSEpaRnlvREY5U2hzazl3UVVhSGQ2RURERkZqUDZvSXFpdWN0YzhqU1NaNDY0M2RlTVQ4R0s5bW01WjlMdEtSdzBQNC1QZlNoTjB3V1NWY1RNWEl2QU5rb0ttUXN5RHZUUHBTZGsyd1ZJQXlpT3JPUTNOdjFaYmRoMGhjUXU1ZTBBWWlVc3BiRmZV?oc=5",
+   "published": "2026-11-11T05:10:32+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Türkiye'nin dijital ihracat seferberliği: Üç kıta, yeni pazarlar",
+   "trusted": false
+  },
+  {
+   "id": "6720b78a674d",
+   "title_orig": "Den Haag moddert aan, de economie draait heel goed. Hoe kan dat?",
+   "title_de": null,
+   "lang": "nl",
+   "source": "Welingelichte Kringen",
+   "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQclFNX2tZTkpZMFpwYVB1SGVyeTJtbVF3bHZxdGI1ek1JZ2RZam9DVkRDaVI5Y2QwT3NyTEsyZWZvQmFkSGdWcWtfYWFiRHItbHktMHdzWE5MUm9od2VQWnpvck5JYmZiVE5rRU95b1Q5YWxHQVNwMmN0Ulp4N0w3elAzd2VOcGlEZ0NBYy1qNEs3Q08xNnVlMDNrZFA0UGtHZGdwZW1BSnV2dw?oc=5",
+   "published": "2026-11-11T04:55:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "NL"
+   ],
+   "snippet": "Den Haag moddert aan, de economie draait heel goed. Hoe kan dat?",
+   "trusted": false
   },
   {
    "id": "9eb6ae24b2ab",
@@ -669,6 +1117,24 @@
     "IL"
    ],
    "snippet": "Europäischer Rechnungshof: Prüfer fordern einheitliche Umsetzung der Russland-Sanktionen"
+  },
+  {
+   "id": "74670ea2408d",
+   "title_orig": "De ‘domme, dikke en blije’ Nederlandse economie loopt als een tierelier. Hoe kan dat?",
+   "title_de": null,
+   "lang": "nl",
+   "source": "de Volkskrant",
+   "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOUy1id0NXZjd2Q29yVUZna2lrZjVfSmlHc0g5V0lpVVVvdlJUd0tHOHFXX1dGS1NXY2dHamo2QURMZzVJQmNiTEFNMVo5UXBOZWo5RThrQWJiZ0JvcW0yc3RBVHNlT194MjBwa05nYUppYjRZS1RXb3Y2QWJVWGptcDdnUGYyUGJJWUZ1VUl2NmNfa19qWGZQMnpHZnRkV1NDaUVIY2hkZlFrckdneGpybTdpdGlQRnZKWnlnY0ZqWkFBOHM?oc=5",
+   "published": "2026-11-11T04:00:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "NL"
+   ],
+   "snippet": "De ‘domme, dikke en blije’ Nederlandse economie loopt als een tierelier. Hoe kan dat?",
+   "trusted": false
   },
   {
    "id": "3c9242df91f5",
@@ -780,6 +1246,24 @@
    "snippet": "L'effondrement d'un pont roulant dans une aciérie turque fait 17 morts"
   },
   {
+   "id": "f21cef4859ba",
+   "title_orig": "Commerce sets initial duties in tin mill products case vs. Taiwan, Turkey",
+   "title_de": null,
+   "lang": "en",
+   "source": "Steel Market Update",
+   "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxORmVybmpWZjJaN2dLSC1Db3pBdU51X1hOS0NfUmxGdU1NYWROQlZGbjZtZi01ZE9qdHViRHptcmRzNkkyRG9hcGdCMXU5aFlOdXdIOHlKR3pWeVVNUWpfalNWOFZIZzBGcWpnU0hCaHdGWDIwUmNrTXlLMlRjbmRybm5ZYXhqTHJ5ZTd5dFR6cHFCaHdoVDZseVYtWDBXTjFEak1qWVAwc2NnYU96NVpmWHhCZHc0aTRS?oc=5",
+   "published": "2026-11-10T20:24:27+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Commerce sets initial duties in tin mill products case vs. Taiwan, Turkey",
+   "trusted": false
+  },
+  {
    "id": "9c675d244575",
    "title_orig": "Fabrikalarda Kablo ve Bakır Talebi Artarken Hurda Fiyatları Nasıl Etkileniyor?",
    "title_de": "Wie können Sie die Schrottpreise beeinflussen und gleichzeitig die Kabel- und Kupfernachfrage in Fabriken erhöhen?",
@@ -793,23 +1277,6 @@
    ],
    "countries": [],
    "snippet": "Fabrikalarda Kablo ve Bakır Talebi Artarken Hurda Fiyatları Nasıl Etkileniyor?"
-  },
-  {
-   "id": "72404015ddd3",
-   "title_orig": "US states threaten Britain with reprisals over Israel sanctions",
-   "title_de": null,
-   "lang": "en",
-   "source": "The Telegraph",
-   "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPSkV2dVdjaXl2MDlWZTJ4ZW81V1VCUEpuRGpuUXFXNmMtN3JMZ0pENXQxbmRHTEc2ZWlPQk5wQ2VMTThMZzludkw0VkJxRElpbjBqZUkydUdnRzFIeFBubW5tVTJfZXNFOGtBVk9Gak9IMElIWE10YklqUnFVTXd5X0RrV3VtU3RKdTh3WThPNmJrbk5fVE5xZkJBNGVyVFZZVFlVMWV6eUszdw?oc=5",
-   "published": "2026-11-10T20:01:00+00:00",
-   "rubric": "laender",
-   "rubrics": [
-    "laender"
-   ],
-   "countries": [
-    "IL"
-   ],
-   "snippet": "US states threaten Britain with reprisals over Israel sanctions"
   },
   {
    "id": "e1329a4aa21b",
@@ -1090,6 +1557,78 @@
    "snippet": "Auch der Konzernchef: Festnahmen nach tödlicher Stahlwerks-Explosion in der Türkei"
   },
   {
+   "id": "a99119e6baae",
+   "title_orig": "10 waarschuwingssignalen voor de Belgische economie",
+   "title_de": "10 Warnsignale für die belgische Wirtschaft",
+   "lang": "nl",
+   "source": "Business AM",
+   "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBuNnd1dy14UndmckdDYlBhOGg3aWUwZnRJWkh5NnZBU0t3WVcxOEx3VjFXUDhCc3hhY2RkeGZnNzZjT2c1STRxRlRUcW5UblFuempjS0ZuUmVMbzlpOTAwTnNYd0pURnpwSUxKd05GX0NmWWly?oc=5",
+   "published": "2026-11-10T15:12:01+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "BE"
+   ],
+   "snippet": "10 waarschuwingssignalen voor de Belgische economie",
+   "trusted": false
+  },
+  {
+   "id": "34a90f4160b8",
+   "title_orig": "Maroc-Sierra Leone : un partenariat économique et industriel en développement",
+   "title_de": "Marokko-Sierra Leone: eine wirtschaftliche und industrielle Partnerschaft für Entwicklung",
+   "lang": "fr",
+   "source": "Finances News Hebdo",
+   "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPcWlPaXBoMzZpV3hyY3E2ajdKU2tqSnozOXFlb242NklMd1p6cjJFWWs3SnBHZ2pzQjUtM2dCLTZYY1EtdUkwTDRXQ3lkb1BnMUJOWUdEOFczN2JhZ1RsYk81SE8wSWFhWWFxZWV2aEdmWC1oSTVvcXZ1YlZZQjhxU1JNNTJ3VXNteUg2UGxaVXhnVm5NOHJLbzFzbW8?oc=5",
+   "published": "2026-11-10T15:01:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "MA"
+   ],
+   "snippet": "Maroc-Sierra Leone : un partenariat économique et industriel en développement",
+   "trusted": false
+  },
+  {
+   "id": "3bbbe833aad4",
+   "title_orig": "Türkiye-Çin Yeşil Kalkınma İş Forumu'nda yeşil ekonomi ve ticari işbirliğini derinleştirme çağrısı",
+   "title_de": "Aufruf zur Vertiefung der grünen Wirtschaft und kommerziellen Zusammenarbeit im türkisch-chinesischen Green Development Business Forum",
+   "lang": "tr",
+   "source": "Son Dakika",
+   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPRVNiTzdLajZBRjNmdml5LWRucTEzVjE1ZHdtLWxYYS1YYzAwVTRDQkF6dE5CMjlHTjRHdU1pZ0YtY3B3LWdPdGtYQ29md2RUUmZyNnUxYzJQTkhoZXdHTnZhTmVTd1hqMHJwZHl1Q0Nxb3R3aUVoajVFb2RoOXFHUGpMMjI0VXhzQ3lyVFFnczJQX1pEMzlkaVNfS0poYmlV0gGcAUFVX3lxTE40a0d4WEdROUxfXzdWaFhvcmxkY1JkUHE1NmpoX290a0U2VWNET1dsTC1wRTRmcGJsaEluVF9Kci1ERDZMank0ZjlZOWJXOW9aY2xjdDE2M2ZTX1ptdFhPcUc5Z05xckQ2SHl4Mk9jTFg5cTc1OWNLZHJWM3lmSTBwX0RZYUtnT1BZNjcxd3ZXTGdERWx2dGd3eVQyMQ?oc=5",
+   "published": "2026-11-10T14:57:10+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Türkiye-Çin Yeşil Kalkınma İş Forumu'nda yeşil ekonomi ve ticari işbirliğini derinleştirme çağrısı",
+   "trusted": false
+  },
+  {
+   "id": "90eefd132ff5",
+   "title_orig": "Nieuws: KPMG: Nederlandse economie groeit dit jaar sterker dan eurozone",
+   "title_de": null,
+   "lang": "nl",
+   "source": "Risk & Business",
+   "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOcW1aNHc0eF9qWEZVM3lvWDNIS3JacmhLcjJjNDRmZTRoZlZ6d2dLclNfSF9VWlN0d0tqRkxRQTFNZkQ2N2hhRFE2N09acGwxYkNFUFZyYXVycmZBaUVnYy1XRUlLbEJqWW5vT0xsMWFaTU9EWjBTWERvQ2Zfc003UlF2TWIyM0ZWQ0hsMVV4X3pBcXFqbUEyNVQwSTRsczEyc1gyZA?oc=5",
+   "published": "2026-11-10T14:49:29+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "NL"
+   ],
+   "snippet": "Nieuws: KPMG: Nederlandse economie groeit dit jaar sterker dan eurozone",
+   "trusted": false
+  },
+  {
    "id": "994e007c9092",
    "title_orig": "Ningbo Zhoushan Port to bid for stake in Brazil’s TCP",
    "title_de": null,
@@ -1121,6 +1660,42 @@
    "snippet": "İzmir’de demir çelik fabrikasında patlama: En az 18 ölü"
   },
   {
+   "id": "11d6d84e6028",
+   "title_orig": "Nederlandse economie blijft kwakkelen ondanks opvallende groei",
+   "title_de": null,
+   "lang": "nl",
+   "source": "Newsbit",
+   "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxONnd1VTFaa0RTZTI3V1VBUnhxZlBpN1RVVER2YzVib2piYTlJMl9uWkpYZkJ4TUdLR2JpZTJ6N04zUlZpcHo4QWYxU05WRGNYcW5wbWxFN3NYSlFEVzNseG9rNlhtN0RpRU1iQ2NhaExPdnloMVRPUy1IbkFqY3RLbDZTWjlGU2I0Z3c?oc=5",
+   "published": "2026-11-10T14:20:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "NL"
+   ],
+   "snippet": "Nederlandse economie blijft kwakkelen ondanks opvallende groei",
+   "trusted": false
+  },
+  {
+   "id": "4c06dbef01cb",
+   "title_orig": "Fotos der HKSÖL-Top Speakers Lounge - Osteuropas Wirtschaft wächst und eröffnet Österreich neue Chancen",
+   "title_de": "Fotos der HKSÖL-Top Speakers Lounge - Osteuropas Wirtschaft wächst und eröffnet Österreich neue Chancen",
+   "lang": "de",
+   "source": "Leadersnet",
+   "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNclpTMXRNLXpUNF85d0N3R0JWRXJXU1d3bms4LVdhY3VhVHFiRnZ1aFUyLWN3cW5Rdndub2JtTG9rY29SXzFvLWNmcFdVaUZuaXFmbG1haUQzZGpTZ0FGVDRlRmpVaVBCcm8ydkFmOTBLc0tvRWhyYVN0YmpRYllnSU9TaG5ocHV4aWR6ellTWElUSjJyMHN2VWxnQmVwaWVyS29QX2NB?oc=5",
+   "published": "2026-11-10T14:15:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Fotos der HKSÖL-Top Speakers Lounge - Osteuropas Wirtschaft wächst und eröffnet Österreich neue Chancen",
+   "trusted": false
+  },
+  {
    "id": "b4e8505a84d0",
    "title_orig": "İzmir'deki demir çelik fabrikasında patlama: Hayatını kaybeden 17 işçinin kimlikleri belli oldu! 11 kişi gözaltı, 1 işçiye ulaşılamıyor",
    "title_de": null,
@@ -1134,6 +1709,42 @@
    ],
    "countries": [],
    "snippet": "İzmir'deki demir çelik fabrikasında patlama: Hayatını kaybeden 17 işçinin kimlikleri belli oldu! 11 kişi gözaltı, 1 işçiye ulaşılamıyor"
+  },
+  {
+   "id": "5728efd3de73",
+   "title_orig": "Belgique-Suisse : renforcer les liens économiques",
+   "title_de": "Belgien-Schweiz: Stärkung der wirtschaftlichen Beziehungen",
+   "lang": "fr",
+   "source": "Verbond van Belgische Ondernemingen",
+   "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQQjVEV1lTaXRLR0ZkZDFHemt5OGJBUlltN3dxb1I2WGhiVHY1Y2UtN2phY013TGJCRjZRVWpKMjd4R25PZTMwa3VjbmNFUlg2TDBzUzhGXzBOMGZ3Q0Z4dkVjankwdGhtdVI3c0FpVEFHc3QwLUVxcG96VGRRcC1sMEh3LUdHNVFqOTRHdA?oc=5",
+   "published": "2026-11-10T14:00:34+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "BE"
+   ],
+   "snippet": "Belgique-Suisse : renforcer les liens économiques",
+   "trusted": false
+  },
+  {
+   "id": "2e8cb755f81e",
+   "title_orig": "L'Algérie participe aux travaux de la 30e Conférence mondiale de l'investissement à Genève",
+   "title_de": "Algerien nimmt an der 30. Weltinvestitionskonferenz in Genf teil",
+   "lang": "fr",
+   "source": "وكالة الأنباء الجزائرية",
+   "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPUlJvZkIyOGMyR2hZUklKTDVrVEw3UTlhZlBLZVhfR3p3WkdZWkF2SFlKMzZQdzZma3BUNy0tUExiZUQwVFpoR0hwd2t6NS1qRWpUUlpna3l4azhDc1d4MWdKbXR4VDZoeXlEcHBFNFVkOHdaY0M2ZGNtVkNRaVBHeWM2dWlkVnJ3QjByRmJ6dkxSNkpsMVBMU0xQWkRnLVRJY0ZXZk5mWlcwaE5jckV3RkNLWHdTNG9NSUhKOEpGaTllR3NleTNyajd0aW9ab2Z3UWFHcU1rVDE4cVRMcnk5R1VHQlQ?oc=5",
+   "published": "2026-11-10T14:00:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "DZ"
+   ],
+   "snippet": "L'Algérie participe aux travaux de la 30e Conférence mondiale de l'investissement à Genève",
+   "trusted": false
   },
   {
    "id": "6165e8ded602",
@@ -1232,6 +1843,24 @@
    "snippet": "France to summon Iranian envoy, seek EU sanctions over cyberattack"
   },
   {
+   "id": "d2c406b6e214",
+   "title_orig": "Contrôle des importations en Algérie : Une entreprise française voit son chiffre d'affaires trimestriel chuter de près de 56%",
+   "title_de": "Importkontrolle in Algerien: Ein französisches Unternehmen sieht Rückgang des Quartalsumsatzes um fast 56%",
+   "lang": "fr",
+   "source": "Algerie Eco",
+   "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOOU5SMXY4N2dZemJHSGlFMjI5S0VVUzA1THdUTzRRdG52S0Rta1ByT29jOWlOdXVnSHA1SlhZMUl5ZkRleWVYU1RuUnY3WW5lMkRxMGtxVkVyOTRpQ3JJajR5elhPbnJKaHFuYzhmUG02eHlNUmE5Q0x4X0dLM01pZWJWTUxOamJINml0Q0VFenF3MjVuTW0xUnZlTF9fMUtZQzNwanpHem8zRnFLak9KLUV5T2Q3akN2VVJnbk9aTWtBZThHWmRJZVgzQ0I5QU5OZ1Q2aGtabXE3Si1odGhJ?oc=5",
+   "published": "2026-11-10T12:46:30+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "DZ"
+   ],
+   "snippet": "Contrôle des importations en Algérie : Une entreprise française voit son chiffre d'affaires trimestriel chuter de près de 56%",
+   "trusted": false
+  },
+  {
    "id": "d8fe192c5874",
    "title_orig": "Une explosion dans une aciérie en Turquie a fait au moins 17 morts.",
    "title_de": null,
@@ -1245,6 +1874,24 @@
    ],
    "countries": [],
    "snippet": "Une explosion dans une aciérie en Turquie a fait au moins 17 morts."
+  },
+  {
+   "id": "287f3b339f81",
+   "title_orig": "AFM vermoedt handel met voorkennis rond regering Trump: ‘Shocking’",
+   "title_de": null,
+   "lang": "nl",
+   "source": "bnr.nl",
+   "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOdU1EZ05rWTBBUi05ODhBcXhJazNMb3M0ZzV2Rk9PVHFScWd5VTZyLXJSSktlX2toVDVUNDJXblVMZ3lxTzlrVFBHZC04dUVySW01RlZLN1dMVmEzb3dXOXBjMFNXNUpsbUN5bmNFZ2UzenZuaDJ3TVFnOW90Z3dxOFczNEotUkswVncydXhNM3pXd2tjWFd5cHZKNkhaRGRocXVwVlJB?oc=5",
+   "published": "2026-11-10T12:37:24+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "NL"
+   ],
+   "snippet": "AFM vermoedt handel met voorkennis rond regering Trump: ‘Shocking’",
+   "trusted": false
   },
   {
    "id": "a0093e1ee321",
@@ -1279,6 +1926,24 @@
    "snippet": "Nederlandse Douane ziet daling e-commerceaangiften aanhouden in oktober"
   },
   {
+   "id": "7774d00fa4d6",
+   "title_orig": "Marokko: SACE und OCP verstärken die industrielle Zusammenarbeit und eröffnen Italien neue Möglichkeiten.",
+   "title_de": "Marokko: SACE und OCP verstärken die industrielle Zusammenarbeit und eröffnen Italien neue Möglichkeiten.",
+   "lang": "de",
+   "source": "Agenzia Nova",
+   "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNa2NvcXgzOFhGRnZzbW5YVk13VFNBOE9ELThsVWlldzA2a250WHRYZm9XLVZyQlhSMktXRHhJUExhME83T1M1TzMyV0RIbGRQU2k3bkNCeVVvSUZxSTVJRklDd1hYSmlJTzd3d0owY1Badi1MbEN2dG1ycmJqMzNWYjRkYV9MVi1OWXZQRU1XWUgtLVR4bGlZOW1rM09aSTBzbm81dUxIZnNVZEtEN2ZuWmlXYVJMMGpyRXpNTlZjOW5vQ0ZrSm92UTM2LS15cE1E?oc=5",
+   "published": "2026-11-10T12:07:50+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "MA"
+   ],
+   "snippet": "Marokko: SACE und OCP verstärken die industrielle Zusammenarbeit und eröffnen Italien neue Möglichkeiten.",
+   "trusted": false
+  },
+  {
    "id": "596c20c27e84",
    "title_orig": "Bij een explosie in een staalfabriek komen zes arbeiders om het leven in İzmir",
    "title_de": null,
@@ -1292,6 +1957,24 @@
    ],
    "countries": [],
    "snippet": "Bij een explosie in een staalfabriek komen zes arbeiders om het leven in İzmir"
+  },
+  {
+   "id": "8b3bcd279cfc",
+   "title_orig": "L’économie marocaine dans toute sa complexité : Les enseignements d’une œuvre collective majeure",
+   "title_de": "Marokkanische Wirtschaft in all ihrer Komplexität: Die Lehren einer großen kollektiven Arbeit",
+   "lang": "fr",
+   "source": "Maroc Diplomatique",
+   "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNRHFjcGlrLTVsRzdPNkhtYVViWHl2RGxURUxlQXdkU2d2bGhDd1A0c0tRei1CSnRZc3BtRk9GSTF5ZGNaek11akpaQjZiRW5wTV8yYkY4WlBKNWhfZVdRd3FjeVZoSEhPOFRUYjFNYmZrcVFBdWhfWFJrQjNod2NvZjRaWkFCM1hOOWhMWjVvVXRkY0FMLTZ2YUoxYjRoYzVKTGxqUGgzb01hakFvTC1PN2ZCdE5JMTMza2lISG5LREIzalU?oc=5",
+   "published": "2026-11-10T12:03:04+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "MA"
+   ],
+   "snippet": "L’économie marocaine dans toute sa complexité : Les enseignements d’une œuvre collective majeure",
+   "trusted": false
   },
   {
    "id": "bfbb19341578",
@@ -1418,6 +2101,24 @@
    "trusted": true
   },
   {
+   "id": "b2749e98f78b",
+   "title_orig": "e-commerce : Jumia fête le Black Friday avec des offres inédites",
+   "title_de": null,
+   "lang": "fr",
+   "source": "Aujourd'hui le Maroc",
+   "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQWkpoTm54TEpRU2RkSFA0WGNwSWxGbFlSVFg0ei1FSzFRRlNWaVlabXhjUjBBckIxRThWZk50Ri1WTEp0REdfSU5mdVpVOHN6bXlScng5dzBNb0N1S1YyU0h1SWVrLWRlQndmdVd2dlN5TGJoUjFzM1JnZDBqbzdBalhOYkhYNzhsa2NaMXV5Y2xNeHpMblZMbg?oc=5",
+   "published": "2026-11-10T10:36:36+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "MA"
+   ],
+   "snippet": "e-commerce : Jumia fête le Black Friday avec des offres inédites",
+   "trusted": false
+  },
+  {
    "id": "a04ac9cc4117",
    "title_orig": "HABAŞ Demir Çelik Fabrikası'nda hayatını kaybeden 17 kişinin isimleri belli oldu!",
    "title_de": null,
@@ -1462,6 +2163,42 @@
    "countries": [],
    "snippet": "GLOVIS America expands Port Tampa Bay vehicle terminal",
    "trusted": true
+  },
+  {
+   "id": "221740e1a2fb",
+   "title_orig": "+26,5 % du commerce avec la Libye à fin septembre 26",
+   "title_de": null,
+   "lang": "fr",
+   "source": "African Manager",
+   "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPYXZfeG5xQkpoMzZKT0lZTjBBWk5ibTFab0VlMXptbmdnWEpRRmZTRWdnSGlOeXduR1JtbU42cHBBc2dlWHR0a2UzelhiVUpzcjJNaEZIVTlDSzBZcUZRNFYyUlNWcWhUUWpuQVRFbnRfV25lUFZZNDA2RFZrUXNQbm96Z2pxYnFJZXNZLUdScG5sMlVfS3NtRXREU3puT0RRaW93?oc=5",
+   "published": "2026-11-10T10:20:54+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TN"
+   ],
+   "snippet": "+26,5 % du commerce avec la Libye à fin septembre 26",
+   "trusted": false
+  },
+  {
+   "id": "0efa4ad359b0",
+   "title_orig": "Économie numérique : L’Algérie veut accélérer le développement de la DeepTech en Afrique",
+   "title_de": "Digitale Wirtschaft: Algerien will die Entwicklung von DeepTech in Afrika beschleunigen",
+   "lang": "fr",
+   "source": "Capmad",
+   "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNdUE0NHRPTGZBemNXVmVNVDg3ZnExel9RVmpHaGh5UldkU05Hd1RtdUpuT1AwelVmaGZyR2o3N1R3OTN2dGhjOGVzdFRJaDIyM2pGTHZMMVZxd0x3YmNLRXdJSWNhbUNSWXNJUk9ZTXZ4MnJqY0h6YmNMM0E3SzVDOTh1QmZGUzlUNW1sWE8yeDY3QjE4Q0tpUk0zZm1fVFoxNXd2STgxSXFOam02ZDdvcjB4UENDYWc?oc=5",
+   "published": "2026-11-10T10:20:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "DZ"
+   ],
+   "snippet": "Économie numérique : L’Algérie veut accélérer le développement de la DeepTech en Afrique",
+   "trusted": false
   },
   {
    "id": "2936b6180aaa",
@@ -1649,23 +2386,6 @@
    "snippet": "HABAŞ Demir Çelik Fabrikası'ndaki patlamada hayatını kaybeden 17 işçinin kimliği belli oldu"
   },
   {
-   "id": "c5f961cfa265",
-   "title_orig": "As heavy rains swamp Gaza's tents, Israel must face sanctions",
-   "title_de": null,
-   "lang": "en",
-   "source": "Middle East Eye",
-   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOLTI0dzhLU2Y0VlFpVGYwb3ZhNHVoUkRybzJoaDdrZmtHMEd0YkZSSFRiNEFmNjh4aFNuYnVvdzVUbXg3WW13cy1xc1l3MzM5V3E0M00tVFppQXBfdUdnTUdtRmVCNFFXdTNPb2pHRlU5cGU2dGlaazhGTlNqQlMtT2ZGSldFb2d1QVQxbzJoMzhSLXlqZ2Y4eERB?oc=5",
-   "published": "2026-11-10T09:30:00+00:00",
-   "rubric": "laender",
-   "rubrics": [
-    "laender"
-   ],
-   "countries": [
-    "IL"
-   ],
-   "snippet": "As heavy rains swamp Gaza's tents, Israel must face sanctions"
-  },
-  {
    "id": "1e89633d70e9",
    "title_orig": "Favelle Favco unit bags tower crane supply orders valued at RM83.7mil",
    "title_de": null,
@@ -1694,6 +2414,24 @@
    ],
    "countries": [],
    "snippet": "16 Tote bei Explosion in türkischem Stahlwerk"
+  },
+  {
+   "id": "5b139d386649",
+   "title_orig": "Çelik İhracatçıları Birliği SKDM düzenlemelerine yönelik iş birliği anlaşması imzaladı",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Yeşil Ekonomi",
+   "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQSmFLQzhTQ2lvMWtPeFRNZFNPUWYxNnVfbFNxQWpkbENEak1LMEZCaExsd0NGZVo3Tl9VRjlkSWxFRHYxb1RjNWU3dklfRGpFOGFmOHh3TThyaWlDTTktVE0ySWpqNU9IRUFXUWkwOW1vWkRiOW5xZWlUMFNHazNlUUI1VC0xY1FxSkM4VmpBVkRKUzdrdDhOR0I4RERtbmotMmNuVnZGVXF0aVVKcjJjdm9n?oc=5",
+   "published": "2026-11-10T09:12:17+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Çelik İhracatçıları Birliği SKDM düzenlemelerine yönelik iş birliği anlaşması imzaladı",
+   "trusted": false
   },
   {
    "id": "97fa4a640f1c",
@@ -1743,6 +2481,42 @@
    "snippet": "SSL orders Konecranes Gottwald ESP.4 mobile crane for Bermuda port"
   },
   {
+   "id": "98cb0e6cff05",
+   "title_orig": "D-8, Malaysia discuss trade, TVET and halal economy in Istanbul",
+   "title_de": null,
+   "lang": "en",
+   "source": "Yeni Safak English",
+   "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOVDBBTWJqckFwc0otLWRGZnFTcHZ5bWxGMnpsbWNtV3N3QUpHUkFCWDY4dktiS1ExVHEyQi1OMU9DR01mTWJtRTQ1Nlh1ZDY3TXR0cFNjTGhKMTZJZHFWNXhCNlVGeU9nQkZkRGJnOGc4cVZqZEJQbzBZZ2FLc053QmNwdmxWVlMzbm43aVgzMGc3OHg5N2xuNU0tMDdoeHJfMkpGaA?oc=5",
+   "published": "2026-11-10T08:42:34+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "D-8, Malaysia discuss trade, TVET and halal economy in Istanbul",
+   "trusted": false
+  },
+  {
+   "id": "d860912cdffa",
+   "title_orig": "Le climat n’est plus un luxe, c’est l’économie et les sécurités",
+   "title_de": null,
+   "lang": "fr",
+   "source": "African Manager",
+   "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxOQ2I2amc2ODNuckh6WW5MYU1aLXZpNnRHRENYTlFFY1AtYzYyb2NSQTZoZ2lXNmxwTE9aZE14U1ZDbTZubWsyMW5EUVJPdGJJaFJYa2VIdUl5T0JUdUxjLWpYVnFvOTFiVC13RklMZWVoTm9zOGR0eDFuT0ZnMl9Kd0p6RVNfaUlNaXZPVFF0emp6VVB5NXB4VnpUaDlaOWNjOHJvWUpudEN1TjZHNFA5Mnp2azk0VTNTRGxteXA5d3hEQVk2cVJ3SUVfNVp3ZmNMNWQzR2MwT3g0NlNHXzBMek1DUXRMNWhZVHNmV1BBVQ?oc=5",
+   "published": "2026-11-10T08:24:01+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TN"
+   ],
+   "snippet": "Le climat n’est plus un luxe, c’est l’économie et les sécurités",
+   "trusted": false
+  },
+  {
    "id": "14132dd0321d",
    "title_orig": "Türkiye'nin soğuk haddelenmiş yassı çelik ithalatı 2026'nın Ocak-Eylül döneminde %2,1 ile düşüşe döndü",
    "title_de": null,
@@ -1775,6 +2549,24 @@
    "snippet": "Hurda Fiyatları İçin Güvenilir Bilgiye Nasıl Ulaşılır?"
   },
   {
+   "id": "e67eeeef2907",
+   "title_orig": "Turkey's cold rolled flat steel imports swing to 2.1 percent decline in January-September 2026",
+   "title_de": null,
+   "lang": "en",
+   "source": "SteelOrbis",
+   "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxObktYZ2stU0h2V3dILTY3ejR3OEd6dG5pem9nVlB1RE92cGZWQklUcWJEVy0yeksxdUdabmZHNkg1bFFLRkI5aTFuV2d6Z1Ixclk3SGpORG1zMVBET0JxUEJlX0xvT2dpVjFHS2tVdHRTYk1FYWJYLWJLTXRYYUQxRHZHejBEOUV4VmdHZ3BONC15MEZTdW5qNkh6TGhRdGllamtvaHdQN2tqMzZhN0Y1eTk4b0E3c2VNeGNUd3ZxcDMxSUR1OWxEbmMxLTYyQlZtV0lJdTluMDFjNDJaSzdxNjhqOUoyRDJ0NWc?oc=5",
+   "published": "2026-11-10T08:18:58+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Turkey's cold rolled flat steel imports swing to 2.1 percent decline in January-September 2026",
+   "trusted": false
+  },
+  {
    "id": "017fe8c2f628",
    "title_orig": "Explosion in einem Stahlwerk in der Türkei: 17 Tote",
    "title_de": "Explosion in einem Stahlwerk in der Türkei: 17 Tote",
@@ -1803,6 +2595,24 @@
    ],
    "countries": [],
    "snippet": "Traditional leaders differ on proposed Lüderitz port expansion"
+  },
+  {
+   "id": "84c78cfa94a4",
+   "title_orig": "Tunisie : 350 femmes entrepreneures accompagnées dans le cadre de l’économie verte",
+   "title_de": null,
+   "lang": "fr",
+   "source": "Webmanagercenter",
+   "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPZG5HNlpIXzJTZHJQbFBkT2gwa3VESlBVNnZSZ2NmaU94Y1BpN3dQNzdJVGNoZENPTWVEcjlQMlo3bFdodG9BT0FEQ1AtQTlMb3NOZm1PcmdHcjFWTnY1NDgzb1pLN1h0WjZUYzB3c0gyVVdUZ2VfQlozdHFuVWdzam1wUTVTTE1VbEQ4Vnhxd2RoZVJyVWxiUGU5OU1udGtYMDE3MWhqS2o2RHpPZXBNXy1fSllhdGRfX2o5NHN5WlBjMDQ0OFdzWDVuTQ?oc=5",
+   "published": "2026-11-10T08:00:35+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TN"
+   ],
+   "snippet": "Tunisie : 350 femmes entrepreneures accompagnées dans le cadre de l’économie verte",
+   "trusted": false
   },
   {
    "id": "a1b988d31846",
@@ -1896,6 +2706,24 @@
    "countries": [],
    "snippet": "G7 recruits major ports in crackdown on drug smuggling",
    "trusted": true
+  },
+  {
+   "id": "c91f8f61cdac",
+   "title_orig": "Die Haushaltsverhandlungen in Belgien sind wieder aufgenommen worden",
+   "title_de": "Die Haushaltsverhandlungen in Belgien sind wieder aufgenommen worden",
+   "lang": "de",
+   "source": "VRT",
+   "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPcmFJMmlhNWhXSXJ6T2M3MlltTzJad3VyeE5mSk04RDYtODNjV0ZWSTQxbHUzcExVY1hNUmJRQXhKMkpLRzlYdFJlWDRidWdreDJJOWtRX0I0U0FxTTNOOGR0MlR1WFZYZ2REQ04tMEV6RHItOTVyTTFnZzJsRExwUFo5aWdCaHpsVFQtdVFJdDZOaHJiWmJiRHA5STlDR0lpVWg3MlZmaC0?oc=5",
+   "published": "2026-11-10T07:16:53+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "BE"
+   ],
+   "snippet": "Die Haushaltsverhandlungen in Belgien sind wieder aufgenommen worden",
+   "trusted": false
   },
   {
    "id": "139d145507c6",
@@ -2039,23 +2867,6 @@
    "snippet": "eCSM 100 compact: Bauer’s new electric machine for cutter-soil mixing on demanding jobsites"
   },
   {
-   "id": "4e0725b7aff2",
-   "title_orig": "The Blogs: Unique Israeli Traditions and Customs",
-   "title_de": null,
-   "lang": "en",
-   "source": "The Times of Israel",
-   "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBJUDNnOEs4SGM2QlF6aVI3U01SRGtjUVRYMXR2dHRiQjBPeVFwS2JybzRabVhuYlVpeUVxZUdrZHlwZUdhZ1JyeEgyTEVuZ2N0U2RPRGVoSmRqOUZYN1pkS0lTM2dOb0tlZlBBNklUNmRKWUtHbzdtMHZn?oc=5",
-   "published": "2026-11-10T04:05:00+00:00",
-   "rubric": "laender",
-   "rubrics": [
-    "laender"
-   ],
-   "countries": [
-    "IL"
-   ],
-   "snippet": "The Blogs: Unique Israeli Traditions and Customs"
-  },
-  {
    "id": "25e42b731c02",
    "title_orig": "Drone view shows a cargo ship approaching a container terminal at Lianyungang port",
    "title_de": null,
@@ -2069,6 +2880,24 @@
    ],
    "countries": [],
    "snippet": "Drone view shows a cargo ship approaching a container terminal at Lianyungang port"
+  },
+  {
+   "id": "911af90f8a9b",
+   "title_orig": "Die neuesten Meldungen aus der Wirtschaft.",
+   "title_de": "Die neuesten Meldungen aus der Wirtschaft.",
+   "lang": "de",
+   "source": "NZZ",
+   "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNb2dLbEFTZllWOVNta3kxV1FTbFhuOGp0OVhHSmcyblNMa29vR3NVemUyMlV1R3FJcE5sd1pHR1FkZlJHNE9wMFVka0l0WVk0dnIxcElGS1c2cXZQdkxLTEc4c1djdGpvYkNPVW5kMWY1NUUyMTdUaEtVQjFKSUFQQg?oc=5",
+   "published": "2026-11-10T04:01:51+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "NL"
+   ],
+   "snippet": "Die neuesten Meldungen aus der Wirtschaft.",
+   "trusted": false
   },
   {
    "id": "e20d0eb41bab",
@@ -2116,6 +2945,42 @@
    "snippet": "Explosion dans une aciérie en Turquie : 17 morts, le président Erdogan ordonne une enquête."
   },
   {
+   "id": "3714957ee650",
+   "title_orig": "VIFTA drives Vietnam - Israel economic partnership to new heights",
+   "title_de": null,
+   "lang": "en",
+   "source": "Vietnam Economic Times",
+   "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxONTMwd3FjbWEtVk9MUmg1SXpka004c3ZrMzBmMTU2U29OLWlFM0RjSE80ZVRodGFHOHpjdldLenBzUzZad0VwWFY4aWZEV2NNU1EtNW1YWmpXbVRjX0dBMHVESDVmc0IzMzlUc01XWTNpRGQ5NnlqSk9JZHJGR1NJNjJnUVNXMnBEZHZLU2hZM1M4MXhPY0E?oc=5",
+   "published": "2026-11-10T03:21:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "IL"
+   ],
+   "snippet": "VIFTA drives Vietnam - Israel economic partnership to new heights",
+   "trusted": false
+  },
+  {
+   "id": "92229f37b24d",
+   "title_orig": "The Economic Toll of Israel’s Wars",
+   "title_de": null,
+   "lang": "en",
+   "source": "DT Next",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1leG5JNUllTVU4ZTR6aC16TlpRdHN6OEZWTlNPRGhMUmNHY1R6aUVqSm12YzMzMFJ5SVo3V2JtSWVNLXZScXltTG43QWNfU01WbjlwY0pkWU55Q1NyRjh0UFhyZGtlTndwZWNyQdIBekFVX3lxTE5DSmExcXU1VG9LeU9TWVlISTRKXzRzdW9TN216LTFaRVJmdWVDcHFIMkVqcHU2UVBldHU4UnhkSzJXYXNNY3ljQ2FvVUd2aG1jOE1IajFHZmlDMmFSMzNkV0hkXzlJMmJJSnF3RnVPQ1hpTWxCTUYxNjBn?oc=5",
+   "published": "2026-11-10T03:18:55+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "IL"
+   ],
+   "snippet": "The Economic Toll of Israel’s Wars",
+   "trusted": false
+  },
+  {
    "id": "64563eac58aa",
    "title_orig": "Kran stürzt in Hochofen – 17 Tote bei Explosion in Stahlwerk",
    "title_de": "Kran stürzt in Hochofen – 17 Tote bei Explosion in Stahlwerk",
@@ -2131,6 +2996,24 @@
     "TR"
    ],
    "snippet": "Kran stürzt in Hochofen – 17 Tote bei Explosion in Stahlwerk"
+  },
+  {
+   "id": "b2b81f9f8d32",
+   "title_orig": "Oil dependence is bad for the climate and the economy, UN chief tells COP31",
+   "title_de": null,
+   "lang": "en",
+   "source": "Reuters",
+   "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOcmttSXJtNFNlWTJ3dkx4b3hTTXg3X3pRQ1RZLVF0aTRtZXRvWjhSLUlPNTNIMl9rSWM0MXJYd2NTeVI2M01pYUtOakJqMXdzbHVVUk5IRERXOFBwYTBKMTF2aFZSeDZhdUxfaXZDVW1aLWRMZFlDSnFWei1LdUFxLXFBTUdzZ3ZRU3JuUWlhMXdnRXdmU29vRTRxUHlCTnY2ZmFJaWtjUXN1a2lWUFEtYkZSYnVyU2tEQmxoZjR1bw?oc=5",
+   "published": "2026-11-10T03:07:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Oil dependence is bad for the climate and the economy, UN chief tells COP31",
+   "trusted": false
   },
   {
    "id": "6c0f6967e224",
@@ -2178,6 +3061,24 @@
    "snippet": "Turquie : 17 morts dans l'explosion d'une aciérie près d'Izmir"
   },
   {
+   "id": "92d05f79a2b3",
+   "title_orig": "HCP schließt Kartierung der wirtschaftlichen Niederlassungen 2023-2024 in Marokko ab - Nachrichten und Statistiken",
+   "title_de": "HCP schließt Kartierung der wirtschaftlichen Niederlassungen 2023-2024 in Marokko ab - Nachrichten und Statistiken",
+   "lang": "de",
+   "source": "IndexBox",
+   "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxORTdpX0ZtaHBXamR1QlRqWGJxYlpTbzZ2TzZhOEkxNFBuYWp1cC0xTDVQSWxhVWdwZ2M4VUtVYUk2M1NlTVFuWkotQy1tWDFlaXNYdEFUNTVuUTRCOE1GT21mdHB1NThSM3hfbUJ3Q2VzOEtpOGc1dlMtWUEtd1cxNS1QS19vUjM4QzkwY3JRRXQ0Z2NjcDc3bHQzUkRHaFNkTWkyRW1SY2tHVlZUdmJZ?oc=5",
+   "published": "2026-11-10T00:30:34+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "MA"
+   ],
+   "snippet": "HCP schließt Kartierung der wirtschaftlichen Niederlassungen 2023-2024 in Marokko ab - Nachrichten und Statistiken",
+   "trusted": false
+  },
+  {
    "id": "4c2e07c757a4",
    "title_orig": "ADC launches Aqaba port expansion projects to boost cargo handling",
    "title_de": null,
@@ -2191,6 +3092,42 @@
    ],
    "countries": [],
    "snippet": "ADC launches Aqaba port expansion projects to boost cargo handling"
+  },
+  {
+   "id": "fec84dc28bd7",
+   "title_orig": "Marokko-Italien, Botschafter Salzano: „Eine neue Phase der industriellen Zusammenarbeit“",
+   "title_de": "Marokko-Italien, Botschafter Salzano: „Eine neue Phase der industriellen Zusammenarbeit“",
+   "lang": "de",
+   "source": "Agenzia Nova",
+   "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNdFVqSUtjbWlqWl9hb2FqVU5FMEJPcWZ2bDJ4bWpydWNZajViWWxVd3NGTjRlamJBbnlHeDduWE9jWGZFbUxwYjNCMFBTY2I4bmZHRWpWMFZpOFpxX1l4b2ViQUd3RWpvTXFSTnhyUTJGNDVLdXo5WkFYRk5zNjBnMVc1THdpRG9NT2U0U1ZMZlhRbHFMMHhMeWYyTmlxYU1xYTV2TkJsaFZWSmdGeVU2TGYwaU91X1JnMjNhMEtJU2dKeWF3S2owN2hwOGRlMk9PamJNN1Bib0tSS1ZO?oc=5",
+   "published": "2026-11-10T00:17:43+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "MA"
+   ],
+   "snippet": "Marokko-Italien, Botschafter Salzano: „Eine neue Phase der industriellen Zusammenarbeit“",
+   "trusted": false
+  },
+  {
+   "id": "310ce7be0974",
+   "title_orig": "Nutzung des Freihandelsabkommens zwischen Vietnam und Israel: Unternehmen haben die Möglichkeit, sich technologische Kompetenzen anzueignen.",
+   "title_de": "Nutzung des Freihandelsabkommens zwischen Vietnam und Israel: Unternehmen haben die Möglichkeit, sich technologische Kompetenzen anzueignen.",
+   "lang": "de",
+   "source": "Vietnam.vn",
+   "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQZWZYRmtlZ3hnajZ4Nzg0ckFkaGxLSy1RWE9JcUJkcVJXR3VOVjgxR041Rk1TRXo4cmRKVlpESnE0eTF4ZlVzQWhZTEJ4S1BzZ21lbXlUaEgxWmZJUUJWXzBUQmRzT0ZTdzZvcEVXMDMxNzRER1FUVTBkUlpkaXdiSlJMeV9WMjAwTVBOUzNXdUx6OUdndGM4RGYzRl8zdS1ZbkVDcEMxRHBlRkZGQ0oyRDBDdWR0TmNHTlNKblZR?oc=5",
+   "published": "2026-11-10T00:02:16+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "IL"
+   ],
+   "snippet": "Nutzung des Freihandelsabkommens zwischen Vietnam und Israel: Unternehmen haben die Möglichkeit, sich technologische Kompetenzen anzueignen.",
+   "trusted": false
   },
   {
    "id": "60c5bc7dac99",
@@ -2379,6 +3316,24 @@
    "snippet": "Zeventien doden door explosie in staalfabriek in Turkije"
   },
   {
+   "id": "17ad463f6612",
+   "title_orig": "Contrôle aux frontières en Algérie : ce que révèlent les nouveaux laboratoires du ministère du Commerce",
+   "title_de": "Grenzkontrolle in Algerien: Was die neuen Laboratorien des Handelsministeriums enthüllen",
+   "lang": "fr",
+   "source": "Algerie360",
+   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPQ1hRLVFMM3lxZnlMMFU2clkwd1B5d3JFTlczQVRkNWwzQzQ1WkJBRmx0LV9IOGo1QVlSYzFyNlVsSUEzUHJFQ2lKV1hxWWNxUlBiYWlldEE1TnNmZXNRLVlCRHRxblVJOGU4Y1pjVUJWT2g0eGRpb1M1S2kyb2NOUFJ4MFh0QQ?oc=5",
+   "published": "2026-11-09T20:11:50+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "DZ"
+   ],
+   "snippet": "Contrôle aux frontières en Algérie : ce que révèlent les nouveaux laboratoires du ministère du Commerce",
+   "trusted": false
+  },
+  {
    "id": "2187d8b677c0",
    "title_orig": "Grote explosie bij ijzer- en staalfabriek Turkije",
    "title_de": null,
@@ -2469,23 +3424,6 @@
    "snippet": "« Nous demandons une véritable concertation avec l’ensemble des habitants » : les Écologistes Douarnenez Cap-Sizun réagissent au projet d’extension du port d’Audierne"
   },
   {
-   "id": "40ad270934f3",
-   "title_orig": "Opinion | The U.K. Aims Sanctions at Israel, Hits the Cayman Islands",
-   "title_de": null,
-   "lang": "en",
-   "source": "WSJ",
-   "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNdjJBc1lHV0NRN1FURjg3eWRsalpKalB6QldheHRZLUg0SmM3SGpMRFFXWDc2Vm9qbGFQdGluQ1c0dkY4WE5DdmswdzdDazQwTkdDaENiQmhDYlZJd2FjcDFoVmhyQzVPa3hLZ2dQZUFRb2RuZGpTTkVJYUpEOElma055REV1ZlBPTEkwY2owTjh0SVNwNncySA?oc=5",
-   "published": "2026-11-09T19:28:00+00:00",
-   "rubric": "laender",
-   "rubrics": [
-    "laender"
-   ],
-   "countries": [
-    "IL"
-   ],
-   "snippet": "Opinion | The U.K. Aims Sanctions at Israel, Hits the Cayman Islands"
-  },
-  {
    "id": "6b71c3596065",
    "title_orig": "SON DAKİKA: İzmir'de demir çelik fabrikasında patlama! 17 ölü, 12 yaralı",
    "title_de": null,
@@ -2514,23 +3452,6 @@
    ],
    "countries": [],
    "snippet": "İzmir'de demir çelik fabrikasında patlama sonrası yangın: 16 ölü, 15 yaralı (6)"
-  },
-  {
-   "id": "1e66a3b7245c",
-   "title_orig": "Gaza-Born DSA Activist Challenges Fetterman in 2028 Primary, Calling for Sanctions on Israel",
-   "title_de": null,
-   "lang": "en",
-   "source": "VINnews",
-   "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNZE9ob2dWN3lsNTBHVXQ1QnZTM1VfRWY1OFNWYmdYdTZNcF9iY1pzQ3VWM1o5MGhVaW1XQkZLdTE2M215WGxHdEdia0Zab0NWRi1LX01LTjl6LVpUcGc4UzdjSVdlM1dxMjNFaV9Ha05oelVVa19ZMjRZTWdlRTYyR2UtVUhtWVprbWtueW14WG9vWV8tRlRqNlZQdDVQcUh3THFaQWhkTXEyRzRwQ25jYWxUUnVxSHl2MklacElGa28?oc=5",
-   "published": "2026-11-09T18:58:28+00:00",
-   "rubric": "laender",
-   "rubrics": [
-    "laender"
-   ],
-   "countries": [
-    "IL"
-   ],
-   "snippet": "Gaza-Born DSA Activist Challenges Fetterman in 2028 Primary, Calling for Sanctions on Israel"
   },
   {
    "id": "c1b5bf66d7e5",
@@ -2687,23 +3608,6 @@
    "snippet": "Zestien werknemers van Turkse staalfabriek omgekomen bij explosie"
   },
   {
-   "id": "3308bfdf18ce",
-   "title_orig": "US-sanctioned Russian military aircraft makes mysterious landing in Israel",
-   "title_de": null,
-   "lang": "en",
-   "source": "Ynetnews",
-   "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBqYXlQbzhwMjlHUUR3V3NfOVVxZ1lCcUJDcGZlanVIaDczMHhOcmZzajZJdEwxTFI5ZzVjOHdhZzhYTVN5SFRCY0U1WFN6UmEzNkc2UExR?oc=5",
-   "published": "2026-11-09T18:19:15+00:00",
-   "rubric": "laender",
-   "rubrics": [
-    "laender"
-   ],
-   "countries": [
-    "IL"
-   ],
-   "snippet": "US-sanctioned Russian military aircraft makes mysterious landing in Israel"
-  },
-  {
    "id": "3db1048522e2",
    "title_orig": "KAP *** ÇELİK HALAT VE TEL SANAYİİ A.Ş. *** CELHA *** Faaliyet Raporu (Konsolide)",
    "title_de": "KAP *** STEEL HALAT AND WIRE INDUSTRY INC. *** CELHA *** Tätigkeitsbericht (Consolide)",
@@ -2732,6 +3636,24 @@
    ],
    "countries": [],
    "snippet": "KAP *** ÇELİK HALAT VE TEL SANAYİİ A.Ş. *** CELHA *** Sorumluluk Beyanı (Konsolide)"
+  },
+  {
+   "id": "b6fcfd0d5fe0",
+   "title_orig": "Indiana economic development officials plan trade trip to Israel",
+   "title_de": null,
+   "lang": "en",
+   "source": "Inside INdiana Business",
+   "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPRUp1NHFFQlRaX0RmVy1TeENHbFJYRERRSVVETDFJZjA1b05QZlhqLVJidmVfeHBSdVlMdlB2bEFPZ01oQ3p1cmJpczlUeTMtRnBaX1VUdnhNbGxiMkQzVnF4c1VMby1UamRzT2RJSko1cGR6MEx4NndsYURmSVdXY0dpaHo4d3Q1U3NvTkpGMEZTakZNYTZLTTdJUnRwOTR2bFZfX1N6YVhUczg2VVNxYg?oc=5",
+   "published": "2026-11-09T17:43:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "IL"
+   ],
+   "snippet": "Indiana economic development officials plan trade trip to Israel",
+   "trusted": false
   },
   {
    "id": "b6489d632c3c",
@@ -3208,6 +4130,24 @@
    "snippet": "Dix morts et quinze blessés dans une explosion dans une aciérie en Turquie."
   },
   {
+   "id": "99439993f07e",
+   "title_orig": "Tunisie : Solaire, batteries… le budget 2027 prévoit de nouveaux avantages fiscaux pour la transition énergétique",
+   "title_de": null,
+   "lang": "fr",
+   "source": "webdo",
+   "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxQVWNic3YyUk5sVldMV205YVBNYVNiTlhxaUJWWjZvRjhmaGxhQm1rVGpPbnUzNldiWEd4TzJRSHZjNklWRjJMM2JpUHR5MmR3VUhpZ3BGQ3RtWi1UaWxxcTdITnZfQXNCMEpkRk9jel9ESmdzcVdKVlJBMzFsbTlQX0FTY3VmX0JaT3p3djZBRHVDSHhfVGY3ckVHUlR6T0lyTUV3VHAzY25vRzhwaHhMODN3Y2FwT0xXWVU1Wm1WREZkSXc1bmRjRmhrTmtGQXpheUtVcUlmaDZMN1ZDaWZJdHFXeEk5dDRmUzVvT0x3UThDdw?oc=5",
+   "published": "2026-11-09T14:49:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TN"
+   ],
+   "snippet": "Tunisie : Solaire, batteries… le budget 2027 prévoit de nouveaux avantages fiscaux pour la transition énergétique",
+   "trusted": false
+  },
+  {
    "id": "bb6a688e8c9a",
    "title_orig": "Sechs Arbeiter starben, etwa zwölf weitere wurden verletzt, nachdem es in einem Stahlwerk nahe Izmir zu einer Explosion gekommen war.",
    "title_de": "Sechs Arbeiter starben, etwa zwölf weitere wurden verletzt, nachdem es in einem Stahlwerk nahe Izmir zu einer Explosion gekommen war.",
@@ -3329,6 +4269,24 @@
    "snippet": "Explosie bij Turkse ijzer- en staalfabriek Aliaga: zeker zes doden en vele vermisten"
   },
   {
+   "id": "52e8a07b5570",
+   "title_orig": "KAP *** TÜRKİYE İHRACAT KREDİ BANKASI A.Ş. *** EXIMB,THR *** Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Yeni Şafak",
+   "url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxPTEdwOHVkSU92V1BieVMtd3dqX1I2enpvN2FPWnE3MDZTRDNqWWVxdHRaU1l5UU5YZWtEbFdGdjRMQjdXcXRpLTZMY2JNSkNud2ROeFZDTU9EbENsU0s5bm1qbG9tXzUzUmRVZ08wUGs2bzA5WmliX2xLV3NJOExaNUJ0UHNRdS1pS2xwT2FvQkxtcGcwbmc0WXU3ZFBMN1lvODJBSFlCUXZIbnE5eXBiV1NvUk44Um8zdnBYUUhjY0FCUlJJOTVJRHJWaXdOUmtFSWFJejVWWDFReXl0MVd6SFJkSzVSVElvX1ZoeXRvUVF4d0M1RU1TcXYyN1BJbVE?oc=5",
+   "published": "2026-11-09T14:01:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "KAP *** TÜRKİYE İHRACAT KREDİ BANKASI A.Ş. *** EXIMB,THR *** Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz",
+   "trusted": false
+  },
+  {
    "id": "2f4bdb525cd4",
    "title_orig": "İzmir-Aliağa'da demir çelik fabrikasındaki patlamada 16 işçi öldü, 13 işçi yaralandı",
    "title_de": null,
@@ -3404,6 +4362,60 @@
    ],
    "countries": [],
    "snippet": "İzmir'de demir çelik fabrikasında patlama sonrası yangın: 6 ölü, 13 yaralı (3)"
+  },
+  {
+   "id": "3d7fa55fad38",
+   "title_orig": "İSO Türkiye İhracat Pazarları İklim Endeksi Ekimde 52,5’e Geriledi",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Fuar Dergisi",
+   "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOa1VUdlQxdG9LbU1qRC1hUWtYV0tQVF9NOUhZN19lY1NxaUd0LUtvUURKcUZYVWd0NEM0eUQ4VThVZkszbk1yQm5IaWN2dEdqV1k3SzlkbnVXZlROeGFpcVlPT3g4YTdkRFNNd1hSekpNSjBKb0RWZjl4YTZISldTRmZaVDA2bS1fZlJDX2JTYXhDa3V6a0JMVVZaRQ?oc=5",
+   "published": "2026-11-09T13:15:43+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "İSO Türkiye İhracat Pazarları İklim Endeksi Ekimde 52,5’e Geriledi",
+   "trusted": false
+  },
+  {
+   "id": "7a4c84f34395",
+   "title_orig": "COP31 gestartet: Gastgeber Türkei will Elektrifizierung der Weltwirtschaft vorantreiben - Panorama - SZ.de",
+   "title_de": "COP31 gestartet: Gastgeber Türkei will Elektrifizierung der Weltwirtschaft vorantreiben - Panorama - SZ.de",
+   "lang": "de",
+   "source": "SZ.de",
+   "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOb1lsYlREaUc3RE1HWnhtbUNyR19udFJ5S2I3dnVqZmRiVDc3S25saHVoR04wbFpTRDA1Y1pUSjZnQV9aVEFXM2Z1MENSMXZlaXN2NmFFclhTS0hXbGhWNnZJVmJ4UWUxeW51d0tfZHdLSmJia2c2aWVXdWxkaXNhYUtJUFlIVmt2OXhFRkd5am5ncGRyVTNNV012QXFrclBsUjN4UjVhd2luUGhodjU1NF9jWGNhRmpaeG8tS1o2eHJ6MmJvczQtZXhXTFJRZDYx?oc=5",
+   "published": "2026-11-09T13:11:31+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "COP31 gestartet: Gastgeber Türkei will Elektrifizierung der Weltwirtschaft vorantreiben - Panorama - SZ.de",
+   "trusted": false
+  },
+  {
+   "id": "3ccc221d428f",
+   "title_orig": "Un élu MR souhaite l'application de sanctions administratives communales dès 14 ans",
+   "title_de": null,
+   "lang": "fr",
+   "source": "L'Avenir",
+   "url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxOVEJPOUhsR1BGaGdySUhsRmZvLUVGSzNCcThCNWtJb0s1MEcwdUdMd0wtRlZQVVdqSERVWGdFZ0wwa1dZSEl1Q0JvT0pzOWtKTm9ncW9SN2VrdUVOR1pDZlZTQVVFQmRZalRZUjdCZGZSbi1OZHprM3pTYUJBem5IYnROMVA0bEpfUkpsdVZsZV83UHlHaXF2aGFHdmxqZGZBblJjLUN2UVYweDdma0tZd2hDR2l5S0VxZjloZWVVU0RUajdmRHdSam9PbVRMZk1Hekt0YUYtN0hKaG9rNndZamtVa3pSZXV0X0d6RzA5NFNndU02TERUOG5JY09kdw?oc=5",
+   "published": "2026-11-09T13:09:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "BE"
+   ],
+   "snippet": "Un élu MR souhaite l'application de sanctions administratives communales dès 14 ans",
+   "trusted": false
   },
   {
    "id": "fa1dd2967cff",
@@ -3526,6 +4538,24 @@
    "snippet": "Explosie in staalfabriek in Turkije eist 3 levens."
   },
   {
+   "id": "9362bb3ebe07",
+   "title_orig": "Commerce extérieur : quelles sont nos ambitions à l'horizon 2027 ? (Omar Hejira)",
+   "title_de": null,
+   "lang": "fr",
+   "source": "Medias24",
+   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxORXJmUHJsS1ZWWFdsemFYdlJOaDhzbjk0WlNLSmNVRm1oTW5LOUJic1N3NElDTHp4VVc5S0ZNdW1ENDc3c2RWeUczcFIxQnU2aWhra1l1SFpraHhQdHJUeDcwSjhXVlZEZUlfYjl0X1o1OFlidUR2WVhtUmxrVk5VWWctb0owNnJaTmU0R1J3aW1vbDFiQTFONi0zNldDWWpqVGZuSldMLUVpc1oxaW0wNktTREc?oc=5",
+   "published": "2026-11-09T12:47:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "MA"
+   ],
+   "snippet": "Commerce extérieur : quelles sont nos ambitions à l'horizon 2027 ? (Omar Hejira)",
+   "trusted": false
+  },
+  {
    "id": "00478891e1b1",
    "title_orig": "Izmir: Tote und Verletzte nach Explosion in Stahlwerk",
    "title_de": "Izmir: Tote und Verletzte nach Explosion in Stahlwerk",
@@ -3554,6 +4584,24 @@
    ],
    "countries": [],
    "snippet": "Explosion in Aliağa in der Türkei: Sechs Tote und acht verschüttete Arbeiter in Stahlwerk (Video)"
+  },
+  {
+   "id": "d3ba1280b756",
+   "title_orig": "La cheffe du gouvernement tunisien présente le budget 2027 devant le Parlement",
+   "title_de": null,
+   "lang": "fr",
+   "source": "Atlasinfo",
+   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNc0JXZHB3REtYV0dDamJUcHNTUFBZdEZiaElHTXFKQUFWdm13MmNTc1R1ZE91aHBrVlE1ZlRhUW41VVZxZ1pYTzhXdVBvSEhWSWpTU0RxNDQ3UjJEaXpoelo0ZXlpTl9rbUdkUjR2OXZPZ0FzMW9aa3lwMFBEOHJqN0FKNS1tTXBtTUdMOFJDZkN2T2JXUFpmTDAxM25ObzFC?oc=5",
+   "published": "2026-11-09T12:36:20+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TN"
+   ],
+   "snippet": "La cheffe du gouvernement tunisien présente le budget 2027 devant le Parlement",
+   "trusted": false
   },
   {
    "id": "983f39360d05",
@@ -3644,23 +4692,6 @@
    ],
    "countries": [],
    "snippet": "DEW-Stahlwerk Geisweid droht das Aus: Wie blicken Azubis auf ihre Zukunft in der Stahlindustrie?"
-  },
-  {
-   "id": "1cf7979d6592",
-   "title_orig": "Despite US and UK sanctions, Israel allows Russian military aircraft to land amid backlash from China and Saudi Arabia over recognition of breakaway African territory",
-   "title_de": null,
-   "lang": "en",
-   "source": "Business Insider Africa",
-   "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNTFZaOTlXQkZTMmVwQ2Rrd2V5YUc4WHpobmgyZGJvVWJob05WdVgwUXp1LVJjckNxQ3RoYjNfYVYyTndNUmZHVmk2d1FjOEdxc0w4Vkt2Z1lRb2k5X1dFRF9rZWRkZVRpVU5LNUVxZ05neE40UnR3VlRkUnRfZGxmd0VKYTZyWWtmR0ZMUHNlWWV6QjhZQzRDZDNycm5sNTYzcmFYWlhLUGZZSk5mNGdxX0tuVHduTmlPeDMxVUdxaFJ6TDBLYkYtVGV0SS1IdXo3TW9V?oc=5",
-   "published": "2026-11-09T12:16:27+00:00",
-   "rubric": "laender",
-   "rubrics": [
-    "laender"
-   ],
-   "countries": [
-    "IL"
-   ],
-   "snippet": "Despite US and UK sanctions, Israel allows Russian military aircraft to land amid backlash from China and Saudi Arabia over recognition of breakaway African territory"
   },
   {
    "id": "51b5d7c67d4f",
@@ -3995,6 +5026,24 @@
    "snippet": "İzmir Aliağa: Demir çelik fabrikasındaki patlamada en az 3 kişi öldü"
   },
   {
+   "id": "9ded5549f120",
+   "title_orig": "Tunis aspire à une économie durable et compétitive",
+   "title_de": "Tunis strebt eine nachhaltige und wettbewerbsfähige Wirtschaft an",
+   "lang": "fr",
+   "source": "African Manager",
+   "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQRVQyNmVkWlZianJwanY4cXJMbDlVYUdoVGtqMGdpTjBmcnM5d3FkUFpUNmxyZmJiaXRrOHZ2WTRpN3l1eWt0RjFLVmZqZmZNUExFc1Yzd19fSnJlNUhIYm1LSWZDNDZfWE8wU0gxOGx6eXZKckpQYmpPRDE3M1VtbjRmMHgxVThNUExQUzFIYlBLSkpYc19oTktteWZ0SkFWdTJkanB1LWV5bHVfM0RaRDBFZXVUZ3l1OW5Ob2JfNUZraTZlZjNROXZB?oc=5",
+   "published": "2026-11-09T11:23:24+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TN"
+   ],
+   "snippet": "Tunis aspire à une économie durable et compétitive",
+   "trusted": false
+  },
+  {
    "id": "32ab4a5bc086",
    "title_orig": "Son dakika... İzmir Aliağa'da HABAŞ Demir Çelik fabrikasındaki patlamanın nedeni belli oldu",
    "title_de": null,
@@ -4149,6 +5198,24 @@
    "snippet": "İzmir'de Aliağa HABAŞ Demir-Çelik Fabrikası’nda patlama: 3 ölü, 3'ü ağır 14 yaralı... 10 işçi enkaz altında"
   },
   {
+   "id": "ffde46fd2bb1",
+   "title_orig": "Sanktionen, Gaspreise, Visa: Wie Russland Armeniens EU-Kurs bestraft",
+   "title_de": "Sanktionen, Gaspreise, Visa: Wie Russland Armeniens EU-Kurs bestraft",
+   "lang": "de",
+   "source": "Berliner Zeitung",
+   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNT0E4TFhqMmJDNkF0dlMwU1RKMEJud2dOVXlnYXU4TThPUHNia1lZWVBoT1BNM3diWmt1OUFKN251a0NYb0F5SV9FbmxNa3JSdEIwRjI3NjNuVlhfX2JvQ1BQMnhqYUt2UHd2YjhlVVdOQTdrVGNqSjU2aXpiTVhTeGZfWVpvV1V5aFdnTERlZFNwbEY1V3doMTlMVWNxS0ZqdmNmNnJmMmRKdV9FTDFibzUtRlE?oc=5",
+   "published": "2026-11-09T11:00:19+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Sanktionen, Gaspreise, Visa: Wie Russland Armeniens EU-Kurs bestraft",
+   "trusted": false
+  },
+  {
    "id": "15bcf6f95558",
    "title_orig": "Hutchison Ports Sydney boosts Port Botany with new cranes",
    "title_de": null,
@@ -4195,6 +5262,24 @@
    "snippet": "Demir çelik fabrikasında patlama: 3 ölü, 14 yaralı, 10 kişi enkaz altında"
   },
   {
+   "id": "133aeb3b1a4b",
+   "title_orig": "KPMG: Nederlandse economie groeit nu harder dan eurozone",
+   "title_de": null,
+   "lang": "nl",
+   "source": "Accountant.nl",
+   "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNekp0YnFkek4wOGV0cFlxbFNsQjBOaFVvc3lSZ3RSV0NjaGRwYWViZE5ydUFrbFgwdXZBMjlnUkNNNko1eC1LS0lnaW5BUEp5OC1Ndk5pQnBQa1RxY0pRUGx0Q2tfTFVxbVZGbklqS1c5OGluZGxyWGNmOFQ1cTBFbTNDaUIycXd4cnBZdVNNeXlQZ2FPem1hS1VnU1dIUGY0NjZTOTdLUFo?oc=5",
+   "published": "2026-11-09T10:42:25+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "NL"
+   ],
+   "snippet": "KPMG: Nederlandse economie groeit nu harder dan eurozone",
+   "trusted": false
+  },
+  {
    "id": "be2cd78700e3",
    "title_orig": "Valenciaport: Building tomorrow’s port while running today’s",
    "title_de": null,
@@ -4209,6 +5294,22 @@
    "countries": [],
    "snippet": "Valenciaport: Building tomorrow’s port while running today’s",
    "trusted": true
+  },
+  {
+   "id": "94b35b231bd2",
+   "title_orig": "İzmir'deki HABAŞ Demir Çelik fabrikasında patlama meydana geldi | Video videosunu izle | Son Dakika Haberleri",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Sabah",
+   "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOZGQ4Rmk1V3pVUDVvYWNuVzBRQy1HVHp3TVpEMEg0ZWJDaGxuRTBKamJXSkhYVlNtRnAwTGJRNVJhRFNQVzE2X1FuY1piNFpZc2ZzalBIbGhkbVNZdGd4cmRXcDQ3Y3BrWm4tMnBmTGMyNVplYXRDZnlXN21PaEliOC1kZmlyTEoyaTNkVWVYa0lPSUNuSzJ6cDBaMUZzd0JCNmdvaTdSQ3XSAasBQVVfeXFMT3YxeElnSWxxdnBoRGU4MW14RTV2eXBzd3ZxNjZLTWFLNG9yNDYyWHlKSk42ZWNQM3NvNVZTQi01NDd6elFzTVFMZ29Pc0J6czV6c1FrWFZobVB2UTZpUm5EVkg1VU9mTVJBM0xVRHlKd2JYcVpZbmI1ZzhHbnI0YV9WRUVqLVBNXzRrcXh0a1BDemVGODlnckRuSWo3c2xUVU9QS3gzMERUc2lz?oc=5",
+   "published": "2026-11-09T10:25:51+00:00",
+   "rubric": "industrie",
+   "rubrics": [
+    "industrie"
+   ],
+   "countries": [],
+   "snippet": "İzmir'deki HABAŞ Demir Çelik fabrikasında patlama meydana geldi | Video videosunu izle | Son Dakika Haberleri",
+   "trusted": false
   },
   {
    "id": "054dce836fa8",
@@ -4315,6 +5416,24 @@
    ],
    "countries": [],
    "snippet": "İzmir'de demir çelik fabrikasında patlama sonrası yangın: 17 ölü, 14 yaralı"
+  },
+  {
+   "id": "f417cde91e62",
+   "title_orig": "Kabinetsvisie AI: Versterking van economie, zorg en digitale weerbaarheid",
+   "title_de": null,
+   "lang": "nl",
+   "source": "Dutch IT Channel",
+   "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPcDFIWjlxZld0NHpEQUdxQldhcnFFd3RNM0tfSmlmNkNXQTJwY1hXOVNxakhUTl9EWXk1RmNfMGZkNVdSUkJZQVJ2eEszRW1KQVF5Ykc5b2RWaHZRQzQzVGVfeXhzeFYtY1ZlNXpnQmV4a2c4TTVrV1NSYmxBWTNRN3VldVVfS0x0UmFTUWhOenJzNWprNXllMldzTXJIai1QVkRMNlRaZWxmdGRwZC1Ib1BuOA?oc=5",
+   "published": "2026-11-09T09:44:10+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "NL"
+   ],
+   "snippet": "Kabinetsvisie AI: Versterking van economie, zorg en digitale weerbaarheid",
+   "trusted": false
   },
   {
    "id": "6856418b5ef3",
@@ -4611,6 +5730,24 @@
    "trusted": false
   },
   {
+   "id": "7db3921e2bdd",
+   "title_orig": "İSO Türkiye İhracat Pazarları İklim Endeksi ekim ayında 52,5'e geriledi",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Patronlar Dünyası",
+   "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPT1Y2ZVo1c2lEd1ZISHlxamw1aVpXWXVVVDdQVFJDWEx0cUlmYmhPNUdqX2d6aXhZRXBKYWdnTmQ5ZFpsVnVleURFUUtUMmFIT2hPbVVweXJ4OGZZdFlkcXk4alFCaDRxYWI3T0ZpN1NLdmt1VVdsVUhrQXRkbHpLYkRIM05sWUFJVmZGOXFZZnk5aV9WTS1nejF4S0lUQkJiVmxzTGZ3?oc=5",
+   "published": "2026-11-09T07:49:15+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "İSO Türkiye İhracat Pazarları İklim Endeksi ekim ayında 52,5'e geriledi",
+   "trusted": false
+  },
+  {
    "id": "cc54999bbb10",
    "title_orig": "Overhead Crane Manufacturers in China for Industry and Warehousing: Comparing Nante Crane and Other Suppliers",
    "title_de": null,
@@ -4624,6 +5761,42 @@
    ],
    "countries": [],
    "snippet": "Overhead Crane Manufacturers in China for Industry and Warehousing: Comparing Nante Crane and Other Suppliers"
+  },
+  {
+   "id": "7e749f1e9d47",
+   "title_orig": "Türkiye İhracat Pazarları İklim Endeksi Ekim'de 52.5'e geriledi-İSO",
+   "title_de": null,
+   "lang": "tr",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5vSFVRZktrcjRfenlINkhoUUFjSTdPY3pFZ0Q3MFR0ZmZrWGo1dzIxYlRxVlJoWXlWSmVBdmlvcnM2Vm5YR01fNDRVdWdxV2RHSDNMblQ1THBxOTBqdnkwWkhiQ1gtZHVZRm9EajJTSjNGdmtzVHZN?oc=5",
+   "published": "2026-11-09T07:21:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Türkiye İhracat Pazarları İklim Endeksi Ekim'de 52.5'e geriledi-İSO",
+   "trusted": false
+  },
+  {
+   "id": "e5a75c686fa7",
+   "title_orig": "İhracat iklimi son üç ayın en düşük seviyesinde",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Bloomberght",
+   "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOeDVoUTZaTVZYdHhuc2xGQjYzLUh1cTQ2QTV0SVlTd2EzR1hzamczRVZ6a3dNbktvVXpQOXRodEdSeXd2ZlBRWHc5OEpwWUw4WEJyQWV0SnFNTTNiZkRmRERhOF9URFE4R0hnWERJWFBWRjFoNm95Q0dsNFNIWXNPdXVkVFp6aVByblNj?oc=5",
+   "published": "2026-11-09T07:19:34+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "İhracat iklimi son üç ayın en düşük seviyesinde",
+   "trusted": false
   },
   {
    "id": "1643f24ed444",
@@ -4736,21 +5909,22 @@
    "trusted": true
   },
   {
-   "id": "cbda079cdb11",
-   "title_orig": "220,000 protesters march in Amsterdam demanding tougher sanctions against Israel",
-   "title_de": null,
-   "lang": "en",
-   "source": "Ynetnews",
-   "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBxSUs0czVOLVNadFpqVWlGVGtDYV9WSDlqUGxYb0xGMU1STmNNRWxlWGlXVWZnYTQ3a0E5VU81Sl92THNIa2ZKSThCOXpMS3hNS1JQYVB3?oc=5",
-   "published": "2026-11-09T00:15:17+00:00",
+   "id": "41e870653b98",
+   "title_orig": "Tribune | Économie du sport : ce que l’indice Strategy& (PwC) révèle au Maroc [Par Benadada Rabii]",
+   "title_de": "Tribune: Wirtschaft des Sports: Was der Strategie & Index (PwC) in Marokko zeigt [By Benadada Rabii]",
+   "lang": "fr",
+   "source": "Afrimag",
+   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1XMHRGb0R0WXJNc25DNWRJc0NQa2o4R2JFaEEzeHFHWGFrVEg1SkVTbWVUV1ZhNFNnRm9id3otMzBiN0paSVJLcnh6MDAzdjEtcUxFaUhPV2ZINzNOZXdmdk1WV2gwejhBdFhqSGYtS0Iyc0t2aHU3UQ?oc=5",
+   "published": "2026-11-09T00:01:52+00:00",
    "rubric": "laender",
    "rubrics": [
     "laender"
    ],
    "countries": [
-    "IL"
+    "MA"
    ],
-   "snippet": "220,000 protesters march in Amsterdam demanding tougher sanctions against Israel"
+   "snippet": "Tribune | Économie du sport : ce que l’indice Strategy& (PwC) révèle au Maroc [Par Benadada Rabii]",
+   "trusted": false
   },
   {
    "id": "deec18f7fb40",
@@ -4781,6 +5955,24 @@
    ],
    "countries": [],
    "snippet": "Le Secrétaire général exprime sa pleine solidarité avec la République de Turquie suite à l'explosion de l'aciérie d'Izmir"
+  },
+  {
+   "id": "234c6790b9ce",
+   "title_orig": "Contrôle des importations : Tebboune exige des « peines maximales »",
+   "title_de": null,
+   "lang": "fr",
+   "source": "TSA - Tout Sur l'Algérie",
+   "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNRnROVW1PY3UxZ1dFT0dsVHRaUHI5cVVxQk4yUmgyOEE0d2dyY2UtOUtvNUFlM092dWpYTXlIRU55NVFJYmphNTNjNDU5QW00LWJ0N1pKcnByeDAxc3VIRUZ6dWdrSEtqMUd2SDR0Q1RDOGllTXhRUlhFYUstREYxQ0xDSnpHMnNWeWZiblVtdGRXSTlr?oc=5",
+   "published": "2026-11-08T20:20:17+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "DZ"
+   ],
+   "snippet": "Contrôle des importations : Tebboune exige des « peines maximales »",
+   "trusted": false
   },
   {
    "id": "cd96eeb3b5fe",
@@ -4816,6 +6008,24 @@
    "snippet": "Baudot-Trajtenberg: Criminals evade sanctions with crypto"
   },
   {
+   "id": "3f117e618eac",
+   "title_orig": "Why is Israel’s high-technology industry important to its economy?",
+   "title_de": null,
+   "lang": "en",
+   "source": "Britannica",
+   "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOdGJ5R1pLb2RqM09aLTI1ZjBUbnpHa2E0a1l3c2hFbVVpU1J0VUxaaFVoNUNDT0l2enRfb3FzS3QtLXVHbjl4LWtvdVVoVEViNTFTUnhEMEhiblhlTjVTSVZGVENZeUY2RG5OU09HV0xQQ2N4eWRCaTNlaDFNYXRIbGVoMDgyUWdOYmlSb3VOSjhGak5uVmhKMmJaYmlxdw?oc=5",
+   "published": "2026-11-08T17:17:39+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "IL"
+   ],
+   "snippet": "Why is Israel’s high-technology industry important to its economy?",
+   "trusted": false
+  },
+  {
    "id": "686bd20c25b1",
    "title_orig": "Bangladesh’s Chittagong Port Authority, DP World sign 15-year concession for New Mooring Container Terminal",
    "title_de": null,
@@ -4831,38 +6041,40 @@
    "snippet": "Bangladesh’s Chittagong Port Authority, DP World sign 15-year concession for New Mooring Container Terminal"
   },
   {
-   "id": "1d65c76cd960",
-   "title_orig": "Sanctions against Israel: Their lordships regret",
-   "title_de": null,
-   "lang": "en",
-   "source": "Globes - Israel Business News",
-   "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNa1U0eE1QUkZrX0stcmVRZ1NXelNMbHlMUU1wY0t1ZldYZEhmUUVlbHhqZ2Y2S0N4ZmpoamNudUktWFdHbjVBcjR6Tl9VZk1kMzZreW10YVN6N0E5bVduNUZnZTctOFJDbjZKY0JwYUhUdTROS0toMU14d2QtTl9ZZEl2dTRUZElMQndWUGlvQTdJNlpjcHlWcg?oc=5",
-   "published": "2026-11-08T15:01:03+00:00",
+   "id": "b5aa7f0213bd",
+   "title_orig": "Präsident Aserbaidschans: Starke Wirtschaft und politischer Einfluss der Türkei erfüllen uns mit großer Freude",
+   "title_de": "Präsident Aserbaidschans: Starke Wirtschaft und politischer Einfluss der Türkei erfüllen uns mit großer Freude",
+   "lang": "de",
+   "source": "Azərtac",
+   "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOc0JWLVZPSXloRVdVMDdaVkdDbkVKRW9JTUxMYWd6dXRTbi0xYXBZbURGZGoyc0FVTW1VYS1ldHJHVEZCbXBWdVZrR3N2emM2YXVTSnpFRHd6UDU5Vk9jb1pHUDhtenZiN2dVUFB3aU0xSjB3ek1EbG9qZlF6ejMtbTZBYzd6aVhzalBwWVA1d2cyeVpYVlQ5NU5WUTBFQXBfNHVpNTBKcVBTcGZDd08tdlAxdEljWHU2bEw3bWktdDBIc3RVSTZod2NPY3NoRThyamdIU24zWkJMN09qRkE?oc=5",
+   "published": "2026-11-08T14:47:00+00:00",
    "rubric": "laender",
    "rubrics": [
     "laender"
    ],
    "countries": [
-    "IL"
+    "TR"
    ],
-   "snippet": "Sanctions against Israel: Their lordships regret"
+   "snippet": "Präsident Aserbaidschans: Starke Wirtschaft und politischer Einfluss der Türkei erfüllen uns mit großer Freude",
+   "trusted": false
   },
   {
-   "id": "cd7819498a0e",
-   "title_orig": "Security, not sanctions: Building Israel's security together with the haredim",
+   "id": "c407b50e1c88",
+   "title_orig": "Real Madrid : Bellingham et Rüdiger risquent de lourdes sanctions",
    "title_de": null,
-   "lang": "en",
-   "source": "The Jerusalem Post",
-   "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1rQnNEaTByOW1zZjlfckVCcWJDdWpOUGZUMkpXRWVlWDlsZkI1S0NNeFZaS1h1VkFPc25URzQyWGZvMG53QndXQ2JuLXRTVU9RanNmREpCbw?oc=5",
-   "published": "2026-11-08T15:00:00+00:00",
+   "lang": "fr",
+   "source": "Tunisie Numerique",
+   "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNdTZOQldyZkczN0VORGNxMzhBbzFfRUFWSjRocVhTTkI0UWRMSnJCSWtzcUowMThRRkZMc0hfQkVuemprX2F5eWNBLW5hV0RNUS1fSWV5cDk1cWJ5WTVHT1VraFdUeTIxZ1RldUpOeGlYMW81Zy1sSExBdDdNSmNxbGhYaDRZalJpbXVLNk9sM0J6LURNdUc0eWFHbFhjdw?oc=5",
+   "published": "2026-11-08T12:00:00+00:00",
    "rubric": "laender",
    "rubrics": [
     "laender"
    ],
    "countries": [
-    "IL"
+    "TN"
    ],
-   "snippet": "Security, not sanctions: Building Israel's security together with the haredim"
+   "snippet": "Real Madrid : Bellingham et Rüdiger risquent de lourdes sanctions",
+   "trusted": false
   },
   {
    "id": "25eef423fd81",
@@ -4883,6 +6095,24 @@
    "trusted": false
   },
   {
+   "id": "5ae370675485",
+   "title_orig": "Tunisie-Chine : Derrière le pavillon de Shanghai, le défi de transformer l'intérêt en exportations",
+   "title_de": "Tunesien-China: Hinter dem Shanghaier Pavillon steht die Herausforderung, Interesse in Exporte zu verwandeln",
+   "lang": "fr",
+   "source": "webdo",
+   "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOUGhGbjlqdFctUkNwZ0JSUlFrdnotQVpyREVaYWRNenRPbWF4MFVjXzJfeXJ3cHE1cFptVXY5MkxEc3V4RUZCQW9LVG82dURpaG5DRXB2VXhzWjJhY3N5MEhSb3AtQS1FWTlacTBYUG1DWXg4S3pBNWxIUXdGX1FsUkhPc0c1VlhzbEtVZmVUWnE2akctSzlldzBkcHh5UlhzZGx6eUlxY2MzZzc1d3ctOTNzVXFXSUpaM3RySDgwS1hwN3ZWWEZLNmVQM3cydDIxdElDY3lCRFBwMnJYT1E?oc=5",
+   "published": "2026-11-08T10:27:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TN"
+   ],
+   "snippet": "Tunisie-Chine : Derrière le pavillon de Shanghai, le défi de transformer l'intérêt en exportations",
+   "trusted": false
+  },
+  {
    "id": "7d305984759e",
    "title_orig": "US sanctions eight Canadian companies accused of helping Iran evade sanctions",
    "title_de": null,
@@ -4900,13 +6130,13 @@
    "snippet": "US sanctions eight Canadian companies accused of helping Iran evade sanctions"
   },
   {
-   "id": "fd87c90758fe",
-   "title_orig": "Retour d’Algérie : dattes, miel, fromage, cigarettes, ce que la douane française autorise",
-   "title_de": "Rückkehr aus Algerien: Datteln, Honig, Käse, Zigaretten, was der französische Zoll autorisiert",
+   "id": "e597e84a2d1c",
+   "title_orig": "3 500 dinars les 2 litres de lben : les dérives du commerce du cabas en Algérie",
+   "title_de": "3.500 Dinar die 2 Liter lben: die Driften des cabas Handel in Algerien",
    "lang": "fr",
-   "source": "Algerie360",
-   "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNTG5HWTlMZUR6QmxvUzJfdUYzTndOUFlTUDcyWWNOV3BCU204Nnc1eHRSRFV0VUs2NWJvMEh1QWJzbzEyVVVya1Y4Y3NaYlJCVjBPY2dXcVJEZjlZSW5sUjg4X1pPS1BmYjFuSWxZZ3NSdjJESzBfeXlLNWZBWWZfbUo0blZFVkV0Ync?oc=5",
-   "published": "2026-11-07T17:05:29+00:00",
+   "source": "Visas & Voyages Algérie",
+   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQVTZwZ3EzMF9GZnNzWjRPUUk3amlPY04xWS1RamRWQnROLW1yQ2lvWTFpaTllMXlPU2pqZDI4d1hDUU5QM3I0ZjdWWUE5OHRNRG52VXZGWnZ1TG1nWTB4S1dndUtMbVBFTGVXVDNWUnl5X3FnbmxnZnVRVWtKbHRxM2J5aEZBbUhJN0dndUNmU2l5YUYyd2MwbHdiTGc1aTI1U05PLW5hTG52bG8?oc=5",
+   "published": "2026-11-07T18:25:19+00:00",
    "rubric": "laender",
    "rubrics": [
     "laender"
@@ -4914,7 +6144,26 @@
    "countries": [
     "DZ"
    ],
-   "snippet": "Retour d’Algérie : dattes, miel, fromage, cigarettes, ce que la douane française autorise"
+   "snippet": "3 500 dinars les 2 litres de lben : les dérives du commerce du cabas en Algérie",
+   "trusted": false
+  },
+  {
+   "id": "39943d60a427",
+   "title_orig": "L’Algérie inaugure des laboratoires de contrôle des importations : « Des soldats pour protéger l'économie »",
+   "title_de": "Algerien weiht Importkontrolllaboratorien ein: \"Soldaten schützen die Wirtschaft\"",
+   "lang": "fr",
+   "source": "TSA - Tout Sur l'Algérie",
+   "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNdEY4ZW5HZzRmMjBtMWNjaHpmS0ZUZlVKUjF0dEtWdUR2dnRXOEE3ZlJmU0FsaWJTWE1MZEsybzJHYXczMzNtMy1iaEh3S1h4VXR5dkk4eDZPeWhUdVRPemFnaDREU0tjc0U3X0EzV243MlNUWFVnNElCQXJnZnUyQ0RlclpoTk81SGFYSEpJOVIwWWgwekJCUkdzNEJWQVlsRXpTZnk2dkJrQlQ4em1XWkk3OGk3c0hyOFhkYnhQWG9SZzB6XzRB?oc=5",
+   "published": "2026-11-07T18:18:47+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "DZ"
+   ],
+   "snippet": "L’Algérie inaugure des laboratoires de contrôle des importations : « Des soldats pour protéger l'économie »",
+   "trusted": false
   },
   {
    "id": "4892e3f9edc7",
@@ -4932,6 +6181,42 @@
    "snippet": "Reparatur von historischem Hafenkran: Fünf Kräne sollen helfen - Panorama - SZ.de"
   },
   {
+   "id": "4139c7fe23bc",
+   "title_orig": "Sidérurgie : Tosyali Algérie expédie 40 000 tonnes d'acier vers l'Europe et vise 2,5 milliards de dollars à l'export",
+   "title_de": "Stahlindustrie: Tosyali Algerien liefert 40.000 Tonnen Stahl nach Europa und strebt 2,5 Milliarden US-Dollar für den Export an",
+   "lang": "fr",
+   "source": "Just-InfoDZ",
+   "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBlaUdjTmFWaTIyeVFzZml6U2ZJeUdfTkdqY0pLRmMxU1VVbVIzQ3pqWWQ0clZMWHg3Qk56RG1uZm96b0U0TjFhdW5Gc09ha0ItVTlES1JDNWR5dWhxbmx2YXNqd0JaZndMcGR2dmxDTzkwMWtZ?oc=5",
+   "published": "2026-11-07T14:10:01+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "DZ"
+   ],
+   "snippet": "Sidérurgie : Tosyali Algérie expédie 40 000 tonnes d'acier vers l'Europe et vise 2,5 milliards de dollars à l'export",
+   "trusted": false
+  },
+  {
+   "id": "0cc15b7153a3",
+   "title_orig": "Importations en Algérie : le contrôle qualité passe de 72 heures à quelques heures",
+   "title_de": null,
+   "lang": "fr",
+   "source": "Maghreb Émergent",
+   "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPUlMwUmtEZGo4QXVIS1F6TFJCZ3BzVlVJRXB1bWc1MTNKX2hOMko4X3VuSzJRNnY5ZDFqRlp5Mzl0cWVUenpmaGt2RnZCSmZMQkExcDQyQWNVMDFERGVMMGVPd1Ywc3h4S1hFYXlSYVZocnl5RkR6V2VZLVBNSnZDRDBFY2VFNHI0M3lJaktObFoyeXZTTmZGSEhBcGFvWU96MzJwc0dPM2p3em5PS2E5NFhfRQ?oc=5",
+   "published": "2026-11-07T13:56:19+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "DZ"
+   ],
+   "snippet": "Importations en Algérie : le contrôle qualité passe de 72 heures à quelques heures",
+   "trusted": false
+  },
+  {
    "id": "d2e2fabcb1ee",
    "title_orig": "Siegen: Tausende demonstrieren gegen Schließung von Stahlwerk - Panorama - SZ.de",
    "title_de": "Siegen: Tausende demonstrieren gegen Schließung von Stahlwerk - Panorama - SZ.de",
@@ -4945,6 +6230,24 @@
    ],
    "countries": [],
    "snippet": "Siegen: Tausende demonstrieren gegen Schließung von Stahlwerk - Panorama - SZ.de"
+  },
+  {
+   "id": "a875633a7239",
+   "title_orig": "Progrès ou mimétisme : Quand la Tunisie moderniste pratiquait déjà l’économie circulaire et l’innovation frugale",
+   "title_de": "Fortschritt oder Mimikry: Als das modernistische Tunesien bereits Kreislaufwirtschaft und sparsame Innovation praktizierte",
+   "lang": "fr",
+   "source": "Réalités Magazine",
+   "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQdmpwSVFSMWxmNFBON08tSXYzTTFWcHBJcHRoZDR3S3BxNDh1M3RSaDhOb1l6VUw4U093MGV2UFlIemp2U1BDNGFYSVVEX2dabF9YMjBpNkVXUUx3a1ZZa3ByTlBhbmJ0bGpKYy1meGFBa28ybWIxVDh1VnRZZkFnVUx0ZTNTUk1JbFlmTFljRG5NSE1UczA5QzBMa2ZOSGg5ZzBERFY0UzZYMmJzQXRkMGp3SXFDQQ?oc=5",
+   "published": "2026-11-07T13:22:15+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TN"
+   ],
+   "snippet": "Progrès ou mimétisme : Quand la Tunisie moderniste pratiquait déjà l’économie circulaire et l’innovation frugale",
+   "trusted": false
   },
   {
    "id": "5da0302f5507",
@@ -4979,6 +6282,24 @@
     "IL"
    ],
    "snippet": "Nahost-Konflikt: Schweiz soll gewalttätige Siedler sanktionieren"
+  },
+  {
+   "id": "ff89bd1b5ed7",
+   "title_orig": "Tunisie-Libye : eau, énergie, commerce et santé au cœur des priorités bilatérales",
+   "title_de": "Tunesien-Libyen: Wasser, Energie, Handel und Gesundheit im Mittelpunkt bilateraler Prioritäten",
+   "lang": "fr",
+   "source": "La Presse de Tunisie",
+   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOMTJjUnBiMzVXbjliU2ZSY2pzNjVFMGVFd0h5LTE0UGtJUy1sZFhIVmxoUkd2LXAwVkdvM3VYTE9pbktKbS1tOW5UamotTnlJU2lYSnJ6bFFXWENtS1dxNUhFRFM3aFA5MkNlal94Y0ZBTjZGUklBVl9ORVhaSEUycm5Ja19Ubjg4ZWRJR3dMWVo0cjJIM2o1QjBpNHpyYm1qSEh3aUhIbEIwV2xrVUpFVGhMczE?oc=5",
+   "published": "2026-11-07T10:18:05+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TN"
+   ],
+   "snippet": "Tunisie-Libye : eau, énergie, commerce et santé au cœur des priorités bilatérales",
+   "trusted": false
   },
   {
    "id": "3fa3ed0c88c8",
@@ -5056,6 +6377,24 @@
    "snippet": "ArcelorMittal will keep the Kryvyi Rih steel mill by selling off its metal inventories"
   },
   {
+   "id": "41637096a158",
+   "title_orig": "Israel’s Economy Defied Three Years of War. Now the Bill Is Coming Due.",
+   "title_de": null,
+   "lang": "en",
+   "source": "WSJ",
+   "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNbGRnWnNOWXFhZUNHRlQyQWhIdnh2V3dPeHphdXl0Ym1reUxVOTVwbUQ5VXRiU24wdjRYYkVsaFY1MmRXSm4wN3F6QjVHc3ROTXVINlNScERIeGF4VDVPeHRTRHpQS21zYnRobllXcHliVWllWUxYeW1WRkFlbTNGcDVxbXU4eWNSVloycDdHZWdsdWhaVnlKM2dGa0JlTGNsaHNNM0JFd1JCLWkwM2dpYWQxcWRoUQ?oc=5",
+   "published": "2026-11-06T18:15:55+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "IL"
+   ],
+   "snippet": "Israel’s Economy Defied Three Years of War. Now the Bill Is Coming Due.",
+   "trusted": false
+  },
+  {
    "id": "477c96003fc6",
    "title_orig": "CIRES Technologies and NVIDIA AI Factory to power smart ports and smart cities",
    "title_de": null,
@@ -5101,6 +6440,24 @@
    "countries": [],
    "snippet": "Western European scrap prices decline",
    "trusted": true
+  },
+  {
+   "id": "0ff14d8a0161",
+   "title_orig": "Bakan Bolat: Türkiye yılda toplam 1.3 milyar dolar ihracat yapıyor",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Bigpara",
+   "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNOU9QZnBwX0VidlFYMkVEdFhtVnFwdi1mTWxkUWhPTVRfelZoYm9XWmtNWGpzaEl3ajVwdDlUMF92Q2xpaU5QcmlLenAwUUNDbWw3TFdlTXp3cl94RGs0VjA4TU5CZnlzem1qcjlKejlGS1N5T2l4YzRFcU1pSVlyRHRyYjh1UGJmeDE4TUNyRmx0bUIxVW9PSmt2Y1RlWXJ3eEl5SFFzZG1sa25BN0xhRHZZeXlBUEUyM1lmMVFaLTJLUGRqVWl3eFIxS0xUOFdMSGV0Mw?oc=5",
+   "published": "2026-11-06T15:00:25+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Bakan Bolat: Türkiye yılda toplam 1.3 milyar dolar ihracat yapıyor",
+   "trusted": false
   },
   {
    "id": "5353fa634e49",
@@ -5165,6 +6522,24 @@
    "trusted": true
   },
   {
+   "id": "9b281e1cbd02",
+   "title_orig": "Le Maroc ouvre des usines, mais sa facture d'importation s'alourdit de 103 milliards de dirhams",
+   "title_de": "Marokko eröffnet Fabriken, aber seine Importrechnung erhöht sich um 103 Milliarden Dirhams",
+   "lang": "fr",
+   "source": "Bladi.net",
+   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNbF81T09SQTJadEE0d1ZYcGIzdnRvMWZLZlRRaTl6NFktbFlTUjB6SmluTXBrMGxBSDFaLWV5dGxLTkFTVnFqVlJXTjJrV0VHUGNvUDN0ZllFRWJreGNVU0NET3kyazd1c1FhY21JMWVxeEV3bnFDWVJKUUZ0LWFXeTJ2aTBtVnhxQ0FOT0R5WVdSbnduRXpRMFZhWXlqM2dF?oc=5",
+   "published": "2026-11-06T14:00:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "MA"
+   ],
+   "snippet": "Le Maroc ouvre des usines, mais sa facture d'importation s'alourdit de 103 milliards de dirhams",
+   "trusted": false
+  },
+  {
    "id": "d606ce3f1c51",
    "title_orig": "Le Maroc inaugure le premier terminal à conteneurs de Nador West Med",
    "title_de": null,
@@ -5193,6 +6568,42 @@
    ],
    "countries": [],
    "snippet": "Cape Town container terminal performance improves as vessel waiting times fall"
+  },
+  {
+   "id": "4ba2233c237a",
+   "title_orig": "Tunisie : à El-Amra, les migrants subsahariens pris au piège d’une économie de la violence",
+   "title_de": "Tunesien: In El-Amra sind subsaharische Migranten in einer Wirtschaft der Gewalt gefangen",
+   "lang": "fr",
+   "source": "APAnews - Agence de Presse Africaine",
+   "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPLW1YX0diMHQ2WHZtekI4MGpmckVlZFJfQVRqaTljUFR5M1kwLWs4LThRdHdJSndRajhoUG1iNk1oSkZWRXlrNldPcmctRUVQRDZDY3NmS3B1bGVNdEdvek9kLUUzQ3VUaWZ3RzlLOFlJdTJia0g4cDQwa0pWY190WHFQU0NxRUFNRjZ0WDV4LTUwa3ZFQ2JMMmR2RWZDeVhhU3pmelAyUS1qZDRtTXdSX093OGR6bWdWamc?oc=5",
+   "published": "2026-11-06T12:59:26+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TN"
+   ],
+   "snippet": "Tunisie : à El-Amra, les migrants subsahariens pris au piège d’une économie de la violence",
+   "trusted": false
+  },
+  {
+   "id": "63683649a84a",
+   "title_orig": "Un expert | La Tunisie accuse un retard dans la transformation numérique et l’économie verte",
+   "title_de": "Ein Experte: Tunesien hinkt bei digitaler Transformation und grüner Wirtschaft hinterher",
+   "lang": "fr",
+   "source": "Kapitalis",
+   "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPUjJsamZsUnhwNkxROU0tX0s5TFNMckstbDJ6dWtvbU14YUFsOTZZNnhIdmo1VlVJb1ZOUlpSR2E3a2hqYkdWTEEyalVWaDJTQWVBeUx4cFRfWWxIWnNCdGZPOE01VktYclV6OEc1eENGa3Y2RGlWelMzd2lUaThhRzMxSHpUaTY1UkxBSkR4S2dHM2xTaHg1TDFDOVVydnlNWDg2V256V3FLUjhKYk5VTThRU2lPZDZ2VmhJRkh5SURXUGZUcTlOaXB3Yw?oc=5",
+   "published": "2026-11-06T12:59:26+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TN"
+   ],
+   "snippet": "Un expert | La Tunisie accuse un retard dans la transformation numérique et l’économie verte",
+   "trusted": false
   },
   {
    "id": "29595ff2ad42",
@@ -5243,6 +6654,42 @@
    "trusted": true
   },
   {
+   "id": "9c62fff90a15",
+   "title_orig": "Kan Nederland zonder KLM? 'Gevolgen voor economie én passagiers beperkt'",
+   "title_de": "Können die Niederlande ohne KLM? \"Konsequenzen sowohl für Wirtschaft als auch für Passagiere begrenzt\"",
+   "lang": "nl",
+   "source": "NOS",
+   "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPX3lSY1RocjlVT2hYUmtyeEFTYkIxSllUb2tabG5aX2lIOVlCYlBaNFlzYktyRWc2ak5XY2dSM0VsMWFrZUU4d2hEQ05qOW1Fd3ZUYlZ1bzhTU090VVFFRm1LVDU0MEYwNUwyRFlGUGZBNkxSWWw5Q3VzdE9TeEU1ZVNELTBmazBkS1loVHIyY3pzWEhJTGRISmYzTlluaTZvREctRGJPQngyZ3FYYmZN?oc=5",
+   "published": "2026-11-06T11:05:32+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "NL"
+   ],
+   "snippet": "Kan Nederland zonder KLM? 'Gevolgen voor economie én passagiers beperkt'",
+   "trusted": false
+  },
+  {
+   "id": "a46374e2b250",
+   "title_orig": "Streit um Spritpreisdeckel: Wirtschaftsministerin Reiche warnt vor Versorgungsengpässen",
+   "title_de": "Streit um Spritpreisdeckel: Wirtschaftsministerin Reiche warnt vor Versorgungsengpässen",
+   "lang": "de",
+   "source": "Business Insider Deutschland",
+   "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPZm90bWhEend1SWpnUm5SbVVsLU9sSlgwenZEaEpFZGd6T2c1Uml0dUhCelBpd3VPNVAwRDdsNFNxejdrdTZZRXdSY2Q5b2o2bWVWeUdVNy1ibzNOUXJCR2dMUFVVMEtFUUkwYlhrWlJ3akg4emhTMFVDTVZGaUI4Z2tudlpLUUpOaEhxZWF1MERGV3FaYmYzVVh5S2pmUjJWOWVRZkd2NGVZb3lUQ1hjc2tiLUxfOF9WUkZpTkFqQS1oTmEydXBubG9B?oc=5",
+   "published": "2026-11-06T11:01:42+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "BE"
+   ],
+   "snippet": "Streit um Spritpreisdeckel: Wirtschaftsministerin Reiche warnt vor Versorgungsengpässen",
+   "trusted": false
+  },
+  {
    "id": "dcb2686589a3",
    "title_orig": "3.000 mygales dissimulées dans des chaussettes interceptées par la douane à Lima",
    "title_de": null,
@@ -5260,6 +6707,24 @@
    "snippet": "3.000 mygales dissimulées dans des chaussettes interceptées par la douane à Lima"
   },
   {
+   "id": "d1ace1df917c",
+   "title_orig": "Wird der agentische Handel zur Bedrohung für große Onlinehändler?",
+   "title_de": "Wird der agentische Handel zur Bedrohung für große Onlinehändler?",
+   "lang": "de",
+   "source": "FashionNetwork France",
+   "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQaU92TzMzaWFYSGlLRW93S2N5N1FrU1duTVdwcmFtX1NvdExLOW9fSGtaVFl4QjhGVlptb3o0N1NBV3ZFb2JxdGhmNzlTTVg1T2VBcWU4TXZNeERQNDZtd0U0R2JmYjFsNDg2NW5RWXVlSkNibWgtYWlGMkkzbTNXWDM5OXlxMUxRZnBXcTNPQTJQLWxtcjBUZ2VOVFJ4UDJOb2NDZEd1N0FPLXlwdklQTXBIY1hLV3lXODlqUA?oc=5",
+   "published": "2026-11-06T10:52:11+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "BE"
+   ],
+   "snippet": "Wird der agentische Handel zur Bedrohung für große Onlinehändler?",
+   "trusted": false
+  },
+  {
    "id": "a22311344c14",
    "title_orig": "APM Terminals warns port expansion risks shifting congestion inland",
    "title_de": null,
@@ -5274,6 +6739,42 @@
    "countries": [],
    "snippet": "APM Terminals warns port expansion risks shifting congestion inland",
    "trusted": true
+  },
+  {
+   "id": "52587dd84372",
+   "title_orig": "Diplomatie économique : lancement officiel de la Chambre de commerce maroco-danoise à Copenhague",
+   "title_de": "Wirtschaftsdiplomatie: Offizieller Start der marokkanisch-dänischen Handelskammer in Kopenhagen",
+   "lang": "fr",
+   "source": "Maroc Hebdo",
+   "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNNGdVcUFJa0JKMXBsSnpObjhBZ2RlVTdfT0ZBSm1TSDlVeWxVUmZnSWE1NU5iQnA2U3BzVUdZZE1EOFI3amdRRDlrR2lNSXNaclRwSG5WYzNiUDVWdkpqQnpTSTRYUU1QMDdQYlNUdEsyRFdCNE9FOEszSGtvQVNvQW9aTXNFTElLWVQtU01mbUJNTlhhbGphR3Y1UTZaNDdlSF93VUMzblJiblBMMmdFZEVWMkJaMFpqekt1WDU0TVFmV0dURFBYcmJ3?oc=5",
+   "published": "2026-11-06T10:21:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "MA"
+   ],
+   "snippet": "Diplomatie économique : lancement officiel de la Chambre de commerce maroco-danoise à Copenhague",
+   "trusted": false
+  },
+  {
+   "id": "aed2856952ad",
+   "title_orig": "Commerce parallèle : l’autre frontière",
+   "title_de": null,
+   "lang": "fr",
+   "source": "La Presse de Tunisie",
+   "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBVWXdDc0lmbFRtUXIydl83RHExb2xmZk9BaVoyUGtiZW5ZU3FodWN0S2doTEJFVkhZVmQ4WG12QlREVndXNXhWWU44X05SblNObUxTbkVLUmU0a3VlME16WkVYMW5qREE1cTlWenBYUG5tMFZ5SV9FNnlORQ?oc=5",
+   "published": "2026-11-06T10:18:49+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TN"
+   ],
+   "snippet": "Commerce parallèle : l’autre frontière",
+   "trusted": false
   },
   {
    "id": "b5566f18098b",
@@ -5308,21 +6809,41 @@
    "trusted": true
   },
   {
-   "id": "af4a68d88911",
-   "title_orig": "Slovenia cancels all measures against Israel, Czech Republic blocks sanctions on Ben-Gvir",
-   "title_de": null,
-   "lang": "en",
-   "source": "Ynetnews",
-   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE11OHRSelpvMno2Z2Y4a003WFRqbFNrRWgtZmJ1MjVMV2J4TE9DOGd3Y2lyTWd4aEZueTlPR0JpekloOWJ0OF8tQXJsRmRjOVN1eXE4MXhkVUU?oc=5",
-   "published": "2026-11-06T09:47:00+00:00",
+   "id": "18c78a5d9dc7",
+   "title_orig": "EU-Himbeerimporte leicht rückläufig – Marokko wichtigster Lieferant",
+   "title_de": "EU-Himbeerimporte leicht rückläufig – Marokko wichtigster Lieferant",
+   "lang": "de",
+   "source": "Fruchthandel",
+   "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPZUlsSlg3MlRlUWgxSTZ4TE5ZMWYxNVVRQUtRaE1UWWZ4Q2ZXNlVSQWRLREF6Wm56aXBnMG9fbG9RaUtWUWdYc19Jd2hXNnNITVZuU2l5dzgzSDdtR0pndHRCUmFON1ZnZEVnYXNzZ0pOcWF6R0ZqUVhqalFZaDA4VDdrU3VVMzM3TnRPWUUwUVBlVlloYV9JSWctX2xhZi1wVkE?oc=5",
+   "published": "2026-11-06T09:12:55+00:00",
    "rubric": "laender",
    "rubrics": [
     "laender"
    ],
    "countries": [
-    "IL"
+    "MA",
+    "NL"
    ],
-   "snippet": "Slovenia cancels all measures against Israel, Czech Republic blocks sanctions on Ben-Gvir"
+   "snippet": "EU-Himbeerimporte leicht rückläufig – Marokko wichtigster Lieferant",
+   "trusted": false
+  },
+  {
+   "id": "e7d28d6312c4",
+   "title_orig": "Türk savunma ve havacılık sanayisi ihracat başarısını kalıcılaştırdı",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Anadolu Ajansı",
+   "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOTEd4Z2V2SGNhVkFPMzNlaFlFZlhZS1VNNTAzLXY3NmpDN0s4ZWh6YzFlYk9iNThtVEhScU41WUJ2ZVA0VS1LQUNraUpDc01uRmlzZldRdFRZUTJacHM5YlVSdDRyZ2wwOEJ3QlBhbHM3T0tnalJ2TDdIZkp5RkdLbDVkNzZhZDQtZWxzOUJwbXNJb1FKREhrWldTQXhKVjh3ODdNZTZWd25JZ2ZCV1FxYzUtcTRYemZN?oc=5",
+   "published": "2026-11-06T09:03:06+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Türk savunma ve havacılık sanayisi ihracat başarısını kalıcılaştırdı",
+   "trusted": false
   },
   {
    "id": "f991c1fc39c5",
@@ -5526,6 +7047,24 @@
    "snippet": "Guangdong zinc: Zinc price center declines, downstream restocks small volumes [SMM midday review]"
   },
   {
+   "id": "b3b621291232",
+   "title_orig": "Der Diesel-Deal von Trump und Putin zerfällt: Sanktionierte Tanker drehen Richtung Brasilien und Algerien ab",
+   "title_de": "Der Diesel-Deal von Trump und Putin zerfällt: Sanktionierte Tanker drehen Richtung Brasilien und Algerien ab",
+   "lang": "de",
+   "source": "metla.mk",
+   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5MUG16T3g1blFWR2o1RDROVjJUY1BOczgwN3JXa2dHdHRPbTZIZHNnYktMTGJIMllpbGFKc2JCdlpmSnhKS0FzVUYxaXNqbUdLMjJpMmNHZktrelpjdUtuanQ1SkdzNnlwRTdZaE8tTHdTbTdJUTFzOQ?oc=5",
+   "published": "2026-11-06T03:52:19+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "DZ"
+   ],
+   "snippet": "Der Diesel-Deal von Trump und Putin zerfällt: Sanktionierte Tanker drehen Richtung Brasilien und Algerien ab",
+   "trusted": false
+  },
+  {
    "id": "aa164952ab63",
    "title_orig": "Adani Ports agrees $2.87bn deal for European terminal operator Evos",
    "title_de": null,
@@ -5708,6 +7247,24 @@
    "snippet": "Sault's steel mill stands on guard for Canada"
   },
   {
+   "id": "aff44e29ae60",
+   "title_orig": "İhracat Haberleri: Türkiye İhracat Rakamları ve Dış Ticaret",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Sanayi Gazetesi",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE44cnJoQ1FsX0ZINlROUTgwUjBEcVpIb3N1UmEtU3E4UDN6dFdCYlpKVUFFLWV2THBSa05GOEltQ2s3M1diTHZOYnVXekZDeThZZ0txSmhtVUQ2VXc?oc=5",
+   "published": "2026-11-05T19:00:32+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "İhracat Haberleri: Türkiye İhracat Rakamları ve Dış Ticaret",
+   "trusted": false
+  },
+  {
    "id": "a0899b8bfc68",
    "title_orig": "Nickel price leaps to 5-week high on Indonesian crackdown; copper hits 3-month low",
    "title_de": null,
@@ -5723,6 +7280,24 @@
    "snippet": "Nickel price leaps to 5-week high on Indonesian crackdown; copper hits 3-month low"
   },
   {
+   "id": "4cb1c6417712",
+   "title_orig": "Commerce avec l’Afrique : l’Algérie s’apprête à inaugurer une zone de libre-échange à Tindouf",
+   "title_de": "Handel mit Afrika: Algerien bereitet sich auf Eröffnung einer Freihandelszone in Tindouf vor",
+   "lang": "fr",
+   "source": "TSA - Tout Sur l'Algérie",
+   "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPdV9YSkh5YjZtYmZUQW9LZEx2MGRnSUptZ0RZMVJjVm5QQTJyTWRuOUZ1eDlNNnJEYmtydW8taE1SQS1nbkt4bHJpZUVaNGY4TDU1VmJ6d2JROUgyZTdHeUszb2Y4MnNqWGIyZFlQVXBaaVRINUJ1V24ybUlCa2h1QVRSeXpZTGRpWjZ1NGZjQUl4OWNLRXQ2SzhLdVdwcWNySG5lOFFmY1ZSd2hMNTNRR29PSTcyM0cy?oc=5",
+   "published": "2026-11-05T17:40:19+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "DZ"
+   ],
+   "snippet": "Commerce avec l’Afrique : l’Algérie s’apprête à inaugurer une zone de libre-échange à Tindouf",
+   "trusted": false
+  },
+  {
    "id": "57599a327ef3",
    "title_orig": "Public gets chance to speak on proposed largest steel mill in US",
    "title_de": null,
@@ -5736,6 +7311,24 @@
    ],
    "countries": [],
    "snippet": "Public gets chance to speak on proposed largest steel mill in US"
+  },
+  {
+   "id": "0e6fc6cdb0b1",
+   "title_orig": "Emploi public au Maroc : l’État recrute, l’économie attend",
+   "title_de": null,
+   "lang": "fr",
+   "source": "EcoActu.ma",
+   "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBNU0NuZ2pSc1hUMW1rY01jYnNYUWlpTXowSUx4U1hYaUtSeVlqNmdFc2t4XzFDTkJPTXA4MzR3UGJjM0dvUXlpWFdIc1YwdXpwNTVsM0tEZmJBelIybDdURXNPWjhybjl3QVo0OTJCWXZxcmpaN3dMd3hMRVBTdw?oc=5",
+   "published": "2026-11-05T16:04:11+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "MA"
+   ],
+   "snippet": "Emploi public au Maroc : l’État recrute, l’économie attend",
+   "trusted": false
   },
   {
    "id": "5a61f37fe21b",
@@ -5802,21 +7395,22 @@
    "snippet": "Morocco opens first Nador West Med container terminal"
   },
   {
-   "id": "c6be1a19f419",
-   "title_orig": "UK Jews urge Israel sanctions reversal after House of Lords vote",
+   "id": "b08bbf4e705c",
+   "title_orig": "En Tunisie, dans les camps de migrants d’El-Amra, une économie de la survie abandonnée à la violence",
    "title_de": null,
-   "lang": "en",
-   "source": "JNS.org",
-   "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOTnctMkNKUXdQUThzbjNhUWYydEdwbmlhV3FOY2F1cG5QQlFoVWtKUmNOYzkwVEhPZ18xVVRIV0RMTGxuYTRma1NvOHp4blMzN1VmZk1zbHcyY3FVSVJzamRKZUFEMU5aMTc2em5HeXl6Z0FvR3lQM25ITjlqZ1lOTTAzUTN5OTBfLTZkMWs1dER6OUNvRWstWE9Ncw?oc=5",
-   "published": "2026-11-05T12:42:42+00:00",
+   "lang": "fr",
+   "source": "Le Monde.fr",
+   "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxQRGVzQlZFVzNaRHVuMVlLYUwtRWhyWUlwMDRETHVWOVNQWk5OdFFFZEZOVmNCUlVLakVtZ09RNmxSLVExdzR2NEI1aDNJN09rOFpzT2pzbW5DbFp1SFlkSjk1WGo2TF9hVk1JTG5NLUFWeEYyU2libDZrWXVfTm82YV9oUE5IdVZlWFJrcm5UOGRvZWZpSkJWbUJfdWtjWkV5RTRyVHI1aHhDYlM1N3pDV2l4bkJDQ1VhejA2Znp5ZnFhcktOZnJiTmkydG5Qc2Y3RW9Gcl9OTWM2eWpNNzQtR2drZWNxdnRnQUp3TjdEdmpjVDNuckpuc3dR?oc=5",
+   "published": "2026-11-05T13:00:20+00:00",
    "rubric": "laender",
    "rubrics": [
     "laender"
    ],
    "countries": [
-    "IL"
+    "TN"
    ],
-   "snippet": "UK Jews urge Israel sanctions reversal after House of Lords vote"
+   "snippet": "En Tunisie, dans les camps de migrants d’El-Amra, une économie de la survie abandonnée à la violence",
+   "trusted": false
   },
   {
    "id": "1108ec72198a",
@@ -5851,6 +7445,24 @@
    "trusted": true
   },
   {
+   "id": "2b6c58104a6c",
+   "title_orig": "Chiffre d’affaires du commerce de détail",
+   "title_de": null,
+   "lang": "fr",
+   "source": "Statbel",
+   "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQcGdST0VQdUtTaFhwRDZldXJZS3JHVkZFU0VZc19qRWFpNFZ6ajlKXzE3N3phQXhMQzROZWk1cXFWQUs4WWVBLVFQUk9xMERHdnhKZW9ScGs4RkxiUzFRRHAtQy1BQncyYmR6R1NrTXVuNG82a1A5S1o4WFZBOHI2ZnZVNlAwWXAxTVJzOVE0QVY5Ty0yUXEzVnNQRDM1RFVCUXk3NkxRMmV5cDRSMjVXNmlOMlAzSHBMSEE?oc=5",
+   "published": "2026-11-05T12:00:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "BE"
+   ],
+   "snippet": "Chiffre d’affaires du commerce de détail",
+   "trusted": false
+  },
+  {
    "id": "57ff9104e73f",
    "title_orig": "LA port truckers face 16 months of detours as key bridge closes",
    "title_de": null,
@@ -5865,6 +7477,24 @@
    "countries": [],
    "snippet": "LA port truckers face 16 months of detours as key bridge closes",
    "trusted": true
+  },
+  {
+   "id": "b8bbfb5b44b0",
+   "title_orig": "Diversification économique : Le FMI souligne les progrès réalisés par l’Algérie",
+   "title_de": "Wirtschaftliche Diversifizierung: IWF unterstreicht Fortschritte Algeriens",
+   "lang": "fr",
+   "source": "El Moudjahid",
+   "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPYUxTa2hMd1locXNhVzJnaGJBcHlNR1drWkFER1Z4Wm1IRWZqZFJGOGxnZDdoVElzMTl0Q09pRUFlSXI5RUtRWFhhYTBBOVhPSFRCQjJzMGY2Sm9IZ1Y3bWZlekdHTzlTVlR4TXNnRW1DSE10R3JoV2psTGlQYk9CQXRvUTdfSnNuMGxKeC1hM3lFRDNDeHAtVU8takFodmZYREdldDZwNjd0NW1nTDk3cjdBZzA5NVB6eVRIU283RUFQQQ?oc=5",
+   "published": "2026-11-05T11:34:27+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "DZ"
+   ],
+   "snippet": "Diversification économique : Le FMI souligne les progrès réalisés par l’Algérie",
+   "trusted": false
   },
   {
    "id": "ef55323b7402",
@@ -5897,6 +7527,24 @@
     "IL"
    ],
    "snippet": "US sanctions Indian and Turkish firms accused of helping Iran"
+  },
+  {
+   "id": "95891e3de50b",
+   "title_orig": "Turkey economy to grow 3.3% this year, below government's target, minister says",
+   "title_de": null,
+   "lang": "en",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQU2FGYWk1VDlLeXFOUmJoVVJ0VTV6MGZPS2U2NkNQcFhVWnJJN3VrZXhLRzlLOTBqLU1LUWVxOUtQMEJuMWEyc1A2VVlXRzdKMzc4RzVNUGhoVEN1eElMcWFob3BrZ0VsYVl1bmlQdUlUVzR0NGlPQzlFUVlwVndGY0FNck5aZVNCY2lfY0dKQTlFSmZjbjNhNWotTzRGUUR2VURlWkpnbnBUaUdGWWpUNnFweFdvenByY21oTlRmaHRyaFJiRV9sQlVGNzl3cm5lbTUwRG1mS2pmVFdpZThF?oc=5",
+   "published": "2026-11-05T09:44:20+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Turkey economy to grow 3.3% this year, below government's target, minister says",
+   "trusted": false
   },
   {
    "id": "b88318880116",
@@ -5932,6 +7580,24 @@
    "snippet": "Hyundai Tunisie décroche le label Opérateur Économique Agréé auprès de la Douane tunisienne"
   },
   {
+   "id": "2813504698ec",
+   "title_orig": "Prix des carburants en Belgique: le mazout de chauffage baisse fortement, une économie de 71€ pour 1.000 litres (infographie)",
+   "title_de": "Kraftstoffpreise in Belgien: Heizöl fällt stark und spart 71 € pro 1.000 Liter (Infografik)",
+   "lang": "fr",
+   "source": "DHnet",
+   "url": "https://news.google.com/rss/articles/CBMimgJBVV95cUxNWkpydlFWbGx5RFA3b1FqRUZCZ01FOE5IS0hPaDA0d2lUeUlMR1VJY2JldEdodHVfdWpDM0dZdkpyREZlQ3NoX18xa0pHTkRvekNpU2FMUGVFVkhrWTAwX3Q5aWYzZlR1S0s1c1EzUFdPY2FycmpJS216VlVMSWo3VnNQWGFsZ2h5LU5PbTl4UU5CcGJJMkVLZnMzX0NfQzVFcWdmdi1HYkRYN3NFc19zZzdNT0dLaGVWeDJxNkJ0bTQzdjB5VkJrdFVEa19NRi0yVlJ6bEs1Q185WEEtcjEyczM0MUZqY3NIVHdJTmNLazhCTllnVC1yd3h5Ml85aHFtUS1XTEQzNnk5YnB5QUNMSVRzUzljMnYxN2c?oc=5",
+   "published": "2026-11-05T08:49:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "BE"
+   ],
+   "snippet": "Prix des carburants en Belgique: le mazout de chauffage baisse fortement, une économie de 71€ pour 1.000 litres (infographie)",
+   "trusted": false
+  },
+  {
    "id": "088ac161882c",
    "title_orig": "China-built Mongla Port expansion project breaks ground in Bangladesh",
    "title_de": null,
@@ -5947,6 +7613,24 @@
    "snippet": "China-built Mongla Port expansion project breaks ground in Bangladesh"
   },
   {
+   "id": "e0f72e94d115",
+   "title_orig": "Conjunctuurbeeld Nederland november 2026: economie dendert door",
+   "title_de": "Conjunctuurbeeld Nederland November 2026: economie thundert Tür",
+   "lang": "nl",
+   "source": "Rabobank",
+   "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNbFFfLXNRd09VaWZVZFpHb2dETGFuVDRraXUtTmFIRWx2LVdqZ2F2dy04ajJYYWl0UzNOSW1QU3MxQzM3ZGliVUx5M3NOYnhVN3IzMHVJazJPVFFHcUozSlBqSXgxMmlKbi0tUE5QaEltMTZMS3JzcnRuOGZabGZlWUFlY2FWUy1fR0pnSE5CSlNFOHdmZ2hGZElkcXBDbFc2XzZqTWpJdw?oc=5",
+   "published": "2026-11-05T08:07:39+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "NL"
+   ],
+   "snippet": "Conjunctuurbeeld Nederland november 2026: economie dendert door",
+   "trusted": false
+  },
+  {
    "id": "fbb75b305526",
    "title_orig": "\"November Steel Mill: Cold & Hot-Rolling Production Schedules See Month-on-Month Decline\"",
    "title_de": null,
@@ -5960,6 +7644,24 @@
    ],
    "countries": [],
    "snippet": "\"November Steel Mill: Cold & Hot-Rolling Production Schedules See Month-on-Month Decline\""
+  },
+  {
+   "id": "2448161c5437",
+   "title_orig": "ABD, Türkiye'deki Fugo'yu altı İran hava yoluna hizmetle suçlayıp yaptırım uyguladı.",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Son Dakika",
+   "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNMWx3cjhjTzJjSFp3SDJOMlJkZUtOWjY1bzVwN1ZNcFlFUWJNb2pJTTQ3bGxhaExIRThxMTUtc3RtQUZJV1dhZXNoWW4yLWxiTlNUclpzU2tXR002d0hqZlhJSzBlS2Z2dU5ZRlBkNHVVYUJJUlIyYm5FSFlRWTBWeVRxZkt6TlhnY2dOZWZzX1kyREt6dTVlT2toSW1jQUHSAZwBQVVfeXFMTVVUQWtqRkduLWthV2djTnU5ZDk0VjJNem40aEZkS280MzhKNnpxaTNpUjVUZE1OaHBXei1nT3d3SEVpZFpXRnJWRU1VUjRJMWpaZUQ4bERvcEI4VGJiS0pjV0V2dnJEUGJ1dG5Sem9xaTFpcjVqb3ZOczNNZk1Rc3NTQ1F2d0dfeWNXZDlDTUxZM3JoTUxMaWNWTEZR?oc=5",
+   "published": "2026-11-05T07:34:14+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "ABD, Türkiye'deki Fugo'yu altı İran hava yoluna hizmetle suçlayıp yaptırım uyguladı.",
+   "trusted": false
   },
   {
    "id": "3bd0b7e6e46d",
@@ -6029,23 +7731,6 @@
    "trusted": false
   },
   {
-   "id": "f667cacfd902",
-   "title_orig": "'Illegale afslankmiddelen uit China glippen langs Nederlandse douane'",
-   "title_de": "\"Illegale Schlankheitsvermittler aus China rutschen an niederländischen Bräuchen vorbei.\"",
-   "lang": "nl",
-   "source": "Hart van Nederland",
-   "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPZWVLbUNDbVVadk5jenhHRk9KZkRQenFsdW11QVE3T213VXplOFFyeTBaX3Rsa1dkNU14MXFNVHBWMmZaVzUzTWs3ZlNfWnRCQWRYVFlyZE9yMDNqVTlxOGlVallfNUV2VDZxeXpYenFMcGZhWUR6dy15R2l0Z2NwMWE2dkFhdVhXaVhZSVAzNlNmVzRBRThiN0FJQjdnTHNXZW5haGVIdGNIZG5pRHhxY2hodGpmajQxLWZoTXR3?oc=5",
-   "published": "2026-11-05T06:34:48+00:00",
-   "rubric": "laender",
-   "rubrics": [
-    "laender"
-   ],
-   "countries": [
-    "NL"
-   ],
-   "snippet": "'Illegale afslankmiddelen uit China glippen langs Nederlandse douane'"
-  },
-  {
    "id": "f1ad2699dcc9",
    "title_orig": "PM launches Tk 4,068cr Mongla Port expansion project",
    "title_de": null,
@@ -6059,6 +7744,42 @@
    ],
    "countries": [],
    "snippet": "PM launches Tk 4,068cr Mongla Port expansion project"
+  },
+  {
+   "id": "91ffb21cbe0f",
+   "title_orig": "Die USA verhängen Sanktionen gegen türkische Unternehmen, die iranische Fluggesellschaften unterstützen.",
+   "title_de": "Die USA verhängen Sanktionen gegen türkische Unternehmen, die iranische Fluggesellschaften unterstützen.",
+   "lang": "de",
+   "source": "Vietnam.vn",
+   "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPNDRGaDBGRkJ6c3RyM01CS19MaEFRYmYzLUZmZkgwYmZjYmJJcXdaSVNNVDRRZ2E3Qi13YmhnejJCWENyYXZLM2U5VTJWYVdOOWUzUEs4V216R051eDhEZXRKRWJxWkVQbnRSZ3Y3a0Q1WWg2RnpUa2xLNXBncDFvOVpIWHgwZW5lbU1Ib2NJQXpZeEN5UjV2V25pOA?oc=5",
+   "published": "2026-11-05T05:42:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Die USA verhängen Sanktionen gegen türkische Unternehmen, die iranische Fluggesellschaften unterstützen.",
+   "trusted": false
+  },
+  {
+   "id": "2dca3c99a6cd",
+   "title_orig": "Was bedeutet Trumps Niederlage für Österreichs Wirtschaft?",
+   "title_de": "Was bedeutet Trumps Niederlage für Österreichs Wirtschaft?",
+   "lang": "de",
+   "source": "ORF ON",
+   "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNQXppZzRkR1J0OXc1bExLcjU2VmdHX2tEd29mc05XSHpwUWtMV1I2UmdHTWlPTy1rYkhEOGpmQS01enNaeWF2ZW9CWEhudGZ0TDByMGJLWVhpUENJM1k0NHVyVUdsMlBKRExTcGc5X3lBRi10Ykw0cDVVYVhYU21QWFNSRU9TMGlPSmxJUXN5OHJCNnRRQng5bUpzZG1pMXBqMFNMOXlqSm5wSGQ4QXN4MTlGSy0tbVdHMGZkQ1AxXzF1ZmpOOGh1WHJHUG1tNlFwVkhjZzFB?oc=5",
+   "published": "2026-11-05T05:38:37+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Was bedeutet Trumps Niederlage für Österreichs Wirtschaft?",
+   "trusted": false
   },
   {
    "id": "d3550ecedaee",
@@ -6120,6 +7841,22 @@
    "countries": [],
    "snippet": "German rebar mills lift surcharges for wire mesh",
    "trusted": true
+  },
+  {
+   "id": "e17ec155ce1b",
+   "title_orig": "QC news: Deere closings, steel mill meeting, Scott County's role in blue wave, election audit and turnout",
+   "title_de": null,
+   "lang": "en",
+   "source": "KWQC",
+   "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPazZtWnZ5ZENPSlgyLXc2NV9zUDZUdUI0SXoyUmlBWHJMS0tIMDBfNnhSV0lJaE02MTNTOHhvX1hwNmtZWnZEZUJWeUVZbTFoaWI1ajVac2lUNVpaY3ZNZmNkUFh6TmFJeXc4enRuOWFtZHoxZ2xjTDVMT2lEWGdPUUh5b3VwU2VOOE50SEY0VVp1cUZhcGtlajY4UlVGbTJmOXkyYklzR0ZYQUVLaDBjZ2IwQVlTYTEwaUJCZWEtNFZ1TXN0eDNNcm9pVTQ?oc=5",
+   "published": "2026-11-05T01:04:00+00:00",
+   "rubric": "industrie",
+   "rubrics": [
+    "industrie"
+   ],
+   "countries": [],
+   "snippet": "QC news: Deere closings, steel mill meeting, Scott County's role in blue wave, election audit and turnout",
+   "trusted": false
   },
   {
    "id": "fdeb95e89b07",
@@ -6217,6 +7954,24 @@
    "snippet": "Browne Seeks Singapore Partnership for Antigua’s Port Expansion"
   },
   {
+   "id": "c0dac9c8be4d",
+   "title_orig": "Tunisie : l’encours des crédits à l’économie frôle les 123 milliards de dinars en 2025",
+   "title_de": "Tunesien: Kredit an die Wirtschaft steht fast 123 Milliarden Dinar im Jahr 2025",
+   "lang": "fr",
+   "source": "La Presse de Tunisie",
+   "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQN3hPNEI1VGhRdjNnbS1OU2wwV3NlOTl4Sk5INHZUZU1BSjBRSk1RTDRGVlFrcTJKVVIyVTJHQjhaYVJrLVV0NXZZUjU5d0JZMUxUTjMtNjZwMzFGVHFSX0NRR1g2emdINkpQUEduWElJYXNsVGM5dmJfQl9jRmFSOW8zeC1xenpTckJINTRwaUp4VlMtQkVWamVNYUhwdlBfSGk4a1BOUldJQWppdGZGcThnNzRQRUZ0T3c?oc=5",
+   "published": "2026-11-04T20:00:50+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TN"
+   ],
+   "snippet": "Tunisie : l’encours des crédits à l’économie frôle les 123 milliards de dinars en 2025",
+   "trusted": false
+  },
+  {
    "id": "c1e1644553da",
    "title_orig": "Dışişleri Bakanlığı'ndan AB'ye Gümrük Birliği çağrısı: 2026 Türkiye raporuna tepki",
    "title_de": null,
@@ -6232,6 +7987,24 @@
     "TR"
    ],
    "snippet": "Dışişleri Bakanlığı'ndan AB'ye Gümrük Birliği çağrısı: 2026 Türkiye raporuna tepki"
+  },
+  {
+   "id": "33b0506077fc",
+   "title_orig": "La ministre du Commerce et du Tourisme reçoit l’ambassadeur du Maroc – Agence mauritanienne d'information",
+   "title_de": null,
+   "lang": "fr",
+   "source": "الوكالة الموريتانية للأنباء",
+   "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5JcHZsOVl6SmhVQ01XUS1ibHdGVlM2Ri1vMFFFcWZNMHRXcUpacEp4cy1ZekNtNVpiQ2w0M3JaYS1hbTU2aUx3Vg?oc=5",
+   "published": "2026-11-04T18:56:05+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "MA"
+   ],
+   "snippet": "La ministre du Commerce et du Tourisme reçoit l’ambassadeur du Maroc – Agence mauritanienne d'information",
+   "trusted": false
   },
   {
    "id": "997215e7281f",
@@ -6298,6 +8071,24 @@
    "snippet": "Violi joins WireCo"
   },
   {
+   "id": "fa0fe2a7d757",
+   "title_orig": "AB 2026 Türkiye raporunu yayınladı: Dış politika ve ekonomi değerlendirmeleri",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Gazete Oksijen",
+   "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNVTVmLXljbG5mVzJwbEpReEhmSkpIa3RzX1dmb0ZzWjh3SlpTRGQ3QndRTlR2RjFZREtudG9XYlZvVFVTbnhmUjZ0MUxySkFSbkItWlR0YjJiMXNrSURLUWRzRlpwVkVkQUM2cElxbEFLX0hfRmZvcHB2c1M3Mmt6bi1qZDAzZHhsTVZ0YlhIaGkzU2RXVUtadlR0c0ZtanAtRUR4ZHk5bHlXX0dSaXhOZGptYWVOQQ?oc=5",
+   "published": "2026-11-04T18:22:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "AB 2026 Türkiye raporunu yayınladı: Dış politika ve ekonomi değerlendirmeleri",
+   "trusted": false
+  },
+  {
    "id": "a9b06d5592e4",
    "title_orig": "US issues fresh Iran-related sanctions, Treasury says",
    "title_de": null,
@@ -6330,6 +8121,24 @@
    "snippet": "Demirden Bakıra İnşaat Atıkları: Hurda Fiyatları Neden Merak Konusu?"
   },
   {
+   "id": "2a1072418eaf",
+   "title_orig": "Port phosphatier d’Annaba : exportation des premières cargaisons d’ici mars 2027",
+   "title_de": null,
+   "lang": "fr",
+   "source": "Algerie360",
+   "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQTldkVE1kNTRHOV8zbjVTRXNfSUpZTzUya2xEX3JkeVZCMWNVUXotNVhyUEl4U1RjY0hGUFdPX3VLa2VhWm9Pd09vSHUwd0tZNkVRVDRxenBVd2I1cVpvbkJ4ajNBMTVDRFotMTB2VmxPaXBsYUQtQlJKX1ZJamQxczhIT1FuWEF5?oc=5",
+   "published": "2026-11-04T17:26:53+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "DZ"
+   ],
+   "snippet": "Port phosphatier d’Annaba : exportation des premières cargaisons d’ici mars 2027",
+   "trusted": false
+  },
+  {
    "id": "f87cbdbf4d07",
    "title_orig": "Acier britannique : un débat alerte sur la saturation des ports avant le CBAM",
    "title_de": null,
@@ -6343,6 +8152,24 @@
    ],
    "countries": [],
    "snippet": "Acier britannique : un débat alerte sur la saturation des ports avant le CBAM"
+  },
+  {
+   "id": "e8e58eba41c2",
+   "title_orig": "Commerce: le ministère annonce une méga-opération d’exportation",
+   "title_de": null,
+   "lang": "fr",
+   "source": "L'Algérie Aujourd'hui",
+   "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxObVJ1Q2hXcklJcl9vWXRyVDlMOUljUDVDdmlZUlc0QWlEZ1JSbzdMLVJYTmgxRF92QjNuSmpRMkJuYUZKZHhicldlQkdCejJGd2ZZZUpaMVAtMHo1RWs4VFhhd0FQcmxfbmFaUk9RXzljbml0V3BxYXhEVXpzVGZCWDlpbnBKMF9IYUdFdl9rcmJNLTBONE93?oc=5",
+   "published": "2026-11-04T16:47:14+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "DZ"
+   ],
+   "snippet": "Commerce: le ministère annonce une méga-opération d’exportation",
+   "trusted": false
   },
   {
    "id": "42aaf374c7dc",
@@ -6377,7 +8204,7 @@
   {
    "id": "57e44df521ba",
    "title_orig": "Op 7 oktober zetten Nederlandse en Duitse politie en Duitse douane, met steun van Europol, 500 medewerkers in. Vijf verdachten werden aangehouden, onder wie een 55-jarige man uit Rotterdam. Hij zou mogelijk betrokken zijn geweest bij de ontvangst en",
-   "title_de": null,
+   "title_de": "Am 7. Oktober entsandten die niederländische und deutsche Polizei sowie der deutsche Zoll mit Unterstützung von Europol 500 Mitarbeiter, fünf Verdächtige wurden festgenommen, darunter ein 55-jähriger Mann aus Rotterdam.",
    "lang": "nl",
    "source": "Instagram",
    "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE10MXB0VHhVOGdicndYNjVHN0FoZlJmWGJsWmdhYlY2WjFZbkxRbnNJQU9LT1IzOXA0ZEQtWU5sZ2pkanhxV21pVWlIZVNVNnMtY3c?oc=5",
@@ -6406,23 +8233,6 @@
    "countries": [],
    "snippet": "Port of Hueneme advances $246 million infrastructure plan",
    "trusted": true
-  },
-  {
-   "id": "402931db1349",
-   "title_orig": "Inspired by UK sanctions on Israel, US Democrats want to work with Labour",
-   "title_de": null,
-   "lang": "en",
-   "source": "Middle East Eye",
-   "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQYURQd2NpLTduelZsNHZXWFlkUVJDNXIxNUdONHpabkVoeUhFRk9iZWJjVjNLekVQTVBuUUJheDFWdVRlNVB3bnM1dzQ0c1VrM1NsX0lpYlRYVktLZ043akd3UExxVFVla2NqT2QteUZOeFM0RkZrMkZZQy1QMVJxdF92UEgzNDU3SGkydUpGbDhva3NUTzF3MWMzdW8zQlJHd2xxVEQ5UVgxdm5DR2FfM0VB?oc=5",
-   "published": "2026-11-04T14:09:00+00:00",
-   "rubric": "laender",
-   "rubrics": [
-    "laender"
-   ],
-   "countries": [
-    "IL"
-   ],
-   "snippet": "Inspired by UK sanctions on Israel, US Democrats want to work with Labour"
   },
   {
    "id": "86043fbdc862",
