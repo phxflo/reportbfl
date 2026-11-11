@@ -178,14 +178,20 @@ def group(key, items):
         i.pop("grp", None)
     if len(live) < 2:
         return 0
-    lines = [f'{i["id"]} | {i.get("title_de") or i["title_orig"]} | {i["published"][:10]}' for i in live]
+    # nach Land und Rubrik sortiert: gleiche Vorfälle stehen dadurch untereinander und werden leichter gefunden
+    live.sort(key=lambda i: ((i["ai"].get("countries") or ["~"])[0], i["ai"].get("rubric") or "", i["published"]))
+    lines = [f'{i["id"]} | {",".join(i["ai"].get("countries") or []) or "-"} | {i["ai"].get("rubric")} | '
+             f'{i.get("title_de") or i["title_orig"]} | {i["published"][:10]}' for i in live]
     system = ("Finde Meldungen, die über DENSELBEN konkreten Vorfall oder dasselbe Ereignis berichten (z. B. dieselbe Explosion, "
-              "derselbe Streik, dieselbe Zollentscheidung) – auch in verschiedenen Sprachen. Nur echte Gleichheit, nicht bloß "
-              "gleiches Thema. Gib nur Gruppen mit mindestens zwei Meldungen zurück.")
-    out = call(key, system, "Meldungen (id | Titel | Datum):\n" + "\n".join(lines), GROUP_TOOL, max_tokens=6000)
+              "derselbe Streik, dieselbe Zollentscheidung, dieselbe Firmenmeldung) – auch in verschiedenen Sprachen und aus verschiedenen "
+              "Quellen. Gehe die Liste vollständig durch; die Zeilen sind nach Land und Rubrik sortiert. Nur echte Gleichheit, nicht bloß "
+              "gleiches Thema. Gib alle Gruppen mit mindestens zwei Meldungen zurück (jede Meldung höchstens in einer Gruppe).")
+    out = call(key, system, "Meldungen (id | Land | Rubrik | Titel | Datum):\n" + "\n".join(lines), GROUP_TOOL, max_tokens=12000)
+    print(f"  Gruppierung: {len(live)} Meldungen geprüft, Antwort mit {len(out.get('groups', []))} Gruppen")
     by = {i["id"]: i for i in live}
     n = 0
     for g in out.get("groups", []):
+        g = g if isinstance(g, list) else (g.get("ids") or g.get("items") or []) if isinstance(g, dict) else []
         ids = [x for x in g if x in by]
         if len(ids) >= 2:
             tag = "g" + min(ids)
