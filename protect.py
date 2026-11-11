@@ -24,14 +24,14 @@ def main():
     out_dir = Path(tempfile.mkdtemp())
     env = dict(os.environ, STATICRYPT_PASSWORD=pw)
     cmd = ["npx", "--yes", "staticrypt@3.5.4", str(PAGE), "-c", "false", "-d", str(out_dir), "-s", SALT, "--short",
-           "--remember", "30", "--template-title", "Der Seil-Report", "--template-button", "Öffnen",
+           "--remember", "30", "--template-title", "Rope Report", "--template-button", "Öffnen",
            "--template-placeholder", "Passwort", "--template-remember", "Auf diesem Gerät merken",
            "--template-error", "Falsches Passwort", "--template-instructions", "Geschützter Bereich",
            "--template-color-primary", "#1a2b3c", "--template-color-secondary", "#6ec6f5"]
     subprocess.run(cmd, check=True, env=env)
     enc = (out_dir / PAGE.name).read_text(encoding="utf-8")
     # Sicherheitsnetz: im Ergebnis darf kein lesbarer Seiteninhalt stehen
-    for probe in ("Top-News der Woche", "Seil-Report</h1>", "data-id="):
+    for probe in ("Top-5 der Woche", "Report</span></h1>", "data-id="):
         if probe in enc:
             sys.exit("::error::Verschlüsselung fehlgeschlagen – Klartext im Ergebnis. Es wird nichts veröffentlicht.")
     enc = enc.replace('<meta charset="utf-8" />', '<meta charset="utf-8" />\n        <meta name="robots" content="noindex,nofollow" />', 1)

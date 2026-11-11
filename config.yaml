@@ -3,7 +3,7 @@
 #  Hier änderst du Themen, Suchbegriffe und Länder. Kein Code nötig.
 # ─────────────────────────────────────────────────────────────
 site:
-  title: "Der Seil-Report"
+  title: "Rope Report"
   tagline: "Marktbeobachtung für Industrie-Stahlseile · Export & Regionalvertrieb"
   retention_days: 21        # so lange bleiben Meldungen im Archiv
   window_days: 7            # Zeitraum der Anzeige ("Woche")
@@ -116,6 +116,7 @@ rubrics:
       he: ["מכרז נמל", "הרחבת נמל", "הזמנת מנופים"]
   - id: markt
     title: "Markt & Wettbewerb – Stahlseile"
+    group: "Markt & Handel"
     short: "Wettbewerb"
     weight: 0.9
     must: 'seilhersteller|drahtseil|stahlseil|wire rope|steel wire|câbles? en acier|câbles? métalliques?|câbles? d.acier|staalkabel|staaldraad|çelik halat|halat|حبال فولاذية|كابلات فولاذية|כבלי פלדה|חבל פלדה|bridon|wireco|teufelberger|pfeifer|casar[^.]{0,50}(seil|wire|rope|cable|câble|cables|kabel|halat|حبال|كابلات|כבל|חבל)|(seil|wire|rope|cable|câble|cables|kabel|halat|حبال|كابلات|כבל|חבל)[^.]{0,50}casar'   # Titel muss eines dieser Stichwörter enthalten (Regex)
@@ -129,12 +130,14 @@ rubrics:
       he: ["כבלי פלדה", "חבל פלדה"]
   - id: laender
     title: "Zölle, Tarife & Sanktionen – Handelsmaßnahmen"
+    group: "Markt & Handel"
     short: "Zölle & Tarife"
     weight: 0.8
     must: 'zoll|zölle|strafzoll|tarif|customs|(?<!\w)dut(y|ies)(?!\w)|douane|gümrük|sanktion|sanction|yaptırım|embargo|antidumping|anti-dumping|quota|kontingent|importverbot|import ban|export ban|exportverbot|einfuhr\w*|invoerrechten|safeguard|schutzmaßnahme\w*|cbam|devisen|currency|capital control|hafenstreik|port strike|dockers? strike|blockade|handelsabkommen|trade (deal|agreement|war|policy|deficit|surplus)|wirtschaft\w*|konjunktur|bruttoinlandsprodukt|\bbip\b|\bgdp\b|inflation\w*|leitzins|zinsen|währung|haushalt|investition\w*|infrastruktur|industrie\w*|economy|economic|interest rate|budget|investment|infrastructure|industry|exports?\b|imports?\b|économi\w*|\bpib\b|taux d|devise|budget|investissement|infrastructure|industrie|commerce|exportation\w*|importation\w*|economie|economisch|\bbbp\b|inflatie|begroting|investering|handel|export|import|ekonomi|enflasyon|büyüme|faiz|döviz|bütçe|yatırım|altyapı|sanayi|ihracat|ithalat|dış ticaret|جمارك|عقوبات|حظر|اقتصاد|תעשייה|כלכלה|מכס|סנקציות|אמברגו'   # Länder: Handels-/Sanktions-/Zollthemen und allgemeine Wirtschaftslage
     terms: {}                # Länder-Suchen stehen unten unter "countries"
   - id: rohstoffe
     title: "Rohstoffe & Zuschläge"
+    group: "Markt & Handel"
     short: "Rohstoffe"
     weight: 1.0
     core: 'zuschlag|surcharge|toeslag|supplément|walzdraht|wire rod|walsdraad|filmaşin|fil machine|cbam|safeguard|schutzmaßnahmen|stahlpreis|steel price|prix de l.acier|staalprijs|çelik fiyat'   # Treffer hier zählen auch ohne Ereigniswort
