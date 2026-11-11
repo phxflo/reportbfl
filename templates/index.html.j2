@@ -168,7 +168,6 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 </div></nav>
 
 <main class="wrap">
-  <div id="trbar" hidden><button id="trbtn" type="button">Titel übersetzen</button><span id="trmsg"></span></div>
   {% if errors %}<div class="errors"><strong>Hinweis zu den Kennzahlen:</strong> {{ errors|join(' · ') }}</div>{% endif %}
 
   {% if charts %}
@@ -288,44 +287,23 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
   });
   applyHid();
 
-  /* Übersetzung übriggebliebener Titel mit der Browser-Übersetzung (Chrome/Edge ab Version 138, Computer) */
-  var bar=document.getElementById('trbar'), msg=document.getElementById('trmsg'), btn=document.getElementById('trbtn');
-  var pending=$('[data-t]'); if(!pending.length) return;
+  /* Reste (falls die Übersetzung im Lauf nicht geklappt hat): stillschweigend mit der Browser-Übersetzung, falls schon installiert */
+  var pending=$('[data-t]'); if(!pending.length||!('Translator' in self)) return;
   var cache={}; try{cache=JSON.parse(localStorage.getItem('seilTr')||'{}')}catch(e){}
-  function save(){try{if(Object.keys(cache).length>1500)cache={};localStorage.setItem('seilTr',JSON.stringify(cache))}catch(e){}}
-  function put(el,t,o){el.title='Original: '+o;el.textContent=t;el.removeAttribute('data-t');el.classList.add('tr')}
-  pending.forEach(function(el){var o=el.textContent.trim(),t=cache[el.dataset.lang+'|'+o];if(t)put(el,t,o)});
-  var by={};
-  function collect(){by={};$('[data-t]').forEach(function(e){(by[e.dataset.lang]=by[e.dataset.lang]||[]).push(e)});return Object.keys(by).length}
-  if(!collect()) return;
-  if(!('Translator' in self)){
-    bar.hidden=false;btn.hidden=true;
-    msg.textContent='Einige Titel sind noch nicht übersetzt. Chrome oder Edge am Computer (ab Version 138) übersetzen sie automatisch.';return;
-  }
-  async function run(withDownload){
-    var needDl=false;
-    for(var lang in by){
-      var o={sourceLanguage:lang,targetLanguage:'de'}, av;
-      try{av=await Translator.availability(o)}catch(e){continue}
-      if(av==='unavailable') continue;
-      if(av!=='available'&&!withDownload){needDl=true;continue}
-      var tr; try{tr=await Translator.create(o)}catch(e){needDl=true;continue}
-      for(var el of by[lang]){
-        var orig=el.textContent.trim(), t;
-        try{t=await tr.translate(orig)}catch(e){continue}
-        cache[lang+'|'+orig]=t;put(el,t,orig);
+  (async function(){
+    for(var el of pending){
+      var lang=el.dataset.lang, o=el.textContent.trim(), k=lang+'|'+o, t=cache[k];
+      if(!t){
+        try{
+          var opt={sourceLanguage:lang,targetLanguage:'de'};
+          if(await Translator.availability(opt)!=='available') continue;
+          t=await (await Translator.create(opt)).translate(o); cache[k]=t;
+        }catch(e){continue}
       }
+      el.title='Original: '+o; el.textContent=t; el.classList.add('tr'); el.removeAttribute('data-t');
     }
-    save();
-    var left=collect();
-    if(!left){bar.hidden=true;return}
-    bar.hidden=false;
-    btn.hidden=!needDl;
-    msg.textContent=needDl?'Für die Übersetzung lädt Chrome einmalig kleine Sprachpakete (ein paar Sekunden).':'Für '+left+' Sprache(n) bietet Chrome keine Übersetzung an; es bleibt der Originaltitel.';
-  }
-  btn.addEventListener('click',function(){btn.disabled=true;msg.textContent='Übersetze …';run(true).then(function(){btn.disabled=false})});
-  btn.hidden=true;bar.hidden=false;msg.textContent='Übersetze restliche Titel …';
-  run(false);
+    try{if(Object.keys(cache).length>1500)cache={};localStorage.setItem('seilTr',JSON.stringify(cache))}catch(e){}
+  })();
 })();
 </script>
 </body>
