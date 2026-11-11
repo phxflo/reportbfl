@@ -42,6 +42,10 @@ def feed_url(q, hl, gl, ceid, days):
             + f"&hl={hl}&gl={gl}&ceid={urllib.parse.quote(ceid)}")
 
 
+def competitors():
+    return [x.strip() for x in os.environ.get("COMPETITORS", "").replace("\n", ",").split(",") if x.strip()]
+
+
 def build_jobs(days):
     jobs = []
     for r in CFG["rubrics"]:
@@ -68,6 +72,11 @@ def build_jobs(days):
             if url not in seen:
                 seen.add(url)
                 jobs.append(dict(url=url, rubric="laender", lang=e["lang"], country=c["id"], open=True))
+    # Wettbewerber (Namen nur als GitHub-Secret COMPETITORS, nie im Repo): jede Firma einzeln, Claude beurteilt die Treffer
+    for name in competitors()[:30]:
+        for lang, hl, gl, ceid in (("de", "de", "DE", "DE:de"), ("en", "en-US", "US", "US:en")):
+            jobs.append(dict(url=feed_url(quote_term(name), hl, gl, ceid, days), rubric="markt", lang=lang,
+                             country=None, open=True))
     for t in CFG.get("trade_sources") or []:
         q = f"site:{t['site']} {t['q']}"
         jobs.append(dict(url=feed_url(q, "de" if t["lang"] == "de" else "en", "DE" if t["lang"] == "de" else "US",
