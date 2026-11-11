@@ -43,7 +43,7 @@ rubrics:
   - id: haefen
     title: "Häfen, Terminals & Güterumschlag"
     short: "Häfen"
-    weight: 1.0
+    weight: 1.2
     core: 'ship-to-shore|sts[- ]crane|(?<!\w)(rtg|rmg)(?!\w)|kaikran|hafenkran|quay crane|containerbrücke|container ?terminal|terminal à conteneurs|konteyner terminal|havenkraan|kadekraan|محطة حاويات|מסוף מכולות'   # Treffer hier zählen auch ohne Ereigniswort
     must: 'hafen|häfen|kaianlage|kaikran|umschlag|container ?terminal|konteyner terminal|terminal à conteneurs|quay|(?<!\w)ports?(?!\w)|ship-to-shore|(?<!\w)(rtg|rmg|sts)(?!\w)|haven|(?<!\w)kade|liman|ميناء|موانئ|محطة حاويات|נמל|מסוף מכולות'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
