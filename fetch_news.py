@@ -5,6 +5,7 @@ import datetime as dt
 import hashlib
 import html
 import json
+import os
 import re
 import sys
 import time
@@ -21,6 +22,8 @@ NEWS = ROOT / "data" / "news.json"
 LANGMAP = {"he": "iw"}
 UA = {"User-Agent": "Mozilla/5.0 (compatible; SeilReport/1.0)"}
 MAX_TRANSLATE = 1500
+HAVE_AI = bool(os.environ.get("ANTHROPIC_API_KEY", "").strip())   # nur dann lassen wir weite Suchen ungefiltert durch
+
 
 
 def chunks(seq, n):
@@ -53,6 +56,18 @@ def build_jobs(days):
             named = any(n.lower() in e["q"].lower() for n in c["names"])
             jobs.append(dict(url=feed_url(e["q"], e["hl"], e["gl"], e["ceid"], days),
                              rubric="laender", lang=e["lang"], country=c["id"] if named else None))
+    # Zusatzsuche je Land und Sprache nach Hafen/Kran/Stahl/Bau (nur sinnvoll mit Claude-Auswertung → "open")
+    seen = {j["url"] for j in jobs}
+    terms = CFG.get("industry_terms") or {}
+    for c in CFG["countries"]:
+        for e in c["editions"]:
+            name = e["q"].split(" (")[0]
+            if e["lang"] not in terms or any(w in e["q"].lower() for w in ("crane", "kran", "grue", "kraan", "vinç")):
+                continue
+            url = feed_url(f"{name} (" + " OR ".join(terms[e["lang"]]) + ")", e["hl"], e["gl"], e["ceid"], days)
+            if url not in seen:
+                seen.add(url)
+                jobs.append(dict(url=url, rubric="laender", lang=e["lang"], country=c["id"], open=True))
     for t in CFG.get("trade_sources") or []:
         q = f"site:{t['site']} {t['q']}"
         jobs.append(dict(url=feed_url(q, "de" if t["lang"] == "de" else "en", "DE" if t["lang"] == "de" else "US",
@@ -124,7 +139,7 @@ def main():
                 if i["lang"] not in allowed or bad(i["title_orig"], i["source"], i.get("snippet", "")):
                     continue
                 ok = [r for r in (i.get("rubrics") or [i["rubric"]])
-                      if passes(r, i["title_orig"], i.get("snippet", ""), i.get("trusted"))]
+                      if (i.get("open") and HAVE_AI) or passes(r, i["title_orig"], i.get("snippet", ""), i.get("trusted"))]
                 if not ok:
                     dropped["Archiv"] = dropped.get("Archiv", 0) + 1
                     continue
@@ -155,7 +170,7 @@ def main():
             if bad(title, src, snip):
                 dropped["ausgeschlossen"] = dropped.get("ausgeschlossen", 0) + 1
                 continue
-            if not passes(job["rubric"], title, snip, job.get("trusted")):
+            if not (job.get("open") and HAVE_AI) and not passes(job["rubric"], title, snip, job.get("trusted")):
                 dropped[job["rubric"]] = dropped.get(job["rubric"], 0) + 1
                 continue
             pub = dt.datetime(*e.published_parsed[:6], tzinfo=dt.timezone.utc)
@@ -178,7 +193,7 @@ def main():
                 db[iid] = dict(id=iid, title_orig=title, title_de=title if job["lang"] == "de" else None,
                                lang=job["lang"], source=src or "?", url=e.get("link", ""),
                                published=pub.isoformat(), rubric=job["rubric"], rubrics=[job["rubric"]],
-                               countries=sorted(countries), snippet=snip, trusted=bool(job.get("trusted")))
+                               countries=sorted(countries), snippet=snip, trusted=bool(job.get("trusted")), open=bool(job.get("open")))
     print(f"{ok}/{len(jobs)} Abfragen lieferten Treffer, Archiv: {len(db)} Meldungen")
     print("Durch Titel-Filter verworfen:", dropped or "nichts")
 
