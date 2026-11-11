@@ -20,7 +20,7 @@ import yaml
 ROOT = Path(__file__).parent
 CFG = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
 OUT = ROOT / "data" / "indices.json"
-API = "https://www-genesis.destatis.de/genesisWS/rest/2020/data/tablefile"
+API = "https://genesis.destatis.de/genesisWS/rest/2020/data/tablefile"
 DEBUG = "--debug" in sys.argv
 
 
@@ -28,10 +28,24 @@ def fetch_table(name):
     user, pw = os.environ.get("DESTATIS_USER", ""), os.environ.get("DESTATIS_PASSWORD", "")
     if not user:
         raise RuntimeError("DESTATIS_USER nicht gesetzt")
-    r = requests.get(API, params=dict(name=name, area="all", format="ffcsv", language="de"),
-                     headers=dict(username=user, password=pw), timeout=60)
+    headers = {"Content-Type": "application/x-www-form-urlencoded", "username": user, "password": pw}
+    data = dict(name=name, area="all", format="ffcsv", language="de")
+    url = API
+    for _ in range(4):                      # Weiterleitungen selbst folgen, damit es bei POST bleibt
+        r = requests.post(url, headers=headers, data=data, timeout=(30, 300), allow_redirects=False)
+        if r.status_code in (301, 302, 303, 307, 308) and r.headers.get("Location"):
+            url = requests.compat.urljoin(url, r.headers["Location"])
+            continue
+        break
     r.raise_for_status()
-    return r.content.decode("utf-8-sig", errors="replace")
+    text = r.content.decode("utf-8-sig", errors="replace")
+    if text.lstrip().startswith("{"):       # Fehlermeldung von Destatis (JSON) statt Tabelle
+        try:
+            st = json.loads(text).get("Status", {})
+            raise RuntimeError(f"Destatis: {st.get('Content') or text[:200]} (Code {st.get('Code')})")
+        except ValueError:
+            pass
+    return text
 
 
 def parse(text, spec):
