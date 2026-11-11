@@ -30,7 +30,7 @@ def fetch_table(name):
     if not user:
         raise RuntimeError("DESTATIS_USER nicht gesetzt")
     headers = {"Content-Type": "application/x-www-form-urlencoded", "username": user, "password": pw}
-    data = dict(name=name, area="all", format="ffcsv", language="de")
+    data = dict(name=name, area="all", format="ffcsv", language="de", startyear=str(dt.date.today().year - 4))
     url = API
     for _ in range(4):                      # Weiterleitungen selbst folgen, damit es bei POST bleibt
         r = requests.post(url, headers=headers, data=data, timeout=(30, 300), allow_redirects=False)
@@ -113,7 +113,7 @@ def save_raw(name, text):
     seen = []
     for ln in lines[1:]:
         for c in ln.split(";"):
-            if re.fullmatch(r"(GP19-\d+|WZ08-[A-Z0-9]+|WERT\w*)", c) and c not in seen:
+            if re.fullmatch(r"(GP19-\d+|WZ08-[A-Z0-9]+|WERT\w*|CC13-[\d-]+|VPI\w*|PREIS\w*|PRC\w*|PRE\w*)", c) and c not in seen:
                 seen.append(c)
     codes = " ".join(seen[:80])
     (ROOT / "data" / f"raw_{name}.txt").write_text(f"{len(lines)} Zeilen insgesamt\n" + "\n".join(lines[:25]) + "\n" + "CODES: " + codes + "\n",
@@ -128,6 +128,12 @@ def main():
             old = data.get("series", {})
     series, errors = dict(old), []
     for spec in CFG["indices"]:
+        if spec.get("probe"):                  # nur Rohdaten ablegen, um das Format zu prüfen
+            try:
+                save_raw(f"{spec['id']}_{spec['table']}", fetch_table(spec["table"]))
+            except Exception as ex:
+                print(f"Probe {spec['id']}: {ex}", file=sys.stderr)
+            continue
         tried, ok = [], False
         for table in spec.get("tables") or [spec["table"]]:
             for req in [spec["require"]] + ([spec["fallback_require"]] if spec.get("fallback_require") else []):
