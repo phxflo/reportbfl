@@ -29,7 +29,7 @@ exclude:
   - Égypte
 
 # Treffer mit diesen Wörtern rutschen in "Top-News" weiter nach oben (Regex, ohne Groß/Klein)
-boost: "zuschlag|surcharge|toeslag|supplément|ek ücret|zoll|zölle|tariff|tarif|droits de douane|gümrük|safeguard|cbam|sanktion|sanction|embargo|insolvenz|bankrupt|übernahme|acquisition|acquires|liebherr|bauer|tadano|manitowoc|terex|potain|casar|teufelberger|bridon|wireco|pfeifer|drahtseil|wire rope|stahlseil|çelik halat|câble"
+boost: "zuschlag|surcharge|toeslag|supplément|ek ücret|zoll|zölle|tariff|tarif|droits de douane|gümrük|safeguard|cbam|sanktion|sanction|embargo|insolvenz|bankrupt|übernahme|acquisition|acquires|tadano|manitowoc|terex|potain|teufelberger|bridon|wireco|pfeifer|drahtseil|casar (drahtseil|wire)|liebherr (kran|crane|mobil)|wire rope|stahlseil|çelik halat|câble"
 
 # Diese Wörter füllen den Kasten "Zuschlags-Radar"
 radar: "zuschlag|surcharge|toeslag|legierung|alloy|rohstoff|safeguard|cbam|walzdraht|wire rod|filmaşin|fil machine|walsdraad|stahlpreis|steel price|çelik fiyat"
@@ -40,7 +40,7 @@ rubrics:
     title: "Häfen, Terminals & Güterumschlag"
     short: "Häfen"
     weight: 1.0
-    must: 'hafen|häfen|terminal|kaianlage|kaikran|umschlag|container|quay|(?<!\w)ports?(?!\w)|ship-to-shore|(?<!\w)(rtg|rmg|sts)(?!\w)|haven|(?<!\w)kade|liman|konteyner|ميناء|موانئ|محطة|حاويات|נמל|מסוף|מכולות'   # Titel muss eines dieser Stichwörter enthalten (Regex)
+    must: 'hafen|häfen|kaianlage|kaikran|umschlag|container ?terminal|konteyner terminal|terminal à conteneurs|quay|(?<!\w)ports?(?!\w)|ship-to-shore|(?<!\w)(rtg|rmg|sts)(?!\w)|haven|(?<!\w)kade|liman|ميناء|موانئ|محطة حاويات|נמל|מסוף מכולות'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
       de: [Hafenkran, Containerterminal, Hafenausbau, Kaianlage, Terminal Umschlag, Hafen Investition]
       en: ["container terminal", "port expansion", "ship-to-shore crane", "quay crane", "port investment", "RTG crane"]
@@ -54,9 +54,9 @@ rubrics:
     title: "Kranflotten – Turmdreh-, Mobil- & Raupenkrane"
     short: "Krane"
     weight: 0.9
-    must: 'kran(e|en)?(?!\w)|crane|grue|kraan|kranen|vinç|liebherr|tadano|manitowoc|terex|potain|raupen|crawler|رافعة|رافعات|עגורן|מנוף'   # Titel muss eines dieser Stichwörter enthalten (Regex)
+    must: 'kran(e|en)?(?!\w)|crane|grue|kraan|kranen|vinç|(liebherr|tadano|manitowoc|terex|potain)[^.]{0,60}(kran|crane|grue|vinç|kraan)|(kran|crane|grue|vinç|kraan)[^.]{0,60}(liebherr|tadano|manitowoc|terex|potain)|raupenkran|crawler crane|رافعة|رافعات|עגורן|מנוף'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
-      de: [Turmdrehkran, Mobilkran, Raupenkran, Kranflotte, Autokran, Liebherr Kran]
+      de: [Turmdrehkran, Mobilkran, Raupenkran, Kranflotte, Autokran, "Liebherr Mobilkran"]
       en: ["tower crane", "mobile crane", "crawler crane", "crane fleet", "Tadano", "Manitowoc"]
       fr: ["grue à tour", "grue mobile", "grue sur chenilles", "parc de grues"]
       nl: [torenkraan, "mobiele kraan", rupskraan, kraanverhuur]
@@ -82,10 +82,10 @@ rubrics:
     title: "Spezialtiefbau – Bohrgeräte, Seilbagger & Schlitzwandgreifer"
     short: "Spezialtiefbau"
     weight: 0.7
-    must: 'tiefbau|schlitzwand|bohr|seilbagger|diaphragm|foundation|piling|(?<!\w)piles?(?!\w)|drill|excavator|soilmec|bauer|paroi|fondation|foreuse|pelle|diepwand|fundering|boor|diyafram|temel|kazık|sondaj|حفار|أساسات|جدار|כלונס|יסוד'   # Titel muss eines dieser Stichwörter enthalten (Regex)
+    must: 'tiefbau|schlitzwand|bohrgerät|bohrpfahl|bohranlage|bohrtechnik|seilbagger|diaphragm wall|deep foundation|foundation (work|engineering|piling)|piling|(?<!\w)piles?(?!\w)|drilling rig|excavator|soilmec|bauer (group|maschinen|spezialtiefbau)|paroi moulée|fondations? spécial|foreuse|diepwand|funderingstechniek|boormachine|diyafram duvar|özel temel|kazık|sondaj|حفار|أساسات|جدار ساتر|כלונס|יסודות עמוקים'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
       de: [Spezialtiefbau, Schlitzwandgreifer, Bohrgerät, Seilbagger, "Tiefbau Großprojekt"]
-      en: ["diaphragm wall", "deep foundation", "piling rig", "cable excavator", "Bauer Group", "Soilmec"]
+      en: ["diaphragm wall", "deep foundation", "piling rig", "cable excavator", "Bauer Maschinen", "Soilmec"]
       fr: ["paroi moulée", "fondations spéciales", foreuse, "pelle à câble"]
       nl: [diepwand, funderingstechniek, boormachine]
       tr: ["diyafram duvar", "özel temel", "sondaj makinesi", "fore kazık"]
@@ -116,10 +116,10 @@ rubrics:
     title: "Markt & Wettbewerb – Stahlseile"
     short: "Markt"
     weight: 0.9
-    must: 'seil|wire rope|steel wire|rope|câbles? en acier|câbles? métalliques?|câbles? d.acier|staalkabel|staaldraad|halat|حبال|كابلات فولاذية|כבלי פלדה|חבל|bridon|wireco|teufelberger|casar|pfeifer'   # Titel muss eines dieser Stichwörter enthalten (Regex)
+    must: 'seilhersteller|drahtseil|stahlseil|wire rope|steel wire|câbles? en acier|câbles? métalliques?|câbles? d.acier|staalkabel|staaldraad|çelik halat|halat|حبال فولاذية|كابلات فولاذية|כבלי פלדה|חבל פלדה|bridon|wireco|teufelberger|pfeifer|casar[^.]{0,50}(seil|wire|rope|cable|câble|cables|kabel|halat|حبال|كابلات|כבל|חבל)|(seil|wire|rope|cable|câble|cables|kabel|halat|حبال|كابلات|כבל|חבל)[^.]{0,50}casar'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
-      de: [Drahtseil, Stahlseil, Seilhersteller, Teufelberger, Casar, "PFEIFER Seil"]
-      en: ["wire rope", "steel wire rope", "Bridon-Bekaert", WireCo, Teufelberger, Casar]
+      de: [Drahtseil, Stahlseil, Seilhersteller, Teufelberger, "Casar Drahtseilwerk", "PFEIFER Seil"]
+      en: ["wire rope", "steel wire rope", "Bridon-Bekaert", WireCo, Teufelberger, "Casar wire rope"]
       fr: ["câble en acier", "câble métallique", "câbles d'acier"]
       nl: [staalkabel, staaldraadkabel]
       tr: ["çelik halat", "halat üreticisi"]

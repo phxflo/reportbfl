@@ -3,143 +3,146 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google" content="notranslate">
 <title>{{ site.title }}</title>
 <meta name="description" content="{{ site.tagline }}">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a2b3c'/%3E%3Cpath d='M8 24 L24 8 M8 18 L18 8 M14 24 L24 14' stroke='%23f2a900' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a2b3c'/%3E%3Cpath d='M8 24 L24 8 M8 18 L18 8 M14 24 L24 14' stroke='%236ec6f5' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --steel:#1a2b3c;                 /* RAL 5011 Stahlblau */
-  --paper:#eef1f4; --card:#ffffff; --ink:#1a2b3c; --muted:#566575; --rule:#cbd3db; --rule-strong:#1a2b3c; --chip:#e1e7ed;
-  --accent:#f2a900; --accent-ink:#965800; --line:#2a5a88;
-  --serif:"Source Serif 4",Georgia,"Times New Roman",serif; --display:"Playfair Display","Didot",Georgia,serif; --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --paper:#f1f4f7; --card:#ffffff; --ink:#1a2b3c; --muted:#5a6a7a; --rule:#d5dce3; --chip:#e6ecf1;
+  --accent:#6ec6f5; --accent-ink:#0b6fa8; --line:#1f5f93;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
 }
 @media (prefers-color-scheme:dark){:root{
-  --paper:#0e1722; --card:#15222f; --ink:#e6ecf2; --muted:#9aa9b8; --rule:#26384a; --rule-strong:#e6ecf2; --chip:#1d2e3f;
-  --accent:#f2b33d; --accent-ink:#f2b33d; --line:#7fb2e5;
+  --paper:#0e1722; --card:#15222f; --ink:#e9eef3; --muted:#9fb0c0; --rule:#26384a; --chip:#1f3042;
+  --accent:#7cc8f5; --accent-ink:#7cc8f5; --line:#7fb2e5;
 }}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:56px}
-body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.5 var(--serif);-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:60px}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-a.h:hover{text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px;text-decoration-thickness:2px}
-.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+a.h:hover{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
 
 .sample{background:var(--accent);color:#1a2b3c;font:600 13px/1.4 var(--sans);text-align:center;padding:8px 16px}
-.errors{background:var(--chip);border-left:4px solid var(--accent);font:13px var(--sans);padding:8px 14px;margin:0 0 22px}
+.errors{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--accent);font-size:14px;padding:10px 14px;margin:0 0 24px;color:var(--muted)}
 
 /* Kopf */
 .band{background:var(--steel);color:#fff;border-bottom:4px solid var(--accent)}
-.topbar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.18);padding:10px 0;font:500 12px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:#b4c1ce}
-.mast{text-align:center;padding:22px 0 20px}
-.mast h1{margin:0;font:900 clamp(38px,7vw,72px)/1 var(--display);letter-spacing:-.015em;color:#fff}
+.topbar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 0;font-size:12px;letter-spacing:.04em;color:#a9b8c7}
+.mast{padding:6px 0 22px}
+.mast h1{margin:0;font-size:clamp(30px,5vw,46px);line-height:1.1;font-weight:800;letter-spacing:-.02em}
 .mast h1 span{color:var(--accent)}
-.mast p{margin:8px 0 0;font:italic 400 clamp(14px,2vw,17px) var(--serif);color:#c5d0db}
+.mast p{margin:6px 0 0;font-size:15px;color:#b9c7d4}
 
-nav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--rule-strong);margin-bottom:24px}
+nav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--rule);margin-bottom:28px}
 nav .wrap{display:flex;gap:2px;align-items:center;overflow-x:auto;scrollbar-width:none}
-nav a{font:600 12px var(--sans);letter-spacing:.07em;text-transform:uppercase;padding:14px 10px;white-space:nowrap}
+nav a{font-size:14px;font-weight:600;padding:14px 12px;white-space:nowrap;color:var(--muted)}
 nav a:hover{color:var(--accent-ink)}
-nav input{margin-left:auto;font:14px var(--sans);padding:7px 12px;border:1px solid var(--rule);border-radius:99px;background:var(--card);color:var(--ink);min-width:140px}
+nav input{margin-left:auto;font:14px var(--sans);padding:7px 14px;border:1px solid var(--rule);border-radius:99px;background:var(--card);color:var(--ink);min-width:150px}
 
-.kicker{display:flex;align-items:baseline;gap:14px;border-top:3px solid var(--rule-strong);padding-top:10px;margin:0 0 14px}
-.kicker b{font:900 14px var(--display);color:var(--accent-ink);letter-spacing:.05em}
-.kicker h2{margin:0;font:700 clamp(21px,3vw,28px)/1.15 var(--display)}
-.kicker small{margin-left:auto;font:500 12px var(--sans);color:var(--muted);white-space:nowrap}
-section{margin-bottom:36px}
+#trbar{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--accent);padding:10px 14px;margin:-8px 0 24px;font-size:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+#trbar[hidden]{display:none}
+#trbar button{font:600 13px var(--sans);padding:7px 14px;border:0;border-radius:6px;background:var(--steel);color:#fff;cursor:pointer}
+#trbar span{color:var(--muted)}
+
+h2.kicker{display:flex;align-items:baseline;gap:12px;margin:0 0 14px;font-size:22px;font-weight:700;letter-spacing:-.01em}
+h2.kicker small{font-size:13px;font-weight:500;color:var(--muted);margin-left:auto;white-space:nowrap}
+h2.kicker i{font-style:normal;font-size:13px;font-weight:700;color:var(--accent-ink);letter-spacing:.04em}
+section{margin-bottom:40px}
 
 /* Kennzahlen */
-.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px}
-.chart{background:var(--card);border:1px solid var(--rule);padding:14px 18px 8px}
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:18px}
+.chart{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:16px 18px 10px}
 .chart header{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
-.chart h3{margin:0;font:700 18px/1.2 var(--display)}
-.chart .sub{font:12px var(--sans);color:var(--muted);margin-top:3px}
+.chart h3{margin:0;font-size:16px;font-weight:700;line-height:1.3}
+.chart .sub{font-size:12px;color:var(--muted);margin-top:2px}
 .chart .val{text-align:right;flex:none}
-.chart .big{font:900 32px/1 var(--display)}
-.chart .per{font:500 11px var(--sans);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
-.deltas{display:flex;gap:16px;font:600 12.5px var(--sans);margin:8px 0 2px;flex-wrap:wrap}
+.chart .big{font-size:30px;font-weight:800;line-height:1;letter-spacing:-.02em}
+.chart .per{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.deltas{display:flex;gap:16px;font-size:13px;font-weight:600;margin:8px 0 4px;flex-wrap:wrap}
 .deltas span em{font-style:normal;font-weight:400;color:var(--muted)}
 .chart svg{width:100%;height:auto;display:block;overflow:visible}
 .chart text{font:10.5px var(--sans);fill:var(--muted)}
 .chart .grid{stroke:var(--rule);stroke-width:1}
 .chart .line{fill:none;stroke:var(--line);stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
-.chart .area{fill:var(--line);opacity:.12}
+.chart .area{fill:var(--line);opacity:.1}
 .chart .dot{fill:var(--accent);stroke:var(--card);stroke-width:2}
 .chart .hit{fill:transparent}
-.chart .hit:hover{fill:rgba(242,169,0,.25)}
-.chart footer{font:11px var(--sans);color:var(--muted);padding:2px 0 4px}
+.chart .hit:hover{fill:rgba(110,198,245,.35)}
+.chart footer{font-size:11px;color:var(--muted);padding:2px 0 4px}
 .chart footer a{text-decoration:underline}
 
-/* Top-News */
-.front{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:34px}
-.leadwrap{border-right:1px solid var(--rule);padding-right:34px}
-.tag{font:600 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink)}
-.lead h3{font:900 clamp(26px,4vw,42px)/1.1 var(--display);margin:8px 0 12px;letter-spacing:-.01em}
-.lead .orig{font:italic 15px/1.4 var(--serif);color:var(--muted);margin:0 0 10px}
-.meta{font:12.5px var(--sans);color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
-.pill{font:600 10px var(--sans);letter-spacing:.06em;padding:2px 6px;border-radius:3px;background:var(--chip);color:var(--ink)}
+/* gemeinsame Bausteine */
+.meta{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
+.pill{font-size:11px;font-weight:600;padding:2px 7px;border-radius:99px;background:var(--chip);color:var(--ink);white-space:nowrap}
 .pill.new{background:var(--accent);color:#1a2b3c}
-.pill.c{background:transparent;border:1px solid var(--rule)}
-.side{margin-top:24px;border-top:3px solid var(--rule-strong);padding-top:6px;counter-reset:n 1}
-.side article{position:relative;padding:12px 0 12px 38px;border-top:1px solid var(--rule);counter-increment:n}
-.side article:first-child{border-top:0}
-.side article::before{content:counter(n) "";content:counter(n);position:absolute;left:0;top:9px;font:900 26px/1 var(--display);color:var(--accent-ink)}
-.side h4{margin:3px 0 5px;font:700 19px/1.25 var(--display)}
-.rail{display:grid;gap:22px;align-content:start}
-.box{background:var(--card);border:1px solid var(--rule);border-top:3px solid var(--rule-strong);padding:14px 16px}
-.box h3{margin:0 0 10px;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
-.radar{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px}
-.radar a{display:block;background:var(--chip);padding:8px 10px;border-radius:4px;font:600 12px var(--sans)}
-.radar a b{display:block;font:900 24px/1.1 var(--display);color:var(--accent-ink)}
-.radar a.zero b{color:var(--muted)}
-.radar a:hover{outline:2px solid var(--accent)}
+.pill.c{background:transparent;border:1px solid var(--rule);color:var(--muted)}
+.tag{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink)}
+.tr::after{content:" ⇄";font-size:.75em;color:var(--muted)}
 
-/* Rubriken: schlanke Liste, neueste oben */
-.rows{columns:2 380px;column-gap:40px}
-.row{display:grid;grid-template-columns:66px minmax(0,1fr);gap:12px;padding:11px 0;border-top:1px solid var(--rule);break-inside:avoid}
-.when{font:500 12px/1.4 var(--sans);color:var(--muted);padding-top:3px}
-.row .h{font:600 17px/1.35 var(--serif)}
-.row .meta{margin-top:3px}
-.empty{font:italic 15px var(--serif);color:var(--muted);padding:6px 0 14px}
-.chips{display:flex;gap:6px;flex-wrap:wrap;margin:-2px 0 12px}
-.chips button{font:600 12px var(--sans);padding:6px 12px;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:99px;cursor:pointer}
-.chips button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+/* Top-News */
+.top{background:var(--card);border:1px solid var(--rule);border-radius:10px;list-style:none;margin:0;padding:0;counter-reset:n}
+.top li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:8px;padding:16px 20px;border-top:1px solid var(--rule);counter-increment:n}
+.top li:first-child{border-top:0;padding:22px 20px}
+.top li::before{content:counter(n);font-size:28px;font-weight:800;line-height:1.1;color:var(--accent-ink)}
+.top .h{display:block;font-size:19px;font-weight:700;line-height:1.35;letter-spacing:-.005em;margin:3px 0 5px}
+.top li:first-child .h{font-size:25px;line-height:1.28}
+.top .orig{font-size:14px;color:var(--muted);margin:-2px 0 6px}
+
+/* Rubriken: schlichte Liste, neueste oben */
+.rows{columns:2 360px;column-gap:44px}
+.row{display:grid;grid-template-columns:62px minmax(0,1fr);gap:12px;padding:12px 0;border-top:1px solid var(--rule);break-inside:avoid}
+.when{font-size:12px;line-height:1.4;color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
+.row .h{font-size:16px;font-weight:600;line-height:1.4}
+.row .meta{margin-top:3px;font-size:12.5px}
+.empty{font-size:15px;color:var(--muted);padding:6px 0 14px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}
+.chips button{font:600 13px var(--sans);padding:6px 13px;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:99px;cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--steel);color:#fff;border-color:var(--steel)}
 .hidden{display:none!important}
 
-footer.site{border-top:3px double var(--rule-strong);padding:20px 0 48px;font:13px/1.6 var(--sans);color:var(--muted)}
+footer.site{border-top:1px solid var(--rule);padding:22px 0 48px;font-size:13px;line-height:1.65;color:var(--muted)}
 footer.site strong{color:var(--ink)}
 
-@media (max-width:980px){.front{grid-template-columns:1fr}.leadwrap{border-right:0;padding-right:0}}
 @media (max-width:600px){
-  body{font-size:16px}.wrap{padding:0 16px}
-  .rows{columns:1}.row{grid-template-columns:58px minmax(0,1fr);gap:10px}
-  nav input{display:none}.kicker small{display:none}.chart .big{font-size:28px}
+  body{font-size:15.5px}.wrap{padding:0 16px}
+  .rows{columns:1}.row{grid-template-columns:56px minmax(0,1fr);gap:10px}
+  nav input{display:none}h2.kicker small{display:none}.chart .big{font-size:26px}
+  .top li{padding:14px 14px;grid-template-columns:34px minmax(0,1fr)}.top li:first-child{padding:18px 14px}
+  .top li:first-child .h{font-size:21px}.top .h{font-size:17px}
 }
-@media print{nav,.chips{display:none}body{background:#fff}}
+@media print{nav,.chips,#trbar{display:none}body{background:#fff}}
 </style>
 </head>
 <body>
 {% if sample %}<div class="sample">VORSCHAU MIT BEISPIELDATEN – Überschriften, Quellen und Zahlen sind erfunden. Echte Meldungen erscheinen nach dem ersten automatischen Lauf.</div>{% endif %}
 
+{% macro item(c, size='') %}
+<a dir="auto" class="h" href="{{ c.url }}" target="_blank" rel="noopener"{% if c.orig %} title="Original: {{ c.orig }}"{% endif %}{% if c.needs_tr %} data-t="1" data-lang="{{ c.lang|lower }}"{% endif %}>{{ c.title }}</a>
+{% endmacro %}
+
+{% macro badges(c) %}
+{% if c.n > 1 %}<span class="pill">{{ c.n }} Quellen</span>{% endif %}
+{% for k in c.countries %}<span class="pill c">{{ k.name }}</span>{% endfor %}
+{% endmacro %}
+
 {% macro row(c, hide=false) %}
 <article class="row{{ ' hidden' if hide }}" data-countries="{{ c.countries|map(attribute='id')|join(' ') }}">
   <div class="when">{{ c.when }}{% if c.is_new %}<br><span class="pill new">NEU</span>{% endif %}</div>
   <div>
-    <a dir="auto" class="h" href="{{ c.url }}" target="_blank" rel="noopener"{% if c.orig %} title="Original: {{ c.orig }}"{% endif %}>{{ c.title }}</a>
-    <div class="meta">
-      <span>{{ c.source }}</span>
-      {% if c.n > 1 %}<span class="pill">{{ c.n }} Quellen</span>{% endif %}
-      {% if c.lang != 'DE' and c.orig %}<span class="pill" title="Automatisch übersetzt">{{ c.lang }}→DE</span>{% endif %}
-      {% for k in c.countries %}<span class="pill c">{{ k.id }}</span>{% endfor %}
-    </div>
+    {{ item(c) }}
+    <div class="meta"><span>{{ c.source }}</span>{{ badges(c) }}</div>
   </div>
 </article>
 {% endmacro %}
 
 <header class="band"><div class="wrap">
-  <div class="topbar"><span>{{ date }}</span><span>Ausgabe Nr. {{ edition }}</span><span>Stand {{ updated }}</span></div>
+  <div class="topbar"><span>{{ date }}</span><span>Stand {{ updated }}</span></div>
   <div class="mast">
     <h1>{{ site.title.split(' ')[0] }} <span>{{ site.title.split(' ')[1:]|join(' ') }}</span></h1>
     <p>{{ site.tagline }}</p>
@@ -153,11 +156,12 @@ footer.site strong{color:var(--ink)}
 </div></nav>
 
 <main class="wrap">
+  <div id="trbar" hidden><button id="trbtn" type="button">Titel übersetzen</button><span id="trmsg"></span></div>
   {% if errors %}<div class="errors"><strong>Hinweis zu den Kennzahlen:</strong> {{ errors|join(' · ') }}</div>{% endif %}
 
   {% if charts %}
   <section id="kennzahlen">
-    <div class="kicker"><b>★</b><h2>Kennzahlen</h2><small>Quelle: Statistisches Bundesamt (Destatis)</small></div>
+    <h2 class="kicker">Kennzahlen<small>Quelle: Statistisches Bundesamt (Destatis)</small></h2>
     <div class="charts">
       {% for c in charts %}
       <div class="chart">
@@ -178,43 +182,26 @@ footer.site strong{color:var(--ink)}
   {% endif %}
 
   <section id="top">
-    <div class="kicker"><b>★</b><h2>Top-News der Woche</h2><small>nach Brisanz sortiert</small></div>
+    <h2 class="kicker">Top-News der Woche<small>nach Brisanz sortiert</small></h2>
     {% if top %}
-    <div class="front">
-      <div class="leadwrap lead">
-        {% set l = top[0] %}
-        <div class="meta"><span class="tag">{{ l.rubric_short }}</span>{% if l.is_new %}<span class="pill new">NEU</span>{% endif %}</div>
-        <h3><a dir="auto" class="h" href="{{ l.url }}" target="_blank" rel="noopener">{{ l.title }}</a></h3>
-        {% if l.orig %}<p class="orig" dir="auto">Original ({{ l.lang }}): {{ l.orig }}</p>{% endif %}
-        <div class="meta"><span>{{ l.source }}</span><span>·</span><span>{{ l.when }}</span>
-          {% if l.n > 1 %}<span class="pill">{{ l.n }} Quellen</span>{% endif %}
-          {% for k in l.countries %}<span class="pill c">{{ k.name }}</span>{% endfor %}</div>
-        <div class="side">
-          {% for c in top[1:] %}
-          <article>
-            <div class="meta"><span class="tag">{{ c.rubric_short }}</span>{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}</div>
-            <h4><a dir="auto" class="h" href="{{ c.url }}" target="_blank" rel="noopener">{{ c.title }}</a></h4>
-            <div class="meta"><span>{{ c.source }}</span><span>·</span><span>{{ c.when }}</span>{% if c.n > 1 %}<span class="pill">{{ c.n }} Quellen</span>{% endif %}
-              {% for k in c.countries %}<span class="pill c">{{ k.id }}</span>{% endfor %}</div>
-          </article>
-          {% endfor %}
+    <ol class="top">
+      {% for c in top %}
+      <li>
+        <div>
+          <div class="meta"><span class="tag">{{ c.rubric_short }}</span>{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}</div>
+          {{ item(c) }}
+          {% if loop.first and c.orig %}<div class="orig" dir="auto">Original ({{ c.lang }}): {{ c.orig }}</div>{% endif %}
+          <div class="meta"><span>{{ c.source }}</span><span>·</span><span>{{ c.when }}</span>{{ badges(c) }}</div>
         </div>
-      </div>
-      <aside class="rail">
-        <div class="box">
-          <h3>Länder-Radar · 7 Tage</h3>
-          <div class="radar">
-            {% for r in radar_c %}<a href="#laender" class="{{ 'zero' if r.count == 0 }}" data-jump="{{ r.id }}"><b>{{ r.count }}</b>{{ r.name }}</a>{% endfor %}
-          </div>
-        </div>
-      </aside>
-    </div>
+      </li>
+      {% endfor %}
+    </ol>
     {% else %}<div class="empty">Noch keine Meldungen.</div>{% endif %}
   </section>
 
   {% for s in sections %}
   <section id="{{ s.id }}" data-section>
-    <div class="kicker"><b>{{ s.num }}</b><h2>{{ s.title }}</h2><small>die neuesten {{ s.limit }}</small></div>
+    <h2 class="kicker"><i>{{ s.num }}</i>{{ s.title }}<small>die neuesten {{ s.limit }}</small></h2>
     {% if s.id == 'laender' %}
     <div class="chips" role="group" aria-label="Land filtern">
       <button type="button" aria-pressed="true" data-c="">Alle</button>
@@ -229,7 +216,7 @@ footer.site strong{color:var(--ink)}
 </main>
 
 <div class="wrap"><footer class="site">
-  <strong>So entsteht der Seil-Report.</strong> Täglich frühmorgens werden Suchanfragen in Deutsch, Englisch, Französisch, Niederländisch, Türkisch, Arabisch und Hebräisch an Google News gestellt, nach Rubriken und Ländern sortiert, gleiche Meldungen gebündelt und die Titel maschinell ins Deutsche übersetzt (im Zweifel gilt der Originaltitel, er steht beim Überfahren der Überschrift). Die Top-News ordnet ein Brisanz-Wert aus Rubrik, Zahl der Quellen und Reizwörtern wie Zuschlag, Zoll oder Sanktion.
+  <strong>So entsteht der Seil-Report.</strong> Täglich frühmorgens werden Suchanfragen in Deutsch, Englisch, Französisch, Niederländisch, Türkisch, Arabisch und Hebräisch an Google News gestellt, nach Rubriken und Ländern sortiert und gleiche Meldungen gebündelt. Fremdsprachige Titel übersetzt dein Browser (Chrome oder Edge am Computer); das Original steht beim Überfahren der Überschrift. Die Top-News ordnet ein Brisanz-Wert aus Rubrik, Zahl der Quellen und Reizwörtern wie Zuschlag, Zoll oder Sanktion.
   Kennzahlen: Statistisches Bundesamt (Destatis), GENESIS-Online. Themen, Suchbegriffe und Länder lassen sich in <code>config.yaml</code> anpassen.
 </footer></div>
 
@@ -237,6 +224,8 @@ footer.site strong{color:var(--ink)}
 (function(){
   var $=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
   var q=document.getElementById('q'), country='', LIMIT={{ sections|selectattr('id','equalto','laender')|map(attribute='limit')|first|default(10) }};
+
+  /* Suche und Länderfilter */
   function apply(){
     var t=(q.value||'').trim().toLowerCase(), n=0;
     $('#laender .row').forEach(function(r){
@@ -250,9 +239,47 @@ footer.site strong{color:var(--ink)}
     });
   }
   q.addEventListener('input',apply);
-  function setCountry(c){country=c;$('.chips button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.c===c)});apply()}
-  $('.chips button').forEach(function(b){b.addEventListener('click',function(){setCountry(b.dataset.c)})});
-  $('[data-jump]').forEach(function(a){a.addEventListener('click',function(){setCountry(a.dataset.jump)})});
+  $('.chips button').forEach(function(b){b.addEventListener('click',function(){
+    country=b.dataset.c;$('.chips button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});apply()})});
+
+  /* Übersetzung der Titel mit der eingebauten Browser-Übersetzung (Chrome/Edge ab Version 138, Computer) */
+  var bar=document.getElementById('trbar'), msg=document.getElementById('trmsg'), btn=document.getElementById('trbtn');
+  var pending=$('[data-t]'); if(!pending.length) return;
+  var cache={}; try{cache=JSON.parse(localStorage.getItem('seilTr')||'{}')}catch(e){}
+  function save(){try{if(Object.keys(cache).length>1500)cache={};localStorage.setItem('seilTr',JSON.stringify(cache))}catch(e){}}
+  function put(el,t,o){el.title='Original: '+o;el.textContent=t;el.removeAttribute('data-t');el.classList.add('tr')}
+  pending.forEach(function(el){var o=el.textContent.trim(),t=cache[el.dataset.lang+'|'+o];if(t)put(el,t,o)});
+  var by={};
+  function collect(){by={};$('[data-t]').forEach(function(e){(by[e.dataset.lang]=by[e.dataset.lang]||[]).push(e)});return Object.keys(by).length}
+  if(!collect()) return;
+  if(!('Translator' in self)){
+    bar.hidden=false;btn.hidden=true;
+    msg.textContent='Fremdsprachige Titel lassen sich in Chrome oder Edge am Computer automatisch übersetzen (ab Version 138).';return;
+  }
+  async function run(withDownload){
+    var needDl=false;
+    for(var lang in by){
+      var o={sourceLanguage:lang,targetLanguage:'de'}, av;
+      try{av=await Translator.availability(o)}catch(e){continue}
+      if(av==='unavailable') continue;
+      if(av!=='available'&&!withDownload){needDl=true;continue}
+      var tr; try{tr=await Translator.create(o)}catch(e){needDl=true;continue}
+      for(var el of by[lang]){
+        var orig=el.textContent.trim(), t;
+        try{t=await tr.translate(orig)}catch(e){continue}
+        cache[lang+'|'+orig]=t;put(el,t,orig);
+      }
+    }
+    save();
+    var left=collect();
+    if(!left){bar.hidden=true;return}
+    bar.hidden=false;
+    btn.hidden=!needDl;
+    msg.textContent=needDl?'Für die Übersetzung lädt Chrome einmalig kleine Sprachpakete (ein paar Sekunden).':'Für '+left+' Sprache(n) bietet Chrome keine Übersetzung an; es bleibt der Originaltitel.';
+  }
+  btn.addEventListener('click',function(){btn.disabled=true;msg.textContent='Übersetze …';run(true).then(function(){btn.disabled=false})});
+  btn.hidden=true;bar.hidden=false;msg.textContent='Übersetze fremdsprachige Titel …';
+  run(false);
 })();
 </script>
 </body>

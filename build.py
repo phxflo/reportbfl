@@ -5,6 +5,8 @@ import json
 import math
 import re
 import sys
+import unicodedata
+from collections import Counter
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -81,8 +83,14 @@ def arrow(x):
 
 
 # ───────────────────────── Meldungen ─────────────────────────
+def norm(t):
+    """klein, ohne Akzente (İzmir = Izmir, é = e), damit Schreibweisen zusammenpassen"""
+    t = unicodedata.normalize("NFKD", t.lower())
+    return "".join(ch for ch in t if not unicodedata.combining(ch)).replace("ı", "i").replace("ß", "ss")
+
+
 def tokens(t):
-    return {w for w in re.findall(r"\w+", t.lower()) if len(w) > 3}
+    return {w for w in re.findall(r"\w+", norm(t)) if len(w) > 3}
 
 
 def similar(a, b):
@@ -159,11 +167,28 @@ def compute(all_items, now):
             rubric=rubric, rubrics=rubrics, rubric_short=rub[rubric]["short"], title=title, lead=lead,
             orig=lead["title_orig"] if lead["lang"] != "de" and title != lead["title_orig"] else None,
             translated=any(m.get("title_de") for m in members) or lead["lang"] == "de",
+            needs_tr=not (any(m.get("title_de") for m in members) or lead["lang"] == "de"),
             lang=LANG.get(lead["lang"], lead["lang"].upper()), source=srcs[0], n=len(srcs), url=lead["url"],
             when=pub.astimezone(TZ).strftime("%d.%m. %H:%M"), ts=pub, is_new=age < 1,
-            countries=[dict(id=c, name=cname[c]) for c in countries], score=score))
+            countries=[dict(id=c, name=cname[c]) for c in countries], score=score,
+            tk=tokens(title + " " + lead["title_orig"])))
 
-    top = sorted(cards, key=lambda c: (c["score"], c["ts"]), reverse=True)[:SITE.get("top_n", 5)]
+    # Top-News: nach Brisanz, aber abwechslungsreich – höchstens 2 je Rubrik und je Land, und keine zweite
+    # Meldung zur selben Geschichte (gleicher seltener Name, z. B. "Izmir", innerhalb von 36 Stunden, auch in anderer Sprache)
+    df = Counter(w for c in cards for w in c["tk"])
+    top, per_r, per_c = [], Counter(), Counter()
+    for c in sorted(cards, key=lambda c: (c["score"], c["ts"]), reverse=True):
+        if len(top) >= SITE.get("top_n", 5):
+            break
+        if per_r[c["rubric"]] >= 2 or any(per_c[k["id"]] >= 2 for k in c["countries"]):
+            continue
+        if any(abs((c["ts"] - t["ts"]).total_seconds()) < 36 * 3600
+               and any(len(w) >= 5 and df[w] <= 8 for w in c["tk"] & t["tk"]) for t in top):
+            continue
+        top.append(c)
+        per_r[c["rubric"]] += 1
+        for k in c["countries"]:
+            per_c[k["id"]] += 1
 
     def member(c, rid):                 # Rubrik "Länder" = alles mit erkennbarem Länderbezug
         return bool(c["countries"]) if rid == "laender" else rid in c["rubrics"]
@@ -183,11 +208,7 @@ def compute(all_items, now):
         else:
             sections.append(dict(id=r["id"], num=f"{k:02d}", title=r["title"], short=r["short"], shown=lst[:cap], limit=cap))
 
-    radar_c = []
-    for c in CFG["countries"]:
-        mine = [x for x in cards if any(cc["id"] == c["id"] for cc in x["countries"])]
-        radar_c.append(dict(id=c["id"], name=c["name"], count=len(mine)))
-    return cards, top, sections, radar_c, items
+    return cards, top, sections, items
 
 
 def main():
@@ -196,7 +217,7 @@ def main():
     now = dt.datetime.now(dt.timezone.utc)
     rub_items = news["items"]
 
-    cards, top, sections, radar_c, items = compute(rub_items, now)
+    cards, top, sections, items = compute(rub_items, now)
 
     # Nur was auf der Seite steht wird übersetzt (Titel), danach neu auswählen: gebündelt über Sprachen hinweg
     if not news["meta"].get("sample") and "--no-translate" not in sys.argv:
@@ -215,7 +236,7 @@ def main():
             if not done:
                 break
             (ROOT / "data" / "news.json").write_text(json.dumps(news, ensure_ascii=False, indent=1), encoding="utf-8")
-            cards, top, sections, radar_c, items = compute(rub_items, now)
+            cards, top, sections, items = compute(rub_items, now)
 
     charts = []
     for spec in CFG["indices"]:
@@ -227,7 +248,7 @@ def main():
     env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape())
     env.filters["arrow"] = arrow
     html = env.get_template("index.html.j2").render(
-        site=SITE, sample=sample, charts=charts, top=top, sections=sections, radar_c=radar_c,
+        site=SITE, sample=sample, charts=charts, top=top, sections=sections,
         countries=CFG["countries"], date=f"{WDAYS[local.weekday()]}, {local.day}. {MONTHS[local.month - 1]} {local.year}",
         updated=local.strftime("%d.%m.%Y, %H:%M Uhr"), edition=local.timetuple().tm_yday,
         n_week=len(cards), n_today=sum(c["is_new"] for c in cards), n_src=len({i["source"] for i in items}),
