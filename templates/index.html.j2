@@ -22,6 +22,14 @@
   --paper:#0e1722; --card:#15222f; --ink:#e9eef3; --muted:#9fb0c0; --rule:#26384a; --chip:#1f3042;
   --accent:#7cc8f5; --accent-ink:#7cc8f5; --line:#7fb2e5;
 }}
+
+/* Rubrikfarben: ein fester Farbcode je Rubrik (immer zusätzlich mit Beschriftung) */
+:root{--c-haefen:#1a8fa3;--c-kraene:#d49a1c;--c-industrie:#d1581f;--c-tiefbau:#7b5a3a;--c-projekte:#2f9e5b;--c-markt:#7c5cc4;--c-laender:#c23a55;--c-rohstoffe:#3b6fd4;
+  --rt:color-mix(in srgb,var(--rc,var(--steel)) 58%,#0d1620)}
+@media (prefers-color-scheme:dark){:root{--c-haefen:#4fc3d1;--c-kraene:#f0b84a;--c-industrie:#f08a5d;--c-tiefbau:#cdaa80;--c-projekte:#6fcf85;--c-markt:#b79cf0;--c-laender:#ee7b8a;--c-rohstoffe:#7f9cf0;
+  --rt:var(--rc,var(--accent-ink))}}
+.r-haefen{--rc:var(--c-haefen)}.r-kraene{--rc:var(--c-kraene)}.r-industrie{--rc:var(--c-industrie)}.r-tiefbau{--rc:var(--c-tiefbau)}
+.r-projekte{--rc:var(--c-projekte)}.r-markt{--rc:var(--c-markt)}.r-laender{--rc:var(--c-laender)}.r-rohstoffe{--rc:var(--c-rohstoffe)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:60px}
 body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
@@ -47,6 +55,13 @@ nav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px s
 nav .wrap{display:flex;gap:2px;align-items:center;overflow-x:auto;scrollbar-width:none}
 nav a{font-size:14px;font-weight:600;padding:14px 12px;white-space:nowrap;color:var(--muted)}
 nav a:hover{color:var(--accent-ink)}
+nav a.rc{border-bottom:3px solid transparent;display:flex;align-items:center;gap:7px}
+nav a.rc::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--rc);flex:none}
+nav a.rc:hover{color:var(--ink);border-bottom-color:var(--rc)}
+nav a.rc b{font:600 11px var(--sans);padding:1px 6px;border-radius:99px;background:var(--chip);color:var(--muted)}
+nav a.rc b.has{background:var(--rc);color:#fff}
+@media (prefers-color-scheme:dark){nav a.rc b.has{color:#0e1722}}
+nav .sep{width:1px;height:20px;background:var(--rule);margin:0 6px;flex:none}
 nav input{margin-left:auto;font:14px var(--sans);padding:7px 14px;border:1px solid var(--rule);border-radius:99px;background:var(--card);color:var(--ink);min-width:150px}
 
 #trbar{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--accent);padding:10px 14px;margin:-8px 0 24px;font-size:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
@@ -55,10 +70,12 @@ nav input{margin-left:auto;font:14px var(--sans);padding:7px 14px;border:1px sol
 #trbar span{color:var(--muted)}
 
 /* Rubrikköpfe im Zeitungsstil */
-h2.kicker{display:flex;align-items:baseline;gap:12px;margin:0;padding:12px 22px 10px;font:700 26px/1.2 var(--serif);letter-spacing:-.005em;border-top:5px solid var(--steel);border-bottom:1px solid var(--rule);background:var(--card)}
-.grouphead{font:700 13px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);margin:44px 0 -14px}
+h2.kicker{display:flex;align-items:baseline;gap:12px;margin:0;padding:12px 22px 10px;font:700 26px/1.2 var(--serif);letter-spacing:-.005em;border-top:6px solid var(--rc,var(--steel));border-bottom:1px solid var(--rule);background:var(--card)}
+.grouphead{display:flex;align-items:center;gap:14px;margin:48px 0 6px;font:700 22px/1.2 var(--serif);color:var(--ink)}
+.grouphead::after{content:"";flex:1;height:1px;background:var(--rule)}
+.grouphead .sws{display:flex;gap:4px}.grouphead .sws i{width:14px;height:14px;border-radius:3px;background:var(--rc)}
 h2.kicker small{font:500 13px var(--sans);color:var(--muted);margin-left:auto;white-space:nowrap}
-h2.kicker i{font:700 13px var(--sans);font-style:normal;color:var(--accent-ink);letter-spacing:.06em;border-bottom:3px solid var(--accent);padding-bottom:1px}
+h2.kicker i{width:14px;height:14px;border-radius:3px;background:var(--rc,var(--accent));align-self:center;flex:none;font-size:0}
 section{margin-bottom:38px}
 .box{background:var(--card);border:1px solid var(--rule);border-top:0}
 
@@ -88,25 +105,27 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 /* Bausteine */
 .meta{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
 .pill{font-size:11px;font-weight:600;padding:2px 7px;border-radius:99px;background:var(--chip);color:var(--ink);white-space:nowrap}
+.pill.hot{background:transparent;border:1px solid var(--c-laender);color:var(--c-laender);font-weight:700}
 .pill.new{background:var(--accent);color:#1a2b3c}
 .pill.c{background:transparent;border:1px solid var(--rule);color:var(--muted)}
 .pill.t{background:transparent;border:1px solid var(--accent-ink);color:var(--accent-ink)}
-.tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink)}
+.tag{font-size:12px;font-weight:700;color:var(--rt);display:inline-flex;align-items:center;gap:6px}
+.tag::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--rc,var(--accent));flex:none}
 .tr::after{content:" ⇄";font-size:.7em;color:var(--muted)}
 .x{border:0;background:none;color:var(--muted);font-size:13px;line-height:1;padding:4px 6px;border-radius:4px;cursor:pointer;opacity:.35;flex:none;align-self:flex-start}
 .x:hover,.x:focus-visible{opacity:1;background:var(--chip)}
 
 /* Titelseite */
 .front{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);background:var(--card);border:1px solid var(--rule);border-top:0}
-.lead{padding:26px 28px;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:10px}
+.lead{border-left:6px solid var(--rc,var(--steel));padding:26px 28px;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:10px}
 .lead .h{display:block;font:800 clamp(26px,3.4vw,38px)/1.18 var(--serif);letter-spacing:-.01em}
 .lead .orig{font-size:14px;color:var(--muted)}
 .lead .num{font:800 14px var(--sans);color:var(--accent-ink);letter-spacing:.08em}
 .side{list-style:none;margin:0;padding:0;counter-reset:n 1}
-.side li{padding:16px 20px;border-top:1px solid var(--rule);counter-increment:n;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 8px}
+.side li{border-left:4px solid var(--rc,var(--rule));padding:16px 20px;border-top:1px solid var(--rule);counter-increment:n;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 8px}
 .side li:first-child{border-top:0}
 .side .h{display:block;font:700 18px/1.3 var(--serif);margin:3px 0 5px}
-.side .tag::before{content:counter(n) " · ";color:var(--muted)}
+.side .tag{counter-increment:none}
 
 /* Rubriken */
 .rows{columns:2 360px;column-gap:44px;padding:4px 22px 14px}
@@ -117,7 +136,7 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .empty{font-size:15px;color:var(--muted);padding:14px 22px}
 .chips{display:flex;gap:6px;flex-wrap:wrap;padding:14px 22px 0}
 .chips button{font:600 13px var(--sans);padding:6px 13px;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:99px;cursor:pointer}
-.chips button[aria-pressed=true]{background:var(--steel);color:#fff;border-color:var(--steel)}
+.chips button[aria-pressed=true]{background:var(--rc,var(--steel));color:#fff;border-color:var(--rc,var(--steel))}
 .hidden{display:none!important}
 
 footer.site{border-top:1px solid var(--rule);padding:22px 0 48px;font-size:13px;line-height:1.65;color:var(--muted)}
@@ -142,7 +161,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 
 {% macro item(c) %}<a dir="auto" class="h" href="{{ c.url }}" target="_blank" rel="noopener"{% if c.orig %} title="Original: {{ c.orig }}"{% endif %}{% if c.needs_tr %} data-t="1" data-lang="{{ c.lang|lower }}"{% endif %}>{{ c.title }}</a>{% endmacro %}
 
-{% macro badges(c) %}{% if c.trusted %}<span class="pill t">Fachmedium</span>{% endif %}{% if c.n > 1 %}<span class="pill">{{ c.n }} Quellen</span>{% endif %}{% for k in c.countries %}<span class="pill c">{{ k.name }}</span>{% endfor %}{% endmacro %}
+{% macro badges(c) %}{% if c.bris is defined and c.bris >= 5 %}<span class="pill hot">Brisant</span>{% endif %}{% if c.trusted %}<span class="pill t">Fachmedium</span>{% endif %}{% if c.n > 1 %}<span class="pill">{{ c.n }} Quellen</span>{% endif %}{% for k in c.countries %}<span class="pill c">{{ k.name }}</span>{% endfor %}{% endmacro %}
 
 {% macro xbtn() %}<button class="x" type="button" title="Meldung ausblenden" aria-label="Meldung ausblenden">✕</button>{% endmacro %}
 
@@ -163,8 +182,8 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 </div></header>
 
 <nav aria-label="Rubriken"><div class="wrap">
-  <a href="#kennzahlen">Kennzahlen</a><a href="#top">Top-News</a>
-  {% for s in sections %}<a href="#{{ s.id }}">{{ s.short }}</a>{% endfor %}
+  <a href="#kennzahlen">Kennzahlen</a><a href="#top">Top-5</a><span class="sep"></span>
+  {% for s in sections %}<a class="rc r-{{ s.id }}" href="#{{ s.id }}">{{ s.short }}<b class="{{ 'has' if s.shown }}">{{ s.shown|length }}</b></a>{% endfor %}
   <input id="q" type="search" placeholder="Suchen …" aria-label="Meldungen durchsuchen">
 </div></nav>
 
@@ -195,11 +214,11 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
   {% endif %}
 
   <section id="top">
-    <h2 class="kicker">Top-News der Woche<small>nach Brisanz sortiert</small></h2>
+    <h2 class="kicker">Top-5 der Woche<small>nach Brisanz und Kundennähe</small></h2>
     {% if top %}
     <div class="front">
       {% set c = top[0] %}
-      <article class="lead" data-id="{{ c.id }}">
+      <article class="lead r-{{ c.rubric }}" data-id="{{ c.id }}">
         <div class="meta"><span class="tag">{{ c.rubric_short }}</span>{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}<span style="margin-left:auto">{{ xbtn() }}</span></div>
         {{ item(c) }}
         {% if c.orig %}<div class="orig" dir="auto">Original ({{ c.lang }}): {{ c.orig }}</div>{% endif %}
@@ -207,7 +226,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
       </article>
       <ol class="side">
         {% for c in top[1:] %}
-        <li data-id="{{ c.id }}">
+        <li class="r-{{ c.rubric }}" data-id="{{ c.id }}">
           <div>
             <div class="meta"><span class="tag">{{ c.rubric_short }}</span>{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}</div>
             {{ item(c) }}
@@ -222,9 +241,9 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
   </section>
 
   {% for s in sections %}
-  {% if s.group and (loop.first or sections[loop.index0 - 1].group != s.group) %}<div class="grouphead">{{ s.group }}</div>{% endif %}
-  <section id="{{ s.id }}" data-section>
-    <h2 class="kicker"><i>{{ s.num }}</i>{{ s.title }}<small>die neuesten {{ s.limit }}</small></h2>
+  {% if s.group and (loop.first or sections[loop.index0 - 1].group != s.group) %}<div class="grouphead">{{ s.group }}<span class="sws">{% for g in sections if g.group == s.group %}<i class="r-{{ g.id }}"></i>{% endfor %}</span></div>{% endif %}
+  <section id="{{ s.id }}" class="r-{{ s.id }}" data-section>
+    <h2 class="kicker"><i></i>{{ s.title }}<small>die neuesten {{ s.limit }}</small></h2>
     <div class="box">
     {% if s.id == 'laender' %}
     <div class="chips" role="group" aria-label="Land filtern">
@@ -242,7 +261,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 
 <div class="wrap"><footer class="site">
   <div id="hidebar" hidden><button id="hidecopy" type="button">Ausgeblendete Titel kopieren</button><button id="hidereset" type="button">Alle wieder einblenden</button><span id="hidecount"></span></div>
-  <strong>So entsteht der Seil-Report.</strong> Täglich frühmorgens werden Suchanfragen in Deutsch, Englisch, Französisch, Niederländisch und Türkisch an Google News und an ausgewählte Fachmedien gestellt. Eine Meldung erscheint nur, wenn sie zu einer Rubrik passt und ein Ereignis enthält (Auftrag, Unfall, Zuschlag, Sanktion …); gleiche Geschichten werden gebündelt. Französische, niederländische und türkische Titel werden automatisch übersetzt, das Original steht beim Überfahren der Überschrift. Die Top-News ordnet ein Brisanz-Wert aus Rubrik, Zahl der Quellen, Fachmedium und Reizwörtern wie Zuschlag, Zoll oder Sanktion. Mit ✕ blendest du Unpassendes in deinem Browser aus.
+  <strong>So entsteht der Rope Report.</strong> Täglich frühmorgens stellt der Report Suchanfragen an Google News (Deutsch, Englisch, Französisch, Niederländisch, Türkisch, Arabisch, Hebräisch) und an ausgewählte Fachmedien. Claude beurteilt jede Meldung: Betrifft sie deine Kunden, Länder oder Märkte? Dazu kommen Rubrik, Land, Brisanz und die deutsche Übersetzung; gleiche Vorfälle aus mehreren Quellen werden zu einer Meldung gebündelt. Jede Meldung steht genau einmal, entweder in den Top-5 oder in ihrer Rubrik. Die Farbe markiert die Rubrik. Kennzahlen stammen vom Statistischen Bundesamt. Mit ✕ blendest du Unpassendes in deinem Browser aus.
   Kennzahlen: Statistisches Bundesamt (Destatis), GENESIS-Online. Themen, Suchbegriffe und Länder lassen sich in <code>config.yaml</code> anpassen.
 </footer></div>
 
