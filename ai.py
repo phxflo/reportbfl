@@ -64,7 +64,7 @@ Zuordnung bei Zweifel: laufender Betrieb → haefen/kraene/industrie/tiefbau; ge
 
 Relevant = die Meldung könnte sein Geschäft beeinflussen oder ist für ein Kundengespräch nützlich. Nicht relevant: Namensverwechslungen
 (z. B. Manitowoc County, Politiker Casar, Vogel „Kran“), Sport, Lifestyle, Kriminalität, Börsentipps/Kursmeldungen, Rezepte,
-Lebensmittelhandel, reine Parteipolitik, Meldungen zu Deutschland oder anderen Ländern ohne Bezug zu seinen 8 Ländern (außer rohstoffe/markt).
+Lebensmittelhandel, reine Parteipolitik, Meldungen zu Deutschland, Ägypten oder anderen Ländern ohne Bezug zu seinen 8 Ländern (außer rohstoffe/markt).
 Im Zweifel nicht relevant. Relevant ist nur, was ein Vertriebsleiter für Stahlseile wirklich für ein Kundengespräch oder eine
 Preis-/Marktentscheidung nutzen kann; allgemeine Weltnachrichten, Börsen-/Konzernmeldungen ohne Branchenbezug, Politik ohne Handelsbezug,
 Wetter, Verkehrsunfälle und Lokalmeldungen sind nicht relevant. Lieber nicht relevant als falsch zugeordnet.
