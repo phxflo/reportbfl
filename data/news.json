@@ -1,9 +1,79 @@
 {
  "meta": {
-  "updated": "2026-11-11T12:00:40.216065+00:00",
+  "updated": "2026-11-11T12:31:53.170172+00:00",
   "sample": false
  },
  "items": [
+  {
+   "id": "744daee9f616",
+   "title_orig": "Nucor stock: Steel price increase extends pricing run",
+   "title_de": null,
+   "lang": "en",
+   "source": "ad-hoc-news.de",
+   "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNaWozbTd3OWc4WExqMkl5UlZrQl9ubjdkOWhabDlNVWx3bmNTZFNjZ2lyY25OeXZUcjlZRTJuTnUxMi1fbDNSQWlsRHoyd0NqRGtPTGFuUG5rX0hzTlhxeE1ON2ZFY3ExWHZkTUVVUXZYRGdVQmplMjdhMlY1SlJvTWw4QXlEVENHYjhNSV9VUkxFTkoyLVdudmFPQ1dzNXMwanl5U1YxTEplTFNsN250QWhlSDl1QQ?oc=5",
+   "published": "2026-11-11T12:24:46+00:00",
+   "rubric": "rohstoffe",
+   "rubrics": [
+    "rohstoffe"
+   ],
+   "countries": [],
+   "snippet": "Nucor stock: Steel price increase extends pricing run",
+   "trusted": false
+  },
+  {
+   "id": "3d94f3ae9bd3",
+   "title_orig": "Kugelbomben auf der A4: Dresdner Zoll stoppt brisante Fracht",
+   "title_de": "Kugelbomben auf der A4: Dresdner Zoll stoppt brisante Fracht",
+   "lang": "de",
+   "source": "t-online – Dresden",
+   "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQVkxjOWltN3Bpa2pQOXNhR050ZWhkMlc4bW9WNmRCQXJ4YUhiMVQ1ZjFqZ1VaNDFyTktLR1QzVXpVMDF2ZmRsYzJvWURiV09RdURqNG1SNTM1MHNMajFQRXFFTmtheHFDWFdPZWgzX2JTRWRUblRydFZ2Yk43SElKTGFEY2pIa2NXZFNYckNDUGNxZ0hBTWxxd0JqUG04OW9PNFRTQk50MzBkOXZlWkVSMjJDT2NWbmJEVDM4WHNDTWhKdkl2d2Zj?oc=5",
+   "published": "2026-11-11T12:17:02+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "NL"
+   ],
+   "snippet": "Kugelbomben auf der A4: Dresdner Zoll stoppt brisante Fracht",
+   "trusted": false
+  },
+  {
+   "id": "0ee8d55489bd",
+   "title_orig": "ABD’nin yeni yaptırımı akıllara Jeffrey Sachs’ı getirdi: “ABD, Türkiye’nin bütün ihracat pazarlarını çökertti”",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Yeniçağ Gazetesi",
+   "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPeXNJeXExcEdmWEYwZTlaM3NCeVVTZklhYmh5bE5SMzZEcTRjNmUyMzNwdVFONktNV2lRaGs1bnoxekxHTkR2Q2RsUURZeUVLaU9pX0EteVdCM1ltTGoyaklxYzZlaUUwRTcyLXpjVHN1d0Exck9KSGl0V3M5MXpIWTZER0lPR3k4REItWVBUV0h0Ym00amRESjVHSmM4SFdpY1JPNlBhbWd2QmhpX2hpUTRTMkp5NjNUaE9uWDBGOFBJd2lxMjctRHM5dDNPa0V1MTIxdjM3VE14ZWNNRU5LZ0dB?oc=5",
+   "published": "2026-11-11T12:02:30+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "ABD’nin yeni yaptırımı akıllara Jeffrey Sachs’ı getirdi: “ABD, Türkiye’nin bütün ihracat pazarlarını çökertti”",
+   "trusted": false
+  },
+  {
+   "id": "f0ee2dc9998d",
+   "title_orig": "A4 bei Dresden: Zoll beschlagnahmt 1,2 Tonnen Knaller und Kugelbomben",
+   "title_de": "A4 bei Dresden: Zoll beschlagnahmt 1,2 Tonnen Knaller und Kugelbomben",
+   "lang": "de",
+   "source": "MDR.de",
+   "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNUXFtb3RPaUo3WFhOaXJ1RFhRdGdPLTd5cWpMX1MwT2Qxa011d0t0SDU1aUZPS1BWTnBlSTlYYkh5Unhtc2ZydDVMdGxJaDExeUJqT1d3NnduczVmZVRWTTdvcDhheXFLam9xSUV3b3RxTUZUS2FCMm5hVlc2RV9WTTQxWlA3VkRzVzJEb21NVjVMRzlDMGhLaExac1JXa1hpU2xfU1VrQlJDZ0k1YXZXQS1jZnQ4S0JxRHpTZk5sWWR1aEV5LWc2QTh4bHJBQQ?oc=5",
+   "published": "2026-11-11T11:59:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "NL"
+   ],
+   "snippet": "A4 bei Dresden: Zoll beschlagnahmt 1,2 Tonnen Knaller und Kugelbomben",
+   "trusted": false
+  },
   {
    "id": "99195cd7e918",
    "title_orig": "עיסקה בין חברה הפועלת במסגרת ההאב הטכנולוגי הימי של נמל אשדוד לבין נמל בסינגפור",
@@ -121,34 +191,22 @@
    "snippet": "Amerikaanse datahandelaar wou met drones olietanks bespieden in België en Nederland"
   },
   {
-   "id": "da1ff64d045f",
-   "title_orig": "Manitowoc County Pauses to Honor America’s Heroes This Veterans Day",
+   "id": "67d65260419f",
+   "title_orig": "ABD’nin İran yaptırımlarında Türkiye-Tayland farkı",
    "title_de": null,
-   "lang": "en",
-   "source": "Seehafer News",
-   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQMGhKUVRUUm1XNEh5SkZsVlZtMk50VDFEb3hNNXlSeUc4QzZtallIVXVRbkVXQ3hGdndwTnFUTllISmpsMmhNS1lRaWhYTldiT0JXUnRRdGRoZ3ZueE9KdWVybklwN3pFcmFweHBGMW9FbjEzM2FNUFAxXzNsckxZUTFRbHg4bDdYcVV5Mkd1dHN0Q0xWcmcwQ1NOdEhxV1MzTkdyMTNNT2NBTTVIU2c?oc=5",
-   "published": "2026-11-11T11:07:28+00:00",
-   "rubric": "kraene",
+   "lang": "tr",
+   "source": "Haber Aero",
+   "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxONE1Ec0RNWjBCTnQtZ0ZLZURzUWJHQ3V1Z043ZFF0SmF6UERqbmhEYUJuY2lPM3pCc2Y3Q2FqV0FVcXNLSFRxQ052UWlRLTcwbmtNb1NiNU80VjVyWGhrZUtBQmV2WjM5ZzhuUmVBeVVlekhGdVpZOXBjWXhweHJqcWEyZkdSQlJ4?oc=5",
+   "published": "2026-11-11T10:55:57+00:00",
+   "rubric": "laender",
    "rubrics": [
-    "kraene"
+    "laender"
    ],
-   "countries": [],
-   "snippet": "Manitowoc County Pauses to Honor America’s Heroes This Veterans Day"
-  },
-  {
-   "id": "c7b5518110be",
-   "title_orig": "2,300 Manitowoc County men served in World War I. Here's their story.",
-   "title_de": null,
-   "lang": "en",
-   "source": "Herald Times Reporter",
-   "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPUjJpOVQ2X3piZDhNak9fejdPQXVQdGNPd1IzVFBscWxfOXUwbXRjYWtpZlI3MGZRdWZmRXJRdGJ1d2xZNlBiQmJJeVowMWl1V1NqSTNUbDFZN3JzTjJlamFKZDNPVFp4OXI4ZmZJQmZIVmpzY0I2bnJpeUFaVTNZalNocGpPTk1hWXR3SFdhdWJ6ZVhhRndSTUpJa19vdTVfQWJlMHloUldsX1ZnQkh2b3FUY3JKYU1MUmtrR0k2bnlST0l5b0tj?oc=5",
-   "published": "2026-11-11T11:00:00+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
+   "countries": [
+    "TR"
    ],
-   "countries": [],
-   "snippet": "2,300 Manitowoc County men served in World War I. Here's their story."
+   "snippet": "ABD’nin İran yaptırımlarında Türkiye-Tayland farkı",
+   "trusted": false
   },
   {
    "id": "7e2a6c1fe60f",
@@ -163,7 +221,8 @@
     "haefen"
    ],
    "countries": [],
-   "snippet": "DP World seals $227m Chile port expansion deal"
+   "snippet": "DP World seals $227m Chile port expansion deal",
+   "trusted": true
   },
   {
    "id": "01c19a089975",
@@ -281,19 +340,52 @@
    "snippet": "Un contrat onéreux et des survols chaque semaine: comment une entreprise américaine a essayé d'espionner le port d'Anvers"
   },
   {
-   "id": "0ef9849305ae",
-   "title_orig": "Manitowoc County property tax bills to rise about 3.1% in 2027",
+   "id": "8c43ef491d9b",
+   "title_orig": "Pilbara Ports advances green ammonia ambitions with new deal",
    "title_de": null,
    "lang": "en",
-   "source": "Herald Times Reporter",
-   "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOUDFrOEZxWUE4ejcybVNSMEpXYl83djNra3hjSDZiUlpzZW1KN25uaWV1VzFodFZ2SHBJQVRXbDZpekc3dUl0N3d1cEZoVHlQaTc0ZmhWT0poUGpCYmlMYm5zUWVXNFJGSzg4bEFyY0pJbElPZEdUVDhuSWtDczJ1Ny04R20xUUMxMFFVajhnWGR0cl9nVWpGWlNUMjA0Z1gzZHMtd2huZmJjWmFlVVVDU0NJOVNsaEJwSGNIdk9uVVJBYjdvZG9LR2JHS0U1MjNEX2NTbFdQWG04dElyX3c?oc=5",
-   "published": "2026-11-11T10:05:00+00:00",
-   "rubric": "kraene",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOZnVmV3FHWVFRamstX3VSeENTazJDdDlFdEVBa3ZMRVlNXzRlYl9iVHpnbFBSWGhZT1pBckV6UlNXQUlzQ2t6elVkbG1SbFpFTHIyR2tkcThVV2pPMnlVcHJGbnFETHhOSjNidGNSS2xiUHJ4aTVZRjlac1NPQUJkN0ExQzVUR3A2cVZR?oc=5",
+   "published": "2026-11-11T10:05:39+00:00",
+   "rubric": "haefen",
    "rubrics": [
-    "kraene"
+    "haefen"
    ],
    "countries": [],
-   "snippet": "Manitowoc County property tax bills to rise about 3.1% in 2027"
+   "snippet": "Pilbara Ports advances green ammonia ambitions with new deal",
+   "trusted": true
+  },
+  {
+   "id": "0cf3fb4c8a74",
+   "title_orig": "Singapore completes latest Tuas Port expansion milestone",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQUEt2cTJpX212ZzJnUTN6amhJZllkOGJISlhXcjQ2d2lCenptSjk0TVNlb1hudlROY0xGLUo1Mm1XcWlnRFRTN1VKOEp1TU9PNmNHT0VRbGtCSEkwdDR3VHBITUhUT2FKeWZ0aEozV19jdDVXYmU3c0k4a0l0MmVQakI3NDRlZw?oc=5",
+   "published": "2026-11-11T10:05:39+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Singapore completes latest Tuas Port expansion milestone",
+   "trusted": true
+  },
+  {
+   "id": "d304827bce5d",
+   "title_orig": "Kenyan watchdog moves to close corruption loopholes at ports",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPSFpqRVlIbkppcUFjeWtjNXNONW1weFVLUEJOOVFKbkhTdjRYWHFrYmhMdlRFaGZzaDE0WS1sd2x6NjJRX2hfWW9PY19YenVfc1ZNWl9faXVoMXVKQjRaUlVIOGM2ckI3dkIybDhJVFNCdDJYdDZDVk9ieW90Wll1YXBacWpHcExPVUIw?oc=5",
+   "published": "2026-11-11T10:05:39+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Kenyan watchdog moves to close corruption loopholes at ports",
+   "trusted": true
   },
   {
    "id": "e3466fca6387",
@@ -379,6 +471,22 @@
    "snippet": "Zoll stellt über 1,2 Tonnen Pyrotechnik auf der Autobahn bei Dresden sicher"
   },
   {
+   "id": "a40571282a9b",
+   "title_orig": "Polish rebar, wire rod prices rise amid high production costs, weak demand",
+   "title_de": null,
+   "lang": "en",
+   "source": "EUROMETAL",
+   "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNM1o1UW00ZTd2VGkzZkdfQzNscGNmNEx3WktCWThXY2pNRjZDV1hKNE9uUi1vOXFzWjcxNUMwN1ZYZHdZM01weG9CaENZUlRVZ3Z6bzkwdk1SMUE2dndFbXNJbFhNcVMzRktZLWhEWHRlUmJPeXBrdEFHVlk3cWZQWS0ycDNvdXJTbzdpU2Q4Y2lrdEVYZzRCNE1NYw?oc=5",
+   "published": "2026-11-11T09:54:37+00:00",
+   "rubric": "rohstoffe",
+   "rubrics": [
+    "rohstoffe"
+   ],
+   "countries": [],
+   "snippet": "Polish rebar, wire rod prices rise amid high production costs, weak demand",
+   "trusted": true
+  },
+  {
    "id": "06867e3d5b2d",
    "title_orig": "Kama: Steel mill restart to create US$1.5B industry",
    "title_de": null,
@@ -423,7 +531,24 @@
     "haefen"
    ],
    "countries": [],
-   "snippet": "Port of Klaipėda launches €1bn southern port expansion tender"
+   "snippet": "Port of Klaipėda launches €1bn southern port expansion tender",
+   "trusted": true
+  },
+  {
+   "id": "8bdf3dae6bbf",
+   "title_orig": "Port of Virginia receives six RMG cranes at NIT",
+   "title_de": null,
+   "lang": "en",
+   "source": "Port Technology",
+   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPYmIxcDFXNFRYTG4wZUNvSkYteDlKQ2F0QXZsSkdldzlBZnZ0Z051MC0yVEhQaGtSTV82VGVCa1lneHZsUnFSMWNMN3lUUlhXV3E3bFVQR2JsWEdFb1lFdV9BNnZBZ2Z4N0ZBUWFZZDdPMTd3UmxydWNkNnNCUkNwZ1FCa0lqR0dlNlJURzhNd3B0NC10UkxOVHpNNkZtYWdK?oc=5",
+   "published": "2026-11-11T09:37:53+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Port of Virginia receives six RMG cranes at NIT",
+   "trusted": true
   },
   {
    "id": "81ab9be2b541",
@@ -511,6 +636,22 @@
    "snippet": "Amerikaans bedrijf wilde met drones olietanks bespieden in Nederlandse havens"
   },
   {
+   "id": "5564dab65518",
+   "title_orig": "Georgia automotive growth drives port activity",
+   "title_de": null,
+   "lang": "en",
+   "source": "Port Technology",
+   "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxON2M3UWJXaU9sR25zcEViSEJ5VG9MdTl0aEcycEFJS1lsMExfRGVWM0xhSmlmekxoNmY1SE5Vc0RhS3lncHE3eDItc0l3NHh6MUxGaFp4bFhQQXp1bklMSXI2bjFOei1oOUpKUUlERDc2MkpzZERoQUtrWFhaRXo1UGsxQQ?oc=5",
+   "published": "2026-11-11T09:14:34+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Georgia automotive growth drives port activity",
+   "trusted": true
+  },
+  {
    "id": "e0e7539587f8",
    "title_orig": "Russlands Sonderflüge: Sanktionierter Jet landet in Israel",
    "title_de": "Russlands Sonderflüge: Sanktionierter Jet landet in Israel",
@@ -577,6 +718,22 @@
     "IL"
    ],
    "snippet": "13 US attorney generals oppose European sanctions"
+  },
+  {
+   "id": "7a4708476bcb",
+   "title_orig": "Maersk container ship topples STS crane at Yantian",
+   "title_de": null,
+   "lang": "en",
+   "source": "WorldCargo News",
+   "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOVUotR3ZpajhwSWYwMmNYZjlQNGxzZFlMMWUyY3NBaU56cVJxcXR6YjlwLTJ2SmNJc1pRMjIwU181WVFlNkV3S05qZHVOYmU5Q0tMZ01xbzdUZGN4Y0tvQi11Uk9tR3hzV243MWEtbExhTVRzOEMtUkUxc0pvMS1JSW41MG9SSGs4aGNpVnZWTVhMclEyMDZkZ014dw?oc=5",
+   "published": "2026-11-11T09:02:39+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Maersk container ship topples STS crane at Yantian",
+   "trusted": true
   },
   {
    "id": "ef898f904d7c",
@@ -692,6 +849,22 @@
    "snippet": "Adani Ports-Aktie: Adani-Gruppe plant 120 Mrd. Dollar Investitionen"
   },
   {
+   "id": "2f70b23d35cf",
+   "title_orig": "Nordic ports team up on new rail-sea freight corridor",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNa2ZPZHkzVE1WeFdGdGhROVg5cFFaSFlzVlIzeGFOaUd3bkc0MHNKanl5NG1sWV9KTVpLVTJwM25qUkdWeHZLNkVFOUhqaGdCVmlNa0VlMW00T0xibXZjbXdQUXBzeHdRQUV3enRwUV9HbjB5VnVyUFZiYlZJdzJjUTVR?oc=5",
+   "published": "2026-11-11T08:35:38+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Nordic ports team up on new rail-sea freight corridor",
+   "trusted": true
+  },
+  {
    "id": "edba67b885a2",
    "title_orig": "International Container Terminal Services Posts Qtrly Gross Revenue Of $984.1 Million",
    "title_de": null,
@@ -739,6 +912,22 @@
     "DZ"
    ],
    "snippet": "الكاف يحدد موعد مواجهتي شباب بلوزداد والجمارك الموريتاني"
+  },
+  {
+   "id": "2e66f6a325cb",
+   "title_orig": "İzmir Aliağa'daki HABAŞ Demir Çelik fabrikasında patlamada can kaybı 18'e çıktı",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Son Dakika",
+   "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOSGtKOWppMmF2TmM1RFZrcTVDcjYyd0pzR3ZNcjV3U3FVRW1PNUtXWmlCblphZVVsdms5TGZpWVE0V3loQlZYNXk1dDMyNXFWZXRndUJWWHRSd2pCV29QSWNBWFJSdUYtSUtNSEZkeFlkV3hNa0lZZ2dZYkY3VENNOWhWWDFBeDc1UDJiVVFkQWNyMGJVX3pMS2Jmc0FXZ9IBmgFBVV95cUxQUXVaLU9Db05INEMxVDZiMlB0bk1MdnVTLXNPc3UzV2RZLVg0eEtSM1A3QlhLMndWMENTbmJqTllZaXMwV1hpdlRlTktoQ3VmbHdmYWdHSVdNeHVxcXhrNUZVc0xOa1JfczZhN3lIeWFiTGY5WjRGLUxKT1d6M3laYzlNbUdKeUVnMW1KM05IZjZiSlJETzlRRkd3?oc=5",
+   "published": "2026-11-11T08:19:46+00:00",
+   "rubric": "industrie",
+   "rubrics": [
+    "industrie"
+   ],
+   "countries": [],
+   "snippet": "İzmir Aliağa'daki HABAŞ Demir Çelik fabrikasında patlamada can kaybı 18'e çıktı",
+   "trusted": false
   },
   {
    "id": "6eec42bbe2a6",
@@ -932,7 +1121,24 @@
     "haefen"
    ],
    "countries": [],
-   "snippet": "Adani battles rivals for $1.25bn Indian port expansion"
+   "snippet": "Adani battles rivals for $1.25bn Indian port expansion",
+   "trusted": true
+  },
+  {
+   "id": "0445157ac780",
+   "title_orig": "Ukrainian drones strike major Russian Baltic export port",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNVXhWQlFSTVpjbXpTUHktWkVXcGlsQkpaVUhZU21XTUkxMFFPOTltbm9qZmthc0I1elB2YVBjZ3M2UVFhWExEeEtWQVQ3NlQ2OGZzZGhVMmNzR1hadG5WQnBGdVlNS0M3akQ1eUdJYktVbVgtUC1yVWtkMU14U0lQZTIxZDlXQQ?oc=5",
+   "published": "2026-11-11T07:05:27+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Ukrainian drones strike major Russian Baltic export port",
+   "trusted": true
   },
   {
    "id": "74545996db8c",
@@ -1014,6 +1220,24 @@
     "TR"
    ],
    "snippet": "Turkey Steel Plant Explosion Kills 18 Workers Near Izmir, Probe Launched"
+  },
+  {
+   "id": "6d606b1f61a7",
+   "title_orig": "Türkiye ve Özbekistan gümrük idareleri arasında anlaşma imzalandı",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Ensonhaber",
+   "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNRkNGWWJyTTB5OTF5bTNrUnFxR19ydnYwVGswWmgwVWwxYlgxR2Z2bzdNeDQtanY5Mi1MNXJocVk5bWtNNWtSS080T01nbWxhbUNDMFZneHFtNzl0VzZ5VGZucFZWOGUzXzZDODdXSXlaUUVaM2pVY3N6N0VBTmZ6TWNzdUY4U3VmMExGZTBQUkk5YnowNlJSS1Vqb2lab2xKc2gw?oc=5",
+   "published": "2026-11-11T06:15:05+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Türkiye ve Özbekistan gümrük idareleri arasında anlaşma imzalandı",
+   "trusted": false
   },
   {
    "id": "302d51756e5c",
@@ -1125,6 +1349,22 @@
    "snippet": "Türkiye'nin dijital ihracat seferberliği: Üç kıta, yeni pazarlar"
   },
   {
+   "id": "9eb6ae24b2ab",
+   "title_orig": "Qingdao Port moves to take full control of Dongjiakou ore terminal",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNSGgxc1N6UkNkT0pJTmFjU19RWnRqbTNINlZxU3FhVmlYalBybXphclpRVGJsU0NSYUM2Y0pwem5QelJaemtkcElOcFRpZVlFNHlBUURBakRHU2tPd1ZDR2lseU9UdllSaWNrdTdXbHV1T1F5THloa0lwLXNhXzZTV0tCMlM0MmhGTThqT3FwMW5VYVk?oc=5",
+   "published": "2026-11-11T04:35:24+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Qingdao Port moves to take full control of Dongjiakou ore terminal",
+   "trusted": true
+  },
+  {
    "id": "02147eae0612",
    "title_orig": "GPHA invests US$98.41M in Takoradi Port expansion as Mahama cuts sod for Berth 19",
    "title_de": null,
@@ -1204,6 +1444,22 @@
    ],
    "countries": [],
    "snippet": "Stahlwerk der Salzgitter AG - Besichtigung"
+  },
+  {
+   "id": "c2cd29991347",
+   "title_orig": "Bermuda’s Hamilton port upgrades heavy-lift capability",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPNERIeFU4Y2VKZ3JnZmVRU0tUNW1EZGl2WVRlZEhDZUJqMEdNOGNES0pCUENtbXVaYk9EYVQ4VWdqVkFEcTJTQXVGMEZ1MFFFZDVackllLTFHcVRTV1V1alQ2Yl83Z1huUTREVG5RQ2Jld0JfVFpUcS04a1NrNkJiOFlR?oc=5",
+   "published": "2026-11-11T00:49:45+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Bermuda’s Hamilton port upgrades heavy-lift capability",
+   "trusted": true
   },
   {
    "id": "ddbf88dcca4a",
@@ -1296,6 +1552,22 @@
     "DZ"
    ],
    "snippet": "7 300 tonnes de ciment vers la Croatie et le Monténégro : le port d’Annaba élargit sa carte de clients"
+  },
+  {
+   "id": "802ac24e2812",
+   "title_orig": "Konecranes Gottwald ESP.4 MHC ventures outside Europe",
+   "title_de": null,
+   "lang": "en",
+   "source": "WorldCargo News",
+   "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOTHhIYnVjbmVXZy1CYmlwVGtmNGp1RjhURjJ1YjFNSmJBOTRPRWRrTnVqYkU3MW43V2o4MFpfVk1iZUdlMTZKYjRwdnN0bDJNRnVPNW44UEVZcHF6RHRRaHg0aVNTUm1PUExxYXBmTVJ2b2FFOHFCOHVsd29lSHhCVnZTNDMta1J6MzAyZnFtbFo3ekxqeHhoV0EybmFwd1JrR2lWSGstZVdvaFJMM29fbmN6Sk5GeHJ5cWc?oc=5",
+   "published": "2026-11-10T22:58:42+00:00",
+   "rubric": "kraene",
+   "rubrics": [
+    "kraene"
+   ],
+   "countries": [],
+   "snippet": "Konecranes Gottwald ESP.4 MHC ventures outside Europe",
+   "trusted": true
   },
   {
    "id": "99750d7c479f",
@@ -1696,7 +1968,8 @@
     "industrie"
    ],
    "countries": [],
-   "snippet": "Overhead crane falls into a furnace"
+   "snippet": "Overhead crane falls into a furnace",
+   "trusted": true
   },
   {
    "id": "2248a30373ff",
@@ -1795,21 +2068,6 @@
     "BE"
    ],
    "snippet": "Un laboratoire clandestin de tabac de contrebande découvert au Port de Bruxelles"
-  },
-  {
-   "id": "3149d0f38cf3",
-   "title_orig": "2,300 Manitowoc County men served in World War I",
-   "title_de": null,
-   "lang": "en",
-   "source": "Herald Times Reporter",
-   "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNblpuNEcydFJ5WGxXcTREUXJYSmlqMmE0b3NEZVd2ZDVWejcxNjJfLW04YkJRM3cwX29JUWVlZ3VKLVpMeWlIdEQ1RXBGYzBYRFlmRUNfSnVkZGUyNTUyakVrVXFZMHlVZF9wVjBVSmNHQW50VV9GUzc0bTFfUjF1S2pabEY1R202cjl5Vy1uTVJra0NCRGkxWlpZQ1Q3eXpXTHk4UHBwZloxeUlTNlZr?oc=5",
-   "published": "2026-11-10T18:01:01+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "2,300 Manitowoc County men served in World War I"
   },
   {
    "id": "7398c3c79560",
@@ -2288,21 +2546,6 @@
    "snippet": "إردوغان يعلن ارتفاع حصيلة انفجار مصنع الصلب في إزمير إلى 16 قتيلاً"
   },
   {
-   "id": "71d87fe39704",
-   "title_orig": "K-9 Knox alert leads to quarter-pound meth seizure in Manitowoc County traffic stop",
-   "title_de": null,
-   "lang": "en",
-   "source": "WTAQ",
-   "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPdGZzWFBDeGxtU1ZEdHdjdFlubW9XT21GaVh4d2Y5dEFNMWUwN2dLdzM3aUZmN3pYeUkzT3pTUGo0V1JXbnZPV1NhRjZiMmp4NnRNSl9kYjZ6UTJrUGY0elJpSHo5Q29wYm1US0t6Tnp3aWxEYVI1M3dob2x6WjRDTVBuMy1tREdlXzRLcjFOY3p5Zk1oZlFQTjl0cV9LRzNIN3pxMmRWWXZxeGItMFNyNU5R?oc=5",
-   "published": "2026-11-10T16:07:25+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "K-9 Knox alert leads to quarter-pound meth seizure in Manitowoc County traffic stop"
-  },
-  {
    "id": "0309f27f1813",
    "title_orig": "ارتفاع دعم استيراد القمح اللين إلى 46,77 درهماً للقنطار",
    "title_de": null,
@@ -2352,6 +2595,22 @@
    "snippet": "Mahama Pushes Port Expansion with $98.41m Takoradi Berth 19 Project"
   },
   {
+   "id": "94667b11cd82",
+   "title_orig": "TOC Asia: Cost remains a top ‘pain point’ in port electrification",
+   "title_de": null,
+   "lang": "en",
+   "source": "WorldCargo News",
+   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOZWw0ZEJ5S0J5TGtvbUxMeUpkb0t1alNlczJRS0w1TzF1V2ZYRzJNcGR4OFgtLS1XUEJZYXJnMFBuOUZjLWZ6M1AwcDNXb3l2Yi1fU3VZS2FwSGZROHROT2xEMWkwZWpfSnE5QW9CWUFvcXMxSXkxQkZmNWpRNnlJdDdGZ0NyZGZYa0hhUl9BOEpSTFBfRmZkSTloVm5LUWZvc0VJTURNYWVqTDA?oc=5",
+   "published": "2026-11-10T15:51:03+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "TOC Asia: Cost remains a top ‘pain point’ in port electrification",
+   "trusted": true
+  },
+  {
    "id": "8f3f2b6ede42",
    "title_orig": "Massive explosion occurs at Turkish steel mill that supplies rolled steel and rebar to Ukraine. 16 people killed",
    "title_de": null,
@@ -2397,21 +2656,6 @@
    ],
    "countries": [],
    "snippet": "President Mahama cuts sod for $98.4m Takoradi Port expansion project"
-  },
-  {
-   "id": "e7ea3ea95708",
-   "title_orig": "Immediate Manitowoc County Employee Wage Increase Included In Approved 2027 Budget",
-   "title_de": null,
-   "lang": "en",
-   "source": "Seehafer News",
-   "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQTmx4M0l4WUl5VndyMDdHb1BCUG1UOXJDRG96WE5aRG03WE0tM2ZiQ2RiVEhZdHZBWEFVeGZJLUkweTJQYzZVa2FqdTh0Y2d6TTFEZzdUdHRUQUJiQ0VVT3RzTld0U1VqZDhia0dzYVlqVkJiSUIwR3JySy00ZGEwZ09QcWZyZEYwdXhScnVvaE9yUDRhN0xjUFdVTk5sb1BSdHlBTEtWSU91b2NIaXFHYkQtU3J5dm0yQjZhLXVYN1U?oc=5",
-   "published": "2026-11-10T15:37:57+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Immediate Manitowoc County Employee Wage Increase Included In Approved 2027 Budget"
   },
   {
    "id": "3d5e6d04eaca",
@@ -2496,21 +2740,6 @@
    ],
    "countries": [],
    "snippet": "Vachtwagenchauffeur in haven van Hamburg moet eerst truck laten maken"
-  },
-  {
-   "id": "a3337d9dcbb4",
-   "title_orig": "Video shows driver ramming Manitowoc County squad car during traffic stop",
-   "title_de": null,
-   "lang": "en",
-   "source": "WISN",
-   "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNTWIxd0V3bGRBNDFEUGxwcV81V2wwSnNLS0JQRmlXQ1AxMTFHTHctZUozX2pYc01NUEpiT1lCY21zREVFa29teXpOakdFT2hWcTlFbF93eHZKQmppekpaS0o2Z1dpVkw4Z213V0NpSXQ1TVE4b0xXNUNZWGhnY3VPTzJDRzNsTHRxMDFlY0wyOFU1cjdHX3Y0WlBvUlhWdw?oc=5",
-   "published": "2026-11-10T15:15:50+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Video shows driver ramming Manitowoc County squad car during traffic stop"
   },
   {
    "id": "5efee7ea1fbd",
@@ -2609,6 +2838,22 @@
    ],
    "countries": [],
    "snippet": "موانئ دبي العالمية توقع اتفاقية امتياز لمدة 15 عاماً لتشغيل محطة حاويات جديدة في بنغلاديش"
+  },
+  {
+   "id": "994e007c9092",
+   "title_orig": "Ningbo Zhoushan Port to bid for stake in Brazil’s TCP",
+   "title_de": null,
+   "lang": "en",
+   "source": "Port Technology",
+   "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQbEdRMUpmc05LS29acnc4SGg0bFFhQnByei1zT2RTQW5uWmlocm5LQmlxM1hqN2ZqRGpYa2NndUtzTWNBbnR6WWZNS2Vic01jTTh2eGwzWUQ2Qm1menI2TE5VaVFhVHVKaWExWmVPdmtZZVhNc1MwNTJkdGNFVlh1alJIUF9UeFp2cjdKZGpVTkpOOW03aWZHZ2xvOXozemM?oc=5",
+   "published": "2026-11-10T14:24:47+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Ningbo Zhoushan Port to bid for stake in Brazil’s TCP",
+   "trusted": true
   },
   {
    "id": "9fe071ab81f5",
@@ -2865,21 +3110,6 @@
     "MA"
    ],
    "snippet": "دعم البذور بـ50% وتقليص استيراد أبقار الذبح.. المغرب يعلن تدابير الموسم الفلاحي الجديد"
-  },
-  {
-   "id": "389c22b42a54",
-   "title_orig": "Oak Wilt Confirmed in Manitowoc County, Wisconsin, for the First Time, in Mishicot, About 20 Miles From the Nearest Known Infection",
-   "title_de": null,
-   "lang": "en",
-   "source": "AOL.com",
-   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQSzZvY0JDNEZzdURrQVhPQjhQaERzT2QzbjZ4dzlpelhPOHhhY2lWSGFqQnN1OXFkblU3VDlYNk1zWGF6a2R2Z1hRWHpjRWdpVElabG8ydV8xTlV6cV85SnhOWGNXaURpbmVYbWlvNVdnNE1oczZpeVFUc2x3cU9EdElycGtZQQ?oc=5",
-   "published": "2026-11-10T13:00:00+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Oak Wilt Confirmed in Manitowoc County, Wisconsin, for the First Time, in Mishicot, About 20 Miles From the Nearest Known Infection"
   },
   {
    "id": "1dbc57e88c7d",
@@ -3264,6 +3494,22 @@
    "snippet": "ارتفاع حصيلة انفجار مصنع الصلب في تركيا إلى 16 قتيلا.. وأردوغان يفتح تحقيقا"
   },
   {
+   "id": "4273ce44395b",
+   "title_orig": "Beibu Gulf Port seeks builders for $627m bulk terminal",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNUENqZTlGVGt5aWRQZ0xocG5HUHNqNGlOckJLdlRkdk9oa1hRVGFuVi1QYVViMlllbnM0ZEhfV3dWU29ZeVRPSkRVam5LQ05rSmF2TGNXVHNLMUlvX2VuamhzYm9WWlZGNjRRSTFqbjlVRnY3cGYyQkt5NjNwbmNpTFVn?oc=5",
+   "published": "2026-11-10T11:18:35+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Beibu Gulf Port seeks builders for $627m bulk terminal",
+   "trusted": true
+  },
+  {
    "id": "a8537224bd2a",
    "title_orig": "Une explosion dans une aciérie en Turquie fait 16 morts.",
    "title_de": null,
@@ -3309,6 +3555,22 @@
     "NL"
    ],
    "snippet": "Douane ziet 43 procent minder e-commerceaangiften: pakketstroom van buiten EU neemt verder af"
+  },
+  {
+   "id": "bb9084ae8adb",
+   "title_orig": "US extends suspension of China port fees to January 2027",
+   "title_de": null,
+   "lang": "en",
+   "source": "Port Technology",
+   "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOUGRaSFVCUTJKZ0thSDVMeXNSWGFnZF94dm1UcmxFd2dDM0p4V3JIR1k4Yll0b2pVZGk0MkcxWkdJUVkzWDZlSS1xSlN5Wlo1ZFI2SXJiZk9SaXpDems1cHFwX3RFMU0wVDJHTUhzUTktM1Ztck1NbmZBUjlEeTFyUEprYUYwRm4wRlBmX2JjYmpfWTJsd1VrelpKemFBNmJ2VkQ0dmZhaXBnbFlqbUg0a2NfcE5lUQ?oc=5",
+   "published": "2026-11-10T11:00:00+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "US extends suspension of China port fees to January 2027",
+   "trusted": true
   },
   {
    "id": "7c085761f15a",
@@ -3373,6 +3635,22 @@
    ],
    "countries": [],
    "snippet": "Habaş Demir Çelik Fabrikası'ndaki patlamada yakınlarını kaybedenler: Kimsenin yanına kâr kalmasın"
+  },
+  {
+   "id": "2783d7112b8f",
+   "title_orig": "GLOVIS America expands Port Tampa Bay vehicle terminal",
+   "title_de": null,
+   "lang": "en",
+   "source": "Port Technology",
+   "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOZFh1TkZMelpWNnNCQUFpYlBoekpLVUJKQldLbXgyYTdJYzJiLUtiUDIyOHdZdmVKclNZNU5Yeml1RWdUQXU1a28tWE1OR01zZ0xtb25SRXgtZEJwSGZyTktyYTY4NnVLV29EMXl0dGMxUUtlaW1HUnp6R1lLZ25BQVllbkFWeVJ5dEplakhRdDhBcmdkLVJneg?oc=5",
+   "published": "2026-11-10T10:24:25+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "GLOVIS America expands Port Tampa Bay vehicle terminal",
+   "trusted": true
   },
   {
    "id": "018409b7eba6",
@@ -3561,6 +3839,22 @@
    ],
    "countries": [],
    "snippet": "انفجار في مصنع للصلب في تركيا يودي بحياة 16 شخصاً."
+  },
+  {
+   "id": "1c095465f3b0",
+   "title_orig": "Santos Brasil proposes R$3.5bn expansion at Port of Santos",
+   "title_de": null,
+   "lang": "en",
+   "source": "Port Technology",
+   "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNR3Rhakl6bjZpVHZicWtoUjlTdnZ5NmsyZ2ZKbnN0NmZaOEtLT0hnTUloblRONTMwTkpwSFFjeGJockN1cENnVS05VmhkUlpxOTZram1oM0VOWktCQmtjNjZoaHplOFgzMnZSMkQ0RUtGMlBhWkRHRDNpT0w2ZHNJeTNtVEFHdllCZ1hzNGdkMFpUazA?oc=5",
+   "published": "2026-11-10T09:39:31+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Santos Brasil proposes R$3.5bn expansion at Port of Santos",
+   "trusted": true
   },
   {
    "id": "de3bc0a96258",
@@ -3797,23 +4091,6 @@
     "TN"
    ],
    "snippet": "تركيا تطرح 500 ألف طن من القمح للتصدير عبر مناقصتين يومي 17 و18 نوفمبر"
-  },
-  {
-   "id": "652f2676124c",
-   "title_orig": "Fast 500.000 Euro wert: Ferrari wird am Frankfurter Flughafen gestoppt",
-   "title_de": "Fast 500.000 Euro wert: Ferrari wird am Frankfurter Flughafen gestoppt",
-   "lang": "de",
-   "source": "t-online – Frankfurt",
-   "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOZ1otanA3N3Y1WVJlSnphbzUxT1pEbkdTWVpZeThYNVlGUkIzcWdRY1BnamFXYzU1ZFI5SnVUZWtIY1NsNU15UTZtSFQ0UG9vRVk1REw0QzlUVGNGeGY4MDF2bG1sMktBZHZHTktPTFhjd0hrRGtUMDFidk1aU0M0eXRKYnhteE5iSHdQRGJqd0pOd2wtakplY2pSc2ZHajZXV0M3N3lLSnhSdW5DX0xSQk1mYVcyNmNmS1JmMExnNnFVdzMzQmJRbjZjNA?oc=5",
-   "published": "2026-11-10T08:47:00+00:00",
-   "rubric": "laender",
-   "rubrics": [
-    "laender"
-   ],
-   "countries": [
-    "BE"
-   ],
-   "snippet": "Fast 500.000 Euro wert: Ferrari wird am Frankfurter Flughafen gestoppt"
   },
   {
    "id": "688d497156ad",
@@ -4102,23 +4379,6 @@
    "snippet": "Explosion at Habas steel plant in Turkey leaves 17 dead and halts production"
   },
   {
-   "id": "dcde769bb60d",
-   "title_orig": "Algérie: Des projets d’extension des ports et aéroports sont en cours",
-   "title_de": null,
-   "lang": "fr",
-   "source": "African Manager",
-   "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxObTBsbFI0MnMwTkJ6UnhObzRWVHVIR3JGc2k1SmFvdFhLRG9IejVBM3NMeUdKM0MyeTl6Ujkzazloc05aRGhXUTNqcGVmLUhJV1dpczJweDlOdEdRX0tINGh2TFI4TXVVR0lfaklnWFRjTWt0aXZ6LW9WMEdCNjlueW01WG54b1gtdGRWY1VjRnhTcWNXVm5ZSGZvcw?oc=5",
-   "published": "2026-11-10T07:36:55+00:00",
-   "rubric": "laender",
-   "rubrics": [
-    "laender"
-   ],
-   "countries": [
-    "DZ"
-   ],
-   "snippet": "Algérie: Des projets d’extension des ports et aéroports sont en cours"
-  },
-  {
    "id": "98047c21a4e6",
    "title_orig": "Metrelerce Yükseklikteki Vinçte Atatürke Saygı Duruşu",
    "title_de": null,
@@ -4134,6 +4394,22 @@
    "snippet": "Metrelerce Yükseklikteki Vinçte Atatürke Saygı Duruşu"
   },
   {
+   "id": "de1f81800fce",
+   "title_orig": "G7 launches 14-port alliance to tackle global drug trafficking",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQd25TMUlHVlZNVUprcU9ETGJuWU51S3dHZFA5eTh2akpiYnh5ZFA5dmZXU1dJZjdSZV9DNnZsOVRkRmVUTW5YbDh2Z3k0UkhwdzlPcjY2VkJEX2pQdjgzYXlRalF1RHp1UmJ2MS1CVHBuYlVDa2dvaW9uMktUVWJyNXZLUDhpZkJmSUFGRnJn?oc=5",
+   "published": "2026-11-10T07:28:43+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "G7 launches 14-port alliance to tackle global drug trafficking",
+   "trusted": true
+  },
+  {
    "id": "4b197c2bc61b",
    "title_orig": "Üsküdar'da vinç operatöründen metrelerce yüksekte Atatürk'e saygı",
    "title_de": null,
@@ -4147,6 +4423,38 @@
    ],
    "countries": [],
    "snippet": "Üsküdar'da vinç operatöründen metrelerce yüksekte Atatürk'e saygı"
+  },
+  {
+   "id": "e384d35170c0",
+   "title_orig": "Bremerhaven begins $1.5bn port overhaul to become NATO logistics hub",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQQkpEaHVSODYyWDNXV0NaRkFoMi11cXl2aHlXQTVUMUFCSDFaYXZwaG5vOTBBWld3NEtBU2ExV2c3bVB1dE5ZNDJXRmRIN0hiczRZc2g0cDdRbVVSU0tDNF9oZTEzeXFHNWtqb3FXVm91cXhvRkRkdU0ybXpDYzNHaU5oQUdybHozNGhBdVl1a0E3dkls?oc=5",
+   "published": "2026-11-10T07:23:36+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Bremerhaven begins $1.5bn port overhaul to become NATO logistics hub",
+   "trusted": true
+  },
+  {
+   "id": "284e3502884b",
+   "title_orig": "G7 recruits major ports in crackdown on drug smuggling",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQSExnLXhQdThmbGJhUFN6TGJzNlFGTEJkeU1WdVU4WjJpR2V3NXBUTUo2V24xTmNIXy1XU20taG1zc283NnlYa0xBM1FiYlMxUGM3d3NoeVBGMldZVXdYYkVMa2daRWhtYS13ZDZ3NmRKRXdNNXRSRlNPUU1zSmhPN0dXcw?oc=5",
+   "published": "2026-11-10T07:23:32+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "G7 recruits major ports in crackdown on drug smuggling",
+   "trusted": true
   },
   {
    "id": "5bc5063ed3c9",
@@ -4924,6 +5232,22 @@
    "snippet": "انفجار في مصنع للحديد والصلب في إزمير التركية يسفر عن مقتل وإصابة عدة أشخاص"
   },
   {
+   "id": "60c5bc7dac99",
+   "title_orig": "Barcelona starts construction of $47m port logistics facility for Lidl",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPcDdYVnFmSVo0QWdkWkFFd3VHUUtQekZvV2hUclNtemZqV3JIcjNhbm1lZjZyOGFtWEVBdzdXY3VkMWpVYzFHeUZYblFFVkVhWHQ2eGxXTEVzbUdhZi1pOWp5eDhlRy1Yc2J5UldBMENXNTlvbjRmaldrcGdYMXlWZFcyUFNRbjV2Sk0tbGJSQ2VKaG5fMnE0?oc=5",
+   "published": "2026-11-09T23:38:43+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Barcelona starts construction of $47m port logistics facility for Lidl",
+   "trusted": true
+  },
+  {
    "id": "6a914807be56",
    "title_orig": "تركيا.. انفجار هائل في مصنع للصلب يسفر عن 17 قتيلاً",
    "title_de": null,
@@ -4954,19 +5278,36 @@
    "snippet": "17 قتيلاً بانفجار في مصنع للصلب غرب تركيا"
   },
   {
-   "id": "6665995dee76",
-   "title_orig": "E. Ann Hawkins Obituary (2026) - Wisconsin, WI - Reinbold & Pfeffer Family Funeral Services - Manitowoc",
+   "id": "fc27d044a6cd",
+   "title_orig": "GLOVIS expands Port Tampa Bay vehicle terminal by 66%",
    "title_de": null,
    "lang": "en",
-   "source": "Legacy | Obituary",
-   "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE15UVh4R1hJOV9rWVNVS21TUWVXYTc4Ry1rd0dsbzVFOGhRU05YalIxbFhiMERNSmxFVWNGZnhWM1o2UmlfM0pZb2VNbUc1bkFrVjZSSVpldmlGYzZYZi1pbGg4NGdSZENrNDI2V2VYYnItaEc3UC00aHllZUo?oc=5",
-   "published": "2026-11-09T23:28:37+00:00",
-   "rubric": "kraene",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNRUNxN2V6NXhKQzhpS1F3SWJFREkzUnB2U3NrZnBVSlZJbk5lU3VseDRkTnJCeHRzU040UVU4clc1UU5Fa0lGdUtPT3BZT2FfQ05FbllZcTRpdVVaZDd5bUdOalN4UmFaRWNmWDFieWI5cXVsTXd3RTJzaTJJcmc3MQ?oc=5",
+   "published": "2026-11-09T23:28:39+00:00",
+   "rubric": "haefen",
    "rubrics": [
-    "kraene"
+    "haefen"
    ],
    "countries": [],
-   "snippet": "E. Ann Hawkins Obituary (2026) - Wisconsin, WI - Reinbold & Pfeffer Family Funeral Services - Manitowoc"
+   "snippet": "GLOVIS expands Port Tampa Bay vehicle terminal by 66%",
+   "trusted": true
+  },
+  {
+   "id": "3c653f9ec354",
+   "title_orig": "Santos Brasil proposes $635m expansion at Port of Santos",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOSTVwOWtjU05FLUgyMUdDVjNVOG41N3R4M0J6MWxXaFlWaGpFeUUwUVJfdk1vUnNYX29WUWNPOGFUdjZoRWdCamFGV2FIeFRQQWdSNENscWdONGdjZjF5eVNKQmp0Yzd5SUxyaGpEUVllSHF0ajZZVWlCNUphTDY0QkwycUw?oc=5",
+   "published": "2026-11-09T23:23:36+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Santos Brasil proposes $635m expansion at Port of Santos",
+   "trusted": true
   },
   {
    "id": "84ed27762b30",
@@ -4997,6 +5338,22 @@
    ],
    "countries": [],
    "snippet": "ارتفاع حصيلة انفجار مصنع للصلب في تركيا إلى 17 قتيلاً وتحقيقات في أسباب الكارثة"
+  },
+  {
+   "id": "e21a0f606e52",
+   "title_orig": "Delays test the resilience of Southeast Asia’s hub ports",
+   "title_de": null,
+   "lang": "en",
+   "source": "WorldCargo News",
+   "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPTlhvdkp1Mm4tR3E4cnNFNmlHamJHcVpiTF94VWx2ZFJVVkc4VkF2T09CTklwZktjMlJGNC1fRWt6bmxRS2RqMXF5UmkxQlJocU82ckEzQ2FYY2pOOGFDbXdwT3dwT1lOTk9jdVg4X3liZjBfbFRZUjlNQ21mYWZNN3lhZXpMMi1YMkFEaTg0aGRlaTVDRE1wWFNJVURCa1A0Wm5qOFRSbmJRU1d5aERwSg?oc=5",
+   "published": "2026-11-09T22:30:38+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Delays test the resilience of Southeast Asia’s hub ports",
+   "trusted": true
   },
   {
    "id": "d58f87e48830",
@@ -5264,36 +5621,6 @@
    ],
    "countries": [],
    "snippet": "انفجار في مصنع للصلب في تركيا يسفر عن مقتل 6 أشخاص واحتجاز 8 آخرين."
-  },
-  {
-   "id": "1d9ed601c85a",
-   "title_orig": "Manitowoc County driver arrested after SUV hits sheriff's squad car",
-   "title_de": null,
-   "lang": "en",
-   "source": "Herald Times Reporter",
-   "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxONGtuVGRFT21CLVRhb0t2UFFvek9FLUFTS29renYxSHFoSGdmSGZOaVJ4MW5aMUhjVXhLblBZZy1PdURzLVhYcUo0VmtwUVBMcHBXbmxMbS1pOS1QV0JuS1hLbU1zNUduTXRkQ1dlYkwweUhqMWhqbi1tZGpkbUZwTzJEd2ZRQkhrSzV5bDdiZ2JWdm5rZHVWc1RCV3dtRTRXdWJYY2s5dzBxZUMyV2hfaXZyWWVmcHV6a29MeGd6YTNBdFd4NVpiTW9sUGE4Mjc0?oc=5",
-   "published": "2026-11-09T21:13:00+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Manitowoc County driver arrested after SUV hits sheriff's squad car"
-  },
-  {
-   "id": "f2a7f9f67699",
-   "title_orig": "Shirley Rahmlow Obituary (2026) - Manitowoc, WI - Pfeffer Funeral Home & All Care Cremation Center - Manitowoc",
-   "title_de": null,
-   "lang": "en",
-   "source": "Legacy | Obituary",
-   "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxON1NadWZPeU41ZFVSQ3Fyb2dDYVVTT0ZUQlRMNzFQYjlzcEtGbkUtajhQQllkWF9aUWdlNmZxbXE4MFVzZ3cxUndjQXBSR21LYWhIX2NqcG1xdFN2ME5UT0t6cU1YeEV5NEI4enRPZWJxZ0NVSkJBZVozdk9nWDluSVhyMVc?oc=5",
-   "published": "2026-11-09T21:09:24+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Shirley Rahmlow Obituary (2026) - Manitowoc, WI - Pfeffer Funeral Home & All Care Cremation Center - Manitowoc"
   },
   {
    "id": "526c0e6f4007",
@@ -5758,23 +6085,6 @@
    ],
    "countries": [],
    "snippet": "مقتل 16 شخصا بانفجار في مصنع للصلب بإزمير في غرب تركيا"
-  },
-  {
-   "id": "9104081679d0",
-   "title_orig": "Sanctioned Russian military aircraft lands at Ben-Gurion Airport in Israel",
-   "title_de": null,
-   "lang": "en",
-   "source": "The Jerusalem Post",
-   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE8yTC1QRGNqcmxwNnplb3Y0TURKQVlKVHNyVk9tQTFlQ01ZU3ZtdGFvaWxMd1JCVmQ0ZFpRREZZYWRkanFhT2Y5LWFXSnBPV0hUX3YzcWNyS2twcHNa?oc=5",
-   "published": "2026-11-09T19:17:51+00:00",
-   "rubric": "laender",
-   "rubrics": [
-    "laender"
-   ],
-   "countries": [
-    "IL"
-   ],
-   "snippet": "Sanctioned Russian military aircraft lands at Ben-Gurion Airport in Israel"
   },
   {
    "id": "cb49c522d9e3",
@@ -6271,6 +6581,22 @@
    "snippet": "Explosion dans une aciérie à Izmir : Erdogan fait état d’au moins 16 morts et 13 blessés"
   },
   {
+   "id": "41f62d3565f2",
+   "title_orig": "İzmir'deki demir çelik fabrikasındaki patlamaya ilişkin yayın yasağı getirildi",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Habertürk",
+   "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOQjdiamNTSVZfUUs5aG1aTWVyanpPRVhCOTFBczlETmJTOUdNaU9VSHROcVhxb29fOXF5Z2JLUkl3U0xiNUJiYkJrLWwtZE92MnBzNnJKWHFsT2V3QTZMLUJKeWVULXpXbmtLemJqbGYyWlc5aXdtTnNGOWJmOHlQWHVTY3VjdXRncldXOHpvVmlnazVseTJVeUdENjI3RXZrbjNsNFpVbklZMXdUa1EyQXllc3RGQWd5c29Ycm9BZEpFMmNMWXhKcGlHbU56b0NpSkRIRmFLdw?oc=5",
+   "published": "2026-11-09T17:31:38+00:00",
+   "rubric": "industrie",
+   "rubrics": [
+    "industrie"
+   ],
+   "countries": [],
+   "snippet": "İzmir'deki demir çelik fabrikasındaki patlamaya ilişkin yayın yasağı getirildi",
+   "trusted": false
+  },
+  {
    "id": "d169f248ea79",
    "title_orig": "إردوغان يعلن ارتفاع حصيلة انفجار مصنع الصلب في إزمير",
    "title_de": null,
@@ -6487,6 +6813,22 @@
    ],
    "countries": [],
    "snippet": "ارتفاع ضحايا انفجار مصنع للصلب في تركيا إلى 10 قتلى و15 مصابًا"
+  },
+  {
+   "id": "09d3ef0ed6b4",
+   "title_orig": "Ecomondo 2026: EU steel competitiveness under pressure as ETS and CBAM reshape market dynamics",
+   "title_de": null,
+   "lang": "en",
+   "source": "EUROMETAL",
+   "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNSHhwS01NQ2l1bU5VU1I0V3JGYmJxTzYxeHNnZHNRbGRuMGxES2Ixak1JXzJ5VUhRQ2NfbE1xSmpjdFE2UWZSYjY4UjdJZkJWa3N0cm85MnQxLVlhV1dpdmd2dWYySnlLcWd3VlpCejBCTklYMDJvaVdkd0g2ZnJYVFNaS1M5M1JJZUVYbDNfU1FVWGdxRDVuZVBGQ1VaanRRRzdYaTVQYjROaC1zd3RSSFBLNUZjT28?oc=5",
+   "published": "2026-11-09T16:49:06+00:00",
+   "rubric": "rohstoffe",
+   "rubrics": [
+    "rohstoffe"
+   ],
+   "countries": [],
+   "snippet": "Ecomondo 2026: EU steel competitiveness under pressure as ETS and CBAM reshape market dynamics",
+   "trusted": true
   },
   {
    "id": "a239d8242239",
@@ -7100,6 +7442,22 @@
    "snippet": "تركيا: 10 قتلى و15 مصاباً بانفجار في مصنع للصلب قرب إزمير"
   },
   {
+   "id": "01db1004a5cc",
+   "title_orig": "UK-EU CBAM exemption chatter outpacing market realities",
+   "title_de": null,
+   "lang": "en",
+   "source": "EUROMETAL",
+   "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQTUhzTHVOZzMxbllkOTZaVjVmeTFnTC1WS2c4QXN6WFNqb05PbHhYQXRsekN1aXdSQWVBbmRqVVR4elpnenJNWHp4NmtrcUh1OFUxcm0xQ2RGeWZkTFowdGl6bGhHQjFBNGljTGhQTVR6RGRXVzdxUkxZaHpBc0NBZEptTWs?oc=5",
+   "published": "2026-11-09T15:08:07+00:00",
+   "rubric": "rohstoffe",
+   "rubrics": [
+    "rohstoffe"
+   ],
+   "countries": [],
+   "snippet": "UK-EU CBAM exemption chatter outpacing market realities",
+   "trusted": true
+  },
+  {
    "id": "392741ae4149",
    "title_orig": "6 dead and 12 injured in explosion at steel factory in western Turkey",
    "title_de": null,
@@ -7177,6 +7535,22 @@
    ],
    "countries": [],
    "snippet": "Zestien werknemers komen om bij explosie in Turkse ijzer- en staalfabriek, ook meerdere vermisten"
+  },
+  {
+   "id": "eb07b7612305",
+   "title_orig": "Lloyd’s Register, Mawani to support Saudi ports development",
+   "title_de": null,
+   "lang": "en",
+   "source": "Port Technology",
+   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNN0hzbzFGclVvLTRuemxfVEJjN3dQSGNieDZsdkNiemNuZklxdjFBWXJCUUZwc2Q5SlRxX3RrX1psX2lwTjJxMEI4S2xOeUdnUXdKUjRodC1GX0g4SHZySl9sTG92bTF1TlpWM3lLa0hzU1VQeGZiYUJTck9JYjY0cTgzTURwV2tqU1R6OUdnMEptVDNZUFZpeGhKLTRtclRY?oc=5",
+   "published": "2026-11-09T14:54:37+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Lloyd’s Register, Mawani to support Saudi ports development",
+   "trusted": true
   },
   {
    "id": "097ee721a556",
@@ -7303,21 +7677,6 @@
    "snippet": "Turkey steel factory blast kills 10"
   },
   {
-   "id": "026b29c9ff0c",
-   "title_orig": "Deadly Oak Wilt Fungus Found in Manitowoc County for First Time Ever",
-   "title_de": null,
-   "lang": "en",
-   "source": "Seehafer News",
-   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQSU9OUjhLUHp6bmJ4NmtmZ2tFNzc4bEZNMzZQcjhBaGJLcGl1V05MM0MyLWlQbG0zUGVYVTdnZUxvWkJhRGFfdHJKQVIwZEktQ0dNSE1UR0tFc2toSXVTNEJXUFpXN1VqX1RjR01PTzRHaFA3NnZyOFZPTFBiZ29NS18zQlBZY2VGWlFIQ083VUVmSUtyWkN1NU9GTG0yOUFwOFJvV0otZTNscW5xcFE?oc=5",
-   "published": "2026-11-09T14:37:37+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Deadly Oak Wilt Fungus Found in Manitowoc County for First Time Ever"
-  },
-  {
    "id": "f1b5065930c1",
    "title_orig": "DACHSER Morocco recrute 3 profils en logistique et transport à Tanger en CDI",
    "title_de": null,
@@ -7348,6 +7707,22 @@
    ],
    "countries": [],
    "snippet": "İzmir'de demir çelik fabrikasında patlama meydana geldi"
+  },
+  {
+   "id": "f14b687083f0",
+   "title_orig": "Interview: Olivier Besson (EVIAS) on conductive charging for ports",
+   "title_de": null,
+   "lang": "en",
+   "source": "WorldCargo News",
+   "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPNEVXQ09vcjBLWWlwM3ZjZzlwclpYZTJJU0hqQkJCZ3NHSl9YSHR1bWhiT080bEFHaFhtWUNUZVhIYkRSWjh6U0g1bEpsVW1DS3FSZnZKa1RLZzdyeHhiNFFESTVTSmNRMS0tdGtTWWVZZENEbTV6TjJVRmYxbkx5dmxYVEZCSWlaR195RnF3eDNWOUhQSTBYOWlnV0xUMWo2bG5KWlBpMWktTy0weGVLbGFjYTZzdVNVSHN1dVIzS3JCMFZYZnFV?oc=5",
+   "published": "2026-11-09T14:30:17+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Interview: Olivier Besson (EVIAS) on conductive charging for ports",
+   "trusted": true
   },
   {
    "id": "fe198cd24b79",
@@ -8178,21 +8553,6 @@
    "snippet": "Six dead in blast at steel factory near Turkey's Izmir: officials"
   },
   {
-   "id": "837d9f63e20b",
-   "title_orig": "Over a dozen departments respond to Manitowoc County machine shed fire",
-   "title_de": null,
-   "lang": "en",
-   "source": "WBAY",
-   "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQT2NHTzZSSl9VTEZoNG1waUJPZmZYUzRjWndlYnZJbE02WW9mZVZqS0JNYUVid0U0Ri1HdFIzUTFieUR3TkxXSnV0X0kyaTN3bURnUFg1WmNKV0Y5dmVEMGdxOTl0b0RRMEViV19IMnBNeVNGOHVUS0t5WTQ2aEFPVndUTGlIa2Z3aXdmV2ROOS1UbmlVTEg5Y0tiOGMwRmfSAbMBQVVfeXFMUDcxMzJvZFcySVdhdHh5WUF1ckhkakpyQURBVlBnR0lGRTU0bGN0NHRIMHhrRmxDaENYLXltX1JxSXQwUldqZFRFQlVlTFVhOHhxdExIOFREMEVPNTVEcDFwb3FOVGx2QzlXbHJzT0RiVkFyT1JxNmtuOGpoWmpXSEFZZ1Zxd1F1ZkEyLWVpd1o2ckFLY1ZxWFZjZF9aTldQa2YtUkZhVmtsbC11VGRvTlhqczA?oc=5",
-   "published": "2026-11-09T12:34:00+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Over a dozen departments respond to Manitowoc County machine shed fire"
-  },
-  {
    "id": "6b8b3d4415e9",
    "title_orig": "ستة قتلى بانفجار في مصنع للصلب بإزمير في غرب تركيا",
    "title_de": null,
@@ -8469,6 +8829,22 @@
    "snippet": "Video: Powerful explosion rocks Turkish steel plant, 3 killed"
   },
   {
+   "id": "07c6abcbaed6",
+   "title_orig": "Port Community System adoption lags, Kalé report finds",
+   "title_de": null,
+   "lang": "en",
+   "source": "Port Technology",
+   "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQbk5tN1d1ODRlTm45aHV5YjJjdVI0dHZHa29RcHZSMk56RVFyVE1sOU9WSEJWZ01EV1Z0NzhRV1pzaWVlb0VBaDVub052SktGU1B0VXctWi1qLUx1SHZKUnNnZ3BGSmdWWjhNVERFeU9IWkRUSFF3VE1wY0VxazZrNXRNQnBHYi1hWllqNUk0NmMwS2ZHZldjNUV4NlNWSE9pZzc1NXhHVEQ?oc=5",
+   "published": "2026-11-09T11:56:23+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Port Community System adoption lags, Kalé report finds",
+   "trusted": true
+  },
+  {
    "id": "de6757692961",
    "title_orig": "SON DAKİKA: İzmir'de demir çelik fabrikasında patlama! 6 ölü, 3'ü ağır 13 yaralı",
    "title_de": null,
@@ -8683,23 +9059,6 @@
    "snippet": "İzmir Aliağa: Demir çelik fabrikasındaki patlamada en az 3 kişi öldü"
   },
   {
-   "id": "6b65e3064f36",
-   "title_orig": "זינוק ביבוא כלי רכב לישראל, גם הטלוויזיות והמקררים חוזרים לעלות",
-   "title_de": null,
-   "lang": "he",
-   "source": "PassportNews",
-   "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBIa3RFZ1NvVDlZRlNablN0b0VTNjZVY2t0Zks1WlVnSWV6bWNSX2FTYXpwTVZuWGl2MURBcV95dUJQZHZNUEowdWpCR3NmQ2hDUW1n?oc=5",
-   "published": "2026-11-09T11:27:00+00:00",
-   "rubric": "laender",
-   "rubrics": [
-    "laender"
-   ],
-   "countries": [
-    "IL"
-   ],
-   "snippet": "זינוק ביבוא כלי רכב לישראל, גם הטלוויזיות והמקררים חוזרים לעלות"
-  },
-  {
    "id": "32ab4a5bc086",
    "title_orig": "Son dakika... İzmir Aliağa'da HABAŞ Demir Çelik fabrikasındaki patlamanın nedeni belli oldu",
    "title_de": null,
@@ -8760,6 +9119,22 @@
    "snippet": "İzmir'de demir çelik fabrikasında patlama sonrası yangın: 3 ölü, 14 yaralı"
   },
   {
+   "id": "067b1cad2b14",
+   "title_orig": "Panama Canal set to shortlist bidders for new container terminals by year-end",
+   "title_de": null,
+   "lang": "en",
+   "source": "Port Technology",
+   "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQdEZTaEJqLVZjV000N2V3dGtqT2Fva3dDZ0t0OVpCNXhYcHZxOW8tb2tFMVEtSTFtNnJybEROVUFpUmlTT2l6cTNyN2dRd3JhUXMxUDlkZ2hpakJIRFNwYUlPZk02NG00czM4NW9ZMHZTbndSbUpTUEdDRjZ2cU1RU2wwLTVuaDJ3cWI4QmpvNXJ5d2w0eFdEZzFpeVpuQQ?oc=5",
+   "published": "2026-11-09T11:18:00+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Panama Canal set to shortlist bidders for new container terminals by year-end",
+   "trusted": true
+  },
+  {
    "id": "184b4e1fac07",
    "title_orig": "İzmir'de demir çelik fabrikasında patlama. 17 kişi hayatını kaybetti",
    "title_de": null,
@@ -8808,6 +9183,22 @@
    ],
    "countries": [],
    "snippet": "Habaş Demir Çelik Fabrikası'nda patlama: Can kaybı artıyor"
+  },
+  {
+   "id": "4e1772faf0c2",
+   "title_orig": "Bremerhaven launches €1.35bn dual-use deployment hub",
+   "title_de": null,
+   "lang": "en",
+   "source": "Port Technology",
+   "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNRWtQOG1BWVlEenllQXliUUdaOFplRnpjQUtkRGJKbjQ3aHdZMFExLVVUTkxfMlo3Nkk0MDBYd0N0QkgxbjNaazJCeEJnQjE1cUxKQlFxc3huMThSTHBLempIOHdJNm1kRnRTUzRUdGdNZzcwN3Jzd0diVEhPMXVVVGM4ZEVaYVduYy03elVR?oc=5",
+   "published": "2026-11-09T11:15:00+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Bremerhaven launches €1.35bn dual-use deployment hub",
+   "trusted": true
   },
   {
    "id": "03c75cf40f87",
@@ -8870,6 +9261,22 @@
    "snippet": "When will Five Below open in Manitowoc? And more October news"
   },
   {
+   "id": "15bcf6f95558",
+   "title_orig": "Hutchison Ports Sydney boosts Port Botany with new cranes",
+   "title_de": null,
+   "lang": "en",
+   "source": "Port Technology",
+   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPSFhEMldIMXVTR01rYmx6bHh2d0o0UWowLURKNTQ3N3BkeU1tNVZadi1Xc08taEhWSnVIN0RqMzBJcVlKdlc1VmFpV2l3UHRBZU9vSElXazhwaWhqVEk4dVdXRWQyeHctZUFGaHZhNVlDX1c0LW9mVl9jVlNvWlF2bG5NOTlwUUlzb2p3WkczQjFNd21qQ1YwUmNDUU9lVFB5ZFVBMWFTUDJpelgxckE?oc=5",
+   "published": "2026-11-09T10:54:56+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Hutchison Ports Sydney boosts Port Botany with new cranes",
+   "trusted": true
+  },
+  {
    "id": "76c408ec9905",
    "title_orig": "İzmir'de demir çelik fabrikasında patlama",
    "title_de": null,
@@ -8900,6 +9307,22 @@
    "snippet": "Demir çelik fabrikasında patlama: 3 ölü, 14 yaralı, 10 kişi enkaz altında"
   },
   {
+   "id": "be2cd78700e3",
+   "title_orig": "Valenciaport: Building tomorrow’s port while running today’s",
+   "title_de": null,
+   "lang": "en",
+   "source": "Port Technology",
+   "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQRFVtQy1ZQndESXJ6bmVqaWtBZWxWR3ZaNFR5UHp1SFNXZlRXWWo5U3hFLWtBb3ptUWlqQ2xJRWU3cW5vNGx1WXljT29tc1BZOVBON0QzSlFab0FhS0lTaHJnVDlXNDVFblMzeWFiNEJ0d0RRWWFUaTNtV1VmYkViYS1hazFGdjZpaVFTckMyenZHdnhGWDVZ?oc=5",
+   "published": "2026-11-09T10:42:13+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Valenciaport: Building tomorrow’s port while running today’s",
+   "trusted": true
+  },
+  {
    "id": "931467643d15",
    "title_orig": "Werken in de Antwerpse haven: je vaart er wel bij",
    "title_de": null,
@@ -8915,6 +9338,22 @@
     "BE"
    ],
    "snippet": "Werken in de Antwerpse haven: je vaart er wel bij"
+  },
+  {
+   "id": "054dce836fa8",
+   "title_orig": "US and China push port fee showdown into January",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE41a0k3dEVQZ2N5bC10Y2FkUDVKaGNnbFJBc0hzcWR3ckc5aHNZR0gxa0EydHFQN1NtcHpCRXRmanBpalpQTGEyelpPd0VwMnNxZDh1V3NuZV9wSTAzcFV0b0ZoMEtNcWJ0Vm12QVhtTHFXNGVvQTNuM1djTQ?oc=5",
+   "published": "2026-11-09T10:23:38+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "US and China push port fee showdown into January",
+   "trusted": true
   },
   {
    "id": "6cb16f6d4959",
@@ -9313,6 +9752,38 @@
     "TR"
    ],
    "snippet": "Zoll stellt 1.230 Cannabissetzlinge aus Österreich auf der A3 sicher"
+  },
+  {
+   "id": "6256f037558d",
+   "title_orig": "South Korea eyes Arctic shipping hub at giant Jinhae port",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNcmU0dUtEVU5CU01rMWJmRWNGcWFBbWpYNnp0emYwOXkzZkZDN0xFY2g0Tmc1S05aeXZxQzBmUm5mUmp6dGtBc2hxbEhLTlBucUd1WmE3MEU4TGtsdHk5cWtoTXZicDJ6V0dVUkRSaG1qcC1xZ3RhTncxWklVS05iOFBPTVl1ZFk?oc=5",
+   "published": "2026-11-09T08:31:23+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "South Korea eyes Arctic shipping hub at giant Jinhae port",
+   "trusted": true
+  },
+  {
+   "id": "83a137f75ad1",
+   "title_orig": "One in ten ports expanding as trade growth and supersized ships test capacity",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxObXJuUXc5M0VlY291alVuSzNvR25fRWFNXzhrcWdTQkpxX2Y4TG56WnVzVU9xc2YtcVdXMDdZXzdLSEY1LTVBZ2tadGVEN293X1NEUlBldlVLQlV6T3hXaUViWGc1cUUtOTViNWJKNXJlYmtXZnU1SzBfNENYZWotOXk4QUxtQW0zWVNZSVJud3pfN1ZiNWlJUGMteW8tc0ZMaGc?oc=5",
+   "published": "2026-11-09T08:31:23+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "One in ten ports expanding as trade growth and supersized ships test capacity",
+   "trusted": true
   },
   {
    "id": "bea76aac4da0",
@@ -9782,6 +10253,22 @@
    "snippet": "Sanayicilerin Gündeminde Hurda Fiyatları Var: Metal Ticaretinde Neler Değişiyor?"
   },
   {
+   "id": "d672b30eef0e",
+   "title_orig": "First new crane for FJ",
+   "title_de": null,
+   "lang": "en",
+   "source": "Vertikal",
+   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBFclRaYVU0WUVINFE2V3d2dXlGSkd0RDk4TmVvWk0yd3VqTm9sZEFzVHRfcHNvMldzUW5sRUhPUjBKN1RDWGhpcnQybXduMHBxekNzWmVXT2JsTEIwalVzNmN1Ym1TQUlTcEVCTmhNMWM?oc=5",
+   "published": "2026-11-09T02:21:46+00:00",
+   "rubric": "kraene",
+   "rubrics": [
+    "kraene"
+   ],
+   "countries": [],
+   "snippet": "First new crane for FJ",
+   "trusted": true
+  },
+  {
    "id": "cbda079cdb11",
    "title_orig": "220,000 protesters march in Amsterdam demanding tougher sanctions against Israel",
    "title_de": null,
@@ -9925,6 +10412,22 @@
    "snippet": "Contrôle des importations : Tebboune exige des « peines maximales »"
   },
   {
+   "id": "cd96eeb3b5fe",
+   "title_orig": "Chile’s busiest container port reopens after haulage deal",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxObmZ6RG93dEVEWFUwRkxUalhsRk92cWgwc2dOc0lKNWxZT2xyamJBd0F3ZGpja3Y0WW5kNXlvNkE5S0tlZ0dISFlncFc4cTJHRXU0cm9xdEhFRTVJQWpvcEJfdWNlNjc0MU96WWF6dlEzOUY3N05KUnlHd3FCc1pwNVJ5ZW5Hdw?oc=5",
+   "published": "2026-11-08T20:06:52+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Chile’s busiest container port reopens after haulage deal",
+   "trusted": true
+  },
+  {
    "id": "7bf79393a8ab",
    "title_orig": "وفد من إطارات الديوانة التونسية في زيارة إلى المدرسة العليا للجمارك بوهران",
    "title_de": null,
@@ -10040,23 +10543,6 @@
    "snippet": "Exportations de dattes : le port de Skikda bat un nouveau record !"
   },
   {
-   "id": "5c150589a0a5",
-   "title_orig": "Des laboratoires dans les aéroports et ports en Algérie : voici ce qu’ils vont contrôler",
-   "title_de": null,
-   "lang": "fr",
-   "source": "Visas & Voyages Algérie",
-   "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNYVJBNncxdnh5WU5vRksydURmS1NIZlR1YkE3cW9PR3BOUFFtSFMzcGt4d1VPc0ZnN0RBZks1eGtZZnhZdTBQdGpIMFJ6SXQ5MEZoamJ6ZkFXOVp5Q181dlVTdGkyNTVJRC1nLUlzMkNqMHppcmtEVjVxdDBETU5rMFR4X0dKZ2g2WnNaSUx3djRUb29SZXJzYlFfeTVLV2xPQnc2RzJnMUZTZi1qV2ZTY0I5SkR1Zw?oc=5",
-   "published": "2026-11-08T17:41:23+00:00",
-   "rubric": "laender",
-   "rubrics": [
-    "laender"
-   ],
-   "countries": [
-    "DZ"
-   ],
-   "snippet": "Des laboratoires dans les aéroports et ports en Algérie : voici ce qu’ils vont contrôler"
-  },
-  {
    "id": "7e0923ba0e7f",
    "title_orig": "Gasoil : pourquoi l’Algérie en a importé 1,08 million de tonnes malgré ses raffineries",
    "title_de": null,
@@ -10089,21 +10575,6 @@
     "DZ"
    ],
    "snippet": "صادرات الجزائرية القطرية للصلب تحقق إنجازاً قياسياً بـ 545 ألف طن"
-  },
-  {
-   "id": "c687619b9a69",
-   "title_orig": "Two Arrested After Manitowoc County Metro Drug Unit Investigation",
-   "title_de": null,
-   "lang": "en",
-   "source": "WHBL News",
-   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPeUdpdE1Ndk9ZcTVwOERIT3hmN19YTlBRQXJjMS1hVy1CcU5VUnRuU3V4Mm94VUM2eV9Od01tZ3Z0ZUdRUWp4STJrRnVJRVhDTm5RZllKS0M1YzIwbEJUTXlxTGlQaTN6R2tva25TazI2cUUybFJiU3NYdERHdWhPS3NLQjdnbThVd2F3Z0F1ZHlzS2NHWDNnWnhR?oc=5",
-   "published": "2026-11-08T17:07:12+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Two Arrested After Manitowoc County Metro Drug Unit Investigation"
   },
   {
    "id": "990cc2f4dee9",
@@ -10168,21 +10639,6 @@
    ],
    "countries": [],
    "snippet": "Bangladesh’s Chittagong Port Authority, DP World sign 15-year concession for New Mooring Container Terminal"
-  },
-  {
-   "id": "1e07cbf5d7c0",
-   "title_orig": "Firefighters save home, barns from machine shed fire in Manitowoc County",
-   "title_de": null,
-   "lang": "en",
-   "source": "WFRV Local 5",
-   "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNb0QyNDZGZzBEVGpuTzVldjhBOE1HVmYtaGRkVmw4ZGJlWUg2T3R4b0VoQUFWdFg4SXdMZFlqY3dRd1hjb3IxcjRPVzlNanZYeHpGZ1NYamY3bnJydXdJWnhzVGlVOUl0aGRjaFo1MGR1VjU1dHNWTU5UUnZ2UTJSVUIzdjVjWENT0gGOAUFVX3lxTFBoOHNzUW10d0ZqVzZJQzRMWnI3NXVWeGJmVlR1Q2ZQekdsbDBDNnc3SXNqUkQwSHNlMmpjd0x6VXF1bkk2Y2ZhRmxsaXFEekNIbXRaakZHcFV1VFc3NUdUeG1JTUs3VG5ob1pOaFhFSDRSSmwycElYX0VwMUJERDhhYjBqNS1FQzdXanhvN3c?oc=5",
-   "published": "2026-11-08T15:36:54+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Firefighters save home, barns from machine shed fire in Manitowoc County"
   },
   {
    "id": "1d65c76cd960",
@@ -10317,6 +10773,24 @@
    "snippet": "برؤية ملكية.. الموانئ المغربية تتحول إلى أقطاب اقتصادية ولوجستية عالمية"
   },
   {
+   "id": "25eef423fd81",
+   "title_orig": "Gümrük Muhafaza Türkiye Sezon 1 Bölüm 69",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Hürriyet",
+   "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQeExJdzlzcDJrbjJ5OFAwb2M4UVNNckQ5RXN3OXdBSi13eVpyY1VYcXVBSjBOSGM2S0VLTktNeFpnQWdjUHpZeVprdGdyM2FxSUVKeWR1ZkRqV1A4ZjZBbkI4ZjNmLUhOM1l4M0tTaXFmMFIxSGhiZ2dRaGVGTHRCT1VDMEFiVEdEVkROMW1CMA?oc=5",
+   "published": "2026-11-08T11:59:07+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "Gümrük Muhafaza Türkiye Sezon 1 Bölüm 69",
+   "trusted": false
+  },
+  {
    "id": "1801566446e2",
    "title_orig": "الجزائر تحتضن الطبعة التاسعة للصالون الدولي للنقل واللوجستيك – الشروق أونلاين",
    "title_de": null,
@@ -10351,21 +10825,6 @@
    "snippet": "ميناء الجزائر يستقبل 106 سياح أجانب"
   },
   {
-   "id": "9b07dfe62f5a",
-   "title_orig": "Where to sight in your deer rifle in Manitowoc County | Bob Schuh",
-   "title_de": null,
-   "lang": "en",
-   "source": "Herald Times Reporter",
-   "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQTi1Lb1lZWE1XM2h1YnBxTVlsS2d4QjVUQ2JKcjZvX2lxamg1UVpGaUdNV3hLUnUtMF8zZTNPbEdmRW0xYW9xa1BWNHlPNkZzS1UtYkhsU3c5SU9mQW5PeTNEU0xRdW9Qc1dBTEMwQmowc0NEbXQtaWMzNVFXeW41U213TTJCbzBTNzFPOUtXbG85eF9YRXR3X1Atb3hlNXlNWlJIbXJNOUYzRjZRSFJfd3M2TGNmYm94YVRKNVRvTDhIelc0RWRHQzFob3diWWdFdkdjXzhnR1lQUE1Zd0E?oc=5",
-   "published": "2026-11-08T11:00:00+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Where to sight in your deer rifle in Manitowoc County | Bob Schuh"
-  },
-  {
    "id": "5ae370675485",
    "title_orig": "Tunisie-Chine : Derrière le pavillon de Shanghai, le défi de transformer l'intérêt en exportations",
    "title_de": null,
@@ -10381,6 +10840,22 @@
     "TN"
    ],
    "snippet": "Tunisie-Chine : Derrière le pavillon de Shanghai, le défi de transformer l'intérêt en exportations"
+  },
+  {
+   "id": "aa52a4844e53",
+   "title_orig": "ZINC Price: ZINC/USD Live Price Chart, Market Cap & News Today",
+   "title_de": null,
+   "lang": "en",
+   "source": "CoinGecko",
+   "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBpclR1X0hWa1laNlQtV002REhiV2lmYnN1YkNBNWJWTEVicW9vVjRsWGdyaUlYVC1iN2htQ3pKaWRrZFhQR3hKdzEyUXJ4RFlncU9R?oc=5",
+   "published": "2026-11-08T10:23:59+00:00",
+   "rubric": "rohstoffe",
+   "rubrics": [
+    "rohstoffe"
+   ],
+   "countries": [],
+   "snippet": "ZINC Price: ZINC/USD Live Price Chart, Market Cap & News Today",
+   "trusted": false
   },
   {
    "id": "77ba5f4d7659",
@@ -10677,21 +11152,6 @@
     "BE"
    ],
    "snippet": "Techtrends: Betere logistiek door modernisering"
-  },
-  {
-   "id": "60d29f9d9d33",
-   "title_orig": "Manitowoc County Fish & Game has Announced their November Meeting",
-   "title_de": null,
-   "lang": "en",
-   "source": "Seehafer News",
-   "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPamxhaTI1T2lMdi1QOWhHcUFjQS1sSndoaVBKUFVZRlZ5c2FVbTF3S2JFWV9XRVp6MElUaVJIYlZxMkFlQmxYTy1qMmk3YlZuM1Yyc2h5RkdTdjJBYVo5RG5QSkc2SHo0UXAwaE1aR05DWmp5QlkzRDhuQ19yRmZTRGVJYTcxUm1oOENScmU4bktoLXVObEluQXh4M3BwVXdOaS1xR2pDMA?oc=5",
-   "published": "2026-11-08T00:07:44+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Manitowoc County Fish & Game has Announced their November Meeting"
   },
   {
    "id": "8645eed15325",
@@ -11005,23 +11465,6 @@
    "snippet": "Stepa Mobilkran MK 5011"
   },
   {
-   "id": "6c269b191ba7",
-   "title_orig": "Contrôle des produits importés en Algérie : à quoi servent les laboratoires des ports et des aéroports",
-   "title_de": null,
-   "lang": "fr",
-   "source": "Algerie360",
-   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOeENVV1VnUkV4VXp3eDVhckFEdlNiVWMwWk13MERzdGlIN3hySkdaNkd3WVVLZkJSOV9tN3B6LVR0VHNuclZYajI2a3BWYVplZ1hsYmFxOXR0b3ExWnUyamVzX3Q3ZmNvZ1hLLVR3R1dEekM5RFVjb1VOcjNTWHBTa0tzektGdThfeEdhWUZRTlo?oc=5",
-   "published": "2026-11-07T14:23:29+00:00",
-   "rubric": "laender",
-   "rubrics": [
-    "laender"
-   ],
-   "countries": [
-    "DZ"
-   ],
-   "snippet": "Contrôle des produits importés en Algérie : à quoi servent les laboratoires des ports et des aéroports"
-  },
-  {
    "id": "4139c7fe23bc",
    "title_orig": "Sidérurgie : Tosyali Algérie expédie 40 000 tonnes d'acier vers l'Europe et vise 2,5 milliards de dollars à l'export",
    "title_de": null,
@@ -11087,21 +11530,6 @@
     "DZ"
    ],
    "snippet": "الجمارك تحجز أكثر من 211 كلغ من الكيف المعالج وتوقف"
-  },
-  {
-   "id": "7c33b9c002f7",
-   "title_orig": "Two Manitowoc County Residents Arrested with Over 100 Grams of Meth",
-   "title_de": null,
-   "lang": "en",
-   "source": "Seehafer News",
-   "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNLUpSV0hPblRoLTlLMzRaN05VUHhrRVdSLWxTaUR4OTV2UWJlWmdJSjluRHZnQWJEbVhObVVGX3dZMkRucEtqU28wNHRSZmJZMFZVSHhfZjl3OTRMUllxTmwzeElMWmlQYi01SU9vR3hGVEVYd29rSWkzR0FJRXZnc1R3Z0gybEdkTFVCZ25waGlrYU1WemNqTXhUSUpLeHcwX25ieGxRRDlKajVQ?oc=5",
-   "published": "2026-11-07T13:07:22+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Two Manitowoc County Residents Arrested with Over 100 Grams of Meth"
   },
   {
    "id": "ab8fcd146c96",
@@ -11170,23 +11598,6 @@
     "DZ"
    ],
    "snippet": "الوزير الأول يدشن مخبرين لمراقبة جودة المنتجات المستوردة بميناء ومطار الجزائر – الشروق أونلاين"
-  },
-  {
-   "id": "63cdfd636aec",
-   "title_orig": "Algérie : deux laboratoires de contrôle des produits inaugurés au port et à l’aéroport d’Alger",
-   "title_de": null,
-   "lang": "fr",
-   "source": "Voyagerdz",
-   "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBOVGZEOFJvMVVQQ3lfWENoRm9XX1ZKZWN4a1FpS3lLV0djRTB5Z0hENWhhSG9kRWdVWlRSRWJUMndYZm1hVmltRWI4dDhYMG53RnhwMUlXX2tIRDBfOExvbENyZXN5ZDUtQkV2Q3dFQzU0LTBYYVpKM1hURnBVZw?oc=5",
-   "published": "2026-11-07T12:38:44+00:00",
-   "rubric": "laender",
-   "rubrics": [
-    "laender"
-   ],
-   "countries": [
-    "DZ"
-   ],
-   "snippet": "Algérie : deux laboratoires de contrôle des produits inaugurés au port et à l’aéroport d’Alger"
   },
   {
    "id": "fec7717d048a",
@@ -11470,36 +11881,6 @@
    "snippet": "Seaspan makes largest order for heavy metal with Canadian steel mill"
   },
   {
-   "id": "9b58193270d7",
-   "title_orig": "Manitowoc County's first case of oak wilt detected in Village of Mishicot",
-   "title_de": null,
-   "lang": "en",
-   "source": "WLUK",
-   "url": "https://news.google.com/rss/articles/CBMiqAJBVV95cUxQMmNjTlpDV3Z6VTZDOFdGQWRlMDhtU2JGWk9NZ0V2Zmg1YVAyVXpacVFZQ3hHaDNuMTV1cEc5cFBTVWhVMlJFNV9FUXQ2RzhSMUxtY2o4eTRDZlVZaHctZzFYdkJhRUNMT0VyOFdZaWctYW10bkNsN3llR1dWRzRzSWs2WHFFLUJIdnRDeHIyMHZRQ01GdUhuVFpvMVR5R0t5NWE0LXZ6cER4SDY0RHpPd2hBRVlUOGJud25LRUZ4NzhtdXFxdFVjUEtpRlJVc2hRSkRob19KZXRLeTVQTXNQZ1I1VzBlMnZtMy00R0FxSVNMZEZXOVI3U3Y1enFqQnhoTWNWbmthU0YwTm00aHJWSHBhSEVhTEhTOWM5c3VWck8zZVJDUllXcw?oc=5",
-   "published": "2026-11-07T01:41:39+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Manitowoc County's first case of oak wilt detected in Village of Mishicot"
-  },
-  {
-   "id": "f56e18f5c851",
-   "title_orig": "À Porto-Vecchio, la pose de la première pierre de la future capitainerie du port, phase symbolique du projet",
-   "title_de": null,
-   "lang": "fr",
-   "source": "Corse Matin",
-   "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxQTFRGb21CV3ZQSDdNNy13a3MzekFEZ0ltczBUYXEyNW9OaUk2QjZRY19sd3hJeHFPQV9obTJRYVUzdWhCbGc4NFEza2VFSlBJa2VhODEyOFJCUUZQUkg1cVllRXpCT214UWNIN2xoSmlMRE1fRXk5TWxDaHdFd3JnVEFDLTlwZ3ZORDZVUE9XMXZyZUg2LWwzcW04X2FKSE1yajNobHJiTHEyQTl4ZjZTcm1xY3g5Q2t4SENWTmtDNWRrS3JPVGRodlFoRU5jUUdQb2gtejRKdmdTLWhiS2dkQ1lkbWp4Ny1CeWlkUWx4bXZCQmNaWV9oRzlXdw?oc=5",
-   "published": "2026-11-07T00:51:06+00:00",
-   "rubric": "haefen",
-   "rubrics": [
-    "haefen"
-   ],
-   "countries": [],
-   "snippet": "À Porto-Vecchio, la pose de la première pierre de la future capitainerie du port, phase symbolique du projet"
-  },
-  {
    "id": "5befaac0de16",
    "title_orig": "Why is Zhuzhou a centre of heavy industry and exports?",
    "title_de": null,
@@ -11654,51 +12035,6 @@
    "snippet": "ArcelorMittal will keep the Kryvyi Rih steel mill by selling off its metal inventories"
   },
   {
-   "id": "82c7f97d57c4",
-   "title_orig": "Two arrested in Manitowoc for drug distribution after meth found in car",
-   "title_de": null,
-   "lang": "en",
-   "source": "WFRV Local 5",
-   "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBtUEVmSVdtX1V2ck5adGduc2JidFNjYVJhRVV0Zm5RRndoOHRNXzRUX25vYnJBNEwzOHFCUG9uRFBZQ2hCam4zNk5XS19EcWZvV1FRQ1IyODB4UGEwNmh3QnN4bVQ0aVdVRkhySUpYZ3RtQzJRTnpKWlJKVlVpZ9IBgwFBVV95cUxQVUZUTENTMGVFWnJPN2xBUk1EMzdfdU5nWnRXLVVYZ3U0TkdseHdBMVdyTkJfVjZnbXM2ZFBIRTVMNFVvSWlqUzFuRnBWX2ZnU0lhMlIyWmhmaFhDQ2JoMkZxMlhHWVVJcmdZU3JlYzZHendjUlFrYXpOck5udTBIX2I5SQ?oc=5",
-   "published": "2026-11-06T20:36:26+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Two arrested in Manitowoc for drug distribution after meth found in car"
-  },
-  {
-   "id": "2f144763154d",
-   "title_orig": "Two arrested after traffic stop nets about a quarter pound of meth in Manitowoc County",
-   "title_de": null,
-   "lang": "en",
-   "source": "WLUK",
-   "url": "https://news.google.com/rss/articles/CBMivAJBVV95cUxNbDF0M21Ma19PNnVWcXQ2MnEya0ZUQ09PTGZNOHFnRWNtRVBiLU15WmE1Rzd3OERLeFVYdTRtRm9KLW5nMjhmXzl3ODVuMjlRU3VFalR3R0VscXFXbFFPeHBBaVhRbzlQMkoyOXNlcHFKa2lDZ01GT2JySXZ2LTdpdTVGYTQ4aXg1Wkl3dWRuNmVLd3VsXzNrV0FNSFZVQWtob2diVWxiMU02VmhOZk1HanBpcjk0ZlBRR05JTnYycTFTM0thZ3VGRWRfZUZEWndyQ2pNXzdNeFVCaEpvbGZCMmRLZm15RkJVMUotTmFGbkNORzAtOXNxbUh3azNpQTVtUEo4NTVjZ1dNei02Tl9XV1FRTF9ySzg1TU5YM3BGSlhrYTE2czlWdy1lUWlfQzU0b3NaRlN3NG5MdzNN?oc=5",
-   "published": "2026-11-06T20:23:19+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Two arrested after traffic stop nets about a quarter pound of meth in Manitowoc County"
-  },
-  {
-   "id": "19b7acb5c230",
-   "title_orig": "2 arrested in Manitowoc County after meth seized in traffic stop",
-   "title_de": null,
-   "lang": "en",
-   "source": "Herald Times Reporter",
-   "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxONmdNbWRPWXItSHlqTXB0T29MNVVQTnRiSWt3YkJmU2ZUOEs3OVZ2cDZySmhKTkR5MVRlbkhzTGdpS2prU3dLazRUVVZIaDZSeUN2engwYW1yMmptRHZxYzdmU1h3S3hKeDdtT0hVTVYxaUdnV0J6M09wWVg4VWxsRHd1OUxWRXhRUHJITVZEd21ZNXI5bkZhWjk4QkVNcXJHTlJnVFVJV1FobmZlTVBFQWJTZDZFY0tXbDFr?oc=5",
-   "published": "2026-11-06T20:01:00+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "2 arrested in Manitowoc County after meth seized in traffic stop"
-  },
-  {
    "id": "9079db596ac3",
    "title_orig": "التنمية المحلية المستدامة في صلب اليوم الثاني من الحملة الانتخابية",
    "title_de": null,
@@ -11750,21 +12086,6 @@
    "snippet": "Mobilisation de la jeunesse : la FGTB dépose un préavis de grève en soutien de l’action étudiante du 17 novembre"
   },
   {
-   "id": "f2f2a4e8ebd7",
-   "title_orig": "Man pleads not guilty in Manitowoc County murder-for-hire case",
-   "title_de": null,
-   "lang": "en",
-   "source": "WBAY",
-   "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPSzRORENabzZad1BYWkw4M1pxeF8td2dvSUg0VFJHX1lsRGhVUTVidmVuM2dmSlBfMjE2Mkozby1tZEpvSWhuVHF6Zm94Qy1sVnNyRFF5bzIxNlNzVURuMmxxbGhyeUlYRnNIcjlYdzlGV2QyeHN5cENucHkwbWFVNmlUYmVEbVpwMFdmYVVIdlFPQUZmQ0cw?oc=5",
-   "published": "2026-11-06T17:19:00+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Man pleads not guilty in Manitowoc County murder-for-hire case"
-  },
-  {
    "id": "0d433d102178",
    "title_orig": "Havenarbeiders en leidinggevenden opgepakt op kaai 1742 in onderzoek naar cocaïnesmokkel in Antwerpen",
    "title_de": null,
@@ -11780,6 +12101,22 @@
     "BE"
    ],
    "snippet": "Havenarbeiders en leidinggevenden opgepakt op kaai 1742 in onderzoek naar cocaïnesmokkel in Antwerpen"
+  },
+  {
+   "id": "477c96003fc6",
+   "title_orig": "CIRES Technologies and NVIDIA AI Factory to power smart ports and smart cities",
+   "title_de": null,
+   "lang": "en",
+   "source": "Port Technology",
+   "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPbk91Q0dVN0E1N190Z1ZNZ0t6NVRVQThYdWJlQ3p6TnJDamFROGhhTnlyRVFmQ2hRLWZKN01sWFEzNUZ6UjdQVzZoU2I1TUdmMFNycHIyLXlzNEp4ZVBZam82b3AwbnJFU0FLSzFLSFQ2T3RKYktiNXhaTHBPanN1SG9FUzFRcFBZay1nOTY1QWZaUWVjelhJ?oc=5",
+   "published": "2026-11-06T17:11:01+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "CIRES Technologies and NVIDIA AI Factory to power smart ports and smart cities",
+   "trusted": true
   },
   {
    "id": "4e4a30c18fac",
@@ -11812,21 +12149,6 @@
    ],
    "countries": [],
    "snippet": "García, Jackson, Casar Lead Colleagues in Letter to Secretary Rubio Urging Suspension of Military Assistance to Ecuador as President Noboa Escalates Repression"
-  },
-  {
-   "id": "82f54bd452c9",
-   "title_orig": "DNR: Oak wilt detected for the first time in Manitowoc County",
-   "title_de": null,
-   "lang": "en",
-   "source": "WFRV Local 5",
-   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPTTF3ZW5ZUG56Wmo0b3BQMmpVR1p0LTg5T1dzZ016QzhIZkI0M0tlbnRFQ1dxRVdmN1pSZTZTMHZIVXFTQzNiNXhYSVlDejBLZS1MOWI2Z1BhUWF1Mkhhc2NJc042SlR4R0M3UzJvQ0ppdVBINTdFVDBiRGJpejdUcDZ2V0gxVnZPMjR0OFZTT1pOVFZYR1FZaGNMd2xsMS02Rllla2VENW1KbnPSAbABQVVfeXFMTkRFZG13MHVwSVFZOGdlMm1qTE1RWnRiektZa21QY0F0TV9wMzZMMGpzRjlxZ2VRc244Y3ZUTzh1SFBHNkx2aDJWOWNXc2ozNTR2a2tjVkNiVmF5UHZNNTBYTGRKNF84MG85SzBwdV93VE56dkZKc3F2QkFVSG1ydHk3emhtZkduekU5QlJhTEVrQ3ZIeTZBbDBDSGxYU1dBbUlhV0ZPQ3FNemZHUEpMY04?oc=5",
-   "published": "2026-11-06T16:39:06+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "DNR: Oak wilt detected for the first time in Manitowoc County"
   },
   {
    "id": "cec52d2d9fcf",
@@ -11925,6 +12247,22 @@
    "snippet": "Kampenaren herbouwen kadekraan: ‘Halverwege december gaan we hem plaatsen’"
   },
   {
+   "id": "77ce2e9d1d6d",
+   "title_orig": "Western European scrap prices decline",
+   "title_de": null,
+   "lang": "en",
+   "source": "Kallanish Commodities",
+   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPUjN6dHpGaGdmbnhYSHVSVE5RVW9KbzZuMFhiVlNiSWlLbmozRFM1S3lfaURoZVIxU0VhY3cyR1RsQlhJVy1WZWlwMm5XTHBrXzZsRE4zYW5FV2tHOTZhNTM0YUxVb0llWjI1U2JxOWFYcmlLTkZtUnFGNDV5eGctV0J4cG9nVExKYzNFdWpVYUFidzQ4WDdmSTU3eHgwaGJpZUE3YUlfbEYwUmZMdHZFMFZpdUw?oc=5",
+   "published": "2026-11-06T15:07:57+00:00",
+   "rubric": "rohstoffe",
+   "rubrics": [
+    "rohstoffe"
+   ],
+   "countries": [],
+   "snippet": "Western European scrap prices decline",
+   "trusted": true
+  },
+  {
    "id": "41da0f0e1689",
    "title_orig": "Insurance Intermediary License Revoked For Manitowoc Man",
    "title_de": null,
@@ -11938,21 +12276,6 @@
    ],
    "countries": [],
    "snippet": "Insurance Intermediary License Revoked For Manitowoc Man"
-  },
-  {
-   "id": "71bf1ec725e4",
-   "title_orig": "DNR Confirms Oak Wilt In Manitowoc County",
-   "title_de": null,
-   "lang": "en",
-   "source": "Wisconsin Department of Natural Resources (.gov)",
-   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5GaDhGVHMtZEtBNjZtOFNCNGFEZ1NRVEdxSXRuWVNyZzJOcERzVHg5amRRX1BIQ2dhMUdnSm9LS0l1UGRzQmV0S21LZ0JEM1VOT2FYWTBlOGdrYWRZRnc?oc=5",
-   "published": "2026-11-06T15:02:28+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "DNR Confirms Oak Wilt In Manitowoc County"
   },
   {
    "id": "08bc88af75c0",
@@ -11985,6 +12308,22 @@
    "snippet": "Romania extends wage support for troubled Liberty Galati steel mill"
   },
   {
+   "id": "c326a237cd51",
+   "title_orig": "Only 4% of container port operators report AI earnings gains, survey finds",
+   "title_de": null,
+   "lang": "en",
+   "source": "WorldCargo News",
+   "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPMHBpbHFxbjBOcURLNVQ2MHo5UF9xb3A1T1c2THRJU1BqT1lOajFNNG4tRFlyeFNVcGR4YW5YOWhtRXVtVHdyeXhid2Q3Rm5VQ1VBOTR3dWJDQnJ0OEcxZ2dGNHNrbHNoSVRlMjVSVGNRR0tiN2tUdkREOEZTNXFLY19NTzVWRTBrMk1LNURTRzA3ckdBWGRMemZBeWNWMkFMYUtwU2xfeTA4dDF5V05Sbkg2QzgxX2lMbUxpRHdfb1pYYWdid2c?oc=5",
+   "published": "2026-11-06T14:25:58+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Only 4% of container port operators report AI earnings gains, survey finds",
+   "trusted": true
+  },
+  {
    "id": "6bb35ef889af",
    "title_orig": "Thyssenkrupp: Grünes Stahlwerk in Duisburg geht zwei Jahre später in Betrieb",
    "title_de": "Thyssenkrupp: Grünes Stahlwerk in Duisburg geht zwei Jahre später in Betrieb",
@@ -11998,6 +12337,22 @@
    ],
    "countries": [],
    "snippet": "Thyssenkrupp: Grünes Stahlwerk in Duisburg geht zwei Jahre später in Betrieb"
+  },
+  {
+   "id": "1d74f92a0d68",
+   "title_orig": "Third SMS group slab caster for Tata Steel Kalinganagar",
+   "title_de": null,
+   "lang": "en",
+   "source": "Steel Times International",
+   "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxON2dCNzBRQXVydHhiQ3lpVmZkc1prYm0zVmxwV2ZFdElqemJVMWV6TmRyOHZfY0xSTEZfRWphQ2tIYjZHWVJNWFFMYlFaZ1JLaGFlOGtxUW50TFhVRFc4dzEtQnBGQmRsOU9Ob09ybHItM3pZbnRlQ19wc2cxSVZCeThKeloxS1dwZ0huT3RtVmIyZUFx?oc=5",
+   "published": "2026-11-06T14:18:56+00:00",
+   "rubric": "industrie",
+   "rubrics": [
+    "industrie"
+   ],
+   "countries": [],
+   "snippet": "Third SMS group slab caster for Tata Steel Kalinganagar",
+   "trusted": true
   },
   {
    "id": "9b281e1cbd02",
@@ -12143,6 +12498,22 @@
    "snippet": "Sand transition takes shape, southeast Iowa community mostly positive on proposed steel mill"
   },
   {
+   "id": "ef4104b76046",
+   "title_orig": "Tusker Group acquires new Grove cranes for Irish and UK projects",
+   "title_de": null,
+   "lang": "en",
+   "source": "Cranes Today",
+   "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNbWxMYVMydmpySUxqb0VlR2p0OHh5MEpJdzdUeC0ycDU2OGppQzFEZHh6RDJKWHdld0RFTW00QU8xUkl1YVdfdGpEcVRlMzhPb3ExNFdOeDR0RFFySF9IQWI1bzM2MlBhMjZGWGpqZml3WGZ0eFc4bldVSElJQlFLTzVR?oc=5",
+   "published": "2026-11-06T11:53:37+00:00",
+   "rubric": "kraene",
+   "rubrics": [
+    "kraene"
+   ],
+   "countries": [],
+   "snippet": "Tusker Group acquires new Grove cranes for Irish and UK projects",
+   "trusted": true
+  },
+  {
    "id": "55da3fd0b9b6",
    "title_orig": "Coupe arabe de Beach soccer : Le Maroc bouscule le Liban à Port Saïd",
    "title_de": null,
@@ -12189,7 +12560,8 @@
     "haefen"
    ],
    "countries": [],
-   "snippet": "APM Terminals warns port expansion risks shifting congestion inland"
+   "snippet": "APM Terminals warns port expansion risks shifting congestion inland",
+   "trusted": true
   },
   {
    "id": "35044d0dd8e8",
@@ -12224,6 +12596,22 @@
    "snippet": "Près de la moitié de l'offre Letec menacée lundi par une grève, le mouvement de grogne pourrait interrompre l'ensemble du ramassage scolaire"
   },
   {
+   "id": "b5566f18098b",
+   "title_orig": "Chile’s cherry exports diverted as San Antonio port blockade drags on",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOa013QzA3bXVUcVdyekZoOTZsZFBnbjNzTlo0eURoaWtYdnNGckpnVnF2MW9mODJpRjk0TmJGRjczZVA1T0FzR3lJNGQ2aUNLY1NsSmkzX0Q3WFRuVlJRdHBzeS1mV0dnSEk3TnkzdEhHb1NOeTNFUkJMNnpBbjk0LW5GV1lWX2V1akVqTHloZ25LSFpySUE?oc=5",
+   "published": "2026-11-06T10:05:35+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Chile’s cherry exports diverted as San Antonio port blockade drags on",
+   "trusted": true
+  },
+  {
    "id": "4874b8b39d1c",
    "title_orig": "Business leaders urge COP31 Presidency to commit to global action on clean electrification and heavy industry to keep global warming well below 2°C",
    "title_de": null,
@@ -12237,6 +12625,22 @@
    ],
    "countries": [],
    "snippet": "Business leaders urge COP31 Presidency to commit to global action on clean electrification and heavy industry to keep global warming well below 2°C"
+  },
+  {
+   "id": "05b55cb3a324",
+   "title_orig": "Port of Oakland reaches 84 per cent clean power in 2025",
+   "title_de": null,
+   "lang": "en",
+   "source": "Port Technology",
+   "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOQV85SVZEeDZmaGI0UU5GZ2JXYUNtZFJjMVJUNy16dHhZZlYwcTAzTHpOaVdVVHpzekdTd3VVVHpueTgtYzBvZjlERlFYMW1jZF9GU1J1UFFmV0VfcWdyQzBpY3B4ZlJGeW1ZNGlzdnpjaW5MS2VRTVVUcF9LU01Ib2lKdExCMzJHUmZiMlEySHBjMEZ0cUpNemhMMlB3Q3BpZUlOY2NOUF9KclZ4Z2txNTd2OHc5SmJYRjVLZVhYbDhnYWdKX0E?oc=5",
+   "published": "2026-11-06T09:47:18+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Port of Oakland reaches 84 per cent clean power in 2025",
+   "trusted": true
   },
   {
    "id": "af4a68d88911",
@@ -12304,6 +12708,23 @@
     "TR"
    ],
    "snippet": "Türk savunma ve havacılık sanayisi ihracat başarısını kalıcılaştırdı"
+  },
+  {
+   "id": "f991c1fc39c5",
+   "title_orig": "Hutchison Ports Sydney puts new STS cranes to work",
+   "title_de": null,
+   "lang": "en",
+   "source": "WorldCargo News",
+   "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPOHVhM2ZpWmFMcnBpc0hwUHVqU0hqUmhySUFGc0k0NmNXX29VU3pEMzVfbnl6WU9ZV0JUcTlGbHhBWGx2SktEZmhHWHRtTjNmMkRIWC1tSzRrZ2ZsX1ViYnZrV1ptYVREek04VTNabUhqYVZjWHdlZFZXT3RqNnRKdldkV0xOWEk3NmIxOHlrd1U4UTZGN0R0ZE5fTngyYjMxV3pEM3JMRmplQ3R5clpYYmZxRXllZw?oc=5",
+   "published": "2026-11-06T09:02:46+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen",
+    "kraene"
+   ],
+   "countries": [],
+   "snippet": "Hutchison Ports Sydney puts new STS cranes to work",
+   "trusted": true
   },
   {
    "id": "fd405d8b80cf",
@@ -12400,6 +12821,22 @@
    "snippet": "Hoist UK plans installation of 10t overhead crane"
   },
   {
+   "id": "bff97dcdb0b4",
+   "title_orig": "US rebar prices rise on scrap market strength",
+   "title_de": null,
+   "lang": "en",
+   "source": "Kallanish Commodities",
+   "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPdG9YN1JyWmlPd1JEV1ZEc29QUmNtOUVqanhfbFNDV2NrUHdpSXVIYkdHU3puUXBDbEMyQ3d3Z0lSdUNFcm9qNTFNeGV1QzNGYTZ3OVBxSmZ4b3ZUQU1CYTlrUEpBUERXNzNLckJFTXZiYkJKUWNuN3NWdmh2WGgzVTJIS18tU0pvQ18xM05fckRnUTNMUlJ4V1E1cHZGNzk2NEpQODVFUC1TaUttR0Z5OVYxYU8zR1hneFhmYVhPbw?oc=5",
+   "published": "2026-11-06T08:00:00+00:00",
+   "rubric": "rohstoffe",
+   "rubrics": [
+    "rohstoffe"
+   ],
+   "countries": [],
+   "snippet": "US rebar prices rise on scrap market strength",
+   "trusted": true
+  },
+  {
    "id": "b95af40b80fa",
    "title_orig": "[SMM Revue hebdomadaire du marché intérieur indien] Les prix de l'acier et de la ferraille en Inde se détendent avant Diwali",
    "title_de": null,
@@ -12443,6 +12880,22 @@
    ],
    "countries": [],
    "snippet": "Kraanverhuurbedrijven Van Ginkel en BKV samen verder"
+  },
+  {
+   "id": "dbaa9a5485f8",
+   "title_orig": "US approves $1bn Louisiana offshore oil export port",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9qb3NJb3NWMmM2anF2XzRmSEdRcXNiUE9yWEllQUVNUzdiUkE2TVRZZ0h4dE9OWXdwV2F6TzNvRHd2eE9lWjlUZWdWUVcxa2NQTWpScFNDb2o3aXdfZ0k2UEJQZmxMZHBHZjJ6ajNkbWxIWWRzN0NlZ2RMWm1DQQ?oc=5",
+   "published": "2026-11-06T05:46:41+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "US approves $1bn Louisiana offshore oil export port",
+   "trusted": true
   },
   {
    "id": "fb283b8f1721",
@@ -12522,6 +12975,22 @@
    "snippet": "Guangdong zinc: Zinc price center declines, downstream restocks small volumes [SMM midday review]"
   },
   {
+   "id": "aa164952ab63",
+   "title_orig": "Adani Ports agrees $2.87bn deal for European terminal operator Evos",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOS21nYlZKN2UydFZqWml5Z2tHVE85dDN0NzAydHF6LUx6aXo5N3FmRWRKeERla1ZxVThpYWhhMEJNQ3FVTDI5RGN0c0VqUlNITGM2Y1dFSDhyRkZLWU5TUzIzdVo1RUljLWFCUUpfYkUzQ3NmRU1raVVRQUdYeHE3SWpacVdGb1RSdW5Geml4SkNIWmc?oc=5",
+   "published": "2026-11-06T03:36:36+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Adani Ports agrees $2.87bn deal for European terminal operator Evos",
+   "trusted": true
+  },
+  {
    "id": "82258d8c8761",
    "title_orig": "He Returns to a $2,500-a-Month Job After a Steel Mill Injury. Nine Months of Work Will Use Up His Social Security Disability Trial Period",
    "title_de": null,
@@ -12597,6 +13066,22 @@
    "snippet": "Last of five all-electric cranes installed at Honolulu's $555M container terminal"
   },
   {
+   "id": "907a47544010",
+   "title_orig": "Northern European wire rod prices remain flat",
+   "title_de": null,
+   "lang": "en",
+   "source": "Kallanish Commodities",
+   "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNd216Vk1FVlQzQXg2bWwzSm1xWVNqRVhDd0J2aXV3NHBRTnlYQ1I3VUQtNDlyNzFXcE9EYUlxbnB6cjg2SUt4MzBzRGNyUG9VSDgzTUhNMjM0eVFRajdIc0FkbkdRNWl6ZFEtbURLQ092R3k3dkY3X0VobFdvRi1kLXZkeVhhemZuc1lQV09sS1c1TlNPNW1pRDJjTHNKckozQ0gzeVJ6LVowZno4Wi1EVV9BcVFIVlRNY2NiLXpyQjJkZw?oc=5",
+   "published": "2026-11-06T00:19:45+00:00",
+   "rubric": "rohstoffe",
+   "rubrics": [
+    "rohstoffe"
+   ],
+   "countries": [],
+   "snippet": "Northern European wire rod prices remain flat",
+   "trusted": true
+  },
+  {
    "id": "6f779d29937d",
    "title_orig": "Dongkuk Steel Mill Group vice chairman marks 20 years of giving with Beautiful Store",
    "title_de": null,
@@ -12640,21 +13125,6 @@
    ],
    "countries": [],
    "snippet": "Nickel price leaps to 5-week high on Indonesia crackdown"
-  },
-  {
-   "id": "66d4e1c5a2f0",
-   "title_orig": "Manitowoc County Historical Society holds annual fall cleanup",
-   "title_de": null,
-   "lang": "en",
-   "source": "WBAY",
-   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQYjloaVkwM3ZBbDV2dkpXOFd4THJ0NlBtUkYwRV9NUm1KeU82NjdQTmZqYWd6RmljZXRkdjBsVjdfUUJENlBiVm9fNWRKakphYnJqaWU0ekp1d2ZpbTZUaXI3dnFQbzN3dTJjcGNpS0JXN3haZlVWZ1VlU2ZpZ2VtYXFvY3pjVXVvRVYwa1dYcHhXRUJ4ZGVDVXdn0gGuAUFVX3lxTE9NdXJxN2lfWE9mY09ZZnB5QlFCTHpXNmh5R1Q2b21KTVhPVkVLMkh0S085THF6dFhtdWE0bmlmTkN3ME9JU0xpOHFvNlR2Y0ZyQ3NfWG1JbHJ0Skw0MVJYQ20wc0lxMldvN2JzQU1WMnVORUJlOU5jYmliN3dMNk9kWDJYYzA4X0V6ZE1hV2FiaFRDUVptVWZobGtQcm9yTDRES3pGWXNWWk5BQXkzZw?oc=5",
-   "published": "2026-11-05T23:03:00+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Manitowoc County Historical Society holds annual fall cleanup"
   },
   {
    "id": "ed69b858baf9",
@@ -12747,21 +13217,6 @@
    ],
    "countries": [],
    "snippet": "Manitowoc Lincoln High School (WI) Basketball"
-  },
-  {
-   "id": "6f49048e6e69",
-   "title_orig": "Roncalli High School (Manitowoc, WI) Basketball",
-   "title_de": null,
-   "lang": "en",
-   "source": "MaxPreps",
-   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE8zV2VaUXpyNk1BSEo0UkN3cmd3VWJCU2xCVm9hOVpuM3l6cHdTWVFpbExJYjBpbHpnY1FZdTBmbkNGS0VmSjlHMGZGSDY4N2NWQktfcHdBR2tNMFhIX3NPZ3UwTjBNOWJkTlo5TF9yTGk?oc=5",
-   "published": "2026-11-05T19:03:17+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Roncalli High School (Manitowoc, WI) Basketball"
   },
   {
    "id": "aff44e29ae60",
@@ -12952,6 +13407,24 @@
    "snippet": "Public gets chance to speak on proposed largest steel mill in US"
   },
   {
+   "id": "5a61f37fe21b",
+   "title_orig": "ABD’den İran’a destek gerekçesiyle Türkiye ve Hindistan’dan şirketlere yaptırım",
+   "title_de": null,
+   "lang": "tr",
+   "source": "İlke TV",
+   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPenR1RGoyaWFfbElSd3hvUnQ0ZHZQOEh3UEl1VUdMUThMa2lVLWtHczFwMFhyUDZIUkYxbG0xOVlnT1R4M3dVSXM0d3ppT2ZfRHNFS0lMemlKMXdIWDU1MmswMm1IeUlfZTVERWgyZkI4YXlaVTBfV0dsQTdEb2VNSVp1WkZ6TmdxRktZSzRCcEVoU3ozMEtISnRBZk9VNnhJ?oc=5",
+   "published": "2026-11-05T15:46:28+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "ABD’den İran’a destek gerekçesiyle Türkiye ve Hindistan’dan şirketlere yaptırım",
+   "trusted": false
+  },
+  {
    "id": "4fa35cfff6fc",
    "title_orig": "לא מאיטים: יבוא הרכב מסין הגיע ל-2.7 מיליארד דולר עד ספטמבר",
    "title_de": null,
@@ -13016,6 +13489,22 @@
    ],
    "countries": [],
    "snippet": "Panama Kanalı, iki yeni konteyner terminali için ihaleye hazırlanıyor"
+  },
+  {
+   "id": "948a0d1151e6",
+   "title_orig": "Adani Ports to acquire Evos in €2.56 billion deal",
+   "title_de": null,
+   "lang": "en",
+   "source": "Port Technology",
+   "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNTTA3YzN3Wlg2VllsaC1lbERaM2hnV3JnSzhhUnp4S3k4YzNSdWNCOUFQXy0zek1hQmZUUk1pOVZub2YwTFBwcUxtYk9tY0hreE9rTTFwZ05DRl93VEJocE9XNlZVeXp3Y0VlZHhNNXFFVU9hbVczM2pMZVYxTTAyZg?oc=5",
+   "published": "2026-11-05T14:27:12+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Adani Ports to acquire Evos in €2.56 billion deal",
+   "trusted": true
   },
   {
    "id": "b7753d90239d",
@@ -13116,6 +13605,22 @@
    "snippet": "المغرب والأردن يبحثان سبل تعزيز التعاون في قطاع النقل واللوجستيك"
   },
   {
+   "id": "1108ec72198a",
+   "title_orig": "Brazilian port authority targets private terminal deals",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOZ2xPX2dmdnZWa1pTc215U1l4QkhET0tPUW1RZmN5MHBDZV9RUGgtdjdzTVR6a3Y3dDhjUTVFUFdnN3hLUmJ2c0V6U0h4VmE5M1QxcEhXWkp3RUNnVUhlYzhhdU5PODZmWWczcHpmTjhVTHE0aHRVX0F4NVJ1V1A0aURnU2o?oc=5",
+   "published": "2026-11-05T12:23:09+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Brazilian port authority targets private terminal deals",
+   "trusted": true
+  },
+  {
    "id": "0e4c73cbeab2",
    "title_orig": "Arkas port expansion eyes $110m in development bank financing",
    "title_de": null,
@@ -13128,7 +13633,8 @@
     "haefen"
    ],
    "countries": [],
-   "snippet": "Arkas port expansion eyes $110m in development bank financing"
+   "snippet": "Arkas port expansion eyes $110m in development bank financing",
+   "trusted": true
   },
   {
    "id": "9e3105139df3",
@@ -13163,6 +13669,22 @@
     "MA"
    ],
    "snippet": "n°1322. Tubes en acier : le Maroc reconduit la protection d’usines qui tournent au ralenti"
+  },
+  {
+   "id": "57ff9104e73f",
+   "title_orig": "LA port truckers face 16 months of detours as key bridge closes",
+   "title_de": null,
+   "lang": "en",
+   "source": "Splash247",
+   "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQakVEcmZjMHNTZ2pzemYtdEQ1UmFfWnA1MUc4dWFvYnJ1R0N5YjhyUVZ6M292Rnc1N2YwV0U4MWxsVVJfczBjQl9qQXlSUnZBcU9nbGxnMmpEczFidndrcUFhUlBNMFgxamFyQ094aEh4LU5xSV9DdE91QmpjS3dMUzEzQjQ4Z0VHanB6NEp3Yw?oc=5",
+   "published": "2026-11-05T11:42:52+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "LA port truckers face 16 months of detours as key bridge closes",
+   "trusted": true
   },
   {
    "id": "eddd400fa3b0",
@@ -13242,6 +13764,22 @@
     "IL"
    ],
    "snippet": "US sanctions Indian and Turkish firms accused of helping Iran"
+  },
+  {
+   "id": "b88318880116",
+   "title_orig": "Port of Halifax trials OMC’s next-generation DUKC system",
+   "title_de": null,
+   "lang": "en",
+   "source": "Port Technology",
+   "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPSXlwX2o2eWNhV2h0VlpjUm9BMG4zMllwY0ZmeERvaW9FOVc2ZVlxdUZScE9jMEpnOHAwc21xMkRNdDNwM2RheHM1aFJtRkRpc3JSWG01NGFnd1NEWXZnY3BWczZaSWdURmljYUhReUVTdDVqU0lGamo2UVZRd3J4RndnRUItOXVMRm0xUlBfallCTkpORnRjRFk2ZlZiR3I0R3lNUEVUYUpwcXozeWJ4SU5KUko0T1EyMEdnVFk1eVRFLVY0TktWdEF3?oc=5",
+   "published": "2026-11-05T09:28:50+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Port of Halifax trials OMC’s next-generation DUKC system",
+   "trusted": true
   },
   {
    "id": "5458aca0b2f5",
@@ -13417,6 +13955,24 @@
    "snippet": "\"November Steel Mill: Cold & Hot-Rolling Production Schedules See Month-on-Month Decline\""
   },
   {
+   "id": "3bd0b7e6e46d",
+   "title_orig": "ABD'den İran'a yaptırım... Türkiye merkezli bir şirket de listeye alındı",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Anka Haber",
+   "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOR01Pekw3dFBPRHBaclRJTTdRVlowdklSUzFmcC1ydHc1LU5TM0VldVhLNEdYRlNtUDI2dzF6dENjZUxDenY1SnI5V2NTSVhBTU5EdVFGajJ3djhMaU1EQlR3cDlaVHMxZnY5dE1KYjJQMzJBYmM5c3M1YXd0dW1CdkZ2bXNkcFpGaVVMZ1B1ZHlYOVY0QkFOclFQVXVJWHJwUVZueFA4Y0JBZw?oc=5",
+   "published": "2026-11-05T07:30:52+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "ABD'den İran'a yaptırım... Türkiye merkezli bir şirket de listeye alındı",
+   "trusted": false
+  },
+  {
    "id": "a50e6b345df1",
    "title_orig": "PM inaugurates Tk 4,068cr Mongla Port expansion project",
    "title_de": null,
@@ -13464,6 +14020,24 @@
     "TR"
    ],
    "snippet": "Rewe und Gebrüder Weiss: 50 Jahre Logistikpartnerschaft in Österreich - Fotostrecke"
+  },
+  {
+   "id": "596b606ad19a",
+   "title_orig": "ABD'nin yaptırım listesinde Türkiye merkezli bir şirket de var",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Sözcü Gazetesi",
+   "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPTkx1MU5iQ1NucjQ5Y2NNQ2tUUnhwUTZORjRHeDZGeGRkY0tjb2E0V0RweW92MFlMYlJNaTdhSHRETWE4cGlUWmVzckxVR2laWXZYRWNqeWF3OWZUUmIyN1BKQnFMbm54ckUxMWlsUGluZGZSeUdIbDl1cE1UWmRiYmJQZlZ0UUh6aGV4U1ZUWHllQ3N5VEdjWk0tWlI5cmlpM2Jobm13OA?oc=5",
+   "published": "2026-11-05T06:41:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "ABD'nin yaptırım listesinde Türkiye merkezli bir şirket de var",
+   "trusted": false
   },
   {
    "id": "f667cacfd902",
@@ -13588,6 +14162,22 @@
    "snippet": "Hurda Fiyatları Artık Online Takip Ediliyor: Hurda Satışında Dijital Dönem"
   },
   {
+   "id": "98fab8d7b275",
+   "title_orig": "German rebar mills lift surcharges for wire mesh",
+   "title_de": null,
+   "lang": "en",
+   "source": "Kallanish Commodities",
+   "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNMjIxT0V0ZWZIaDVvakttRmJVRjg2YzA5eDd5N0ZUVDVyRVNNeDJUUjlOT3Zhb3pYdG5jV1BjY3Jxdk9OcVZ0ZXZGZnRpX0tCNS1XSVN5ZWc0RzVTejlrbGpvQ1o2ajJUN0RIdHJpY3NfeWdlV19pR2NmdThwaVE1dVVwU2ZyMEJERDd1MURCQTk1OE5XaFNXV2gzZVJ3Rk9SWnNpeHctN2F2dm1ld21JRktHSnVDaFNHdExnNFBIYmJLWVE?oc=5",
+   "published": "2026-11-05T01:14:12+00:00",
+   "rubric": "rohstoffe",
+   "rubrics": [
+    "rohstoffe"
+   ],
+   "countries": [],
+   "snippet": "German rebar mills lift surcharges for wire mesh",
+   "trusted": true
+  },
+  {
    "id": "abb5ce9112fd",
    "title_orig": "Mould King 17015 – 2 Meter großer Raupenkran – Klemmbaustein-Modell für 110,32€",
    "title_de": "Mould King 17015 – 2 Meter großer Raupenkran – Klemmbaustein-Modell für 110,32€",
@@ -13601,6 +14191,22 @@
    ],
    "countries": [],
    "snippet": "Mould King 17015 – 2 Meter großer Raupenkran – Klemmbaustein-Modell für 110,32€"
+  },
+  {
+   "id": "045a5d02370d",
+   "title_orig": "US container scrap flat on weak export demand",
+   "title_de": null,
+   "lang": "en",
+   "source": "Kallanish Commodities",
+   "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQMFlRRF9PZHhCa3FSbFJ1NTFrS0VZNUpNLXZvV2VTX0ZnU2tQakt6dGljVEFfVEtTeUVGTGU1TEo3cGl5NnczSi05ajkxVFZfWHRUVmNmNTFYLUE4cUN5aWU4SDBfUXRzdjBXUTNpRUdwWkFMa2tLenM4SHZnTWhWa3N6dVNGb2I4c3hrc1dwa0xlUnJMa0RIOWR1dEZobzFCNFhMQzBJRTdITlVOX2lIUk1qb3BZY1FSa1VmMmZsTQ?oc=5",
+   "published": "2026-11-05T00:13:59+00:00",
+   "rubric": "rohstoffe",
+   "rubrics": [
+    "rohstoffe"
+   ],
+   "countries": [],
+   "snippet": "US container scrap flat on weak export demand",
+   "trusted": true
   },
   {
    "id": "32224dccff8b",
@@ -13635,6 +14241,22 @@
    "snippet": "Lee County Board of Supervisors hold Q&A over proposed steel mill"
   },
   {
+   "id": "012227335f0b",
+   "title_orig": "17 new cranes for Schmidbauer",
+   "title_de": null,
+   "lang": "en",
+   "source": "Vertikal",
+   "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBFZzhtTmw3OWxtLUwxYWhBa01TeUNmcVhmT1ZtOFJoa01wcUJ4NmktdkxkN3M5ajNtVFNZR3gzY1NKOW43OWdXZU9BbEhYWjkwQmJMUnRabFEyTlJkTU9NaUh4bGRHTWw2QU5YTDl0SGpwTFZiQUsyTjRR?oc=5",
+   "published": "2026-11-04T23:51:28+00:00",
+   "rubric": "kraene",
+   "rubrics": [
+    "kraene"
+   ],
+   "countries": [],
+   "snippet": "17 new cranes for Schmidbauer",
+   "trusted": true
+  },
+  {
    "id": "a10b507538c3",
    "title_orig": "New COO for WireCo",
    "title_de": null,
@@ -13648,21 +14270,6 @@
    ],
    "countries": [],
    "snippet": "New COO for WireCo"
-  },
-  {
-   "id": "c2b4f6c50cfb",
-   "title_orig": "Leah Hartman Obituary (2026) - Manitowoc, WI - Klein & Stangel Funeral Home - Two Rivers",
-   "title_de": null,
-   "lang": "en",
-   "source": "Legacy | Obituary",
-   "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOY3o2MnhaT19RanlSUEJxYWMwNVlHcUZkY0d6eXE1aHFvTFptTnJoM1B1djRUUGx1TGZDS3JUMno4YV9uSmxNRWZHa3hBM09Qazc4aWExaGdla01hV1N4dHRnc1hTdlVPOG8tb3M4NUJYanRGd05aVGV0MHZGUUZDTQ?oc=5",
-   "published": "2026-11-04T23:28:43+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Leah Hartman Obituary (2026) - Manitowoc, WI - Klein & Stangel Funeral Home - Two Rivers"
   },
   {
    "id": "ce05c60140f1",
@@ -13844,6 +14451,22 @@
    "snippet": "Panama Kanalı konteyner terminali için kısa listeyi açıklayacak"
   },
   {
+   "id": "f6d5f8bf43c0",
+   "title_orig": "Panamakanal gibt Shortlist für neues Containerterminal bis Jahresende bekannt",
+   "title_de": "Panamakanal gibt Shortlist für neues Containerterminal bis Jahresende bekannt",
+   "lang": "de",
+   "source": "Investing.com Deutsch",
+   "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOLXFCTDVKZjQ4dHgyaUpkQ3pLU19UY2wwYUhQZWZ4OWk4aW13UWFObFZnWUxaRzYxT2I2UEVwZmYtWEFQSG5zVFRpcm5ZTTZJUWthZUtRRFBwNlhJM2Zvd3NfNGEtTWdDUDgtLU45REg5clE0Tm5mZUhSdVMxclpVcmM0RU93SFQ1NnhhTE00RDFDUHZidDNjdnlrRWR1enByaUZNTTU0SnJNb0Jkcl9WRE16aFZmcFM2dzdoLUFsT2FMVEprLVhGb21Udw?oc=5",
+   "published": "2026-11-04T18:45:00+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Panamakanal gibt Shortlist für neues Containerterminal bis Jahresende bekannt",
+   "trusted": false
+  },
+  {
    "id": "1002cb1884d0",
    "title_orig": "Togo – Une foreuse baptisée « Hêzou » pour étancher la soif de 4 000 localités",
    "title_de": null,
@@ -13857,6 +14480,24 @@
    ],
    "countries": [],
    "snippet": "Togo – Une foreuse baptisée « Hêzou » pour étancher la soif de 4 000 localités"
+  },
+  {
+   "id": "a2a31594e52d",
+   "title_orig": "ABD'den İranlı havayollarıyla çalışan Türk şirkete yaptırım",
+   "title_de": null,
+   "lang": "tr",
+   "source": "Gazete Oksijen",
+   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOZEZhck40eEtOZ1prYnNYNzhGNnZLbkNKX04xd01TTTZzRGhfemxDTmJIWjM1VUUzTHNpRW1aUUJFZFh6azZvYl9Qdm9hbGplTEY4ZzRGUi1EUFVyVDUwZUZDbFlXTTMwcTBDRjYzUUhIRWNyaHJFRVlvaGI0LU0ybWUwRXVHWjZtWUU0M3piWmZRMWFTWERhU0trdUtEbkhN?oc=5",
+   "published": "2026-11-04T18:36:00+00:00",
+   "rubric": "laender",
+   "rubrics": [
+    "laender"
+   ],
+   "countries": [
+    "TR"
+   ],
+   "snippet": "ABD'den İranlı havayollarıyla çalışan Türk şirkete yaptırım",
+   "trusted": false
   },
   {
    "id": "3a3459d7418b",
@@ -13985,21 +14626,6 @@
    ],
    "countries": [],
    "snippet": "Acier britannique : un débat alerte sur la saturation des ports avant le CBAM"
-  },
-  {
-   "id": "bc96b699de75",
-   "title_orig": "Here's what Tuesday's election results mean for Manitowoc County",
-   "title_de": null,
-   "lang": "en",
-   "source": "Herald Times Reporter",
-   "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOYlRsaW9PSWNaclN3dWo1LVkzeUFOa3lINjRXdnMyenotVDA2ZFFVU1ZDbGFwNGNUdVhBdGlnY1M5OTZaZlFMUkNIckwyX3Mxai1KRC10eG9jZG95RkstNkE5dENRZmxiTEJ3anBGazVqaVpITVJ2dlVDMmhmdEwtQW9QNGVtejhsVThxSTVyWW8yQnlCRnNJbVllVmxVR0JlZXBrdlowMUVGeFNRdHFEM0ZoN2l6cHF2Tm5JVElNMkdROUI1T09qNUtQeklyd1FvT2c?oc=5",
-   "published": "2026-11-04T16:56:00+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Here's what Tuesday's election results mean for Manitowoc County"
   },
   {
    "id": "3a1ee18bc0cd",
@@ -14194,6 +14820,22 @@
    "snippet": "Greg Casar Calls for AI Company Hearings and Stronger Congressional Oversight"
   },
   {
+   "id": "b4b783bbd98b",
+   "title_orig": "Port of Hueneme advances $246 million infrastructure plan",
+   "title_de": null,
+   "lang": "en",
+   "source": "Port Technology",
+   "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPaWRFT05oOGNTMk10V0hrbFRRWUl3MWt5NUhsb2ZjWjVSMkdIUkR2UmVRLU03X1dyUnByNkplbmxMTnFtemVVUDFZNU9XMm12ZlE3QjBQaTFXY1pCMWJqVlcxQ0RBUmp1UE5OWTlTRXp4UGI2UVRkV0pRSHh4X0kzSzZJY05kUFpKc2Vzc1ZjeGJTeGNCdUt4RVRLcU9MaXpjallxQlVNT0QzY1lZS19WN01IUzlQZUdTSFdtOWwxd2N6cFBPcnJZ?oc=5",
+   "published": "2026-11-04T14:27:54+00:00",
+   "rubric": "haefen",
+   "rubrics": [
+    "haefen"
+   ],
+   "countries": [],
+   "snippet": "Port of Hueneme advances $246 million infrastructure plan",
+   "trusted": true
+  },
+  {
    "id": "402931db1349",
    "title_orig": "Inspired by UK sanctions on Israel, US Democrats want to work with Labour",
    "title_de": null,
@@ -14259,21 +14901,6 @@
    ],
    "countries": [],
    "snippet": "The Manitowoc Company, Inc. Q3 2026 Earnings Call Summary"
-  },
-  {
-   "id": "b7476fbbdc41",
-   "title_orig": "Manitowoc County election results for Nov. 3, 2026",
-   "title_de": null,
-   "lang": "en",
-   "source": "Herald Times Reporter",
-   "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPdUJYd2NualNXR284Q3lnbEhDVnhub3h4TGFoSDFzQkYyUDRHaWctTFVnYXJXemtjaVlESmNZMWpzWVZtOWl2TUFIOE43cXN4WVExNE9PN2JVZldSb3FJd3pjaVE1a2Zwel9acjU2M0pjTE5zOEVLd1MwQlNva2VRNHlQUjFXVXpkeXV6dnBoVXUzdUlua2tWbVJteGR4MUpGUFFhQ3JYZXh6ZllJNV9VMV9Uc1l2Y1pZUGd1a1QzWVFtWjdtblE?oc=5",
-   "published": "2026-11-04T13:28:00+00:00",
-   "rubric": "kraene",
-   "rubrics": [
-    "kraene"
-   ],
-   "countries": [],
-   "snippet": "Manitowoc County election results for Nov. 3, 2026"
   },
   {
    "id": "fc273cbd263c",
