@@ -287,7 +287,7 @@ indices:
     title: "Erzeugerpreisindex – kaltgezogener Draht"
     sub: "GP19-2434 · Destatis · monatlich"
     freq: monthly
-    tables: ["61241-0002", "61241-0003", "61241-0005", "61241-0006", "61241-0007", "61241-0004"]
+    tables: ["61241-0006", "61241-0002", "61241-0003", "61241-0005", "61241-0007", "61241-0004"]
     require: ["GP19-2434;"]
     url: "https://www-genesis.destatis.de/datenbank/online/table/61241-0004"
   - id: vpi
