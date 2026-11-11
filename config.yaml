@@ -261,10 +261,8 @@ indices:
     title: "Erzeugerpreisindex – kaltgezogener Draht"
     sub: "GP19-2434 · Destatis · monatlich"
     freq: monthly
-    tables: ["61241-0004", "61241-0002", "61241-0003", "61241-0005", "61241-0006"]
+    tables: ["61241-0002", "61241-0003", "61241-0005", "61241-0006", "61241-0007", "61241-0004"]
     require: ["GP19-2434;"]
-    fallback_require: ["GP19-24;"]
-    fallback_note: "Ersatzreihe: Metalle (GP19-24), 2-Steller"
     url: "https://www-genesis.destatis.de/datenbank/online/table/61241-0004"
   - id: aki
     table: "62421-0001"
