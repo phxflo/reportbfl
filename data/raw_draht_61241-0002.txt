@@ -1,0 +1,27 @@
+74 Zeilen insgesamt
+statistics_code;statistics_label;time_code;time_label;time;1_variable_code;1_variable_label;1_variable_attribute_code;1_variable_attribute_label;2_variable_code;2_variable_label;2_variable_attribute_code;2_variable_attribute_label;value;value_unit;value_variable_code;value_variable_label
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2025;MONAT;Monate;MONAT02;Februar;DINSG;Deutschland insgesamt;DG;Deutschland;-0,2;%;PRE001;in
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2025;MONAT;Monate;MONAT02;Februar;DINSG;Deutschland insgesamt;DG;Deutschland;0,7;%;PRE001;in
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2025;MONAT;Monate;MONAT02;Februar;DINSG;Deutschland insgesamt;DG;Deutschland;128,0;2021=100;PRE001;Erzeugerpreisindex gewerblicher Produkte
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2025;MONAT;Monate;MONAT01;Januar;DINSG;Deutschland insgesamt;DG;Deutschland;-0,1;%;PRE001;in
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2025;MONAT;Monate;MONAT01;Januar;DINSG;Deutschland insgesamt;DG;Deutschland;0,5;%;PRE001;in
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2025;MONAT;Monate;MONAT01;Januar;DINSG;Deutschland insgesamt;DG;Deutschland;128,2;2021=100;PRE001;Erzeugerpreisindex gewerblicher Produkte
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2026;MONAT;Monate;MONAT10;Oktober;DINSG;Deutschland insgesamt;DG;Deutschland;...;%;PRE001;in
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2026;MONAT;Monate;MONAT10;Oktober;DINSG;Deutschland insgesamt;DG;Deutschland;...;%;PRE001;in
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2026;MONAT;Monate;MONAT10;Oktober;DINSG;Deutschland insgesamt;DG;Deutschland;...;2021=100;PRE001;Erzeugerpreisindex gewerblicher Produkte
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2026;MONAT;Monate;MONAT12;Dezember;DINSG;Deutschland insgesamt;DG;Deutschland;...;%;PRE001;in
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2026;MONAT;Monate;MONAT12;Dezember;DINSG;Deutschland insgesamt;DG;Deutschland;...;%;PRE001;in
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2026;MONAT;Monate;MONAT12;Dezember;DINSG;Deutschland insgesamt;DG;Deutschland;...;2021=100;PRE001;Erzeugerpreisindex gewerblicher Produkte
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2026;MONAT;Monate;MONAT11;November;DINSG;Deutschland insgesamt;DG;Deutschland;...;%;PRE001;in
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2026;MONAT;Monate;MONAT11;November;DINSG;Deutschland insgesamt;DG;Deutschland;...;%;PRE001;in
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2026;MONAT;Monate;MONAT11;November;DINSG;Deutschland insgesamt;DG;Deutschland;...;2021=100;PRE001;Erzeugerpreisindex gewerblicher Produkte
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2025;MONAT;Monate;MONAT09;September;DINSG;Deutschland insgesamt;DG;Deutschland;-0,1;%;PRE001;in
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2025;MONAT;Monate;MONAT09;September;DINSG;Deutschland insgesamt;DG;Deutschland;-1,7;%;PRE001;in
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2025;MONAT;Monate;MONAT09;September;DINSG;Deutschland insgesamt;DG;Deutschland;125,3;2021=100;PRE001;Erzeugerpreisindex gewerblicher Produkte
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2025;MONAT;Monate;MONAT08;August;DINSG;Deutschland insgesamt;DG;Deutschland;-0,5;%;PRE001;in
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2025;MONAT;Monate;MONAT08;August;DINSG;Deutschland insgesamt;DG;Deutschland;-2,2;%;PRE001;in
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2025;MONAT;Monate;MONAT08;August;DINSG;Deutschland insgesamt;DG;Deutschland;125,4;2021=100;PRE001;Erzeugerpreisindex gewerblicher Produkte
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2025;MONAT;Monate;MONAT07;Juli;DINSG;Deutschland insgesamt;DG;Deutschland;-0,1;%;PRE001;in
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2025;MONAT;Monate;MONAT07;Juli;DINSG;Deutschland insgesamt;DG;Deutschland;-1,5;%;PRE001;in
+61241;Index der Erzeugerpreise gewerblicher Produkte;JAHR;Jahr;2025;MONAT;Monate;MONAT07;Juli;DINSG;Deutschland insgesamt;DG;Deutschland;126,0;2021=100;PRE001;Erzeugerpreisindex gewerblicher Produkte
+CODES: 
