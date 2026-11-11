@@ -18,6 +18,7 @@ CFG = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
 NEWS = ROOT / "data" / "news.json"
 AI = CFG.get("ai", {})
 MODEL = AI.get("model", "claude-sonnet-5-5")
+FORCE = True   # erzwungener Tool-Aufruf; wird bei Ablehnung des Modells automatisch abgeschaltet
 VERSION = 2                                   # Prompt-Stand: bei Änderung werden alle Meldungen neu beurteilt
 BATCH = AI.get("batch", 25)
 MAX_ITEMS = AI.get("max_items", 400)          # Obergrenze je Lauf (Kostenbremse); der Rest folgt am nächsten Tag
@@ -77,12 +78,16 @@ GROUP_TOOL = dict(
 
 
 def call(key, system, user, tool, max_tokens=8000):
-    body = dict(model=MODEL, max_tokens=max_tokens, system=system, tools=[tool],
-                tool_choice=dict(type="tool", name=tool["name"]), messages=[dict(role="user", content=user)])
+    """Eine Anfrage mit erzwungenem Tool-Aufruf; Modelle, die das nicht erlauben (z. B. Sonnet 5.5), bekommen 'auto'."""
+    global FORCE
     hdr = {"x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json"}
+    err = ""
     for attempt in range(4):
+        body = dict(model=MODEL, max_tokens=max_tokens, tools=[tool], messages=[dict(role="user", content=user)],
+                    system=system + f"\nRufe zum Abschluss genau einmal das Werkzeug {tool['name']} mit dem vollständigen Ergebnis auf.",
+                    tool_choice=dict(type="tool", name=tool["name"]) if FORCE else dict(type="auto"))
         try:
-            r = requests.post(URL, headers=hdr, json=body, timeout=180)
+            r = requests.post(URL, headers=hdr, json=body, timeout=300)
         except requests.RequestException as ex:
             err = str(ex)
         else:
@@ -93,6 +98,9 @@ def call(key, system, user, tool, max_tokens=8000):
                 err = "keine Tool-Antwort"
             else:
                 err = f"HTTP {r.status_code} {r.text[:200]}"
+                if r.status_code == 400 and "tool_choice" in r.text and FORCE:
+                    FORCE = False                      # dieses Modell erlaubt keinen erzwungenen Tool-Aufruf
+                    continue
                 if r.status_code in (400, 401, 403, 404):
                     raise RuntimeError(err)           # lohnt kein Wiederholen (falscher Schlüssel, Guthaben leer …)
         time.sleep(5 * (attempt + 1))

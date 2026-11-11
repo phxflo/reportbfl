@@ -202,6 +202,9 @@ def country_matchers():
     return out
 
 
+CUSTOMER = set((CFG.get("region") or {}).get("rubrics", []))   # Häfen, Krane, Industrie, Spezialtiefbau
+
+
 def compute(all_items, now):
     """Wählt aus: Top-News (nach Brisanz) und je Rubrik die neuesten Meldungen (höchstens per_section)."""
     win = now - dt.timedelta(days=SITE["window_days"])
@@ -294,7 +297,8 @@ def compute(all_items, now):
         # damit die Top-News über die Woche stabil bleiben
         c["score"] = (rub[c["rubric"]]["weight"] * 2 + 1.2 * min(c["n"] - 1, 8) + (2.5 if BOOST.search(c["text"]) else 0)
                       + 0.8 * max(0, 1 - age / SITE["window_days"]) + (0.4 if c["countries"] else 0)
-                      + (1.5 if c["trusted"] else 0) + (1.5 * (c["bris"] - 3) if c["bris"] else 0))
+                      + (1.5 if c["trusted"] else 0) + (1.5 * (c["bris"] - 3) if c["bris"] else 0)
+                      + (2.0 if c["rubric"] in CUSTOMER and c["countries"] else 0))      # Kundennähe: Ereignisse bei Kunden in deinen Ländern zuerst
 
     # Top-News: nach Brisanz; höchstens eine Meldung je Rubrik. (Gleiche Vorfälle sind oben schon gebündelt;
     # zwei verschiedene Themen aus demselben Land dürfen beide erscheinen.)

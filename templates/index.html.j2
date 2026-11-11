@@ -232,7 +232,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
     {% endif %}
     {% if s.shown %}
     <div class="rows">{% for c in s.shown %}{{ row(c, hide=(s.id == 'laender' and loop.index > s.limit)) }}{% endfor %}</div>
-    {% else %}<div class="empty">Diese Woche keine Meldungen in dieser Rubrik.</div>{% endif %}
+    {% else %}<div class="empty">Nichts Neues in den letzten 7 Tagen.</div>{% endif %}
     </div>
   </section>
   {% endfor %}
