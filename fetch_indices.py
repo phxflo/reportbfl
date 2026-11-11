@@ -48,9 +48,36 @@ def fetch_table(name):
     return text
 
 
+MONTHS = {"januar": 1, "februar": 2, "märz": 3, "maerz": 3, "april": 4, "mai": 5, "juni": 6, "juli": 7, "august": 8,
+          "september": 9, "oktober": 10, "november": 11, "dezember": 12, "january": 1, "february": 2, "march": 3,
+          "may": 5, "june": 6, "july": 7, "october": 10, "december": 12}
+
+
+def period(joined, freq):
+    """Erkennt die Periode in einer Zeile, egal ob als MONAT09/QUART3, 2025-09, 09/2025, 'September 2025' oder '3. Quartal 2025'."""
+    y = re.search(r"\b((?:19|20)\d\d)\b", joined)
+    if not y:
+        return None
+    year = y.group(1)
+    low = joined.lower()
+    if freq == "monthly":
+        m = (re.search(r"monat(\d\d)", low) or re.search(r"\b(?:19|20)\d\d-(\d\d)(?:-\d\d)?\b", joined)
+             or re.search(r"\b(\d\d?)/(?:19|20)\d\d\b", joined))
+        if m and 1 <= int(m.group(1)) <= 12:
+            return f"{year}-{int(m.group(1)):02d}"
+        for name, num in MONTHS.items():
+            if re.search(rf"\b{name}\b", low):
+                return f"{year}-{num:02d}"
+        return None
+    q = (re.search(r"quart(\d)", low) or re.search(r"\b([1-4])\. ?quartal", low) or re.search(r"\bq([1-4])\b", low)
+         or re.search(r"\b(?:19|20)\d\d-q([1-4])\b", low))
+    return f"{year}-Q{q.group(1)}" if q else None
+
+
 def parse(text, spec):
-    """Liest die flache CSV und sammelt (Periode, Wert). Bewusst tolerant gegenüber Spaltennamen."""
-    rows = list(csv.reader(io.StringIO(text), delimiter=";"))
+    """Liest die flache CSV und sammelt (Periode, Wert). Bewusst tolerant gegenüber Spaltennamen und Zeitformaten."""
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+    rows = [r for r in csv.reader(io.StringIO(text, newline=""), delimiter=";") if r]
     header = [h.strip().lower() for h in rows[0]]
     if DEBUG:
         print("Kopfzeile:", header, "\nBeispiel:", rows[1:3], file=sys.stderr)
@@ -60,25 +87,22 @@ def parse(text, spec):
         joined = ";".join(row)
         if not all(tok in joined for tok in spec["require"]):
             continue
+        cell = row[vcol].strip() if vcol < len(row) else ""
         try:
-            v = float(row[vcol].replace(".", "").replace(",", ".")) if "," in row[vcol] else float(row[vcol])
-        except (ValueError, IndexError):
+            v = float(cell.replace(".", "").replace(",", ".")) if "," in cell else float(cell)
+        except ValueError:
             continue
-        y = re.search(r"\b(19|20)\d\d\b", joined)
-        if not y:
-            continue
-        if spec["freq"] == "monthly":
-            m = re.search(r"MONAT(\d\d)", joined)
-            if not m:
-                continue
-            per = f"{y.group(0)}-{m.group(1)}"
-        else:
-            q = re.search(r"QUART(\d)", joined)
-            if not q:
-                continue
-            per = f"{y.group(0)}-Q{q.group(1)}"
-        pts[per] = v
+        per = period(";".join(c for i, c in enumerate(row) if i != vcol), spec["freq"])
+        if per:
+            pts[per] = v
     return [dict(p=p, v=pts[p]) for p in sorted(pts)]
+
+
+def save_raw(name, text):
+    """Legt die ersten Zeilen der Destatis-Antwort ab (öffentliche Statistikdaten), damit das Format prüfbar ist."""
+    lines = text.replace("\r\n", "\n").replace("\r", "\n").split("\n")
+    (ROOT / "data" / f"raw_{name}.txt").write_text(f"{len(lines)} Zeilen insgesamt\n" + "\n".join(lines[:60]) + "\n",
+                                                  encoding="utf-8")
 
 
 def main():
@@ -90,7 +114,9 @@ def main():
     series, errors = dict(old), []
     for spec in CFG["indices"]:
         try:
-            pts = parse(fetch_table(spec["table"]), spec)
+            text = fetch_table(spec["table"])
+            save_raw(spec["id"], text)
+            pts = parse(text, spec)
             if len(pts) < 4:
                 raise RuntimeError(f"nur {len(pts)} Datenpunkte erkannt – Parser/Filter prüfen (--debug)")
             series[spec["id"]] = dict(points=pts, fetched=dt.date.today().isoformat())
