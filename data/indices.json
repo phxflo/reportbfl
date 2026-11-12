@@ -1,7 +1,10 @@
 {
  "meta": {
   "sample": false,
-  "errors": []
+  "errors": [
+   "draht: keine Daten (61241-0006: Destatis: Für die Teiltabelle mit der Metadatenkombination:\nIndex der Erzeugerpr; 61241-0002: Destatis: Für die Teiltabelle mit der Metadatenkombination:\nIndex der Erzeugerpr; 61241-0003: Destatis: Für die Teiltabelle mit der Metadatenkombination:\nIndex der Erzeugerpr; 61241-0005: Destatis: Für die Teiltabelle mit der Metadatenkombination:\nIndex der Erzeugerpr; 61241-0007: Destatis: Es gibt keine Objekte zum angegebenen Selektionskriterium (Code 104); 61241-0004: Destatis: Für die Teiltabelle mit der Metadatenkombination:\nIndex der Erzeugerpr)",
+   "energie: keine Daten (61241-0004: Destatis: Für die Teiltabelle mit der Metadatenkombination:\nIndex der Erzeugerpr; 61241-0006: Destatis: Für die Teiltabelle mit der Metadatenkombination:\nIndex der Erzeugerpr)"
+  ]
  },
  "series": {
   "draht": {
