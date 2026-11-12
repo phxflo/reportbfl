@@ -28,6 +28,8 @@
   --rt:var(--rc,var(--accent-ink))}}
 .r-haefen{--rc:var(--c-haefen)}.r-kraene{--rc:var(--c-kraene)}.r-industrie{--rc:var(--c-industrie)}.r-tiefbau{--rc:var(--c-tiefbau)}
 .r-projekte{--rc:var(--c-projekte)}.r-markt{--rc:var(--c-markt)}.r-laender{--rc:var(--c-laender)}.r-rohstoffe{--rc:var(--c-rohstoffe)}
+.r-haefen,.r-kraene,.r-industrie,.r-tiefbau,.r-projekte,.r-markt,.r-laender,.r-rohstoffe{--rt:color-mix(in srgb,var(--rc) 58%,#0d1620)}
+@media (prefers-color-scheme:dark){.r-haefen,.r-kraene,.r-industrie,.r-tiefbau,.r-projekte,.r-markt,.r-laender,.r-rohstoffe{--rt:var(--rc)}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:60px}
 body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
@@ -140,6 +142,8 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .pill.new{background:var(--accent);color:#1a1200}
 .pill.c{background:transparent;border:1px solid var(--rule);color:var(--ink);font-weight:600}
 .pill.t{background:transparent;border:1px solid var(--accent-ink);color:var(--accent-ink)}
+.pill.k{background:var(--steel);color:#fff;border:1px solid color-mix(in srgb,#fff 25%,var(--steel))}
+.rt{display:flex;align-items:flex-start;gap:12px;flex:none}.rt .lmi{margin-top:6px}
 .tag{font-size:12px;font-weight:700;color:var(--rt);display:inline-flex;align-items:center;gap:6px}
 .tag::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--rc,var(--accent));flex:none}
 .tr::after{content:" ⇄";font-size:.7em;color:var(--muted)}
@@ -150,7 +154,7 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .rank{list-style:none;margin:0;padding:0;counter-reset:n;background:var(--card);border:1px solid var(--rule);border-top:0}
 .rank li{counter-increment:n;display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:0 10px;align-items:start;padding:16px 20px 16px 16px;border-top:1px solid var(--rule);border-left:5px solid var(--rc,var(--rule))}
 .rank li:first-child{border-top:0}
-.rank li::before{content:counter(n);font:800 40px/1 var(--serif);color:var(--rt);text-align:center;padding-top:0}
+.rank li::before{content:counter(n);font:800 40px/1 var(--serif);color:var(--muted);text-align:center;padding-top:0}
 .rank .h{display:block;font:600 25px/1.18 var(--serif);margin:3px 0 6px}
 .rank li:first-child .h{font-size:31px;font-weight:700}
 
@@ -199,7 +203,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 
 {% macro lmi(b) %}{% if b %}<span class="lmi l{{ b }}" role="img" aria-label="Brisanz {{ b }} von 5" title="Brisanz {{ b }} von 5">{% for k in range(1,6) %}<i{% if k<=b %} class="on"{% endif %}></i>{% endfor %}</span>{% endif %}{% endmacro %}
 
-{% macro chips(c, always=false) %}{% for k in c.countries %}<span class="pill c">{{ k.name }}</span>{% endfor %}{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}{% if c.bris and (always or c.bris >= 4) %}{{ lmi(c.bris) }}{% endif %}{% if c.kunde %}<span class="pill t">Kunde</span>{% endif %}{% endmacro %}
+{% macro chips(c, always=false) %}{% for k in c.countries %}<span class="pill c">{{ k.name }}</span>{% endfor %}{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}{% if c.kunde %}<span class="pill k">Kunde</span>{% endif %}{% endmacro %}
 
 {% macro hot(c) %}{% if c.bris is defined and c.bris >= 5 %}<span class="pill hot">Brisant</span>{% endif %}{% endmacro %}
 
@@ -208,8 +212,8 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 {% macro row(c, hide=false) %}
 <article class="row{{ ' hidden' if hide }}" data-id="{{ c.id }}" data-countries="{{ c.countries|map(attribute='id')|join(' ') }}">
   <div class="when">{{ c.when }}</div>
-  <div>{% if c.countries or c.is_new or c.kunde or (c.bris and c.bris >= 4) %}<div class="meta" style="margin-bottom:4px">{{ chips(c) }}</div>{% endif %}{{ item(c) }}<div class="meta"><span>{{ c.source }}</span>{{ badges(c) }}</div></div>
-  {{ xbtn() }}
+  <div>{% if c.countries or c.is_new or c.kunde %}<div class="meta" style="margin-bottom:4px">{{ chips(c) }}</div>{% endif %}{{ item(c) }}<div class="meta"><span>{{ c.source }}</span>{{ badges(c) }}</div></div>
+  <div class="rt">{% if c.bris and c.bris >= 4 %}{{ lmi(c.bris) }}{% endif %}{{ xbtn() }}</div>
 </article>
 {% endmacro %}
 
@@ -281,11 +285,11 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
       {% for c in top %}
       <li class="r-{{ c.rubric }}" data-id="{{ c.id }}" data-countries="{{ c.countries|map(attribute='id')|join(' ') }}">
         <div style="grid-column:2">
-          <div class="meta"><span class="tag">{{ c.rubric_short }}</span>{{ chips(c, true) }}</div>
+          <div class="meta"><span class="tag">{{ c.rubric_short }}</span>{{ chips(c) }}</div>
           {{ item(c) }}
           <div class="meta"><span>{{ c.source }}</span><span>·</span><span>{{ c.when }}</span>{{ badges(c) }}</div>
         </div>
-        {{ xbtn() }}
+        <div class="rt">{{ lmi(c.bris) }}{{ xbtn() }}</div>
       </li>
       {% endfor %}
     </ol>
