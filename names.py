@@ -27,7 +27,7 @@ def split_country(name):
                 rest = name[:m.start()]
                 return clean(rest), cid
         # Kürzel nur in Klammern oder nach Trennzeichen am Ende: "Name (MA)", "Name - MA"
-        m = re.search(rf"[\(\-–/]\s*{cid}\s*\)?\s*$", name)
+        m = re.search(rf"(?:[\(\-–/]\s*|\s){cid}\s*\)?\s*$", name)
         if m:
             return clean(name[:m.start()]), cid
     return clean(name), None
