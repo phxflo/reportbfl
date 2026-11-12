@@ -106,12 +106,6 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .chart footer{font-size:11px;color:var(--muted);padding:2px 0 4px}
 .chart footer a{text-decoration:underline}
 
-/* Lastanzeige (Brisanz) */
-.lmi{display:inline-flex;align-items:flex-end;gap:3px;height:19px;margin-left:4px}
-.lmi i{width:5px;background:var(--rule);border-radius:1px}
-.lmi i:nth-child(1){height:7px}.lmi i:nth-child(2){height:10px}.lmi i:nth-child(3){height:13px}.lmi i:nth-child(4){height:16px}.lmi i:nth-child(5){height:19px}
-.lmi i.on{background:var(--accent)}.lmi.l4 i.on{background:var(--c-industrie)}.lmi.l5 i.on{background:var(--c-laender)}
-
 /* Länderkarte */
 .lage{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:0;background:var(--card);border:1px solid var(--rule);border-top:0}
 .lage svg{display:block;width:100%;height:auto;background:var(--paper)}
@@ -124,7 +118,7 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .lage .cn text{font:700 11px var(--sans);fill:#1a1200;text-anchor:middle;pointer-events:none}
 .lage .cn.z text{fill:var(--muted)}
 .clist{list-style:none;margin:0;padding:8px 0}
-.clist button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 46px 20px;gap:2px 12px;align-items:center;width:100%;padding:9px 22px}
+.clist button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 46px;gap:2px 12px;align-items:center;width:100%;padding:9px 22px}
 .clist button:hover,.clist button.on,.clist button:focus-visible{background:var(--chip)}
 .clist .nm{font:700 20px/1.1 var(--serif)}
 .clist .n{font:700 20px/1 var(--serif);text-align:right;font-variant-numeric:tabular-nums}
@@ -138,12 +132,10 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 /* Bausteine */
 .meta{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
 .pill{font-size:11px;font-weight:600;padding:2px 7px;border-radius:99px;background:var(--chip);color:var(--ink);white-space:nowrap}
-.pill.hot{background:transparent;border:1px solid var(--c-laender);color:var(--c-laender);font-weight:700}
 .pill.new{background:var(--accent);color:#1a1200}
 .pill.c{background:transparent;border:1px solid var(--rule);color:var(--ink);font-weight:600}
 .pill.t{background:transparent;border:1px solid var(--accent-ink);color:var(--accent-ink)}
 .pill.k{background:var(--steel);color:#fff;border:1px solid color-mix(in srgb,#fff 25%,var(--steel))}
-.rt{display:flex;align-items:flex-start;gap:12px;flex:none}.rt .lmi{margin-top:6px}
 .tag{font-size:12px;font-weight:700;color:var(--rt);display:inline-flex;align-items:center;gap:6px}
 .tag::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--rc,var(--accent));flex:none}
 .tr::after{content:" ⇄";font-size:.7em;color:var(--muted)}
@@ -201,11 +193,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 
 {% macro badges(c) %}{% if c.trusted %}<span>·</span><span>Fachmedium</span>{% endif %}{% if c.n > 1 %}<span>·</span><span>{{ c.n }} Quellen</span>{% endif %}{% endmacro %}
 
-{% macro lmi(b) %}{% if b %}<span class="lmi l{{ b }}" role="img" aria-label="Brisanz {{ b }} von 5" title="Brisanz {{ b }} von 5">{% for k in range(1,6) %}<i{% if k<=b %} class="on"{% endif %}></i>{% endfor %}</span>{% endif %}{% endmacro %}
-
-{% macro chips(c, always=false) %}{% for k in c.countries %}<span class="pill c">{{ k.name }}</span>{% endfor %}{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}{% if c.kunde %}<span class="pill k">Kunde</span>{% endif %}{% endmacro %}
-
-{% macro hot(c) %}{% if c.bris is defined and c.bris >= 5 %}<span class="pill hot">Brisant</span>{% endif %}{% endmacro %}
+{% macro chips(c) %}{% for k in c.countries %}<span class="pill c">{{ k.name }}</span>{% endfor %}{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}{% if c.kunde %}<span class="pill k">Kunde</span>{% endif %}{% endmacro %}
 
 {% macro xbtn() %}<button class="x" type="button" title="Meldung ausblenden" aria-label="Meldung ausblenden">✕</button>{% endmacro %}
 
@@ -213,7 +201,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 <article class="row{{ ' hidden' if hide }}" data-id="{{ c.id }}" data-countries="{{ c.countries|map(attribute='id')|join(' ') }}">
   <div class="when">{{ c.when }}</div>
   <div>{% if c.countries or c.is_new or c.kunde %}<div class="meta" style="margin-bottom:4px">{{ chips(c) }}</div>{% endif %}{{ item(c) }}<div class="meta"><span>{{ c.source }}</span>{{ badges(c) }}</div></div>
-  <div class="rt">{% if c.bris and c.bris >= 4 %}{{ lmi(c.bris) }}{% endif %}{{ xbtn() }}</div>
+  {{ xbtn() }}
 </article>
 {% endmacro %}
 
@@ -271,7 +259,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
         </g>{% endfor %}
       </svg>
       <ul class="clist">
-        {% for s in cstats %}<li><button type="button" data-c="{{ s.id }}"><span class="nm">{{ s.name }}</span><span class="n">{{ s.n }}</span>{{ lmi(s.bris) if s.bris else '' }}<span class="bar"><i style="width:{{ (100 * s.n / mx)|round|int }}%"></i></span></button></li>{% endfor %}
+        {% for s in cstats %}<li><button type="button" data-c="{{ s.id }}"><span class="nm">{{ s.name }}</span><span class="n">{{ s.n }}</span><span class="bar"><i style="width:{{ (100 * s.n / mx)|round|int }}%"></i></span></button></li>{% endfor %}
       </ul>
       <div id="cfilter" hidden>Gefiltert auf <b id="cfname"></b><button type="button" id="cfreset">Filter aufheben</button></div>
     </div>
@@ -289,7 +277,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
           {{ item(c) }}
           <div class="meta"><span>{{ c.source }}</span><span>·</span><span>{{ c.when }}</span>{{ badges(c) }}</div>
         </div>
-        <div class="rt">{{ lmi(c.bris) }}{{ xbtn() }}</div>
+        {{ xbtn() }}
       </li>
       {% endfor %}
     </ol>

@@ -397,14 +397,13 @@ def font_css():
 
 
 def country_stats(cards, top):
-    """Je Land: Zahl der Meldungen im Fenster und höchste Brisanz (für Karte und Länderliste)."""
-    st = {c["id"]: dict(id=c["id"], name=c["name"], n=0, bris=0) for c in CFG["countries"]}
+    """Je Land: Zahl der Meldungen im Fenster (für Karte und Länderliste)."""
+    st = {c["id"]: dict(id=c["id"], name=c["name"], n=0) for c in CFG["countries"]}
     for c in cards:
         for k in c["countries"]:
             s = st.get(k["id"])
             if s:
                 s["n"] += 1
-                s["bris"] = max(s["bris"], c.get("bris") or 0)
     return sorted(st.values(), key=lambda s: (-s["n"], s["name"]))
 
 
