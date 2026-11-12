@@ -209,6 +209,26 @@ countries:
     editions:
       - {lang: en, hl: en-GH, gl: GH, ceid: "GH:en", q: "Ghana (economy OR trade OR tariffs OR sanctions OR embargo OR customs OR steel OR import OR export OR port OR strike)"}
       - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Ghana (Wirtschaft OR Konjunktur OR Zoll OR Handel OR Sanktionen OR Embargo OR Stahl OR Hafen OR Streik)"}
+  - id: CI
+    name: Elfenbeinküste
+    names: ["Elfenbeinküste", "Ivory Coast", "Côte d'Ivoire", "Cote d'Ivoire", "Côte d’Ivoire", "Ivorian", "Ivoirien", "Abidjan", "San-Pédro", "Port of San Pedro", "Port de San Pédro", "ساحل العاج", "كوت ديفوار", "أبيدجان"]
+    editions:
+      - {lang: fr, hl: fr, gl: CI, ceid: "CI:fr", q: "Côte d'Ivoire (économie OR commerce OR douane OR importation OR sanctions OR acier OR port OR grève)"}
+      - {lang: en, hl: en-US, gl: US, ceid: "US:en", q: "Ivory Coast (economy OR trade OR tariffs OR sanctions OR embargo OR customs OR steel OR port OR strike)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Elfenbeinküste (Wirtschaft OR Konjunktur OR Zoll OR Handel OR Sanktionen OR Embargo OR Stahl OR Hafen OR Streik)"}
+  - id: LY
+    name: Libyen
+    names: ["Libyen", "Libya", "Libye", "Libyan", "Libyen", "Misrata", "Misurata", "Benghazi", "Bengasi", "Tobruk", "Ras Lanuf", "ليبيا", "مصراتة", "بنغازي", "طبرق"]
+    editions:
+      - {lang: ar, hl: ar, gl: LY, ceid: "LY:ar", q: "ليبيا (اقتصاد OR تجارة OR جمارك OR رسوم OR عقوبات OR حظر OR فولاذ OR ميناء OR إضراب)"}
+      - {lang: en, hl: en-US, gl: US, ceid: "US:en", q: "Libya (economy OR trade OR tariffs OR sanctions OR embargo OR customs OR steel OR port OR strike)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Libyen (Wirtschaft OR Konjunktur OR Zoll OR Handel OR Sanktionen OR Embargo OR Stahl OR Hafen OR Streik)"}
+  - id: NG
+    name: Nigeria
+    names: [Nigeria, Nigerian, Nigerianer, Nigéria, Lagos, Apapa, Lekki, "Tin Can", Onne, "Port Harcourt", Dangote, نيجيريا]
+    editions:
+      - {lang: en, hl: en-NG, gl: NG, ceid: "NG:en", q: "Nigeria (economy OR trade OR tariffs OR sanctions OR embargo OR customs OR steel OR import OR export OR port OR strike)"}
+      - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Nigeria (Wirtschaft OR Konjunktur OR Zoll OR Handel OR Sanktionen OR Embargo OR Stahl OR Hafen OR Streik)"}
 
 # Regionale Eingrenzung: In diesen Rubriken bleiben nur Meldungen, in denen eines deiner Länder (siehe "countries")
 # oder einer der Begriffe unten vorkommt. Türkischsprachige Meldungen zählen automatisch als Türkei.
@@ -272,11 +292,11 @@ exclude_regex:
 # damit z. B. arabische Suchen nicht Ägypten statt Marokko/Algerien/Tunesien liefern.
 editions:
   de: [{hl: de, gl: DE, ceid: "DE:de"}]
-  en: [{hl: en-US, gl: US, ceid: "US:en"}]
-  fr: [{hl: fr, gl: MA, ceid: "MA:fr"}, {hl: fr, gl: DZ, ceid: "DZ:fr"}, {hl: fr, gl: TN, ceid: "TN:fr"}, {hl: fr, gl: BE, ceid: "BE:fr"}]
+  en: [{hl: en-US, gl: US, ceid: "US:en"}, {hl: en-NG, gl: NG, ceid: "NG:en"}]
+  fr: [{hl: fr, gl: MA, ceid: "MA:fr"}, {hl: fr, gl: DZ, ceid: "DZ:fr"}, {hl: fr, gl: TN, ceid: "TN:fr"}, {hl: fr, gl: BE, ceid: "BE:fr"}, {hl: fr, gl: CI, ceid: "CI:fr"}]
   nl: [{hl: nl, gl: NL, ceid: "NL:nl"}, {hl: nl, gl: BE, ceid: "BE:nl"}]
   tr: [{hl: tr, gl: TR, ceid: "TR:tr"}]
-  ar: [{hl: ar, gl: MA, ceid: "MA:ar"}, {hl: ar, gl: DZ, ceid: "DZ:ar"}, {hl: ar, gl: TN, ceid: "TN:ar"}]   # nur deine arabischen Länder (nicht Ägypten)
+  ar: [{hl: ar, gl: MA, ceid: "MA:ar"}, {hl: ar, gl: DZ, ceid: "DZ:ar"}, {hl: ar, gl: TN, ceid: "TN:ar"}, {hl: ar, gl: LY, ceid: "LY:ar"}]   # nur deine arabischen Länder (nicht Ägypten)
   he: [{hl: he, gl: IL, ceid: "IL:he"}]
 
 # Zusätzliche feste RSS-Feeds (Fachportale). Format: {name, url, rubric, lang}

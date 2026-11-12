@@ -13,6 +13,9 @@ COUNTRY = {
     "IL": ["israel", "israël"],
     "TR": ["türkei", "tuerkei", "turkey", "türkiye", "turkiye", "turquie"],
     "GH": ["ghana"],
+    "CI": ["elfenbeinküste", "ivory coast", "côte d'ivoire", "cote d'ivoire", "côte d’ivoire"],
+    "LY": ["libyen", "libya", "libye"],
+    "NG": ["nigeria", "nigéria"],
 }
 LEGAL = r"(?:n\.?v\.?|b\.?v\.?|s\.?a\.?(?:r\.?l\.?)?|gmbh(?: & co\.? kg)?|ag|a\.?ş\.?|as|ltd\.?|limited|inc\.?|llc|plc|s\.?p\.?a\.?|co\.?|corp\.?|sàrl|s\.?r\.?l\.?|kg)"
 
