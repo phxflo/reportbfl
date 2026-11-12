@@ -346,8 +346,8 @@ indices:
 ai:                       # Auswertung durch Claude (nur mit Secret ANTHROPIC_API_KEY); ohne Schlüssel gelten die Regeln oben
   model: claude-sonnet-5-5   # Relevanzentscheidung (Qualität zählt)
   cheap_model: claude-haiku-5-5   # nur Übersetzen
-  group_threshold: 0.78   # Vorfall-Gruppierung per Embeddings: Mindestähnlichkeit (niedriger = mehr Gruppen, aber riskanter)
-  group_max: 6            # höchstens so viele Meldungen je Vorfall
+  group_threshold: 0.82   # Vorfall-Gruppierung per Embeddings: Mindestähnlichkeit (niedriger = mehr Gruppen, aber riskanter)
+  group_max: 10           # höchstens so viele Meldungen je Vorfall
   block_source_red: 4     # Quelle gesperrt, wenn so oft rot und nie grün bewertet
   batch: 25               # Meldungen je Anfrage
   max_items: 150          # Obergrenze neuer Meldungen je Lauf (Kostenbremse); der Rest folgt am nächsten Tag
