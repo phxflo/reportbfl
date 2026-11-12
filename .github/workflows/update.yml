@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "30 5 * * *"      # täglich 05:30 UTC = 06:30 (Winter) / 07:30 (Sommer) deutscher Zeit
   workflow_dispatch:           # manueller Start über den Reiter "Actions"
+    inputs:
+      rejudge:
+        description: "Alle Meldungen neu von Claude beurteilen (kostet deutlich mehr)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -65,6 +70,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           COMPETITORS: ${{ secrets.COMPETITORS }}
           CUSTOMERS: ${{ secrets.CUSTOMERS }}
+          AI_REJUDGE: ${{ github.event.inputs.rejudge }}
         run: python ai.py
       - name: Seite bauen
         env:

@@ -342,7 +342,7 @@ indices:
 ai:                       # Auswertung durch Claude (nur mit Secret ANTHROPIC_API_KEY); ohne Schlüssel gelten die Regeln oben
   model: claude-sonnet-5-5   # genauer als Haiku; Mehrkosten nur beim ersten Durchlauf, danach wenige Cent pro Tag
   batch: 25               # Meldungen je Anfrage
-  max_items: 600          # Obergrenze neuer Meldungen je Lauf (Kostenbremse)
+  max_items: 150          # Obergrenze neuer Meldungen je Lauf (Kostenbremse); der Rest folgt am nächsten Tag
 
 industry_terms:           # Zusatzsuche je Land: Branchenmeldungen (Claude sortiert aus, was nicht passt)
   en: [port, terminal, crane, steel, mining, construction, infrastructure, tender, contract]

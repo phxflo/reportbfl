@@ -22,7 +22,7 @@ RULES = 6                                     # Regelstand der Auswahl; betroffe
 FORCE = True   # erzwungener Tool-Aufruf; wird bei Ablehnung des Modells automatisch abgeschaltet
 VERSION = 2                                   # Prompt-Stand: bei Änderung werden alle Meldungen neu beurteilt
 BATCH = AI.get("batch", 25)
-MAX_ITEMS = AI.get("max_items", 400)          # Obergrenze je Lauf (Kostenbremse); der Rest folgt am nächsten Tag
+MAX_ITEMS = AI.get("max_items", 150)          # Obergrenze je Lauf (Kostenbremse); der Rest folgt am nächsten Tag
 URL = os.environ.get("ANTHROPIC_API_URL", "https://api.anthropic.com/v1/messages")
 RUBRICS = [r["id"] for r in CFG["rubrics"]]
 COUNTRIES = [c["id"] for c in CFG["countries"]]
@@ -107,6 +107,9 @@ GROUP_TOOL = dict(
         type="array", items=dict(type="array", items=dict(type="string"), minItems=2)))))
 
 
+USAGE = dict(i=0, o=0)      # verbrauchte Tokens dieses Laufs
+
+
 def call(key, system, user, tool, max_tokens=8000):
     """Eine Anfrage mit erzwungenem Tool-Aufruf; Modelle, die das nicht erlauben (z. B. Sonnet 5.5), bekommen 'auto'."""
     global FORCE
@@ -122,7 +125,10 @@ def call(key, system, user, tool, max_tokens=8000):
             err = str(ex)
         else:
             if r.status_code == 200:
-                for blk in r.json().get("content", []):
+                js = r.json()
+                USAGE["i"] += (js.get("usage") or {}).get("input_tokens", 0)
+                USAGE["o"] += (js.get("usage") or {}).get("output_tokens", 0)
+                for blk in js.get("content", []):
                     if blk.get("type") == "tool_use":
                         return blk["input"]
                 err = "keine Tool-Antwort"
@@ -137,12 +143,18 @@ def call(key, system, user, tool, max_tokens=8000):
     raise RuntimeError(err)
 
 
+REJUDGE = os.environ.get("AI_REJUDGE", "").strip().lower() in ("1", "true", "yes")   # nur auf ausdrücklichen Wunsch (Lauf mit Haken „neu beurteilen“)
+
+
 def stale(i):
-    """Neu beurteilen: noch nie beurteilt, alter Prompt-Stand – oder relevant in einer Rubrik, deren Regeln verschärft wurden."""
+    """Beurteilen: noch nie beurteilt. Alte Urteile werden nur bei ausdrücklicher Neubewertung (AI_REJUDGE) erneuert,
+    damit Regeländerungen nicht jedes Mal alle Meldungen neu kosten."""
     ai = i.get("ai") or {}
-    if ai.get("v") != VERSION:
+    if not ai:
         return True
-    return bool(ai.get("relevant")) and ai.get("rv", 0) < RULES
+    if REJUDGE:
+        return ai.get("v") != VERSION or (bool(ai.get("relevant")) and ai.get("rv", 0) < RULES)
+    return False
 
 
 def describe(i):
@@ -204,7 +216,8 @@ def translate_missing(key, items):
 
 def group(key, items):
     """Gleicher Vorfall in mehreren Meldungen (auch in anderen Sprachen) → gemeinsame Gruppen-Kennung."""
-    live = [i for i in items if (i.get("ai") or {}).get("relevant")]
+    cut = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=3)).isoformat()
+    live = [i for i in items if (i.get("ai") or {}).get("relevant") and i["published"] >= cut]   # ältere behalten ihre Gruppe
     for i in live:
         i.pop("grp", None)
     if len(live) < 2:
@@ -239,6 +252,40 @@ def _mark(info):
         NEWS.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
     except Exception:
         pass
+
+
+def _prefilter():
+    """Grobe Stichwortprüfung vor Claude: Meldungen ohne jeden Bezug zu Branche, Handelsmaßnahmen oder deinen Firmen
+    werden nicht erst bezahlt. Bewusst weit gefasst (Rubrikbegriffe, Ereigniswörter, Firmennamen)."""
+    pats = []
+    for r in CFG["rubrics"]:
+        for k in ("must", "core"):
+            if r.get(k):
+                pats.append(r[k])
+    for k in ("events", "boost", "radar"):
+        if CFG.get(k):
+            pats.append(CFG[k])
+    for n in COMP_NAMES + [x.split(" (")[0] for x in CUST_NAMES]:
+        pats.append(re.escape(n))
+    try:
+        return re.compile("|".join(f"(?:{p})" for p in pats), re.I)
+    except re.error:
+        return None
+
+
+def prefilter(items):
+    """Trennt Meldungen in (an Claude) und (ohne Branchenbezug, direkt als nicht relevant markiert)."""
+    pre = None if os.environ.get("AI_PREFILTER", "1") == "0" else _prefilter()
+    if not pre:
+        return items, 0
+    keep, n = [], 0
+    for i in items:
+        if i.get("trusted") or pre.search(f'{i["title_orig"]} {i.get("title_de") or ""} {i.get("snippet") or ""}'):
+            keep.append(i)
+        else:
+            i["ai"] = dict(relevant=False, rubric=None, countries=[], brisanz=1, grund="Vorfilter", model="prefilter", v=VERSION, rv=RULES)
+            n += 1
+    return keep, n
 
 
 def feedback_block(items):
@@ -282,19 +329,24 @@ def main():
     win = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=CFG["site"]["window_days"])
     recent = [i for i in items if dt.datetime.fromisoformat(i["published"]) >= win]
     todo = sorted((i for i in recent if stale(i)), key=lambda i: i["published"], reverse=True)[:MAX_ITEMS]
-    print(f"Claude ({MODEL}): {len(todo)} neue Meldungen zu beurteilen …")
+    todo, pre_n = prefilter(todo)
+    print(f"Claude ({MODEL}): {len(todo)} Meldungen zu beurteilen, {pre_n} per Vorfilter aussortiert …")
     try:
         done = classify(key, todo) if todo else 0
         translated = translate_missing(key, recent)
-        groups = group(key, recent)
+        if done:                                    # Gruppierung nur, wenn es neue relevante Meldungen gibt
+            groups = group(key, recent)
+        else:
+            groups = len({i["grp"] for i in recent if i.get("grp")})
         err = ""
     except RuntimeError as ex:
         print(f"::warning::Claude-Auswertung abgebrochen: {ex}")
         done, groups, translated = 0, 0, 0
         err = str(ex)[:160]
-    data.setdefault("meta", {})["ai"] = dict(status="fehler" if err else "ok", error=err, judged=done, todo=len(todo), groups=groups)
+    data.setdefault("meta", {})["ai"] = dict(status="fehler" if err else "ok", error=err, judged=done, todo=len(todo), pre=pre_n, groups=groups, tin=USAGE["i"], tout=USAGE["o"])
     NEWS.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
     rel = sum(1 for i in recent if (i.get("ai") or {}).get("relevant"))
+    print(f"Tokens: {USAGE['i']} ein, {USAGE['o']} aus")
     print(f"{done} beurteilt, {translated} nachübersetzt, {rel}/{len(recent)} im Fenster relevant, {groups} Vorfall-Gruppen")
 
 
