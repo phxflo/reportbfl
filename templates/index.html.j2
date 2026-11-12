@@ -53,15 +53,14 @@ a.h:hover{color:var(--accent-ink);text-decoration:underline;text-underline-offse
 .band::after{content:"";display:block;height:4px;background:var(--accent)}
 
 nav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--rule);margin-bottom:30px}
-nav .wrap{display:flex;gap:2px;align-items:center;overflow-x:auto;scrollbar-width:none}
-nav a{font-size:14px;font-weight:600;padding:14px 12px;white-space:nowrap;color:var(--muted)}
+nav .wrap{display:flex;gap:0;align-items:center;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+nav .wrap::-webkit-scrollbar{display:none}
+nav a{font-size:13px;font-weight:600;padding:14px 7px;white-space:nowrap;color:var(--muted);scroll-snap-align:center;flex:none}
+@media (max-width:1099px){nav{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}}
 nav a:hover{color:var(--accent-ink)}
-nav a.rc{border-bottom:3px solid transparent;display:flex;align-items:center;gap:7px}
-nav a.rc::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--rc);flex:none}
+nav a.rc{border-bottom:3px solid color-mix(in srgb,var(--rc) 45%,transparent);display:flex;align-items:center;gap:5px}
 nav a.rc:hover{color:var(--ink);border-bottom-color:var(--rc)}
-nav a.rc b{font:600 11px var(--sans);padding:1px 6px;border-radius:99px;background:var(--chip);color:var(--muted)}
-nav a.rc b.has{background:var(--rc);color:#fff}
-@media (prefers-color-scheme:dark){nav a.rc b.has{color:#0e1722}}
+nav a.rc b{font:700 12px var(--sans);color:var(--rt);font-variant-numeric:tabular-nums}
 nav .sep{width:1px;height:20px;background:var(--rule);margin:0 6px;flex:none}
 nav input{margin-left:auto;font:14px var(--sans);padding:7px 14px;border:1px solid var(--rule);border-radius:99px;background:var(--card);color:var(--ink);min-width:150px}
 
@@ -192,7 +191,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 
 <nav aria-label="Rubriken"><div class="wrap">
   <a href="#kennzahlen">Kennzahlen</a><a href="#top">Top-5</a><span class="sep"></span>
-  {% for s in sections %}<a class="rc r-{{ s.id }}" href="#{{ s.id }}">{{ s.short }}<b class="{{ 'has' if s.shown }}">{{ s.shown|length }}</b></a>{% endfor %}
+  {% for s in sections %}<a class="rc r-{{ s.id }}" href="#{{ s.id }}">{{ s.short }}{% if s.shown %}<b class="has">{{ s.shown|length }}</b>{% endif %}</a>{% endfor %}
   <input id="q" type="search" placeholder="Suchen …" aria-label="Meldungen durchsuchen">
 </div></nav>
 
