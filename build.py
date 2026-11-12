@@ -398,7 +398,7 @@ def health(news, idx, now, cards=()):
             if worst:
                 nm = next((r["short"] for r in CFG["rubrics"] if r["id"] == worst[1]), worst[1])
                 txt += f"; schwächste Rubrik: {nm} ({round(100 * worst[0])} % grün)"
-            rows.append(("Qualität", "ok" if share >= .6 else "warn" if share >= .4 else "bad", txt))
+            rows.append(("Qualität", "ok" if share >= .5 else "warn", txt))   # nur Hinweis, nie „Störung“
     else:
         rows.append(("Qualität", "ok", "noch keine Bewertungen"))
     errs = idx["meta"].get("errors", [])
