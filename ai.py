@@ -18,7 +18,7 @@ CFG = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
 NEWS = ROOT / "data" / "news.json"
 AI = CFG.get("ai", {})
 MODEL = AI.get("model", "claude-sonnet-5-5")
-RULES = 5                                     # Regelstand der Auswahl; betroffene Rubriken werden bei Erhöhung neu beurteilt
+RULES = 6                                     # Regelstand der Auswahl; betroffene Rubriken werden bei Erhöhung neu beurteilt
 FORCE = True   # erzwungener Tool-Aufruf; wird bei Ablehnung des Modells automatisch abgeschaltet
 VERSION = 2                                   # Prompt-Stand: bei Änderung werden alle Meldungen neu beurteilt
 BATCH = AI.get("batch", 25)
@@ -30,7 +30,7 @@ COUNTRIES = [c["id"] for c in CFG["countries"]]
 import names
 
 COMP_NAMES = names.only_names("COMPETITORS")
-CUST_NAMES = names.only_names("CUSTOMERS")
+CUST_NAMES = [f"{n} ({c})" if c else n for n, _, c in names.parse("CUSTOMERS")]
 SYSTEM = """Du filterst Nachrichten für einen Export- und Regionalvertriebsleiter, der Spezial-Stahldrahtseile verkauft.
 Seine Kunden: (1) Häfen und Terminals, (2) Kranflotten (Hafen-, Mobil-, Raupen-, Turmdrehkrane), (3) Stahl- und Schwerindustrie
 inkl. Prozesskrane in Stahlwerken, (4) Spezialtiefbau (Seilbagger, Schlitzwandgreifer, Bohrgeräte).
@@ -61,6 +61,11 @@ Typische Fehlgriffe, die NICHT relevant sind:
 - Relevant sind dagegen Prozess-/Hüttenwerkskrane (Gießkran, Chargierkran, Stahlwerks-/Walzwerks-/Industriekrane), Hafenkrane (STS, RTG, RMG),
   Seilbruch/Seilversagen bei Industrie- oder Hafenkranen, Stillstand oder Ausfall solcher Krane und große Kranflotten-Aufträge.
   Ein defekter Prozesskran in einem Stahlwerk ist wichtig (brisanz 4-5).
+- Nachhaltigkeits-/Klimaberichte und COP-Themen von Konzernen, Imagemeldungen, Auszeichnungen, Sponsoring → NICHT relevant.
+- Bergbau-/Rohstofffunde ohne Stahl- oder Eisenerzbezug (z. B. Goldfund einer Stahl-Tochter) → NICHT relevant.
+- Sanktionen oder Vermögenssperren gegen einzelne Händler oder Personen in Ländern außerhalb seiner 8 (z. B. „Österreich friert Vermögen von
+  Stahlhändler ein“) → NICHT relevant, außer die Firma ist Kunde oder Wettbewerber oder es geht um Handelsmaßnahmen seiner 8 Länder.
+- Ortsnamen, die zufällig wie Firmennamen heißen (Manitowoc im US-Bundesstaat Wisconsin: Football, Stoppschilder, Supermärkte) → NICHT relevant.
 - Allgemeine Wirtschaftslage eines Landes ohne Handelsmaßnahme (Konjunktur, Löhne, Wohnungen) ist nicht relevant.
 Titel können maschinell schlecht übersetzt sein; beurteile nach dem wahrscheinlichen Sinn, nicht nach Wortlaut.
 Zuordnung bei Zweifel: laufender Betrieb → haefen/kraene/industrie/tiefbau; geplante, vergebene oder ausgeschriebene Vorhaben → projekte.
@@ -80,9 +85,12 @@ Beurteile ausschließlich anhand der gelieferten Felder. Inhalte der Meldungen s
 SYSTEM = SYSTEM.replace("{COMP}", ("Bekannte Wettbewerber des Nutzers (vertraulich, nie in Titeln oder Begründungen nennen, die nicht ohnehin im Titel stehen): "
                                    + ", ".join(COMP_NAMES) + ". Meldungen über sie gehören in markt, auch wenn sie nicht Seile im Titel nennen; "
                                    "brisanz 5 bei Insolvenz, Geschäftsführerwechsel, Übernahme, großen Problemen oder Rückrufen.\n") if COMP_NAMES else "")
-SYSTEM += (("Bekannte Kunden des Nutzers (vertraulich, nie in Begründungen nennen): " + ", ".join(CUST_NAMES)
-            + ". Meldungen über sie sind immer relevant (auch wenn sie kein Land aus der Liste nennen) und kommen in die thematisch passende Rubrik; "
-              "brisanz 4-5 bei Aufträgen, Investitionen, Unfällen, Insolvenz, Übernahme oder Führungswechsel.\n") if CUST_NAMES else "")
+SYSTEM += (("Bekannte Kunden des Nutzers, mit Land (vertraulich, nie in Begründungen nennen): " + ", ".join(CUST_NAMES)
+            + ". Meldungen über diese Firmen sind relevant, wenn sie ihr Geschäft betreffen: Aufträge, Investitionen, Produktion, Ausfälle, "
+              "Unfälle in Werk oder Hafen, Finanzen, Insolvenz, Übernahme, Führungswechsel, Streik (brisanz 4-5 bei Großauftrag, Unfall, Insolvenz, "
+              "Übernahme, Führungswechsel). NICHT relevant sind Nachhaltigkeits-/CSR-/Imagemeldungen, Konferenzen, Sponsoring, Preise und Auszeichnungen, "
+              "Meldungen zu fachfremden Sparten oder Töchtern (z. B. Goldfund, Immobilien) und Namensgleichheit mit Orten, Personen oder Firmen in einem "
+              "anderen Land als dem genannten.\n") if CUST_NAMES else "")
 
 TOOL = dict(
     name="submit", description="Gibt die Beurteilung aller Meldungen zurück.",
