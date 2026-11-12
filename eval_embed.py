@@ -2,6 +2,7 @@
 """Einmaliger Test: Wie gut finden Embeddings dieselben Vorfälle wie Claude? Gibt NUR Zahlen aus (das Log ist öffentlich)."""
 import datetime as dt
 import json
+import sys
 import time
 from pathlib import Path
 
@@ -45,6 +46,19 @@ for g, v in sorted(truth.items(), key=lambda kv: -len(kv[1]))[:6]:
     mean = (sub.sum() - len(ix)) / (len(ix) * (len(ix) - 1))
     items_ = [live[k] for k in ix]
     print(f"  Gruppe mit {len(v)}: mittlere Ähnlichkeit {mean:.2f}; Rubriken {sorted({(i.get('ai') or {}).get('rubric') for i in items_})}; Quellen {len({i['source'] for i in items_})}")
+big = max(truth.values(), key=len)
+bi = [live[pos[x]] for x in big]
+import collections
+print("Riesengruppe: Sprachen", dict(collections.Counter(i["lang"] for i in bi)))
+print("Riesengruppe: Tage", dict(sorted(collections.Counter(i["published"][:10] for i in bi).items())))
+print("Riesengruppe: Länderzahl je Meldung", dict(collections.Counter(len((i.get("ai") or {}).get("countries") or []) for i in bi)))
+print("Riesengruppe: mit firma/kunde", sum(1 for i in bi if i.get("firma") is not None), sum(1 for i in bi if i.get("kunde")))
+print("Riesengruppe: Tag-Schlüssel", sorted({i["grp"] for i in bi}), "min-id-Länge", min(len(x) for x in big))
+sys.path.insert(0, str(Path(__file__).parent))
+import build
+cards, top, sections, _ = build.compute(d["items"], dt.datetime.now(dt.timezone.utc))
+print("Karten:", len(cards), "größte Quellenzahlen:", sorted((c["n"] for c in cards), reverse=True)[:8])
+print("Rubrik-Verteilung der Karten:", dict(collections.Counter(c["rubric"] for c in cards)))
 iu = np.triu_indices(len(ids), 1)
 for t in (0.60, 0.65, 0.70, 0.75, 0.80, 0.85):
     hit = S[iu] >= t

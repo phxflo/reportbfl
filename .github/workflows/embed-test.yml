@@ -14,7 +14,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install fastembed numpy
+      - run: pip install fastembed numpy pyyaml jinja2 feedparser requests
       - name: Archiv entschlüsseln
         run: openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -in data/news.enc -out data/news.json -pass env:PAGE_PASSWORD
       - run: python eval_embed.py
+        env:
+          CUSTOMERS: ${{ secrets.CUSTOMERS }}
