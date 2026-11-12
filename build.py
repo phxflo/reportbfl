@@ -214,9 +214,19 @@ def country_matchers():
 CUSTOMER = set((CFG.get("region") or {}).get("rubrics", []))   # Häfen, Krane, Industrie, Spezialtiefbau
 
 
+def new_since(now):
+    """Referenz für „NEU“: der Report von gestern 06:30 (Berlin). Gilt ab 06:30 bis zum nächsten Tag um 06:30 unverändert."""
+    loc = now.astimezone(TZ)
+    ref = loc.replace(hour=6, minute=30, second=0, microsecond=0)
+    if loc < ref:
+        ref -= dt.timedelta(days=1)
+    return (ref - dt.timedelta(days=1)).astimezone(dt.timezone.utc)
+
+
 def compute(all_items, now):
     """Wählt aus: Top-News (nach Brisanz) und je Rubrik die neuesten Meldungen (höchstens per_section)."""
     win = now - dt.timedelta(days=SITE["window_days"])
+    fresh = new_since(now)
     rub = {r["id"]: r for r in CFG["rubrics"]}
     rorder = {r["id"]: k for k, r in enumerate(CFG["rubrics"])}
     cname = {c["id"]: c["name"] for c in CFG["countries"]}
@@ -263,7 +273,7 @@ def compute(all_items, now):
             translated=any(m.get("title_de") for m in members) or lead["lang"] in ("de", "en"),
             needs_tr=not (any(m.get("title_de") for m in members) or lead["lang"] in ("de", "en")),
             lang=LANG.get(lead["lang"], lead["lang"].upper()), source=srcs[0], n=len(srcs), url=lead["url"],
-            when=pub.astimezone(TZ).strftime("%d.%m. %H:%M"), ts=pub, is_new=age < 1,
+            when=pub.astimezone(TZ).strftime("%d.%m. %H:%M"), ts=pub, is_new=pub >= fresh,
             countries=[dict(id=c, name=cname[c]) for c in countries], tk=tk, sig=signature(tk), grp={m["grp"] for m in members if m.get("grp")},
             bris=max([m["ai"]["brisanz"] for m in members if m.get("ai")] or [0]),
             kunde=any(m.get("kunde") for m in members) or bool(CUST.search(title + " " + lead["title_orig"] + " " + (lead.get("snippet") or ""))), ai_used=bool(ai), rc=collections.Counter(a["rubric"] for a in ai if a.get("rubric")) or collections.Counter([rubric]),
