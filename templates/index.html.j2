@@ -139,8 +139,6 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .tag{font-size:12px;font-weight:700;color:var(--rt);display:inline-flex;align-items:center;gap:6px}
 .tag::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--rc,var(--accent));flex:none}
 .tr::after{content:" ⇄";font-size:.7em;color:var(--muted)}
-.x{border:0;background:none;color:var(--muted);font-size:13px;line-height:1;padding:4px 6px;border-radius:4px;cursor:pointer;opacity:.35;flex:none;align-self:flex-start}
-.x:hover,.x:focus-visible{opacity:1;background:var(--chip)}
 .rate{display:inline-flex;gap:7px;flex:none;align-self:flex-start;margin:5px 2px 0 0}
 .rb{box-sizing:border-box;width:15px;height:15px;border-radius:50%;border:2px solid var(--rb);background:transparent;padding:0;cursor:pointer;opacity:.5;position:relative}
 .rb::after{content:"";position:absolute;inset:-6px}
@@ -189,7 +187,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
   .chart .big{font-size:36px}.rank li{grid-template-columns:30px minmax(0,1fr) auto;padding:14px 12px 14px 12px}.rank li::before{font-size:30px}.rank .h{font-size:22px}.rank li:first-child .h{font-size:25px}.mast .mark{width:52px;height:52px}.mast{gap:14px}h2.kicker{font-size:26px}
   .chips{padding:12px 16px 0}
 }
-@media print{nav,.chips,#trbar,.x{display:none}body{background:#fff}}
+@media print{nav,.chips,#trbar,.rate{display:none}body{background:#fff}}
 </style>
 </head>
 <body>
@@ -308,7 +306,6 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 <div class="wrap"><footer class="site">
   {% if rating %}<details class="health" id="ratebox"><summary><span class="dot" id="tokdot"></span>Bewertungen senden: <span id="tokstat">nicht verbunden</span></summary>
     <div style="margin-top:8px"><input id="tok" type="password" autocomplete="off" placeholder="Zugangsschlüssel" style="font:14px var(--sans);padding:6px 10px;border:1px solid var(--rule);border-radius:6px;background:var(--card);color:var(--ink);min-width:240px"> <button type="button" id="toksave">Speichern</button><button type="button" id="tokdel">Entfernen</button></div></details>{% endif %}
-  <div id="hidebar" hidden><button id="hidecopy" type="button">Ausgeblendete Titel kopieren</button><button id="hidereset" type="button">Alle wieder einblenden</button><span id="hidecount"></span></div>
   {% set lvl = 'bad' if health|selectattr(1,'equalto','bad')|list else ('warn' if health|selectattr(1,'equalto','warn')|list else 'ok') %}
   <details class="health"><summary><span class="dot {{ lvl }}"></span>Systemstatus: {{ 'alles in Ordnung' if lvl == 'ok' else 'Hinweise beachten' if lvl == 'warn' else 'Störung – Inhalte evtl. unvollständig' }}</summary>
     <ul>{% for n, s, x in health %}<li class="{{ s }}"><span class="dot {{ s }}"></span><b>{{ n }}</b>{{ x }}</li>{% endfor %}</ul></details>
@@ -372,25 +369,18 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
     showR();stat();flush();
   }
 
-  /* Ausblenden (nur in diesem Browser) */
+  /* Rot bewertet = sofort ausblenden (dauerhaft über die Bewertung) */
   var hid={}; try{hid=JSON.parse(localStorage.getItem('seilHide')||'{}')}catch(e){}
   var cut=Date.now()-45*864e5; Object.keys(hid).forEach(function(k){if(hid[k].t<cut)delete hid[k]});
   function saveHid(){try{localStorage.setItem('seilHide',JSON.stringify(hid))}catch(e){}}
   function applyHid(){
     $('[data-id]').forEach(function(el){el.classList.toggle('gone',!!hid[el.dataset.id])});
-    var n=Object.keys(hid).length, bar=document.getElementById('hidebar');
-    bar.hidden=!n; document.getElementById('hidecount').textContent=n?n+' ausgeblendet':'';
   }
   document.addEventListener('click',function(e){
-    var b=e.target.closest&&e.target.closest('.x,.rb.r'); if(!b)return;
+    var b=e.target.closest&&e.target.closest('.rb.r'); if(!b)return;
     var el=b.closest('[data-id]'); if(!el)return;
     var a=el.querySelector('a.h'); hid[el.dataset.id]={t:Date.now(),s:(a?a.textContent.trim():'').slice(0,160),u:a?a.href:''};
     saveHid(); applyHid();
-  });
-  document.getElementById('hidereset').addEventListener('click',function(){hid={};saveHid();applyHid()});
-  document.getElementById('hidecopy').addEventListener('click',function(){
-    var txt=Object.keys(hid).map(function(k){return hid[k].s+'  '+hid[k].u}).join('\n');
-    try{navigator.clipboard.writeText(txt);document.getElementById('hidecount').textContent='Liste kopiert'}catch(e){}
   });
   applyHid();
 
