@@ -358,7 +358,8 @@ research:                 # Hintergrundrecherche mit Kurzbericht (Web-Suche durc
   searches: 1             # Web-Suchen je Bericht (jede Suche liefert viel Text und kostet Eingabe-Token)
 
 ratings:                  # Lernen aus deinen Ampel-Bewertungen (kostenlos, lokal)
-  on: true
+  on: true                # Selbsttest läuft immer mit (steht im Log)
+  apply: false            # erst true, wenn der Selbsttest deutlich über dem Zufall liegt (zu wenige Bewertungen)
   weight: 4               # Wirkung auf die Wertung: ähnlich zu Grün hoch, zu Rot/Gelb runter
   hide_below: -0.75       # darunter wird die Meldung ausgeblendet (sehr ähnlich zu Rot)
 

@@ -245,7 +245,9 @@ def prepare(news):
         return
     try:
         import rating_model
-        ADJ = rating_model.annotate(news["items"])
+        res = rating_model.annotate(news["items"])        # druckt immer den Selbsttest
+        if CFG.get("ratings", {}).get("apply", False):
+            ADJ = res
     except Exception as ex:
         print("Ampel-Modell übersprungen:", type(ex).__name__, file=sys.stderr)
 
@@ -524,6 +526,9 @@ def main():
 
     prepare(news)
     cards, top, sections, items = compute(rub_items, now)
+    dist = collections.Counter(c["bris"] for c in cards if c["ai_used"])
+    shown = collections.Counter(c["bris"] for c in top + [x for s_ in sections for x in s_["shown"]])
+    print(f"Brisanz der Karten {dict(sorted(dist.items()))}; angezeigt {dict(sorted(shown.items()))}")
 
 
     charts = []
