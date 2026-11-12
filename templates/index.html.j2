@@ -112,7 +112,7 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .pill{font-size:11px;font-weight:600;padding:2px 7px;border-radius:99px;background:var(--chip);color:var(--ink);white-space:nowrap}
 .pill.hot{background:transparent;border:1px solid var(--c-laender);color:var(--c-laender);font-weight:700}
 .pill.new{background:var(--accent);color:#1a2b3c}
-.pill.c{background:transparent;border:1px solid var(--rule);color:var(--muted)}
+.cn{color:var(--ink);font-weight:600}
 .pill.t{background:transparent;border:1px solid var(--accent-ink);color:var(--accent-ink)}
 .tag{font-size:12px;font-weight:700;color:var(--rt);display:inline-flex;align-items:center;gap:6px}
 .tag::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--rc,var(--accent));flex:none}
@@ -169,14 +169,16 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 
 {% macro item(c) %}<a dir="auto" class="h" href="{{ c.url }}" target="_blank" rel="noopener"{% if c.orig %} title="Original: {{ c.orig }}"{% endif %}{% if c.needs_tr %} data-t="1" data-lang="{{ c.lang|lower }}"{% endif %}>{{ c.title }}</a>{% endmacro %}
 
-{% macro badges(c) %}{% if c.bris is defined and c.bris >= 5 %}<span class="pill hot">Brisant</span>{% endif %}{% if c.trusted %}<span class="pill t">Fachmedium</span>{% endif %}{% if c.n > 1 %}<span class="pill">{{ c.n }} Quellen</span>{% endif %}{% for k in c.countries %}<span class="pill c">{{ k.name }}</span>{% endfor %}{% endmacro %}
+{% macro badges(c) %}{% if c.trusted %}<span>·</span><span>Fachmedium</span>{% endif %}{% if c.n > 1 %}<span>·</span><span>{{ c.n }} Quellen</span>{% endif %}{% if c.countries %}<span>·</span><span class="cn">{{ c.countries|map(attribute='name')|join(', ') }}</span>{% endif %}{% endmacro %}
+
+{% macro hot(c) %}{% if c.bris is defined and c.bris >= 5 %}<span class="pill hot">Brisant</span>{% endif %}{% endmacro %}
 
 {% macro xbtn() %}<button class="x" type="button" title="Meldung ausblenden" aria-label="Meldung ausblenden">✕</button>{% endmacro %}
 
 {% macro row(c, hide=false) %}
 <article class="row{{ ' hidden' if hide }}" data-id="{{ c.id }}" data-countries="{{ c.countries|map(attribute='id')|join(' ') }}">
   <div class="when">{{ c.when }}{% if c.is_new %}<br><span class="pill new">NEU</span>{% endif %}</div>
-  <div>{{ item(c) }}<div class="meta"><span>{{ c.source }}</span>{{ badges(c) }}</div></div>
+  <div>{{ item(c) }}<div class="meta">{{ hot(c) }}<span>{{ c.source }}</span>{{ badges(c) }}</div></div>
   {{ xbtn() }}
 </article>
 {% endmacro %}
@@ -228,7 +230,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
       {% for c in top %}
       <li class="r-{{ c.rubric }}" data-id="{{ c.id }}">
         <div style="grid-column:2">
-          <div class="meta"><span class="tag">{{ c.rubric_short }}</span>{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}</div>
+          <div class="meta"><span class="tag">{{ c.rubric_short }}</span>{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}{{ hot(c) }}</div>
           {{ item(c) }}
           <div class="meta"><span>{{ c.source }}</span><span>·</span><span>{{ c.when }}</span>{{ badges(c) }}</div>
         </div>
