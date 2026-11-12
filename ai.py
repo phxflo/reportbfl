@@ -23,6 +23,7 @@ RULES = 6                                     # Regelstand der Auswahl; betroffe
 FORCE = False  # erzwungener Tool-Aufruf; wird bei Ablehnung des Modells automatisch abgeschaltet
 VERSION = 2                                   # Prompt-Stand: bei Änderung werden alle Meldungen neu beurteilt
 BATCH = AI.get("batch", 25)
+BLOCK_RED = int(AI.get("block_source_red", 4))     # so oft rot (und nie grün) → Quelle gesperrt
 MAX_ITEMS = AI.get("max_items", 150)          # Obergrenze je Lauf (Kostenbremse); der Rest folgt am nächsten Tag
 URL = os.environ.get("ANTHROPIC_API_URL", "https://api.anthropic.com/v1/messages")
 RUBRICS = [r["id"] for r in CFG["rubrics"]]
@@ -108,7 +109,7 @@ GROUP_TOOL = dict(
         type="array", items=dict(type="array", items=dict(type="string"), minItems=2)))))
 
 
-USAGE = dict(i=0, o=0)      # verbrauchte Tokens dieses Laufs
+USAGE = dict(i=0, o=0, c=0)      # verbrauchte Tokens dieses Laufs
 
 
 def call(key, system, user, tool, max_tokens=8000, model=None):
@@ -118,7 +119,8 @@ def call(key, system, user, tool, max_tokens=8000, model=None):
     err = ""
     for attempt in range(4):
         body = dict(model=model or MODEL, max_tokens=max_tokens, tools=[tool], messages=[dict(role="user", content=user)],
-                    system=system + f"\nRufe zum Abschluss genau einmal das Werkzeug {tool['name']} mit dem vollständigen Ergebnis auf.",
+                    system=[dict(type="text", text=system + f"\nRufe zum Abschluss genau einmal das Werkzeug {tool['name']} mit dem vollständigen Ergebnis auf.",
+                                 cache_control=dict(type="ephemeral"))],      # lange Regeln nur einmal voll bezahlen (Cache ≈ 10 %)
                     tool_choice=dict(type="tool", name=tool["name"]) if FORCE else dict(type="auto"))
         try:
             r = requests.post(URL, headers=hdr, json=body, timeout=300)
@@ -129,6 +131,7 @@ def call(key, system, user, tool, max_tokens=8000, model=None):
                 js = r.json()
                 USAGE["i"] += (js.get("usage") or {}).get("input_tokens", 0)
                 USAGE["o"] += (js.get("usage") or {}).get("output_tokens", 0)
+                USAGE["c"] += (js.get("usage") or {}).get("cache_read_input_tokens", 0)
                 for blk in js.get("content", []):
                     if blk.get("type") == "tool_use":
                         return blk["input"]
@@ -159,7 +162,7 @@ def stale(i):
 
 
 def describe(i):
-    return dict(id=i["id"], sprache=i["lang"], quelle=i["source"], titel=i["title_orig"], text=(i.get("snippet") or "")[:300],
+    return dict(id=i["id"], sprache=i["lang"], quelle=i["source"], titel=i["title_orig"], text=(i.get("snippet") or "")[:200],
                 suche_rubrik=i.get("rubric"))
 
 
@@ -175,8 +178,9 @@ def classify(key, items):
     from concurrent.futures import ThreadPoolExecutor
     batches = [items[k:k + BATCH] for k in range(0, len(items), BATCH)]
     done = failed = 0
+    first = [_judge(key, batches[0])] if batches else []      # erste Anfrage allein: schreibt den Cache, die übrigen lesen ihn
     with ThreadPoolExecutor(max_workers=int(AI.get("workers", 4))) as ex:
-        for batch, out in ex.map(lambda b: _judge(key, b), batches):
+        for batch, out in first + list(ex.map(lambda b: _judge(key, b), batches[1:])):
             if out is None:
                 failed += 1
                 continue
@@ -279,14 +283,33 @@ def _prefilter():
         return None
 
 
-def prefilter(items):
+def blocked_sources(items):
+    """Quellen, die du mehrfach rot und nie grün bewertet hast, werden nicht mehr an Claude geschickt (spart Kosten und Ärger)."""
+    f = ROOT / "data" / "ratings.json"
+    try:
+        rt = json.loads(f.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return set()
+    by = {i["id"]: i for i in items}
+    cnt = {}
+    for iid, v in rt.items():
+        i = by.get(iid)
+        if i:
+            cnt.setdefault(i["source"], dict(r=0, g=0, y=0))[v["r"]] += 1
+    return {s for s, c in cnt.items() if c["r"] >= BLOCK_RED and c["g"] == 0}
+
+
+def prefilter(items, blocked=frozenset()):
     """Trennt Meldungen in (an Claude) und (ohne Branchenbezug, direkt als nicht relevant markiert)."""
     pre = None if os.environ.get("AI_PREFILTER", "1") == "0" else _prefilter()
     if not pre:
         return items, 0
     keep, n = [], 0
     for i in items:
-        if i.get("trusted") or pre.search(f'{i["title_orig"]} {i.get("title_de") or ""} {i.get("snippet") or ""}'):
+        if i["source"] in blocked and not (i.get("trusted") or i.get("kunde")):
+            i["ai"] = dict(relevant=False, rubric=None, countries=[], brisanz=1, grund="Quelle gesperrt", model="prefilter", v=VERSION, rv=RULES)
+            n += 1
+        elif i.get("trusted") or pre.search(f'{i["title_orig"]} {i.get("title_de") or ""} {i.get("snippet") or ""}'):
             keep.append(i)
         else:
             i["ai"] = dict(relevant=False, rubric=None, countries=[], brisanz=1, grund="Vorfilter", model="prefilter", v=VERSION, rv=RULES)
@@ -335,10 +358,26 @@ def main():
     win = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=CFG["site"]["window_days"])
     recent = [i for i in items if dt.datetime.fromisoformat(i["published"]) >= win]
     todo = sorted((i for i in recent if stale(i)), key=lambda i: i["published"], reverse=True)[:MAX_ITEMS]
-    todo, pre_n = prefilter(todo)
+    todo, pre_n = prefilter(todo, blocked_sources(items))
+    seen, dups = {}, []                                    # gleiche Titel aus mehreren Quellen nur einmal beurteilen
+    uniq = []
+    for i in todo:
+        k = re.sub(r"\W+", "", i["title_orig"].lower())[:90]
+        if k in seen:
+            dups.append((i, seen[k]))
+        else:
+            seen[k] = i
+            uniq.append(i)
+    todo_all, todo = todo, uniq
     print(f"Claude ({MODEL}): {len(todo)} Meldungen zu beurteilen, {pre_n} per Vorfilter aussortiert …")
     try:
         done = classify(key, todo) if todo else 0
+        for d, rep in dups:
+            if rep.get("ai"):
+                d["ai"] = dict(rep["ai"])
+                done += 1
+                if rep.get("title_de") and not d.get("title_de"):
+                    d["title_de"] = rep["title_de"]
         translated = translate_missing(key, recent)
         if done >= AI.get("group_min_new", 5):      # Gruppierung nur, wenn es genug neue Meldungen gibt
             groups = group(key, recent)
@@ -349,10 +388,10 @@ def main():
         print(f"::warning::Claude-Auswertung abgebrochen: {ex}")
         done, groups, translated = 0, 0, 0
         err = str(ex)[:160]
-    data.setdefault("meta", {})["ai"] = dict(status="fehler" if err else "ok", error=err, judged=done, todo=len(todo), pre=pre_n, groups=groups, tin=USAGE["i"], tout=USAGE["o"])
+    data.setdefault("meta", {})["ai"] = dict(status="fehler" if err else "ok", error=err, judged=done, todo=len(todo_all), pre=pre_n, groups=groups, tin=USAGE["i"], tout=USAGE["o"])
     NEWS.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
     rel = sum(1 for i in recent if (i.get("ai") or {}).get("relevant"))
-    print(f"Tokens: {USAGE['i']} ein, {USAGE['o']} aus")
+    print(f"Tokens: {USAGE['i']} ein ({USAGE['c']} aus dem Cache), {USAGE['o']} aus")
     print(f"{done} beurteilt, {translated} nachübersetzt, {rel}/{len(recent)} im Fenster relevant, {groups} Vorfall-Gruppen")
 
 
