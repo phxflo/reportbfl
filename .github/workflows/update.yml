@@ -9,6 +9,14 @@ on:
         description: "Alle Meldungen neu von Claude beurteilen (kostet deutlich mehr)"
         type: boolean
         default: false
+      group_threshold:
+        description: "Nur bei „nur Seite neu bauen“: Gruppen-Schwelle (z. B. 0.78), leer = Config"
+        type: string
+        default: ""
+      group_max:
+        description: "Nur bei „nur Seite neu bauen“: höchste Gruppengröße, leer = Config"
+        type: string
+        default: ""
       build_only:
         description: "Nur Seite neu bauen (keine Suche, kein Claude, keine Kosten) – für Designänderungen"
         type: boolean
@@ -79,6 +87,13 @@ jobs:
           CUSTOMERS: ${{ secrets.CUSTOMERS }}
           AI_REJUDGE: ${{ github.event.inputs.rejudge }}
         run: python ai.py
+      - name: Vorfälle neu gruppieren (nur Seite neu bauen)
+        if: github.event.inputs.build_only == 'true'
+        continue-on-error: true
+        env:
+          GROUP_THRESHOLD: ${{ github.event.inputs.group_threshold }}
+          GROUP_MAX: ${{ github.event.inputs.group_max }}
+        run: python regroup.py
       - name: Hintergrundrecherche zu wichtigen Meldungen
         if: github.event.inputs.build_only != 'true'
         continue-on-error: true
