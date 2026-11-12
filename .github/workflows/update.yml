@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  issues: read
 
 concurrency:
   group: update-2           # neue Warteschlange (ein hängender Lauf in der alten blockierte alles)
@@ -42,6 +43,11 @@ jobs:
             python -c "import json; json.load(open('data/news.json', encoding='utf-8'))" 2>/dev/null \
               || { echo "::warning::Archiv nicht lesbar (Passwort geändert?) - starte mit leerem Archiv"; rm -f data/news.json; }
           fi
+      - name: Ampel-Bewertungen laden
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python fetch_ratings.py
       - name: Meldungen abrufen
         env:
           COMPETITORS: ${{ secrets.COMPETITORS }}                # optional: Wettbewerber, durch Komma getrennt

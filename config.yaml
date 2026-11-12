@@ -12,6 +12,7 @@ site:
   top_n: 5                  # Top-News der Woche
   timezone: "Europe/Berlin"
   translate_max: 150        # höchstens so viele Titel pro Lauf übersetzen (nur sichtbare)
+  rating: {repo: "phxflo/reportbfl", issue: 36}   # Ampel-Bewertungen landen als Kommentare in diesem Issue
 
 # Meldungen mit diesen Wörtern im Titel werden verworfen
 exclude:
