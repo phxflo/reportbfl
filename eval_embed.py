@@ -37,6 +37,14 @@ for v in truth.values():
         for b in range(a + 1, len(v)):
             tp_pairs.add(tuple(sorted((pos[v[a]], pos[v[b]]))))
 print(f"Paare laut Claude: {len(tp_pairs)}")
+sizes = sorted((len(v) for v in truth.values()), reverse=True)
+print("Gruppengrößen laut Claude:", sizes)
+for g, v in sorted(truth.items(), key=lambda kv: -len(kv[1]))[:6]:
+    ix = [pos[x] for x in v]
+    sub = S[np.ix_(ix, ix)]
+    mean = (sub.sum() - len(ix)) / (len(ix) * (len(ix) - 1))
+    items_ = [live[k] for k in ix]
+    print(f"  Gruppe mit {len(v)}: mittlere Ähnlichkeit {mean:.2f}; Rubriken {sorted({(i.get('ai') or {}).get('rubric') for i in items_})}; Quellen {len({i['source'] for i in items_})}")
 iu = np.triu_indices(len(ids), 1)
 for t in (0.60, 0.65, 0.70, 0.75, 0.80, 0.85):
     hit = S[iu] >= t
