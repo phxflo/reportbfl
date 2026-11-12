@@ -185,7 +185,8 @@ def _home():
 
 
 HOME = _home()
-_cn = [x.strip() for x in os.environ.get("CUSTOMERS", "").replace("\n", ",").split(",") if x.strip()]
+import names
+_cn = names.only_names("CUSTOMERS")
 CUST = re.compile("|".join(rf"(?<!\w){re.escape(n)}(?!\w)" for n in _cn) or "(?!x)x", re.I)
 
 
@@ -260,7 +261,7 @@ def compute(all_items, now):
             when=pub.astimezone(TZ).strftime("%d.%m. %H:%M"), ts=pub, is_new=age < 1,
             countries=[dict(id=c, name=cname[c]) for c in countries], tk=tk, sig=signature(tk), grp={m["grp"] for m in members if m.get("grp")},
             bris=max([m["ai"]["brisanz"] for m in members if m.get("ai")] or [0]),
-            kunde=bool(CUST.search(title + " " + lead["title_orig"])), ai_used=bool(ai), rc=collections.Counter(a["rubric"] for a in ai if a.get("rubric")) or collections.Counter([rubric]),
+            kunde=any(m.get("kunde") for m in members) or bool(CUST.search(title + " " + lead["title_orig"])), ai_used=bool(ai), rc=collections.Counter(a["rubric"] for a in ai if a.get("rubric")) or collections.Counter([rubric]),
             readable=lead["lang"] in ("de", "en") or any(m.get("title_de") for m in members)))
 
     # Gleiche Vorfälle (auch in anderen Sprachen, z. B. die Explosion in Izmir) zu einer Meldung bündeln.
