@@ -365,7 +365,9 @@ def health(news, idx, now, cards=()):
         if a["status"] == "ok":
             left = max(a.get("todo", 0) - a.get("judged", 0), 0)
             rows.append(("Claude", "ok" if not left else "warn",
-                         f"{a.get('judged', 0)} Meldungen beurteilt, {a.get('groups', 0)} Vorfall-Gruppen" + (f"; {left} nicht beurteilt" if left else "")))
+                         f"{a.get('judged', 0)} Meldungen beurteilt" + (f", {a['pre']} vorgefiltert" if a.get("pre") else "") + f", {a.get('groups', 0)} Vorfall-Gruppen"
+                         + (f"; {left} warten auf den nächsten Lauf" if left else "")
+                         + (f" · {round(a['tin'] / 1000)}k Token ein, {round(a['tout'] / 1000)}k aus" if a.get("tin") else "")))
         elif a["status"] == "aus":
             rows.append(("Claude", "bad", "Schlüssel fehlt – Meldungen werden nur per Stichwort gefiltert"))
         else:
