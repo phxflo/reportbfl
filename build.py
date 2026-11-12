@@ -267,7 +267,7 @@ def compute(all_items, now):
         age = max(0.0, (now - pub).total_seconds() / 86400)
         tk = tokens(title + " " + lead["title_orig"])
         cards.append(dict(
-            id=lead["id"], bericht=(lead.get("bericht") or None) if (lead.get("bericht") or {}).get("v") == 2 else None, trusted=any(m.get("trusted") for m in members), srcs=set(srcs),
+            id=lead["id"], bericht=(lead.get("bericht") or None) if (lead.get("bericht") or {}).get("v") == 3 else None, trusted=any(m.get("trusted") for m in members), srcs=set(srcs),
             rubric=rubric, rubrics=rubrics, rubric_short=rub[rubric]["short"], title=title, lead=lead, text=text,
             orig=lead["title_orig"] if lead["lang"] != "de" and title != lead["title_orig"] else None,
             translated=any(m.get("title_de") for m in members) or lead["lang"] in ("de", "en"),
