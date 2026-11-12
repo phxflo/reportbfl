@@ -32,40 +32,34 @@ print(f"{len(texts)} Titel eingebettet in {time.time() - t2:.1f} s")
 S = E_ @ E_.T
 ids = [i["id"] for i in live]
 pos = {k: n for n, k in enumerate(ids)}
+# Maßstab ohne die fehlerhafte Riesengruppe; deren Meldungen bleiben aus der Auswertung heraus
+good = {g: v for g, v in truth.items() if len(v) <= 20}
+bad = {x for g, v in truth.items() if len(v) > 20 for x in v}
+keep = [k for k, i in enumerate(live) if i["id"] not in bad]
 tp_pairs = set()
-for v in truth.values():
+for v in good.values():
     for a in range(len(v)):
         for b in range(a + 1, len(v)):
             tp_pairs.add(tuple(sorted((pos[v[a]], pos[v[b]]))))
-print(f"Paare laut Claude: {len(tp_pairs)}")
-sizes = sorted((len(v) for v in truth.values()), reverse=True)
-print("Gruppengrößen laut Claude:", sizes)
-for g, v in sorted(truth.items(), key=lambda kv: -len(kv[1]))[:6]:
-    ix = [pos[x] for x in v]
-    sub = S[np.ix_(ix, ix)]
-    mean = (sub.sum() - len(ix)) / (len(ix) * (len(ix) - 1))
-    items_ = [live[k] for k in ix]
-    print(f"  Gruppe mit {len(v)}: mittlere Ähnlichkeit {mean:.2f}; Rubriken {sorted({(i.get('ai') or {}).get('rubric') for i in items_})}; Quellen {len({i['source'] for i in items_})}")
-big = max(truth.values(), key=len)
-bi = [live[pos[x]] for x in big]
-import collections
-print("Riesengruppe: Sprachen", dict(collections.Counter(i["lang"] for i in bi)))
-print("Riesengruppe: Tage", dict(sorted(collections.Counter(i["published"][:10] for i in bi).items())))
-print("Riesengruppe: Länderzahl je Meldung", dict(collections.Counter(len((i.get("ai") or {}).get("countries") or []) for i in bi)))
-print("Riesengruppe: mit firma/kunde", sum(1 for i in bi if i.get("firma") is not None), sum(1 for i in bi if i.get("kunde")))
-print("Riesengruppe: Tag-Schlüssel", sorted({i["grp"] for i in bi}), "min-id-Länge", min(len(x) for x in big))
-sys.path.insert(0, str(Path(__file__).parent))
-import build
-cards, top, sections, _ = build.compute(d["items"], dt.datetime.now(dt.timezone.utc))
-print("Karten:", len(cards), "größte Quellenzahlen:", sorted((c["n"] for c in cards), reverse=True)[:8])
-print("Rubrik-Verteilung der Karten:", dict(collections.Counter(c["rubric"] for c in cards)))
-iu = np.triu_indices(len(ids), 1)
-for t in (0.60, 0.65, 0.70, 0.75, 0.80, 0.85):
-    hit = S[iu] >= t
-    pred = {(int(a), int(b)) for a, b in zip(iu[0][hit], iu[1][hit])}
+print(f"Auswertung ohne Riesengruppe: {len(keep)} Meldungen, {len(good)} Gruppen, {len(tp_pairs)} Paare laut Claude")
+kk = np.array(keep)
+Sk = S[np.ix_(kk, kk)]
+iu = np.triu_indices(len(kk), 1)
+for t in (0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85):
+    hit = Sk[iu] >= t
+    pred = {(int(kk[a]), int(kk[b])) for a, b in zip(iu[0][hit], iu[1][hit])}
     tp = len(pred & tp_pairs)
     p = tp / len(pred) if pred else 0
     r = tp / len(tp_pairs) if tp_pairs else 0
     f = 2 * p * r / (p + r) if p + r else 0
-    print(f"Schwelle {t:.2f}: Paare {len(pred):4d}  Präzision {p:.2f}  Trefferquote {r:.2f}  F1 {f:.2f}")
+    print(f"Schwelle {t:.2f}: vorhergesagte Paare {len(pred):4d}  Präzision {p:.2f}  Trefferquote {r:.2f}  F1 {f:.2f}")
+# Nur Paare mit gleichem Land und gleicher Rubrik (wie Claude es sortiert bekommt)
+same = lambda a, b: (live[a].get("ai") or {}).get("countries", [])[:1] == (live[b].get("ai") or {}).get("countries", [])[:1] and (live[a].get("ai") or {}).get("rubric") == (live[b].get("ai") or {}).get("rubric")
+for t in (0.60, 0.70):
+    hit = Sk[iu] >= t
+    pred = {(int(kk[a]), int(kk[b])) for a, b in zip(iu[0][hit], iu[1][hit]) if same(int(kk[a]), int(kk[b]))}
+    tp = len(pred & tp_pairs)
+    p = tp / len(pred) if pred else 0
+    r = tp / len(tp_pairs) if tp_pairs else 0
+    print(f"mit Land+Rubrik-Bedingung, Schwelle {t:.2f}: Paare {len(pred):4d}  Präzision {p:.2f}  Trefferquote {r:.2f}")
 print(f"gesamt {time.time() - t0:.0f} s")
