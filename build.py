@@ -342,6 +342,45 @@ def compute(all_items, now):
     return cards, top, sections, items
 
 
+def health(news, idx, now):
+    """Systemstatus: Zeilen (Name, Stufe ok/warn/bad, Text). Macht stille Ausfälle sichtbar."""
+    rows, meta = [], news["meta"]
+    h = meta.get("health")
+    if h and h.get("queries"):
+        q, ok = h["queries"], h["ok"]
+        share = ok / q
+        dead = [l for l, (o, n) in (h.get("langs") or {}).items() if n and o == 0]
+        txt = f"{ok} von {q} Suchanfragen lieferten Treffer"
+        if dead:
+            txt += "; ohne jeden Treffer: " + ", ".join(sorted(dead))
+        rows.append(("Suche", "ok" if share >= .85 and not dead else "warn" if share >= .6 else "bad", txt))
+    a = meta.get("ai")
+    if a:
+        if a["status"] == "ok":
+            left = max(a.get("todo", 0) - a.get("judged", 0), 0)
+            rows.append(("Claude", "ok" if not left else "warn",
+                         f"{a.get('judged', 0)} Meldungen beurteilt, {a.get('groups', 0)} Vorfall-Gruppen" + (f"; {left} nicht beurteilt" if left else "")))
+        elif a["status"] == "aus":
+            rows.append(("Claude", "bad", "Schlüssel fehlt – Meldungen werden nur per Stichwort gefiltert"))
+        else:
+            rows.append(("Claude", "bad", "Auswertung abgebrochen – es gilt der Stand des Vortags. " + (a.get("error") or "")))
+    if not meta.get("sample"):
+        win = now - dt.timedelta(days=SITE["window_days"])
+        recent = [i for i in news["items"] if dt.datetime.fromisoformat(i["published"]) >= win]
+        if recent:
+            age = (now - max(dt.datetime.fromisoformat(i["published"]) for i in recent)).total_seconds() / 3600
+            rows.append(("Frische", "ok" if age < 36 else "warn" if age < 72 else "bad", f"neueste Meldung vor {age:.0f} Std."))
+            if a and a["status"] == "ok":
+                unj = sum(1 for i in recent if not i.get("ai"))
+                if unj:
+                    rows.append(("Auswahl", "warn" if unj < 20 else "bad", f"{unj} Meldungen ohne Claude-Urteil"))
+    errs = idx["meta"].get("errors", [])
+    parts = [f"{sid} {s['points'][-1]['p']}" for sid, s in (idx.get("series") or {}).items() if s.get("points")]
+    rows.append(("Kennzahlen", "bad" if errs else "ok",
+                 ("Keine Daten für: " + ", ".join(e.split(":")[0] for e in errs)) if errs else "Stand " + ", ".join(parts)))
+    return rows
+
+
 def main():
     news, idx = load("news.json"), load("indices.json")
     sample = news["meta"].get("sample") or idx["meta"].get("sample")
@@ -383,7 +422,7 @@ def main():
         countries=CFG["countries"], date=f"{WDAYS[local.weekday()]}, {local.day}. {MONTHS[local.month - 1]} {local.year}",
         updated=local.strftime("%d.%m.%Y, %H:%M Uhr"), edition=local.timetuple().tm_yday,
         n_week=len(cards), n_today=sum(c["is_new"] for c in cards), n_src=len({i["source"] for i in items}),
-        errors=idx["meta"].get("errors", []))
+        errors=idx["meta"].get("errors", []), health=health(news, idx, now))
     (ROOT / "docs").mkdir(exist_ok=True)
     (ROOT / "docs" / "index.html").write_text(html, encoding="utf-8")
     print(f"docs/index.html: {len(cards)} Meldungen im Fenster, {len(charts)} Diagramme")
