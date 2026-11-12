@@ -115,6 +115,8 @@ GROUP_TOOL = dict(
         type="array", items=dict(type="array", items=dict(type="string"), minItems=2)))))
 
 
+MAX_GROUP = int(AI.get("max_group", 12))     # größere „Vorfälle“ sind ein Fehler der Gruppierung und werden verworfen
+
 USAGE = dict(i=0, o=0, c=0)      # verbrauchte Tokens dieses Laufs
 
 
@@ -252,6 +254,9 @@ def group(key, items):
     for g in out.get("groups", []):
         g = g if isinstance(g, list) else (g.get("ids") or g.get("items") or []) if isinstance(g, dict) else []
         ids = [x for x in g if x in by]
+        if len(ids) > MAX_GROUP:
+            print(f"  Gruppe mit {len(ids)} Meldungen verworfen (zu groß für einen Vorfall)")
+            continue
         if len(ids) >= 2:
             tag = "g" + min(ids)
             for x in ids:
@@ -262,6 +267,21 @@ def group(key, items):
             by[iid]["grp"] = g
         return len({g for g in old.values()})
     return n
+
+
+def drop_oversized(items):
+    """Räumt bestehende Gruppen auf, die zu groß für einen einzelnen Vorfall sind (Fehler einer früheren Gruppierung)."""
+    cnt = {}
+    for i in items:
+        if i.get("grp", "").startswith("g"):
+            cnt[i["grp"]] = cnt.get(i["grp"], 0) + 1
+    bad = {g for g, n in cnt.items() if n > MAX_GROUP}
+    for i in items:
+        if i.get("grp") in bad:
+            del i["grp"]
+    if bad:
+        print(f"{len(bad)} zu große Gruppen aufgelöst ({sum(cnt[g] for g in bad)} Meldungen)")
+    return len(bad)
 
 
 def _mark(info):
@@ -362,6 +382,7 @@ def main():
     if data.get("meta", {}).get("sample"):
         return
     items = data["items"]
+    drop_oversized(items)
     global SYSTEM
     SYSTEM += feedback_block(items)
     win = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=CFG["site"]["window_days"])
