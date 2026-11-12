@@ -69,20 +69,27 @@ def discover_feeds(domain):
 
 
 def company_jobs(entries, days, kunde):
+    """Je Firma: Namenssuche in den Ausgaben des Landes (Landessprache, Deutsch, Englisch); bei bekannter Website
+    zusätzlich Seiten-Suche (site:) und deren RSS-Feeds."""
     grp = "kunden" if kunde else "wettb"
-    """Je Firma: Namenssuche, bei bekannter Website zusätzlich Seiten-Suche (site:) und deren RSS-Feeds."""
     jobs = []
     with ThreadPoolExecutor(max_workers=8) as pool:
         feeds = list(pool.map(lambda e: discover_feeds(e[1]) if e[1] else [], entries))
-    for idx, ((name, dom), fl) in enumerate(zip(entries, feeds)):
-        for lang, hl, gl, ceid in (("de", "de", "DE", "DE:de"), ("en", "en-US", "US", "US:en")):
+    ctry = {c["id"]: c for c in CFG["countries"]}
+    for idx, ((name, dom, cid), fl) in enumerate(zip(entries, feeds)):
+        eds = [("de", "de", "DE", "DE:de"), ("en", "en-US", "US", "US:en")]
+        for e in (ctry.get(cid) or {}).get("editions", []):
+            if e["lang"] not in ("de", "en"):
+                eds.append((e["lang"], e["hl"], e["gl"], e["ceid"]))
+        for lang, hl, gl, ceid in eds:
             jobs.append(dict(url=feed_url(quote_term(name), hl, gl, ceid, days), rubric="markt", lang=lang,
-                             country=None, open=True, grp=grp, firma=idx))
-            if dom:
+                             country=cid, open=True, grp=grp, firma=idx))
+            if dom and lang in ("de", "en"):
                 jobs.append(dict(url=feed_url(f"site:{dom}", hl, gl, ceid, days), rubric="markt", lang=lang,
-                                 country=None, open=True, trusted=True, kunde=kunde, source=name, grp=grp, firma=idx))
+                                 country=cid, open=True, trusted=True, kunde=kunde, source=name, grp=grp, firma=idx))
         for u in fl:
-            jobs.append(dict(url=u, rubric="markt", lang="en", country=None, open=True, trusted=True, kunde=kunde, source=name, grp=grp, firma=idx))
+            jobs.append(dict(url=u, rubric="markt", lang="en", country=cid, open=True, trusted=True, kunde=kunde,
+                             source=name, grp=grp, firma=idx))
     return jobs
 
 
