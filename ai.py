@@ -51,8 +51,14 @@ Rubriken (jede Meldung bekommt genau eine):
   Nicht relevant: Werbung, Messeauftritte ohne Neuigkeit, Sponsoring, Preise/Auszeichnungen, Jobanzeigen.
 - laender (Anzeige: „Zölle, Tarife & Sanktionen“): Handelsmaßnahmen, die Stahl/Draht-Geschäft oder die Kundenländer betreffen: Zölle, Strafzölle,
   Antidumping, CBAM, Importverbote/-quoten, Exportverbote, Sanktionen, Embargo, Devisen-/Kapitalverkehrsregeln. Auch EU-/weltweite Maßnahmen
-  ohne bestimmtes Land (countries dann leer), sofern sie Stahl, Draht, Häfen oder die Kundenländer betreffen.
-- rohstoffe: Preise und Zuschläge: Stahl-, Walzdraht-, Draht-, Legierungs-/Zink-, Schrott-, Energiepreise – weltweit (keine Zollmeldungen).
+  ohne bestimmtes Land (countries dann leer), sofern sie Stahl, Draht, Häfen oder die Kundenländer betreffen. STRENG: nur konkrete, beschlossene
+  oder angekündigte Maßnahmen, die Stahl, Draht, Seile, Hafen-/Kran-/Bergbau-/Baumaschinen-Ausrüstung oder den Handel mit einem der 11 Länder
+  unmittelbar treffen (brisanz 4-5). NICHT relevant: allgemeiner Handelsstreit ohne Stahlbezug (z. B. USA–China bei Elektronik, Agrar, Autos),
+  Verhandlungsatmosphäre ohne Beschluss, Parteipolitik, Maßnahmen gegen einzelne Personen.
+- rohstoffe: Preise und Zuschläge, die den Einkauf von Seildraht oder den Seilpreis berühren: Walzdraht-, Stahldraht-, Stahlpreise (EU, Türkei,
+  weltweit), Legierungs-/Zinkzuschläge, Schrott und Eisenerz mit Wirkung auf den Stahlpreis, Lieferengpässe (keine Zollmeldungen). STRENG: nur mit
+  konkreter Preisänderung, Zuschlag oder Engpass (brisanz 4-5). NICHT relevant: Gold, Kupfer, Aluminium, Öl/Gas und Strom ohne Stahlbezug,
+  Börsen- und Rohstoffkommentare, Prognosen ohne Zahlen.
 Regel: haefen/kraene/industrie/tiefbau/projekte nur wenn Ort oder Beteiligte eindeutig in einem der 11 Länder liegen; sonst nicht relevant.
 {COMP}
 Typische Fehlgriffe, die NICHT relevant sind:

@@ -8,7 +8,7 @@ site:
   retention_days: 21        # so lange bleiben Meldungen im Archiv
   window_days: 7            # Zeitraum der Anzeige ("Woche")
   fetch_days: 7             # pro Lauf: Meldungen der letzten n Tage abfragen
-  per_section: 10           # höchstens so viele Meldungen je Rubrik (neueste zuerst, ältere fallen weg)
+  per_section: 5            # höchstens so viele (wichtigste) Meldungen je Rubrik; einzelne Rubriken können mit max/min_bris abweichen
   top_n: 5                  # Top-News der Woche
   timezone: "Europe/Berlin"
   translate_max: 150        # höchstens so viele Titel pro Lauf übersetzen (nur sichtbare)
@@ -134,6 +134,8 @@ rubrics:
     group: "Markt & Handel"
     short: "Zölle & Tarife"
     weight: 0.8
+    max: 3                   # strenger: nur wirklich Wichtiges
+    min_bris: 4
     must: 'zoll|zölle|strafzoll|tarif|customs|(?<!\w)dut(y|ies)(?!\w)|douane|gümrük|sanktion|sanction|yaptırım|embargo|antidumping|anti-dumping|quota|kontingent|importverbot|import ban|export ban|exportverbot|einfuhr\w*|invoerrechten|safeguard|schutzmaßnahme\w*|cbam|devisen|currency|capital control|hafenstreik|port strike|dockers? strike|blockade|handelsabkommen|trade (deal|agreement|war|policy|deficit|surplus)|wirtschaft\w*|konjunktur|bruttoinlandsprodukt|\bbip\b|\bgdp\b|inflation\w*|leitzins|zinsen|währung|haushalt|investition\w*|infrastruktur|industrie\w*|economy|economic|interest rate|budget|investment|infrastructure|industry|exports?\b|imports?\b|économi\w*|\bpib\b|taux d|devise|budget|investissement|infrastructure|industrie|commerce|exportation\w*|importation\w*|economie|economisch|\bbbp\b|inflatie|begroting|investering|handel|export|import|ekonomi|enflasyon|büyüme|faiz|döviz|bütçe|yatırım|altyapı|sanayi|ihracat|ithalat|dış ticaret|جمارك|عقوبات|حظر|اقتصاد|תעשייה|כלכלה|מכס|סנקציות|אמברגו'   # Länder: Handels-/Sanktions-/Zollthemen und allgemeine Wirtschaftslage
     terms: {}                # Länder-Suchen stehen unten unter "countries"
   - id: rohstoffe
@@ -141,6 +143,8 @@ rubrics:
     group: "Markt & Handel"
     short: "Rohstoffe"
     weight: 1.0
+    max: 3
+    min_bris: 4
     core: 'zuschlag|surcharge|toeslag|supplément|walzdraht|wire rod|walsdraad|filmaşin|fil machine|cbam|safeguard|schutzmaßnahmen|stahlpreis|steel price|prix de l.acier|staalprijs|çelik fiyat'   # Treffer hier zählen auch ohne Ereigniswort
     must: 'zuschlag|surcharge|toeslag|legierung|alloy|walzdraht|wire rod|fil machine|walsdraad|filmaşin|stahlpreis|steel price|scrap|schrott|schroot|hurda|zink|zinc|nickel|cbam|safeguard|schutzmaßnahmen|prix de l.acier|prix du fil|staalprijs|çelik fiyat|ek ücret|supplément|מחירי פלדה|מחיר ברזל'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
@@ -348,8 +352,8 @@ ai:                       # Auswertung durch Claude (nur mit Secret ANTHROPIC_AP
   max_items: 150          # Obergrenze neuer Meldungen je Lauf (Kostenbremse); der Rest folgt am nächsten Tag
 
 research:                 # Hintergrundrecherche mit Kurzbericht (Web-Suche durch Claude) für Top 5, Kunden und Wettbewerber
-  model: claude-sonnet-5-5
-  max_per_run: 5          # höchstens so viele neue Berichte je Lauf (Kostenbremse, ca. 0,04 $ je Bericht)
+  model: claude-haiku-5-5   # Haiku: Berichte zu allen angezeigten Meldungen bleiben bezahlbar
+  max_per_run: 40          # höchstens so viele neue Berichte je Lauf (Kostenbremse, ca. 0,04 $ je Bericht)
   searches: 1             # Web-Suchen je Bericht (jede Suche liefert viel Text und kostet Eingabe-Token)
 
 industry_terms:           # Zusatzsuche je Land: Branchenmeldungen (Claude sortiert aus, was nicht passt)

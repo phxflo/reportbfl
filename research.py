@@ -16,7 +16,7 @@ import build
 URL = "https://api.anthropic.com/v1/messages"
 R = build.CFG.get("research", {})
 MODEL = R.get("model", "claude-sonnet-5-5")
-MAX_PER_RUN = int(R.get("max_per_run", 8))
+MAX_PER_RUN = int(R.get("max_per_run", 40))
 MAX_SEARCHES = int(R.get("searches", 2))
 NEWS = build.ROOT / "data" / "news.json"
 
@@ -91,13 +91,9 @@ def main():
     now = dt.datetime.now(dt.timezone.utc)
     cards, top, sections, _ = build.compute(news["items"], now)
     seen, cand = set(), []
-    top_ids = {c["id"] for c in top}
     for c in top + [x for s in sections for x in s["shown"]]:
         lead = c["lead"]
-        wanted = c["id"] in top_ids or c.get("kunde") or lead.get("firma")
-        if not wanted or lead["id"] in seen or (lead.get("bericht") is not None and not retry(lead)):
-            continue
-        if not (c["id"] in top_ids or c.get("is_new")):                # Kunden/Wettbewerber nur, wenn die Meldung neu ist
+        if lead["id"] in seen or (lead.get("bericht") is not None and not retry(lead)):
             continue
         seen.add(lead["id"])
         cand.append(c)

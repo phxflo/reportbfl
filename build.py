@@ -321,30 +321,38 @@ def compute(all_items, now):
                       + (2.0 if c["rubric"] in CUSTOMER and c["countries"] else 0)
                       + (3.0 if c["kunde"] else 0))      # Kundennähe: Ereignisse bei Kunden in deinen Ländern zuerst
 
-    # Top-News: nach Brisanz; höchstens eine Meldung je Rubrik. (Gleiche Vorfälle sind oben schon gebündelt;
-    # zwei verschiedene Themen aus demselben Land dürfen beide erscheinen.)
+    # Je Rubrik die wichtigsten Meldungen (nach Wertung, nicht nach Datum); Randthemen (niedrige Brisanz) fallen weg
+    def member(c, rid):
+        if c["rubric"] != rid:
+            return False
+        if c["ai_used"] and 0 < c["bris"] < rub[rid].get("min_bris", 2):
+            return False
+        if rid == "laender":            # "Länder" = allgemeine Meldungen zum Land
+            return c["ai_used"] or (bool(c["countries"]) and not (c["sig"] & DISASTER))
+        return True
+
+    picks = {}
+    for r in CFG["rubrics"]:
+        lst = sorted([c for c in cards if member(c, r["id"])], key=lambda c: (c["score"], c["ts"]), reverse=True)
+        picks[r["id"]] = lst[:r.get("max", cap)]
+
+    # Top-News: die wichtigsten der ausgewählten Rubrikmeldungen, höchstens eine je Rubrik, werden nach oben sortiert
+    # (und stehen dann nicht mehr in ihrer Rubrik: jede Meldung genau einmal). Gleiche Vorfälle sind oben schon gebündelt.
+    pool = sorted([c for lst in picks.values() for c in lst], key=lambda c: (c["score"], c["ts"]), reverse=True)
     top, used_r = [], set()
-    for c in sorted(cards, key=lambda c: (c["score"], c["ts"]), reverse=True):
+    for c in pool:
         if len(top) >= SITE.get("top_n", 5):
             break
         if c["rubric"] in used_r or any(same_incident(c, t) or (c["grp"] & t["grp"]) for t in top):
             continue
         top.append(c)
         used_r.add(c["rubric"])
-
     top_ids = {id(c) for c in top}
-
-    def member(c, rid):                 # jede Meldung steht genau einmal auf der Seite: Top-News ODER in ihrer Rubrik
-        if id(c) in top_ids or c["rubric"] != rid:
-            return False
-        if rid == "laender":            # "Länder" = allgemeine Meldungen zum Land
-            return c["ai_used"] or (bool(c["countries"]) and not (c["sig"] & DISASTER))
-        return True
 
     sections = []
     for k, r in enumerate(CFG["rubrics"], 1):
-        lst = sorted([c for c in cards if member(c, r["id"])], key=lambda c: c["ts"], reverse=True)
-        sections.append(dict(id=r["id"], group=r.get("group"), num=f"{k:02d}", title=r["title"], short=r["short"], shown=lst[:cap], limit=cap))
+        lst = sorted([c for c in picks[r["id"]] if id(c) not in top_ids], key=lambda c: c["ts"], reverse=True)
+        sections.append(dict(id=r["id"], group=r.get("group"), num=f"{k:02d}", title=r["title"], short=r["short"], shown=lst, limit=r.get("max", cap)))
 
     return cards, top, sections, items
 
