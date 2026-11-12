@@ -214,6 +214,25 @@ def country_matchers():
 CUSTOMER = set((CFG.get("region") or {}).get("rubrics", []))   # Häfen, Krane, Industrie, Spezialtiefbau
 
 
+def index_notes(idx, now):
+    """Kennzahlen-Hinweise: kurz und nur, wenn eine Reihe fehlt oder länger als 7 Tage nicht aktualisiert wurde.
+    Ein einzelner fehlgeschlagener Abruf bei Destatis (Reihe noch frisch) ist keinen Hinweis wert."""
+    out = []
+    for e in idx["meta"].get("errors", []):
+        sid = e.split(":")[0]
+        ser = (idx.get("series") or {}).get(sid)
+        if not ser:
+            out.append(f"{sid}: keine Daten")
+            continue
+        try:
+            age = (now.date() - dt.date.fromisoformat(ser["fetched"])).days
+        except (KeyError, ValueError):
+            age = 99
+        if age > 7:
+            out.append(f"{sid}: Stand von vor {age} Tagen")
+    return out
+
+
 def show_bericht(b):
     """Bericht für die Seite: nur aktuelle Fassung; Quellen als schlichter Domainname (kurz, einheitlich, nie abgeschnitten)."""
     if not isinstance(b, dict) or b.get("v") != 3:
@@ -432,10 +451,10 @@ def health(news, idx, now, cards=()):
             rows.append(("Qualität", "ok" if share >= .5 else "warn", txt))   # nur Hinweis, nie „Störung“
     else:
         rows.append(("Qualität", "ok", "noch keine Bewertungen"))
-    errs = idx["meta"].get("errors", [])
     parts = [f"{sid} {s['points'][-1]['p']}" for sid, s in (idx.get("series") or {}).items() if s.get("points")]
+    errs = index_notes(idx, now)
     rows.append(("Kennzahlen", "bad" if errs else "ok",
-                 ("Keine Daten für: " + ", ".join(e.split(":")[0] for e in errs)) if errs else "Stand " + ", ".join(parts)))
+                 ("; ".join(errs)) if errs else "Stand " + ", ".join(parts)))
     return rows
 
 
@@ -497,7 +516,7 @@ def main():
         countries=CFG["countries"], date=f"{WDAYS[local.weekday()]}, {local.day}. {MONTHS[local.month - 1]} {local.year}",
         updated=local.strftime("%d.%m.%Y, %H:%M Uhr"), edition=local.timetuple().tm_yday,
         n_week=len(cards), n_today=sum(c["is_new"] for c in cards), n_src=len({i["source"] for i in items}),
-        errors=idx["meta"].get("errors", []), health=health(news, idx, now, cards),
+        errors=index_notes(idx, now), health=health(news, idx, now, cards),
         fontcss=font_css(), rating=SITE.get("rating"), cmap=load_map(), cstats=country_stats(cards, top))
     (ROOT / "docs").mkdir(exist_ok=True)
     (ROOT / "docs" / "index.html").write_text(html, encoding="utf-8")
