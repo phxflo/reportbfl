@@ -377,6 +377,42 @@ def health(news, idx, now, cards=()):
     return rows
 
 
+LATIN = "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD"
+LATIN_EXT = "U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF"
+
+
+def font_css():
+    """Schriften (Barlow, Barlow Condensed) direkt in die Seite einbetten: kein Abruf bei Google, funktioniert offline."""
+    import base64
+    out = []
+    for fam, slug, weights in (("Barlow", "barlow", (400, 600, 700)), ("Barlow Condensed", "barlow-condensed", (600, 700, 800))):
+        for w in weights:
+            for sub, rng in (("latin", LATIN), ("latin-ext", LATIN_EXT)):
+                f = ROOT / "fonts" / f"{slug}-{sub}-{w}-normal.woff2"
+                if f.exists():
+                    b64 = base64.b64encode(f.read_bytes()).decode()
+                    out.append(f"@font-face{{font-family:'{fam}';font-weight:{w};font-style:normal;font-display:swap;"
+                               f"src:url(data:font/woff2;base64,{b64}) format('woff2');unicode-range:{rng}}}")
+    return "".join(out)
+
+
+def country_stats(cards, top):
+    """Je Land: Zahl der Meldungen im Fenster und höchste Brisanz (für Karte und Länderliste)."""
+    st = {c["id"]: dict(id=c["id"], name=c["name"], n=0, bris=0) for c in CFG["countries"]}
+    for c in cards:
+        for k in c["countries"]:
+            s = st.get(k["id"])
+            if s:
+                s["n"] += 1
+                s["bris"] = max(s["bris"], c.get("bris") or 0)
+    return sorted(st.values(), key=lambda s: (-s["n"], s["name"]))
+
+
+def load_map():
+    f = ROOT / "map.json"
+    return json.loads(f.read_text(encoding="utf-8")) if f.exists() else None
+
+
 def main():
     news, idx = load("news.json"), load("indices.json")
     sample = news["meta"].get("sample") or idx["meta"].get("sample")
@@ -418,7 +454,8 @@ def main():
         countries=CFG["countries"], date=f"{WDAYS[local.weekday()]}, {local.day}. {MONTHS[local.month - 1]} {local.year}",
         updated=local.strftime("%d.%m.%Y, %H:%M Uhr"), edition=local.timetuple().tm_yday,
         n_week=len(cards), n_today=sum(c["is_new"] for c in cards), n_src=len({i["source"] for i in items}),
-        errors=idx["meta"].get("errors", []), health=health(news, idx, now, cards))
+        errors=idx["meta"].get("errors", []), health=health(news, idx, now, cards),
+        fontcss=font_css(), cmap=load_map(), cstats=country_stats(cards, top))
     (ROOT / "docs").mkdir(exist_ok=True)
     (ROOT / "docs" / "index.html").write_text(html, encoding="utf-8")
     print(f"docs/index.html: {len(cards)} Meldungen im Fenster, {len(charts)} Diagramme")
