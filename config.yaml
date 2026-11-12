@@ -340,7 +340,9 @@ indices:
     url: "https://www-genesis.destatis.de/datenbank/online/table/62421-0001"
 
 ai:                       # Auswertung durch Claude (nur mit Secret ANTHROPIC_API_KEY); ohne Schlüssel gelten die Regeln oben
-  model: claude-sonnet-5-5   # genauer als Haiku; Mehrkosten nur beim ersten Durchlauf, danach wenige Cent pro Tag
+  model: claude-sonnet-5-5   # Relevanzentscheidung (Qualität zählt)
+  cheap_model: claude-haiku-5-5   # Gruppieren und Übersetzen (einfacher, ca. 20-mal billiger)
+  group_min_new: 5        # Gruppierung nur ab so vielen neu beurteilten Meldungen
   batch: 25               # Meldungen je Anfrage
   max_items: 150          # Obergrenze neuer Meldungen je Lauf (Kostenbremse); der Rest folgt am nächsten Tag
 
