@@ -323,21 +323,7 @@ def compute(all_items, now):
     sections = []
     for k, r in enumerate(CFG["rubrics"], 1):
         lst = sorted([c for c in cards if member(c, r["id"])], key=lambda c: c["ts"], reverse=True)
-        if r["id"] == "laender":        # je Land die neuesten 10, damit der Länderfilter genug Auswahl hat
-            pool, seen = [], set()
-            for c in cname:
-                for x in [x for x in lst if any(cc["id"] == c for cc in x["countries"])][:cap]:
-                    if id(x) not in seen:
-                        seen.add(id(x))
-                        pool.append(x)
-            for x in [x for x in lst if not x["countries"]][:cap]:      # Meldungen ohne bestimmtes Land (EU, Weltmarkt)
-                if id(x) not in seen:
-                    seen.add(id(x))
-                    pool.append(x)
-            pool.sort(key=lambda c: c["ts"], reverse=True)
-            sections.append(dict(id=r["id"], group=r.get("group"), num=f"{k:02d}", title=r["title"], short=r["short"], shown=pool, limit=cap))
-        else:
-            sections.append(dict(id=r["id"], group=r.get("group"), num=f"{k:02d}", title=r["title"], short=r["short"], shown=lst[:cap], limit=cap))
+        sections.append(dict(id=r["id"], group=r.get("group"), num=f"{k:02d}", title=r["title"], short=r["short"], shown=lst[:cap], limit=cap))
 
     return cards, top, sections, items
 

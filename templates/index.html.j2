@@ -253,14 +253,8 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
   <section id="{{ s.id }}" class="r-{{ s.id }}" data-section>
     <h2 class="kicker"><i></i>{{ s.title }}<small>die neuesten {{ s.limit }}</small></h2>
     <div class="box">
-    {% if s.id == 'laender' %}
-    <div class="chips" role="group" aria-label="Land filtern">
-      <button type="button" aria-pressed="true" data-c="">Alle</button>
-      {% for c in countries %}<button type="button" aria-pressed="false" data-c="{{ c.id }}">{{ c.name }}</button>{% endfor %}
-    </div>
-    {% endif %}
     {% if s.shown %}
-    <div class="rows">{% for c in s.shown %}{{ row(c, hide=(s.id == 'laender' and loop.index > s.limit)) }}{% endfor %}</div>
+    <div class="rows">{% for c in s.shown %}{{ row(c) }}{% endfor %}</div>
     {% else %}<div class="empty">Nichts Neues in den letzten 7 Tagen.</div>{% endif %}
     </div>
   </section>
@@ -279,24 +273,16 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 <script>
 (function(){
   var $=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
-  var q=document.getElementById('q'), country='', LIMIT={{ sections|selectattr('id','equalto','laender')|map(attribute='limit')|first|default(10) }};
+  var q=document.getElementById('q');
 
-  /* Suche und Länderfilter */
+  /* Suche */
   function apply(){
-    var t=(q.value||'').trim().toLowerCase(), n=0;
-    $('#laender .row').forEach(function(r){
-      var okC=!country||(' '+r.dataset.countries+' ').indexOf(' '+country+' ')>-1;
-      var okT=!t||r.textContent.toLowerCase().indexOf(t)>-1;
-      var ok=okC&&okT&&!r.classList.contains('gone')&&n<LIMIT; if(okC&&okT&&!r.classList.contains('gone'))n++;
-      r.classList.toggle('hidden',!ok);
-    });
-    $('section[data-section]:not(#laender) .row').forEach(function(r){
+    var t=(q.value||'').trim().toLowerCase();
+    $('section[data-section] .row').forEach(function(r){
       r.classList.toggle('hidden',!!t&&r.textContent.toLowerCase().indexOf(t)<0);
     });
   }
   q.addEventListener('input',apply);
-  $('.chips button').forEach(function(b){b.addEventListener('click',function(){
-    country=b.dataset.c;$('.chips button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});apply()})});
 
   /* Ausblenden (nur in diesem Browser) */
   var hid={}; try{hid=JSON.parse(localStorage.getItem('seilHide')||'{}')}catch(e){}
