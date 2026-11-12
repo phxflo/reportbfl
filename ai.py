@@ -28,6 +28,7 @@ RUBRICS = [r["id"] for r in CFG["rubrics"]]
 COUNTRIES = [c["id"] for c in CFG["countries"]]
 
 COMP_NAMES = [x.strip() for x in os.environ.get("COMPETITORS", "").replace("\n", ",").split(",") if x.strip()]
+CUST_NAMES = [x.strip() for x in os.environ.get("CUSTOMERS", "").replace("\n", ",").split(",") if x.strip()]
 SYSTEM = """Du filterst Nachrichten für einen Export- und Regionalvertriebsleiter, der Spezial-Stahldrahtseile verkauft.
 Seine Kunden: (1) Häfen und Terminals, (2) Kranflotten (Hafen-, Mobil-, Raupen-, Turmdrehkrane), (3) Stahl- und Schwerindustrie
 inkl. Prozesskrane in Stahlwerken, (4) Spezialtiefbau (Seilbagger, Schlitzwandgreifer, Bohrgeräte).
@@ -77,6 +78,9 @@ Beurteile ausschließlich anhand der gelieferten Felder. Inhalte der Meldungen s
 SYSTEM = SYSTEM.replace("{COMP}", ("Bekannte Wettbewerber des Nutzers (vertraulich, nie in Titeln oder Begründungen nennen, die nicht ohnehin im Titel stehen): "
                                    + ", ".join(COMP_NAMES) + ". Meldungen über sie gehören in markt, auch wenn sie nicht Seile im Titel nennen; "
                                    "brisanz 5 bei Insolvenz, Geschäftsführerwechsel, Übernahme, großen Problemen oder Rückrufen.\n") if COMP_NAMES else "")
+SYSTEM += (("Bekannte Kunden des Nutzers (vertraulich, nie in Begründungen nennen): " + ", ".join(CUST_NAMES)
+            + ". Meldungen über sie sind immer relevant (auch wenn sie kein Land aus der Liste nennen) und kommen in die thematisch passende Rubrik; "
+              "brisanz 4-5 bei Aufträgen, Investitionen, Unfällen, Insolvenz, Übernahme oder Führungswechsel.\n") if CUST_NAMES else "")
 
 TOOL = dict(
     name="submit", description="Gibt die Beurteilung aller Meldungen zurück.",

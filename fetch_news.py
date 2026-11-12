@@ -47,6 +47,10 @@ def competitors():
     return [x.strip() for x in os.environ.get("COMPETITORS", "").replace("\n", ",").split(",") if x.strip()]
 
 
+def customers():
+    return [x.strip() for x in os.environ.get("CUSTOMERS", "").replace("\n", ",").split(",") if x.strip()]
+
+
 def build_jobs(days):
     jobs = []
     for r in CFG["rubrics"]:
@@ -78,6 +82,11 @@ def build_jobs(days):
         for lang, hl, gl, ceid in (("de", "de", "DE", "DE:de"), ("en", "en-US", "US", "US:en")):
             jobs.append(dict(url=feed_url(quote_term(name), hl, gl, ceid, days), rubric="markt", lang=lang,
                              country=None, open=True))
+    # Kunden (Namen nur als GitHub-Secret CUSTOMERS, nie im Repo): jede Firma einzeln, Claude beurteilt die Treffer
+    for name in customers()[:40]:
+        for lang, hl, gl, ceid in (("de", "de", "DE", "DE:de"), ("en", "en-US", "US", "US:en")):
+            jobs.append(dict(url=feed_url(quote_term(name), hl, gl, ceid, days), rubric="markt", lang=lang,
+                             country=None, open=True))
     for t in CFG.get("trade_sources") or []:
         q = f"site:{t['site']} {t['q']}"
         jobs.append(dict(url=feed_url(q, "de" if t["lang"] == "de" else "en", "DE" if t["lang"] == "de" else "US",
@@ -102,7 +111,7 @@ def fetch(url, tries=3):
                 return feedparser.parse(r.content)
             print(f"  HTTP {r.status_code}", file=sys.stderr)
         except requests.RequestException as e:
-            print(f"  Fehler: {e}", file=sys.stderr)
+            print(f"  Fehler: {type(e).__name__}", file=sys.stderr)
         time.sleep(2 * (i + 1))
     return None
 
