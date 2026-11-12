@@ -1,0 +1,20 @@
+name: Embedding-Test (einmalig)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PAGE_PASSWORD: ${{ secrets.PAGE_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install fastembed numpy
+      - name: Archiv entschlüsseln
+        run: openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -in data/news.enc -out data/news.json -pass env:PAGE_PASSWORD
+      - run: python eval_embed.py
