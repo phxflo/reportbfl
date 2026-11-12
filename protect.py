@@ -3,7 +3,6 @@
 (StaticCrypt: AES-256, im Browser entschlüsselt). Bricht ab, wenn kein Passwort gesetzt ist – die Klartext-Seite
 wird dann NICHT veröffentlicht."""
 import os
-import re
 import shutil
 import subprocess
 import sys
@@ -19,8 +18,6 @@ def main():
     pw = os.environ.get("PAGE_PASSWORD", "")
     if len(pw) < MIN_LEN:
         sys.exit(f"::error::PAGE_PASSWORD fehlt oder ist kürzer als {MIN_LEN} Zeichen – es wird nichts veröffentlicht.")
-    plain = PAGE.read_text(encoding="utf-8")
-    marker = re.search(r"<h1>(.*?)</h1>", plain, re.S)
     out_dir = Path(tempfile.mkdtemp())
     env = dict(os.environ, STATICRYPT_PASSWORD=pw)
     cmd = ["npx", "--yes", "staticrypt@3.5.4", str(PAGE), "-c", "false", "-d", str(out_dir), "-s", SALT, "--short",

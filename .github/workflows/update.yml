@@ -89,4 +89,4 @@ jobs:
           git rm -q --cached data/news.json 2>/dev/null || true
           git add .gitignore data docs
           git diff --staged --quiet || git commit -m "Update $(date -u +%F)"
-          git push
+          for n in 1 2 3; do git push && break; git pull --rebase -X theirs origin main || git rebase --abort; sleep 5; done

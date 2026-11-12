@@ -110,6 +110,8 @@ def parse(text, spec):
 
 
 def save_raw(name, text):
+    if not DEBUG:
+        return
     """Legt die ersten Zeilen der Destatis-Antwort ab (öffentliche Statistikdaten), damit das Format prüfbar ist."""
     lines = text.replace("\r\n", "\n").replace("\r", "\n").split("\n")
     seen = []
