@@ -69,19 +69,20 @@ def discover_feeds(domain):
 
 
 def company_jobs(entries, days, kunde):
+    grp = "kunden" if kunde else "wettb"
     """Je Firma: Namenssuche, bei bekannter Website zusätzlich Seiten-Suche (site:) und deren RSS-Feeds."""
     jobs = []
     with ThreadPoolExecutor(max_workers=8) as pool:
         feeds = list(pool.map(lambda e: discover_feeds(e[1]) if e[1] else [], entries))
-    for (name, dom), fl in zip(entries, feeds):
+    for idx, ((name, dom), fl) in enumerate(zip(entries, feeds)):
         for lang, hl, gl, ceid in (("de", "de", "DE", "DE:de"), ("en", "en-US", "US", "US:en")):
             jobs.append(dict(url=feed_url(quote_term(name), hl, gl, ceid, days), rubric="markt", lang=lang,
-                             country=None, open=True, kunde=kunde))
+                             country=None, open=True, grp=grp, firma=idx))
             if dom:
                 jobs.append(dict(url=feed_url(f"site:{dom}", hl, gl, ceid, days), rubric="markt", lang=lang,
-                                 country=None, open=True, trusted=True, kunde=kunde, source=name))
+                                 country=None, open=True, trusted=True, kunde=kunde, source=name, grp=grp, firma=idx))
         for u in fl:
-            jobs.append(dict(url=u, rubric="markt", lang="en", country=None, open=True, trusted=True, kunde=kunde, source=name))
+            jobs.append(dict(url=u, rubric="markt", lang="en", country=None, open=True, trusted=True, kunde=kunde, source=name, grp=grp, firma=idx))
     return jobs
 
 
@@ -203,13 +204,22 @@ def main():
 
     with ThreadPoolExecutor(max_workers=int(os.environ.get("FETCH_WORKERS", "3"))) as pool:   # mehrere Abfragen gleichzeitig
         feeds = list(pool.map(_get, jobs))
-    langs = {}
+    langs, firms, base = {}, {}, [0, 0]
     for job, feed in zip(jobs, feeds):
-        L = langs.setdefault(job["lang"], [0, 0])
-        L[1] += 1
+        if job.get("grp"):                      # Firmensuchen getrennt zählen: leer ist dort normal
+            F = firms.setdefault(job["grp"], [set(), set()])
+            F[1].add(job["firma"])
+            if feed and feed.entries:
+                F[0].add(job["firma"])
+        else:
+            L = langs.setdefault(job["lang"], [0, 0])
+            L[1] += 1
+            base[1] += 1
+            if feed and feed.entries:
+                L[0] += 1
+                base[0] += 1
         if not feed or not feed.entries:
             continue
-        L[0] += 1
         ok += 1
         for e in feed.entries:
             raw = e.get("title", "").strip()
@@ -251,12 +261,13 @@ def main():
                                lang=job["lang"], source=src or "?", url=e.get("link", ""),
                                published=pub.isoformat(), rubric=job["rubric"], rubrics=[job["rubric"]],
                                countries=sorted(countries), snippet=snip, trusted=bool(job.get("trusted")), open=bool(job.get("open")), kunde=bool(job.get("kunde")))
+    print("Firmensuchen (Firmen mit Treffern/gesamt):", {k: f"{len(v[0])}/{len(v[1])}" for k, v in firms.items()} or "keine")
     print(f"{ok}/{len(jobs)} Abfragen lieferten Treffer, Archiv: {len(db)} Meldungen")
     print("Durch Titel-Filter verworfen:", dropped or "nichts")
 
     items = [i for i in db.values() if dt.datetime.fromisoformat(i["published"]) >= cutoff]
     items.sort(key=lambda i: i["published"], reverse=True)
-    NEWS.write_text(json.dumps(dict(meta=dict(updated=now.isoformat(), sample=False, health=dict(queries=len(jobs), ok=ok, langs=langs)), items=items),
+    NEWS.write_text(json.dumps(dict(meta=dict(updated=now.isoformat(), sample=False, health=dict(queries=base[1], ok=base[0], langs=langs, firms={k: [len(v[0]), len(v[1])] for k, v in firms.items()})), items=items),
                                ensure_ascii=False, indent=1), encoding="utf-8")
     if ok == 0:
         sys.exit("Keine einzige Abfrage erfolgreich – Netzwerk prüfen.")
