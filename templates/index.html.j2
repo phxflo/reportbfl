@@ -62,7 +62,6 @@ nav a.rc{border-bottom:3px solid color-mix(in srgb,var(--rc) 45%,transparent);di
 nav a.rc:hover{color:var(--ink);border-bottom-color:var(--rc)}
 nav a.rc b{font:700 12px var(--sans);color:var(--rt);font-variant-numeric:tabular-nums}
 nav .sep{width:1px;height:20px;background:var(--rule);margin:0 6px;flex:none}
-nav input{margin-left:auto;font:14px var(--sans);padding:7px 14px;border:1px solid var(--rule);border-radius:99px;background:var(--card);color:var(--ink);min-width:150px}
 
 #trbar{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--accent);padding:10px 14px;margin:-8px 0 24px;font-size:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 #trbar[hidden]{display:none}
@@ -156,7 +155,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 @media (max-width:600px){
   body{font-size:15.5px}.wrap{padding:0 16px}
   .rows{columns:1;padding:4px 16px 10px}.row{grid-template-columns:54px minmax(0,1fr) auto;gap:10px}
-  nav input{display:none}h2.kicker{padding:10px 16px 8px;font-size:22px}h2.kicker small{display:none}
+  h2.kicker{padding:10px 16px 8px;font-size:22px}h2.kicker small{display:none}
   .chart .big{font-size:26px}.rank li{grid-template-columns:30px minmax(0,1fr) auto;padding:14px 12px 14px 12px}.rank li::before{font-size:24px}.rank .h{font-size:18px}.rank li:first-child .h{font-size:20px}
   .chips{padding:12px 16px 0}.mast p::before,.mast p::after{display:none}
 }
@@ -196,7 +195,6 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 <nav aria-label="Rubriken"><div class="wrap">
   <a href="#kennzahlen">Kennzahlen</a><a href="#top">Top-5</a><span class="sep"></span>
   {% for s in sections %}<a class="rc r-{{ s.id }}" href="#{{ s.id }}">{{ s.short }}{% if s.shown %}<b class="has">{{ s.shown|length }}</b>{% endif %}</a>{% endfor %}
-  <input id="q" type="search" placeholder="Suchen …" aria-label="Meldungen durchsuchen">
 </div></nav>
 
 <main class="wrap">
@@ -267,17 +265,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 <script>
 (function(){
   var $=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
-  var q=document.getElementById('q');
-
-  /* Suche */
-  function apply(){
-    var t=(q.value||'').trim().toLowerCase();
-    $('section[data-section] .row').forEach(function(r){
-      r.classList.toggle('hidden',!!t&&r.textContent.toLowerCase().indexOf(t)<0);
-    });
-  }
-  q.addEventListener('input',apply);
-
+  
   /* Ausblenden (nur in diesem Browser) */
   var hid={}; try{hid=JSON.parse(localStorage.getItem('seilHide')||'{}')}catch(e){}
   var cut=Date.now()-45*864e5; Object.keys(hid).forEach(function(k){if(hid[k].t<cut)delete hid[k]});
@@ -285,7 +273,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
   function applyHid(){
     $('[data-id]').forEach(function(el){el.classList.toggle('gone',!!hid[el.dataset.id])});
     var n=Object.keys(hid).length, bar=document.getElementById('hidebar');
-    bar.hidden=!n; document.getElementById('hidecount').textContent=n?n+' ausgeblendet':''; apply();
+    bar.hidden=!n; document.getElementById('hidecount').textContent=n?n+' ausgeblendet':'';
   }
   document.addEventListener('click',function(e){
     var b=e.target.closest&&e.target.closest('.x'); if(!b)return;
