@@ -131,6 +131,14 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 
 /* Bausteine */
 .meta{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
+.bericht{margin-top:8px;font-size:14px;line-height:1.5}
+.bericht summary{cursor:pointer;color:var(--accent-ink);font-weight:600;font-size:13px;list-style:none}
+.bericht summary::-webkit-details-marker{display:none}
+.bericht summary::before{content:"+ ";font-weight:700}
+.bericht[open] summary::before{content:"– "}
+.bericht p{margin:6px 0 4px;max-width:70ch}
+.bq{display:flex;flex-wrap:wrap;gap:2px 12px;font-size:12.5px}
+.bq a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
 .pill{font-size:11px;font-weight:600;padding:2px 7px;border-radius:99px;background:var(--chip);color:var(--ink);white-space:nowrap}
 .pill.new{background:var(--accent);color:#1a1200}
 .cty{font-size:13px;font-weight:600;color:var(--muted);white-space:normal}
@@ -202,10 +210,11 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 
 {% macro xbtn() %}<span class="rate" role="group" aria-label="Bewertung"><button class="rb g" type="button" data-r="g" title="Gut" aria-label="Gut"></button><button class="rb y" type="button" data-r="y" title="Grenzwertig" aria-label="Grenzwertig"></button><button class="rb r" type="button" data-r="r" title="Schlecht – ausblenden" aria-label="Schlecht, ausblenden"></button></span>{% endmacro %}
 
+{% macro bericht(c) %}{% if c.bericht %}<details class="bericht"><summary>Hintergrund</summary><p>{{ c.bericht.text }}</p>{% if c.bericht.quellen %}<div class="bq">{% for q in c.bericht.quellen %}<a href="{{ q.u }}" target="_blank" rel="noopener noreferrer">{{ q.t }}</a>{% endfor %}</div>{% endif %}</details>{% endif %}{% endmacro %}
 {% macro row(c, hide=false) %}
 <article class="row{{ ' hidden' if hide }}" data-id="{{ c.id }}" data-rate="{{ c.rate or '' }}" data-countries="{{ c.countries|map(attribute='id')|join(' ') }}">
   <div class="when">{{ c.when }}</div>
-  <div>{% if c.countries or c.is_new or c.kunde %}<div class="meta" style="margin-bottom:4px">{{ chips(c) }}</div>{% endif %}{{ item(c) }}<div class="meta"><span>{{ c.source }}</span>{{ badges(c) }}</div></div>
+  <div>{% if c.countries or c.is_new or c.kunde %}<div class="meta" style="margin-bottom:4px">{{ chips(c) }}</div>{% endif %}{{ item(c) }}<div class="meta"><span>{{ c.source }}</span>{{ badges(c) }}</div>{{ bericht(c) }}</div>
   {{ xbtn() }}
 </article>
 {% endmacro %}
@@ -281,6 +290,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
           <div class="meta"><span class="tag">{{ c.rubric_short }}</span>{{ chips(c) }}</div>
           {{ item(c) }}
           <div class="meta"><span>{{ c.source }}</span><span>·</span><span>{{ c.when }}</span>{{ badges(c) }}</div>
+          {{ bericht(c) }}
         </div>
         {{ xbtn() }}
       </li>

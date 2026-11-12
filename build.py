@@ -267,7 +267,7 @@ def compute(all_items, now):
         age = max(0.0, (now - pub).total_seconds() / 86400)
         tk = tokens(title + " " + lead["title_orig"])
         cards.append(dict(
-            id=lead["id"], trusted=any(m.get("trusted") for m in members), srcs=set(srcs),
+            id=lead["id"], bericht=lead.get("bericht") or None, trusted=any(m.get("trusted") for m in members), srcs=set(srcs),
             rubric=rubric, rubrics=rubrics, rubric_short=rub[rubric]["short"], title=title, lead=lead, text=text,
             orig=lead["title_orig"] if lead["lang"] != "de" and title != lead["title_orig"] else None,
             translated=any(m.get("title_de") for m in members) or lead["lang"] in ("de", "en"),
@@ -378,6 +378,11 @@ def health(news, idx, now, cards=()):
             rows.append(("Claude", "bad", "Schlüssel fehlt – Meldungen werden nur per Stichwort gefiltert"))
         else:
             rows.append(("Claude", "bad", "Auswertung abgebrochen – es gilt der Stand des Vortags. " + (a.get("error") or "")))
+    rs = meta.get("research")
+    if rs:
+        rows.append(("Recherche", "warn" if rs.get("fails") else "ok",
+                     f"{rs.get('n', 0)} Berichte, {rs.get('searches', 0)} Suchen" + (f"; {rs['fails']} Fehler" if rs.get("fails") else "")
+                     + (f" · {round(rs['tin'] / 1000)}k Token ein, {round(rs['tout'] / 1000)}k aus" if rs.get("tin") else "")))
     if not meta.get("sample"):
         win = now - dt.timedelta(days=SITE["window_days"])
         recent = [i for i in news["items"] if dt.datetime.fromisoformat(i["published"]) >= win]
