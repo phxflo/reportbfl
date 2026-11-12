@@ -79,6 +79,14 @@ jobs:
           CUSTOMERS: ${{ secrets.CUSTOMERS }}
           AI_REJUDGE: ${{ github.event.inputs.rejudge }}
         run: python ai.py
+      - name: Hintergrundrecherche zu wichtigen Meldungen
+        if: github.event.inputs.build_only != 'true'
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CUSTOMERS: ${{ secrets.CUSTOMERS }}
+          COMPETITORS: ${{ secrets.COMPETITORS }}
+        run: python research.py
       - name: Seite bauen
         env:
           CUSTOMERS: ${{ secrets.CUSTOMERS }}

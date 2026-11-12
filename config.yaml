@@ -347,6 +347,11 @@ ai:                       # Auswertung durch Claude (nur mit Secret ANTHROPIC_AP
   batch: 25               # Meldungen je Anfrage
   max_items: 150          # Obergrenze neuer Meldungen je Lauf (Kostenbremse); der Rest folgt am nächsten Tag
 
+research:                 # Hintergrundrecherche mit Kurzbericht (Web-Suche durch Claude) für Top 5, Kunden und Wettbewerber
+  model: claude-sonnet-5-5
+  max_per_run: 8          # höchstens so viele neue Berichte je Lauf (Kostenbremse)
+  searches: 2             # Web-Suchen je Bericht
+
 industry_terms:           # Zusatzsuche je Land: Branchenmeldungen (Claude sortiert aus, was nicht passt)
   en: [port, terminal, crane, steel, mining, construction, infrastructure, tender, contract]
   de: [Hafen, Terminal, Kran, Stahl, Stahlwerk, Bergbau, Baustelle, Infrastruktur, Ausschreibung, Auftrag]
