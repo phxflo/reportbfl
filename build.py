@@ -261,7 +261,7 @@ def compute(all_items, now):
             when=pub.astimezone(TZ).strftime("%d.%m. %H:%M"), ts=pub, is_new=age < 1,
             countries=[dict(id=c, name=cname[c]) for c in countries], tk=tk, sig=signature(tk), grp={m["grp"] for m in members if m.get("grp")},
             bris=max([m["ai"]["brisanz"] for m in members if m.get("ai")] or [0]),
-            kunde=any(m.get("kunde") for m in members) or bool(CUST.search(title + " " + lead["title_orig"])), ai_used=bool(ai), rc=collections.Counter(a["rubric"] for a in ai if a.get("rubric")) or collections.Counter([rubric]),
+            kunde=any(m.get("kunde") for m in members) or bool(CUST.search(title + " " + lead["title_orig"] + " " + (lead.get("snippet") or ""))), ai_used=bool(ai), rc=collections.Counter(a["rubric"] for a in ai if a.get("rubric")) or collections.Counter([rubric]),
             readable=lead["lang"] in ("de", "en") or any(m.get("title_de") for m in members)))
 
     # Gleiche Vorfälle (auch in anderen Sprachen, z. B. die Explosion in Izmir) zu einer Meldung bündeln.
@@ -333,7 +333,7 @@ def compute(all_items, now):
     return cards, top, sections, items
 
 
-def health(news, idx, now):
+def health(news, idx, now, cards=()):
     """Systemstatus: Zeilen (Name, Stufe ok/warn/bad, Text). Macht stille Ausfälle sichtbar."""
     rows, meta = [], news["meta"]
     h = meta.get("health")
@@ -345,6 +345,11 @@ def health(news, idx, now):
         if dead:
             txt += "; ohne jeden Treffer: " + ", ".join(sorted(dead))
         rows.append(("Suche", "ok" if share >= .85 and not dead else "warn" if share >= .6 else "bad", txt))
+    for key, label in (("kunden", "Kunden"), ("wettb", "Wettbewerber")):
+        f = (h or {}).get("firms", {}).get(key)
+        if f and f[1]:
+            mark = sum(1 for c in cards if c["kunde"]) if key == "kunden" else None
+            rows.append((label, "ok" if f[0] else "warn", f"{f[0]} von {f[1]} Firmen mit Treffern in der Suche" + (f"; {mark} Meldungen markiert" if mark is not None else "")))
     a = meta.get("ai")
     if a:
         if a["status"] == "ok":
@@ -413,7 +418,7 @@ def main():
         countries=CFG["countries"], date=f"{WDAYS[local.weekday()]}, {local.day}. {MONTHS[local.month - 1]} {local.year}",
         updated=local.strftime("%d.%m.%Y, %H:%M Uhr"), edition=local.timetuple().tm_yday,
         n_week=len(cards), n_today=sum(c["is_new"] for c in cards), n_src=len({i["source"] for i in items}),
-        errors=idx["meta"].get("errors", []), health=health(news, idx, now))
+        errors=idx["meta"].get("errors", []), health=health(news, idx, now, cards))
     (ROOT / "docs").mkdir(exist_ok=True)
     (ROOT / "docs" / "index.html").write_text(html, encoding="utf-8")
     print(f"docs/index.html: {len(cards)} Meldungen im Fenster, {len(charts)} Diagramme")
