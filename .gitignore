@@ -3,3 +3,4 @@ data/news.json
 docs/plain.tmp
 .cache/
 __pycache__/
+data/ratings.json

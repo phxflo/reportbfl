@@ -141,6 +141,13 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .tr::after{content:" ⇄";font-size:.7em;color:var(--muted)}
 .x{border:0;background:none;color:var(--muted);font-size:13px;line-height:1;padding:4px 6px;border-radius:4px;cursor:pointer;opacity:.35;flex:none;align-self:flex-start}
 .x:hover,.x:focus-visible{opacity:1;background:var(--chip)}
+.rate{display:inline-flex;gap:7px;flex:none;align-self:flex-start;margin:5px 2px 0 0}
+.rb{box-sizing:border-box;width:15px;height:15px;border-radius:50%;border:2px solid var(--rb);background:transparent;padding:0;cursor:pointer;opacity:.5;position:relative}
+.rb::after{content:"";position:absolute;inset:-6px}
+.rb.g{--rb:#2f9e5b}.rb.y{--rb:#d9961a}.rb.r{--rb:#d23b4a}
+.rb:hover,.rb:focus-visible{opacity:1}
+.rb.sel{background:var(--rb);opacity:1}
+@media (max-width:600px){.rate{gap:9px}.rb{width:17px;height:17px}}
 
 /* Titelseite */
 .rank{list-style:none;margin:0;padding:0;counter-reset:n;background:var(--card);border:1px solid var(--rule);border-top:0}
@@ -195,10 +202,10 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 
 {% macro chips(c) %}{% for k in c.countries %}<span class="pill c">{{ k.name }}</span>{% endfor %}{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}{% if c.kunde %}<span class="pill k">Kunde</span>{% endif %}{% endmacro %}
 
-{% macro xbtn() %}<button class="x" type="button" title="Meldung ausblenden" aria-label="Meldung ausblenden">✕</button>{% endmacro %}
+{% macro xbtn() %}<span class="rate" role="group" aria-label="Bewertung"><button class="rb g" type="button" data-r="g" title="Gut" aria-label="Gut"></button><button class="rb y" type="button" data-r="y" title="Grenzwertig" aria-label="Grenzwertig"></button><button class="rb r" type="button" data-r="r" title="Schlecht – ausblenden" aria-label="Schlecht, ausblenden"></button></span>{% endmacro %}
 
 {% macro row(c, hide=false) %}
-<article class="row{{ ' hidden' if hide }}" data-id="{{ c.id }}" data-countries="{{ c.countries|map(attribute='id')|join(' ') }}">
+<article class="row{{ ' hidden' if hide }}" data-id="{{ c.id }}" data-rate="{{ c.rate or '' }}" data-countries="{{ c.countries|map(attribute='id')|join(' ') }}">
   <div class="when">{{ c.when }}</div>
   <div>{% if c.countries or c.is_new or c.kunde %}<div class="meta" style="margin-bottom:4px">{{ chips(c) }}</div>{% endif %}{{ item(c) }}<div class="meta"><span>{{ c.source }}</span>{{ badges(c) }}</div></div>
   {{ xbtn() }}
@@ -271,7 +278,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
     {% if top %}
     <ol class="rank">
       {% for c in top %}
-      <li class="r-{{ c.rubric }}" data-id="{{ c.id }}" data-countries="{{ c.countries|map(attribute='id')|join(' ') }}">
+      <li class="r-{{ c.rubric }}" data-id="{{ c.id }}" data-rate="{{ c.rate or '' }}" data-countries="{{ c.countries|map(attribute='id')|join(' ') }}">
         <div style="grid-column:2">
           <div class="meta"><span class="tag">{{ c.rubric_short }}</span>{{ chips(c) }}</div>
           {{ item(c) }}
@@ -299,6 +306,8 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 
 <div class="rope" style="margin-top:40px"></div>
 <div class="wrap"><footer class="site">
+  {% if rating %}<details class="health" id="ratebox"><summary><span class="dot" id="tokdot"></span>Bewertungen senden: <span id="tokstat">nicht verbunden</span></summary>
+    <div style="margin-top:8px"><input id="tok" type="password" autocomplete="off" placeholder="Zugangsschlüssel" style="font:14px var(--sans);padding:6px 10px;border:1px solid var(--rule);border-radius:6px;background:var(--card);color:var(--ink);min-width:240px"> <button type="button" id="toksave">Speichern</button><button type="button" id="tokdel">Entfernen</button></div></details>{% endif %}
   <div id="hidebar" hidden><button id="hidecopy" type="button">Ausgeblendete Titel kopieren</button><button id="hidereset" type="button">Alle wieder einblenden</button><span id="hidecount"></span></div>
   {% set lvl = 'bad' if health|selectattr(1,'equalto','bad')|list else ('warn' if health|selectattr(1,'equalto','warn')|list else 'ok') %}
   <details class="health"><summary><span class="dot {{ lvl }}"></span>Systemstatus: {{ 'alles in Ordnung' if lvl == 'ok' else 'Hinweise beachten' if lvl == 'warn' else 'Störung – Inhalte evtl. unvollständig' }}</summary>
@@ -331,6 +340,38 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
   });
   var rs=document.getElementById('cfreset'); if(rs)rs.addEventListener('click',function(){cc='';applyC()});
 
+  /* Ampel-Bewertung: lokal merken, gesammelt an GitHub senden (Kommentar im Bewertungs-Issue) */
+  var RT={{ rating|tojson if rating else 'null' }};
+  if(RT){
+    var TOK='', ratings={}, queue=[], flushing=false, timer=null;
+    try{TOK=localStorage.getItem('seilTok')||'';ratings=JSON.parse(localStorage.getItem('seilRate')||'{}');queue=JSON.parse(localStorage.getItem('seilQ')||'[]')}catch(e){}
+    var saveR=function(){try{localStorage.setItem('seilRate',JSON.stringify(ratings));localStorage.setItem('seilQ',JSON.stringify(queue))}catch(e){}};
+    var showR=function(){$('[data-id]').forEach(function(el){
+      var r=(ratings[el.dataset.id]||{}).r||el.dataset.rate||'';
+      el.querySelectorAll('.rb').forEach(function(b){b.classList.toggle('sel',b.dataset.r===r)})})};
+    var stat=function(msg){
+      var s=document.getElementById('tokstat'),d=document.getElementById('tokdot'); if(!s)return;
+      var txt=msg||(TOK?'verbunden':'nicht verbunden'); if(TOK&&queue.length&&!msg)txt+=' · '+queue.length+' ausstehend';
+      s.textContent=txt; d.className='dot '+(msg?'bad':(TOK?'':'warn'))};
+    var flush=function(){
+      if(!TOK||!queue.length||flushing)return; flushing=true;
+      var batch=queue.slice(0,50);
+      fetch('https://api.github.com/repos/'+RT.repo+'/issues/'+RT.issue+'/comments',{method:'POST',
+        headers:{'Authorization':'Bearer '+TOK,'Accept':'application/vnd.github+json'},body:JSON.stringify({body:JSON.stringify(batch)})})
+      .then(function(r){flushing=false;if(r.ok){queue=queue.slice(batch.length);saveR();stat();if(queue.length)flush()}else stat(r.status===401||r.status===403||r.status===404?'Schlüssel prüfen (Fehler '+r.status+')':'Fehler '+r.status)})
+      .catch(function(){flushing=false;stat('offline – wird später gesendet')})};
+    document.addEventListener('click',function(e){
+      var b=e.target.closest&&e.target.closest('.rb'); if(!b)return;
+      var el=b.closest('[data-id]'); if(!el)return;
+      var now=Date.now(); ratings[el.dataset.id]={r:b.dataset.r,t:now};
+      queue=queue.filter(function(q){return q.i!==el.dataset.id}).concat([{i:el.dataset.id,r:b.dataset.r,t:now}]);
+      saveR();showR();stat();clearTimeout(timer);timer=setTimeout(flush,3000)});
+    var sv=document.getElementById('toksave'),dl=document.getElementById('tokdel');
+    if(sv)sv.addEventListener('click',function(){var v=(document.getElementById('tok').value||'').trim();if(!v)return;TOK=v;try{localStorage.setItem('seilTok',v)}catch(e){};document.getElementById('tok').value='';stat();flush()});
+    if(dl)dl.addEventListener('click',function(){TOK='';try{localStorage.removeItem('seilTok')}catch(e){};stat()});
+    showR();stat();flush();
+  }
+
   /* Ausblenden (nur in diesem Browser) */
   var hid={}; try{hid=JSON.parse(localStorage.getItem('seilHide')||'{}')}catch(e){}
   var cut=Date.now()-45*864e5; Object.keys(hid).forEach(function(k){if(hid[k].t<cut)delete hid[k]});
@@ -341,7 +382,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
     bar.hidden=!n; document.getElementById('hidecount').textContent=n?n+' ausgeblendet':'';
   }
   document.addEventListener('click',function(e){
-    var b=e.target.closest&&e.target.closest('.x'); if(!b)return;
+    var b=e.target.closest&&e.target.closest('.x,.rb.r'); if(!b)return;
     var el=b.closest('[data-id]'); if(!el)return;
     var a=el.querySelector('a.h'); hid[el.dataset.id]={t:Date.now(),s:(a?a.textContent.trim():'').slice(0,160),u:a?a.href:''};
     saveHid(); applyHid();

@@ -184,6 +184,15 @@ def _home():
     return re.compile("|".join(rf"(?<!\w){re.escape(n)}" for n in names) or "(?!x)x", re.I)
 
 
+def _ratings():
+    f = ROOT / "data" / "ratings.json"
+    try:
+        return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+    except ValueError:
+        return {}
+
+
+RATE = _ratings()      # Ampel-Bewertungen des Nutzers {id: {r: g|y|r, t}}
 HOME = _home()
 import names
 _cn = names.only_names("CUSTOMERS")
@@ -287,8 +296,9 @@ def compute(all_items, now):
                 break
         else:
             merged.append(c)
-    cards = merged
+    cards = [c for c in merged if RATE.get(c["id"], {}).get("r") != "r"]      # rot bewertet = dauerhaft ausgeblendet
     for c in cards:
+        c["rate"] = RATE.get(c["id"], {}).get("r")
         if c["ai_used"]:                    # Claude hat zugeordnet: genau eine Rubrik – die, die die meisten Meldungen des Vorfalls bekamen
             c["rubric"] = max(c["rc"], key=lambda r: (c["rc"][r], -rorder.get(r, 99)))
             c["rubrics"] = [c["rubric"]]
@@ -370,6 +380,29 @@ def health(news, idx, now, cards=()):
                 unj = sum(1 for i in recent if not i.get("ai"))
                 if unj:
                     rows.append(("Auswahl", "warn" if unj < 20 else "bad", f"{unj} Meldungen ohne Claude-Urteil"))
+    if RATE:
+        since = (now - dt.timedelta(days=7)).timestamp() * 1000
+        recent_r = {k: v for k, v in RATE.items() if v.get("t", 0) >= since}
+        if recent_r:
+            by = {i["id"]: i for i in news["items"]}
+            tot = collections.Counter(v["r"] for v in recent_r.values())
+            n = sum(tot.values())
+            share = tot["g"] / n
+            per = collections.defaultdict(lambda: [0, 0])
+            for k, v in recent_r.items():
+                i = by.get(k)
+                if i:
+                    rb = (i.get("ai") or {}).get("rubric") or i.get("rubric")
+                    per[rb][1] += 1
+                    per[rb][0] += v["r"] == "g"
+            worst = min(((g / n2, rb) for rb, (g, n2) in per.items() if n2 >= 5), default=None)
+            txt = f"{n} Bewertungen in 7 Tagen: {round(100 * share)} % grün, {round(100 * tot['y'] / n)} % gelb, {round(100 * tot['r'] / n)} % rot"
+            if worst:
+                nm = next((r["short"] for r in CFG["rubrics"] if r["id"] == worst[1]), worst[1])
+                txt += f"; schwächste Rubrik: {nm} ({round(100 * worst[0])} % grün)"
+            rows.append(("Qualität", "ok" if share >= .6 else "warn" if share >= .4 else "bad", txt))
+    else:
+        rows.append(("Qualität", "ok", "noch keine Bewertungen"))
     errs = idx["meta"].get("errors", [])
     parts = [f"{sid} {s['points'][-1]['p']}" for sid, s in (idx.get("series") or {}).items() if s.get("points")]
     rows.append(("Kennzahlen", "bad" if errs else "ok",
@@ -454,7 +487,7 @@ def main():
         updated=local.strftime("%d.%m.%Y, %H:%M Uhr"), edition=local.timetuple().tm_yday,
         n_week=len(cards), n_today=sum(c["is_new"] for c in cards), n_src=len({i["source"] for i in items}),
         errors=idx["meta"].get("errors", []), health=health(news, idx, now, cards),
-        fontcss=font_css(), cmap=load_map(), cstats=country_stats(cards, top))
+        fontcss=font_css(), rating=SITE.get("rating"), cmap=load_map(), cstats=country_stats(cards, top))
     (ROOT / "docs").mkdir(exist_ok=True)
     (ROOT / "docs" / "index.html").write_text(html, encoding="utf-8")
     print(f"docs/index.html: {len(cards)} Meldungen im Fenster, {len(charts)} Diagramme")

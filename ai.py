@@ -241,6 +241,30 @@ def _mark(info):
         pass
 
 
+def feedback_block(items):
+    """Bewertungen des Nutzers (Ampel) als Beispiele für Claude: rot = unpassend, grün = gut, gelb = grenzwertig."""
+    f = ROOT / "data" / "ratings.json"
+    if not f.exists():
+        return ""
+    try:
+        rt = json.loads(f.read_text(encoding="utf-8"))
+    except ValueError:
+        return ""
+    by = {i["id"]: i for i in items}
+    lines = {"r": [], "g": [], "y": []}
+    for iid, v in sorted(rt.items(), key=lambda kv: -kv[1].get("t", 0)):
+        i = by.get(iid)
+        if not i or v["r"] not in lines:
+            continue
+        lines[v["r"]].append(f'- {(i.get("title_de") or i["title_orig"])[:110]} [{(i.get("ai") or {}).get("rubric") or i.get("rubric")}]')
+    cap = dict(r=25, g=15, y=10)
+    out = ["\nRückmeldungen des Nutzers zu früheren Meldungen (lerne das Muster dahinter, nicht den Wortlaut):"]
+    for k, head in (("r", "ROT = unpassend, nicht relevant:"), ("g", "GRÜN = genau richtig:"), ("y", "GELB = grenzwertig (z. B. falsche Rubrik oder nur am Rande relevant):")):
+        if lines[k]:
+            out.append(head + "\n" + "\n".join(lines[k][:cap[k]]))
+    return "\n".join(out) if len(out) > 1 else ""
+
+
 def main():
     key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
     if not key:
@@ -253,6 +277,8 @@ def main():
     if data.get("meta", {}).get("sample"):
         return
     items = data["items"]
+    global SYSTEM
+    SYSTEM += feedback_block(items)
     win = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=CFG["site"]["window_days"])
     recent = [i for i in items if dt.datetime.fromisoformat(i["published"]) >= win]
     todo = sorted((i for i in recent if stale(i)), key=lambda i: i["published"], reverse=True)[:MAX_ITEMS]
