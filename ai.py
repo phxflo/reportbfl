@@ -321,7 +321,8 @@ def feedback_block(items):
             continue
         lines[v["r"]].append(f'- {(i.get("title_de") or i["title_orig"])[:110]} [{(i.get("ai") or {}).get("rubric") or i.get("rubric")}]')
     cap = dict(r=25, g=15, y=10)
-    out = ["\nRückmeldungen des Nutzers zu früheren Meldungen (lerne das Muster dahinter, nicht den Wortlaut):"]
+    out = ["\nRückmeldungen des Nutzers zu früheren Meldungen (lerne das Muster dahinter, nicht den Wortlaut). Meldungen, die ROT ähneln, sind "
+           "nicht relevant; Meldungen, die GELB ähneln, höchstens brisanz 2; nur was GRÜN ähnelt, bekommt brisanz 4-5:"]
     for k, head in (("r", "ROT = unpassend, nicht relevant:"), ("g", "GRÜN = genau richtig:"), ("y", "GELB = grenzwertig (z. B. falsche Rubrik oder nur am Rande relevant):")):
         if lines[k]:
             out.append(head + "\n" + "\n".join(lines[k][:cap[k]]))

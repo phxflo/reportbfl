@@ -375,7 +375,7 @@ def compute(all_items, now):
     def member(c, rid):
         if c["rubric"] != rid:
             return False
-        if c["ai_used"] and 0 < c["bris"] < rub[rid].get("min_bris", 3):
+        if c["ai_used"] and 0 < c["bris"] < rub[rid].get("min_bris", 4):
             return False
         if c["adj"] <= float(CFG.get("ratings", {}).get("hide_below", -0.75)) and not c["kunde"]:
             return False                # sehr ähnlich zu dem, was du rot bewertet hast
