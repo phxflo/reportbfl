@@ -107,7 +107,7 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .chart footer a{text-decoration:underline}
 
 /* Länderkarte */
-.lage{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:0;background:var(--card);border:1px solid var(--rule);border-top:0}
+.lage{display:grid;grid-template-columns:minmax(0,290px) minmax(0,1fr);gap:0;background:var(--card);border:1px solid var(--rule);border-top:0}
 .lage svg{display:block;width:100%;height:auto;background:var(--paper)}
 .lage .bg{fill:color-mix(in srgb,var(--rule) 70%,var(--paper));stroke:var(--card);stroke-width:.6}
 .lage .cn{cursor:pointer;outline:none}
@@ -115,7 +115,7 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .lage .cn:hover path,.lage .cn:focus-visible path,.lage .cn.on path{fill:var(--line)}
 .lage .cn circle{fill:var(--accent);stroke:var(--card);stroke-width:2}
 .lage .cn.z circle{fill:var(--card);stroke:var(--rule)}
-.lage .cn text{font:700 11px var(--sans);fill:#1a1200;text-anchor:middle;pointer-events:none}
+.lage .cn text{font:700 14px var(--sans);fill:#1a1200;text-anchor:middle;pointer-events:none}
 .lage .cn.z text{fill:var(--muted)}
 .clist{list-style:none;margin:0;padding:8px 0}
 .clist button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 46px;gap:2px 12px;align-items:center;width:100%;padding:9px 22px}
@@ -127,7 +127,7 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 #cfilter{grid-column:1/-1;padding:10px 22px;border-top:1px solid var(--rule);font-size:14px}
 #cfilter button{font:600 12px var(--sans);border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:6px;padding:3px 10px;cursor:pointer;margin-left:8px}
 .cf-off{display:none!important}
-@media (max-width:760px){.lage{grid-template-columns:1fr}.lage svg{max-height:340px}.clist button{padding:9px 16px}}
+@media (max-width:760px){.lage{grid-template-columns:1fr}.lage svg{max-height:250px}.clist button{padding:9px 16px}}
 
 /* Bausteine */
 .meta{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}

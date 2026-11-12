@@ -4,6 +4,7 @@ import collections
 import datetime as dt
 import json
 import re
+import sys
 import unicodedata
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -233,6 +234,22 @@ def index_notes(idx, now):
     return out
 
 
+ADJ = {}          # Tendenz je Meldung aus deinen Ampel-Bewertungen (siehe rating_model.py), von prepare() gefüllt
+
+
+def prepare(news):
+    """Einmal vor compute(): lernt aus den Bewertungen (kostenlos, lokal). Fehlt das Modell, läuft alles ohne diese Wirkung weiter."""
+    global ADJ
+    ADJ = {}
+    if news["meta"].get("sample") or not CFG.get("ratings", {}).get("on", True):
+        return
+    try:
+        import rating_model
+        ADJ = rating_model.annotate(news["items"])
+    except Exception as ex:
+        print("Ampel-Modell übersprungen:", type(ex).__name__, file=sys.stderr)
+
+
 def show_bericht(b):
     """Bericht für die Seite: nur aktuelle Fassung; Quellen als schlichter Domainname (kurz, einheitlich, nie abgeschnitten)."""
     if not isinstance(b, dict) or b.get("v") != 3:
@@ -297,7 +314,7 @@ def compute(all_items, now):
         age = max(0.0, (now - pub).total_seconds() / 86400)
         tk = tokens(title + " " + lead["title_orig"])
         cards.append(dict(
-            id=lead["id"], bericht=show_bericht(lead.get("bericht")), trusted=any(m.get("trusted") for m in members), srcs=set(srcs),
+            id=lead["id"], adj=ADJ.get(lead["id"], 0.0), bericht=show_bericht(lead.get("bericht")), trusted=any(m.get("trusted") for m in members), srcs=set(srcs),
             rubric=rubric, rubrics=rubrics, rubric_short=rub[rubric]["short"], title=title, lead=lead, text=text,
             orig=lead["title_orig"] if lead["lang"] != "de" and title != lead["title_orig"] else None,
             translated=any(m.get("title_de") for m in members) or lead["lang"] in ("de", "en"),
@@ -349,14 +366,17 @@ def compute(all_items, now):
                       + 0.8 * max(0, 1 - age / SITE["window_days"]) + (0.4 if c["countries"] else 0)
                       + (1.5 if c["trusted"] else 0) + (1.5 * (c["bris"] - 3) if c["bris"] else 0)
                       + (2.0 if c["rubric"] in CUSTOMER and c["countries"] else 0)
-                      + (3.0 if c["kunde"] else 0))      # Kundennähe: Ereignisse bei Kunden in deinen Ländern zuerst
+                      + (3.0 if c["kunde"] else 0)
+                      + float(CFG.get("ratings", {}).get("weight", 4)) * c["adj"])      # Kundennähe: Ereignisse bei Kunden in deinen Ländern zuerst
 
     # Je Rubrik die wichtigsten Meldungen (nach Wertung, nicht nach Datum); Randthemen (niedrige Brisanz) fallen weg
     def member(c, rid):
         if c["rubric"] != rid:
             return False
-        if c["ai_used"] and 0 < c["bris"] < rub[rid].get("min_bris", 2):
+        if c["ai_used"] and 0 < c["bris"] < rub[rid].get("min_bris", 3):
             return False
+        if c["adj"] <= float(CFG.get("ratings", {}).get("hide_below", -0.75)) and not c["kunde"]:
+            return False                # sehr ähnlich zu dem, was du rot bewertet hast
         if rid == "laender":            # "Länder" = allgemeine Meldungen zum Land
             return c["ai_used"] or (bool(c["countries"]) and not (c["sig"] & DISASTER))
         return True
@@ -502,6 +522,7 @@ def main():
     now = dt.datetime.now(dt.timezone.utc)
     rub_items = news["items"]
 
+    prepare(news)
     cards, top, sections, items = compute(rub_items, now)
 
 

@@ -104,6 +104,7 @@ def main():
     if news["meta"].get("sample"):
         return
     now = dt.datetime.now(dt.timezone.utc)
+    build.prepare(news)
     cards, top, sections, _ = build.compute(news["items"], now)
     seen, cand = set(), []
     for c in top + [x for s in sections for x in s["shown"]]:
