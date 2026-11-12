@@ -260,6 +260,9 @@ def compute(all_items, now):
     cmatch = country_matchers()
     cap = SITE["per_section"]
 
+    gcount = collections.Counter(i["grp"] for i in all_items if i.get("grp", "").startswith("g"))
+    big_grp = {g for g, n in gcount.items() if n > int(CFG.get("ai", {}).get("max_group", 12))}     # Fehlgruppierungen ignorieren
+
     allowed = set(CFG["editions"]) | {"de", "en"}
     items = [i for i in all_items if dt.datetime.fromisoformat(i["published"]) >= win and (i["lang"] in allowed or i["id"].startswith("s")) and (i.get("ai") or {}).get("relevant", True)]
     cards = []
@@ -301,7 +304,7 @@ def compute(all_items, now):
             needs_tr=not (any(m.get("title_de") for m in members) or lead["lang"] in ("de", "en")),
             lang=LANG.get(lead["lang"], lead["lang"].upper()), source=srcs[0], n=len(srcs), url=lead["url"],
             when=pub.astimezone(TZ).strftime("%d.%m. %H:%M"), ts=pub, is_new=pub >= fresh,
-            countries=[dict(id=c, name=cname[c]) for c in countries], tk=tk, sig=signature(tk), grp={m["grp"] for m in members if m.get("grp")},
+            countries=[dict(id=c, name=cname[c]) for c in countries], tk=tk, sig=signature(tk), grp={m["grp"] for m in members if m.get("grp") and m["grp"] not in big_grp},
             bris=max([m["ai"]["brisanz"] for m in members if m.get("ai")] or [0]),
             kunde=any(m.get("kunde") for m in members) or bool(CUST.search(title + " " + lead["title_orig"] + " " + (lead.get("snippet") or ""))), ai_used=bool(ai), rc=collections.Counter(a["rubric"] for a in ai if a.get("rubric")) or collections.Counter([rubric]),
             readable=lead["lang"] in ("de", "en") or any(m.get("title_de") for m in members)))
