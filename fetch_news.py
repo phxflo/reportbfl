@@ -17,6 +17,8 @@ import feedparser
 import requests
 import yaml
 
+import names
+
 ROOT = Path(__file__).parent
 CFG = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
 NEWS = ROOT / "data" / "news.json"
@@ -44,11 +46,43 @@ def feed_url(q, hl, gl, ceid, days):
 
 
 def competitors():
-    return [x.strip() for x in os.environ.get("COMPETITORS", "").replace("\n", ",").split(",") if x.strip()]
+    return names.parse("COMPETITORS")
 
 
 def customers():
-    return [x.strip() for x in os.environ.get("CUSTOMERS", "").replace("\n", ",").split(",") if x.strip()]
+    return names.parse("CUSTOMERS")
+
+
+def discover_feeds(domain):
+    """Sucht auf der Startseite nach RSS/Atom-Feeds (News-Bereich der Firma). Fehler sind unkritisch."""
+    try:
+        r = requests.get("https://" + domain, headers=UA, timeout=8)
+        links = re.findall(r'<link[^>]+type=["\']application/(?:rss|atom)\+xml["\'][^>]*>', r.text, re.I)
+        urls = []
+        for l in links:
+            m = re.search(r'href=["\']([^"\']+)["\']', l, re.I)
+            if m:
+                urls.append(urllib.parse.urljoin(r.url, html.unescape(m.group(1))))
+        return urls[:2]
+    except Exception:
+        return []
+
+
+def company_jobs(entries, days, kunde):
+    """Je Firma: Namenssuche, bei bekannter Website zusätzlich Seiten-Suche (site:) und deren RSS-Feeds."""
+    jobs = []
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        feeds = list(pool.map(lambda e: discover_feeds(e[1]) if e[1] else [], entries))
+    for (name, dom), fl in zip(entries, feeds):
+        for lang, hl, gl, ceid in (("de", "de", "DE", "DE:de"), ("en", "en-US", "US", "US:en")):
+            jobs.append(dict(url=feed_url(quote_term(name), hl, gl, ceid, days), rubric="markt", lang=lang,
+                             country=None, open=True, kunde=kunde))
+            if dom:
+                jobs.append(dict(url=feed_url(f"site:{dom}", hl, gl, ceid, days), rubric="markt", lang=lang,
+                                 country=None, open=True, trusted=True, kunde=kunde, source=name))
+        for u in fl:
+            jobs.append(dict(url=u, rubric="markt", lang="en", country=None, open=True, trusted=True, kunde=kunde, source=name))
+    return jobs
 
 
 def build_jobs(days):
@@ -77,16 +111,9 @@ def build_jobs(days):
             if url not in seen:
                 seen.add(url)
                 jobs.append(dict(url=url, rubric="laender", lang=e["lang"], country=c["id"], open=True))
-    # Wettbewerber (Namen nur als GitHub-Secret COMPETITORS, nie im Repo): jede Firma einzeln, Claude beurteilt die Treffer
-    for name in competitors()[:30]:
-        for lang, hl, gl, ceid in (("de", "de", "DE", "DE:de"), ("en", "en-US", "US", "US:en")):
-            jobs.append(dict(url=feed_url(quote_term(name), hl, gl, ceid, days), rubric="markt", lang=lang,
-                             country=None, open=True))
-    # Kunden (Namen nur als GitHub-Secret CUSTOMERS, nie im Repo): jede Firma einzeln, Claude beurteilt die Treffer
-    for name in customers()[:40]:
-        for lang, hl, gl, ceid in (("de", "de", "DE", "DE:de"), ("en", "en-US", "US", "US:en")):
-            jobs.append(dict(url=feed_url(quote_term(name), hl, gl, ceid, days), rubric="markt", lang=lang,
-                             country=None, open=True))
+    # Wettbewerber und Kunden (Namen/Websites nur als GitHub-Secrets, nie im Repo)
+    jobs += company_jobs(competitors()[:30], days, False)
+    jobs += company_jobs(customers()[:40], days, True)
     for t in CFG.get("trade_sources") or []:
         q = f"site:{t['site']} {t['q']}"
         jobs.append(dict(url=feed_url(q, "de" if t["lang"] == "de" else "en", "DE" if t["lang"] == "de" else "US",
@@ -215,13 +242,15 @@ def main():
                 it.setdefault("snippet", snip)
                 if job.get("trusted"):
                     it["trusted"] = True
+                if job.get("kunde"):
+                    it["kunde"] = True
                 if order.get(job["rubric"], 99) < order.get(it["rubric"], 99):
                     it["rubric"] = job["rubric"]
             else:
                 db[iid] = dict(id=iid, title_orig=title, title_de=title if job["lang"] == "de" else None,
                                lang=job["lang"], source=src or "?", url=e.get("link", ""),
                                published=pub.isoformat(), rubric=job["rubric"], rubrics=[job["rubric"]],
-                               countries=sorted(countries), snippet=snip, trusted=bool(job.get("trusted")), open=bool(job.get("open")))
+                               countries=sorted(countries), snippet=snip, trusted=bool(job.get("trusted")), open=bool(job.get("open")), kunde=bool(job.get("kunde")))
     print(f"{ok}/{len(jobs)} Abfragen lieferten Treffer, Archiv: {len(db)} Meldungen")
     print("Durch Titel-Filter verworfen:", dropped or "nichts")
 

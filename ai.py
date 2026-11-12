@@ -27,8 +27,10 @@ URL = os.environ.get("ANTHROPIC_API_URL", "https://api.anthropic.com/v1/messages
 RUBRICS = [r["id"] for r in CFG["rubrics"]]
 COUNTRIES = [c["id"] for c in CFG["countries"]]
 
-COMP_NAMES = [x.strip() for x in os.environ.get("COMPETITORS", "").replace("\n", ",").split(",") if x.strip()]
-CUST_NAMES = [x.strip() for x in os.environ.get("CUSTOMERS", "").replace("\n", ",").split(",") if x.strip()]
+import names
+
+COMP_NAMES = names.only_names("COMPETITORS")
+CUST_NAMES = names.only_names("CUSTOMERS")
 SYSTEM = """Du filterst Nachrichten für einen Export- und Regionalvertriebsleiter, der Spezial-Stahldrahtseile verkauft.
 Seine Kunden: (1) Häfen und Terminals, (2) Kranflotten (Hafen-, Mobil-, Raupen-, Turmdrehkrane), (3) Stahl- und Schwerindustrie
 inkl. Prozesskrane in Stahlwerken, (4) Spezialtiefbau (Seilbagger, Schlitzwandgreifer, Bohrgeräte).
