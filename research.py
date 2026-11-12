@@ -17,6 +17,7 @@ URL = "https://api.anthropic.com/v1/messages"
 R = build.CFG.get("research", {})
 MODEL = R.get("model", "claude-sonnet-5-5")
 MAX_PER_RUN = int(R.get("max_per_run", 40))
+THINK_OFF = True
 MAX_SEARCHES = int(R.get("searches", 2))
 NEWS = build.ROOT / "data" / "news.json"
 
@@ -34,6 +35,8 @@ def research(key, title, text, source, date):
     usage = dict(i=0, o=0, s=0)
     for _ in range(3):                                       # pause_turn: die Antwort wird fortgesetzt
         body = dict(model=MODEL, max_tokens=1200, system=SYSTEM, tools=[tool], messages=msgs)
+        if THINK_OFF:
+            body["thinking"] = dict(type="disabled")          # Berichte brauchen kein langes Nachdenken; es würde das Token-Budget aufbrauchen
         for attempt in range(3):
             try:
                 r = requests.post(URL, headers=hdr, json=body, timeout=180)
@@ -43,6 +46,10 @@ def research(key, title, text, source, date):
                 if r.status_code == 200:
                     break
                 err = f"HTTP {r.status_code} {r.text[:160]}"
+                if r.status_code == 400 and "thinking" in r.text.lower() and THINK_OFF:
+                    globals()["THINK_OFF"] = False                # Modell kennt den Schalter nicht: ohne ihn neu versuchen
+                    body.pop("thinking", None)
+                    continue
                 if r.status_code in (400, 401, 403, 404):
                     raise RuntimeError(err)
             time.sleep(5 * (attempt + 1))
@@ -66,7 +73,8 @@ def research(key, title, text, source, date):
     txt = re.sub(r"\s+([,.;:!?])", r"\1", re.sub(r"\s+", " ", " ".join(t.strip() for t in out))).strip()
     if not txt or "KEINE_QUELLEN" in txt:
         usage["trunc"] = js.get("stop_reason") == "max_tokens"
-        usage["why"] = f"stop={js.get('stop_reason')}, Textlänge={len(txt)}, Suchen={usage['s']}"
+        usage["why"] = (f"stop={js.get('stop_reason')}, Textlänge={len(txt)}, Suchen={usage['s']}, Blöcke="
+                        + ",".join(sorted({b.get("type", "?") for b in js.get("content", [])})) + f", Ausgabe={(js.get('usage') or {}).get('output_tokens')}")
         return None, usage
     return dict(v=2, text=txt, quellen=[dict(t=t, u=u) for u, t in list(src.items())[:4]],
                 t=dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes")), usage
