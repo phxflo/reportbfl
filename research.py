@@ -33,7 +33,7 @@ def research(key, title, text, source, date):
     hdr = {"x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json"}
     usage = dict(i=0, o=0, s=0)
     for _ in range(3):                                       # pause_turn: die Antwort wird fortgesetzt
-        body = dict(model=MODEL, max_tokens=300, system=SYSTEM, tools=[tool], messages=msgs)
+        body = dict(model=MODEL, max_tokens=1200, system=SYSTEM, tools=[tool], messages=msgs)
         for attempt in range(3):
             try:
                 r = requests.post(URL, headers=hdr, json=body, timeout=180)
@@ -65,6 +65,7 @@ def research(key, title, text, source, date):
                     src.setdefault(c["url"], (c.get("title") or c["url"])[:90])
     txt = re.sub(r"\s+([,.;:!?])", r"\1", re.sub(r"\s+", " ", " ".join(t.strip() for t in out))).strip()
     if not txt or "KEINE_QUELLEN" in txt:
+        usage["trunc"] = js.get("stop_reason") == "max_tokens"
         usage["why"] = f"stop={js.get('stop_reason')}, Textlänge={len(txt)}, Suchen={usage['s']}"
         return None, usage
     return dict(v=2, text=txt, quellen=[dict(t=t, u=u) for u, t in list(src.items())[:4]],
@@ -118,7 +119,11 @@ def main():
             tot[k] += u[k]
         it = by[lead["id"]]
         it["bericht"] = rep or False                         # False = nichts gefunden (wird später noch zweimal versucht)
-        if not rep:
+        if not rep and u.get("trunc"):
+            it["bericht"] = None                             # abgeschnitten, kein echtes „nichts gefunden“: beim nächsten Lauf neu
+            del it["bericht"]
+            print(f"  abgeschnitten: {u.get('why', '')}")
+        elif not rep:
             it["bericht_try"] = it.get("bericht_try", 0) + 1
             it["bericht_day"] = dt.date.today().isoformat()
             print(f"  ohne Bericht (Versuch {it['bericht_try']}): {u.get('why', '')}")
