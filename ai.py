@@ -2,6 +2,7 @@
 """Lässt Claude die Meldungen beurteilen: Relevanz, Rubrik, Land, deutscher Titel, Brisanz – und erkennt
 denselben Vorfall in verschiedenen Meldungen. Ergebnisse stehen im Archiv (item["ai"], item["grp"]) und werden nur
 einmal je Meldung bezahlt. Ohne Schlüssel oder bei Fehlern passiert nichts: der Report läuft dann mit den Regeln weiter."""
+import collections
 import datetime as dt
 import json
 import os
@@ -108,12 +109,6 @@ TOOL = dict(
                         rubric=dict(type="string", enum=RUBRICS + ["none"]),
                         countries=dict(type="array", items=dict(type="string", enum=COUNTRIES)),
                         title_de=dict(type="string"), brisanz=dict(type="integer", minimum=1, maximum=5)))))))
-
-GROUP_TOOL = dict(
-    name="submit", description="Gibt Gruppen von Meldungen zurück, die denselben Vorfall betreffen.",
-    input_schema=dict(type="object", required=["groups"], properties=dict(groups=dict(
-        type="array", items=dict(type="array", items=dict(type="string"), minItems=2)))))
-
 
 MAX_GROUP = int(AI.get("max_group", 12))     # größere „Vorfälle“ sind ein Fehler der Gruppierung und werden verworfen
 
@@ -230,46 +225,6 @@ def translate_missing(key, items):
                 by[r["id"]]["title_de"] = r["title_de"].strip()
                 done += 1
     return done
-
-
-def group(key, items):
-    """Gleicher Vorfall in mehreren Meldungen (auch in anderen Sprachen) → gemeinsame Gruppen-Kennung."""
-    cut = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=3)).isoformat()
-    live = [i for i in items if (i.get("ai") or {}).get("relevant") and i["published"] >= cut]   # ältere behalten ihre Gruppe
-    if len(live) < 2:
-        return 0
-    # nach Land und Rubrik sortiert: gleiche Vorfälle stehen dadurch untereinander und werden leichter gefunden
-    live.sort(key=lambda i: ((i["ai"].get("countries") or ["~"])[0], i["ai"].get("rubric") or "", i["published"]))
-    lines = [f'{i["id"]} | {",".join(i["ai"].get("countries") or []) or "-"} | {i["ai"].get("rubric")} | '
-             f'{i.get("title_de") or i["title_orig"]} | {i["published"][:10]}' for i in live]
-    system = ("Finde Meldungen, die über DENSELBEN konkreten Vorfall oder dasselbe Ereignis berichten (z. B. dieselbe Explosion, "
-              "derselbe Streik, dieselbe Zollentscheidung, dieselbe Firmenmeldung) – auch in verschiedenen Sprachen und aus verschiedenen "
-              "Quellen. Gehe die Liste vollständig durch; die Zeilen sind nach Land und Rubrik sortiert. Nur echte Gleichheit, nicht bloß "
-              "gleiches Thema. Gruppiere NIEMALS nach Thema, Land, Branche, Firma oder Rubrik, sondern nur bei demselben einzelnen Ereignis "
-              "(gleiche Beteiligte, gleicher Anlass, gleiche Zahlen, etwa gleiches Datum). Eine Gruppe hat in der Regel 2 bis 6 Meldungen und "
-              "nie mehr als 10; ist eine Gruppe größer, ist sie falsch. Im Zweifel nicht gruppieren. Gib alle Gruppen mit mindestens zwei "
-              "Meldungen zurück (jede Meldung höchstens in einer Gruppe).")
-    out = call(key, system, "Meldungen (id | Land | Rubrik | Titel | Datum):\n" + "\n".join(lines), GROUP_TOOL, max_tokens=12000)
-    print(f"  Gruppierung: {len(live)} Meldungen geprüft, Antwort mit {len(out.get('groups', []))} Gruppen")
-    by = {i["id"]: i for i in live}
-    old = {i["id"]: i.pop("grp") for i in live if i.get("grp")}
-    n = 0
-    for g in out.get("groups", []):
-        g = g if isinstance(g, list) else (g.get("ids") or g.get("items") or []) if isinstance(g, dict) else []
-        ids = [x for x in g if x in by]
-        if len(ids) > MAX_GROUP:
-            print(f"  Gruppe mit {len(ids)} Meldungen verworfen (zu groß für einen Vorfall)")
-            continue
-        if len(ids) >= 2:
-            tag = "g" + min(ids)
-            for x in ids:
-                by[x]["grp"] = tag
-            n += 1
-    if not n and old:                                   # leere Antwort bei bisher vorhandenen Gruppen: alten Stand behalten
-        for iid, g in old.items():
-            by[iid]["grp"] = g
-        return len({g for g in old.values()})
-    return n
 
 
 def drop_oversized(items):
@@ -412,9 +367,13 @@ def main():
                 if rep.get("title_de") and not d.get("title_de"):
                     d["title_de"] = rep["title_de"]
         translated = translate_missing(key, recent)
-        if done >= AI.get("group_min_new", 5) or not any(i.get("grp") for i in recent):      # Gruppierung nur, wenn es genug neue Meldungen gibt
-            groups = group(key, recent)
-        else:
+        try:                                        # Vorfall-Gruppen ohne Claude: Embeddings (kostenlos), siehe grouping.py
+            import grouping
+            groups = grouping.group_items(recent, thr=float(AI.get("group_threshold", 0.72)), max_size=int(AI.get("group_max", 8)))
+            sizes = sorted(collections.Counter(i["grp"] for i in recent if i.get("grp", "").startswith("g")).values(), reverse=True)
+            print(f"  Gruppierung (Embeddings): {groups} Gruppen, Größen {sizes[:12]}")
+        except Exception as ex:                     # Paket oder Modell nicht verfügbar: bestehende Gruppen bleiben
+            print(f"::warning::Gruppierung übersprungen: {type(ex).__name__}")
             groups = len({i["grp"] for i in recent if i.get("grp")})
         err = ""
     except RuntimeError as ex:
