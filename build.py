@@ -3,12 +3,8 @@
 import collections
 import datetime as dt
 import json
-import math
-import os
 import re
-import sys
 import unicodedata
-from collections import Counter
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -455,24 +451,6 @@ def main():
 
     cards, top, sections, items = compute(rub_items, now)
 
-    # Nur was auf der Seite steht wird übersetzt (Titel), danach neu auswählen: gebündelt über Sprachen hinweg
-    if not news["meta"].get("sample") and "--no-translate" not in sys.argv:
-        for _ in range(2):
-            visible = {id(c["lead"]): c for c in top + [x for s in sections for x in s["shown"]] if not c["translated"]}
-            need = [c["lead"] for c in visible.values()][: SITE.get("translate_max", 150)]
-            if not need:
-                break
-            try:
-                import translate
-                done = translate.translate_titles(need)
-            except Exception as ex:
-                print("Übersetzung übersprungen:", ex, file=sys.stderr)
-                break
-            print(f"{done} von {len(need)} Titeln übersetzt")
-            if not done:
-                break
-            (ROOT / "data" / "news.json").write_text(json.dumps(news, ensure_ascii=False, indent=1), encoding="utf-8")
-            cards, top, sections, items = compute(rub_items, now)
 
     charts = []
     for spec in CFG["indices"]:

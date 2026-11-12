@@ -162,32 +162,37 @@ def describe(i):
                 suche_rubrik=i.get("rubric"))
 
 
+def _judge(key, batch):
+    try:
+        return batch, call(key, SYSTEM, "Beurteile diese Meldungen:\n" + json.dumps([describe(i) for i in batch], ensure_ascii=False), TOOL)
+    except RuntimeError as ex:
+        print(f"  Claude-Fehler: {ex}", file=sys.stderr)
+        return batch, None
+
+
 def classify(key, items):
+    from concurrent.futures import ThreadPoolExecutor
+    batches = [items[k:k + BATCH] for k in range(0, len(items), BATCH)]
     done = failed = 0
-    for k in range(0, len(items), BATCH):
-        batch = items[k:k + BATCH]
-        try:
-            out = call(key, SYSTEM, "Beurteile diese Meldungen:\n" + json.dumps([describe(i) for i in batch], ensure_ascii=False), TOOL)
-        except RuntimeError as ex:
-            print(f"  Claude-Fehler: {ex}", file=sys.stderr)
-            failed += 1
-            if failed >= 2:
-                break
-            continue
-        by = {i["id"]: i for i in batch}
-        for r in out.get("results", []):
-            if os.environ.get("AI_DEBUG"):
-                print("  ", r.get("id"), r.get("relevant"), r.get("rubric"), "|", r.get("grund"))
-            i = by.get(r.get("id"))
-            if not i:
+    with ThreadPoolExecutor(max_workers=int(AI.get("workers", 4))) as ex:
+        for batch, out in ex.map(lambda b: _judge(key, b), batches):
+            if out is None:
+                failed += 1
                 continue
-            rub = r.get("rubric") if r.get("rubric") in RUBRICS else None
-            i["ai"] = dict(relevant=bool(r.get("relevant")) and rub is not None, rubric=rub,
-                           countries=[c for c in r.get("countries", []) if c in COUNTRIES],
-                           brisanz=max(1, min(5, int(r.get("brisanz") or 3))), model=MODEL, v=VERSION, rv=RULES)
-            if r.get("title_de") and i["lang"] != "de" and not i.get("title_de"):
-                i["title_de"] = r["title_de"].strip()
-            done += 1
+            by = {i["id"]: i for i in batch}
+            for r in out.get("results", []):
+                if os.environ.get("AI_DEBUG"):
+                    print("  ", r.get("id"), r.get("relevant"), r.get("rubric"), "|", r.get("grund"))
+                i = by.get(r.get("id"))
+                if not i:
+                    continue
+                rub = r.get("rubric") if r.get("rubric") in RUBRICS else None
+                i["ai"] = dict(relevant=bool(r.get("relevant")) and rub is not None, rubric=rub,
+                               countries=[c for c in r.get("countries", []) if c in COUNTRIES],
+                               brisanz=max(1, min(5, int(r.get("brisanz") or 3))), model=MODEL, v=VERSION, rv=RULES)
+                if r.get("title_de") and i["lang"] != "de" and not i.get("title_de"):
+                    i["title_de"] = r["title_de"].strip()
+                done += 1
     return done
 
 
