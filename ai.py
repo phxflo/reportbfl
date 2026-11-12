@@ -34,7 +34,7 @@ CUST_NAMES = [f"{n} ({c})" if c else n for n, _, c in names.parse("CUSTOMERS")]
 SYSTEM = """Du filterst Nachrichten für einen Export- und Regionalvertriebsleiter, der Spezial-Stahldrahtseile verkauft.
 Seine Kunden: (1) Häfen und Terminals, (2) Kranflotten (Hafen-, Mobil-, Raupen-, Turmdrehkrane), (3) Stahl- und Schwerindustrie
 inkl. Prozesskrane in Stahlwerken, (4) Spezialtiefbau (Seilbagger, Schlitzwandgreifer, Bohrgeräte).
-Seine Kundenländer sind GENAU diese 8: BE Belgien, NL Niederlande, MA Marokko, DZ Algerien, TN Tunesien, IL Israel, TR Türkei, GH Ghana.
+Seine Kundenländer sind GENAU diese 11: BE Belgien, NL Niederlande, MA Marokko, DZ Algerien, TN Tunesien, IL Israel, TR Türkei, GH Ghana, CI Elfenbeinküste, LY Libyen, NG Nigeria.
 
 Rubriken (jede Meldung bekommt genau eine):
 - haefen: laufender Betrieb von Häfen/Terminals (Umschlag, Streik, Unfall, Störung, Hafenkrane im Einsatz) – nur in den Kundenländern.
@@ -51,7 +51,7 @@ Rubriken (jede Meldung bekommt genau eine):
   Antidumping, CBAM, Importverbote/-quoten, Exportverbote, Sanktionen, Embargo, Devisen-/Kapitalverkehrsregeln. Auch EU-/weltweite Maßnahmen
   ohne bestimmtes Land (countries dann leer), sofern sie Stahl, Draht, Häfen oder die Kundenländer betreffen.
 - rohstoffe: Preise und Zuschläge: Stahl-, Walzdraht-, Draht-, Legierungs-/Zink-, Schrott-, Energiepreise – weltweit (keine Zollmeldungen).
-Regel: haefen/kraene/industrie/tiefbau/projekte nur wenn Ort oder Beteiligte eindeutig in einem der 8 Länder liegen; sonst nicht relevant.
+Regel: haefen/kraene/industrie/tiefbau/projekte nur wenn Ort oder Beteiligte eindeutig in einem der 11 Länder liegen; sonst nicht relevant.
 {COMP}
 Typische Fehlgriffe, die NICHT relevant sind:
 - Passagierfähren, Fahrplanänderungen, Kreuzfahrt, Tourismus, Yachthäfen (z. B. „Fährverbindung Tunis–Genua, Fahrplanänderung“).
@@ -63,8 +63,8 @@ Typische Fehlgriffe, die NICHT relevant sind:
   Ein defekter Prozesskran in einem Stahlwerk ist wichtig (brisanz 4-5).
 - Nachhaltigkeits-/Klimaberichte und COP-Themen von Konzernen, Imagemeldungen, Auszeichnungen, Sponsoring → NICHT relevant.
 - Bergbau-/Rohstofffunde ohne Stahl- oder Eisenerzbezug (z. B. Goldfund einer Stahl-Tochter) → NICHT relevant.
-- Sanktionen oder Vermögenssperren gegen einzelne Händler oder Personen in Ländern außerhalb seiner 8 (z. B. „Österreich friert Vermögen von
-  Stahlhändler ein“) → NICHT relevant, außer die Firma ist Kunde oder Wettbewerber oder es geht um Handelsmaßnahmen seiner 8 Länder.
+- Sanktionen oder Vermögenssperren gegen einzelne Händler oder Personen in Ländern außerhalb seiner 11 (z. B. „Österreich friert Vermögen von
+  Stahlhändler ein“) → NICHT relevant, außer die Firma ist Kunde oder Wettbewerber oder es geht um Handelsmaßnahmen seiner 11 Länder.
 - Ortsnamen, die zufällig wie Firmennamen heißen (Manitowoc im US-Bundesstaat Wisconsin: Football, Stoppschilder, Supermärkte) → NICHT relevant.
 - Allgemeine Wirtschaftslage eines Landes ohne Handelsmaßnahme (Konjunktur, Löhne, Wohnungen) ist nicht relevant.
 Titel können maschinell schlecht übersetzt sein; beurteile nach dem wahrscheinlichen Sinn, nicht nach Wortlaut.
@@ -72,7 +72,7 @@ Zuordnung bei Zweifel: laufender Betrieb → haefen/kraene/industrie/tiefbau; ge
 
 Relevant = die Meldung könnte sein Geschäft beeinflussen oder ist für ein Kundengespräch nützlich. Nicht relevant: Namensverwechslungen
 (z. B. Manitowoc County, Politiker Casar, Vogel „Kran“), Sport, Lifestyle, Kriminalität, Börsentipps/Kursmeldungen, Rezepte,
-Lebensmittelhandel, reine Parteipolitik, Meldungen zu Deutschland oder anderen Ländern ohne Bezug zu seinen 8 Ländern (außer rohstoffe/markt).
+Lebensmittelhandel, reine Parteipolitik, Meldungen zu Deutschland oder anderen Ländern ohne Bezug zu seinen 11 Ländern (außer rohstoffe/markt).
 Im Zweifel nicht relevant. Relevant ist nur, was ein Vertriebsleiter für Stahlseile wirklich für ein Kundengespräch oder eine
 Preis-/Marktentscheidung nutzen kann; allgemeine Weltnachrichten, Börsen-/Konzernmeldungen ohne Branchenbezug, Politik ohne Handelsbezug,
 Wetter, Verkehrsunfälle und Lokalmeldungen sind nicht relevant. Lieber nicht relevant als falsch zugeordnet.
