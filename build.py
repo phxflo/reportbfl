@@ -214,6 +214,14 @@ def country_matchers():
 CUSTOMER = set((CFG.get("region") or {}).get("rubrics", []))   # Häfen, Krane, Industrie, Spezialtiefbau
 
 
+def show_bericht(b):
+    """Bericht für die Seite: nur aktuelle Fassung; Quellen als schlichter Domainname (kurz, einheitlich, nie abgeschnitten)."""
+    if not isinstance(b, dict) or b.get("v") != 3:
+        return None
+    from urllib.parse import urlparse
+    return dict(b, quellen=[dict(u=q["u"], t=urlparse(q["u"]).netloc.removeprefix("www.") or q["t"]) for q in b.get("quellen", [])])
+
+
 def new_since(now):
     """Referenz für „NEU“: der Report von gestern 06:30 (Berlin). Gilt ab 06:30 bis zum nächsten Tag um 06:30 unverändert."""
     loc = now.astimezone(TZ)
@@ -267,7 +275,7 @@ def compute(all_items, now):
         age = max(0.0, (now - pub).total_seconds() / 86400)
         tk = tokens(title + " " + lead["title_orig"])
         cards.append(dict(
-            id=lead["id"], bericht=(lead.get("bericht") or None) if (lead.get("bericht") or {}).get("v") == 3 else None, trusted=any(m.get("trusted") for m in members), srcs=set(srcs),
+            id=lead["id"], bericht=show_bericht(lead.get("bericht")), trusted=any(m.get("trusted") for m in members), srcs=set(srcs),
             rubric=rubric, rubrics=rubrics, rubric_short=rub[rubric]["short"], title=title, lead=lead, text=text,
             orig=lead["title_orig"] if lead["lang"] != "de" and title != lead["title_orig"] else None,
             translated=any(m.get("title_de") for m in members) or lead["lang"] in ("de", "en"),
