@@ -12,6 +12,7 @@ import json
 import os
 import re
 import sys
+import time
 import zipfile
 from pathlib import Path
 
@@ -109,6 +110,15 @@ def parse(text, spec):
     return [dict(p=p, v=pts[p]) for p in sorted(pts)]
 
 
+def fetch_retry(table, years):
+    """Destatis lehnt gelegentlich kurzzeitig ab (z. B. nach vielen Abrufen): einmal nach einer Pause erneut versuchen."""
+    try:
+        return fetch_table(table, years)
+    except (RuntimeError, requests.RequestException):
+        time.sleep(20)
+        return fetch_table(table, years)
+
+
 def save_raw(name, text):
     if not DEBUG:
         return
@@ -142,7 +152,7 @@ def main():
         for table in spec.get("tables") or [spec["table"]]:
             for req in [spec["require"]] + ([spec["fallback_require"]] if spec.get("fallback_require") else []):
                 try:
-                    text = fetch_table(table, spec.get("years"))
+                    text = fetch_retry(table, spec.get("years"))
                     save_raw(f"{spec['id']}_{table}", text)
                     pts = parse(text, dict(spec, require=req))
                 except Exception as ex:
