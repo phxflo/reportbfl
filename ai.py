@@ -18,7 +18,7 @@ CFG = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
 NEWS = ROOT / "data" / "news.json"
 AI = CFG.get("ai", {})
 MODEL = AI.get("model", "claude-sonnet-5-5")
-CHEAP = AI.get("cheap_model", "claude-haiku-5-5")     # für Gruppieren und Übersetzen (einfachere Aufgaben, ca. 20-mal billiger)
+CHEAP = AI.get("cheap_model", "claude-haiku-5-5")     # nur für Übersetzen; beim Gruppieren fand Haiku keine Vorfälle
 RULES = 6                                     # Regelstand der Auswahl; betroffene Rubriken werden bei Erhöhung neu beurteilt
 FORCE = False  # erzwungener Tool-Aufruf; wird bei Ablehnung des Modells automatisch abgeschaltet
 VERSION = 2                                   # Prompt-Stand: bei Änderung werden alle Meldungen neu beurteilt
@@ -228,8 +228,6 @@ def group(key, items):
     """Gleicher Vorfall in mehreren Meldungen (auch in anderen Sprachen) → gemeinsame Gruppen-Kennung."""
     cut = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=3)).isoformat()
     live = [i for i in items if (i.get("ai") or {}).get("relevant") and i["published"] >= cut]   # ältere behalten ihre Gruppe
-    for i in live:
-        i.pop("grp", None)
     if len(live) < 2:
         return 0
     # nach Land und Rubrik sortiert: gleiche Vorfälle stehen dadurch untereinander und werden leichter gefunden
@@ -240,9 +238,10 @@ def group(key, items):
               "derselbe Streik, dieselbe Zollentscheidung, dieselbe Firmenmeldung) – auch in verschiedenen Sprachen und aus verschiedenen "
               "Quellen. Gehe die Liste vollständig durch; die Zeilen sind nach Land und Rubrik sortiert. Nur echte Gleichheit, nicht bloß "
               "gleiches Thema. Gib alle Gruppen mit mindestens zwei Meldungen zurück (jede Meldung höchstens in einer Gruppe).")
-    out = call(key, system, "Meldungen (id | Land | Rubrik | Titel | Datum):\n" + "\n".join(lines), GROUP_TOOL, max_tokens=12000, model=CHEAP)
+    out = call(key, system, "Meldungen (id | Land | Rubrik | Titel | Datum):\n" + "\n".join(lines), GROUP_TOOL, max_tokens=12000)
     print(f"  Gruppierung: {len(live)} Meldungen geprüft, Antwort mit {len(out.get('groups', []))} Gruppen")
     by = {i["id"]: i for i in live}
+    old = {i["id"]: i.pop("grp") for i in live if i.get("grp")}
     n = 0
     for g in out.get("groups", []):
         g = g if isinstance(g, list) else (g.get("ids") or g.get("items") or []) if isinstance(g, dict) else []
@@ -252,6 +251,10 @@ def group(key, items):
             for x in ids:
                 by[x]["grp"] = tag
             n += 1
+    if not n and old:                                   # leere Antwort bei bisher vorhandenen Gruppen: alten Stand behalten
+        for iid, g in old.items():
+            by[iid]["grp"] = g
+        return len({g for g in old.values()})
     return n
 
 
