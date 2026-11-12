@@ -245,7 +245,10 @@ def group(key, items):
     system = ("Finde Meldungen, die über DENSELBEN konkreten Vorfall oder dasselbe Ereignis berichten (z. B. dieselbe Explosion, "
               "derselbe Streik, dieselbe Zollentscheidung, dieselbe Firmenmeldung) – auch in verschiedenen Sprachen und aus verschiedenen "
               "Quellen. Gehe die Liste vollständig durch; die Zeilen sind nach Land und Rubrik sortiert. Nur echte Gleichheit, nicht bloß "
-              "gleiches Thema. Gib alle Gruppen mit mindestens zwei Meldungen zurück (jede Meldung höchstens in einer Gruppe).")
+              "gleiches Thema. Gruppiere NIEMALS nach Thema, Land, Branche, Firma oder Rubrik, sondern nur bei demselben einzelnen Ereignis "
+              "(gleiche Beteiligte, gleicher Anlass, gleiche Zahlen, etwa gleiches Datum). Eine Gruppe hat in der Regel 2 bis 6 Meldungen und "
+              "nie mehr als 10; ist eine Gruppe größer, ist sie falsch. Im Zweifel nicht gruppieren. Gib alle Gruppen mit mindestens zwei "
+              "Meldungen zurück (jede Meldung höchstens in einer Gruppe).")
     out = call(key, system, "Meldungen (id | Land | Rubrik | Titel | Datum):\n" + "\n".join(lines), GROUP_TOOL, max_tokens=12000)
     print(f"  Gruppierung: {len(live)} Meldungen geprüft, Antwort mit {len(out.get('groups', []))} Gruppen")
     by = {i["id"]: i for i in live}
