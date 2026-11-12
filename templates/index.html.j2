@@ -122,16 +122,12 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .x:hover,.x:focus-visible{opacity:1;background:var(--chip)}
 
 /* Titelseite */
-.front{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);background:var(--card);border:1px solid var(--rule);border-top:0}
-.lead{border-left:6px solid var(--rc,var(--steel));padding:26px 28px;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:10px}
-.lead .h{display:block;font:800 clamp(26px,3.4vw,38px)/1.18 var(--serif);letter-spacing:-.01em}
-.lead .orig{font-size:14px;color:var(--muted)}
-.lead .num{font:800 14px var(--sans);color:var(--accent-ink);letter-spacing:.08em}
-.side{list-style:none;margin:0;padding:0;counter-reset:n 1}
-.side li{border-left:4px solid var(--rc,var(--rule));padding:16px 20px;border-top:1px solid var(--rule);counter-increment:n;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 8px}
-.side li:first-child{border-top:0}
-.side .h{display:block;font:700 18px/1.3 var(--serif);margin:3px 0 5px}
-.side .tag{counter-increment:none}
+.rank{list-style:none;margin:0;padding:0;counter-reset:n;background:var(--card);border:1px solid var(--rule);border-top:0}
+.rank li{counter-increment:n;display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:0 10px;align-items:start;padding:16px 20px 16px 16px;border-top:1px solid var(--rule);border-left:5px solid var(--rc,var(--rule))}
+.rank li:first-child{border-top:0}
+.rank li::before{content:counter(n);font:800 30px/1 var(--serif);color:var(--rt);text-align:center;padding-top:2px}
+.rank .h{display:block;font:700 20px/1.3 var(--serif);margin:4px 0 6px}
+.rank li:first-child .h{font-size:24px}
 
 /* Rubriken */
 .rows{columns:2 360px;column-gap:44px;padding:4px 22px 14px}
@@ -157,13 +153,12 @@ footer.site strong{color:var(--ink)}
 footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:6px;padding:4px 10px;cursor:pointer;margin-right:6px}
 
 @media (max-width:760px){
-  .front{grid-template-columns:1fr}.lead{border-right:0;border-bottom:1px solid var(--rule)}
 }
 @media (max-width:600px){
   body{font-size:15.5px}.wrap{padding:0 16px}
   .rows{columns:1;padding:4px 16px 10px}.row{grid-template-columns:54px minmax(0,1fr) auto;gap:10px}
   nav input{display:none}h2.kicker{padding:10px 16px 8px;font-size:22px}h2.kicker small{display:none}
-  .chart .big{font-size:26px}.lead{padding:18px 16px}.side li{padding:14px 16px}
+  .chart .big{font-size:26px}.rank li{grid-template-columns:30px minmax(0,1fr) auto;padding:14px 12px 14px 12px}.rank li::before{font-size:24px}.rank .h{font-size:18px}.rank li:first-child .h{font-size:20px}
   .chips{padding:12px 16px 0}.mast p::before,.mast p::after{display:none}
 }
 @media print{nav,.chips,#trbar,.x{display:none}body{background:#fff}}
@@ -207,7 +202,6 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
   {% if charts %}
   <section id="kennzahlen">
     <h2 class="kicker">Kennzahlen<small>Quelle: Statistisches Bundesamt (Destatis)</small></h2>
-    {% if charts|length > 1 %}<div class="swipe">← zum Wechseln der Kennzahl wischen →</div>{% endif %}
     <div class="charts">
       {% for c in charts %}
       <div class="chart">
@@ -229,36 +223,27 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
   {% endif %}
 
   <section id="top">
-    <h2 class="kicker">Top-5 der Woche<small>nach Brisanz und Kundennähe</small></h2>
+    <h2 class="kicker">Top-5 der Woche</h2>
     {% if top %}
-    <div class="front">
-      {% set c = top[0] %}
-      <article class="lead r-{{ c.rubric }}" data-id="{{ c.id }}">
-        <div class="meta"><span class="tag">{{ c.rubric_short }}</span>{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}<span style="margin-left:auto">{{ xbtn() }}</span></div>
-        {{ item(c) }}
-        {% if c.orig %}<div class="orig" dir="auto">Original ({{ c.lang }}): {{ c.orig }}</div>{% endif %}
-        <div class="meta"><span>{{ c.source }}</span><span>·</span><span>{{ c.when }}</span>{{ badges(c) }}</div>
-      </article>
-      <ol class="side">
-        {% for c in top[1:] %}
-        <li class="r-{{ c.rubric }}" data-id="{{ c.id }}">
-          <div>
-            <div class="meta"><span class="tag">{{ c.rubric_short }}</span>{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}</div>
-            {{ item(c) }}
-            <div class="meta"><span>{{ c.source }}</span><span>·</span><span>{{ c.when }}</span>{{ badges(c) }}</div>
-          </div>
-          {{ xbtn() }}
-        </li>
-        {% endfor %}
-      </ol>
-    </div>
+    <ol class="rank">
+      {% for c in top %}
+      <li class="r-{{ c.rubric }}" data-id="{{ c.id }}">
+        <div style="grid-column:2">
+          <div class="meta"><span class="tag">{{ c.rubric_short }}</span>{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}</div>
+          {{ item(c) }}
+          <div class="meta"><span>{{ c.source }}</span><span>·</span><span>{{ c.when }}</span>{{ badges(c) }}</div>
+        </div>
+        {{ xbtn() }}
+      </li>
+      {% endfor %}
+    </ol>
     {% else %}<div class="box"><div class="empty">Noch keine Meldungen.</div></div>{% endif %}
   </section>
 
   {% for s in sections %}
-  {% if s.group and (loop.first or sections[loop.index0 - 1].group != s.group) %}<div class="grouphead">{{ s.group }}<span class="sws">{% for g in sections if g.group == s.group %}<i class="r-{{ g.id }}"></i>{% endfor %}</span></div>{% endif %}
+  {% if s.group and (loop.first or sections[loop.index0 - 1].group != s.group) %}<div class="grouphead">{{ s.group }}</div>{% endif %}
   <section id="{{ s.id }}" class="r-{{ s.id }}" data-section>
-    <h2 class="kicker"><i></i>{{ s.title }}<small>die neuesten {{ s.limit }}</small></h2>
+    <h2 class="kicker"><i></i>{{ s.title }}</h2>
     <div class="box">
     {% if s.shown %}
     <div class="rows">{% for c in s.shown %}{{ row(c) }}{% endfor %}</div>
@@ -273,8 +258,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
   {% set lvl = 'bad' if health|selectattr(1,'equalto','bad')|list else ('warn' if health|selectattr(1,'equalto','warn')|list else 'ok') %}
   <details class="health"><summary><span class="dot {{ lvl }}"></span>Systemstatus: {{ 'alles in Ordnung' if lvl == 'ok' else 'Hinweise beachten' if lvl == 'warn' else 'Störung – Inhalte evtl. unvollständig' }}</summary>
     <ul>{% for n, s, x in health %}<li class="{{ s }}"><span class="dot {{ s }}"></span><b>{{ n }}</b>{{ x }}</li>{% endfor %}</ul></details>
-  <strong>So entsteht der Rope Report.</strong> Täglich frühmorgens stellt der Report Suchanfragen an Google News (Deutsch, Englisch, Französisch, Niederländisch, Türkisch, Arabisch, Hebräisch) und an ausgewählte Fachmedien. Claude beurteilt jede Meldung: Betrifft sie deine Kunden, Länder oder Märkte? Dazu kommen Rubrik, Land, Brisanz und die deutsche Übersetzung; gleiche Vorfälle aus mehreren Quellen werden zu einer Meldung gebündelt. Jede Meldung steht genau einmal, entweder in den Top-5 oder in ihrer Rubrik. Die Farbe markiert die Rubrik. Kennzahlen stammen vom Statistischen Bundesamt. Mit ✕ blendest du Unpassendes in deinem Browser aus.
-  Kennzahlen: Statistisches Bundesamt (Destatis), GENESIS-Online. Themen, Suchbegriffe und Länder lassen sich in <code>config.yaml</code> anpassen.
+  Quelle der Kennzahlen: Statistisches Bundesamt (Destatis), GENESIS-Online.
 </footer></div>
 
 <script>
