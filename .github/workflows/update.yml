@@ -9,6 +9,10 @@ on:
         description: "Alle Meldungen neu von Claude beurteilen (kostet deutlich mehr)"
         type: boolean
         default: false
+      build_only:
+        description: "Nur Seite neu bauen (keine Suche, kein Claude, keine Kosten) – für Designänderungen"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -54,17 +58,20 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python fetch_ratings.py
       - name: Meldungen abrufen
+        if: github.event.inputs.build_only != 'true'
         env:
           COMPETITORS: ${{ secrets.COMPETITORS }}                # optional: Wettbewerber, durch Komma getrennt
           CUSTOMERS: ${{ secrets.CUSTOMERS }}                    # optional: Kunden, durch Komma getrennt
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}     # nur als Schalter: mit Claude dürfen weite Suchen ungefiltert durch
         run: python fetch_news.py
       - name: Kennzahlen abrufen (Destatis)
+        if: github.event.inputs.build_only != 'true'
         env:
           DESTATIS_USER: ${{ secrets.DESTATIS_USER }}
           DESTATIS_PASSWORD: ${{ secrets.DESTATIS_PASSWORD }}
         run: python fetch_indices.py
       - name: Meldungen von Claude beurteilen lassen
+        if: github.event.inputs.build_only != 'true'
         continue-on-error: true       # ohne Schlüssel oder bei API-Fehlern läuft der Report mit den Regeln weiter
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
