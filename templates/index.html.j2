@@ -133,7 +133,7 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .meta{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
 .pill{font-size:11px;font-weight:600;padding:2px 7px;border-radius:99px;background:var(--chip);color:var(--ink);white-space:nowrap}
 .pill.new{background:var(--accent);color:#1a1200}
-.pill.c{background:transparent;border:1px solid var(--rule);color:var(--ink);font-weight:600}
+.cty{font-size:13px;font-weight:600;color:var(--muted);white-space:normal}
 .pill.t{background:transparent;border:1px solid var(--accent-ink);color:var(--accent-ink)}
 .pill.k{background:var(--steel);color:#fff;border:1px solid color-mix(in srgb,#fff 25%,var(--steel))}
 .tag{font-size:12px;font-weight:700;color:var(--rt);display:inline-flex;align-items:center;gap:6px}
@@ -198,7 +198,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 
 {% macro badges(c) %}{% if c.trusted %}<span>·</span><span>Fachmedium</span>{% endif %}{% if c.n > 1 %}<span>·</span><span>{{ c.n }} Quellen</span>{% endif %}{% endmacro %}
 
-{% macro chips(c) %}{% for k in c.countries %}<span class="pill c">{{ k.name }}</span>{% endfor %}{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}{% if c.kunde %}<span class="pill k">Kunde</span>{% endif %}{% endmacro %}
+{% macro chips(c) %}{% if c.countries %}<span class="cty">{{ c.countries|map(attribute="name")|join(", ") }}</span>{% endif %}{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}{% if c.kunde %}<span class="pill k">Kunde</span>{% endif %}{% endmacro %}
 
 {% macro xbtn() %}<span class="rate" role="group" aria-label="Bewertung"><button class="rb g" type="button" data-r="g" title="Gut" aria-label="Gut"></button><button class="rb y" type="button" data-r="y" title="Grenzwertig" aria-label="Grenzwertig"></button><button class="rb r" type="button" data-r="r" title="Schlecht – ausblenden" aria-label="Schlecht, ausblenden"></button></span>{% endmacro %}
 
