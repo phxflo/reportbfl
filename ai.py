@@ -382,7 +382,7 @@ def main():
                 if rep.get("title_de") and not d.get("title_de"):
                     d["title_de"] = rep["title_de"]
         translated = translate_missing(key, recent)
-        if done >= AI.get("group_min_new", 5):      # Gruppierung nur, wenn es genug neue Meldungen gibt
+        if done >= AI.get("group_min_new", 5) or not any(i.get("grp") for i in recent):      # Gruppierung nur, wenn es genug neue Meldungen gibt
             groups = group(key, recent)
         else:
             groups = len({i["grp"] for i in recent if i.get("grp")})
