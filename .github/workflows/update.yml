@@ -45,6 +45,7 @@ jobs:
       - name: Meldungen abrufen
         env:
           COMPETITORS: ${{ secrets.COMPETITORS }}                # optional: Wettbewerber, durch Komma getrennt
+          CUSTOMERS: ${{ secrets.CUSTOMERS }}                    # optional: Kunden, durch Komma getrennt
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}     # nur als Schalter: mit Claude dürfen weite Suchen ungefiltert durch
         run: python fetch_news.py
       - name: Kennzahlen abrufen (Destatis)
@@ -57,8 +58,11 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           COMPETITORS: ${{ secrets.COMPETITORS }}
+          CUSTOMERS: ${{ secrets.CUSTOMERS }}
         run: python ai.py
       - name: Seite bauen
+        env:
+          CUSTOMERS: ${{ secrets.CUSTOMERS }}
         run: python build.py
       - name: Seite verschlüsseln
         run: python protect.py

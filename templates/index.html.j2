@@ -170,7 +170,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 
 {% macro badges(c) %}{% if c.trusted %}<span>·</span><span>Fachmedium</span>{% endif %}{% if c.n > 1 %}<span>·</span><span>{{ c.n }} Quellen</span>{% endif %}{% endmacro %}
 
-{% macro chips(c) %}{% for k in c.countries %}<span class="pill c">{{ k.name }}</span>{% endfor %}{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}{% if c.bris is defined and c.bris >= 5 %}<span class="pill hot">Brisant</span>{% endif %}{% endmacro %}
+{% macro chips(c) %}{% for k in c.countries %}<span class="pill c">{{ k.name }}</span>{% endfor %}{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}{% if c.bris is defined and c.bris >= 5 %}<span class="pill hot">Brisant</span>{% endif %}{% if c.kunde %}<span class="pill t">Kunde</span>{% endif %}{% endmacro %}
 
 {% macro hot(c) %}{% if c.bris is defined and c.bris >= 5 %}<span class="pill hot">Brisant</span>{% endif %}{% endmacro %}
 
@@ -179,7 +179,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 {% macro row(c, hide=false) %}
 <article class="row{{ ' hidden' if hide }}" data-id="{{ c.id }}" data-countries="{{ c.countries|map(attribute='id')|join(' ') }}">
   <div class="when">{{ c.when }}</div>
-  <div>{% if c.countries or c.is_new or (c.bris is defined and c.bris >= 5) %}<div class="meta" style="margin-bottom:4px">{{ chips(c) }}</div>{% endif %}{{ item(c) }}<div class="meta"><span>{{ c.source }}</span>{{ badges(c) }}</div></div>
+  <div>{% if c.countries or c.is_new or c.kunde or (c.bris is defined and c.bris >= 5) %}<div class="meta" style="margin-bottom:4px">{{ chips(c) }}</div>{% endif %}{{ item(c) }}<div class="meta"><span>{{ c.source }}</span>{{ badges(c) }}</div></div>
   {{ xbtn() }}
 </article>
 {% endmacro %}

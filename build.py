@@ -4,6 +4,7 @@ import collections
 import datetime as dt
 import json
 import math
+import os
 import re
 import sys
 import unicodedata
@@ -184,6 +185,8 @@ def _home():
 
 
 HOME = _home()
+_cn = [x.strip() for x in os.environ.get("CUSTOMERS", "").replace("\n", ",").split(",") if x.strip()]
+CUST = re.compile("|".join(rf"(?<!\w){re.escape(n)}(?!\w)" for n in _cn) or "(?!x)x", re.I)
 
 
 def country_matchers():
@@ -257,7 +260,7 @@ def compute(all_items, now):
             when=pub.astimezone(TZ).strftime("%d.%m. %H:%M"), ts=pub, is_new=age < 1,
             countries=[dict(id=c, name=cname[c]) for c in countries], tk=tk, sig=signature(tk), grp={m["grp"] for m in members if m.get("grp")},
             bris=max([m["ai"]["brisanz"] for m in members if m.get("ai")] or [0]),
-            ai_used=bool(ai), rc=collections.Counter(a["rubric"] for a in ai if a.get("rubric")) or collections.Counter([rubric]),
+            kunde=bool(CUST.search(title + " " + lead["title_orig"])), ai_used=bool(ai), rc=collections.Counter(a["rubric"] for a in ai if a.get("rubric")) or collections.Counter([rubric]),
             readable=lead["lang"] in ("de", "en") or any(m.get("title_de") for m in members)))
 
     # Gleiche Vorfälle (auch in anderen Sprachen, z. B. die Explosion in Izmir) zu einer Meldung bündeln.
@@ -298,7 +301,8 @@ def compute(all_items, now):
         c["score"] = (rub[c["rubric"]]["weight"] * 2 + 1.2 * min(c["n"] - 1, 8) + (2.5 if BOOST.search(c["text"]) else 0)
                       + 0.8 * max(0, 1 - age / SITE["window_days"]) + (0.4 if c["countries"] else 0)
                       + (1.5 if c["trusted"] else 0) + (1.5 * (c["bris"] - 3) if c["bris"] else 0)
-                      + (2.0 if c["rubric"] in CUSTOMER and c["countries"] else 0))      # Kundennähe: Ereignisse bei Kunden in deinen Ländern zuerst
+                      + (2.0 if c["rubric"] in CUSTOMER and c["countries"] else 0)
+                      + (3.0 if c["kunde"] else 0))      # Kundennähe: Ereignisse bei Kunden in deinen Ländern zuerst
 
     # Top-News: nach Brisanz; höchstens eine Meldung je Rubrik. (Gleiche Vorfälle sind oben schon gebündelt;
     # zwei verschiedene Themen aus demselben Land dürfen beide erscheinen.)
