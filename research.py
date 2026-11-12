@@ -73,10 +73,10 @@ def research(key, title, text, source, date):
 
 
 def retry(lead):
-    """Fehlgeschlagene Recherchen (nichts gefunden) werden an späteren Tagen bis zu zweimal wiederholt; alte lange Berichte werden ersetzt."""
+    """Fehlgeschlagene Recherchen (nichts gefunden) werden bei späteren Läufen bis zu zweimal wiederholt; alte lange Berichte werden ersetzt."""
     b = lead.get("bericht")
     if b is False:
-        return lead.get("bericht_try", 1) < 3 and lead.get("bericht_day", "") < dt.date.today().isoformat()
+        return lead.get("bericht_try", 1) < 3
     return isinstance(b, dict) and b.get("v") != 2
 
 
