@@ -139,6 +139,13 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .chips button[aria-pressed=true]{background:var(--rc,var(--steel));color:#fff;border-color:var(--rc,var(--steel))}
 .hidden{display:none!important}
 
+.health{margin:0 0 14px;font-size:13px}
+.health summary{cursor:pointer;color:var(--muted);list-style:none}
+.health summary::-webkit-details-marker{display:none}
+.health .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:baseline;background:var(--ok,#2e9d5b)}
+.health .warn .dot,.health .dot.warn{background:#d99a1c}.health .bad .dot,.health .dot.bad{background:#d23b4a}
+.health ul{list-style:none;margin:8px 0 0;padding:0}.health li{padding:2px 0;color:var(--muted)}.health li b{color:var(--ink);font-weight:600;margin-right:6px}
+.healthbar{background:color-mix(in srgb,#d23b4a 14%,var(--card));border-bottom:1px solid #d23b4a;color:var(--ink);font-size:13px;padding:8px 16px;text-align:center}
 footer.site{border-top:1px solid var(--rule);padding:22px 0 48px;font-size:13px;line-height:1.65;color:var(--muted)}
 footer.site strong{color:var(--ink)}
 footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:6px;padding:4px 10px;cursor:pointer;margin-right:6px}
@@ -157,6 +164,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 </style>
 </head>
 <body>
+{% if health|selectattr(1,'equalto','bad')|list %}<div class="healthbar">Störung bei der heutigen Aktualisierung – Details unten im Systemstatus.</div>{% endif %}
 {% if sample %}<div class="sample">VORSCHAU MIT BEISPIELDATEN – Überschriften, Quellen und Zahlen sind erfunden. Echte Meldungen erscheinen nach dem ersten automatischen Lauf.</div>{% endif %}
 
 {% macro item(c) %}<a dir="auto" class="h" href="{{ c.url }}" target="_blank" rel="noopener"{% if c.orig %} title="Original: {{ c.orig }}"{% endif %}{% if c.needs_tr %} data-t="1" data-lang="{{ c.lang|lower }}"{% endif %}>{{ c.title }}</a>{% endmacro %}
@@ -261,6 +269,9 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 
 <div class="wrap"><footer class="site">
   <div id="hidebar" hidden><button id="hidecopy" type="button">Ausgeblendete Titel kopieren</button><button id="hidereset" type="button">Alle wieder einblenden</button><span id="hidecount"></span></div>
+  {% set lvl = 'bad' if health|selectattr(1,'equalto','bad')|list else ('warn' if health|selectattr(1,'equalto','warn')|list else 'ok') %}
+  <details class="health"><summary><span class="dot {{ lvl }}"></span>Systemstatus: {{ 'alles in Ordnung' if lvl == 'ok' else 'Hinweise beachten' if lvl == 'warn' else 'Störung – Inhalte evtl. unvollständig' }}</summary>
+    <ul>{% for n, s, x in health %}<li class="{{ s }}"><span class="dot {{ s }}"></span><b>{{ n }}</b>{{ x }}</li>{% endfor %}</ul></details>
   <strong>So entsteht der Rope Report.</strong> Täglich frühmorgens stellt der Report Suchanfragen an Google News (Deutsch, Englisch, Französisch, Niederländisch, Türkisch, Arabisch, Hebräisch) und an ausgewählte Fachmedien. Claude beurteilt jede Meldung: Betrifft sie deine Kunden, Länder oder Märkte? Dazu kommen Rubrik, Land, Brisanz und die deutsche Übersetzung; gleiche Vorfälle aus mehreren Quellen werden zu einer Meldung gebündelt. Jede Meldung steht genau einmal, entweder in den Top-5 oder in ihrer Rubrik. Die Farbe markiert die Rubrik. Kennzahlen stammen vom Statistischen Bundesamt. Mit ✕ blendest du Unpassendes in deinem Browser aus.
   Kennzahlen: Statistisches Bundesamt (Destatis), GENESIS-Online. Themen, Suchbegriffe und Länder lassen sich in <code>config.yaml</code> anpassen.
 </footer></div>

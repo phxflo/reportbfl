@@ -218,10 +218,20 @@ def group(key, items):
     return n
 
 
+def _mark(info):
+    try:
+        d = json.loads(NEWS.read_text(encoding="utf-8"))
+        d.setdefault("meta", {})["ai"] = info
+        NEWS.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
+    except Exception:
+        pass
+
+
 def main():
     key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
     if not key:
         print("ANTHROPIC_API_KEY nicht gesetzt – Claude-Auswertung übersprungen.")
+        _mark(dict(status="aus"))
         return
     if not NEWS.exists():
         return
@@ -237,9 +247,12 @@ def main():
         done = classify(key, todo) if todo else 0
         translated = translate_missing(key, recent)
         groups = group(key, recent)
+        err = ""
     except RuntimeError as ex:
         print(f"::warning::Claude-Auswertung abgebrochen: {ex}")
         done, groups, translated = 0, 0, 0
+        err = str(ex)[:160]
+    data.setdefault("meta", {})["ai"] = dict(status="fehler" if err else "ok", error=err, judged=done, todo=len(todo), groups=groups)
     NEWS.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
     rel = sum(1 for i in recent if (i.get("ai") or {}).get("relevant"))
     print(f"{done} beurteilt, {translated} nachübersetzt, {rel}/{len(recent)} im Fenster relevant, {groups} Vorfall-Gruppen")

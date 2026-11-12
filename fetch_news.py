@@ -167,9 +167,13 @@ def main():
 
     with ThreadPoolExecutor(max_workers=int(os.environ.get("FETCH_WORKERS", "3"))) as pool:   # mehrere Abfragen gleichzeitig
         feeds = list(pool.map(_get, jobs))
+    langs = {}
     for job, feed in zip(jobs, feeds):
+        L = langs.setdefault(job["lang"], [0, 0])
+        L[1] += 1
         if not feed or not feed.entries:
             continue
+        L[0] += 1
         ok += 1
         for e in feed.entries:
             raw = e.get("title", "").strip()
@@ -214,7 +218,7 @@ def main():
 
     items = [i for i in db.values() if dt.datetime.fromisoformat(i["published"]) >= cutoff]
     items.sort(key=lambda i: i["published"], reverse=True)
-    NEWS.write_text(json.dumps(dict(meta=dict(updated=now.isoformat(), sample=False), items=items),
+    NEWS.write_text(json.dumps(dict(meta=dict(updated=now.isoformat(), sample=False, health=dict(queries=len(jobs), ok=ok, langs=langs)), items=items),
                                ensure_ascii=False, indent=1), encoding="utf-8")
     if ok == 0:
         sys.exit("Keine einzige Abfrage erfolgreich – Netzwerk prüfen.")
