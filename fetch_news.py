@@ -22,9 +22,7 @@ import names
 ROOT = Path(__file__).parent
 CFG = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
 NEWS = ROOT / "data" / "news.json"
-LANGMAP = {"he": "iw"}
 UA = {"User-Agent": "Mozilla/5.0 (compatible; SeilReport/1.0)"}
-MAX_TRANSLATE = 1500
 HAVE_AI = bool(os.environ.get("ANTHROPIC_API_KEY", "").strip())   # nur dann lassen wir weite Suchen ungefiltert durch
 
 
@@ -149,11 +147,6 @@ def fetch(url, tries=3):
             print(f"  Fehler: {type(e).__name__}", file=sys.stderr)
         time.sleep(2 * (i + 1))
     return None
-
-
-def detect_countries(text):
-    low = text.lower()
-    return [c["id"] for c in CFG["countries"] if any(n.lower() in low for n in c["names"])]
 
 
 

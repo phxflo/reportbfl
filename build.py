@@ -18,9 +18,7 @@ SITE = CFG["site"]
 TZ = ZoneInfo(SITE["timezone"])
 MONTHS = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
 WDAYS = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
-LANG = {"de": "DE", "en": "EN", "fr": "FR", "nl": "NL", "tr": "TR", "ar": "AR", "he": "HE"}
 BOOST = re.compile(CFG["boost"], re.I)
-RADAR = re.compile(CFG["radar"], re.I)
 
 
 def num(v, d=1):
@@ -270,7 +268,7 @@ def new_since(now):
 
 
 def compute(all_items, now):
-    """Wählt aus: Top-News (nach Brisanz) und je Rubrik die neuesten Meldungen (höchstens per_section)."""
+    """Wählt aus: je Rubrik die wichtigsten Meldungen (höchstens per_section)."""
     win = now - dt.timedelta(days=SITE["window_days"])
     fresh = new_since(now)
     rub = {r["id"]: r for r in CFG["rubrics"]}
@@ -317,11 +315,9 @@ def compute(all_items, now):
         tk = tokens(title + " " + lead["title_orig"])
         cards.append(dict(
             id=lead["id"], adj=ADJ.get(lead["id"], 0.0), bericht=show_bericht(lead.get("bericht")), trusted=any(m.get("trusted") for m in members), srcs=set(srcs),
-            rubric=rubric, rubrics=rubrics, rubric_short=rub[rubric]["short"], title=title, lead=lead, text=text,
+            rubric=rubric, rubrics=rubrics, title=title, lead=lead, text=text,
             orig=lead["title_orig"] if lead["lang"] != "de" and title != lead["title_orig"] else None,
-            translated=any(m.get("title_de") for m in members) or lead["lang"] in ("de", "en"),
-            needs_tr=not (any(m.get("title_de") for m in members) or lead["lang"] in ("de", "en")),
-            lang=LANG.get(lead["lang"], lead["lang"].upper()), source=srcs[0], n=len(srcs), url=lead["url"],
+            source=srcs[0], n=len(srcs), url=lead["url"],
             when=pub.astimezone(TZ).strftime("%d.%m. %H:%M"), ts=pub, is_new=pub >= fresh,
             countries=[dict(id=c, name=cname[c]) for c in countries], tk=tk, sig=signature(tk), grp={m["grp"] for m in members if m.get("grp") and m["grp"] not in big_grp},
             bris=max([m["ai"]["brisanz"] for m in members if m.get("ai")] or [0]),
@@ -359,11 +355,10 @@ def compute(all_items, now):
             c["rubrics"] = [c["rubric"]]
         else:
             c["rubric"] = c["rubrics"][0]
-        c["rubric_short"] = rub[c["rubric"]]["short"]
         c["n"] = len(c["srcs"])
         age = max(0.0, (now - c["ts"]).total_seconds() / 86400)
         # Brisanz: Gewicht der Rubrik, Zahl der Quellen, Reizwörter (Zuschlag, Zoll …); Aktualität zählt kaum,
-        # damit die Top-News über die Woche stabil bleiben
+        # damit die Rangfolge über die Woche stabil bleiben
         c["score"] = (rub[c["rubric"]]["weight"] * 2 + 1.2 * min(c["n"] - 1, 8) + (2.5 if BOOST.search(c["text"]) else 0)
                       + 0.8 * max(0, 1 - age / SITE["window_days"]) + (0.4 if c["countries"] else 0)
                       + (1.5 if c["trusted"] else 0) + (1.5 * (c["bris"] - 3) if c["bris"] else 0)
