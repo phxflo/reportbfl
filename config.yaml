@@ -9,7 +9,6 @@ site:
   window_days: 7            # Zeitraum der Anzeige ("Woche")
   fetch_days: 7             # pro Lauf: Meldungen der letzten n Tage abfragen
   per_section: 5            # höchstens so viele (wichtigste) Meldungen je Rubrik; einzelne Rubriken können mit max/min_bris abweichen
-  top_n: 5                  # Top-News der Woche
   timezone: "Europe/Berlin"
   translate_max: 150        # höchstens so viele Titel pro Lauf übersetzen (nur sichtbare)
   rating: {repo: "phxflo/reportbfl", issue: 36}   # Ampel-Bewertungen landen als Kommentare in diesem Issue
@@ -352,7 +351,7 @@ ai:                       # Auswertung durch Claude (nur mit Secret ANTHROPIC_AP
   batch: 25               # Meldungen je Anfrage
   max_items: 150          # Obergrenze neuer Meldungen je Lauf (Kostenbremse); der Rest folgt am nächsten Tag
 
-research:                 # Hintergrundrecherche mit Kurzbericht (Web-Suche durch Claude) für Top 5, Kunden und Wettbewerber
+research:                 # Hintergrundrecherche mit Kurzbericht (Web-Suche durch Claude) für alle angezeigten Meldungen
   model: claude-haiku-5-5   # Haiku: Berichte zu allen angezeigten Meldungen bleiben bezahlbar
   max_per_run: 40          # höchstens so viele neue Berichte je Lauf (Kostenbremse, ca. 0,04 $ je Bericht)
   searches: 1             # Web-Suchen je Bericht (jede Suche liefert viel Text und kostet Eingabe-Token)

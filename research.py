@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hintergrundrecherche: zu den wichtigsten neuen Meldungen (Top 5, Kunden, Wettbewerber) sucht Claude im Web
+"""Hintergrundrecherche: zu den wichtigsten neuen Meldungen (alle angezeigten, v. a. Kunden und Wettbewerber) sucht Claude im Web
 und schreibt einen Kurzbericht mit Quellen. Das Ergebnis wird je Meldung gespeichert (items[].bericht) und nur einmal bezahlt.
 Aufruf nach ai.py und vor build.py; braucht ANTHROPIC_API_KEY, CUSTOMERS (wie build.py)."""
 import datetime as dt
