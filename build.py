@@ -504,22 +504,6 @@ def font_css():
     return "".join(out)
 
 
-def country_stats(cards, top):
-    """Je Land: Zahl der Meldungen im Fenster (für Karte und Länderliste)."""
-    st = {c["id"]: dict(id=c["id"], name=c["name"], n=0) for c in CFG["countries"]}
-    for c in cards:
-        for k in c["countries"]:
-            s = st.get(k["id"])
-            if s:
-                s["n"] += 1
-    return sorted(st.values(), key=lambda s: (-s["n"], s["name"]))
-
-
-def load_map():
-    f = ROOT / "map.json"
-    return json.loads(f.read_text(encoding="utf-8")) if f.exists() else None
-
-
 def main():
     news, idx = load("news.json"), load("indices.json")
     sample = news["meta"].get("sample") or idx["meta"].get("sample")
@@ -548,7 +532,7 @@ def main():
         updated=local.strftime("%d.%m.%Y, %H:%M Uhr"), edition=local.timetuple().tm_yday,
         n_week=len(cards), n_today=sum(c["is_new"] for c in cards), n_src=len({i["source"] for i in items}),
         errors=index_notes(idx, now), health=health(news, idx, now, cards),
-        fontcss=font_css(), rating=SITE.get("rating"), cmap=load_map(), cstats=country_stats(cards, top))
+        fontcss=font_css(), rating=SITE.get("rating"))
     (ROOT / "docs").mkdir(exist_ok=True)
     (ROOT / "docs" / "index.html").write_text(html, encoding="utf-8")
     print(f"docs/index.html: {len(cards)} Meldungen im Fenster, {len(charts)} Diagramme")

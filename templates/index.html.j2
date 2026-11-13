@@ -107,27 +107,6 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .chart footer a{text-decoration:underline}
 
 /* Länderkarte */
-.lage{display:grid;grid-template-columns:minmax(0,290px) minmax(0,1fr);gap:0;background:var(--card);border:1px solid var(--rule);border-top:0}
-.lage svg{display:block;width:100%;height:auto;background:var(--paper)}
-.lage .bg{fill:color-mix(in srgb,var(--rule) 70%,var(--paper));stroke:var(--card);stroke-width:.6}
-.lage .cn{cursor:pointer;outline:none}
-.lage .cn path{fill:var(--steel);stroke:var(--card);stroke-width:.8;transition:fill .15s}
-.lage .cn:hover path,.lage .cn:focus-visible path,.lage .cn.on path{fill:var(--line)}
-.lage .cn circle{fill:var(--accent);stroke:var(--card);stroke-width:2}
-.lage .cn.z circle{fill:var(--card);stroke:var(--rule)}
-.lage .cn text{font:700 14px var(--sans);fill:#1a1200;text-anchor:middle;pointer-events:none}
-.lage .cn.z text{fill:var(--muted)}
-.clist{list-style:none;margin:0;padding:8px 0}
-.clist button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 46px;gap:2px 12px;align-items:center;width:100%;padding:9px 22px}
-.clist button:hover,.clist button.on,.clist button:focus-visible{background:var(--chip)}
-.clist .nm{font:700 20px/1.1 var(--serif)}
-.clist .n{font:700 20px/1 var(--serif);text-align:right;font-variant-numeric:tabular-nums}
-.clist .bar{grid-column:1/-1;height:4px;background:var(--chip);border-radius:2px}
-.clist .bar i{display:block;height:100%;background:var(--accent);border-radius:2px}
-#cfilter{grid-column:1/-1;padding:10px 22px;border-top:1px solid var(--rule);font-size:14px}
-#cfilter button{font:600 12px var(--sans);border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:6px;padding:3px 10px;cursor:pointer;margin-left:8px}
-.cf-off{display:none!important}
-@media (max-width:760px){.lage{grid-template-columns:1fr}.lage svg{max-height:250px}.clist button{padding:9px 16px}}
 
 /* Bausteine */
 .meta{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
@@ -212,7 +191,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 
 {% macro bericht(c) %}{% if c.bericht %}<details class="bericht"><summary>Hintergrund</summary><p>{{ c.bericht.text }}</p>{% if c.bericht.quellen %}<div class="bq">{% for q in c.bericht.quellen %}<a href="{{ q.u }}" target="_blank" rel="noopener noreferrer">{{ q.t }}</a>{% endfor %}</div>{% endif %}</details>{% endif %}{% endmacro %}
 {% macro row(c, hide=false) %}
-<article class="row{{ ' hidden' if hide }}" data-id="{{ c.id }}" data-rate="{{ c.rate or '' }}" data-countries="{{ c.countries|map(attribute='id')|join(' ') }}">
+<article class="row{{ ' hidden' if hide }}" data-id="{{ c.id }}" data-rate="{{ c.rate or '' }}">
   <div class="when">{{ c.when }}</div>
   <div>{% if c.countries or c.is_new or c.kunde %}<div class="meta" style="margin-bottom:4px">{{ chips(c) }}</div>{% endif %}{{ item(c) }}<div class="meta"><span>{{ c.source }}</span>{{ badges(c) }}</div>{{ bericht(c) }}</div>
   {{ xbtn() }}
@@ -229,7 +208,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 </div><div class="rope"></div></header>
 
 <nav aria-label="Rubriken"><div class="wrap">
-  <a href="#kennzahlen">Kennzahlen</a><a href="#laender-karte">Länder</a><a href="#top">Top-5</a><span class="sep"></span>
+  <a href="#kennzahlen">Kennzahlen</a><a href="#top">Top-5</a><span class="sep"></span>
   {% for s in sections %}<a class="rc r-{{ s.id }}" href="#{{ s.id }}">{{ s.short }}{% if s.shown %}<b class="has">{{ s.shown|length }}</b>{% endif %}</a>{% endfor %}
 </div></nav>
 
@@ -259,33 +238,13 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
   </section>
   {% endif %}
 
-  {% if cmap %}
-  {% set cs = {} %}{% for s in cstats %}{% set _ = cs.update({s.id: s}) %}{% endfor %}
-  {% set mx = (cstats|map(attribute='n')|max) or 1 %}
-  <section id="laender-karte">
-    <h2 class="kicker">Kundenländer</h2>
-    <div class="lage">
-      <svg viewBox="0 0 {{ cmap.w }} {{ cmap.h }}" role="group" aria-label="Karte der Kundenländer">
-        <path class="bg" d="{{ cmap.bg }}"/>
-        {% for id, m in cmap.c.items() %}{% set s = cs.get(id) %}
-        <g class="cn{{ ' z' if not (s and s.n) }}" data-c="{{ id }}" tabindex="0" role="button" aria-label="{{ s.name if s else id }}: {{ s.n if s else 0 }} Meldungen"><title>{{ s.name if s else id }}: {{ s.n if s else 0 }}</title>
-          <path d="{{ m.d }}"/><circle cx="{{ m.x }}" cy="{{ m.y }}" r="{{ (9 + ((s.n if s else 0) ** 0.5) * 2.2)|round(1) }}"/><text x="{{ m.x }}" y="{{ (m.y + 4)|round(1) }}">{{ s.n if s else 0 }}</text>
-        </g>{% endfor %}
-      </svg>
-      <ul class="clist">
-        {% for s in cstats %}<li><button type="button" data-c="{{ s.id }}"><span class="nm">{{ s.name }}</span><span class="n">{{ s.n }}</span><span class="bar"><i style="width:{{ (100 * s.n / mx)|round|int }}%"></i></span></button></li>{% endfor %}
-      </ul>
-      <div id="cfilter" hidden>Gefiltert auf <b id="cfname"></b><button type="button" id="cfreset">Filter aufheben</button></div>
-    </div>
-  </section>
-  {% endif %}
 
   <section id="top">
     <h2 class="kicker">Top-5 der Woche</h2>
     {% if top %}
     <ol class="rank">
       {% for c in top %}
-      <li class="r-{{ c.rubric }}" data-id="{{ c.id }}" data-rate="{{ c.rate or '' }}" data-countries="{{ c.countries|map(attribute='id')|join(' ') }}">
+      <li class="r-{{ c.rubric }}" data-id="{{ c.id }}" data-rate="{{ c.rate or '' }}">
         <div style="grid-column:2">
           <div class="meta"><span class="tag">{{ c.rubric_short }}</span>{{ chips(c) }}</div>
           {{ item(c) }}
@@ -326,27 +285,6 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 (function(){
   var $=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
   
-  /* Länderfilter (Karte und Liste) */
-  var cc='', cnames={};
-  $('.clist button').forEach(function(b){cnames[b.dataset.c]=b.querySelector('.nm').textContent});
-  function applyC(){
-    $('[data-countries]').forEach(function(el){
-      var on=!cc||(' '+el.dataset.countries+' ').indexOf(' '+cc+' ')>-1;
-      el.classList.toggle('cf-off',!on);
-    });
-    $('.clist button').forEach(function(b){b.classList.toggle('on',b.dataset.c===cc)});
-    $('.lage .cn').forEach(function(g){g.classList.toggle('on',g.dataset.c===cc)});
-    var bar=document.getElementById('cfilter'); if(!bar)return;
-    bar.hidden=!cc; document.getElementById('cfname').textContent=cnames[cc]||'';
-  }
-  function pickC(c){cc=(cc===c)?'':c;applyC()}
-  $('.clist button').forEach(function(b){b.addEventListener('click',function(){pickC(b.dataset.c)})});
-  $('.lage .cn').forEach(function(g){
-    g.addEventListener('click',function(){pickC(g.dataset.c)});
-    g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pickC(g.dataset.c)}});
-  });
-  var rs=document.getElementById('cfreset'); if(rs)rs.addEventListener('click',function(){cc='';applyC()});
-
   /* Ampel-Bewertung: lokal merken, gesammelt an GitHub senden (Kommentar im Bewertungs-Issue) */
   var RT={{ rating|tojson if rating else 'null' }};
   if(RT){
