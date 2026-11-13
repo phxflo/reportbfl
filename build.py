@@ -375,7 +375,7 @@ def compute(all_items, now):
     def member(c, rid):
         if c["rubric"] != rid:
             return False
-        if c["ai_used"] and 0 < c["bris"] < rub[rid].get("min_bris", 4):
+        if c["ai_used"] and 0 < c["bris"] < rub[rid].get("min_bris", 4) and not c["kunde"]:      # Kundenmeldungen immer
             return False
         if c["adj"] <= float(CFG.get("ratings", {}).get("hide_below", -0.75)) and not c["kunde"]:
             return False                # sehr ähnlich zu dem, was du rot bewertet hast
@@ -386,7 +386,9 @@ def compute(all_items, now):
     picks = {}
     for r in CFG["rubrics"]:
         lst = sorted([c for c in cards if member(c, r["id"])], key=lambda c: (c["score"], c["ts"]), reverse=True)
-        picks[r["id"]] = lst[:r.get("max", cap)]
+        cust = [c for c in lst if c["kunde"]]                       # alles zu deinen Kunden bleibt drin, auch über dem Limit
+        rest = [c for c in lst if not c["kunde"]][:max(r.get("max", cap) - len(cust), 0)]
+        picks[r["id"]] = cust + rest
 
     # Top-News: die wichtigsten der ausgewählten Rubrikmeldungen, höchstens eine je Rubrik, werden nach oben sortiert
     # (und stehen dann nicht mehr in ihrer Rubrik: jede Meldung genau einmal). Gleiche Vorfälle sind oben schon gebündelt.
