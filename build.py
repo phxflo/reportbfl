@@ -289,6 +289,9 @@ def compute(all_items, now):
         ai = [m["ai"] for m in members if m.get("ai")]
         if ai:                                   # Claude hat entschieden: Rubrik(en) und Länder kommen von dort
             rubrics = sorted({a["rubric"] for a in ai if a.get("rubric")}, key=lambda r: rorder.get(r, 99)) or rubrics
+        rubrics = [r for r in rubrics if r in rorder]
+        if not rubrics:
+            continue
         rubric = rubrics[0]
         # Land = Land, um das es inhaltlich geht: Namen in Titel/Textauszug oder Land in der Suche selbst – nicht das Quellland
         text_all = " ".join((m.get("title_de") or "") + " " + m["title_orig"] + " " + m.get("snippet", "") for m in members)

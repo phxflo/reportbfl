@@ -47,13 +47,13 @@ rubrics:
     core: 'ship-to-shore|sts[- ]crane|(?<!\w)(rtg|rmg)(?!\w)|kaikran|hafenkran|quay crane|containerbrücke|container ?terminal|terminal à conteneurs|konteyner terminal|havenkraan|kadekraan|محطة حاويات|מסוף מכולות'   # Treffer hier zählen auch ohne Ereigniswort
     must: 'hafen|häfen|kaianlage|kaikran|umschlag|container ?terminal|konteyner terminal|terminal à conteneurs|quay|(?<!\w)ports?(?!\w)|ship-to-shore|(?<!\w)(rtg|rmg|sts)(?!\w)|haven|(?<!\w)kade|liman|ميناء|موانئ|محطة حاويات|נמל|מסוף מכולות'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
-      de: [Hafenkran, Containerterminal, Hafenausbau, Kaianlage, Terminal Umschlag, Hafen Investition]
-      en: ["container terminal", "port expansion", "ship-to-shore crane", "quay crane", "port investment", "RTG crane"]
-      fr: ["terminal à conteneurs", "extension du port", "grue de quai", "port investissement"]
-      nl: [containerterminal, havenuitbreiding, kadekraan, haven investering]
-      tr: ["konteyner terminali", "liman yatırımı", "liman vinci", "liman genişletme"]
-      ar: ["محطة حاويات", "توسعة ميناء", "رافعة ميناء"]
-      he: ["מסוף מכולות", "הרחבת נמל", "מנוף נמל"]
+      de: [Hafenkran, Containerterminal, Hafenausbau, Kaianlage, Terminal Umschlag, Hafen Investition, "Ausschreibung Hafen", "Hafen Ausbau", "Terminal Erweiterung"]
+      en: ["container terminal", "port expansion", "ship-to-shore crane", "quay crane", "port investment", "RTG crane", "port tender", "terminal expansion", "port development contract"]
+      fr: ["terminal à conteneurs", "extension du port", "grue de quai", "port investissement", "appel d'offres port", "extension terminal"]
+      nl: [containerterminal, havenuitbreiding, kadekraan, haven investering, aanbesteding haven, terminaluitbreiding]
+      tr: ["konteyner terminali", "liman yatırımı", "liman vinci", "liman genişletme", "liman ihalesi", "liman genişletme"]
+      ar: ["محطة حاويات", "توسعة ميناء", "رافعة ميناء", "مناقصة ميناء", "توسعة ميناء"]
+      he: ["מסוף מכולות", "הרחבת נמל", "מנוף נמל", "מכרז נמל", "הרחבת נמל"]
   - id: kraene
     title: "Kranflotten & Kranbetrieb"
     group: "Zielmärkte"
@@ -62,13 +62,13 @@ rubrics:
     core: 'crane (collapse|accident|fire|topples?|overturn\w*)|kraneinsturz|kranunfall|kran (stürzt|kippt|umgestürzt)|grue (tombe|effondr\w*)|vinç (devril\w*|kaza\w*)|kraan (omgevallen|ongeval)|tadano|(manitowoc|terex|liebherr|potain)[^.]{0,40}(kran|crane|grue|vinç|kraan)|crane (fleet|rental)|kranvermiet|kranflotte|parc de grues|vinç filosu|kraanverhuur'   # Treffer hier zählen auch ohne Ereigniswort
     must: 'kran(e|en)?(?!\w)|crane|grue|kraan|kranen|vinç|(liebherr|tadano|manitowoc|terex|potain)[^.]{0,60}(kran|crane|grue|vinç|kraan)|(kran|crane|grue|vinç|kraan)[^.]{0,60}(liebherr|tadano|manitowoc|terex|potain)|raupenkran|crawler crane|رافعة|رافعات|עגורן|מנוף'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
-      de: [Turmdrehkran, Mobilkran, Raupenkran, Kranflotte, Autokran, "Liebherr Mobilkran"]
-      en: ["tower crane", "mobile crane", "crawler crane", "crane fleet", "Tadano", "Manitowoc crane"]
-      fr: ["grue à tour", "grue mobile", "grue sur chenilles", "parc de grues"]
-      nl: [torenkraan, "mobiele kraan", rupskraan, kraanverhuur]
-      tr: ["kule vinç", "mobil vinç", "paletli vinç", "vinç filosu"]
-      ar: ["رافعة برجية", "رافعة متحركة", "رافعة زاحفة"]
-      he: ["עגורן צריח", "מנוף נייד", "מנוף זחלי"]
+      de: [Turmdrehkran, Mobilkran, Raupenkran, Kranflotte, Autokran, "Liebherr Mobilkran", Kranbestellung]
+      en: ["tower crane", "mobile crane", "crawler crane", "crane fleet", "Tadano", "Manitowoc crane", "crane order", "ship-to-shore cranes order"]
+      fr: ["grue à tour", "grue mobile", "grue sur chenilles", "parc de grues", "commande grues"]
+      nl: [torenkraan, "mobiele kraan", rupskraan, kraanverhuur, kraanbestelling]
+      tr: ["kule vinç", "mobil vinç", "paletli vinç", "vinç filosu", "vinç siparişi"]
+      ar: ["رافعة برجية", "رافعة متحركة", "رافعة زاحفة", "طلب رافعات"]
+      he: ["עגורן צריח", "מנוף נייד", "מנוף זחלי", "הזמנת מנופים"]
   - id: industrie
     title: "Industrie – Stahlwerke, Schwerindustrie & Prozesskrane"
     group: "Zielmärkte"
@@ -77,8 +77,8 @@ rubrics:
     core: 'stahlwerk|steel ?(mill|works|plant)|aci[eé]rie|hochofen|blast furnace|lichtbogenofen|electric arc furnace|staalfabriek|çelik fabrikası|demir çelik (fabrika|tesis)\w*|brückenkran|overhead crane|prozesskran|pont roulant|brugkraan'   # Treffer hier zählen auch ohne Ereigniswort
     must: 'stahl|steel|hütte|schwerindustrie|heavy industry|aci[eé]rie|sid[eé]rurgie|industrie lourde|staal|zware industrie|çelik|demir|صلب|فولاذ|صناعة ثقيلة|פלדה|תעשייה כבדה|pont roulant|brückenkran|overhead crane|prozesskran'   # Titel muss eines dieser Stichwörter enthalten (Regex)
     terms:
-      de: [Stahlwerk, Schwerindustrie, Brückenkran, Hüttenwerk, "Stahlindustrie Investition"]
-      en: ["steel mill", "heavy industry", "overhead crane", "steelworks investment", "process crane"]
+      de: [Stahlwerk, Schwerindustrie, Brückenkran, Hüttenwerk, "Stahlindustrie Investition", "Stahlwerk Neubau"]
+      en: ["steel mill", "heavy industry", "overhead crane", "steelworks investment", "process crane", "steel plant investment"]
       fr: [aciérie, "industrie lourde", "pont roulant", sidérurgie]
       nl: [staalfabriek, "zware industrie", brugkraan]
       tr: ["çelik fabrikası", "ağır sanayi", "köprülü vinç", "demir çelik"]
@@ -99,20 +99,6 @@ rubrics:
       tr: ["diyafram duvar", "özel temel", "sondaj makinesi", "fore kazık"]
       ar: ["جدار ساتر", "أساسات عميقة", "حفارة"]
       he: ["כלונסאות", "יסודות עמוקים"]
-  - id: projekte
-    title: "Projekte & Ausschreibungen – künftiger Seilbedarf"
-    group: "Zielmärkte"
-    short: "Projekte"
-    weight: 0.9
-    must: 'ausschreibung|vergabe|auftrag|bestellung|projekt|ausbau|erweiterung|neubau|investition|tender|contract|order|project|expansion|investment|development|appel d.offres|marché|commande|projet|extension|investissement|aanbesteding|opdracht|bestelling|uitbreiding|ihale|sipariş|proje|yatırım|genişlet'
-    terms:
-      de: ["Ausschreibung Hafen", "Hafen Ausbau", Kranbestellung, "Stahlwerk Neubau", "Terminal Erweiterung"]
-      en: ["port tender", "terminal expansion", "crane order", "steel plant investment", "port development contract", "ship-to-shore cranes order"]
-      fr: ["appel d'offres port", "extension terminal", "commande grues"]
-      nl: [aanbesteding haven, terminaluitbreiding, kraanbestelling]
-      tr: ["liman ihalesi", "liman genişletme", "vinç siparişi"]
-      ar: ["مناقصة ميناء", "توسعة ميناء", "طلب رافعات"]
-      he: ["מכרז נמל", "הרחבת נמל", "הזמנת מנופים"]
   - id: markt
     title: "Markt & Wettbewerb – Stahlseile"
     group: "Markt & Handel"
@@ -236,7 +222,7 @@ countries:
 # Regionale Eingrenzung: In diesen Rubriken bleiben nur Meldungen, in denen eines deiner Länder (siehe "countries")
 # oder einer der Begriffe unten vorkommt. Türkischsprachige Meldungen zählen automatisch als Türkei.
 region:
-  rubrics: [haefen, kraene, industrie, tiefbau, projekte]
+  rubrics: [haefen, kraene, industrie, tiefbau]
   extra_names: []     # zusätzliche Begriffe (z. B. Deutschland), die ebenfalls als "relevante Region" zählen
 
 # Ereigniswörter: Umfeld-Begriffe (Stahlwerk, Hafen, Kran …) zählen nur zusammen mit einem Ereignis

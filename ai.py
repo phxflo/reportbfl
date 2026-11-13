@@ -40,12 +40,10 @@ inkl. Prozesskrane in Stahlwerken, (4) Spezialtiefbau (Seilbagger, Schlitzwandgr
 Seine Kundenländer sind GENAU diese 11: BE Belgien, NL Niederlande, MA Marokko, DZ Algerien, TN Tunesien, IL Israel, TR Türkei, GH Ghana, CI Elfenbeinküste, LY Libyen, NG Nigeria.
 
 Rubriken (jede Meldung bekommt genau eine):
-- haefen: laufender Betrieb von Häfen/Terminals (Umschlag, Streik, Unfall, Störung, Hafenkrane im Einsatz) – nur in den Kundenländern.
-- kraene: Kranflotten und Kranbetrieb (Betreiber, Ausfälle, Seilthemen) – nur in den Kundenländern.
-- industrie: Stahl-/Schwerindustrie, Werke, Produktion, Unfälle/Explosionen/Stillstand in Werken, Prozess-/Hüttenwerkskrane – nur in den Kundenländern.
-- tiefbau: Spezialtiefbau (Seilbagger, Schlitzwandgreifer, Bohrgeräte, Gründungen, Tunnel) – nur in den Kundenländern.
-- projekte: Projekte und Ausschreibungen = künftiger Seilbedarf: Ausschreibungen, Vergaben, Großaufträge, Kranbestellungen, Ausbau-/Neubauprojekte
-  von Häfen, Terminals, Stahlwerken und Infrastruktur – nur in den Kundenländern.
+- haefen: Häfen/Terminals: laufender Betrieb (Umschlag, Streik, Unfall, Störung, Hafenkrane im Einsatz) sowie Ausbau, Ausschreibungen und Vergaben – nur in den Kundenländern.
+- kraene: Kranflotten und Kranbetrieb (Betreiber, Ausfälle, Seilthemen) sowie Kranbestellungen und -ausschreibungen – nur in den Kundenländern.
+- industrie: Stahl-/Schwerindustrie, Werke, Produktion, Neubau/Erweiterung/Investitionen, Unfälle/Explosionen/Stillstand in Werken, Prozess-/Hüttenwerkskrane – nur in den Kundenländern.
+- tiefbau: Spezialtiefbau (Seilbagger, Schlitzwandgreifer, Bohrgeräte, Gründungen, Tunnel) und Infrastruktur-Großprojekte/Ausschreibungen – nur in den Kundenländern.
 - markt: Wettbewerb und Seil-/Drahthersteller – weltweit. Wettbewerbsinformationen sind wichtig: Wechsel in Geschäftsführung/Vorstand,
   Finanzzahlen, Gewinnwarnung, Insolvenz/Restrukturierung, Werksschließung/-eröffnung/-erweiterung, Übernahmen, Produktionsprobleme,
   Reklamationen, Rückrufe, Schadensfälle oder Seilbruch bei Wettbewerberprodukten, Preis-/Kapazitätsänderungen; außerdem Marktdaten, Normen.
@@ -60,7 +58,7 @@ Rubriken (jede Meldung bekommt genau eine):
   weltweit), Legierungs-/Zinkzuschläge, Schrott und Eisenerz mit Wirkung auf den Stahlpreis, Lieferengpässe (keine Zollmeldungen). STRENG: nur mit
   konkreter Preisänderung, Zuschlag oder Engpass (brisanz 4-5). NICHT relevant: Gold, Kupfer, Aluminium, Öl/Gas und Strom ohne Stahlbezug,
   Börsen- und Rohstoffkommentare, Prognosen ohne Zahlen.
-Regel: haefen/kraene/industrie/tiefbau/projekte nur wenn Ort oder Beteiligte eindeutig in einem der 11 Länder liegen; sonst nicht relevant.
+Regel: haefen/kraene/industrie/tiefbau nur wenn Ort oder Beteiligte eindeutig in einem der 11 Länder liegen; sonst nicht relevant.
 {COMP}
 Typische Fehlgriffe, die NICHT relevant sind:
 - Passagierfähren, Fahrplanänderungen, Kreuzfahrt, Tourismus, Yachthäfen (z. B. „Fährverbindung Tunis–Genua, Fahrplanänderung“).
@@ -77,7 +75,7 @@ Typische Fehlgriffe, die NICHT relevant sind:
 - Ortsnamen, die zufällig wie Firmennamen heißen (Manitowoc im US-Bundesstaat Wisconsin: Football, Stoppschilder, Supermärkte) → NICHT relevant.
 - Allgemeine Wirtschaftslage eines Landes ohne Handelsmaßnahme (Konjunktur, Löhne, Wohnungen) ist nicht relevant.
 Titel können maschinell schlecht übersetzt sein; beurteile nach dem wahrscheinlichen Sinn, nicht nach Wortlaut.
-Zuordnung bei Zweifel: laufender Betrieb → haefen/kraene/industrie/tiefbau; geplante, vergebene oder ausgeschriebene Vorhaben → projekte.
+Projekte, Ausschreibungen und Aufträge (künftiger Seilbedarf) gehören in den Zielmarkt, den sie betreffen: Hafen → haefen, Kran/Kranbestellung → kraene, Stahlwerk/Industrie → industrie, Tunnel/Gründung/Infrastruktur → tiefbau.
 
 Relevant = die Meldung könnte sein Geschäft beeinflussen oder ist für ein Kundengespräch nützlich. Nicht relevant: Namensverwechslungen
 (z. B. Manitowoc County, Politiker Casar, Vogel „Kran“), Sport, Lifestyle, Kriminalität, Börsentipps/Kursmeldungen, Rezepte,
@@ -157,7 +155,7 @@ def stale(i):
     """Beurteilen: noch nie beurteilt. Alte Urteile werden nur bei ausdrücklicher Neubewertung (AI_REJUDGE) erneuert,
     damit Regeländerungen nicht jedes Mal alle Meldungen neu kosten."""
     ai = i.get("ai") or {}
-    if not ai:
+    if not ai or (ai.get("relevant") and ai.get("rubric") not in RUBRICS):      # entfallene Rubrik (z. B. frühere „Projekte“): neu zuordnen
         return True
     if REJUDGE:
         return ai.get("v") != VERSION or (bool(ai.get("relevant")) and ai.get("rv", 0) < RULES)
