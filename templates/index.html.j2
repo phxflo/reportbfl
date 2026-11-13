@@ -10,14 +10,14 @@
 <style>
 {{ fontcss|safe }}
 :root{
-  --steel:#1b3552;                 /* Stahlblau */
-  --paper:#e9ecef; --card:#f8f9fa; --ink:#121e2a; --muted:#566573; --rule:#cdd4da; --chip:#dfe4e9;   /* verzinktes Grau */
-  --accent:#e3a21a; --accent-ink:#8a5a00; --line:#1f4f7e; --mark:#1b3552;                          /* Seilfett-Bernstein als Signalfarbe */
+  --steel:#1b3552;
+  --paper:#f2f4f7; --card:#fff; --ink:#0f1a24; --muted:#5d6b79; --rule:#e1e6ec; --chip:#e9edf2;
+  --accent:#e3a21a; --accent-ink:#8a5a00; --line:#1f4f7e; --mark:#1b3552;
+  --r:14px;
   --sans:"Barlow",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-  --serif:"Barlow Condensed","Barlow",Arial Narrow,sans-serif;
 }
 @media (prefers-color-scheme:dark){:root{
-  --paper:#10161c; --card:#18212a; --ink:#e8edf1; --muted:#97a7b5; --rule:#29353f; --chip:#212c35;
+  --paper:#0d1117; --card:#151b23; --ink:#e8edf1; --muted:#93a1af; --rule:#242d38; --chip:#202a35;
   --accent:#f2b53f; --accent-ink:#f2b53f; --line:#7fb2e5; --mark:#9db8d3;
 }}
 
@@ -31,8 +31,8 @@
 .r-haefen,.r-kraene,.r-industrie,.r-tiefbau,.r-markt,.r-laender,.r-rohstoffe{--rt:color-mix(in srgb,var(--rc) 58%,#0d1620)}
 @media (prefers-color-scheme:dark){.r-haefen,.r-kraene,.r-industrie,.r-tiefbau,.r-markt,.r-laender,.r-rohstoffe{--rt:var(--rc)}}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:60px}
-body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--paper);color:var(--ink);font:16.5px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 a.h:hover{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
 .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
@@ -41,52 +41,46 @@ a.h:hover{color:var(--accent-ink);text-decoration:underline;text-underline-offse
 .sample{background:var(--accent);color:#1a1200;font:600 13px/1.4 var(--sans);text-align:center;padding:8px 16px}
 .errors{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--accent);font-size:14px;padding:10px 14px;margin:0 0 24px;color:var(--muted)}
 
-/* Zeitungskopf */
-.band{background:var(--card);color:var(--ink);border-bottom:1px solid var(--rule)}
-.topbar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 0;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--rule)}
-.mast{display:flex;align-items:center;gap:20px;padding:22px 0 20px}
-.mast .mark{width:72px;height:72px;flex:none}
-.mast h1{margin:0;font:800 clamp(52px,9vw,88px)/.92 var(--serif);letter-spacing:.005em}
-.mast h1 span{color:var(--accent-ink)}
-.mast p{margin:8px 0 0;font-size:15px;color:var(--muted)}
-.rope{height:10px;background:repeating-linear-gradient(115deg,#2a4b70 0 5px,#0e2034 5px 7px,#41699a 7px 12px,#0e2034 12px 14px)}
-.band::after{content:none}
+/* Kopf */
+.top{display:flex;align-items:center;gap:14px;padding-top:22px;padding-bottom:18px}
+.top .mark{width:46px;height:46px;flex:none}
+.top h1{margin:0;font:800 30px/1 var(--sans);letter-spacing:-.02em}
+.top h1 span{color:var(--accent-ink)}
+.top p{margin:5px 0 0;font-size:14px;color:var(--muted)}
+.top .stand{margin-left:auto;text-align:right;font-size:13px;line-height:1.5;color:var(--muted)}
 
-nav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--rule);margin-bottom:30px}
-nav .wrap{display:flex;gap:0;align-items:center;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+/* Navigation: bleibt oben stehen und markiert den Bereich, in dem man gerade liest */
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--paper) 86%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);margin-bottom:28px}
+nav .wrap{display:flex;gap:4px;align-items:center;padding-top:9px;padding-bottom:9px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 nav .wrap::-webkit-scrollbar{display:none}
-nav a{font-size:13px;font-weight:600;padding:14px 7px;white-space:nowrap;color:var(--muted);scroll-snap-align:center;flex:none}
-@media (max-width:1099px){nav{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}}
-nav a:hover{color:var(--accent-ink)}
-nav a.rc{border-bottom:3px solid color-mix(in srgb,var(--rc) 45%,transparent);display:flex;align-items:center;gap:5px}
-nav a.rc:hover{color:var(--ink);border-bottom-color:var(--rc)}
-nav a.rc b{font:700 12px var(--sans);color:var(--rt);font-variant-numeric:tabular-nums}
+nav a{display:flex;align-items:center;gap:7px;flex:none;font-size:14px;font-weight:600;padding:7px 13px;border-radius:99px;white-space:nowrap;color:var(--muted);transition:background .15s,color .15s}
+nav a:hover{color:var(--ink);background:var(--chip)}
+nav a::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--rc,var(--muted));opacity:.85}
+nav a.on{color:var(--ink);background:color-mix(in srgb,var(--rc,var(--accent)) 20%,var(--card));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--rc,var(--accent)) 45%,transparent)}
+nav a b{font-size:12px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+nav a.on b{color:var(--ink)}
 nav .sep{width:1px;height:20px;background:var(--rule);margin:0 6px;flex:none}
 
-
-/* Rubrikköpfe im Zeitungsstil */
-h2.kicker{display:flex;align-items:baseline;gap:12px;margin:0;padding:12px 22px 10px;font:700 32px/1.15 var(--serif);letter-spacing:.005em;border-top:6px solid var(--rc,var(--steel));border-bottom:1px solid var(--rule);background:var(--card)}
-.grouphead{display:flex;align-items:center;gap:14px;margin:48px 0 6px;font:700 28px/1.15 var(--serif);color:var(--ink)}
-.grouphead::after{content:"";flex:1;height:1px;background:var(--rule)}
-
+/* Rubrikköpfe */
+h2.kicker{display:flex;align-items:center;gap:10px;margin:0 0 12px;font:700 21px/1.2 var(--sans);letter-spacing:-.01em}
 h2.kicker small{font:500 13px var(--sans);color:var(--muted);margin-left:auto;white-space:nowrap}
-h2.kicker i{width:14px;height:14px;border-radius:3px;background:var(--rc,var(--accent));align-self:center;flex:none;font-size:0}
-section{margin-bottom:38px}
-.box{background:var(--card);border:1px solid var(--rule);border-top:0}
+h2.kicker i{width:10px;height:10px;border-radius:50%;background:var(--rc,var(--accent));flex:none;font-size:0}
+.grouphead{margin:44px 0 14px;font:700 14px/1.2 var(--sans);color:var(--muted);letter-spacing:.02em}
+section{margin-bottom:34px}
+.box{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
 
 /* Kennzahlen */
-section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .charts{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -20px;padding:0 20px 4px;scroll-padding:0 20px}
 .charts::-webkit-scrollbar{display:none}
 .charts .chart{flex:0 0 min(86%,420px);scroll-snap-align:start}
 @media (min-width:900px){.charts{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;overflow:visible;margin:0;padding:0}.charts .chart{flex:none}}
-.chart{background:var(--card);border:1px solid var(--rule);border-top:5px solid var(--steel);padding:16px 18px 10px}
+.chart{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:18px 20px 10px}
 .chart header{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
-.chart h3{margin:0;font:700 22px/1.2 var(--serif)}
-.chart .sub{font-size:12px;color:var(--muted);margin-top:2px}
+.chart h3{margin:0;font:700 17px/1.25 var(--sans)}
+.chart .sub{font-size:12.5px;color:var(--muted);margin-top:2px}
 .chart .val{text-align:right;flex:none}
-.chart .big{font:800 46px/1 var(--serif)}
-.chart .per{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.chart .big{font:800 38px/1 var(--sans);letter-spacing:-.02em}
+.chart .per{font-size:12px;color:var(--muted);margin-top:3px}
 .deltas{display:flex;gap:16px;font-size:13px;font-weight:600;margin:8px 0 4px;flex-wrap:wrap}
 .deltas span em{font-style:normal;font-weight:400;color:var(--muted)}
 .chart svg{width:100%;height:auto;display:block;overflow:visible}
@@ -99,8 +93,6 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .chart .hit:hover{fill:rgba(227,162,26,.35)}
 .chart footer{font-size:11px;color:var(--muted);padding:2px 0 4px}
 .chart footer a{text-decoration:underline}
-
-/* Länderkarte */
 
 /* Bausteine */
 .meta{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
@@ -128,16 +120,15 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 /* Titelseite */
 
 /* Rubriken */
-.rows{columns:2 360px;column-gap:44px;padding:4px 22px 14px}
-.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:stretch;margin-bottom:38px}
+.rows{columns:2 360px;column-gap:44px;padding:2px 22px 8px}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 22px;align-items:stretch;margin-bottom:34px}
 .tiles section{margin:0;display:flex;flex-direction:column;min-width:0}.tiles .box{flex:1}
-.tiles .rows{columns:1;padding:4px 18px 10px}
-.tiles h2.kicker{font-size:26px;padding:10px 18px 8px}
-.row{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:12px;padding:12px 0;border-top:1px solid var(--rule);break-inside:avoid}
+.tiles .rows{columns:1}
+.row{display:grid;grid-template-columns:58px minmax(0,1fr) auto;gap:12px;padding:14px 0;break-inside:avoid}
 .when{font-size:12px;line-height:1.4;color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
-.row .h{font-size:16px;font-weight:600;line-height:1.4}
+.row .h{font-size:16px;font-weight:600;line-height:1.4;letter-spacing:-.005em}
 .row .meta{margin-top:3px;font-size:12.5px}
-.empty{font-size:15px;color:var(--muted);padding:14px 22px}
+.empty{font-size:15px;color:var(--muted);padding:16px 22px}
 .chips{display:flex;gap:6px;flex-wrap:wrap;padding:14px 22px 0}
 .chips button{font:600 13px var(--sans);padding:6px 13px;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:99px;cursor:pointer}
 .chips button[aria-pressed=true]{background:var(--rc,var(--steel));color:#fff;border-color:var(--rc,var(--steel))}
@@ -152,15 +143,14 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .healthbar{background:color-mix(in srgb,#d23b4a 14%,var(--card));border-bottom:1px solid #d23b4a;color:var(--ink);font-size:13px;padding:8px 16px;text-align:center}
 footer.site{border-top:1px solid var(--rule);padding:22px 0 48px;font-size:13px;line-height:1.65;color:var(--muted)}
 footer.site strong{color:var(--ink)}
-footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:6px;padding:4px 10px;cursor:pointer;margin-right:6px}
+footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:8px;padding:5px 11px;cursor:pointer;margin-right:6px}
 
 @media (max-width:600px){
   body{font-size:16px}.wrap{padding:0 16px}
-  .tiles{grid-template-columns:1fr;gap:0}.tiles section{margin-bottom:38px}
+  .tiles{grid-template-columns:1fr;gap:0}.tiles section{margin-bottom:30px}
   .rows{columns:1;padding:4px 16px 10px}.row{grid-template-columns:54px minmax(0,1fr) auto;gap:10px}
-  h2.kicker{padding:10px 16px 8px}h2.kicker small{display:none}
-  .chart .big{font-size:36px}.mast .mark{width:52px;height:52px}.mast{gap:14px}h2.kicker{font-size:26px}
-  .chips{padding:12px 16px 0}
+  h2.kicker small{display:none}.top .stand{display:none}.top h1{font-size:26px}.top .mark{width:40px;height:40px}
+  .chart .big{font-size:32px}
 }
 @media print{nav,.chips,</style>
 </head>
@@ -185,14 +175,12 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 </article>
 {% endmacro %}
 
-<header class="band"><div class="wrap">
-  <div class="topbar"><span>{{ date }}</span><span>Stand {{ updated }}</span></div>
-  <div class="mast">
-    <svg class="mark" viewBox="0 0 64 64" role="img" aria-label="Querschnitt eines Drahtseils"><g stroke="var(--card)" stroke-width="2">{% for k in range(6) %}<circle cx="{{ (32 + 20.5 * [0, 0.866, 0.866, 0, -0.866, -0.866][k])|round(1) }}" cy="{{ (32 - 20.5 * [1, 0.5, -0.5, -1, -0.5, 0.5][k])|round(1) }}" r="10.5" fill="var(--mark)"/>{% endfor %}<circle cx="32" cy="32" r="10" fill="var(--accent)"/></g><g fill="var(--card)" opacity=".35">{% for k in range(6) %}<circle cx="{{ (32 + 20.5 * [0, 0.866, 0.866, 0, -0.866, -0.866][k])|round(1) }}" cy="{{ (32 - 20.5 * [1, 0.5, -0.5, -1, -0.5, 0.5][k])|round(1) }}" r="3.4"/>{% endfor %}</g></svg>
-    <div><h1>{{ site.title.split(' ')[0] }} <span>{{ site.title.split(' ')[1:]|join(' ') }}</span></h1>
-    <p>{{ site.tagline }}</p></div>
-  </div>
-</div><div class="rope"></div></header>
+<header class="wrap top">
+  <svg class="mark" viewBox="0 0 64 64" role="img" aria-label="Querschnitt eines Drahtseils"><g stroke="var(--card)" stroke-width="2">{% for k in range(6) %}<circle cx="{{ (32 + 20.5 * [0, 0.866, 0.866, 0, -0.866, -0.866][k])|round(1) }}" cy="{{ (32 - 20.5 * [1, 0.5, -0.5, -1, -0.5, 0.5][k])|round(1) }}" r="10.5" fill="var(--mark)"/>{% endfor %}<circle cx="32" cy="32" r="10" fill="var(--accent)"/></g><g fill="var(--card)" opacity=".35">{% for k in range(6) %}<circle cx="{{ (32 + 20.5 * [0, 0.866, 0.866, 0, -0.866, -0.866][k])|round(1) }}" cy="{{ (32 - 20.5 * [1, 0.5, -0.5, -1, -0.5, 0.5][k])|round(1) }}" r="3.4"/>{% endfor %}</g></svg>
+  <div><h1>{{ site.title.split(' ')[0] }} <span>{{ site.title.split(' ')[1:]|join(' ') }}</span></h1>
+  <p>{{ site.tagline }}</p></div>
+  <div class="stand">{{ date }}<br>Stand {{ updated }}</div>
+</header>
 
 <nav aria-label="Rubriken"><div class="wrap">
   <a href="#kennzahlen">Kennzahlen</a><span class="sep"></span>
@@ -241,7 +229,6 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
   {% endfor %}
 </main>
 
-<div class="rope" style="margin-top:40px"></div>
 <div class="wrap"><footer class="site">
   {% if rating %}<details class="health" id="ratebox"><summary><span class="dot" id="tokdot"></span>Bewertungen senden: <span id="tokstat">nicht verbunden</span></summary>
     <div style="margin-top:8px"><input id="tok" type="password" autocomplete="off" placeholder="Zugangsschlüssel" style="font:14px var(--sans);padding:6px 10px;border:1px solid var(--rule);border-radius:6px;background:var(--card);color:var(--ink);min-width:240px"> <button type="button" id="toksave">Speichern</button><button type="button" id="tokdel">Entfernen</button></div></details>{% endif %}
@@ -255,6 +242,19 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 (function(){
   var $=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
   
+  /* Navigation: markiert den Bereich, der gerade im Bild ist (bei Kacheln beide Nachbarn) */
+  var links=$('nav a[href^="#"]'), secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1))}), navEl=document.querySelector('nav'), tick=false;
+  function spy(){
+    tick=false; var line=navEl.offsetHeight+60, tops=secs.map(function(s){return s?s.getBoundingClientRect().top:1e9}), best=-1e9;
+    tops.forEach(function(y){if(y<=line&&y>best)best=y});
+    if(window.innerHeight+scrollY>=document.documentElement.scrollHeight-4)best=Math.max.apply(null,tops.filter(function(y){return y<1e8}));
+    links.forEach(function(a,i){a.classList.toggle('on',tops[i]<1e8&&Math.abs(tops[i]-best)<3)});
+    var on=links.filter(function(a){return a.classList.contains('on')})[0], box=navEl.firstElementChild;
+    if(on&&box.scrollWidth>box.clientWidth)box.scrollTo({left:on.offsetLeft-(box.clientWidth-on.offsetWidth)/2,behavior:'smooth'});
+  }
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(spy)}},{passive:true});
+  addEventListener('resize',spy); spy();
+
   /* Ampel-Bewertung: lokal merken, gesammelt an GitHub senden (Kommentar im Bewertungs-Issue) */
   var RT={{ rating|tojson if rating else 'null' }};
   if(RT){
