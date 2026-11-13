@@ -22,14 +22,14 @@
 }}
 
 /* Rubrikfarben: ein fester Farbcode je Rubrik (immer zusätzlich mit Beschriftung) */
-:root{--c-haefen:#1a8fa3;--c-kraene:#d49a1c;--c-industrie:#d1581f;--c-tiefbau:#7b5a3a;--c-projekte:#2f9e5b;--c-markt:#7c5cc4;--c-laender:#c23a55;--c-rohstoffe:#3b6fd4;
+:root{--c-haefen:#1a8fa3;--c-kraene:#d49a1c;--c-industrie:#d1581f;--c-tiefbau:#7b5a3a;--c-markt:#7c5cc4;--c-laender:#c23a55;--c-rohstoffe:#3b6fd4;
   --rt:color-mix(in srgb,var(--rc,var(--steel)) 58%,#0d1620)}
-@media (prefers-color-scheme:dark){:root{--c-haefen:#4fc3d1;--c-kraene:#f0b84a;--c-industrie:#f08a5d;--c-tiefbau:#cdaa80;--c-projekte:#6fcf85;--c-markt:#b79cf0;--c-laender:#ee7b8a;--c-rohstoffe:#7f9cf0;
+@media (prefers-color-scheme:dark){:root{--c-haefen:#4fc3d1;--c-kraene:#f0b84a;--c-industrie:#f08a5d;--c-tiefbau:#cdaa80;--c-markt:#b79cf0;--c-laender:#ee7b8a;--c-rohstoffe:#7f9cf0;
   --rt:var(--rc,var(--accent-ink))}}
 .r-haefen{--rc:var(--c-haefen)}.r-kraene{--rc:var(--c-kraene)}.r-industrie{--rc:var(--c-industrie)}.r-tiefbau{--rc:var(--c-tiefbau)}
-.r-projekte{--rc:var(--c-projekte)}.r-markt{--rc:var(--c-markt)}.r-laender{--rc:var(--c-laender)}.r-rohstoffe{--rc:var(--c-rohstoffe)}
-.r-haefen,.r-kraene,.r-industrie,.r-tiefbau,.r-projekte,.r-markt,.r-laender,.r-rohstoffe{--rt:color-mix(in srgb,var(--rc) 58%,#0d1620)}
-@media (prefers-color-scheme:dark){.r-haefen,.r-kraene,.r-industrie,.r-tiefbau,.r-projekte,.r-markt,.r-laender,.r-rohstoffe{--rt:var(--rc)}}
+.r-markt{--rc:var(--c-markt)}.r-laender{--rc:var(--c-laender)}.r-rohstoffe{--rc:var(--c-rohstoffe)}
+.r-haefen,.r-kraene,.r-industrie,.r-tiefbau,.r-markt,.r-laender,.r-rohstoffe{--rt:color-mix(in srgb,var(--rc) 58%,#0d1620)}
+@media (prefers-color-scheme:dark){.r-haefen,.r-kraene,.r-industrie,.r-tiefbau,.r-markt,.r-laender,.r-rohstoffe{--rt:var(--rc)}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:60px}
 body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
