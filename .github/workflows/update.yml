@@ -2,7 +2,13 @@ name: Seil-Report aktualisieren
 
 on:
   schedule:
-    - cron: "30 5 * * *"      # täglich 05:30 UTC = 06:30 (Winter) / 07:30 (Sommer) deutscher Zeit
+    # GitHub lässt geplante Läufe zu runden Zeiten (:00, :30) bei hoher Last gern aus. Darum mehrere Auslöser zu „krummen“ Minuten;
+    # der Wächter-Job überspringt spätere, wenn heute schon ein Update lief. Erster Start 04:11 UTC = 05:11 (Winter) / 06:11 (Sommer),
+    # fertig etwa 20 Minuten später.
+    - cron: "11 4 * * *"
+    - cron: "41 4 * * *"
+    - cron: "11 5 * * *"
+    - cron: "41 5 * * *"
   workflow_dispatch:           # manueller Start über den Reiter "Actions"
     inputs:
       rejudge:
@@ -31,7 +37,25 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      skip: ${{ steps.g.outputs.skip }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 40
+      - id: g
+        run: |
+          skip=false
+          if [ "${{ github.event_name }}" = "schedule" ] && [ -n "$(git log --since="$(date -u +%F)T03:00:00Z" --grep='^Update ' --format=%h | head -1)" ]; then
+            skip=true
+            echo "Heute läuft schon ein Update - dieser Auslöser wird übersprungen."
+          fi
+          echo "skip=$skip" >> "$GITHUB_OUTPUT"
   update:
+    needs: check
+    if: needs.check.outputs.skip != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
@@ -118,5 +142,7 @@ jobs:
           git config user.email "bot@users.noreply.github.com"
           git rm -q --cached data/news.json 2>/dev/null || true
           git add .gitignore data docs
-          git diff --staged --quiet || git commit -m "Update $(date -u +%F)"
+          msg="Update $(date -u +%F)"
+          if [ "${{ github.event.inputs.build_only }}" = "true" ]; then msg="Seite neu gebaut $(date -u +%F)"; fi
+          git diff --staged --quiet || git commit -m "$msg"
           for n in 1 2 3; do git push && break; git pull --rebase -X theirs origin main || git rebase --abort; sleep 5; done
