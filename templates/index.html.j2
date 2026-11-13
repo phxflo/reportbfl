@@ -79,7 +79,7 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .charts{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -20px;padding:0 20px 4px;scroll-padding:0 20px}
 .charts::-webkit-scrollbar{display:none}
 .charts .chart{flex:0 0 min(86%,420px);scroll-snap-align:start}
-@media (max-width:899px){@media (min-width:900px){.charts{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;overflow:visible;margin:0;padding:0}.charts .chart{flex:none}}
+@media (min-width:900px){.charts{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;overflow:visible;margin:0;padding:0}.charts .chart{flex:none}}
 .chart{background:var(--card);border:1px solid var(--rule);border-top:5px solid var(--steel);padding:16px 18px 10px}
 .chart header{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
 .chart h3{margin:0;font:700 22px/1.2 var(--serif)}
@@ -129,6 +129,10 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 
 /* Rubriken */
 .rows{columns:2 360px;column-gap:44px;padding:4px 22px 14px}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:stretch;margin-bottom:38px}
+.tiles section{margin:0;display:flex;flex-direction:column;min-width:0}.tiles .box{flex:1}
+.tiles .rows{columns:1;padding:4px 18px 10px}
+.tiles h2.kicker{font-size:26px;padding:10px 18px 8px}
 .row{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:12px;padding:12px 0;border-top:1px solid var(--rule);break-inside:avoid}
 .when{font-size:12px;line-height:1.4;color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
 .row .h{font-size:16px;font-weight:600;line-height:1.4}
@@ -150,10 +154,9 @@ footer.site{border-top:1px solid var(--rule);padding:22px 0 48px;font-size:13px;
 footer.site strong{color:var(--ink)}
 footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:6px;padding:4px 10px;cursor:pointer;margin-right:6px}
 
-@media (max-width:760px){
-}
 @media (max-width:600px){
   body{font-size:16px}.wrap{padding:0 16px}
+  .tiles{grid-template-columns:1fr;gap:0}.tiles section{margin-bottom:38px}
   .rows{columns:1;padding:4px 16px 10px}.row{grid-template-columns:54px minmax(0,1fr) auto;gap:10px}
   h2.kicker{padding:10px 16px 8px}h2.kicker small{display:none}
   .chart .big{font-size:36px}.mast .mark{width:52px;height:52px}.mast{gap:14px}h2.kicker{font-size:26px}
@@ -225,6 +228,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 
   {% for s in sections %}
   {% if s.group and (loop.first or sections[loop.index0 - 1].group != s.group) %}<div class="grouphead">{{ s.group }}</div>{% endif %}
+  {% if s.tile and (loop.first or not sections[loop.index0 - 1].tile) %}<div class="tiles">{% endif %}
   <section id="{{ s.id }}" class="r-{{ s.id }}" data-section>
     <h2 class="kicker"><i></i>{{ s.title }}</h2>
     <div class="box">
@@ -233,6 +237,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
     {% else %}<div class="empty">Nichts Neues in den letzten 7 Tagen.</div>{% endif %}
     </div>
   </section>
+  {% if s.tile and (loop.last or not sections[loop.index0 + 1].tile) %}</div>{% endif %}
   {% endfor %}
 </main>
 

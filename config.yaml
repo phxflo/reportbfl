@@ -42,6 +42,7 @@ rubrics:
   - id: haefen
     title: "Häfen, Terminals & Güterumschlag"
     group: "Zielmärkte"
+    tile: true               # in der Zielmärkte-Gruppe als Kachel (2 × 2)
     short: "Häfen"
     weight: 1.2
     core: 'ship-to-shore|sts[- ]crane|(?<!\w)(rtg|rmg)(?!\w)|kaikran|hafenkran|quay crane|containerbrücke|container ?terminal|terminal à conteneurs|konteyner terminal|havenkraan|kadekraan|محطة حاويات|מסוף מכולות'   # Treffer hier zählen auch ohne Ereigniswort
@@ -57,6 +58,7 @@ rubrics:
   - id: kraene
     title: "Kranflotten & Kranbetrieb"
     group: "Zielmärkte"
+    tile: true               # in der Zielmärkte-Gruppe als Kachel (2 × 2)
     short: "Krane"
     weight: 0.9
     core: 'crane (collapse|accident|fire|topples?|overturn\w*)|kraneinsturz|kranunfall|kran (stürzt|kippt|umgestürzt)|grue (tombe|effondr\w*)|vinç (devril\w*|kaza\w*)|kraan (omgevallen|ongeval)|tadano|(manitowoc|terex|liebherr|potain)[^.]{0,40}(kran|crane|grue|vinç|kraan)|crane (fleet|rental)|kranvermiet|kranflotte|parc de grues|vinç filosu|kraanverhuur'   # Treffer hier zählen auch ohne Ereigniswort
@@ -72,6 +74,7 @@ rubrics:
   - id: industrie
     title: "Industrie – Stahlwerke, Schwerindustrie & Prozesskrane"
     group: "Zielmärkte"
+    tile: true               # in der Zielmärkte-Gruppe als Kachel (2 × 2)
     short: "Industrie"
     weight: 0.8
     core: 'stahlwerk|steel ?(mill|works|plant)|aci[eé]rie|hochofen|blast furnace|lichtbogenofen|electric arc furnace|staalfabriek|çelik fabrikası|demir çelik (fabrika|tesis)\w*|brückenkran|overhead crane|prozesskran|pont roulant|brugkraan'   # Treffer hier zählen auch ohne Ereigniswort
@@ -87,6 +90,7 @@ rubrics:
   - id: tiefbau
     title: "Spezialtiefbau – Bohrgeräte, Seilbagger & Schlitzwandgreifer"
     group: "Zielmärkte"
+    tile: true               # in der Zielmärkte-Gruppe als Kachel (2 × 2)
     short: "Spezialtiefbau"
     weight: 0.7
     core: 'cutter[- ]soil|soil mixing|jet grouting|schlitzwand|diaphragm wall|bohrgerät|seilbagger|drilling rig|piling rig|paroi moulée|diepwand|spezialtiefbau|deep foundation|bauer (maschinen|spezialtiefbau|group)|soilmec'   # Treffer hier zählen auch ohne Ereigniswort
