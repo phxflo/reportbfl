@@ -254,7 +254,7 @@ def prepare(news):
 
 def show_bericht(b):
     """Bericht für die Seite: nur aktuelle Fassung; Quellen als schlichter Domainname (kurz, einheitlich, nie abgeschnitten)."""
-    if not isinstance(b, dict) or b.get("v") != 3:
+    if not isinstance(b, dict) or b.get("v") != 4:
         return None
     from urllib.parse import urlparse
     return dict(b, quellen=[dict(u=q["u"], t=urlparse(q["u"]).netloc.removeprefix("www.") or q["t"]) for q in b.get("quellen", [])])
