@@ -10,7 +10,6 @@ site:
   fetch_days: 7             # pro Lauf: Meldungen der letzten n Tage abfragen
   per_section: 5            # höchstens so viele (wichtigste) Meldungen je Rubrik; einzelne Rubriken können mit max/min_bris abweichen
   timezone: "Europe/Berlin"
-  translate_max: 150        # höchstens so viele Titel pro Lauf übersetzen (nur sichtbare)
   rating: {repo: "phxflo/reportbfl", issue: 36}   # Ampel-Bewertungen landen als Kommentare in diesem Issue
 
 # Meldungen mit diesen Wörtern im Titel werden verworfen
@@ -32,13 +31,13 @@ exclude:
   - Ägypten
   - Égypte
 
-# Treffer mit diesen Wörtern rutschen in "Top-News" weiter nach oben (Regex, ohne Groß/Klein)
+# Treffer mit diesen Wörtern rutschen in in der Rangfolge weiter nach oben (Regex, ohne Groß/Klein)
 boost: "explosion|explosie|patlama|einsturz|effondrement|collapse|crane (accident|collapse)|kranunfall|stahlwerk.{0,30}(brand|tote)|zuschlag|surcharge|toeslag|supplément|ek ücret|zoll|zölle|tariff|tarif|droits de douane|gümrük|safeguard|cbam|sanktion|sanction|embargo|insolvenz|bankrupt|übernahme|acquisition|acquires|tadano|manitowoc|terex|potain|teufelberger|bridon|wireco|pfeifer|drahtseil|casar (drahtseil|wire)|liebherr (kran|crane|mobil)|wire rope|stahlseil|çelik halat|câble"
-
+# Diese Wörter markieren für Claude Meldungen zu Zuschlägen und Rohstoffen (Hinweis im Prompt)
 # Diese Wörter füllen den Kasten "Zuschlags-Radar"
 radar: "zuschlag|surcharge|toeslag|legierung|alloy|rohstoff|safeguard|cbam|walzdraht|wire rod|filmaşin|fil machine|walsdraad|stahlpreis|steel price|çelik fiyat"
 
-# Gewicht je Rubrik für die Top-News (1.0 = normal)
+# Gewicht je Rubrik für die Rangfolge (1.0 = normal)
 rubrics:
   - id: haefen
     title: "Häfen, Terminals & Güterumschlag"

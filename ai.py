@@ -180,12 +180,11 @@ def _judge(key, batch):
 def classify(key, items):
     from concurrent.futures import ThreadPoolExecutor
     batches = [items[k:k + BATCH] for k in range(0, len(items), BATCH)]
-    done = failed = 0
+    done = 0
     first = [_judge(key, batches[0])] if batches else []      # erste Anfrage allein: schreibt den Cache, die übrigen lesen ihn
     with ThreadPoolExecutor(max_workers=int(AI.get("workers", 4))) as ex:
         for batch, out in first + list(ex.map(lambda b: _judge(key, b), batches[1:])):
             if out is None:
-                failed += 1
                 continue
             by = {i["id"]: i for i in batch}
             for r in out.get("results", []):

@@ -63,16 +63,12 @@ nav a.rc:hover{color:var(--ink);border-bottom-color:var(--rc)}
 nav a.rc b{font:700 12px var(--sans);color:var(--rt);font-variant-numeric:tabular-nums}
 nav .sep{width:1px;height:20px;background:var(--rule);margin:0 6px;flex:none}
 
-#trbar{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--accent);padding:10px 14px;margin:-8px 0 24px;font-size:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-#trbar[hidden]{display:none}
-#trbar button{font:600 13px var(--sans);padding:7px 14px;border:0;border-radius:6px;background:var(--steel);color:#fff;cursor:pointer}
-#trbar span{color:var(--muted)}
 
 /* Rubrikköpfe im Zeitungsstil */
 h2.kicker{display:flex;align-items:baseline;gap:12px;margin:0;padding:12px 22px 10px;font:700 32px/1.15 var(--serif);letter-spacing:.005em;border-top:6px solid var(--rc,var(--steel));border-bottom:1px solid var(--rule);background:var(--card)}
 .grouphead{display:flex;align-items:center;gap:14px;margin:48px 0 6px;font:700 28px/1.15 var(--serif);color:var(--ink)}
 .grouphead::after{content:"";flex:1;height:1px;background:var(--rule)}
-.grouphead .sws{display:flex;gap:4px}.grouphead .sws i{width:14px;height:14px;border-radius:3px;background:var(--rc)}
+
 h2.kicker small{font:500 13px var(--sans);color:var(--muted);margin-left:auto;white-space:nowrap}
 h2.kicker i{width:14px;height:14px;border-radius:3px;background:var(--rc,var(--accent));align-self:center;flex:none;font-size:0}
 section{margin-bottom:38px}
@@ -83,9 +79,7 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .charts{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -20px;padding:0 20px 4px;scroll-padding:0 20px}
 .charts::-webkit-scrollbar{display:none}
 .charts .chart{flex:0 0 min(86%,420px);scroll-snap-align:start}
-.swipe{display:none;font-size:12px;color:var(--muted);margin:-6px 0 10px}
-@media (max-width:899px){.swipe{display:block}}
-@media (min-width:900px){.charts{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;overflow:visible;margin:0;padding:0}.charts .chart{flex:none}}
+@media (max-width:899px){@media (min-width:900px){.charts{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;overflow:visible;margin:0;padding:0}.charts .chart{flex:none}}
 .chart{background:var(--card);border:1px solid var(--rule);border-top:5px solid var(--steel);padding:16px 18px 10px}
 .chart header{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
 .chart h3{margin:0;font:700 22px/1.2 var(--serif)}
@@ -123,9 +117,6 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 .cty{font-size:13px;font-weight:600;color:var(--muted);white-space:normal}
 .pill.t{background:transparent;border:1px solid var(--accent-ink);color:var(--accent-ink)}
 .pill.k{background:var(--steel);color:#fff;border:1px solid color-mix(in srgb,#fff 25%,var(--steel))}
-.tag{font-size:12px;font-weight:700;color:var(--rt);display:inline-flex;align-items:center;gap:6px}
-.tag::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--rc,var(--accent));flex:none}
-.tr::after{content:" ⇄";font-size:.7em;color:var(--muted)}
 .rate{display:inline-flex;gap:7px;flex:none;align-self:flex-start;margin:5px 2px 0 0}
 .rb{box-sizing:border-box;width:15px;height:15px;border-radius:50%;border:2px solid var(--rb);background:transparent;padding:0;cursor:pointer;opacity:.5;position:relative}
 .rb::after{content:"";position:absolute;inset:-6px}
@@ -168,14 +159,13 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
   .chart .big{font-size:36px}.mast .mark{width:52px;height:52px}.mast{gap:14px}h2.kicker{font-size:26px}
   .chips{padding:12px 16px 0}
 }
-@media print{nav,.chips,#trbar,.rate{display:none}body{background:#fff}}
-</style>
+@media print{nav,.chips,</style>
 </head>
 <body>
 {% if health|selectattr(1,'equalto','bad')|list %}<div class="healthbar">Störung bei der heutigen Aktualisierung – Details unten im Systemstatus.</div>{% endif %}
 {% if sample %}<div class="sample">VORSCHAU MIT BEISPIELDATEN – Überschriften, Quellen und Zahlen sind erfunden. Echte Meldungen erscheinen nach dem ersten automatischen Lauf.</div>{% endif %}
 
-{% macro item(c) %}<a dir="auto" class="h" href="{{ c.url }}" target="_blank" rel="noopener"{% if c.orig %} title="Original: {{ c.orig }}"{% endif %}{% if c.needs_tr %} data-t="1" data-lang="{{ c.lang|lower }}"{% endif %}>{{ c.title }}</a>{% endmacro %}
+{% macro item(c) %}<a dir="auto" class="h" href="{{ c.url }}" target="_blank" rel="noopener"{% if c.orig %} title="Original: {{ c.orig }}"{% endif %}>{{ c.title }}</a>{% endmacro %}
 
 {% macro badges(c) %}{% if c.trusted %}<span>·</span><span>Fachmedium</span>{% endif %}{% if c.n > 1 %}<span>·</span><span>{{ c.n }} Quellen</span>{% endif %}{% endmacro %}
 
@@ -306,24 +296,6 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
     saveHid(); applyHid();
   });
   applyHid();
-
-  /* Reste (falls die Übersetzung im Lauf nicht geklappt hat): stillschweigend mit der Browser-Übersetzung, falls schon installiert */
-  var pending=$('[data-t]'); if(!pending.length||!('Translator' in self)) return;
-  var cache={}; try{cache=JSON.parse(localStorage.getItem('seilTr')||'{}')}catch(e){}
-  (async function(){
-    for(var el of pending){
-      var lang=el.dataset.lang, o=el.textContent.trim(), k=lang+'|'+o, t=cache[k];
-      if(!t){
-        try{
-          var opt={sourceLanguage:lang,targetLanguage:'de'};
-          if(await Translator.availability(opt)!=='available') continue;
-          t=await (await Translator.create(opt)).translate(o); cache[k]=t;
-        }catch(e){continue}
-      }
-      el.title='Original: '+o; el.textContent=t; el.classList.add('tr'); el.removeAttribute('data-t');
-    }
-    try{if(Object.keys(cache).length>1500)cache={};localStorage.setItem('seilTr',JSON.stringify(cache))}catch(e){}
-  })();
 })();
 </script>
 </body>
