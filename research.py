@@ -72,7 +72,10 @@ def research(key, title, text, source, date):
             for c in blk.get("citations") or []:
                 if c.get("url"):
                     src.setdefault(c["url"], urlparse(c["url"]).netloc.removeprefix("www.") or c["url"])
-    last = next((t for t in reversed(out) if t.strip()), "")             # nur die Endantwort, nicht das Zwischen-Gerede vor den Suchen
+        else:
+            out = []                  # Text vor/zwischen den Suchen ist Zwischen-Gerede; die Antwort steht nach dem letzten Such-Block
+    # Mit Quellenangaben zerlegt die API die Antwort in mehrere Textblöcke: alle nach der letzten Suche zusammensetzen
+    last = "".join(out)
     txt = re.sub(r"\s+([,.;:!?])", r"\1", re.sub(r"\s+", " ", last)).strip()
     if len(txt) > 320:                                        # zu lang: am letzten Satzende davor kürzen, nie mitten im Satz
         cut = max(txt.rfind(". ", 0, 320), txt.rfind("! ", 0, 320), txt.rfind("? ", 0, 320))
@@ -83,7 +86,7 @@ def research(key, title, text, source, date):
         usage["why"] = (f"stop={js.get('stop_reason')}, Textlänge={len(txt)}, Suchen={usage['s']}, Blöcke="
                         + ",".join(sorted({b.get("type", "?") for b in js.get("content", [])})) + f", Ausgabe={(js.get('usage') or {}).get('output_tokens')}")
         return None, usage
-    return dict(v=3, text=txt, quellen=[dict(t=t, u=u) for u, t in list(src.items())[:4]],
+    return dict(v=4, text=txt, quellen=[dict(t=t, u=u) for u, t in list(src.items())[:4]],
                 t=dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes")), usage
 
 
@@ -92,7 +95,7 @@ def retry(lead):
     b = lead.get("bericht")
     if b is False:
         return lead.get("bericht_try", 1) < 3
-    return isinstance(b, dict) and b.get("v") != 3
+    return isinstance(b, dict) and b.get("v") != 4
 
 
 def main():
