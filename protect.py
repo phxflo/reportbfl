@@ -28,7 +28,7 @@ def main():
     subprocess.run(cmd, check=True, env=env)
     enc = (out_dir / PAGE.name).read_text(encoding="utf-8")
     # Sicherheitsnetz: im Ergebnis darf kein lesbarer Seiteninhalt stehen
-    for probe in ("Top-5 der Woche", "Report</span></h1>", "data-id="):
+    for probe in ("Report</span></h1>", "data-id=", "Kennzahlen"):
         if probe in enc:
             sys.exit("::error::Verschlüsselung fehlgeschlagen – Klartext im Ergebnis. Es wird nichts veröffentlicht.")
     enc = enc.replace('<meta charset="utf-8" />', '<meta charset="utf-8" />\n        <meta name="robots" content="noindex,nofollow" />', 1)

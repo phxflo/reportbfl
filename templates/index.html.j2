@@ -135,12 +135,6 @@ section#kennzahlen h2.kicker{border:0;background:none;padding:0 0 12px}
 @media (max-width:600px){.rate{gap:9px}.rb{width:17px;height:17px}}
 
 /* Titelseite */
-.rank{list-style:none;margin:0;padding:0;counter-reset:n;background:var(--card);border:1px solid var(--rule);border-top:0}
-.rank li{counter-increment:n;display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:0 10px;align-items:start;padding:16px 20px 16px 16px;border-top:1px solid var(--rule);border-left:5px solid var(--rc,var(--rule))}
-.rank li:first-child{border-top:0}
-.rank li::before{content:counter(n);font:800 40px/1 var(--serif);color:var(--muted);text-align:center;padding-top:0}
-.rank .h{display:block;font:600 25px/1.18 var(--serif);margin:3px 0 6px}
-.rank li:first-child .h{font-size:31px;font-weight:700}
 
 /* Rubriken */
 .rows{columns:2 360px;column-gap:44px;padding:4px 22px 14px}
@@ -171,7 +165,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
   body{font-size:16px}.wrap{padding:0 16px}
   .rows{columns:1;padding:4px 16px 10px}.row{grid-template-columns:54px minmax(0,1fr) auto;gap:10px}
   h2.kicker{padding:10px 16px 8px}h2.kicker small{display:none}
-  .chart .big{font-size:36px}.rank li{grid-template-columns:30px minmax(0,1fr) auto;padding:14px 12px 14px 12px}.rank li::before{font-size:30px}.rank .h{font-size:22px}.rank li:first-child .h{font-size:25px}.mast .mark{width:52px;height:52px}.mast{gap:14px}h2.kicker{font-size:26px}
+  .chart .big{font-size:36px}.mast .mark{width:52px;height:52px}.mast{gap:14px}h2.kicker{font-size:26px}
   .chips{padding:12px 16px 0}
 }
 @media print{nav,.chips,#trbar,.rate{display:none}body{background:#fff}}
@@ -208,7 +202,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 </div><div class="rope"></div></header>
 
 <nav aria-label="Rubriken"><div class="wrap">
-  <a href="#kennzahlen">Kennzahlen</a><a href="#top">Top-5</a><span class="sep"></span>
+  <a href="#kennzahlen">Kennzahlen</a><span class="sep"></span>
   {% for s in sections %}<a class="rc r-{{ s.id }}" href="#{{ s.id }}">{{ s.short }}{% if s.shown %}<b class="has">{{ s.shown|length }}</b>{% endif %}</a>{% endfor %}
 </div></nav>
 
@@ -238,25 +232,6 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
   </section>
   {% endif %}
 
-
-  <section id="top">
-    <h2 class="kicker">Top-5 der Woche</h2>
-    {% if top %}
-    <ol class="rank">
-      {% for c in top %}
-      <li class="r-{{ c.rubric }}" data-id="{{ c.id }}" data-rate="{{ c.rate or '' }}">
-        <div style="grid-column:2">
-          <div class="meta"><span class="tag">{{ c.rubric_short }}</span>{{ chips(c) }}</div>
-          {{ item(c) }}
-          <div class="meta"><span>{{ c.source }}</span><span>·</span><span>{{ c.when }}</span>{{ badges(c) }}</div>
-          {{ bericht(c) }}
-        </div>
-        {{ xbtn() }}
-      </li>
-      {% endfor %}
-    </ol>
-    {% else %}<div class="box"><div class="empty">Noch keine Meldungen.</div></div>{% endif %}
-  </section>
 
   {% for s in sections %}
   {% if s.group and (loop.first or sections[loop.index0 - 1].group != s.group) %}<div class="grouphead">{{ s.group }}</div>{% endif %}

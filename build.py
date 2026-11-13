@@ -390,22 +390,11 @@ def compute(all_items, now):
         rest = [c for c in lst if not c["kunde"]][:max(r.get("max", cap) - len(cust), 0)]
         picks[r["id"]] = cust + rest
 
-    # Top-News: die wichtigsten der ausgewählten Rubrikmeldungen, höchstens eine je Rubrik, werden nach oben sortiert
-    # (und stehen dann nicht mehr in ihrer Rubrik: jede Meldung genau einmal). Gleiche Vorfälle sind oben schon gebündelt.
-    pool = sorted([c for lst in picks.values() for c in lst], key=lambda c: (c["score"], c["ts"]), reverse=True)
-    top, used_r = [], set()
-    for c in pool:
-        if len(top) >= SITE.get("top_n", 5):
-            break
-        if c["rubric"] in used_r or any(same_incident(c, t) or (c["grp"] & t["grp"]) for t in top):
-            continue
-        top.append(c)
-        used_r.add(c["rubric"])
-    top_ids = {id(c) for c in top}
+    top = []                                                        # keine Top-Liste mehr: jede Meldung steht genau einmal in ihrer Rubrik
 
     sections = []
     for k, r in enumerate(CFG["rubrics"], 1):
-        lst = sorted([c for c in picks[r["id"]] if id(c) not in top_ids], key=lambda c: c["ts"], reverse=True)
+        lst = sorted(picks[r["id"]], key=lambda c: (c["score"], c["ts"]), reverse=True)
         sections.append(dict(id=r["id"], group=r.get("group"), num=f"{k:02d}", title=r["title"], short=r["short"], shown=lst, limit=r.get("max", cap)))
 
     return cards, top, sections, items
