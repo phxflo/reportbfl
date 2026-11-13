@@ -184,7 +184,8 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 
 <nav aria-label="Rubriken"><div class="wrap">
   <a href="#kennzahlen">Kennzahlen</a><span class="sep"></span>
-  {% for s in sections %}<a class="rc r-{{ s.id }}" href="#{{ s.id }}">{{ s.short }}{% if s.shown %}<b class="has">{{ s.shown|length }}</b>{% endif %}</a>{% endfor %}
+  {% for s in sections %}{% if not s.tile %}<a class="rc r-{{ s.id }}" href="#{{ s.id }}">{{ s.short }}{% if s.shown %}<b class="has">{{ s.shown|length }}</b>{% endif %}</a>
+  {%- elif loop.first or not sections[loop.index0 - 1].tile %}{% set n = sections|selectattr('tile')|map(attribute='shown')|map('length')|sum %}<a href="#zielmaerkte">{{ s.group }}{% if n %}<b class="has">{{ n }}</b>{% endif %}</a>{% endif %}{% endfor %}
 </div></nav>
 
 <main class="wrap">
@@ -215,7 +216,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 
 
   {% for s in sections %}
-  {% if s.group and (loop.first or sections[loop.index0 - 1].group != s.group) %}<div class="grouphead">{{ s.group }}</div>{% endif %}
+  {% if s.group and (loop.first or sections[loop.index0 - 1].group != s.group) %}<div class="grouphead"{% if s.tile %} id="zielmaerkte"{% endif %}>{{ s.group }}</div>{% endif %}
   {% if s.tile and (loop.first or not sections[loop.index0 - 1].tile) %}<div class="tiles">{% endif %}
   <section id="{{ s.id }}" class="r-{{ s.id }}" data-section>
     <h2 class="kicker"><i></i>{{ s.title }}</h2>
