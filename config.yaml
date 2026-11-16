@@ -337,7 +337,7 @@ ai:                       # Auswertung durch Claude (nur mit Secret ANTHROPIC_AP
 
 research:                 # Hintergrundrecherche mit Kurzbericht (Web-Suche durch Claude) für alle angezeigten Meldungen
   model: claude-haiku-5-5   # Haiku: Berichte zu allen angezeigten Meldungen bleiben bezahlbar
-  max_per_run: 40          # höchstens so viele neue Berichte je Lauf (Kostenbremse, ca. 0,04 $ je Bericht)
+  max_per_run: 20          # höchstens so viele neue Berichte je Lauf (Kostenbremse, ca. 0,04 $ je Bericht)
   searches: 1             # Web-Suchen je Bericht (jede Suche liefert viel Text und kostet Eingabe-Token)
 
 ratings:                  # Lernen aus deinen Ampel-Bewertungen (kostenlos, lokal)

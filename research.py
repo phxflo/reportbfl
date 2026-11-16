@@ -116,6 +116,7 @@ def main():
             continue
         seen.add(lead["id"])
         cand.append(c)
+    cand.sort(key=lambda c: (c["kunde"], c["bris"]), reverse=True)        # Wichtigstes zuerst; der Rest folgt, solange die Meldung angezeigt wird
     cand = cand[:MAX_PER_RUN]
     by = {i["id"]: i for i in news["items"]}
     n = fails = 0
