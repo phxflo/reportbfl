@@ -1,0 +1,23 @@
+name: Analyse Markt (einmalig)
+on:
+  push:
+    branches: [analyse-markt]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PAGE_PASSWORD: ${{ secrets.PAGE_PASSWORD }}
+      CUSTOMERS: ${{ secrets.CUSTOMERS }}
+      COMPETITORS: ${{ secrets.COMPETITORS }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install feedparser requests PyYAML Jinja2 numpy
+      - name: Archiv entschlüsseln
+        run: openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -in data/news.enc -out data/news.json -pass env:PAGE_PASSWORD
+      - run: python analyse_markt.py
