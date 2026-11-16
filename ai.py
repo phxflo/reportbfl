@@ -99,7 +99,8 @@ SYSTEM += (("Bekannte Kunden des Nutzers, mit Land (vertraulich, nie in Begründ
               "Unfälle in Werk oder Hafen, Finanzen, Insolvenz, Übernahme, Führungswechsel, Streik (brisanz 4-5 bei Großauftrag, Unfall, Insolvenz, "
               "Übernahme, Führungswechsel). NICHT relevant sind Nachhaltigkeits-/CSR-/Imagemeldungen, Konferenzen, Sponsoring, Preise und Auszeichnungen, "
               "Meldungen zu fachfremden Sparten oder Töchtern (z. B. Goldfund, Immobilien) und Namensgleichheit mit Orten, Personen oder Firmen in einem "
-              "anderen Land als dem genannten.\n") if CUST_NAMES else "")
+              "anderen Land als dem genannten. Kürzel (z. B. dreibuchstabig) zählen nur, wenn Land oder Branche (Hafen, Stahl, Kran) zum Kunden passen; "
+              "ein gleich abgekürzter Schulbezirk, Verein oder Ort in einem anderen Land ist NICHT relevant.\n") if CUST_NAMES else "")
 
 TOOL = dict(
     name="submit", description="Gibt die Beurteilung aller Meldungen zurück.",
