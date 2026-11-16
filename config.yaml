@@ -40,7 +40,6 @@ radar: "zuschlag|surcharge|toeslag|legierung|alloy|rohstoff|safeguard|cbam|walzd
 # Gewicht je Rubrik für die Rangfolge (1.0 = normal)
 rubrics:
   - id: haefen
-    title: "Häfen, Terminals & Güterumschlag"
     group: "Zielmärkte"
     tile: true               # in der Zielmärkte-Gruppe als Kachel (2 × 2)
     short: "Häfen"
@@ -56,7 +55,6 @@ rubrics:
       ar: ["محطة حاويات", "توسعة ميناء", "رافعة ميناء", "مناقصة ميناء", "توسعة ميناء"]
       he: ["מסוף מכולות", "הרחבת נמל", "מנוף נמל", "מכרז נמל", "הרחבת נמל"]
   - id: kraene
-    title: "Kranflotten & Kranbetrieb"
     group: "Zielmärkte"
     tile: true               # in der Zielmärkte-Gruppe als Kachel (2 × 2)
     short: "Krane"
@@ -72,7 +70,6 @@ rubrics:
       ar: ["رافعة برجية", "رافعة متحركة", "رافعة زاحفة", "طلب رافعات"]
       he: ["עגורן צריח", "מנוף נייד", "מנוף זחלי", "הזמנת מנופים"]
   - id: industrie
-    title: "Industrie – Stahlwerke, Schwerindustrie & Prozesskrane"
     group: "Zielmärkte"
     tile: true               # in der Zielmärkte-Gruppe als Kachel (2 × 2)
     short: "Industrie"
@@ -88,7 +85,6 @@ rubrics:
       ar: ["مصنع صلب", "صناعة ثقيلة", "رافعة جسرية"]
       he: ["מפעל פלדה", "תעשייה כבדה", "עגורן גשר"]
   - id: tiefbau
-    title: "Spezialtiefbau – Bohrgeräte, Seilbagger & Schlitzwandgreifer"
     group: "Zielmärkte"
     tile: true               # in der Zielmärkte-Gruppe als Kachel (2 × 2)
     short: "Spezialtiefbau"
@@ -104,7 +100,6 @@ rubrics:
       ar: ["جدار ساتر", "أساسات عميقة", "حفارة"]
       he: ["כלונסאות", "יסודות עמוקים"]
   - id: markt
-    title: "Markt & Wettbewerb – Stahlseile"
     group: "Markt & Handel"
     short: "Wettbewerb"
     weight: 0.9
@@ -118,7 +113,6 @@ rubrics:
       ar: ["حبال فولاذية", "كابلات فولاذية"]
       he: ["כבלי פלדה", "חבל פלדה"]
   - id: laender
-    title: "Zölle, Tarife & Sanktionen – Handelsmaßnahmen"
     group: "Markt & Handel"
     short: "Zölle & Tarife"
     weight: 0.8
@@ -127,7 +121,6 @@ rubrics:
     must: 'zoll|zölle|strafzoll|tarif|customs|(?<!\w)dut(y|ies)(?!\w)|douane|gümrük|sanktion|sanction|yaptırım|embargo|antidumping|anti-dumping|quota|kontingent|importverbot|import ban|export ban|exportverbot|einfuhr\w*|invoerrechten|safeguard|schutzmaßnahme\w*|cbam|devisen|currency|capital control|hafenstreik|port strike|dockers? strike|blockade|handelsabkommen|trade (deal|agreement|war|policy|deficit|surplus)|wirtschaft\w*|konjunktur|bruttoinlandsprodukt|\bbip\b|\bgdp\b|inflation\w*|leitzins|zinsen|währung|haushalt|investition\w*|infrastruktur|industrie\w*|economy|economic|interest rate|budget|investment|infrastructure|industry|exports?\b|imports?\b|économi\w*|\bpib\b|taux d|devise|budget|investissement|infrastructure|industrie|commerce|exportation\w*|importation\w*|economie|economisch|\bbbp\b|inflatie|begroting|investering|handel|export|import|ekonomi|enflasyon|büyüme|faiz|döviz|bütçe|yatırım|altyapı|sanayi|ihracat|ithalat|dış ticaret|جمارك|عقوبات|حظر|اقتصاد|תעשייה|כלכלה|מכס|סנקציות|אמברגו'   # Länder: Handels-/Sanktions-/Zollthemen und allgemeine Wirtschaftslage
     terms: {}                # Länder-Suchen stehen unten unter "countries"
   - id: rohstoffe
-    title: "Rohstoffe & Zuschläge"
     group: "Markt & Handel"
     short: "Rohstoffe"
     weight: 1.0
