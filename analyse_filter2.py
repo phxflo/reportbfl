@@ -17,3 +17,17 @@ print("beurteilte", len(judged), "behalten", len(kept), "verworfen", len(lost), 
 rub = collections.Counter(i["ai"].get("rubric") for i in lost if rel(i)); print("verlorene relevante nach Rubrik:", dict(rub), "Brisanz:", dict(collections.Counter(i["ai"].get("brisanz") for i in lost if rel(i))))
 unj = [i for i in items if not i.get("ai")]
 print("unbeurteilt", len(unj), "nach Filter", sum(1 for i in unj if pre.search(text(i)) or i.get("trusted")))
+groups = {}
+for r in cfg["rubrics"]:
+    for k in ("must", "core"):
+        if r.get(k):
+            groups[f'{r["id"]}.{k}'] = re.compile(r[k], re.I)
+for k in ("events", "boost", "radar"):
+    groups[k] = re.compile(cfg[k], re.I)
+groups["kontext"] = re.compile(cfg["ai"]["tariff_context"], re.I)
+tg = lambda i: tuple(sorted(g for g, rx in groups.items() if rx.search(text(i))))
+rl = [i for i in lost if rel(i)]
+print("verloren relevant, Sprachen:", dict(collections.Counter(i["lang"] for i in rl)))
+print("verloren relevant, Tags:", [(c, n) for c, n in collections.Counter(tg(i) for i in rl).most_common(8)])
+print("verloren relevant, Quellen trusted/open:", sum(bool(i.get("trusted")) for i in rl), sum(bool(i.get("open")) for i in rl), "ohne Land", sum(1 for i in rl if not i.get("countries")))
+print("verworfen irrelevant, Sprachen:", dict(collections.Counter(i["lang"] for i in lost if not rel(i))))
