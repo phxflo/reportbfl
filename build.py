@@ -190,8 +190,12 @@ def _ratings():
 RATE = _ratings()      # Ampel-Bewertungen des Nutzers {id: {r: g|y|r, t}}
 HOME = _home()
 import names
-_cn = names.only_names("CUSTOMERS")
-CUST = re.compile("|".join(rf"(?<!\w){re.escape(n)}(?!\w)" for n in _cn) or "(?!x)x", re.I)
+# Kunden im Text erkennen: Kürzel (bis 4 Zeichen) nur in Großschreibung, und wenn ein Kundenland bekannt ist, muss die Meldung auch dieses Land betreffen
+CUSTX = [(re.compile(rf"(?<!\w){re.escape(n)}(?!\w)", 0 if len(n) <= 4 else re.I), cid) for n, _, cid in names.parse("CUSTOMERS")]
+
+
+def cust_hit(text, countries):
+    return any(rx.search(text) and (cid is None or cid in countries) for rx, cid in CUSTX)
 
 
 def country_matchers():
@@ -325,7 +329,7 @@ def compute(all_items, now):
             when=pub.astimezone(TZ).strftime("%d.%m. %H:%M"), ts=pub, is_new=pub >= fresh,
             countries=[dict(id=c, name=cname[c]) for c in countries], tk=tk, sig=signature(tk), grp={m["grp"] for m in members if m.get("grp") and m["grp"] not in big_grp},
             bris=max([m["ai"]["brisanz"] for m in members if m.get("ai")] or [0]),
-            kunde=any(m.get("kunde") for m in members) or bool(CUST.search(title + " " + lead["title_orig"] + " " + (lead.get("snippet") or ""))), ai_used=bool(ai), rc=collections.Counter(a["rubric"] for a in ai if a.get("rubric")) or collections.Counter([rubric]),
+            kunde=any(m.get("kunde") for m in members) or cust_hit(title + " " + lead["title_orig"] + " " + (lead.get("snippet") or ""), countries), ai_used=bool(ai), rc=collections.Counter(a["rubric"] for a in ai if a.get("rubric")) or collections.Counter([rubric]),
             readable=lead["lang"] in ("de", "en") or any(m.get("title_de") for m in members)))
 
     # Gleiche Vorfälle (auch in anderen Sprachen, z. B. die Explosion in Izmir) zu einer Meldung bündeln.
