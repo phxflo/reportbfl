@@ -4,6 +4,7 @@ import datetime as dt
 import os
 
 os.environ["CUSTOMERS"] = "Port Alpha NV Belgien, Beta Steel, Marokko\nGamma | gamma.com.tr"
+import ai  # noqa: E402
 import build  # noqa: E402
 import names  # noqa: E402
 
@@ -38,18 +39,26 @@ flat = [i for ids in shown.values() for i in ids]
 assert len(flat) == len(set(flat)), "Meldung doppelt"
 assert sum(1 for i in shown["haefen"] if i not in ("x20", "x21")) <= build.SITE["per_section"]
 
-# Gleicher Vorfall aus vielen Quellen (über 48 h verteilt) = eine Karte; anderer Vorfall derselben Woche bleibt eigene Karte
+# Dopplungen: Claudes Gruppen (gleiche Titel nur einmal geschickt) werden zu einer Karte; ohne Gruppe eigene Karte
 def ev(n, h, title):
     return dict(item(n, "kraene", 5, title), published=(dt.datetime.now(UTC) - dt.timedelta(hours=h)).isoformat(), countries=["MA"],
                 ai=dict(relevant=True, rubric="kraene", countries=["MA"], brisanz=5))
 
 
-same = ["Zandor stärkt Schwerlastflotte mit 10 neuen Krantec-Mobilkranen", "Zandor bestellt zehn Krantec-Krane zur Unterstützung der Expansion",
-        "Krantec-Krane unterstützen Zandors Expansion in Afrika", "Zandor plant groß: 10 neue Krantec-Krane und Europa im Visier",
-        "Zandor erweitert Flotte um zehn Krantec-Mobilkrane", "Zandor kauft zehn AT-Krane"]
-evs = [ev(30 + k, h, t) for k, (h, t) in enumerate(zip((50, 30, 49, 3, 48, 52), same))]
-evs.append(ev(40, 20, "Hafen Tanger: Streik legt Containerumschlag lahm"))
+evs = [ev(30, 50, "Explosion im Werk Zandor"), ev(31, 30, "Festnahmen bei Protest am Zandor-Werk"), ev(32, 29, "Festnahmen bei Protest am Zandor-Werk"),
+       ev(33, 3, "17 Tote bei Explosion in Stahlwerk"), ev(34, 20, "Hafen Tanger: Streik legt Umschlag lahm")]
+sent = []
+
+
+def fake_call(key, system, user, tool, **kw):
+    sent.append(user)
+    return dict(groups=[["x30", "x31", "x33", "x99"], ["x34"]])
+
+
+ai.call = fake_call
+assert ai.group_stories("k", evs) == 1 and sent[0].count("Festnahmen") == 1
+assert {i["id"]: i.get("grp") for i in evs} == dict(x30="gx30", x31="gx30", x32="gx30", x33="gx30", x34=None)
 _, sections, _ = build.compute(evs, dt.datetime.now(UTC))
 kr = [c for s in sections if s["id"] == "kraene" for c in s["shown"]]
-assert sorted(c["n"] for c in kr) == [1, 6], [c["title"] for c in kr]
+assert sorted(c["n"] for c in kr) == [1, 4], [c["title"] for c in kr]
 print("Regeln ok")
