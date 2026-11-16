@@ -365,8 +365,9 @@ def main():
     def prio(i):                                              # Kunden- und Wettbewerberquellen zuerst, dann der Rest nach Datum
         hit = i.get("kunde") or i.get("trusted") or (names_rx and names_rx.search(f'{i["title_orig"]} {i.get("snippet") or ""}'))
         return (0 if hit else 1, -dt.datetime.fromisoformat(i["published"]).timestamp())
-    todo = sorted((i for i in recent if stale(i)), key=prio)[:MAX_ITEMS]
-    todo, pre_n = prefilter(todo, blocked_sources(items))
+    todo, pre_n = prefilter([i for i in recent if stale(i)], blocked_sources(items))    # erst der (kostenlose) Vorfilter: die Warteschlange leert sich von selbst
+    todo.sort(key=prio)
+    rest, todo = max(len(todo) - MAX_ITEMS, 0), todo[:MAX_ITEMS]
     seen, dups = {}, []                                    # gleiche Titel aus mehreren Quellen nur einmal beurteilen
     uniq = []
     for i in todo:
@@ -400,7 +401,7 @@ def main():
         print(f"::warning::Claude-Auswertung abgebrochen: {ex}")
         done, groups, translated = 0, 0, 0
         err = str(ex)[:160]
-    data.setdefault("meta", {})["ai"] = dict(status="fehler" if err else "ok", error=err, judged=done, todo=len(todo_all), pre=pre_n, groups=groups, tin=USAGE["i"], tout=USAGE["o"])
+    data.setdefault("meta", {})["ai"] = dict(status="fehler" if err else "ok", error=err, judged=done, todo=len(todo_all) + rest, pre=pre_n, groups=groups, tin=USAGE["i"], tout=USAGE["o"])
     NEWS.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
     rel = sum(1 for i in recent if (i.get("ai") or {}).get("relevant"))
     print(f"Tokens: {USAGE['i']} ein ({USAGE['c']} aus dem Cache), {USAGE['o']} aus")
