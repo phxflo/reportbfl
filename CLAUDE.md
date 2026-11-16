@@ -33,7 +33,7 @@ die allgemeine Wirtschaftslage. Das Tool soll stark sein, aber wenig laufende Ko
 ## Arbeitsregeln
 - Nie mergen, während ein Lauf läuft (sonst gehen Urteile verloren): vorher `gh run list --workflow update.yml --limit 1` prüfen.
 - Ablauf für Änderungen: Branch → lokal `python make_sample.py && python build.py` (Beispielseite in `docs/index.html`, im Browser ansehen; danach
-  `git checkout docs/index.html data/indices.json`) → `python -m pyflakes *.py` → PR → mergen.
+  `git checkout docs/index.html data/indices.json`) → `python test_rules.py` → `python -m pyflakes *.py` → PR → mergen.
 - Logs enthalten nie Inhalte (Titel, Firmennamen), nur Zahlen. Analysen mit Echtdaten laufen als temporärer Workflow in Actions (Push-Trigger auf Testbranch,
   Archiv mit `PAGE_PASSWORD` entschlüsseln, nur Zahlen ausgeben), danach Branch löschen.
 - Code schlank halten: Totes sofort entfernen, keine Reste alter Features, kein Mehraufwand ohne Nutzen. Nach CSS-Änderungen Klammerbilanz/Screenshot prüfen.
