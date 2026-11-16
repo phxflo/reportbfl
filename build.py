@@ -332,7 +332,7 @@ def compute(all_items, now):
     return cards, sections, items
 
 
-def health(news, idx, now, cards=()):
+def health(news, idx, now, cards=(), shown=()):
     """Systemstatus: Zeilen (Name, Stufe ok/warn/bad, Text). Macht stille Ausfälle sichtbar."""
     rows, meta = [], news["meta"]
     h = meta.get("health")
@@ -354,8 +354,8 @@ def health(news, idx, now, cards=()):
         if a["status"] == "ok":
             left = max(a.get("todo", 0) - a.get("judged", 0), 0)
             rows.append(("Claude", "ok" if not left else "warn",
-                         f"{a.get('judged', 0)} Meldungen beurteilt" + (f", {a['pre']} vorgefiltert" if a.get("pre") else "") + f", {a.get('groups', 0)} Vorfall-Gruppen"
-                         + (f"; {left} warten auf den nächsten Lauf" if left else "")
+                         f"{a.get('judged', 0)} Meldungen beurteilt" + (f", {a['pre']} vorgefiltert" if a.get("pre") else "") + f", {a.get('groups', 0)} Geschichten mit Dopplungen"
+                         + (f"; {left} warten auf den nächsten Lauf (Limit {CFG.get('ai', {}).get('max_items', 150)} je Lauf, Kunden zuerst)" if left else "")
                          + (f" · {round(a['tin'] / 1000)}k Token ein, {round(a['tout'] / 1000)}k aus" if a.get("tin") else "")))
         elif a["status"] == "aus":
             rows.append(("Claude", "bad", "Schlüssel fehlt – Meldungen werden nur per Stichwort gefiltert"))
@@ -363,8 +363,12 @@ def health(news, idx, now, cards=()):
             rows.append(("Claude", "bad", "Auswertung abgebrochen – es gilt der Stand des Vortags. " + (a.get("error") or "")))
     rs = meta.get("research")
     if rs:
-        rows.append(("Recherche", "warn" if rs.get("fails") else "ok",
-                     f"{rs.get('n', 0)} Berichte, {rs.get('searches', 0)} Suchen" + (f"; {rs['fails']} Fehler" if rs.get("fails") else "")
+        gone = sum(1 for c in shown if not c["bericht"] and c["lead"].get("bericht") is False and c["lead"].get("bericht_try", 1) >= 3)
+        wait = sum(1 for c in shown if not c["bericht"]) - gone
+        rows.append(("Recherche", "warn" if rs.get("fails") or wait else "ok",
+                     f"{rs.get('n', 0)} neue Berichte, {rs.get('searches', 0)} Suchen" + (f"; {rs['fails']} Fehler" if rs.get("fails") else "")
+                     + (f"; {wait} von {len(shown)} angezeigten Meldungen noch ohne Hintergrund (folgt im nächsten Lauf)" if wait else "")
+                     + (f"; {gone} ohne auffindbare Quellen" if gone else "")
                      + (f" · {round(rs['tin'] / 1000)}k Token ein, {round(rs['tout'] / 1000)}k aus" if rs.get("tin") else "")))
     if not meta.get("sample"):
         win = now - dt.timedelta(days=SITE["window_days"])
@@ -372,10 +376,6 @@ def health(news, idx, now, cards=()):
         if recent:
             age = (now - max(dt.datetime.fromisoformat(i["published"]) for i in recent)).total_seconds() / 3600
             rows.append(("Frische", "ok" if age < 36 else "warn" if age < 72 else "bad", f"neueste Meldung vor {age:.0f} Std."))
-            if a and a["status"] == "ok":
-                unj = sum(1 for i in recent if not i.get("ai"))
-                if unj:
-                    rows.append(("Auswahl", "warn" if unj < 20 else "bad", f"{unj} Meldungen ohne Claude-Urteil"))
     if RATE:
         since = (now - dt.timedelta(days=7)).timestamp() * 1000
         recent_r = {k: v for k, v in RATE.items() if v.get("t", 0) >= since}
@@ -451,7 +451,7 @@ def main():
         countries=CFG["countries"], date=f"{WDAYS[local.weekday()]}, {local.day}. {MONTHS[local.month - 1]} {local.year}",
         updated=local.strftime("%d.%m.%Y, %H:%M Uhr"), edition=local.timetuple().tm_yday,
         n_week=len(cards), n_today=sum(c["is_new"] for c in cards), n_src=len({i["source"] for i in items}),
-        errors=index_notes(idx, now), health=health(news, idx, now, cards),
+        errors=index_notes(idx, now), health=health(news, idx, now, cards, [c for s in sections for c in s["shown"]]),
         fontcss=font_css(), rating=SITE.get("rating"))
     (ROOT / "docs").mkdir(exist_ok=True)
     (ROOT / "docs" / "index.html").write_text(html, encoding="utf-8")
