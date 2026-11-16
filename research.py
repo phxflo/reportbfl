@@ -107,8 +107,6 @@ def main():
     if news["meta"].get("sample"):
         return
     now = dt.datetime.now(dt.timezone.utc)
-    if build.CFG.get("ratings", {}).get("apply"):        # sonst nur Selbsttest – den druckt build.py
-        build.prepare(news)
     cards, sections, _ = build.compute(news["items"], now)
     seen, cand = set(), []
     for c in [x for s in sections for x in s["shown"]]:

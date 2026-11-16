@@ -4,7 +4,6 @@ import collections
 import datetime as dt
 import json
 import re
-import sys
 import unicodedata
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -126,31 +125,6 @@ def cluster(items):
 
 
 
-GENERIC = {"neue", "neuen", "wegen", "nach", "durch", "ueber", "ihre", "sind", "wurde", "video", "mindestens", "after", "least",
-           "turkey", "turkei", "turkiye", "turquie", "turkije", "turkish", "turkse", "israel", "marokko", "morocco", "maroc",
-           "algerien", "algerie", "tunesien", "tunisie", "belgien", "belgique", "niederlande", "nederland", "market",
-           "industry", "industrie", "price", "prices", "project", "international", "european", "company", "group",
-           "year", "years", "week", "report", "says", "said", "mehr", "unter"}
-GENERIC = {w[:6] for w in GENERIC}
-
-
-def stems(title):
-    """Wortanfänge (6 Buchstaben), damit Mobilkrane/Mobilkranen oder Unterstützung/unterstützen zusammenpassen"""
-    return {w[:6] for w in tokens(title)} - GENERIC
-
-
-def same_incident(a, b, rare):
-    """Gleicher Vorfall ohne Embedding-Gruppe (z. B. zehn Meldungen zur selben Kranbestellung eines Kunden): innerhalb von 72 h
-    mit einer Meldung der Karte mindestens 3 gemeinsame Wörter im deutschen Titel, oder 2 seltene (meist Firmen- oder Ortsnamen)."""
-    if abs((a["ts"] - b["ts"]).total_seconds()) > 72 * 3600:
-        return False
-    for x in a["tks"]:                           # mit jeder einzelnen Meldung vergleichen, nicht mit allen Wörtern der Karte
-        shared = x & b["tk"]
-        if len(shared) >= 3 or len(shared & rare) >= 2:
-            return True
-    return False
-
-
 def _home():
     names = (CFG.get("region") or {}).get("extra_names") or []
     return re.compile("|".join(rf"(?<!\w){re.escape(n)}" for n in names) or "(?!x)x", re.I)
@@ -211,24 +185,6 @@ def index_notes(idx, now):
         if age > 7:
             out.append(f"{sid}: Stand von vor {age} Tagen")
     return out
-
-
-ADJ = {}          # Tendenz je Meldung aus deinen Ampel-Bewertungen (siehe rating_model.py), von prepare() gefüllt
-
-
-def prepare(news):
-    """Einmal vor compute(): lernt aus den Bewertungen (kostenlos, lokal). Fehlt das Modell, läuft alles ohne diese Wirkung weiter."""
-    global ADJ
-    ADJ = {}
-    if news["meta"].get("sample") or not CFG.get("ratings", {}).get("on", True):
-        return
-    try:
-        import rating_model
-        res = rating_model.annotate(news["items"])        # druckt immer den Selbsttest
-        if CFG.get("ratings", {}).get("apply", False):
-            ADJ = res
-    except Exception as ex:
-        print("Ampel-Modell übersprungen:", type(ex).__name__, file=sys.stderr)
 
 
 def safe_url(u):
@@ -296,12 +252,12 @@ def compute(all_items, now):
         text = title + " " + lead["title_orig"]
         srcs = sorted({m["source"] for m in members})
         cards.append(dict(
-            id=lead["id"], adj=ADJ.get(lead["id"], 0.0), bericht=show_bericht(lead.get("bericht")), trusted=any(m.get("trusted") for m in members), srcs=set(srcs),
+            id=lead["id"], bericht=show_bericht(lead.get("bericht")), trusted=any(m.get("trusted") for m in members), srcs=set(srcs),
             rubric=rubric, rubrics=rubrics, title=title, lead=lead, text=text,
             orig=lead["title_orig"] if lead["lang"] != "de" and title != lead["title_orig"] else None,
             source=srcs[0], n=len(srcs), url=safe_url(lead["url"]),
             when=pub.astimezone(TZ).strftime("%d.%m. %H:%M"), ts=pub, is_new=pub >= fresh,
-            countries=[dict(id=c, name=cname[c]) for c in countries], tk=stems(title), grp={m["grp"] for m in members if m.get("grp")},
+            countries=[dict(id=c, name=cname[c]) for c in countries], grp={m["grp"] for m in members if m.get("grp")},
             bris=max([m["ai"]["brisanz"] for m in members if m.get("ai")] or [0]),
             kunde=any(m.get("kunde") for m in members) or cust_hit(title + " " + lead["title_orig"] + " " + (lead.get("snippet") or ""), countries), ai_used=bool(ai), rc=collections.Counter(a["rubric"] for a in ai if a.get("rubric")) or collections.Counter([rubric]),
             readable=lead["lang"] in ("de", "en") or any(m.get("title_de") for m in members)))
@@ -309,16 +265,11 @@ def compute(all_items, now):
     # Gleiche Vorfälle (auch in anderen Sprachen, z. B. die Explosion in Izmir) zu einer Meldung bündeln.
     # Als Hauptmeldung dient die lesbarste: Fachmedium, dann deutsch/übersetzt, dann neueste.
     cards.sort(key=lambda c: (c["trusted"], c["readable"], c["ts"]), reverse=True)
-    df = collections.Counter(w for c in cards for w in c["tk"])
-    rare = {w for w, n in df.items() if n <= max(6, 0.05 * len(cards))}      # Wörter, die nur in wenigen Meldungen vorkommen
-    for c in cards:
-        c["tks"] = [c["tk"]]
     merged = []
     for c in cards:
         for m in merged:
-            if (c["grp"] & m["grp"]) or same_incident(m, c, rare):
+            if c["grp"] & m["grp"]:                 # dieselbe Geschichte (Claude, ai.group_stories)
                 m["grp"] |= c["grp"]
-                m["tks"].append(c["tk"])
                 m["rc"] = m["rc"] + c["rc"]
                 m["ai_used"] |= c["ai_used"]
                 m["bris"] = max(m["bris"], c["bris"])
@@ -354,8 +305,7 @@ def compute(all_items, now):
                       + 0.8 * max(0, 1 - age / SITE["window_days"]) + (0.4 if c["countries"] else 0)
                       + (1.5 if c["trusted"] else 0) + (1.5 * (c["bris"] - 3) if c["bris"] else 0)
                       + (2.0 if c["rubric"] in CUSTOMER and c["countries"] else 0)
-                      + (3.0 if c["kunde"] else 0)
-                      + float(CFG.get("ratings", {}).get("weight", 4)) * c["adj"])      # Kundennähe: Ereignisse bei Kunden in deinen Ländern zuerst
+                      + (3.0 if c["kunde"] else 0))      # Kundennähe: Ereignisse bei Kunden in deinen Ländern zuerst
 
     # Je Rubrik die wichtigsten Meldungen (nach Wertung, nicht nach Datum); Randthemen (niedrige Brisanz) fallen weg
     def member(c, rid):
@@ -363,8 +313,6 @@ def compute(all_items, now):
             return False
         if c["ai_used"] and 0 < c["bris"] < rub[rid].get("min_bris", 4) and not c["kunde"]:      # Kundenmeldungen immer
             return False
-        if c["adj"] <= float(CFG.get("ratings", {}).get("hide_below", -0.75)) and not c["kunde"]:
-            return False                # sehr ähnlich zu dem, was du rot bewertet hast
         if rid == "laender":            # "Länder" = allgemeine Meldungen zum Land
             return c["ai_used"] or bool(c["countries"])
         return True
@@ -483,7 +431,6 @@ def main():
     now = dt.datetime.now(dt.timezone.utc)
     rub_items = news["items"]
 
-    prepare(news)
     cards, sections, items = compute(rub_items, now)
     dist = collections.Counter(c["bris"] for c in cards if c["ai_used"])
     shown = collections.Counter(c["bris"] for s_ in sections for c in s_["shown"])
