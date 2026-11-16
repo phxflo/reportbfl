@@ -111,8 +111,6 @@ TOOL = dict(
                         countries=dict(type="array", items=dict(type="string", enum=COUNTRIES)),
                         title_de=dict(type="string"), brisanz=dict(type="integer", minimum=1, maximum=5)))))))
 
-MAX_GROUP = int(AI.get("max_group", 12))     # größere „Vorfälle“ sind ein Fehler der Gruppierung und werden verworfen
-
 USAGE = dict(i=0, o=0, c=0)      # verbrauchte Tokens dieses Laufs
 
 
@@ -195,9 +193,12 @@ def classify(key, items):
                 if not i:
                     continue
                 rub = r.get("rubric") if r.get("rubric") in RUBRICS else None
-                i["ai"] = dict(relevant=bool(r.get("relevant")) and rub is not None, rubric=rub,
-                               countries=[c for c in r.get("countries", []) if c in COUNTRIES],
-                               brisanz=max(1, min(5, int(r.get("brisanz") or 3))), model=MODEL, v=VERSION, rv=RULES)
+                try:
+                    i["ai"] = dict(relevant=bool(r.get("relevant")) and rub is not None, rubric=rub,
+                                   countries=[c for c in r.get("countries") or [] if c in COUNTRIES],
+                                   brisanz=max(1, min(5, int(r.get("brisanz") or 3))), model=MODEL, v=VERSION, rv=RULES)
+                except (ValueError, TypeError):
+                    continue                              # unbrauchbares Einzelurteil: beim nächsten Lauf neu
                 if r.get("title_de") and i["lang"] != "de" and not i.get("title_de"):
                     i["title_de"] = r["title_de"].strip()
                 done += 1
@@ -225,21 +226,6 @@ def translate_missing(key, items):
                 by[r["id"]]["title_de"] = r["title_de"].strip()
                 done += 1
     return done
-
-
-def drop_oversized(items):
-    """Räumt bestehende Gruppen auf, die zu groß für einen einzelnen Vorfall sind (Fehler einer früheren Gruppierung)."""
-    cnt = {}
-    for i in items:
-        if i.get("grp", "").startswith("g"):
-            cnt[i["grp"]] = cnt.get(i["grp"], 0) + 1
-    bad = {g for g, n in cnt.items() if n > MAX_GROUP}
-    for i in items:
-        if i.get("grp") in bad:
-            del i["grp"]
-    if bad:
-        print(f"{len(bad)} zu große Gruppen aufgelöst ({sum(cnt[g] for g in bad)} Meldungen)")
-    return len(bad)
 
 
 def _mark(info):
@@ -277,7 +263,7 @@ def _prefilter():
         if CFG.get(k):
             pats.append(CFG[k])
     for n in COMP_NAMES + [x.split(" (")[0] for x in CUST_NAMES]:
-        pats.append(re.escape(n))
+        pats.append(rf"(?<!\w){re.escape(n)}(?!\w)")
     try:
         return _Pre(re.compile("|".join(f"(?:{p})" for p in pats), re.I),
                     re.compile(tariff or "(?!x)x", re.I), re.compile(AI.get("tariff_context") or ".", re.I))
@@ -356,19 +342,17 @@ def main():
     if data.get("meta", {}).get("sample"):
         return
     items = data["items"]
-    drop_oversized(items)
     global SYSTEM
     SYSTEM += feedback_block(items)
     win = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=CFG["site"]["window_days"])
     recent = [i for i in items if dt.datetime.fromisoformat(i["published"]) >= win]
-    names_rx = re.compile("|".join(re.escape(n) for n in COMP_NAMES + [x.split(" (")[0] for x in CUST_NAMES]), re.I) if COMP_NAMES or CUST_NAMES else None
+    names_rx = re.compile("|".join(rf"(?<!\w){re.escape(n)}(?!\w)" for n in COMP_NAMES + [x.split(" (")[0] for x in CUST_NAMES]), re.I) if COMP_NAMES or CUST_NAMES else None
     def prio(i):                                              # Kunden- und Wettbewerberquellen zuerst, dann der Rest nach Datum
         hit = i.get("kunde") or i.get("trusted") or (names_rx and names_rx.search(f'{i["title_orig"]} {i.get("snippet") or ""}'))
         return (0 if hit else 1, -dt.datetime.fromisoformat(i["published"]).timestamp())
     todo, pre_n = prefilter([i for i in recent if stale(i)], blocked_sources(items))    # erst der (kostenlose) Vorfilter: die Warteschlange leert sich von selbst
     todo.sort(key=prio)
-    rest, todo = max(len(todo) - MAX_ITEMS, 0), todo[:MAX_ITEMS]
-    seen, dups = {}, []                                    # gleiche Titel aus mehreren Quellen nur einmal beurteilen
+    seen, dups = {}, []                                    # gleiche Titel aus mehreren Quellen nur einmal beurteilen (zählen nicht ins Limit)
     uniq = []
     for i in todo:
         k = re.sub(r"\W+", "", i["title_orig"].lower())[:90]
@@ -377,7 +361,10 @@ def main():
         else:
             seen[k] = i
             uniq.append(i)
-    todo_all, todo = todo, uniq
+    rest, todo = max(len(uniq) - MAX_ITEMS, 0), uniq[:MAX_ITEMS]
+    kept = {i["id"] for i in todo}
+    dups = [(d, rep) for d, rep in dups if rep["id"] in kept]
+    todo_all = todo + [d for d, _ in dups]
     print(f"Claude ({MODEL}): {len(todo)} Meldungen zu beurteilen, {pre_n} per Vorfilter aussortiert …")
     try:
         done = classify(key, todo) if todo else 0
@@ -397,8 +384,8 @@ def main():
             print(f"::warning::Gruppierung übersprungen: {type(ex).__name__}")
             groups = len({i["grp"] for i in recent if i.get("grp")})
         err = ""
-    except RuntimeError as ex:
-        print(f"::warning::Claude-Auswertung abgebrochen: {ex}")
+    except Exception as ex:                         # auch unerwartete Fehler: bezahlte Urteile werden trotzdem gespeichert
+        print(f"::warning::Claude-Auswertung abgebrochen: {type(ex).__name__} {ex if isinstance(ex, RuntimeError) else ''}")
         done, groups, translated = 0, 0, 0
         err = str(ex)[:160]
     data.setdefault("meta", {})["ai"] = dict(status="fehler" if err else "ok", error=err, judged=done, todo=len(todo_all) + rest, pre=pre_n, groups=groups, tin=USAGE["i"], tout=USAGE["o"])

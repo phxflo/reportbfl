@@ -107,10 +107,11 @@ def main():
     if news["meta"].get("sample"):
         return
     now = dt.datetime.now(dt.timezone.utc)
-    build.prepare(news)
-    cards, top, sections, _ = build.compute(news["items"], now)
+    if build.CFG.get("ratings", {}).get("apply"):        # sonst nur Selbsttest – den druckt build.py
+        build.prepare(news)
+    cards, sections, _ = build.compute(news["items"], now)
     seen, cand = set(), []
-    for c in top + [x for s in sections for x in s["shown"]]:
+    for c in [x for s in sections for x in s["shown"]]:
         lead = c["lead"]
         if lead["id"] in seen or (lead.get("bericht") is not None and not retry(lead)):
             continue
@@ -125,8 +126,8 @@ def main():
         lead = c["lead"]
         try:
             rep, u = research(key, c["title"], lead.get("snippet") or "", c["source"], lead["published"][:10])
-        except RuntimeError as ex:
-            print(f"  Recherche-Fehler: {ex}", file=sys.stderr)
+        except Exception as ex:                              # auch unerwartete Fehler: bisherige Berichte bleiben gespeichert
+            print(f"  Recherche-Fehler: {type(ex).__name__} {ex if isinstance(ex, RuntimeError) else ''}", file=sys.stderr)
             fails += 1
             if fails >= 2:
                 break
@@ -136,12 +137,10 @@ def main():
         it = by[lead["id"]]
         it["bericht"] = rep or False                         # False = nichts gefunden (wird später noch zweimal versucht)
         if not rep and u.get("trunc"):
-            it["bericht"] = None                             # abgeschnitten, kein echtes „nichts gefunden“: beim nächsten Lauf neu
-            del it["bericht"]
+            del it["bericht"]                                # abgeschnitten, kein echtes „nichts gefunden“: beim nächsten Lauf neu
             print(f"  abgeschnitten: {u.get('why', '')}")
         elif not rep:
             it["bericht_try"] = it.get("bericht_try", 0) + 1
-            it["bericht_day"] = dt.date.today().isoformat()
             print(f"  ohne Bericht (Versuch {it['bericht_try']}): {u.get('why', '')}")
         n += 1 if rep else 0
     news["meta"]["research"] = dict(n=n, todo=len(cand), fails=fails, tin=tot["i"], tout=tot["o"], searches=tot["s"])

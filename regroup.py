@@ -8,7 +8,6 @@ from pathlib import Path
 
 import yaml
 
-import ai
 import grouping
 
 NEWS = Path(__file__).parent / "data" / "news.json"
@@ -21,7 +20,6 @@ def main():
         return
     thr = float(os.environ.get("GROUP_THRESHOLD") or CFG.get("group_threshold", 0.72))
     mx = int(os.environ.get("GROUP_MAX") or CFG.get("group_max", 8))
-    ai.drop_oversized(d["items"])
     n = grouping.group_items(d["items"], thr=thr, max_size=mx)
     sizes = sorted(collections.Counter(i["grp"] for i in d["items"] if i.get("grp", "").startswith("g")).values(), reverse=True)
     print(f"Neu gruppiert (Schwelle {thr}, max {mx}): {n} Gruppen; Größen {sizes[:15]}; Verteilung {dict(sorted(collections.Counter(sizes).items()))}")

@@ -10,7 +10,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import yaml
-from jinja2 import Environment, FileSystemLoader, select_autoescape
+from jinja2 import Environment, FileSystemLoader
 
 ROOT = Path(__file__).parent
 CFG = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
@@ -126,54 +126,6 @@ def cluster(items):
 
 
 
-ALIAS = [("explos", "EXPLOSION"), ("patlama", "EXPLOSION"), ("blast", "EXPLOSION"), ("detonat", "EXPLOSION"),
-         ("stahl", "STEEL"), ("steel", "STEEL"), ("celik", "STEEL"), ("demir", "STEEL"), ("staal", "STEEL"), ("acier", "STEEL"),
-         ("siderurg", "STEEL"), ("fabrik", "PLANT"), ("factory", "PLANT"), ("plant", "PLANT"), ("usine", "PLANT"),
-         ("werk", "PLANT"), ("sanction", "SANCTION"), ("sanktion", "SANCTION"), ("yaptirim", "SANCTION"),
-         ("tariff", "TARIFF"), ("strafzoll", "TARIFF"), ("zolle", "TARIFF"), ("gumruk", "TARIFF"), ("douane", "TARIFF"),
-         ("customs", "TARIFF"), ("strike", "STRIKE"), ("streik", "STRIKE"), ("greve", "STRIKE"), ("staking", "STRIKE"),
-         ("crane", "CRANE"), ("kran", "CRANE"), ("grue", "CRANE"), ("kraan", "CRANE"), ("vinc", "CRANE"),
-         ("unfall", "ACCIDENT"), ("accident", "ACCIDENT"), ("collapse", "COLLAPSE"), ("einsturz", "COLLAPSE"), ("effondr", "COLLAPSE"), ("hafen", "PORT"), ("haven", "PORT"),
-         ("liman", "PORT"), ("ports", "PORT")]
-GENERIC = {"neue", "neuen", "wegen", "nach", "durch", "ueber", "ihre", "sind", "wurde", "video", "mindestens", "after", "least",
-           "killed", "kills", "dead", "deadly", "massive", "people", "menschen", "tonnen", "tonnes", "einem", "einer", "einen",
-           "turkey", "turkei", "turkiye", "turquie", "turkije", "turkish", "turkse", "israel", "marokko", "morocco", "maroc",
-           "algerien", "algerie", "tunesien", "tunisie", "belgien", "belgique", "niederlande", "nederland", "dakika", "market",
-           "industry", "industrie", "price", "prices", "project", "international", "european", "heavy", "workers", "arbeiter",
-           "president", "business", "company", "group", "year", "years", "week", "report", "new", "says", "said", "mehr", "unter"}
-
-
-DISASTER = {"EXPLOSION", "COLLAPSE", "ACCIDENT"}
-EXACT = {"mill": "PLANT", "mills": "PLANT", "works": "PLANT", "ports": "PORT", "port": "PORT"}
-
-
-def signature(tk):
-    out = set()
-    for w in tk:
-        if w in GENERIC:
-            continue
-        labs = {l for k, l in ALIAS if k in w} | ({EXACT[w]} if w in EXACT else set())
-        out |= labs or {w}
-    return out
-
-
-def same_incident(a, b):
-    """Gleicher Vorfall: innerhalb von 48 h mindestens 3 gemeinsame Begriffe (Konzepte zählen sprachübergreifend),
-    oder 2 gemeinsame, darunter ein konkreter Name (z. B. "Izmir")."""
-    if abs((a["ts"] - b["ts"]).total_seconds()) > 48 * 3600:
-        return False
-    shared = a["sig"] & b["sig"]
-    if len(shared) >= 3:
-        return True
-    # zwei Unglücksmeldungen (Explosion, Einsturz, Unfall) im selben Land innerhalb von 36 h = derselbe Vorfall
-    if (a["sig"] & DISASTER) and (b["sig"] & DISASTER) and abs((a["ts"] - b["ts"]).total_seconds()) <= 36 * 3600 \
-            and {k["id"] for k in a["countries"]} & {k["id"] for k in b["countries"]}:
-        return True
-    labels = {l for _, l in ALIAS}
-    specific = [w for w in shared if w not in labels and len(w) >= 5]
-    return len(shared) >= 2 and bool(specific)
-
-
 def _home():
     names = (CFG.get("region") or {}).get("extra_names") or []
     return re.compile("|".join(rf"(?<!\w){re.escape(n)}" for n in names) or "(?!x)x", re.I)
@@ -254,20 +206,22 @@ def prepare(news):
         print("Ampel-Modell übersprungen:", type(ex).__name__, file=sys.stderr)
 
 
+def safe_url(u):
+    return u if u.startswith(("https://", "http://")) else "#"
+
+
 def show_bericht(b):
     """Bericht für die Seite: nur aktuelle Fassung; Quellen als schlichter Domainname (kurz, einheitlich, nie abgeschnitten)."""
     if not isinstance(b, dict) or b.get("v") != 4:
         return None
     from urllib.parse import urlparse
-    return dict(b, quellen=[dict(u=q["u"], t=urlparse(q["u"]).netloc.removeprefix("www.") or q["t"]) for q in b.get("quellen", [])])
+    return dict(b, quellen=[dict(u=safe_url(q["u"]), t=urlparse(q["u"]).netloc.removeprefix("www.") or q["t"]) for q in b.get("quellen", [])])
 
 
 def new_since(now):
-    """Referenz für „NEU“: der Report von gestern 06:30 (Berlin). Gilt ab 06:30 bis zum nächsten Tag um 06:30 unverändert."""
+    """Referenz für „NEU“: gestern 06:30 (Berlin), egal ob der Lauf vor oder nach 06:30 startet."""
     loc = now.astimezone(TZ)
     ref = loc.replace(hour=6, minute=30, second=0, microsecond=0)
-    if loc < ref:
-        ref -= dt.timedelta(days=1)
     return (ref - dt.timedelta(days=1)).astimezone(dt.timezone.utc)
 
 
@@ -280,9 +234,6 @@ def compute(all_items, now):
     cname = {c["id"]: c["name"] for c in CFG["countries"]}
     cmatch = country_matchers()
     cap = SITE["per_section"]
-
-    gcount = collections.Counter(i["grp"] for i in all_items if i.get("grp", "").startswith("g"))
-    big_grp = {g for g, n in gcount.items() if n > int(CFG.get("ai", {}).get("max_group", 12))}     # Fehlgruppierungen ignorieren
 
     allowed = set(CFG["editions"]) | {"de", "en"}
     judged = any(i.get("ai") for i in all_items)          # ohne jedes Urteil (Vorschau/kein Schlüssel) zeigen wir alles; sonst nur, was Claude für relevant hält
@@ -306,7 +257,7 @@ def compute(all_items, now):
         # regionale Eingrenzung (strenge Rubriken nur mit Bezug zu deinen Ländern oder Deutschland)
         reg = CFG.get("region") or {}
         if reg:
-            if any(m["lang"] == "tr" for m in members) and "TR" in cname and "TR" not in countries:
+            if not ai and any(m["lang"] == "tr" for m in members) and "TR" in cname and "TR" not in countries:
                 countries = sorted(countries + ["TR"], key=list(cname).index)
             geo = bool(countries) or bool(HOME.search(text_all))
             rubrics = [r for r in rubrics if r not in reg.get("rubrics", []) or geo]
@@ -319,15 +270,13 @@ def compute(all_items, now):
         title = next((m["title_de"] for m in members if m.get("title_de")), lead["title_orig"])
         text = title + " " + lead["title_orig"]
         srcs = sorted({m["source"] for m in members})
-        age = max(0.0, (now - pub).total_seconds() / 86400)
-        tk = tokens(title + " " + lead["title_orig"])
         cards.append(dict(
             id=lead["id"], adj=ADJ.get(lead["id"], 0.0), bericht=show_bericht(lead.get("bericht")), trusted=any(m.get("trusted") for m in members), srcs=set(srcs),
             rubric=rubric, rubrics=rubrics, title=title, lead=lead, text=text,
             orig=lead["title_orig"] if lead["lang"] != "de" and title != lead["title_orig"] else None,
-            source=srcs[0], n=len(srcs), url=lead["url"],
+            source=srcs[0], n=len(srcs), url=safe_url(lead["url"]),
             when=pub.astimezone(TZ).strftime("%d.%m. %H:%M"), ts=pub, is_new=pub >= fresh,
-            countries=[dict(id=c, name=cname[c]) for c in countries], tk=tk, sig=signature(tk), grp={m["grp"] for m in members if m.get("grp") and m["grp"] not in big_grp},
+            countries=[dict(id=c, name=cname[c]) for c in countries], grp={m["grp"] for m in members if m.get("grp")},
             bris=max([m["ai"]["brisanz"] for m in members if m.get("ai")] or [0]),
             kunde=any(m.get("kunde") for m in members) or cust_hit(title + " " + lead["title_orig"] + " " + (lead.get("snippet") or ""), countries), ai_used=bool(ai), rc=collections.Counter(a["rubric"] for a in ai if a.get("rubric")) or collections.Counter([rubric]),
             readable=lead["lang"] in ("de", "en") or any(m.get("title_de") for m in members)))
@@ -338,13 +287,12 @@ def compute(all_items, now):
     merged = []
     for c in cards:
         for m in merged:
-            if same_incident(c, m) or (c["grp"] & m["grp"]):
+            if c["grp"] & m["grp"]:
                 m["grp"] |= c["grp"]
                 m["rc"] = m["rc"] + c["rc"]
                 m["ai_used"] |= c["ai_used"]
                 m["bris"] = max(m["bris"], c["bris"])
                 m["srcs"] |= c["srcs"]
-                m["sig"] = m["sig"] | c["sig"]          # Vorfall wird mit jeder Meldung "bekannter"
                 m["rubrics"] = sorted(set(m["rubrics"]) | set(c["rubrics"]), key=lambda r: rorder.get(r, 99))
                 have = {k["id"] for k in m["countries"]}
                 m["countries"] += [k for k in c["countries"] if k["id"] not in have]
@@ -388,7 +336,7 @@ def compute(all_items, now):
         if c["adj"] <= float(CFG.get("ratings", {}).get("hide_below", -0.75)) and not c["kunde"]:
             return False                # sehr ähnlich zu dem, was du rot bewertet hast
         if rid == "laender":            # "Länder" = allgemeine Meldungen zum Land
-            return c["ai_used"] or (bool(c["countries"]) and not (c["sig"] & DISASTER))
+            return c["ai_used"] or bool(c["countries"])
         return True
 
     picks = {}
@@ -398,14 +346,12 @@ def compute(all_items, now):
         rest = [c for c in lst if not c["kunde"]][:max(r.get("max", cap) - len(cust), 0)]
         picks[r["id"]] = cust + rest
 
-    top = []                                                        # keine Top-Liste mehr: jede Meldung steht genau einmal in ihrer Rubrik
-
     sections = []
     for r in CFG["rubrics"]:
         lst = sorted(picks[r["id"]], key=lambda c: (c["score"], c["ts"]), reverse=True)
         sections.append(dict(id=r["id"], group=r.get("group"), tile=bool(r.get("tile")), short=r["short"], shown=lst, limit=r.get("max", cap)))
 
-    return cards, top, sections, items
+    return cards, sections, items
 
 
 def health(news, idx, now, cards=()):
@@ -508,9 +454,9 @@ def main():
     rub_items = news["items"]
 
     prepare(news)
-    cards, top, sections, items = compute(rub_items, now)
+    cards, sections, items = compute(rub_items, now)
     dist = collections.Counter(c["bris"] for c in cards if c["ai_used"])
-    shown = collections.Counter(c["bris"] for c in top + [x for s_ in sections for x in s_["shown"]])
+    shown = collections.Counter(c["bris"] for s_ in sections for c in s_["shown"])
     print(f"Brisanz der Karten {dict(sorted(dist.items()))}; angezeigt {dict(sorted(shown.items()))}")
 
 
@@ -521,10 +467,10 @@ def main():
             charts.append(chart(spec, s))
 
     local = now.astimezone(TZ)
-    env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape())
+    env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=True)
     env.filters["arrow"] = arrow
     html = env.get_template("index.html.j2").render(
-        site=SITE, sample=sample, charts=charts, top=top, sections=sections,
+        site=SITE, sample=sample, charts=charts, sections=sections,
         countries=CFG["countries"], date=f"{WDAYS[local.weekday()]}, {local.day}. {MONTHS[local.month - 1]} {local.year}",
         updated=local.strftime("%d.%m.%Y, %H:%M Uhr"), edition=local.timetuple().tm_yday,
         n_week=len(cards), n_today=sum(c["is_new"] for c in cards), n_src=len({i["source"] for i in items}),

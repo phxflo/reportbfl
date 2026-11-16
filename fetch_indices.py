@@ -142,12 +142,6 @@ def main():
             old = data.get("series", {})
     series, errors = dict(old), []
     for spec in CFG["indices"]:
-        if spec.get("probe"):                  # nur Rohdaten ablegen, um das Format zu prüfen
-            try:
-                save_raw(f"{spec['id']}_{spec['table']}", fetch_table(spec["table"]))
-            except Exception as ex:
-                print(f"Probe {spec['id']}: {ex}", file=sys.stderr)
-            continue
         tried, ok = [], False
         for table in spec.get("tables") or [spec["table"]]:
             for req in [spec["require"]] + ([spec["fallback_require"]] if spec.get("fallback_require") else []):
