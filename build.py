@@ -391,9 +391,9 @@ def compute(all_items, now):
     top = []                                                        # keine Top-Liste mehr: jede Meldung steht genau einmal in ihrer Rubrik
 
     sections = []
-    for k, r in enumerate(CFG["rubrics"], 1):
+    for r in CFG["rubrics"]:
         lst = sorted(picks[r["id"]], key=lambda c: (c["score"], c["ts"]), reverse=True)
-        sections.append(dict(id=r["id"], group=r.get("group"), tile=bool(r.get("tile")), num=f"{k:02d}", title=r["title"], short=r["short"], shown=lst, limit=r.get("max", cap)))
+        sections.append(dict(id=r["id"], group=r.get("group"), tile=bool(r.get("tile")), short=r["short"], shown=lst, limit=r.get("max", cap)))
 
     return cards, top, sections, items
 
