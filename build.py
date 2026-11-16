@@ -126,6 +126,31 @@ def cluster(items):
 
 
 
+GENERIC = {"neue", "neuen", "wegen", "nach", "durch", "ueber", "ihre", "sind", "wurde", "video", "mindestens", "after", "least",
+           "turkey", "turkei", "turkiye", "turquie", "turkije", "turkish", "turkse", "israel", "marokko", "morocco", "maroc",
+           "algerien", "algerie", "tunesien", "tunisie", "belgien", "belgique", "niederlande", "nederland", "market",
+           "industry", "industrie", "price", "prices", "project", "international", "european", "company", "group",
+           "year", "years", "week", "report", "says", "said", "mehr", "unter"}
+GENERIC = {w[:6] for w in GENERIC}
+
+
+def stems(title):
+    """Wortanfänge (6 Buchstaben), damit Mobilkrane/Mobilkranen oder Unterstützung/unterstützen zusammenpassen"""
+    return {w[:6] for w in tokens(title)} - GENERIC
+
+
+def same_incident(a, b, rare):
+    """Gleicher Vorfall ohne Embedding-Gruppe (z. B. zehn Meldungen zur selben Kranbestellung eines Kunden): innerhalb von 72 h
+    mit einer Meldung der Karte mindestens 3 gemeinsame Wörter im deutschen Titel, oder 2 seltene (meist Firmen- oder Ortsnamen)."""
+    if abs((a["ts"] - b["ts"]).total_seconds()) > 72 * 3600:
+        return False
+    for x in a["tks"]:                           # mit jeder einzelnen Meldung vergleichen, nicht mit allen Wörtern der Karte
+        shared = x & b["tk"]
+        if len(shared) >= 3 or len(shared & rare) >= 2:
+            return True
+    return False
+
+
 def _home():
     names = (CFG.get("region") or {}).get("extra_names") or []
     return re.compile("|".join(rf"(?<!\w){re.escape(n)}" for n in names) or "(?!x)x", re.I)
@@ -276,7 +301,7 @@ def compute(all_items, now):
             orig=lead["title_orig"] if lead["lang"] != "de" and title != lead["title_orig"] else None,
             source=srcs[0], n=len(srcs), url=safe_url(lead["url"]),
             when=pub.astimezone(TZ).strftime("%d.%m. %H:%M"), ts=pub, is_new=pub >= fresh,
-            countries=[dict(id=c, name=cname[c]) for c in countries], grp={m["grp"] for m in members if m.get("grp")},
+            countries=[dict(id=c, name=cname[c]) for c in countries], tk=stems(title), grp={m["grp"] for m in members if m.get("grp")},
             bris=max([m["ai"]["brisanz"] for m in members if m.get("ai")] or [0]),
             kunde=any(m.get("kunde") for m in members) or cust_hit(title + " " + lead["title_orig"] + " " + (lead.get("snippet") or ""), countries), ai_used=bool(ai), rc=collections.Counter(a["rubric"] for a in ai if a.get("rubric")) or collections.Counter([rubric]),
             readable=lead["lang"] in ("de", "en") or any(m.get("title_de") for m in members)))
@@ -284,11 +309,16 @@ def compute(all_items, now):
     # Gleiche Vorfälle (auch in anderen Sprachen, z. B. die Explosion in Izmir) zu einer Meldung bündeln.
     # Als Hauptmeldung dient die lesbarste: Fachmedium, dann deutsch/übersetzt, dann neueste.
     cards.sort(key=lambda c: (c["trusted"], c["readable"], c["ts"]), reverse=True)
+    df = collections.Counter(w for c in cards for w in c["tk"])
+    rare = {w for w, n in df.items() if n <= max(6, 0.05 * len(cards))}      # Wörter, die nur in wenigen Meldungen vorkommen
+    for c in cards:
+        c["tks"] = [c["tk"]]
     merged = []
     for c in cards:
         for m in merged:
-            if c["grp"] & m["grp"]:
+            if (c["grp"] & m["grp"]) or same_incident(m, c, rare):
                 m["grp"] |= c["grp"]
+                m["tks"].append(c["tk"])
                 m["rc"] = m["rc"] + c["rc"]
                 m["ai_used"] |= c["ai_used"]
                 m["bris"] = max(m["bris"], c["bris"])

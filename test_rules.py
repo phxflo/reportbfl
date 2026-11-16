@@ -37,4 +37,19 @@ assert "x21" not in shown["markt"], "Kunde steht unter Wettbewerb"
 flat = [i for ids in shown.values() for i in ids]
 assert len(flat) == len(set(flat)), "Meldung doppelt"
 assert sum(1 for i in shown["haefen"] if i not in ("x20", "x21")) <= build.SITE["per_section"]
+
+# Gleicher Vorfall aus vielen Quellen (über 48 h verteilt) = eine Karte; anderer Vorfall derselben Woche bleibt eigene Karte
+def ev(n, h, title):
+    return dict(item(n, "kraene", 5, title), published=(dt.datetime.now(UTC) - dt.timedelta(hours=h)).isoformat(), countries=["MA"],
+                ai=dict(relevant=True, rubric="kraene", countries=["MA"], brisanz=5))
+
+
+same = ["Zandor stärkt Schwerlastflotte mit 10 neuen Krantec-Mobilkranen", "Zandor bestellt zehn Krantec-Krane zur Unterstützung der Expansion",
+        "Krantec-Krane unterstützen Zandors Expansion in Afrika", "Zandor plant groß: 10 neue Krantec-Krane und Europa im Visier",
+        "Zandor erweitert Flotte um zehn Krantec-Mobilkrane", "Zandor kauft zehn AT-Krane"]
+evs = [ev(30 + k, h, t) for k, (h, t) in enumerate(zip((50, 30, 49, 3, 48, 52), same))]
+evs.append(ev(40, 20, "Hafen Tanger: Streik legt Containerumschlag lahm"))
+_, sections, _ = build.compute(evs, dt.datetime.now(UTC))
+kr = [c for s in sections if s["id"] == "kraene" for c in s["shown"]]
+assert sorted(c["n"] for c in kr) == [1, 6], [c["title"] for c in kr]
 print("Regeln ok")
