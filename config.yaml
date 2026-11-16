@@ -333,7 +333,7 @@ ai:                       # Auswertung durch Claude (nur mit Secret ANTHROPIC_AP
   block_source_red: 4     # Quelle gesperrt, wenn so oft rot und nie grün bewertet
   tariff_context: 'stahl|steel|acier|staal|çelik|demir|draht|wire|seil|(?<!\w)port(?!\w)|hafen|haven|liman|crane|kran|grue|vinç|kraan|terminal|mining|bergbau|mine\b|ميناء|فولاذ|صلب|פלדה|נמל'   # Zoll-/Wirtschaftsbegriffe zählen im Vorfilter nur mit diesem Kontext
   batch: 25               # Meldungen je Anfrage
-  max_items: 600          # Obergrenze neuer Meldungen je Lauf (Kostenbremse); der Rest folgt am nächsten Tag
+  max_items: 150          # Obergrenze neuer Meldungen je Lauf (Kostenbremse); der Rest folgt am nächsten Tag
 
 research:                 # Hintergrundrecherche mit Kurzbericht (Web-Suche durch Claude) für alle angezeigten Meldungen
   model: claude-haiku-5-5   # Haiku: Berichte zu allen angezeigten Meldungen bleiben bezahlbar
