@@ -251,21 +251,36 @@ def _mark(info):
         pass
 
 
+class _Pre:
+    """Stichwort-Vorfilter: durchlassen, was einen Rubrikbegriff, ein Reizwort oder einen Firmennamen enthält. Der weite Zoll-/Wirtschaftsbegriff
+    (Rubrik laender) zählt nur zusammen mit Stahl-/Hafen-Kontext, Ereigniswörter allein genügen nicht: beides brachte fast nur Ballast."""
+
+    def __init__(self, main, tariff, context):
+        self.main, self.tariff, self.context = main, tariff, context
+
+    def search(self, text):
+        return bool(self.main.search(text) or (self.tariff.search(text) and self.context.search(text)))
+
+
 def _prefilter():
     """Grobe Stichwortprüfung vor Claude: Meldungen ohne jeden Bezug zu Branche, Handelsmaßnahmen oder deinen Firmen
-    werden nicht erst bezahlt. Bewusst weit gefasst (Rubrikbegriffe, Ereigniswörter, Firmennamen)."""
-    pats = []
+    werden nicht erst bezahlt."""
+    pats, tariff = [], None
     for r in CFG["rubrics"]:
         for k in ("must", "core"):
             if r.get(k):
-                pats.append(r[k])
-    for k in ("events", "boost", "radar"):
+                if r["id"] == "laender" and k == "must":
+                    tariff = r[k]
+                else:
+                    pats.append(r[k])
+    for k in ("boost", "radar"):
         if CFG.get(k):
             pats.append(CFG[k])
     for n in COMP_NAMES + [x.split(" (")[0] for x in CUST_NAMES]:
         pats.append(re.escape(n))
     try:
-        return re.compile("|".join(f"(?:{p})" for p in pats), re.I)
+        return _Pre(re.compile("|".join(f"(?:{p})" for p in pats), re.I),
+                    re.compile(tariff or "(?!x)x", re.I), re.compile(AI.get("tariff_context") or ".", re.I))
     except re.error:
         return None
 
