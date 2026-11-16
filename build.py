@@ -281,7 +281,8 @@ def compute(all_items, now):
     big_grp = {g for g, n in gcount.items() if n > int(CFG.get("ai", {}).get("max_group", 12))}     # Fehlgruppierungen ignorieren
 
     allowed = set(CFG["editions"]) | {"de", "en"}
-    items = [i for i in all_items if dt.datetime.fromisoformat(i["published"]) >= win and (i["lang"] in allowed or i["id"].startswith("s")) and (i.get("ai") or {}).get("relevant", True)]
+    judged = any(i.get("ai") for i in all_items)          # ohne jedes Urteil (Vorschau/kein Schlüssel) zeigen wir alles; sonst nur, was Claude für relevant hält
+    items = [i for i in all_items if dt.datetime.fromisoformat(i["published"]) >= win and (i["lang"] in allowed or i["id"].startswith("s")) and (i.get("ai") or {}).get("relevant", not judged)]
     cards = []
     for members in cluster(items):
         lead = members[0]
@@ -358,6 +359,11 @@ def compute(all_items, now):
             c["rubrics"] = [c["rubric"]]
         else:
             c["rubric"] = c["rubrics"][0]
+        if c["kunde"] and c["rubric"] == "markt":          # Kunden sind keine Wettbewerber: in den Zielmarkt, der am besten passt
+            hits = {r["id"]: len(re.findall(r.get("core") or r["must"], c["title"] + " " + c["lead"]["title_orig"] + " " + (c["lead"].get("snippet") or ""), re.I))
+                    for r in CFG["rubrics"] if r.get("tile") and (r.get("core") or r.get("must"))}
+            c["rubric"] = max(hits, key=lambda k: (hits[k], k == "industrie")) if hits else c["rubric"]
+            c["rubrics"] = [c["rubric"]]
         c["n"] = len(c["srcs"])
         age = max(0.0, (now - c["ts"]).total_seconds() / 86400)
         # Brisanz: Gewicht der Rubrik, Zahl der Quellen, Reizwörter (Zuschlag, Zoll …); Aktualität zählt kaum,

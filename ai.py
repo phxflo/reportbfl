@@ -44,10 +44,12 @@ Rubriken (jede Meldung bekommt genau eine):
 - kraene: Kranflotten und Kranbetrieb (Betreiber, Ausfälle, Seilthemen) sowie Kranbestellungen und -ausschreibungen – nur in den Kundenländern.
 - industrie: Stahl-/Schwerindustrie, Werke, Produktion, Neubau/Erweiterung/Investitionen, Unfälle/Explosionen/Stillstand in Werken, Prozess-/Hüttenwerkskrane – nur in den Kundenländern.
 - tiefbau: Spezialtiefbau (Seilbagger, Schlitzwandgreifer, Bohrgeräte, Gründungen, Tunnel) und Infrastruktur-Großprojekte/Ausschreibungen – nur in den Kundenländern.
-- markt: Wettbewerb und Seil-/Drahthersteller – weltweit. Wettbewerbsinformationen sind wichtig: Wechsel in Geschäftsführung/Vorstand,
-  Finanzzahlen, Gewinnwarnung, Insolvenz/Restrukturierung, Werksschließung/-eröffnung/-erweiterung, Übernahmen, Produktionsprobleme,
-  Reklamationen, Rückrufe, Schadensfälle oder Seilbruch bei Wettbewerberprodukten, Preis-/Kapazitätsänderungen; außerdem Marktdaten, Normen.
-  Nicht relevant: Werbung, Messeauftritte ohne Neuigkeit, Sponsoring, Preise/Auszeichnungen, Jobanzeigen.
+- markt: NUR Wettbewerber und Hersteller von Stahldrahtseilen – weltweit. Relevant sind Ereignisse bei diesen Firmen: Insolvenz/Restrukturierung,
+  Streik, Wechsel in Geschäftsführung/Vorstand (C-Level), Werksschließung/-eröffnung/-erweiterung, Übernahmen, Gewinnwarnung/Finanzzahlen,
+  Produktionsprobleme, Reklamationen, Rückrufe, Seilbruch bei ihren Produkten, Preis-/Kapazitätsänderungen und sonstige echte Neuigkeiten.
+  NICHT markt: Kunden (Häfen, Terminals, Kranbetreiber, Stahlwerke, Tiefbauer) – deren Meldungen gehören immer in den passenden Zielmarkt
+  (haefen, kraene, industrie, tiefbau); ebenso allgemeine Stahl- oder Industriemeldungen. Nicht relevant: Werbung, Messeauftritte ohne Neuigkeit,
+  Sponsoring, Preise/Auszeichnungen, Jobanzeigen, allgemeine Marktberichte, Normen ohne konkrete Folge.
 - laender (Anzeige: „Zölle, Tarife & Sanktionen“): Handelsmaßnahmen, die Stahl/Draht-Geschäft oder die Kundenländer betreffen: Zölle, Strafzölle,
   Antidumping, CBAM, Importverbote/-quoten, Exportverbote, Sanktionen, Embargo, Devisen-/Kapitalverkehrsregeln. Auch EU-/weltweite Maßnahmen
   ohne bestimmtes Land (countries dann leer), sofern sie Stahl, Draht, Häfen oder die Kundenländer betreffen. STRENG: nur konkrete, beschlossene
@@ -343,7 +345,11 @@ def main():
     SYSTEM += feedback_block(items)
     win = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=CFG["site"]["window_days"])
     recent = [i for i in items if dt.datetime.fromisoformat(i["published"]) >= win]
-    todo = sorted((i for i in recent if stale(i)), key=lambda i: i["published"], reverse=True)[:MAX_ITEMS]
+    names_rx = re.compile("|".join(re.escape(n) for n in COMP_NAMES + [x.split(" (")[0] for x in CUST_NAMES]), re.I) if COMP_NAMES or CUST_NAMES else None
+    def prio(i):                                              # Kunden- und Wettbewerberquellen zuerst, dann der Rest nach Datum
+        hit = i.get("kunde") or i.get("trusted") or (names_rx and names_rx.search(f'{i["title_orig"]} {i.get("snippet") or ""}'))
+        return (0 if hit else 1, -dt.datetime.fromisoformat(i["published"]).timestamp())
+    todo = sorted((i for i in recent if stale(i)), key=prio)[:MAX_ITEMS]
     todo, pre_n = prefilter(todo, blocked_sources(items))
     seen, dups = {}, []                                    # gleiche Titel aus mehreren Quellen nur einmal beurteilen
     uniq = []
