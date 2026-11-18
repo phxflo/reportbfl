@@ -63,7 +63,6 @@ nav .sep{width:1px;height:20px;background:var(--rule);margin:0 6px;flex:none}
 
 /* Rubrikköpfe */
 h2.kicker{display:flex;align-items:center;gap:10px;margin:0 0 12px;font:700 21px/1.2 var(--sans);letter-spacing:-.01em}
-h2.kicker small{font:500 13px var(--sans);color:var(--muted);margin-left:auto;white-space:nowrap}
 h2.kicker i{width:10px;height:10px;border-radius:50%;background:var(--rc,var(--accent));flex:none;font-size:0}
 .grouphead{margin:44px 0 14px;font:700 14px/1.2 var(--sans);color:var(--muted);letter-spacing:.02em}
 section{margin-bottom:34px}
@@ -72,25 +71,25 @@ section{margin-bottom:34px}
 /* Kennzahlen */
 .charts{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -20px;padding:0 20px 4px;scroll-padding:0 20px}
 .charts::-webkit-scrollbar{display:none}
-.charts .chart{flex:0 0 min(86%,420px);scroll-snap-align:start}
-@media (min-width:900px){.charts{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;overflow:visible;margin:0;padding:0}.charts .chart{flex:none}}
-.chart{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:18px 20px 10px}
+.charts .chart{flex:0 0 min(78%,300px);scroll-snap-align:start}
+@media (min-width:900px){.charts{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;overflow:visible;margin:0;padding:0}.charts .chart{flex:none}}
+.chart{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:14px 16px 8px}
 .chart header{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
-.chart h3{margin:0;font:700 17px/1.25 var(--sans)}
+.chart h3{margin:0;font:700 15px/1.25 var(--sans)}
 .chart .sub{font-size:12.5px;color:var(--muted);margin-top:2px}
 .chart .val{text-align:right;flex:none}
-.chart .big{font:800 38px/1 var(--sans);letter-spacing:-.02em}
+.chart .big{font:800 28px/1 var(--sans);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .chart .per{font-size:12px;color:var(--muted);margin-top:3px}
-.deltas{display:flex;gap:16px;font-size:13px;font-weight:600;margin:8px 0 4px;flex-wrap:wrap}
+.deltas{display:flex;gap:4px 12px;font-size:12.5px;font-weight:600;margin:6px 0 2px;flex-wrap:wrap}
 .deltas span em{font-style:normal;font-weight:400;color:var(--muted)}
 .chart svg{width:100%;height:auto;display:block;overflow:visible}
-.chart text{font:10.5px var(--sans);fill:var(--muted)}
+.chart text{font:19px var(--sans);fill:var(--muted)}
 .chart .grid{stroke:var(--rule);stroke-width:1}
 .chart .line{fill:none;stroke:var(--line);stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
 .chart .area{fill:var(--line);opacity:.1}
 .chart .dot{fill:var(--accent);stroke:var(--card);stroke-width:2}
 .chart .hit{fill:transparent}
-.chart .hit:hover{fill:rgba(227,162,26,.35)}
+.chart .hit:hover{fill:color-mix(in srgb,var(--accent) 35%,transparent)}
 .chart footer{font-size:11px;color:var(--muted);padding:2px 0 4px}
 .chart footer a{text-decoration:underline}
 
@@ -107,32 +106,31 @@ section{margin-bottom:34px}
 .pill{font-size:11px;font-weight:600;padding:2px 7px;border-radius:99px;background:var(--chip);color:var(--ink);white-space:nowrap}
 .pill.new{background:var(--accent);color:#1a1200}
 .cty{font-size:13px;font-weight:600;color:var(--muted);white-space:normal}
-.pill.t{background:transparent;border:1px solid var(--accent-ink);color:var(--accent-ink)}
 .pill.k{background:var(--steel);color:#fff;border:1px solid color-mix(in srgb,#fff 25%,var(--steel))}
 .rate{display:inline-flex;gap:7px;flex:none;align-self:flex-start;margin:5px 2px 0 0}
-.rb{box-sizing:border-box;width:15px;height:15px;border-radius:50%;border:2px solid var(--rb);background:transparent;padding:0;cursor:pointer;opacity:.5;position:relative}
-.rb::after{content:"";position:absolute;inset:-6px}
-.rb.g{--rb:#2f9e5b}.rb.y{--rb:#d9961a}.rb.r{--rb:#d23b4a}
-.rb:hover,.rb:focus-visible{opacity:1}
-.rb.sel{background:var(--rb);opacity:1}
-@media (max-width:600px){.rate{gap:9px}.rb{width:17px;height:17px}}
-
-/* Titelseite */
+.rb{box-sizing:border-box;width:15px;height:15px;border-radius:50%;border:2px solid var(--rb);background:transparent;padding:0;cursor:pointer;opacity:.4;position:relative;transition:opacity .15s}
+.rb::after{content:"";position:absolute;inset:-3px}
+.rb.g{--rb:#2f9e5b}.rb.y{--rb:#d9961a}.rb.r{--rb:#d23b4a;margin-left:6px}
+.row:hover .rb,.row:focus-within .rb{opacity:.9}
+.rb:hover,.rb.sel{opacity:1}
+.rb:focus-visible{opacity:1;outline:2px solid var(--ink);outline-offset:2px}
+.rb.sel{background:var(--rb)}
+.undo{grid-column:1/-1;font-size:13px;color:var(--muted)}
+.undo button{font:600 13px var(--sans);color:var(--accent-ink);background:none;border:0;padding:4px 2px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.row.off{padding:8px 0}.row.off>:not(.undo){display:none}
+@media (hover:none){.rb{opacity:.85}}
+@media (max-width:600px){.rate{gap:12px}.rb{width:18px;height:18px}.rb::after{inset:-6px}.rb.r{margin-left:4px}}
 
 /* Rubriken */
-.rows{columns:2 360px;column-gap:44px;padding:2px 22px 8px}
+.rows{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));column-gap:44px;padding:2px 22px 8px}
 .tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 22px;align-items:stretch;margin-bottom:34px}
 .tiles section{margin:0;display:flex;flex-direction:column;min-width:0}.tiles .box{flex:1}
-.tiles .rows{columns:1}
-.row{display:grid;grid-template-columns:58px minmax(0,1fr) auto;gap:12px;padding:14px 0;break-inside:avoid}
+.tiles .rows{grid-template-columns:minmax(0,1fr)}
+.row{display:grid;grid-template-columns:58px minmax(0,1fr) auto;gap:12px;padding:14px 0}
 .when{font-size:12px;line-height:1.4;color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
 .row .h{font-size:16px;font-weight:600;line-height:1.4;letter-spacing:-.005em}
 .row .meta{margin-top:3px;font-size:12.5px}
 .empty{font-size:15px;color:var(--muted);padding:16px 22px}
-.chips{display:flex;gap:6px;flex-wrap:wrap;padding:14px 22px 0}
-.chips button{font:600 13px var(--sans);padding:6px 13px;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:99px;cursor:pointer}
-.chips button[aria-pressed=true]{background:var(--rc,var(--steel));color:#fff;border-color:var(--rc,var(--steel))}
-.hidden{display:none!important}
 
 .health{margin:0 0 14px;font-size:13px}
 .health summary{cursor:pointer;color:var(--muted);list-style:none}
@@ -148,11 +146,12 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 @media (max-width:600px){
   body{font-size:16px}.wrap{padding:0 16px}
   .tiles{grid-template-columns:1fr;gap:0}.tiles section{margin-bottom:30px}
-  .rows{columns:1;padding:4px 16px 10px}.row{grid-template-columns:54px minmax(0,1fr) auto;gap:10px}
-  h2.kicker small{display:none}.top .stand{display:none}.top h1{font-size:26px}.top .mark{width:40px;height:40px}
-  .chart .big{font-size:32px}
+  .rows{grid-template-columns:minmax(0,1fr);padding:4px 16px 10px}.row{grid-template-columns:54px minmax(0,1fr) auto;gap:10px}
+  .top .stand{display:none}.top h1{font-size:26px}.top .mark{width:40px;height:40px}
+  .charts{margin:0 -16px;padding:0 16px 4px;scroll-padding:0 16px}
 }
-@media print{nav,.chips,</style>
+@media print{nav,.rate,.undo,#ratebox{display:none}.bericht p{display:block}}
+</style>
 </head>
 <body>
 {% if health|selectattr(1,'equalto','bad')|list %}<div class="healthbar">Störung bei der heutigen Aktualisierung – Details unten im Systemstatus.</div>{% endif %}
@@ -164,11 +163,11 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 
 {% macro chips(c) %}{% if c.countries %}<span class="cty">{{ c.countries|map(attribute="name")|join(", ") }}</span>{% endif %}{% if c.is_new %}<span class="pill new">NEU</span>{% endif %}{% if c.kunde %}<span class="pill k">Kunde</span>{% endif %}{% endmacro %}
 
-{% macro xbtn() %}<span class="rate" role="group" aria-label="Bewertung"><button class="rb g" type="button" data-r="g" title="Gut" aria-label="Gut"></button><button class="rb y" type="button" data-r="y" title="Grenzwertig" aria-label="Grenzwertig"></button><button class="rb r" type="button" data-r="r" title="Schlecht – ausblenden" aria-label="Schlecht, ausblenden"></button></span>{% endmacro %}
+{% macro xbtn() %}<span class="rate" role="group" aria-label="Bewertung"><button class="rb g" type="button" data-r="g" title="Gut" aria-label="Gut" aria-pressed="false"></button><button class="rb y" type="button" data-r="y" title="Grenzwertig: falsche Rubrik oder nur am Rande" aria-label="Grenzwertig" aria-pressed="false"></button><button class="rb r" type="button" data-r="r" title="Unpassend – ausblenden" aria-label="Unpassend, ausblenden" aria-pressed="false"></button></span>{% endmacro %}
 
 {% macro bericht(c) %}{% if c.bericht %}<details class="bericht"><summary>Hintergrund</summary><p>{{ c.bericht.text }}</p>{% if c.bericht.quellen %}<div class="bq">{% for q in c.bericht.quellen %}<a href="{{ q.u }}" target="_blank" rel="noopener noreferrer">{{ q.t }}</a>{% endfor %}</div>{% endif %}</details>{% endif %}{% endmacro %}
-{% macro row(c, hide=false) %}
-<article class="row{{ ' hidden' if hide }}" data-id="{{ c.id }}" data-rate="{{ c.rate or '' }}">
+{% macro row(c) %}
+<article class="row" data-id="{{ c.id }}" data-rate="{{ c.rate or '' }}">
   <div class="when">{{ c.when }}</div>
   <div>{% if c.countries or c.is_new or c.kunde %}<div class="meta" style="margin-bottom:4px">{{ chips(c) }}</div>{% endif %}{{ item(c) }}<div class="meta"><span>{{ c.source }}</span>{{ badges(c) }}</div>{{ bericht(c) }}</div>
   {{ xbtn() }}
@@ -193,7 +192,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 
   {% if charts %}
   <section id="kennzahlen">
-    <h2 class="kicker">Kennzahlen<small>Quelle: Statistisches Bundesamt (Destatis)</small></h2>
+    <h2 class="kicker">Kennzahlen</h2>
     <div class="charts">
       {% for c in charts %}
       <div class="chart">
@@ -207,7 +206,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
           {% if c.d12 is not none %}<span>{{ c.d12|arrow }} <em>ggü. Vorjahr</em></span>{% endif %}
         </div>
         {{ c.svg|safe }}
-        <footer>Tabelle <a href="{{ c.url }}" target="_blank" rel="noopener">{{ c.url.split('/')[-1] }}</a> · abgerufen {{ c.fetched }}</footer>
+        <footer><a href="{{ c.url }}" target="_blank" rel="noopener">Destatis</a> · abgerufen {{ c.fetched }}</footer>
       </div>
       {% endfor %}
     </div>
@@ -257,14 +256,14 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
   addEventListener('resize',spy); spy();
 
   /* Ampel-Bewertung: lokal merken, gesammelt an GitHub senden (Kommentar im Bewertungs-Issue) */
-  var RT={{ rating|tojson if rating else 'null' }};
+  var RT={{ rating|tojson if rating else 'null' }}, unrate=function(){};
   if(RT){
     var TOK='', ratings={}, queue=[], flushing=false, timer=null;
     try{TOK=localStorage.getItem('seilTok')||'';ratings=JSON.parse(localStorage.getItem('seilRate')||'{}');queue=JSON.parse(localStorage.getItem('seilQ')||'[]')}catch(e){}
     var saveR=function(){try{localStorage.setItem('seilRate',JSON.stringify(ratings));localStorage.setItem('seilQ',JSON.stringify(queue))}catch(e){}};
     var showR=function(){$('[data-id]').forEach(function(el){
       var r=(ratings[el.dataset.id]||{}).r||el.dataset.rate||'';
-      el.querySelectorAll('.rb').forEach(function(b){b.classList.toggle('sel',b.dataset.r===r)})})};
+      el.querySelectorAll('.rb').forEach(function(b){b.classList.toggle('sel',b.dataset.r===r);b.setAttribute('aria-pressed',b.dataset.r===r)})})};
     var stat=function(msg){
       var s=document.getElementById('tokstat'),d=document.getElementById('tokdot'); if(!s)return;
       var txt=msg||(TOK?'verbunden':'nicht verbunden'); if(TOK&&queue.length&&!msg)txt+=' · '+queue.length+' ausstehend';
@@ -285,10 +284,14 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
     var sv=document.getElementById('toksave'),dl=document.getElementById('tokdel');
     if(sv)sv.addEventListener('click',function(){var v=(document.getElementById('tok').value||'').trim();if(!v)return;TOK=v;try{localStorage.setItem('seilTok',v)}catch(e){};document.getElementById('tok').value='';stat();flush()});
     if(dl)dl.addEventListener('click',function(){TOK='';try{localStorage.removeItem('seilTok')}catch(e){};stat()});
+    unrate=function(id){                       /* Rückgängig: „n“ löscht die Bewertung auch im Issue */
+      var now=Date.now(); delete ratings[id];
+      queue=queue.filter(function(q){return q.i!==id}).concat([{i:id,r:'n',t:now}]);
+      saveR();showR();stat();clearTimeout(timer);timer=setTimeout(flush,3000)};
     showR();stat();flush();
   }
 
-  /* Rot bewertet = sofort ausblenden (dauerhaft über die Bewertung) */
+  /* Rot bewertet = ausblenden; bis zum Neuladen bleibt eine Zeile mit „Rückgängig“ stehen */
   var hid={}; try{hid=JSON.parse(localStorage.getItem('seilHide')||'{}')}catch(e){}
   var cut=Date.now()-45*864e5; Object.keys(hid).forEach(function(k){if(hid[k].t<cut)delete hid[k]});
   function saveHid(){try{localStorage.setItem('seilHide',JSON.stringify(hid))}catch(e){}}
@@ -299,7 +302,15 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
     var b=e.target.closest&&e.target.closest('.rb.r'); if(!b)return;
     var el=b.closest('[data-id]'); if(!el)return;
     var a=el.querySelector('a.h'); hid[el.dataset.id]={t:Date.now(),s:(a?a.textContent.trim():'').slice(0,160),u:a?a.href:''};
-    saveHid(); applyHid();
+    saveHid();
+    if(!el.querySelector('.undo')){var u=document.createElement('div');u.className='undo';u.setAttribute('role','status');
+      u.innerHTML='Ausgeblendet · <button type="button">Rückgängig</button>';el.appendChild(u);u.querySelector('button').focus()}
+    el.classList.add('off');
+  });
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('.undo button'); if(!b)return;
+    var el=b.closest('[data-id]'); delete hid[el.dataset.id]; saveHid(); unrate(el.dataset.id);
+    el.classList.remove('off'); el.querySelector('.undo').remove(); el.querySelector('.rb.r').focus();
   });
   applyHid();
 })();
