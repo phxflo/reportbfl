@@ -63,6 +63,7 @@ nav .sep{width:1px;height:20px;background:var(--rule);margin:0 6px;flex:none}
 
 /* Rubrikköpfe */
 h2.kicker{display:flex;align-items:center;gap:10px;margin:0 0 12px;font:700 21px/1.2 var(--sans);letter-spacing:-.01em}
+h2.kicker small{font:500 13px var(--sans);color:var(--muted);margin-left:auto;white-space:nowrap}
 h2.kicker i{width:10px;height:10px;border-radius:50%;background:var(--rc,var(--accent));flex:none;font-size:0}
 .grouphead{margin:44px 0 14px;font:700 14px/1.2 var(--sans);color:var(--muted);letter-spacing:.02em}
 section{margin-bottom:34px}
@@ -71,19 +72,19 @@ section{margin-bottom:34px}
 /* Kennzahlen */
 .charts{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -20px;padding:0 20px 4px;scroll-padding:0 20px}
 .charts::-webkit-scrollbar{display:none}
-.charts .chart{flex:0 0 min(78%,300px);scroll-snap-align:start}
-@media (min-width:900px){.charts{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;overflow:visible;margin:0;padding:0}.charts .chart{flex:none}}
-.chart{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:14px 16px 8px}
+.charts .chart{flex:0 0 min(86%,420px);scroll-snap-align:start}
+@media (min-width:900px){.charts{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;overflow:visible;margin:0;padding:0}.charts .chart{flex:none}}
+.chart{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:18px 20px 10px}
 .chart header{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
-.chart h3{margin:0;font:700 15px/1.25 var(--sans)}
+.chart h3{margin:0;font:700 17px/1.25 var(--sans)}
 .chart .sub{font-size:12.5px;color:var(--muted);margin-top:2px}
 .chart .val{text-align:right;flex:none}
-.chart .big{font:800 28px/1 var(--sans);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.chart .big{font:800 38px/1 var(--sans);letter-spacing:-.02em}
 .chart .per{font-size:12px;color:var(--muted);margin-top:3px}
-.deltas{display:flex;gap:4px 12px;font-size:12.5px;font-weight:600;margin:6px 0 2px;flex-wrap:wrap}
+.deltas{display:flex;gap:16px;font-size:13px;font-weight:600;margin:8px 0 4px;flex-wrap:wrap}
 .deltas span em{font-style:normal;font-weight:400;color:var(--muted)}
 .chart svg{width:100%;height:auto;display:block;overflow:visible}
-.chart text{font:19px var(--sans);fill:var(--muted)}
+.chart text{font:10.5px var(--sans);fill:var(--muted)}
 .chart .grid{stroke:var(--rule);stroke-width:1}
 .chart .line{fill:none;stroke:var(--line);stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
 .chart .area{fill:var(--line);opacity:.1}
@@ -147,7 +148,8 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
   body{font-size:16px}.wrap{padding:0 16px}
   .tiles{grid-template-columns:1fr;gap:0}.tiles section{margin-bottom:30px}
   .rows{grid-template-columns:minmax(0,1fr);padding:4px 16px 10px}.row{grid-template-columns:54px minmax(0,1fr) auto;gap:10px}
-  .top .stand{display:none}.top h1{font-size:26px}.top .mark{width:40px;height:40px}
+  h2.kicker small{display:none}.top .stand{display:none}.top h1{font-size:26px}.top .mark{width:40px;height:40px}
+  .chart .big{font-size:32px}
   .charts{margin:0 -16px;padding:0 16px 4px;scroll-padding:0 16px}
 }
 @media print{nav,.rate,.undo,#ratebox{display:none}.bericht p{display:block}}
@@ -192,7 +194,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
 
   {% if charts %}
   <section id="kennzahlen">
-    <h2 class="kicker">Kennzahlen</h2>
+    <h2 class="kicker">Kennzahlen<small>Quelle: Statistisches Bundesamt (Destatis)</small></h2>
     <div class="charts">
       {% for c in charts %}
       <div class="chart">
@@ -206,7 +208,7 @@ footer.site button{font:600 12px var(--sans);border:1px solid var(--rule);backgr
           {% if c.d12 is not none %}<span>{{ c.d12|arrow }} <em>ggü. Vorjahr</em></span>{% endif %}
         </div>
         {{ c.svg|safe }}
-        <footer><a href="{{ c.url }}" target="_blank" rel="noopener">Destatis</a> · abgerufen {{ c.fetched }}</footer>
+        <footer>Tabelle <a href="{{ c.url }}" target="_blank" rel="noopener">{{ c.url.split('/')[-1] }}</a> · abgerufen {{ c.fetched }}</footer>
       </div>
       {% endfor %}
     </div>
