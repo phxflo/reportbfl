@@ -18,7 +18,6 @@ URL = "https://api.anthropic.com/v1/messages"
 R = build.CFG.get("research", {})
 MODEL = R.get("model", "claude-sonnet-5-5")
 MAX_PER_RUN = int(R.get("max_per_run", 40))
-THINK_OFF = True
 MAX_SEARCHES = int(R.get("searches", 2))
 NEWS = build.ROOT / "data" / "news.json"
 
@@ -37,8 +36,7 @@ def research(key, title, text, source, date):
     usage = dict(i=0, o=0, s=0)
     for _ in range(3):                                       # pause_turn: die Antwort wird fortgesetzt
         body = dict(model=MODEL, max_tokens=1200, system=SYSTEM, tools=[tool], messages=msgs)
-        if THINK_OFF:
-            body["thinking"] = dict(type="disabled")          # Berichte brauchen kein langes Nachdenken; es würde das Token-Budget aufbrauchen
+        body["thinking"] = dict(type="disabled")              # Berichte brauchen kein langes Nachdenken; es würde das Token-Budget aufbrauchen
         for attempt in range(3):
             try:
                 r = requests.post(URL, headers=hdr, json=body, timeout=180)
@@ -48,10 +46,6 @@ def research(key, title, text, source, date):
                 if r.status_code == 200:
                     break
                 err = f"HTTP {r.status_code} {r.text[:160]}"
-                if r.status_code == 400 and "thinking" in r.text.lower() and THINK_OFF:
-                    globals()["THINK_OFF"] = False                # Modell kennt den Schalter nicht: ohne ihn neu versuchen
-                    body.pop("thinking", None)
-                    continue
                 if r.status_code in (400, 401, 403, 404):
                     raise RuntimeError(err)
             time.sleep(5 * (attempt + 1))

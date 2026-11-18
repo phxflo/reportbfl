@@ -3,7 +3,6 @@
 (StaticCrypt: AES-256, im Browser entschlüsselt). Bricht ab, wenn kein Passwort gesetzt ist – die Klartext-Seite
 wird dann NICHT veröffentlicht."""
 import os
-import shutil
 import subprocess
 import sys
 import tempfile
@@ -32,9 +31,7 @@ def main():
         if probe in enc:
             sys.exit("::error::Verschlüsselung fehlgeschlagen – Klartext im Ergebnis. Es wird nichts veröffentlicht.")
     enc = enc.replace('<meta charset="utf-8" />', '<meta charset="utf-8" />\n        <meta name="robots" content="noindex,nofollow" />', 1)
-    shutil.copyfile(PAGE, PAGE.with_name("plain.tmp"))   # nur lokal, wird gleich gelöscht
     PAGE.write_text(enc, encoding="utf-8")
-    PAGE.with_name("plain.tmp").unlink()
     print(f"Seite verschlüsselt ({len(enc) // 1024} kB)")
 
 

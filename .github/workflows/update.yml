@@ -125,8 +125,7 @@ jobs:
         run: |
           git config user.name "seil-report-bot"
           git config user.email "bot@users.noreply.github.com"
-          git rm -q --cached data/news.json 2>/dev/null || true
-          git add .gitignore data docs
+          git add data docs
           msg="Update $(date -u +%F)"
           if [ "${{ github.event.inputs.build_only }}" = "true" ]; then msg="Seite neu gebaut $(date -u +%F)"; fi
           git diff --staged --quiet || git commit -m "$msg"
