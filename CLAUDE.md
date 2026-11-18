@@ -13,6 +13,7 @@ die allgemeine Wirtschaftslage. Das Tool soll stark sein, aber wenig laufende Ko
 - Archiv `data/news.enc` (AES, Passwort = Secret `PAGE_PASSWORD`); Klartext `data/news.json` nie committen.
 - Konfiguration (Rubriken, Suchbegriffe, Limits) in `config.yaml`. Kunden-/Wettbewerberlisten nur als GitHub-Secrets `CUSTOMERS`/`COMPETITORS`
   (Format „Firma Land“ oder „Firma | website“); nie in Repo, Logs oder Commit-Texte schreiben.
+- Design: Apple-Stil, festgehalten in `DESIGN.md` (Tokens: `.impeccable/design.json`), Produkt in `PRODUCT.md`; Werkzeug: Impeccable-Skill (`/impeccable critique|polish …`).
 - Ampel-Bewertungen: Seite → Kommentare in Issue #36 → `data/ratings.json` (nicht im Repo). Rot blendet aus, Bewertungen gehen als Beispiele an Claude. Keine Embeddings (bewusst entfernt).
 
 ## Feste Entscheidungen des Nutzers

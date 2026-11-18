@@ -4,7 +4,7 @@
 # ─────────────────────────────────────────────────────────────
 site:
   title: "Rope Report"
-  tagline: "Marktbeobachtung für Industrie-Stahlseile · Export & Regionalvertrieb"
+  tagline: "Marktbeobachtung für Industrie-Stahlseile · Export & Regionalvertrieb"
   retention_days: 21        # so lange bleiben Meldungen im Archiv
   window_days: 7            # Zeitraum der Anzeige ("Woche")
   fetch_days: 7             # pro Lauf: Meldungen der letzten n Tage abfragen

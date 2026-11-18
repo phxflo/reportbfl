@@ -1,0 +1,730 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-18T14:45:56+00:00",
+  "title": "Design System: Rope Report",
+  "extensions": {
+    "colorMeta": {
+      "system-blue": {
+        "role": "primary",
+        "displayName": "System Blue",
+        "canonical": "oklch(52.2% 0.177 255.8)",
+        "tonalRamp": [
+          "#050b16",
+          "#0d2544",
+          "#12417b",
+          "#135fb6",
+          "#3b82dc",
+          "#76a7e9",
+          "#aeccf3",
+          "#e3f0ff"
+        ]
+      },
+      "system-blue-dark": {
+        "role": "primary",
+        "displayName": "System Blue (dark)",
+        "canonical": "oklch(66.9% 0.181 251.8)",
+        "tonalRamp": [
+          "#040c16",
+          "#082644",
+          "#01427b",
+          "#0061b7",
+          "#2a84dd",
+          "#6fa9e9",
+          "#aacdf4",
+          "#e2f0ff"
+        ]
+      },
+      "new-orange": {
+        "role": "secondary",
+        "displayName": "Signal Orange",
+        "canonical": "oklch(53.7% 0.161 42.4)",
+        "tonalRamp": [
+          "#140804",
+          "#3c1a0c",
+          "#6c2c0f",
+          "#9f3f0d",
+          "#c66137",
+          "#da9073",
+          "#ebbdab",
+          "#feeae2"
+        ]
+      },
+      "new-orange-dark": {
+        "role": "secondary",
+        "displayName": "Signal Orange (dark)",
+        "canonical": "oklch(78.2% 0.171 67.2)",
+        "tonalRamp": [
+          "#120902",
+          "#391e00",
+          "#663300",
+          "#974a00",
+          "#bc6d00",
+          "#d19859",
+          "#e5c29e",
+          "#fbecdd"
+        ]
+      },
+      "new-orange-wash": {
+        "role": "secondary",
+        "displayName": "Orange Wash"
+      },
+      "new-orange-wash-dark": {
+        "role": "secondary",
+        "displayName": "Orange Wash (dark)"
+      },
+      "rope-core-amber": {
+        "role": "secondary",
+        "displayName": "Rope Core Amber",
+        "canonical": "oklch(78.2% 0.171 67.2)",
+        "tonalRamp": [
+          "#120902",
+          "#391e00",
+          "#663300",
+          "#974a00",
+          "#bc6d00",
+          "#d19859",
+          "#e5c29e",
+          "#fbecdd"
+        ]
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "Soft Grey Ground",
+        "canonical": "oklch(97.1% 0.003 286.4)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424243",
+          "#616162",
+          "#828284",
+          "#a5a5a6",
+          "#c9c9ca",
+          "#eeeeef"
+        ]
+      },
+      "ground-dark": {
+        "role": "neutral",
+        "displayName": "Black Ground",
+        "canonical": "oklch(0.0% 0.000 0.0)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "White Card",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "card-dark": {
+        "role": "neutral",
+        "displayName": "Graphite Card",
+        "canonical": "oklch(22.7% 0.004 286.1)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252526",
+          "#424243",
+          "#616163",
+          "#828284",
+          "#a5a5a6",
+          "#c9c9ca",
+          "#eeeeef"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(23.2% 0.004 286.1)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252526",
+          "#424243",
+          "#616163",
+          "#828284",
+          "#a5a5a6",
+          "#c9c9ca",
+          "#eeeeef"
+        ]
+      },
+      "ink-dark": {
+        "role": "neutral",
+        "displayName": "Ink (dark)",
+        "canonical": "oklch(97.1% 0.003 286.4)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424243",
+          "#616162",
+          "#828284",
+          "#a5a5a6",
+          "#c9c9ca",
+          "#eeeeef"
+        ]
+      },
+      "secondary-ink": {
+        "role": "neutral",
+        "displayName": "Secondary Ink",
+        "canonical": "oklch(54.0% 0.008 286.1)",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#252526",
+          "#424244",
+          "#616165",
+          "#828286",
+          "#a5a5a8",
+          "#c9c9cb",
+          "#eeeeef"
+        ]
+      },
+      "secondary-ink-dark": {
+        "role": "neutral",
+        "displayName": "Secondary Ink (dark)",
+        "canonical": "oklch(71.1% 0.007 286.2)",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#252526",
+          "#424244",
+          "#616165",
+          "#828286",
+          "#a5a5a8",
+          "#c9c9cb",
+          "#eeeeef"
+        ]
+      },
+      "faint-ink-dark": {
+        "role": "neutral",
+        "displayName": "Faint Ink (dark)",
+        "canonical": "oklch(64.8% 0.007 286.2)",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#252526",
+          "#424244",
+          "#616165",
+          "#828286",
+          "#a5a5a8",
+          "#c9c9cb",
+          "#eeeeef"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline"
+      },
+      "hairline-dark": {
+        "role": "neutral",
+        "displayName": "Hairline (dark)"
+      },
+      "fill": {
+        "role": "neutral",
+        "displayName": "Quiet Fill"
+      },
+      "fill-dark": {
+        "role": "neutral",
+        "displayName": "Quiet Fill (dark)"
+      },
+      "section-haefen": {
+        "role": "tertiary",
+        "displayName": "Section dot: Haefen",
+        "canonical": "oklch(60.0% 0.105 216.2)",
+        "tonalRamp": [
+          "#040d0f",
+          "#0a2a31",
+          "#064a58",
+          "#006d82",
+          "#3290a5",
+          "#75b0bf",
+          "#aed0d9",
+          "#e3f1f5"
+        ]
+      },
+      "section-haefen-dark": {
+        "role": "tertiary",
+        "displayName": "Section dot: Haefen (dark)",
+        "canonical": "oklch(77.7% 0.104 212.8)",
+        "tonalRamp": [
+          "#040d0f",
+          "#0a2a30",
+          "#044b56",
+          "#006e80",
+          "#3090a3",
+          "#74b0bd",
+          "#aed0d8",
+          "#e3f1f5"
+        ]
+      },
+      "section-kraene": {
+        "role": "tertiary",
+        "displayName": "Section dot: Kraene",
+        "canonical": "oklch(76.3% 0.157 84.4)",
+        "tonalRamp": [
+          "#100a02",
+          "#322200",
+          "#5a3c00",
+          "#855800",
+          "#a87a00",
+          "#c1a05b",
+          "#dbc79f",
+          "#f6eedd"
+        ]
+      },
+      "section-kraene-dark": {
+        "role": "tertiary",
+        "displayName": "Section dot: Kraene (dark)",
+        "canonical": "oklch(88.5% 0.181 94.8)",
+        "tonalRamp": [
+          "#0f0b01",
+          "#2f2400",
+          "#553f00",
+          "#7e5c00",
+          "#a17f00",
+          "#bba44c",
+          "#d6c999",
+          "#f4efdb"
+        ]
+      },
+      "section-industrie": {
+        "role": "tertiary",
+        "displayName": "Section dot: Industrie",
+        "canonical": "oklch(69.9% 0.178 52.9)",
+        "tonalRamp": [
+          "#140803",
+          "#3d1a01",
+          "#6d2c00",
+          "#a13f00",
+          "#c76200",
+          "#db9161",
+          "#ecbea2",
+          "#feeade"
+        ]
+      },
+      "section-industrie-dark": {
+        "role": "tertiary",
+        "displayName": "Section dot: Industrie (dark)",
+        "canonical": "oklch(78.2% 0.171 67.2)",
+        "tonalRamp": [
+          "#120902",
+          "#391e00",
+          "#663300",
+          "#974a00",
+          "#bc6d00",
+          "#d19859",
+          "#e5c29e",
+          "#fbecdd"
+        ]
+      },
+      "section-tiefbau": {
+        "role": "tertiary",
+        "displayName": "Section dot: Tiefbau",
+        "canonical": "oklch(63.2% 0.064 72.8)",
+        "tonalRamp": [
+          "#0e0b07",
+          "#2c2318",
+          "#4f3f2a",
+          "#755c3d",
+          "#977d5d",
+          "#b5a28a",
+          "#d3c7b9",
+          "#f3eee8"
+        ]
+      },
+      "section-tiefbau-dark": {
+        "role": "tertiary",
+        "displayName": "Section dot: Tiefbau (dark)",
+        "canonical": "oklch(74.4% 0.066 76.6)",
+        "tonalRamp": [
+          "#0e0b07",
+          "#2c2418",
+          "#4e3f29",
+          "#745d3b",
+          "#967e5b",
+          "#b4a289",
+          "#d2c7b8",
+          "#f2eee7"
+        ]
+      },
+      "section-markt": {
+        "role": "tertiary",
+        "displayName": "Section dot: Markt",
+        "canonical": "oklch(59.5% 0.206 311.4)",
+        "tonalRamp": [
+          "#0f0715",
+          "#31183f",
+          "#582872",
+          "#8238aa",
+          "#a55ccf",
+          "#bf8ddf",
+          "#d9bcee",
+          "#f5e9fe"
+        ]
+      },
+      "section-markt-dark": {
+        "role": "tertiary",
+        "displayName": "Section dot: Markt (dark)",
+        "canonical": "oklch(65.6% 0.227 312.4)",
+        "tonalRamp": [
+          "#100715",
+          "#321641",
+          "#5b2376",
+          "#862fb0",
+          "#aa55d6",
+          "#c389e4",
+          "#dcbaf1",
+          "#f6e8ff"
+        ]
+      },
+      "section-laender": {
+        "role": "tertiary",
+        "displayName": "Section dot: Laender",
+        "canonical": "oklch(63.0% 0.225 15.5)",
+        "tonalRamp": [
+          "#170507",
+          "#450e17",
+          "#7b0f28",
+          "#b6013a",
+          "#df3d5a",
+          "#ef7e88",
+          "#fab4b7",
+          "#ffe6e7"
+        ]
+      },
+      "section-laender-dark": {
+        "role": "tertiary",
+        "displayName": "Section dot: Laender (dark)",
+        "canonical": "oklch(65.8% 0.232 16.0)",
+        "tonalRamp": [
+          "#170506",
+          "#450d16",
+          "#7c0b27",
+          "#b80037",
+          "#e13a57",
+          "#f17c86",
+          "#fbb3b6",
+          "#ffe6e6"
+        ]
+      },
+      "section-rohstoffe": {
+        "role": "tertiary",
+        "displayName": "Section dot: Rohstoffe",
+        "canonical": "oklch(60.3% 0.218 257.4)",
+        "tonalRamp": [
+          "#040b19",
+          "#08244b",
+          "#023e87",
+          "#005aca",
+          "#297ef1",
+          "#6da6f8",
+          "#a9cbfd",
+          "#e1f0ff"
+        ]
+      },
+      "section-rohstoffe-dark": {
+        "role": "tertiary",
+        "displayName": "Section dot: Rohstoffe (dark)",
+        "canonical": "oklch(62.4% 0.206 255.5)",
+        "tonalRamp": [
+          "#040b18",
+          "#072548",
+          "#004083",
+          "#005dc3",
+          "#2781ea",
+          "#6da7f3",
+          "#a9ccfa",
+          "#e1f0ff"
+        ]
+      },
+      "rating-green": {
+        "role": "tertiary",
+        "displayName": "Rating Green",
+        "canonical": "oklch(73.0% 0.194 147.4)",
+        "tonalRamp": [
+          "#040e05",
+          "#052e0f",
+          "#005215",
+          "#00791a",
+          "#1a9c40",
+          "#6eba78",
+          "#abd6af",
+          "#e2f4e4"
+        ]
+      },
+      "rating-yellow": {
+        "role": "tertiary",
+        "displayName": "Rating Yellow",
+        "canonical": "oklch(78.2% 0.171 67.2)",
+        "tonalRamp": [
+          "#120902",
+          "#391e00",
+          "#663300",
+          "#974a00",
+          "#bc6d00",
+          "#d19859",
+          "#e5c29e",
+          "#fbecdd"
+        ]
+      },
+      "rating-red": {
+        "role": "tertiary",
+        "displayName": "Rating Red",
+        "canonical": "oklch(65.4% 0.232 28.7)",
+        "tonalRamp": [
+          "#170504",
+          "#460f0a",
+          "#7d0f0b",
+          "#b90004",
+          "#e23e32",
+          "#f27f70",
+          "#fcb5aa",
+          "#ffe6e1"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Masthead \"Rope Report\" only."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Latest value on each chart card."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Group headings: Kennzahlen, Zielmärkte, Markt & Handel."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Section titles with their colour dot."
+      },
+      "item-title": {
+        "displayName": "Item Title",
+        "purpose": "News headlines in list rows; chart titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Base text."
+      },
+      "body-small": {
+        "displayName": "Body Small",
+        "purpose": "Hintergrund note, max 64ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Meta lines, countries, masthead date, navigation, footer."
+      },
+      "pill": {
+        "displayName": "Pill",
+        "purpose": "NEU and Kunde capsules only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-ambient",
+        "value": "0 1px 2px rgba(0,0,0,.04),0 6px 20px rgba(0,0,0,.05)",
+        "purpose": "All cards, chart cards and the error notice in light mode; none in dark mode."
+      },
+      {
+        "name": "segment-lift",
+        "value": "0 1px 3px rgba(0,0,0,.08),0 0 0 .5px var(--hair)",
+        "purpose": "Active navigation capsule."
+      }
+    ],
+    "materials": [
+      {
+        "name": "nav-translucent",
+        "value": "background:color-mix(in srgb,var(--ground) 78%,transparent);backdrop-filter:saturate(180%) blur(20px)",
+        "purpose": "Sticky navigation bar."
+      }
+    ],
+    "focus": [
+      {
+        "name": "focus-ring",
+        "value": "outline:2px solid var(--blue);outline-offset:3px;border-radius:6px",
+        "purpose": "Every focusable element."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-transition",
+        "value": "0.2s (default ease)",
+        "purpose": "Navigation colour/background/shadow, chevron rotation, rating dot opacity/scale."
+      },
+      {
+        "name": "scroll",
+        "value": "scroll-behavior:smooth; scroll-padding-top:72px",
+        "purpose": "Anchor jumps clear the sticky bar."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "max-width:600px"
+      },
+      {
+        "name": "charts-two-up",
+        "value": "min-width:900px"
+      },
+      {
+        "name": "no-hover",
+        "value": "hover:none"
+      }
+    ],
+    "fonts": {
+      "embedded": "Inter variable with optical sizes, latin + latin-ext subsets, base64 woff2 from fonts/inter-*-opsz-normal.woff2 via build.py",
+      "appleFirst": "-apple-system / SF Pro Display / SF Pro Text lead the stacks"
+    }
+  },
+  "components": [
+    {
+      "name": "List Card",
+      "kind": "card",
+      "refersTo": "card-rows",
+      "description": "Borderless rounded card holding news rows separated by inset hairlines.",
+      "html": "<div class=\"ds-box\"><div class=\"ds-rows\"><article class=\"ds-row\"><div class=\"ds-when\">07:12</div><div><div class=\"ds-meta\"><span class=\"ds-cty\">Belgien</span><span class=\"ds-pill ds-new\">NEU</span></div><a class=\"ds-h\" href=\"#\">Beispiel: Hafen erweitert Containerterminal</a><div class=\"ds-meta\"><span>Fachmedium</span></div></div><span></span></article><article class=\"ds-row\"><div class=\"ds-when\">gestern</div><div><a class=\"ds-h\" href=\"#\">Beispiel: Ausschreibung für zwei Hafenkrane</a><div class=\"ds-meta\"><span>Nachrichtenquelle</span></div></div><span></span></article></div></div>",
+      "css": ".ds-box{background:var(--card,#fff);border-radius:var(--r,20px);box-shadow:var(--shadow,0 1px 2px rgba(0,0,0,.04),0 6px 20px rgba(0,0,0,.05));overflow:hidden;font:17px/1.47 var(--sans,system-ui);color:var(--ink,#1d1d1f);letter-spacing:-.011em}.ds-rows{padding:6px 26px}.ds-row{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:14px;padding:16px 0;border-top:1px solid var(--hair,rgba(0,0,0,.09))}.ds-row:first-child{border-top-color:transparent}.ds-when{font-size:12px;line-height:1.45;color:var(--faint,#6e6e73);padding-top:3px;font-variant-numeric:tabular-nums}.ds-h{display:block;color:inherit;text-decoration:none;font:600 17px/1.38 var(--display,system-ui);letter-spacing:-.018em}.ds-h:hover{color:var(--blue,#0066cc)}.ds-h:focus-visible{outline:2px solid var(--blue,#0066cc);outline-offset:3px;border-radius:6px}.ds-meta{font-size:13px;color:var(--muted,#6e6e73);display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;margin:4px 0}.ds-cty{font-weight:500}.ds-pill{font-size:11px;font-weight:600;letter-spacing:.01em;padding:2px 8px;border-radius:99px}.ds-new{background:var(--orange-bg,rgba(255,149,0,.14));color:var(--orange,#b64400)}"
+    },
+    {
+      "name": "Navigation Segment",
+      "kind": "nav",
+      "refersTo": "nav-segment",
+      "description": "Translucent sticky bar with segmented-control capsules, section dot and count.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" class=\"ds-seg\">Kennzahlen</a><span class=\"ds-sep\"></span><a href=\"#\" class=\"ds-seg ds-on\" style=\"--rc:#0a8fa8\">Zielmärkte<b>9</b></a><a href=\"#\" class=\"ds-seg\" style=\"--rc:#a64fd6\">Wettbewerb<b>3</b></a></nav>",
+      "css": ".ds-nav{display:flex;gap:2px;align-items:center;padding:8px;background:color-mix(in srgb,var(--ground,#f5f5f7) 78%,transparent);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--hair,rgba(0,0,0,.09));font-family:var(--sans,system-ui)}.ds-seg{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:500;padding:6px 13px;border-radius:99px;color:var(--muted,#6e6e73);text-decoration:none;transition:background .2s,color .2s,box-shadow .2s}.ds-seg::before{content:\"\";width:7px;height:7px;border-radius:50%;background:var(--rc,var(--faint,#6e6e73))}.ds-seg:hover{color:var(--ink,#1d1d1f)}.ds-seg:focus-visible{outline:2px solid var(--blue,#0066cc);outline-offset:3px}.ds-on{color:var(--ink,#1d1d1f);background:var(--card,#fff);box-shadow:0 1px 3px rgba(0,0,0,.08),0 0 0 .5px var(--hair,rgba(0,0,0,.09))}.ds-seg b{font-size:12px;font-weight:600;color:var(--faint,#6e6e73);font-variant-numeric:tabular-nums}.ds-sep{width:1px;height:18px;background:var(--hair,rgba(0,0,0,.09));margin:0 8px}"
+    },
+    {
+      "name": "NEU Pill",
+      "kind": "chip",
+      "refersTo": "pill-new",
+      "description": "Orange capsule for items published since yesterday 06:30.",
+      "html": "<span class=\"ds-pill-new\">NEU</span>",
+      "css": ".ds-pill-new{font:600 11px var(--sans,system-ui);letter-spacing:.01em;padding:2px 8px;border-radius:99px;background:var(--orange-bg,rgba(255,149,0,.14));color:var(--orange,#b64400)}"
+    },
+    {
+      "name": "Kunde Pill",
+      "kind": "chip",
+      "refersTo": "pill-customer",
+      "description": "Dark capsule marking a customer item; inverts in dark mode.",
+      "html": "<span class=\"ds-pill-k\">Kunde</span>",
+      "css": ".ds-pill-k{font:600 11px var(--sans,system-ui);letter-spacing:.01em;padding:2px 8px;border-radius:99px;background:var(--ink,#1d1d1f);color:var(--card,#fff)}"
+    },
+    {
+      "name": "Section Title",
+      "kind": "custom",
+      "refersTo": "title",
+      "description": "21px section title led by its fixed section-colour dot.",
+      "html": "<h3 class=\"ds-sec\" style=\"--rc:#0a8fa8\"><i></i>Häfen</h3>",
+      "css": ".ds-sec{display:flex;align-items:center;gap:9px;margin:0;font:600 21px/1.2 var(--display,system-ui);letter-spacing:-.018em;color:var(--ink,#1d1d1f)}.ds-sec i{width:9px;height:9px;border-radius:50%;background:var(--rc);flex:none}"
+    },
+    {
+      "name": "Hintergrund Disclosure",
+      "kind": "custom",
+      "refersTo": "disclosure-link",
+      "description": "Blue text disclosure with rotating chevron revealing the background note.",
+      "html": "<details class=\"ds-ber\"><summary>Hintergrund</summary><p>Beispieltext: kurzer deutscher Hintergrund in ein bis zwei Sätzen.</p></details>",
+      "css": ".ds-ber{font:15px/1.5 var(--sans,system-ui);color:var(--ink,#1d1d1f)}.ds-ber summary{display:inline-flex;align-items:center;gap:6px;cursor:pointer;color:var(--blue,#0066cc);font-weight:500;font-size:14px;list-style:none;border-radius:6px}.ds-ber summary::-webkit-details-marker{display:none}.ds-ber summary::after{content:\"\";width:6px;height:6px;border:solid currentColor;border-width:0 1.6px 1.6px 0;transform:rotate(45deg) translate(-2px,-2px);transition:transform .2s}.ds-ber[open] summary::after{transform:rotate(-135deg) translate(-1px,-1px)}.ds-ber summary:hover{text-decoration:underline;text-underline-offset:3px}.ds-ber summary:focus-visible{outline:2px solid var(--blue,#0066cc);outline-offset:3px}.ds-ber p{margin:8px 0 6px;max-width:64ch}"
+    },
+    {
+      "name": "Rating Dots",
+      "kind": "button",
+      "refersTo": "rating-dot",
+      "description": "Three outlined traffic-light buttons; selected fills.",
+      "html": "<span class=\"ds-rate\"><button class=\"ds-rb\" style=\"--rb:#34c759\" aria-label=\"Gut\"></button><button class=\"ds-rb ds-sel\" style=\"--rb:#ff9f0a\" aria-label=\"Grenzwertig\"></button><button class=\"ds-rb\" style=\"--rb:#ff3b30;margin-left:6px\" aria-label=\"Unpassend\"></button></span>",
+      "css": ".ds-rate{display:inline-flex;gap:8px}.ds-rb{box-sizing:border-box;width:16px;height:16px;border-radius:50%;border:1.6px solid var(--rb);background:transparent;padding:0;cursor:pointer;opacity:.7;transition:opacity .2s,background .2s,transform .2s}.ds-rb:hover{opacity:1;transform:scale(1.12)}.ds-rb:focus-visible{opacity:1;outline:2px solid var(--blue,#0066cc);outline-offset:2px}.ds-sel{opacity:1;background:var(--rb)}"
+    },
+    {
+      "name": "Chart Card",
+      "kind": "card",
+      "refersTo": "chart-card",
+      "description": "Indicator card with title, large tabular figure and deltas.",
+      "html": "<div class=\"ds-chart\"><header><div><h3>Beispiel-Index</h3><div class=\"ds-sub\">Produktion, 2021 = 100</div></div><div class=\"ds-val\"><div class=\"ds-big\">96,4</div><div class=\"ds-per\">Sep 2026</div></div></header><div class=\"ds-deltas\"><span>▲ 1,2 % <em>ggü. Vormonat</em></span></div><svg viewBox=\"0 0 200 50\"><path d=\"M0 40 L50 30 L100 34 L150 18 L200 22\" class=\"ds-line\"/></svg></div>",
+      "css": ".ds-chart{background:var(--card,#fff);border-radius:var(--r,20px);box-shadow:var(--shadow,0 1px 2px rgba(0,0,0,.04),0 6px 20px rgba(0,0,0,.05));padding:24px 26px 14px;font-family:var(--sans,system-ui);color:var(--ink,#1d1d1f)}.ds-chart header{display:flex;justify-content:space-between;gap:16px}.ds-chart h3{margin:0;font:600 17px/1.3 var(--display,system-ui);letter-spacing:-.016em}.ds-sub,.ds-per{font-size:13px;color:var(--muted,#6e6e73);margin-top:3px}.ds-val{text-align:right}.ds-big{font:600 44px/1 var(--display,system-ui);letter-spacing:-.035em;font-variant-numeric:tabular-nums}.ds-deltas{font-size:13px;font-weight:600;margin:12px 0 8px;font-variant-numeric:tabular-nums}.ds-deltas em{font-style:normal;font-weight:400;color:var(--muted,#6e6e73)}.ds-chart svg{width:100%;display:block}.ds-line{fill:none;stroke:var(--blue,#0066cc);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}"
+    },
+    {
+      "name": "Quiet Button and Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Footer token field with quiet capsule button.",
+      "html": "<div><input class=\"ds-in\" type=\"password\" placeholder=\"Zugangsschlüssel\"> <button class=\"ds-btn\">Speichern</button></div>",
+      "css": ".ds-in{font:14px var(--sans,system-ui);padding:7px 12px;border:1px solid var(--hair,rgba(0,0,0,.09));border-radius:10px;background:var(--card,#fff);color:var(--ink,#1d1d1f);min-width:240px}.ds-in:focus-visible{outline:2px solid var(--blue,#0066cc);outline-offset:3px}.ds-btn{font:500 13px var(--sans,system-ui);border:0;background:var(--fill,rgba(0,0,0,.05));color:var(--ink,#1d1d1f);border-radius:99px;padding:7px 14px;cursor:pointer;margin-left:6px}.ds-btn:hover{background:color-mix(in srgb,var(--ink,#1d1d1f) 12%,transparent)}.ds-btn:focus-visible{outline:2px solid var(--blue,#0066cc);outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Morning Keynote Page",
+    "overview": "The page reads like a classic Apple product page turned into a daily briefing: big, confident, tightly tracked headlines per group; white rounded surfaces floating on a soft grey ground; generous vertical air; nothing decorative. The density lives inside the cards, as calm list rows divided by inset hairlines in the manner of Apple's own apps, while the space between groups stays wide (72px). The only colour with intent is Apple system blue for anything you can act on, an orange capsule for \"NEU\", and a dark capsule for \"Kunde\"; section colours appear only as small dots next to their labels.\n\nLight and dark follow the system setting. Light mode lifts cards off the ground with a barely-there two-layer shadow; dark mode drops shadows entirely and separates by tone (black ground, graphite cards). Type is SF Pro on Apple devices and embedded variable Inter (with optical sizes) everywhere else, so the page needs no external request. The world rejects the grey admin-dashboard look: bordered boxes, small grey uppercase kickers, badge clutter and icon decoration.",
+    "keyCharacteristics": [
+      "Soft grey ground, borderless white cards with a 20px radius, inset hairline rows.",
+      "Large display headlines with negative tracking; tabular numerals on every figure, date and count.",
+      "Translucent sticky bar (blurred, saturated) with segmented-control capsules for navigation.",
+      "Blue is the action colour; section colours are dots, never fills.",
+      "Text only: the rope cross-section mark is the sole graphic besides the charts."
+    ],
+    "rules": [
+      {
+        "name": "The Blue Means Action Rule",
+        "body": "System blue appears only where the reader can click, focus or read a chart line. Never use it for emphasis or decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Dot-And-Label Rule",
+        "body": "A section colour is only ever a small round dot (7–9px) beside its label. Never tint a card, a row, a headline or a border with it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Pills Rule",
+        "body": "Only \"NEU\" and \"Kunde\" are capsules. Countries, sources, \"Fachmedium\" and source counts stay plain grey text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Figures Rule",
+        "body": "Every number that can change from day to day (chart values, deltas, timestamps, navigation counts, the \"Stand\" line) uses tabular numerals so columns never jitter.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tight Display Rule",
+        "body": "Tracking tightens as size grows: -0.011em at body, -0.018em at titles, -0.026em to -0.035em at headlines and figures. Small labels and pills stay at or above 0.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Night Rule",
+        "body": "In dark mode nothing casts a shadow; cards separate by tone only.",
+        "section": "elevation"
+      },
+      {
+        "name": "The No-Border Card Rule",
+        "body": "Surfaces are defined by fill and shadow, never by an outline. Hairlines divide rows inside a card, not cards from the page (print is the one exception, where shadows become a 1px border).",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** put every surface on the card token with the 20px radius and the card ambient shadow, and let dark mode drop the shadow.",
+      "**Do** separate rows with inset hairlines inside the card, never with gaps between separate boxes.",
+      "**Do** use system blue for every link, disclosure, focus ring and chart line, and for nothing else.",
+      "**Do** show a section's colour as a 7–9px dot beside its label.",
+      "**Do** set headlines heavy and tightly tracked (-0.026em at 34px) and every changing number in tabular figures.",
+      "**Do** keep 72px between groups and 40px between sections; the air is part of the style."
+    ],
+    "donts": [
+      "**Don't** draw borders around cards or fill cards, rows or headings with a section colour.",
+      "**Don't** add capsules beyond \"NEU\" and \"Kunde\"; countries and sources stay grey text.",
+      "**Don't** use small grey uppercase kickers or eyebrows above headings.",
+      "**Don't** add shadows in dark mode.",
+      "**Don't** add icons, photos or decorative graphics; the rope mark and the charts are the only images.",
+      "**Don't** load fonts or anything else from outside the page; Inter is embedded, SF Pro comes from the device."
+    ]
+  }
+}
