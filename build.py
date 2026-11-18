@@ -406,22 +406,19 @@ def health(news, idx, now, cards=(), shown=()):
     return rows
 
 
-LATIN = "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD"
-LATIN_EXT = "U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF"
+LATIN = "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD"
+LATIN_EXT = "U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF"
 
 
 def font_css():
-    """Schriften (Barlow, Barlow Condensed) direkt in die Seite einbetten: kein Abruf bei Google, funktioniert offline."""
+    """Inter (variabel, mit optischen Größen; OFL, fonts/OFL-Inter.txt) direkt einbetten: kein Abruf von außen.
+    Auf Apple-Geräten nimmt die Seite die Systemschrift SF Pro, Inter ist der Ersatz für Windows und Android."""
     import base64
     out = []
-    for fam, slug, weights in (("Barlow", "barlow", (400, 600, 700)), ("Barlow Condensed", "barlow-condensed", (600, 700, 800))):
-        for w in weights:
-            for sub, rng in (("latin", LATIN), ("latin-ext", LATIN_EXT)):
-                f = ROOT / "fonts" / f"{slug}-{sub}-{w}-normal.woff2"
-                if f.exists():
-                    b64 = base64.b64encode(f.read_bytes()).decode()
-                    out.append(f"@font-face{{font-family:'{fam}';font-weight:{w};font-style:normal;font-display:swap;"
-                               f"src:url(data:font/woff2;base64,{b64}) format('woff2');unicode-range:{rng}}}")
+    for sub, rng in (("latin", LATIN), ("latin-ext", LATIN_EXT)):
+        b64 = base64.b64encode((ROOT / "fonts" / f"inter-{sub}-opsz-normal.woff2").read_bytes()).decode()
+        out.append(f"@font-face{{font-family:'Inter';font-weight:100 900;font-style:normal;font-display:swap;"
+                   f"src:url(data:font/woff2;base64,{b64}) format('woff2');unicode-range:{rng}}}")
     return "".join(out)
 
 
