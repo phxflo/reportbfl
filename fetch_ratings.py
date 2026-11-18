@@ -42,7 +42,7 @@ def main():
                 continue
             try:
                 for x in json.loads(c["body"]):
-                    if x.get("r") in ("g", "y", "r") and isinstance(x.get("i"), str) and len(x["i"]) <= 20:
+                    if x.get("r") in ("g", "y", "r", "n") and isinstance(x.get("i"), str) and len(x["i"]) <= 20:
                         n += 1
                         if x["i"] not in out or int(x.get("t", 0)) >= out[x["i"]]["t"]:
                             out[x["i"]] = dict(r=x["r"], t=int(x.get("t", 0)))
@@ -51,6 +51,7 @@ def main():
         if len(rows) < 100:
             break
         page += 1
+    out = {k: v for k, v in out.items() if v["r"] != "n"}      # „n“ = auf der Seite zurückgenommen
     OUT.write_text(json.dumps(out), encoding="utf-8")
     g = sum(1 for v in out.values() if v["r"] == "g"); y = sum(1 for v in out.values() if v["r"] == "y"); rd = sum(1 for v in out.values() if v["r"] == "r")
     print(f"Bewertungen: {len(out)} Meldungen bewertet (grün {g}, gelb {y}, rot {rd})")

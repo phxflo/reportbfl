@@ -45,7 +45,7 @@ def chart(spec, series):
     if yoy_mode:                            # Inflationsrate = Jahresveränderung des Index (Destatis rechnet ebenso aus dem gerundeten Index)
         pts = [dict(p=pts[i]["p"], v=round((pts[i]["v"] / pts[i - lag]["v"] - 1) * 100, 1)) for i in range(lag, len(pts))]
     dec = 1 if yoy_mode else 0
-    W, H, L, R, T, B = 560, 200, 44, 14, 14, 28
+    W, H, L, R, T, B = 560, 150, 44, 14, 10, 26
     vals = [p["v"] for p in pts]
     lo, hi = min(vals), max(vals)
     pad = (hi - lo) * 0.12 or 1
