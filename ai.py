@@ -21,12 +21,11 @@ AI = CFG.get("ai", {})
 MODEL = AI.get("model", "claude-sonnet-5-5")
 CHEAP = AI.get("cheap_model", "claude-haiku-5-5")     # nur für Übersetzen
 RULES = 6                                     # Regelstand der Auswahl; betroffene Rubriken werden bei Erhöhung neu beurteilt
-FORCE = False  # erzwungener Tool-Aufruf; wird bei Ablehnung des Modells automatisch abgeschaltet
 VERSION = 2                                   # Prompt-Stand: bei Änderung werden alle Meldungen neu beurteilt
 BATCH = AI.get("batch", 25)
 BLOCK_RED = int(AI.get("block_source_red", 4))     # so oft rot (und nie grün) → Quelle gesperrt
 MAX_ITEMS = AI.get("max_items", 150)          # Obergrenze je Lauf (Kostenbremse); der Rest folgt am nächsten Tag
-URL = os.environ.get("ANTHROPIC_API_URL", "https://api.anthropic.com/v1/messages")
+URL = "https://api.anthropic.com/v1/messages"
 RUBRICS = [r["id"] for r in CFG["rubrics"]]
 COUNTRIES = [c["id"] for c in CFG["countries"]]
 
@@ -115,15 +114,14 @@ USAGE = dict(i=0, o=0, c=0)      # verbrauchte Tokens dieses Laufs
 
 
 def call(key, system, user, tool, max_tokens=8000, model=None, effort=None):
-    """Eine Anfrage mit erzwungenem Tool-Aufruf; Modelle, die das nicht erlauben (z. B. Sonnet 5.5), bekommen 'auto'."""
-    global FORCE
+    """Eine Anfrage, die mit einem Werkzeug-Aufruf antworten soll (erzwingen erlauben die aktuellen Modelle nicht, daher „auto“ plus Anweisung)."""
     hdr = {"x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json"}
     err = ""
     for attempt in range(4):
         body = dict(model=model or MODEL, max_tokens=max_tokens, tools=[tool], messages=[dict(role="user", content=user)],
                     system=[dict(type="text", text=system + f"\nRufe zum Abschluss genau einmal das Werkzeug {tool['name']} mit dem vollständigen Ergebnis auf.",
                                  cache_control=dict(type="ephemeral"))],      # lange Regeln nur einmal voll bezahlen (Cache ≈ 10 %)
-                    tool_choice=dict(type="tool", name=tool["name"]) if FORCE else dict(type="auto"))
+                    tool_choice=dict(type="auto"))
         if effort:
             body["output_config"] = dict(effort=effort)
         try:
@@ -142,9 +140,6 @@ def call(key, system, user, tool, max_tokens=8000, model=None, effort=None):
                 err = "keine Tool-Antwort"
             else:
                 err = f"HTTP {r.status_code} {r.text[:200]}"
-                if r.status_code == 400 and "tool_choice" in r.text and FORCE:
-                    FORCE = False                      # dieses Modell erlaubt keinen erzwungenen Tool-Aufruf
-                    continue
                 if r.status_code in (400, 401, 403, 404):
                     raise RuntimeError(err)           # lohnt kein Wiederholen (falscher Schlüssel, Guthaben leer …)
         time.sleep(5 * (attempt + 1))
@@ -183,14 +178,12 @@ def classify(key, items):
     batches = [items[k:k + BATCH] for k in range(0, len(items), BATCH)]
     done = 0
     first = [_judge(key, batches[0])] if batches else []      # erste Anfrage allein: schreibt den Cache, die übrigen lesen ihn
-    with ThreadPoolExecutor(max_workers=int(AI.get("workers", 4))) as ex:
+    with ThreadPoolExecutor(max_workers=4) as ex:
         for batch, out in first + list(ex.map(lambda b: _judge(key, b), batches[1:])):
             if out is None:
                 continue
             by = {i["id"]: i for i in batch}
             for r in out.get("results", []):
-                if os.environ.get("AI_DEBUG"):
-                    print("  ", r.get("id"), r.get("relevant"), r.get("rubric"), "|", r.get("grund"))
                 i = by.get(r.get("id"))
                 if not i:
                     continue
@@ -333,7 +326,7 @@ def blocked_sources(items):
 
 def prefilter(items, blocked=frozenset()):
     """Trennt Meldungen in (an Claude) und (ohne Branchenbezug, direkt als nicht relevant markiert)."""
-    pre = None if os.environ.get("AI_PREFILTER", "1") == "0" else _prefilter()
+    pre = _prefilter()
     if not pre:
         return items, 0
     keep, n = [], 0

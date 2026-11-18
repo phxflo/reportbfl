@@ -125,9 +125,6 @@ def build_jobs(days):
         jobs.append(dict(url=feed_url(q, "de" if t["lang"] == "de" else "en", "DE" if t["lang"] == "de" else "US",
                                       "DE:de" if t["lang"] == "de" else "US:en", CFG["site"]["fetch_days"]),
                          rubric=t["rubric"], lang=t["lang"], country=None, trusted=True))
-    for f in CFG.get("feeds") or []:
-        jobs.append(dict(url=f["url"], rubric=f["rubric"], lang=f.get("lang", "de"),
-                         country=None, source=f["name"]))
     return jobs
 
 
@@ -202,7 +199,7 @@ def main():
         time.sleep(0.5)                        # kleine Pause je Abruf, damit Google nicht drosselt
         return feed
 
-    with ThreadPoolExecutor(max_workers=int(os.environ.get("FETCH_WORKERS", "3"))) as pool:   # mehrere Abfragen gleichzeitig
+    with ThreadPoolExecutor(max_workers=3) as pool:   # mehrere Abfragen gleichzeitig
         feeds = list(pool.map(_get, jobs))
     langs, firms, base = {}, {}, [0, 0]
     for job, feed in zip(jobs, feeds):

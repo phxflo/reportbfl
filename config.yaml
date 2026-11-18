@@ -217,11 +217,9 @@ countries:
       - {lang: en, hl: en-NG, gl: NG, ceid: "NG:en", q: "Nigeria (economy OR trade OR tariffs OR sanctions OR embargo OR customs OR steel OR import OR export OR port OR strike)"}
       - {lang: de, hl: de, gl: DE, ceid: "DE:de", q: "Nigeria (Wirtschaft OR Konjunktur OR Zoll OR Handel OR Sanktionen OR Embargo OR Stahl OR Hafen OR Streik)"}
 
-# Regionale Eingrenzung: In diesen Rubriken bleiben nur Meldungen, in denen eines deiner Länder (siehe "countries")
-# oder einer der Begriffe unten vorkommt. Türkischsprachige Meldungen zählen automatisch als Türkei.
+# Regionale Eingrenzung: In diesen Rubriken bleiben nur Meldungen mit Bezug zu einem deiner Länder (siehe "countries").
 region:
   rubrics: [haefen, kraene, industrie, tiefbau]
-  extra_names: []     # zusätzliche Begriffe (z. B. Deutschland), die ebenfalls als "relevante Region" zählen
 
 # Ereigniswörter: Umfeld-Begriffe (Stahlwerk, Hafen, Kran …) zählen nur zusammen mit einem Ereignis
 events: 'auftrag|bestell\w*|liefer\w*|invest\w*|erweiter\w*|ausbau|neubau|eröffn\w*|übernahme|insolvenz|unfall|einsturz|explosion|brand|feuer|streik|stilllegung|schließung|zuschlag|preis\w*|zoll\w*|sanktion\w*|embargo|vorstell\w*|rekord|kapazität\w*|vertrag|ausschreibung|fördermittel|werk (eröffn|schließ)|order(s|ed)?|contract|invest\w*|expan\w*|acquir\w*|acquisition|bankrupt\w*|accident|collapse|explo\w*|fire|strike|shutdown|closure|surcharge|price\w*|tariff\w*|sanction\w*|unveil\w*|launch\w*|record|capacity|tender|grant|opens?|delivers?|delivery|commande\w*|investissement|inauguration|grève|accident|incendie|faillite|extension|rachat|acquisition|prix|bestelling|investering|staking|ongeval|brand|faillissement|uitbreiding|overname|prijs|patlama|yangın|grev|kaza|sipariş|yatırım|iflas|fiyat\w*|yaptırım|kapan\w*|ihale'
@@ -286,9 +284,6 @@ editions:
   ar: [{hl: ar, gl: MA, ceid: "MA:ar"}, {hl: ar, gl: DZ, ceid: "DZ:ar"}, {hl: ar, gl: TN, ceid: "TN:ar"}, {hl: ar, gl: LY, ceid: "LY:ar"}]   # nur deine arabischen Länder (nicht Ägypten)
   he: [{hl: he, gl: IL, ceid: "IL:he"}]
 
-# Zusätzliche feste RSS-Feeds (Fachportale). Format: {name, url, rubric, lang}
-feeds: []
-#  - {name: "Beispiel Fachportal", url: "https://example.com/rss.xml", rubric: kraene, lang: de}
 
 # Kennzahlen (Destatis GENESIS-Online)
 indices:

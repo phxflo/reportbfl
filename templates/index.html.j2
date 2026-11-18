@@ -203,8 +203,8 @@ footer.site button:hover{background:color-mix(in srgb,var(--ink) 12%,transparent
 
 <nav aria-label="Rubriken"><div class="wrap">
   <a href="#kennzahlen">Kennzahlen</a><span class="sep"></span>
-  {% for s in sections %}{% if not s.tile %}<a class="rc r-{{ s.id }}" href="#{{ s.id }}">{{ s.short }}{% if s.shown %}<b class="has">{{ s.shown|length }}</b>{% endif %}</a>
-  {%- elif loop.first or not sections[loop.index0 - 1].tile %}{% set n = sections|selectattr('tile')|map(attribute='shown')|map('length')|sum %}<a href="#zielmaerkte">{{ s.group }}{% if n %}<b class="has">{{ n }}</b>{% endif %}</a>{% endif %}{% endfor %}
+  {% for s in sections %}{% if not s.tile %}<a class="r-{{ s.id }}" href="#{{ s.id }}">{{ s.short }}{% if s.shown %}<b>{{ s.shown|length }}</b>{% endif %}</a>
+  {%- elif loop.first or not sections[loop.index0 - 1].tile %}{% set n = sections|selectattr('tile')|map(attribute='shown')|map('length')|sum %}<a href="#zielmaerkte">{{ s.group }}{% if n %}<b>{{ n }}</b>{% endif %}</a>{% endif %}{% endfor %}
 </div></nav>
 
 <main class="wrap">

@@ -23,7 +23,6 @@ ROOT = Path(__file__).parent
 CFG = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
 OUT = ROOT / "data" / "indices.json"
 API = "https://genesis.destatis.de/genesisWS/rest/2020/data/tablefile"
-DEBUG = "--debug" in sys.argv
 
 
 def fetch_table(name, years=None):
@@ -91,8 +90,6 @@ def parse(text, spec):
     text = text.replace("\r\n", "\n").replace("\r", "\n")
     rows = [r for r in csv.reader(io.StringIO(text, newline=""), delimiter=";") if r]
     header = [h.strip().lower() for h in rows[0]]
-    if DEBUG:
-        print("Kopfzeile:", header, "\nBeispiel:", rows[1:3], file=sys.stderr)
     vcol = next((i for i, h in enumerate(header) if h in ("value", "wert")), len(header) - 1)
     pts = {}
     for row in rows[1:]:
@@ -119,21 +116,6 @@ def fetch_retry(table, years):
         return fetch_table(table, years)
 
 
-def save_raw(name, text):
-    if not DEBUG:
-        return
-    """Legt die ersten Zeilen der Destatis-Antwort ab (öffentliche Statistikdaten), damit das Format prüfbar ist."""
-    lines = text.replace("\r\n", "\n").replace("\r", "\n").split("\n")
-    seen = []
-    for ln in lines[1:]:
-        for c in ln.split(";"):
-            if re.fullmatch(r"(GP19-\d+|WZ08-[A-Z0-9]+|WERT\w*|CC13-[\d-]+|VPI\w*|PREIS\w*|PRC\w*|PRE\w*)", c) and c not in seen:
-                seen.append(c)
-    codes = " ".join(seen[:80])
-    (ROOT / "data" / f"raw_{name}.txt").write_text(f"{len(lines)} Zeilen insgesamt\n" + "\n".join(lines[:25]) + "\n" + "CODES: " + codes + "\n",
-                                                  encoding="utf-8")
-
-
 def main():
     old = {}
     if OUT.exists():
@@ -144,26 +126,18 @@ def main():
     for spec in CFG["indices"]:
         tried, ok = [], False
         for table in spec.get("tables") or [spec["table"]]:
-            for req in [spec["require"]] + ([spec["fallback_require"]] if spec.get("fallback_require") else []):
-                try:
-                    text = fetch_retry(table, spec.get("years"))
-                    save_raw(f"{spec['id']}_{table}", text)
-                    pts = parse(text, dict(spec, require=req))
-                except Exception as ex:
-                    tried.append(f"{table}: {str(ex)[:80]}")
-                    break
-                if len(pts) >= 4:
-                    series[spec["id"]] = dict(points=pts, fetched=dt.date.today().isoformat(), table=table,
-                                              note=spec.get("fallback_note", "") if req is not spec["require"] else "")
-                    print(f"{spec['id']}: {table} {req} → {len(pts)} Punkte, zuletzt {pts[-1]}")
-                    ok = True
-                    break
-                tried.append(f"{table} {req}: {len(pts)} Punkte")
-            if ok:
+            try:
+                pts = parse(fetch_retry(table, spec.get("years")), spec)
+            except Exception as ex:
+                tried.append(f"{table}: {str(ex)[:80]}")
+                continue
+            if len(pts) >= 4:
+                series[spec["id"]] = dict(points=pts, fetched=dt.date.today().isoformat(), table=table)
+                print(f"{spec['id']}: {table} → {len(pts)} Punkte, zuletzt {pts[-1]}")
+                ok = True
                 break
+            tried.append(f"{table}: {len(pts)} Punkte")
         if not ok:
-            if series.get(spec["id"], {}).get("note"):
-                series.pop(spec["id"])          # keine falsche Ersatzreihe stehen lassen
             errors.append(f"{spec['id']}: keine Daten ({'; '.join(tried)})")
             print(f"FEHLER {spec['id']}: {tried}", file=sys.stderr)
     OUT.write_text(json.dumps(dict(meta=dict(sample=False, errors=errors), series=series),

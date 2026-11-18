@@ -125,11 +125,6 @@ def cluster(items):
 
 
 
-def _home():
-    names = (CFG.get("region") or {}).get("extra_names") or []
-    return re.compile("|".join(rf"(?<!\w){re.escape(n)}" for n in names) or "(?!x)x", re.I)
-
-
 def _ratings():
     f = ROOT / "data" / "ratings.json"
     try:
@@ -139,7 +134,6 @@ def _ratings():
 
 
 RATE = _ratings()      # Ampel-Bewertungen des Nutzers {id: {r: g|y|r, t}}
-HOME = _home()
 import names
 # Kunden im Text erkennen: Kürzel (bis 4 Zeichen) nur in Großschreibung, und wenn ein Kundenland bekannt ist, muss die Meldung auch dieses Land betreffen
 CUSTX = [(re.compile(rf"(?<!\w){re.escape(n)}(?!\w)", 0 if len(n) <= 4 else re.I), cid) for n, _, cid in names.parse("CUSTOMERS")]
@@ -235,13 +229,12 @@ def compute(all_items, now):
         countries = sorted({c for c in cname if cmatch[c].search(text_all)}, key=list(cname).index)
         if ai:
             countries = sorted({c for a in ai for c in a.get("countries", []) if c in cname}, key=list(cname).index)
-        # regionale Eingrenzung (strenge Rubriken nur mit Bezug zu deinen Ländern oder Deutschland)
+        # regionale Eingrenzung: Zielmärkte nur mit Bezug zu deinen Ländern
         reg = CFG.get("region") or {}
         if reg:
             if not ai and any(m["lang"] == "tr" for m in members) and "TR" in cname and "TR" not in countries:
                 countries = sorted(countries + ["TR"], key=list(cname).index)
-            geo = bool(countries) or bool(HOME.search(text_all))
-            rubrics = [r for r in rubrics if r not in reg.get("rubrics", []) or geo]
+            rubrics = [r for r in rubrics if r not in reg.get("rubrics", []) or countries]
             if not rubrics:
                 continue
             rubric = rubrics[0]
