@@ -34,8 +34,6 @@ colors:
   section-markt-dark: "#bf5af2"
   section-laender: "#f2305a"
   section-laender-dark: "#ff375f"
-  section-rohstoffe: "#007aff"
-  section-rohstoffe-dark: "#0a84ff"
   rating-green: "#34c759"
   rating-yellow: "#ff9f0a"
   rating-red: "#ff3b30"
@@ -192,7 +190,7 @@ A near-monochrome Apple neutral palette with one action blue, one signal orange,
 - **Rope Core Amber** (rope-core-amber): the core strand of the wire-rope mark and the sample-data banner. Constant across light and dark.
 
 ### Tertiary
-- **Section dots** (section-haefen, section-kraene, section-industrie, section-tiefbau, section-markt, section-laender, section-rohstoffe, each with a brighter -dark variant): Apple system teal, yellow, orange, brown, purple, pink and blue. Each section owns one, always paired with its label, shown as a 7px dot in the navigation and a 9px dot before the section title.
+- **Section dots** (section-haefen, section-kraene, section-industrie, section-tiefbau, section-markt, section-laender, each with a brighter -dark variant): Apple system teal, yellow, orange, brown, purple and pink. Rohstoffe has no own section; its items appear under „Handel & Rohstoffe“ (section-laender). Each section owns one, always paired with its label, shown as a 7px dot in the navigation and a 9px dot before the section title.
 - **Rating lights** (rating-green, rating-yellow, rating-red): the three outlined rating dots and the system-status dots. Same values in both modes.
 
 ### Neutral
