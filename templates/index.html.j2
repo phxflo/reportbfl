@@ -54,8 +54,6 @@ a{color:inherit;text-decoration:none}
 .stand .st::before{content:"";width:7px;height:7px;border-radius:50%;background:#34c759}
 .stand .st.warn::before{background:#ff9f0a}.stand .st.bad::before{background:#ff3b30}
 .stand .st:hover{color:var(--blue)}
-.today{grid-column:1/-1;margin:0;max-width:34ch;font:500 28px/1.25 var(--display);letter-spacing:-.024em;color:var(--muted)}
-.today b{font-weight:600;color:var(--ink)}
 
 /* Navigation: durchscheinende Leiste, aktive Rubrik wie ein Segment-Schalter */
 nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--ground) 78%,transparent);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--hair);margin-bottom:44px}
@@ -173,7 +171,7 @@ footer.site button:hover{background:color-mix(in srgb,var(--ink) 12%,transparent
 
 @media (max-width:600px){
   body{font-size:16px}.wrap{padding:0 18px}
-  .top{grid-template-columns:minmax(0,1fr);gap:18px;padding-top:32px;padding-bottom:28px}.top h1{font-size:34px}.top .mark{width:46px;height:46px}.brand{gap:14px}.stand{align-items:flex-start;flex-direction:row;flex-wrap:wrap;gap:2px 10px;align-items:center;padding:0}.stand .st{margin-top:0}.today{font-size:21px}nav .navbrand{display:none}
+  .top{grid-template-columns:minmax(0,1fr);gap:18px;padding-top:32px;padding-bottom:28px}.top h1{font-size:34px}.top .mark{width:46px;height:46px}.brand{gap:14px}.stand{align-items:flex-start;flex-direction:row;flex-wrap:wrap;gap:2px 10px;align-items:center;padding:0}.stand .st{margin-top:0}nav .navbrand{display:none}
   .grouphead{font-size:28px;margin-top:52px}.grouphead small{display:none}
   .tiles{grid-template-columns:1fr;gap:0}.tiles section{margin-bottom:36px}
   .rows{padding:4px 18px}.row{grid-template-columns:50px minmax(0,1fr);gap:4px 10px}.rate{grid-column:2;margin-top:6px}
@@ -209,13 +207,11 @@ footer.site button:hover{background:color-mix(in srgb,var(--ink) 12%,transparent
 
 {% macro mark(cls) %}<svg class="{{ cls }}" viewBox="0 0 64 64"{% if cls == "mark" %} role="img" aria-label="Querschnitt eines Drahtseils"{% else %} aria-hidden="true"{% endif %}><g stroke="var(--card)" stroke-width="2">{% for k in range(6) %}<circle cx="{{ (32 + 20.5 * [0, 0.866, 0.866, 0, -0.866, -0.866][k])|round(1) }}" cy="{{ (32 - 20.5 * [1, 0.5, -0.5, -1, -0.5, 0.5][k])|round(1) }}" r="10.5" fill="var(--mark)"/>{% endfor %}<circle cx="32" cy="32" r="10" fill="var(--accent)"/></g><g fill="var(--card)" opacity=".35">{% for k in range(6) %}<circle cx="{{ (32 + 20.5 * [0, 0.866, 0.866, 0, -0.866, -0.866][k])|round(1) }}" cy="{{ (32 - 20.5 * [1, 0.5, -0.5, -1, -0.5, 0.5][k])|round(1) }}" r="3.4"/>{% endfor %}</g></svg>{% endmacro %}
 {% set lvl = 'bad' if health|selectattr(1,'equalto','bad')|list else ('warn' if health|selectattr(1,'equalto','warn')|list else 'ok') %}
-{% set cnt = namespace(new=0, kunde=0) %}{% for s in sections %}{% for c in s.shown %}{% set cnt.new = cnt.new + (1 if c.is_new else 0) %}{% set cnt.kunde = cnt.kunde + (1 if c.kunde else 0) %}{% endfor %}{% endfor %}
 <header class="wrap top" id="top">
   <div class="brand">{{ mark("mark") }}
     <div><h1>{{ site.title.split(' ')[0] }} <span>{{ site.title.split(' ')[1:]|join(' ') }}</span></h1>
     <p class="tag">{{ site.tagline }}</p></div></div>
   <div class="stand"><b>{{ date }}</b><span>Stand {{ updated.split(', ')[-1] }}</span><a href="#status" class="st {{ lvl }}">{{ 'Alles in Ordnung' if lvl == 'ok' else 'Hinweise' if lvl == 'warn' else 'Störung' }}</a></div>
-  <p class="today">{% if cnt.new %}<b>{{ cnt.new }} {{ 'neue Meldung' if cnt.new == 1 else 'neue Meldungen' }}</b> seit gestern{% if cnt.kunde %}, <b>{{ cnt.kunde }} zu {{ 'einem Kunden' if cnt.kunde == 1 else 'Kunden' }}</b>{% endif %}.{% else %}Seit gestern nichts Neues{% if cnt.kunde %}, <b>{{ cnt.kunde }} zu {{ 'einem Kunden' if cnt.kunde == 1 else 'Kunden' }}</b> in der Woche{% endif %}.{% endif %}</p>
 </header>
 
 <nav aria-label="Rubriken"><div class="wrap">
