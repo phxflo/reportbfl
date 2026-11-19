@@ -42,12 +42,20 @@ a{color:inherit;text-decoration:none}
 .errors strong{color:var(--ink)}
 
 /* Kopf */
-.top{display:flex;align-items:center;gap:16px;padding-top:44px;padding-bottom:28px}
-.top .mark{width:52px;height:52px;flex:none}
-.top h1{margin:0;font:700 40px/1.05 var(--display);letter-spacing:-.028em}
+.top{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:28px 40px;padding-top:64px;padding-bottom:40px}
+.brand{display:flex;align-items:center;gap:20px;min-width:0}
+.top .mark{width:64px;height:64px;flex:none}
+.top h1{margin:0;font:700 56px/1 var(--display);letter-spacing:-.034em}
 .top h1 span{color:var(--muted)}
-.top p{margin:6px 0 0;font-size:15px;color:var(--muted);letter-spacing:-.01em}
-.top .stand{margin-left:auto;text-align:right;font-size:13px;line-height:1.5;color:var(--muted);font-variant-numeric:tabular-nums}
+.top .tag{margin:10px 0 0;font-size:15px;color:var(--muted);letter-spacing:-.01em}
+.stand{display:flex;flex-direction:column;align-items:flex-end;gap:2px;font-size:13px;line-height:1.45;color:var(--muted);font-variant-numeric:tabular-nums;padding-bottom:6px}
+.stand b{font:600 15px/1.4 var(--display);color:var(--ink);letter-spacing:-.01em}
+.stand .st{display:inline-flex;align-items:center;gap:7px;margin-top:6px;font-weight:500;color:var(--ink);background:var(--card);box-shadow:var(--shadow),0 0 0 .5px var(--hair);border-radius:99px;padding:4px 12px 4px 10px}
+.stand .st::before{content:"";width:7px;height:7px;border-radius:50%;background:#34c759}
+.stand .st.warn::before{background:#ff9f0a}.stand .st.bad::before{background:#ff3b30}
+.stand .st:hover{color:var(--blue)}
+.today{grid-column:1/-1;margin:0;max-width:34ch;font:500 28px/1.25 var(--display);letter-spacing:-.024em;color:var(--muted)}
+.today b{font-weight:600;color:var(--ink)}
 
 /* Navigation: durchscheinende Leiste, aktive Rubrik wie ein Segment-Schalter */
 nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--ground) 78%,transparent);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--hair);margin-bottom:44px}
@@ -60,6 +68,11 @@ nav a.on{color:var(--ink);background:var(--card);box-shadow:0 1px 3px rgba(0,0,0
 nav a b{font-size:12px;font-weight:600;color:var(--faint);font-variant-numeric:tabular-nums}
 nav a.on b{color:var(--muted)}
 nav .sep{width:1px;height:18px;background:var(--hair);margin:0 8px;flex:none}
+nav .navbrand{gap:8px;padding:6px 0;max-width:0;opacity:0;overflow:hidden;color:var(--ink);font:600 15px var(--display);letter-spacing:-.015em;transition:max-width .4s cubic-bezier(.2,.8,.2,1),opacity .3s,margin .4s}
+nav .navbrand::before{content:none}
+nav .navbrand:hover{color:var(--ink);background:none}
+nav.stuck .navbrand{max-width:180px;opacity:1;margin-right:14px}
+.nm{width:20px;height:20px;flex:none}
 
 /* Überschriften: große Gruppenzeile, darunter kleine Rubriktitel mit Farbpunkt */
 .grouphead{display:flex;align-items:baseline;gap:16px;margin:72px 0 20px;font:700 34px/1.1 var(--display);letter-spacing:-.026em}
@@ -160,7 +173,7 @@ footer.site button:hover{background:color-mix(in srgb,var(--ink) 12%,transparent
 
 @media (max-width:600px){
   body{font-size:16px}.wrap{padding:0 18px}
-  .top{padding-top:28px;padding-bottom:20px}.top h1{font-size:30px}.top .mark{width:42px;height:42px}.top{flex-wrap:wrap}.top>div:not(.stand){flex:1 1 0;min-width:0}.top .stand{margin-left:0;text-align:left;width:100%}
+  .top{grid-template-columns:minmax(0,1fr);gap:18px;padding-top:32px;padding-bottom:28px}.top h1{font-size:34px}.top .mark{width:46px;height:46px}.brand{gap:14px}.stand{align-items:flex-start;flex-direction:row;flex-wrap:wrap;gap:2px 10px;align-items:center;padding:0}.stand .st{margin-top:0}.today{font-size:21px}nav .navbrand{display:none}
   .grouphead{font-size:28px;margin-top:52px}.grouphead small{display:none}
   .tiles{grid-template-columns:1fr;gap:0}.tiles section{margin-bottom:36px}
   .rows{padding:4px 18px}.row{grid-template-columns:50px minmax(0,1fr);gap:4px 10px}.rate{grid-column:2;margin-top:6px}
@@ -194,14 +207,19 @@ footer.site button:hover{background:color-mix(in srgb,var(--ink) 12%,transparent
 </article>
 {% endmacro %}
 
-<header class="wrap top">
-  <svg class="mark" viewBox="0 0 64 64" role="img" aria-label="Querschnitt eines Drahtseils"><g stroke="var(--card)" stroke-width="2">{% for k in range(6) %}<circle cx="{{ (32 + 20.5 * [0, 0.866, 0.866, 0, -0.866, -0.866][k])|round(1) }}" cy="{{ (32 - 20.5 * [1, 0.5, -0.5, -1, -0.5, 0.5][k])|round(1) }}" r="10.5" fill="var(--mark)"/>{% endfor %}<circle cx="32" cy="32" r="10" fill="var(--accent)"/></g><g fill="var(--card)" opacity=".35">{% for k in range(6) %}<circle cx="{{ (32 + 20.5 * [0, 0.866, 0.866, 0, -0.866, -0.866][k])|round(1) }}" cy="{{ (32 - 20.5 * [1, 0.5, -0.5, -1, -0.5, 0.5][k])|round(1) }}" r="3.4"/>{% endfor %}</g></svg>
-  <div><h1>{{ site.title.split(' ')[0] }} <span>{{ site.title.split(' ')[1:]|join(' ') }}</span></h1>
-  <p>{{ site.tagline }}</p></div>
-  <div class="stand">{{ date }}<br>Stand {{ updated }}</div>
+{% macro mark(cls) %}<svg class="{{ cls }}" viewBox="0 0 64 64"{% if cls == "mark" %} role="img" aria-label="Querschnitt eines Drahtseils"{% else %} aria-hidden="true"{% endif %}><g stroke="var(--card)" stroke-width="2">{% for k in range(6) %}<circle cx="{{ (32 + 20.5 * [0, 0.866, 0.866, 0, -0.866, -0.866][k])|round(1) }}" cy="{{ (32 - 20.5 * [1, 0.5, -0.5, -1, -0.5, 0.5][k])|round(1) }}" r="10.5" fill="var(--mark)"/>{% endfor %}<circle cx="32" cy="32" r="10" fill="var(--accent)"/></g><g fill="var(--card)" opacity=".35">{% for k in range(6) %}<circle cx="{{ (32 + 20.5 * [0, 0.866, 0.866, 0, -0.866, -0.866][k])|round(1) }}" cy="{{ (32 - 20.5 * [1, 0.5, -0.5, -1, -0.5, 0.5][k])|round(1) }}" r="3.4"/>{% endfor %}</g></svg>{% endmacro %}
+{% set lvl = 'bad' if health|selectattr(1,'equalto','bad')|list else ('warn' if health|selectattr(1,'equalto','warn')|list else 'ok') %}
+{% set cnt = namespace(new=0, kunde=0) %}{% for s in sections %}{% for c in s.shown %}{% set cnt.new = cnt.new + (1 if c.is_new else 0) %}{% set cnt.kunde = cnt.kunde + (1 if c.kunde else 0) %}{% endfor %}{% endfor %}
+<header class="wrap top" id="top">
+  <div class="brand">{{ mark("mark") }}
+    <div><h1>{{ site.title.split(' ')[0] }} <span>{{ site.title.split(' ')[1:]|join(' ') }}</span></h1>
+    <p class="tag">{{ site.tagline }}</p></div></div>
+  <div class="stand"><b>{{ date }}</b><span>Stand {{ updated.split(', ')[-1] }}</span><a href="#status" class="st {{ lvl }}">{{ 'Alles in Ordnung' if lvl == 'ok' else 'Hinweise' if lvl == 'warn' else 'Störung' }}</a></div>
+  <p class="today">{% if cnt.new %}<b>{{ cnt.new }} {{ 'neue Meldung' if cnt.new == 1 else 'neue Meldungen' }}</b> seit gestern{% if cnt.kunde %}, <b>{{ cnt.kunde }} zu {{ 'einem Kunden' if cnt.kunde == 1 else 'Kunden' }}</b>{% endif %}.{% else %}Seit gestern nichts Neues{% if cnt.kunde %}, <b>{{ cnt.kunde }} zu {{ 'einem Kunden' if cnt.kunde == 1 else 'Kunden' }}</b> in der Woche{% endif %}.{% endif %}</p>
 </header>
 
 <nav aria-label="Rubriken"><div class="wrap">
+  <a class="navbrand" href="#top" tabindex="-1">{{ mark("nm") }}{{ site.title }}</a>
   <a href="#kennzahlen">Kennzahlen</a><span class="sep"></span>
   {% for s in sections %}{% if not s.tile %}<a class="r-{{ s.id }}" href="#{{ s.id }}">{{ s.short }}{% if s.shown %}<b>{{ s.shown|length }}</b>{% endif %}</a>
   {%- elif loop.first or not sections[loop.index0 - 1].tile %}{% set n = sections|selectattr('tile')|map(attribute='shown')|map('length')|sum %}<a href="#zielmaerkte">{{ s.group }}{% if n %}<b>{{ n }}</b>{% endif %}</a>{% endif %}{% endfor %}
@@ -252,8 +270,7 @@ footer.site button:hover{background:color-mix(in srgb,var(--ink) 12%,transparent
 <div class="wrap"><footer class="site">
   {% if rating %}<details class="health" id="ratebox"><summary><span class="dot" id="tokdot"></span>Bewertungen senden: <span id="tokstat">nicht verbunden</span></summary>
     <div style="margin-top:10px"><input id="tok" type="password" autocomplete="off" placeholder="Zugangsschlüssel" aria-label="Zugangsschlüssel"> <button type="button" id="toksave">Speichern</button><button type="button" id="tokdel">Entfernen</button></div></details>{% endif %}
-  {% set lvl = 'bad' if health|selectattr(1,'equalto','bad')|list else ('warn' if health|selectattr(1,'equalto','warn')|list else 'ok') %}
-  <details class="health"><summary><span class="dot {{ lvl }}"></span>Systemstatus: {{ 'alles in Ordnung' if lvl == 'ok' else 'Hinweise beachten' if lvl == 'warn' else 'Störung – Inhalte evtl. unvollständig' }}</summary>
+  <details class="health" id="status"><summary><span class="dot {{ lvl }}"></span>Systemstatus: {{ 'alles in Ordnung' if lvl == 'ok' else 'Hinweise beachten' if lvl == 'warn' else 'Störung – Inhalte evtl. unvollständig' }}</summary>
     <ul>{% for n, s, x in health %}<li class="{{ s }}"><span class="dot {{ s }}"></span><b>{{ n }}</b>{{ x }}</li>{% endfor %}</ul></details>
   Quelle der Kennzahlen: Statistisches Bundesamt (Destatis), GENESIS-Online.
 </footer></div>
@@ -263,7 +280,7 @@ footer.site button:hover{background:color-mix(in srgb,var(--ink) 12%,transparent
   var $=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
   
   /* Navigation: markiert den Bereich, der gerade im Bild ist (bei Kacheln beide Nachbarn) */
-  var links=$('nav a[href^="#"]'), secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1))}), navEl=document.querySelector('nav'), tick=false;
+  var links=$('nav a[href^="#"]:not(.navbrand)'), secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1))}), navEl=document.querySelector('nav'), tick=false;
   function spy(){
     tick=false; var line=navEl.offsetHeight+60, tops=secs.map(function(s){return s?s.getBoundingClientRect().top:1e9}), best=-1e9;
     tops.forEach(function(y){if(y<=line&&y>best)best=y});
@@ -274,6 +291,8 @@ footer.site button:hover{background:color-mix(in srgb,var(--ink) 12%,transparent
   }
   addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(spy)}},{passive:true});
   addEventListener('resize',spy); spy();
+  /* Name des Reports erscheint in der Leiste, sobald der Kopf aus dem Bild ist (wie Apples Produktleiste) */
+  if('IntersectionObserver' in window)new IntersectionObserver(function(e){navEl.classList.toggle('stuck',!e[0].isIntersecting)}).observe(document.getElementById('top'));
 
   /* Ampel-Bewertung: lokal merken, gesammelt an GitHub senden (Kommentar im Bewertungs-Issue) */
   var RT={{ rating|tojson if rating else 'null' }}, unrate=function(){};

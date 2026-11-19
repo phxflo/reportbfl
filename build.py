@@ -440,7 +440,6 @@ def main():
         site=SITE, sample=sample, charts=charts, sections=sections,
         countries=CFG["countries"], date=f"{WDAYS[local.weekday()]}, {local.day}. {MONTHS[local.month - 1]} {local.year}",
         updated=local.strftime("%d.%m.%Y, %H:%M Uhr"), edition=local.timetuple().tm_yday,
-        n_week=len(cards), n_today=sum(c["is_new"] for c in cards), n_src=len({i["source"] for i in items}),
         errors=index_notes(idx, now), health=health(news, idx, now, cards, [c for s in sections for c in s["shown"]]),
         fontcss=font_css(), rating=SITE.get("rating"))
     (ROOT / "docs").mkdir(exist_ok=True)
