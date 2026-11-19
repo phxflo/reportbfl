@@ -299,14 +299,16 @@ def compute(all_items, now):
                       + (1.5 if c["trusted"] else 0) + (1.5 * (c["bris"] - 3) if c["bris"] else 0)
                       + (2.0 if c["rubric"] in CUSTOMER and c["countries"] else 0)
                       + (3.0 if c["kunde"] else 0))      # Kundennähe: Ereignisse bei Kunden in deinen Ländern zuerst
+        c["from"] = c["rubric"]
+        c["rubric"] = rub[c["rubric"]].get("show_in", c["rubric"])     # Rubrik, die in einer anderen mit angezeigt wird (Rohstoffe → Handel)
 
     # Je Rubrik die wichtigsten Meldungen (nach Wertung, nicht nach Datum); Randthemen (niedrige Brisanz) fallen weg
     def member(c, rid):
         if c["rubric"] != rid:
             return False
-        if c["ai_used"] and 0 < c["bris"] < rub[rid].get("min_bris", 4) and not c["kunde"]:      # Kundenmeldungen immer
+        if c["ai_used"] and 0 < c["bris"] < rub[c["from"]].get("min_bris", 4) and not c["kunde"]:      # Kundenmeldungen immer
             return False
-        if rid == "laender":            # "Länder" = allgemeine Meldungen zum Land
+        if c["from"] == "laender":            # "Länder" = allgemeine Meldungen zum Land
             return c["ai_used"] or bool(c["countries"])
         return True
 
@@ -319,6 +321,8 @@ def compute(all_items, now):
 
     sections = []
     for r in CFG["rubrics"]:
+        if r.get("show_in"):
+            continue
         lst = sorted(picks[r["id"]], key=lambda c: (c["score"], c["ts"]), reverse=True)
         sections.append(dict(id=r["id"], group=r.get("group"), tile=bool(r.get("tile")), short=r["short"], shown=lst, limit=r.get("max", cap)))
 

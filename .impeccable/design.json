@@ -418,36 +418,6 @@
           "#ffe6e6"
         ]
       },
-      "section-rohstoffe": {
-        "role": "tertiary",
-        "displayName": "Section dot: Rohstoffe",
-        "canonical": "oklch(60.3% 0.218 257.4)",
-        "tonalRamp": [
-          "#040b19",
-          "#08244b",
-          "#023e87",
-          "#005aca",
-          "#297ef1",
-          "#6da6f8",
-          "#a9cbfd",
-          "#e1f0ff"
-        ]
-      },
-      "section-rohstoffe-dark": {
-        "role": "tertiary",
-        "displayName": "Section dot: Rohstoffe (dark)",
-        "canonical": "oklch(62.4% 0.206 255.5)",
-        "tonalRamp": [
-          "#040b18",
-          "#072548",
-          "#004083",
-          "#005dc3",
-          "#2781ea",
-          "#6da7f3",
-          "#a9ccfa",
-          "#e1f0ff"
-        ]
-      },
       "rating-green": {
         "role": "tertiary",
         "displayName": "Rating Green",

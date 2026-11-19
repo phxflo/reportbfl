@@ -115,17 +115,17 @@ rubrics:
       he: ["כבלי פלדה", "חבל פלדה"]
   - id: laender
     group: "Markt & Handel"
-    short: "Zölle & Tarife"
+    short: "Handel & Rohstoffe"     # Zölle, Tarife, Sanktionen und (über show_in) Rohstoffe
     weight: 0.8
-    max: 3                   # strenger: nur wirklich Wichtiges
+    max: 5
     min_bris: 4
     must: 'zoll|zölle|strafzoll|tarif|customs|(?<!\w)dut(y|ies)(?!\w)|douane|gümrük|sanktion|sanction|yaptırım|embargo|antidumping|anti-dumping|quota|kontingent|importverbot|import ban|export ban|exportverbot|einfuhr\w*|invoerrechten|safeguard|schutzmaßnahme\w*|cbam|devisen|currency|capital control|hafenstreik|port strike|dockers? strike|blockade|handelsabkommen|trade (deal|agreement|war|policy|deficit|surplus)|wirtschaft\w*|konjunktur|bruttoinlandsprodukt|\bbip\b|\bgdp\b|inflation\w*|leitzins|zinsen|währung|haushalt|investition\w*|infrastruktur|industrie\w*|economy|economic|interest rate|budget|investment|infrastructure|industry|exports?\b|imports?\b|économi\w*|\bpib\b|taux d|devise|budget|investissement|infrastructure|industrie|commerce|exportation\w*|importation\w*|economie|economisch|\bbbp\b|inflatie|begroting|investering|handel|export|import|ekonomi|enflasyon|büyüme|faiz|döviz|bütçe|yatırım|altyapı|sanayi|ihracat|ithalat|dış ticaret|جمارك|عقوبات|حظر|اقتصاد|תעשייה|כלכלה|מכס|סנקציות|אמברגו'   # Länder: Handels-/Sanktions-/Zollthemen und allgemeine Wirtschaftslage
     terms: {}                # Länder-Suchen stehen unten unter "countries"
   - id: rohstoffe
     group: "Markt & Handel"
     short: "Rohstoffe"
+    show_in: laender         # wird in „Handel & Rohstoffe“ angezeigt (Claude beurteilt weiter getrennt)
     weight: 1.0
-    max: 3
     min_bris: 4
     core: 'zuschlag|surcharge|toeslag|supplément|walzdraht|wire rod|walsdraad|filmaşin|fil machine|cbam|safeguard|schutzmaßnahmen|stahlpreis|steel price|prix de l.acier|staalprijs|çelik fiyat'   # Treffer hier zählen auch ohne Ereigniswort
     must: 'zuschlag|surcharge|toeslag|legierung|alloy|walzdraht|wire rod|fil machine|walsdraad|filmaşin|stahlpreis|steel price|scrap|schrott|schroot|hurda|zink|zinc|nickel|cbam|safeguard|schutzmaßnahmen|prix de l.acier|prix du fil|staalprijs|çelik fiyat|ek ücret|supplément|מחירי פלדה|מחיר ברזל'   # Titel muss eines dieser Stichwörter enthalten (Regex)

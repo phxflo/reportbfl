@@ -18,9 +18,9 @@ die allgemeine Wirtschaftslage. Das Tool soll stark sein, aber wenig laufende Ko
 
 ## Feste Entscheidungen des Nutzers
 - 11 Kundenländer: BE, NL, MA, DZ, TN, IL, TR, GH, CI, LY, NG.
-- Seitenaufbau: Kennzahlen · Zielmärkte (Häfen, Krane, Industrie, Spezialtiefbau als 2×2-Kacheln) · Markt & Handel (Wettbewerb, Zölle & Tarife, Rohstoffe) · Systemstatus.
+- Seitenaufbau: Kennzahlen · Zielmärkte (Häfen, Krane, Industrie, Spezialtiefbau als 2×2-Kacheln) · Markt & Handel (Wettbewerb, Handel & Rohstoffe) · Systemstatus.
   Keine Top-5, keine Projekte-Rubrik (Projekte/Ausschreibungen gehören in den jeweiligen Zielmarkt), keine Länderkarte/-filter, keine Suche, keine Erklärtexte, nur Text.
-- Jede Meldung steht genau einmal. Pro Rubrik höchstens 5 (Zölle, Rohstoffe, Wettbewerb 3), Mindest-Brisanz 4. Kundenmeldungen umgehen Limit und Mindest-Brisanz
+- Jede Meldung steht genau einmal. Pro Rubrik höchstens 5 (Wettbewerb 3), Mindest-Brisanz 4. Kundenmeldungen umgehen Limit und Mindest-Brisanz
   und gehören in einen Zielmarkt (nie in „Wettbewerb“). Nur von Claude beurteilte Meldungen werden angezeigt.
 - Zu jeder angezeigten Meldung ein kurzer deutscher „Hintergrund“ (1–2 Sätze, kein Vorgehen, vollständig).
 - NEU = seit gestern 06:30 Berlin veröffentlicht. Länder als graue Schrift, nur NEU/Kunde als Pillen.

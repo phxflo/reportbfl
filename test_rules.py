@@ -61,4 +61,7 @@ assert {i["id"]: i.get("grp") for i in evs} == dict(x30="gx30", x31="gx30", x32=
 _, sections, _ = build.compute(evs, dt.datetime.now(UTC))
 kr = [c for s in sections if s["id"] == "kraene" for c in s["shown"]]
 assert sorted(c["n"] for c in kr) == [1, 4], [c["title"] for c in kr]
+# Rohstoffe erscheinen in „Handel & Rohstoffe“ (show_in), eine eigene Rohstoff-Rubrik gibt es nicht
+_, sections, _ = build.compute([item(50, "rohstoffe", 5, "Walzdrahtpreise steigen um zehn Prozent")], dt.datetime.now(UTC))
+assert [c["id"] for s in sections if s["id"] == "laender" for c in s["shown"]] == ["x50"] and "rohstoffe" not in [s["id"] for s in sections]
 print("Regeln ok")

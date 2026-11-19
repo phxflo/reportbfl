@@ -19,8 +19,8 @@ Built for one person's territory: eleven customer countries (BE, NL, MA, DZ, TN,
 Generated once a day by GitHub Actions as a single static HTML page (Jinja template `templates/index.html.j2`, built by `build.py`), encrypted with StaticCrypt and served by GitHub Pages. Read in a browser; follows the system light/dark setting. Design changes are rolled out with the free `build_only` run.
 
 ## Capabilities and Constraints
-- Fixed structure (owner's decision): Kennzahlen (Destatis charts) · Zielmärkte as 2×2 tiles (Häfen, Krane, Industrie, Spezialtiefbau) · Markt & Handel (Wettbewerb, Zölle & Tarife, Rohstoffe) · Systemstatus.
-- Each item appears once; at most 5 per section (3 for Zölle, Rohstoffe, Wettbewerb); customer items always shown, never under Wettbewerb.
+- Fixed structure (owner's decision): Kennzahlen (Destatis charts) · Zielmärkte as 2×2 tiles (Häfen, Krane, Industrie, Spezialtiefbau) · Markt & Handel (Wettbewerb, Handel & Rohstoffe) · Systemstatus.
+- Each item appears once; at most 5 per section (3 for Wettbewerb); customer items always shown, never under Wettbewerb.
 - Countries in grey text; only "NEU" and "Kunde" as pills. Each item: collapsible "Hintergrund", green/yellow/red rating that trains the filter.
 - No top list, no projects section, no country map or filter, no search, no explanatory texts, text only (no photos or icons as content).
 - Page is a single self-contained file: fonts embedded, no external requests, no JavaScript frameworks.
@@ -28,7 +28,7 @@ Generated once a day by GitHub Actions as a single static HTML page (Jinja templ
 
 ## Brand Commitments
 - Name "Rope Report", the wire-rope cross-section mark.
-- One fixed colour per section (Häfen, Krane, Industrie, Spezialtiefbau, Wettbewerb, Zölle, Rohstoffe), always paired with its label.
+- One fixed colour per section (Häfen, Krane, Industrie, Spezialtiefbau, Wettbewerb, Handel & Rohstoffe), always paired with its label.
 - Automatic light and dark mode.
 - Visual standard (owner's choice): the classic Apple product-page style, played straight at full craft; Apple's own pages and apps set the bar.
 
