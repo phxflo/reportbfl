@@ -1,10 +1,7 @@
 {
  "meta": {
   "sample": false,
-  "errors": [
-   "draht: keine Daten (61241-0006: Destatis: Für die Teiltabelle mit der Metadatenkombination:\nIndex der Erzeugerpr; 61241-0002: Destatis: Für die Teiltabelle mit der Metadatenkombination:\nIndex der Erzeugerpr; 61241-0003: Destatis: Für die Teiltabelle mit der Metadatenkombination:\nIndex der Erzeugerpr; 61241-0005: Destatis: Für die Teiltabelle mit der Metadatenkombination:\nIndex der Erzeugerpr; 61241-0007: Destatis: Es gibt keine Objekte zum angegebenen Selektionskriterium (Code 104); 61241-0004: Destatis: Für die Teiltabelle mit der Metadatenkombination:\nIndex der Erzeugerpr)",
-   "energie: keine Daten (61241-0004: Destatis: Für die Teiltabelle mit der Metadatenkombination:\nIndex der Erzeugerpr; 61241-0006: Destatis: Für die Teiltabelle mit der Metadatenkombination:\nIndex der Erzeugerpr)"
-  ]
+  "errors": []
  },
  "series": {
   "draht": {
@@ -44,11 +41,14 @@
     {
      "p": "2026-09",
      "v": 114.6
+    },
+    {
+     "p": "2026-10",
+     "v": 114.7
     }
    ],
-   "fetched": "2026-11-18",
-   "table": "61241-0006",
-   "note": ""
+   "fetched": "2026-11-20",
+   "table": "61241-0006"
   },
   "aki": {
    "points": [
@@ -125,7 +125,7 @@
      "v": 134.293
     }
    ],
-   "fetched": "2026-11-19",
+   "fetched": "2026-11-20",
    "table": "62421-0001"
   },
   "vpi": {
@@ -363,7 +363,7 @@
      "v": 126.5
     }
    ],
-   "fetched": "2026-11-19",
+   "fetched": "2026-11-20",
    "table": "61111-0002"
   },
   "energie": {
@@ -403,11 +403,14 @@
     {
      "p": "2026-09",
      "v": 162.5
+    },
+    {
+     "p": "2026-10",
+     "v": 171.1
     }
    ],
-   "fetched": "2026-11-18",
-   "table": "61241-0004",
-   "note": ""
+   "fetched": "2026-11-20",
+   "table": "61241-0004"
   }
  }
 }
